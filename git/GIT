@@ -44,6 +44,8 @@ git archive --format=tar HEAD
 
 git archive --output=./example_repo_archive.tar --format=tar HEAD
 
+$ git remote add origin https://github.com/Shubham0197/Training.git  :Purpose- Add remote Repo to the local Rel machine and connect it.
+
 shubh@HOME MINGW64 ~/Desktop/office
 $ touch README.md    :Purpose- To create a README file for the repository
 
