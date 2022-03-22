@@ -1,1 +1,54 @@
+$ git config --global user.name "Shubham Jain"
+ $ git config --global user.email "shubhamjain0197@gmail.com"
+ 
+ 
 
+ssh-keygen -t rsa -b 4096 -C "shubhamjain0197@gmail.com"
+Enter file in which to save the key (/c/Users/shubh/.ssh/id_rsa):
+
+$ ssh-keygen -t rsa -b 4096 -C "shubhamjain0197@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/shubh/.ssh/id_rsa):
+Created directory '/c/Users/shubh/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/shubh/.ssh/id_rsa
+Your public key has been saved in /c/Users/shubh/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:DHGwNsbJVm23j7lUcvoZO28zlU5KwW+NVt7GiV80bjA shubhamjain0197@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|      o.o.       |
+|     o *  o .    |
+|      @  . ...   |
+|     + +    oEo.o|
+|        S    OB**|
+|            =o=OO|
+|           ..+B=o|
+|            ..==.|
+|               ++|
++----[SHA256]-----+
+
+$ eval "$(ssh-agent -s)"
+Agent pid 1483
+
+
+ssh-add -K /c/Users/shubh/.ssh/id_rsa
+
+$ ssh-add -K /c/Users/shubh/.ssh/id_rsa
+Enter PIN for authenticator:
+Provider "internal" returned failure -1
+Unable to load resident keys: invalid format
+
+git archive --format=tar HEAD
+
+git archive --output=./example_repo_archive.tar --format=tar HEAD
+
+cd Desktop/office
+
+shubh@HOME MINGW64 ~/Desktop/office
+$ touch README.md
+
+shubh@HOME MINGW64 ~/Desktop/office
+$ git init
+Initialized empty Git repository in C:/Users/shubh/Desktop/Office/.git/
