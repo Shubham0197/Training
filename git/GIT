@@ -1,10 +1,12 @@
 $ git config --global user.name "Shubham Jain"
  $ git config --global user.email "shubhamjain0197@gmail.com"
  
+ : purpose - Add User and Id for whom the git is being used by locally
  
-
 ssh-keygen -t rsa -b 4096 -C "shubhamjain0197@gmail.com"
 Enter file in which to save the key (/c/Users/shubh/.ssh/id_rsa):
+
+:Purpose- Create SSh key to authenticate the user to Global Repo.
 
 $ ssh-keygen -t rsa -b 4096 -C "shubhamjain0197@gmail.com"
 Generating public/private rsa key pair.
@@ -37,18 +39,38 @@ ssh-add -K /c/Users/shubh/.ssh/id_rsa
 
 $ ssh-add -K /c/Users/shubh/.ssh/id_rsa
 Enter PIN for authenticator:
-Provider "internal" returned failure -1
-Unable to load resident keys: invalid format
 
 git archive --format=tar HEAD
 
 git archive --output=./example_repo_archive.tar --format=tar HEAD
 
-cd Desktop/office
+shubh@HOME MINGW64 ~/Desktop/office
+$ touch README.md    :Purpose- To create a README file for the repository
 
 shubh@HOME MINGW64 ~/Desktop/office
-$ touch README.md
+$ git init  :Purpose- Initialized empty Git repository in C:/Users/shubh/Desktop/Office/.git/
 
-shubh@HOME MINGW64 ~/Desktop/office
-$ git init
-Initialized empty Git repository in C:/Users/shubh/Desktop/Office/.git/
+$ git add .  
+# Adds all the files in the local repository and stages them for commit
+
+$ git push -u origin master # pushes changes to origin
+
+$ git status   :Purpose-Lists all new or modified files to be committed
+
+$ git commit -m "First commit"     :Purpose- to commit files you added to your git repo
+
+$ git fetch   :Purpose-used to get files from the remote repository to the local repository but not into the working directory
+
+$ git merge :Purpose- It is a command used to get the files from the local repository into the working directory.
+
+$ git pull  :Purpose-it is a command used to get files from the remote repository directly into the working directory.
+
+$ git reset HEAD~1 :Purpose- Remove the most recent commit
+
+$ git remote add origin remote_repository_URL  :Purpose- sets the new remote
+
+$ git push -u origin master :Purpose- pushes changes to origin
+
+$ git diff :Purpose- To show the files changes not yet staged
+
+$ git log  :Purpose- to see the history of commit you made to your files
