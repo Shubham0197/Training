@@ -93,6 +93,30 @@ $ git add .
 -----------------------------------------------------------------------------------------------------
 $ git commit -m "First commit"     :Purpose- to commit files you added to your git repo
 -----------------------------------------------------------------------------------------------------
+$ git log  :Purpose- to see the history of commit you made to your files
+-----------------------------------------------------------------------------------------------------
+
+Git Branches
+Branches allow you to work on different parts of a project without impacting the main branch.
+When the work is complete, a branch can be merged with the main project.
+
+$ git branch b1
+$ git branch
+  b1
+* master
+
+$ git checkout b1
+Switched to branch 'b1'
+
+----------------------------------------------------------------------------------------------------
+Git Merge  merge branches
+$ git merge b1
+Updating 307013f..c31bf7b
+Fast-forward
+ new.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+
 $ git push -u origin master # pushes changes to origin
 -----------------------------------------------------------------------------------------------------
 $ git status   :Purpose-Lists all new or modified files to be committed
@@ -112,5 +136,4 @@ $ git push -u origin master :Purpose- pushes changes to origin
 -----------------------------------------------------------------------------------------------------
 $ git diff :Purpose- To show the files changes not yet staged
 -----------------------------------------------------------------------------------------------------
-$ git log  :Purpose- to see the history of commit you made to your files
------------------------------------------------------------------------------------------------------
+
