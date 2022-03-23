@@ -131,6 +131,55 @@ remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), 647 bytes | 58.00 KiB/s, done.
 From https://github.com/Shubham0197/LocalPush
    c31bf7b..288dedd  master     -> origin/master
+-----------------------------------------------------------------------------------------------------   
+   
+ $ git log origin/master
+commit 288deddd2eb9d48da5876fddeed29323f6e5be97 (origin/master)
+Author: Shubham0197 <shubhamjain0197@gmail.com>
+Date:   Thu Mar 24 00:59:55 2022 +0530
+
+    Update new.txt
+
+commit c31bf7bbeff97f0b7d8d02f60f1b102f0bfd63d1 (HEAD -> master, b1)
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Wed Mar 23 22:25:09 2022 +0530
+
+    first b1 comit
+
+commit 307013f526f2981378dd3078ccbddfdf8d03057e
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Wed Mar 23 22:00:09 2022 +0530
+
+    commiting without staging
+
+commit 248d1a22de036bbdc623cde87a1309bd05102a4a
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Wed Mar 23 21:52:29 2022 +0530
+
+    first commit
+    
+-----------------------------------------------------------------------------------------------------    
+  #showing the differences between our local master and origin/master 
+ $ git diff origin/master
+diff --git a/new.txt b/new.txt
+index 119a813..836ae8b 100644
+--- a/new.txt
++++ b/new.txt
+@@ -10,6 +10,4 @@ Adding SSh in git hub
+ How to do Branching in the remote Repo
+ adding sometihng
+
+-working in branch
+-
+-fetch
++working in branch
+\ No newline at end of file
+
+git merge origin/master
+Updating c31bf7b..288dedd
+Fast-forward
+ new.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 -----------------------------------------------------------------------------------------------------
 $ git merge :Purpose- It is a command used to get the files from the local repository into the working directory.
 -----------------------------------------------------------------------------------------------------
