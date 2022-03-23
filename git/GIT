@@ -123,6 +123,14 @@ $ git status   :Purpose-Lists all new or modified files to be committed
 
 -----------------------------------------------------------------------------------------------------
 $ git fetch   :Purpose-used to get files from the remote repository to the local repository but not into the working directory
+$ git fetch origin
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 647 bytes | 58.00 KiB/s, done.
+From https://github.com/Shubham0197/LocalPush
+   c31bf7b..288dedd  master     -> origin/master
 -----------------------------------------------------------------------------------------------------
 $ git merge :Purpose- It is a command used to get the files from the local repository into the working directory.
 -----------------------------------------------------------------------------------------------------
