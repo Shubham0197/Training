@@ -219,5 +219,5 @@ Merge seees  3 points Common Ancenstors and last commits of both branches
 Rebase: diffrent from merge  does not show branching in logs if rebase done shows only one main line(use them to cleanup local history)
 Interactive Rebase:
 
-Submodules to manage outside code
+Submodules to manage outside code.
 
