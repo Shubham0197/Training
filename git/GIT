@@ -195,7 +195,29 @@ $ git diff :Purpose- To show the files changes not yet staged
 -----------------------------------------------------------------------------------------------------
 Git Reset
 Git commit --amend
+Git Reflog #Recovering deleted commits
 
 Git Stash 
 Git Cherry Pick
+
+Commit Only related files in one Commit
+
+git commit -p index.html   
+#add on a patch level ie one by one add to staging area changes in the file
+
+Commit Message: Subject Should be concise
+                Body should explain in detail (Reason, Diffrence, Remrkable concept)
+                
+Branching Strategies:
+Conventions Among team to avert collisions
+Feature , Develop branch ANd Main BRanch
+ 
+GitHub Flow long running and short lived branch
+Use tools to resolve merge conflicts (TOWER)
+
+Merge seees  3 points Common Ancenstors and last commits of both branches
+Rebase: diffrent from merge  does not show branching in logs if rebase done shows only one main line(use them to cleanup local history)
+Interactive Rebase:
+
+Submodules to manage outside code
 
