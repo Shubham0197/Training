@@ -31,6 +31,7 @@ echo - print a message to the screen or to a file if > (redirect) is present.
 Touch new.txt -To create new emty  file "new.txt"
 vim new.txt -to edit the file in the Vim editor
 
+Exiting in between command shift +z+z
 -----------------------------------------------------------------------------------------------------
 
 $ git config --global user.name "Shubham Jain"
@@ -247,4 +248,58 @@ Rebase: diffrent from merge  does not show branching in logs if rebase done show
 Interactive Rebase:
 
 Submodules to manage outside code.
+-----------------------------------------------------------------------------------------------------
+ #tells the difference between staging and working directory
+ git diff
+diff --git a/new.txt b/new.txt
+index 6eeeca8..e9ff1aa 100644
+--- a/new.txt
++++ b/new.txt
+@@ -12,7 +12,7 @@ adding sometihng
+
+ working in branch
+
+-fetch
+-pull
++
+ push
+ newbranch
++adding to see the different int the diff
+\ No newline at end of file
+
+
+
+
+
+# tells the difference between repository and staging directory
+$ git diff --staged
+diff --git a/Holidays_Schedule_2022.png b/Holidays_Schedule_2022.png
+new file mode 100644
+index 0000000..e0bb9a3
+Binary files /dev/null and b/Holidays_Schedule_2022.png differ
+diff --git a/PasswordCheatSheet-200227-164354.pdf b/PasswordCheatSheet-200227-164354.pdf
+new file mode 100644
+index 0000000..f314339
+--- /dev/null
++++ b/PasswordCheatSheet-200227-164354.pdf
+@@ -0,0 +1,9 @@
++3 easy steps to fantastic passwords
++
++     1                 2                      3
++
++Think passphrase     Punctuate and       Replace letter(s) for
++   not password   capitalize creatively        numbers
++
++I hate beets      I.Hate!Beets!           I.H8!Beets!
++^L
+\ No newline at end of file
+diff --git a/PhishingCheatSheet-200227-164243.pdf b/PhishingCheatSheet-200227-164243.pdf
+new file mode 100644
+index 0000000..27b6a4d
+--- /dev/null
++++ b/PhishingCheatSheet-200227-164243.pdf
+@@ -0,0 +1,12 @@
++3 Easy steps to smell
++   phishing attacks
+
 
