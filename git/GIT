@@ -198,6 +198,14 @@ Git commit --amend
 Git Reflog #Recovering deleted commits
 
 Git Stash 
+git stash
+Save modified and staged changes
+git stash list
+list stack-order of stashed file changes
+git stash pop
+write working from top of stash stack
+git stash drop
+discard the changes from top of stash stack
 Git Cherry Pick
 
 Commit Only related files in one Commit
