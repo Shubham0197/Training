@@ -12,7 +12,26 @@ Git allows you to see the full history of every commit.
 You can revert back to any previous commit.
 Git does not store a separate copy of every file in every commit, but keeps track of changes made in each commit!
 -----------------------------------------------------------------------------------------------------
+Important bash Commands 
+pwd - present working directory
+/c/Users/shubh
 
+ls  - List all the files in the current directory
+ -1.14-windows.xml    ntuser.dat.LOG2
+'3D Objects'/         NTUSER.DAT{1c2b59c5-c5f5-11eb-bacb-000d3a96488e}.TxR.0.regtrans-ms
+ AMDRM_Install.log    NTUSER.DAT{1c2b59c5-c5f5-11eb-bacb-000d3a96488e}.TxR.1.regtrans-ms
+ 
+cd - change directory
+cd.. -chancge to parent directory
+cd foldername - change the directory to the foldername
+
+directory is the same thing as a folder
+mkdir new - make a "new"  directory in current directory
+echo - print a message to the screen or to a file if > (redirect) is present.
+Touch new.txt -To create new emty  file "new.txt"
+vim new.txt -to edit the file in the Vim editor
+
+-----------------------------------------------------------------------------------------------------
 
 $ git config --global user.name "Shubham Jain"
 $ git config --global user.email "shubhamjain0197@gmail.com"
