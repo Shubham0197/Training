@@ -217,6 +217,7 @@ Git Reset
 Git commit --amend
 Git Reflog #Recovering deleted commits
 
+-----------------------------------------------------------------------------------------------------
 Git Stash 
 git stash
 Save modified and staged changes
@@ -226,7 +227,12 @@ git stash pop
 write working from top of stash stack
 git stash drop
 discard the changes from top of stash stack
-Git Cherry Pick
+----------------------------------------------------------------------------------------------------- 
+# Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+Go the the brach where the Cherry pich commit is to be commitetd
+
+Git CherryPick <hashcode>  
+
 
 Commit Only related files in one Commit
 
@@ -268,9 +274,6 @@ index 6eeeca8..e9ff1aa 100644
 \ No newline at end of file
 
 
-
-
-
 # tells the difference between repository and staging directory
 $ git diff --staged
 diff --git a/Holidays_Schedule_2022.png b/Holidays_Schedule_2022.png
@@ -301,5 +304,7 @@ index 0000000..27b6a4d
 @@ -0,0 +1,12 @@
 +3 Easy steps to smell
 +   phishing attacks
+-----------------------------------------------------------------------------------------------------
+
 
 
