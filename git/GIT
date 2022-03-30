@@ -315,3 +315,102 @@ Resolve
 Subtree
 
 
+Branching strategies
+GitFlow -	 master and develop – over the lifetime of the project. It also uses three supporting branches: feature-*, hotfix-*, and release-*. 
+        It’s the most complex model.
+GitHub Flow -  A feature branch is created to work on any feature or bug fix. Each feature branch must be finished and fully tested before being 
+        merged with the main branch.
+Trunk-Based Development - 	Very similar to GitHub Flow except that Trunk-Based Development suggests deployment after production code is merged 
+          to the main branch to minimize chances for regression.
+GitLab Flow - 	this strategy is like an extension of GitHub Flow with master and feature branches. However, it adds environment and release 
+          branches to better support SaaS and mobile projects.
+OneFlow	- Formulated by Adam Ruka, OneFlow proposes to be a simplification of GitFlow with the use of rebase options some consider controversial.
+
+
+Branching  
+# Creating the new branch
+git branch feature
+# going to feature branch
+git checkout feature
+
+$ git commit -a -m"commit new features in branch"
+[feature 8e468a2] commit new features in branch
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ 
+# Branching has the has same  previous logs  as the main it is branched from 
+git log
+commit 8e468a23ae9249b540cc5440b79693bc573913ae (HEAD -> feature)  # here head shows the current branch we are working on#
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Wed Mar 30 20:58:30 2022 +0530
+
+    commit new features in branch
+
+commit b3419185927650ca6ec3c06def5f0cbfd01ae8bd (newbranch)
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Wed Mar 30 04:07:25 2022 +0530
+
+    adding every file in the directory
+
+commit fca22c78a29f63af829bbd7c65cd4bcdb78c97ab (origin/newbranch)
+Author: Shubham0197 <shubhamjain0197@gmail.com>
+Date:   Thu Mar 24 01:39:29 2022 +0530
+
+    Update new.txt
+
+commit 320463d58515a8536b08bfa004a11118eb438a71 (origin/master, master)
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Thu Mar 24 01:11:43 2022 +0530
+
+    pushcommand
+
+commit bcdb56794de63464e082ab4afb1ebe0671f1b136
+Author: Shubham0197 <shubhamjain0197@gmail.com>
+Date:   Thu Mar 24 01:07:34 2022 +0530
+
+    Update new.txt
+    
+    
+# deleting branch after the work is done
+git branch -D feature1
+
+Merging
+
+shubh@HOME MINGW64 ~/desktop/office (feature)
+$ git commit -a -m"commit gibberish in branch"
+[feature 5e774ac] commit gibberish in branch
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+shubh@HOME MINGW64 ~/desktop/office (feature)
+$ git checkout master
+Switched to branch 'master'
+M       w3schools-test.github.io
+Your branch is ahead of 'origin/master' by 3 commits.
+  (use "git push" to publish your local commits)
+
+shubh@HOME MINGW64 ~/desktop/office (master)
+$ git commit -a -m"commit gibberish in master"
+[master 7ce5f87] commit gibberish in master
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+shubh@HOME MINGW64 ~/desktop/office (master)
+$ git merge feature  -m"creating confilict in this small world"
+Auto-merging new.txt
+CONFLICT (content): Merge conflict in new.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+why iT did not show where the conflict is??
+conflicts are reflected in the file itself so solve there what to be saved and updated and commit again
+
+<<<<<<< HEAD    # code in the HEad i.e. in current branch where the conflicts happen
+why do this
+=======   # seperating the code of the current and branch being mereged
+abcdcabdd
+>>>>>>> feature  # end of the conflict in the branch being merged
+
+after resolving the conflict commit the file 
+
+$ git commit -a -m "commiting after resolving merge conflicts"
+[master c203dd0] commiting after resolving merge conflicts
+
+
+-----------------------------------------------------------------------------------------------------
