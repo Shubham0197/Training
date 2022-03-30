@@ -506,8 +506,40 @@ new.txt
 
 # Resolving conflict in the Github itself
 
-   
+-----------------------------------------------------------------------------------------------------
+Git Ignore
+#ignore" is used to specify intentionally untracked files that Git should ignore
+  
+  $ touch .gitignore  
+  
+Rules for putting the pattern in .gitignore file:
+The rules for the patterns that can be put in the .gitignore file are as follows:
+Git ignores the Blank lines or lines starting with #.
+Only the Standard glob patterns work and will be applied recursively throughout the entire working tree.
+The patterns can be started with a forward slash (/) to avoid recursively.
+The patterns can be ended with a forward slash (/) to specify a directory.
+The patterns can be negated by starting it with an exclamation point (!).
+  
++++.gitignore file +++
+# Add file names as Regular Expression or name directly for git to not track   
+*.jpg
+#will ignore all the jpg files
+/newfolder/*
+#will ignore the newfolder and its sub-content
  
+ 
+ $ git add .gitignore  
+$ git commit -m "ignored directory created."  
+[master 4e774d2] ignored directory created.
+ 1 file changed, 5 insertions(+)
+ create mode 100644 .gitignore
+
+ create a universal .gitignore file as we can create multiple .gitignore files for a projec
+ 
+ $ git config --global core.excludesfile ~/.gitignore_global  
+ 
+ List the Ignored Files
+ $ git ls-files -i --exclude-standard  
  
 
 
