@@ -541,5 +541,97 @@ $ git commit -m "ignored directory created."
  List the Ignored Files
  $ git ls-files -i --exclude-standard  
  
+-----------------------------------------------------------------------------------------------------
+
+$ mkdir gitO
+
+shubh@HOME MINGW64 ~/desktop
+$ cd gito
+
+shubh@HOME MINGW64 ~/desktop/gito
+$ git init
+Initialized empty Git repository in C:/Users/shubh/Desktop/gitO/.git/
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git remote add mahima https://github.com/Mahima-01/Training-Repository.git
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git pull mahima
+remote: Enumerating objects: 60, done.
+remote: Counting objects: 100% (60/60), done.
+remote: Compressing objects: 100% (43/43), done.
+remote: Total 60 (delta 12), reused 3 (delta 0), pack-reused 0
+Unpacking objects: 100% (60/60), 16.24 KiB | 74.00 KiB/s, done.
+From https://github.com/Mahima-01/Training-Repository
+ * [new branch]      Branch2    -> mahima/Branch2
+ * [new branch]      main       -> mahima/main
+ * [new branch]      master     -> mahima/master
+You asked to pull from the remote 'mahima', but did not specify
+a branch. Because this is not the default configured remote
+for your current branch, you must specify a branch on the command line.
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git pull mahima Branch2
+From https://github.com/Mahima-01/Training-Repository
+ * branch            Branch2    -> FETCH_HEAD
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ ls
+Git/
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ touch new.txt
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ vim new.txt
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git add .
+warning: LF will be replaced by CRLF in new.txt.
+The file will have its original line endings in your working directory
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git commit -a -m "Create the new.txt in the branch2"
+[master 57304fb] Create the new.txt in the branch2
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new.txt
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git push mahima Branch2
+error: src refspec Branch2 does not match any
+error: failed to push some refs to 'https://github.com/Mahima-01/Training-Repository.git'
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git push mahima
+remote: Permission to Mahima-01/Training-Repository.git denied to Shubham0197.
+fatal: unable to access 'https://github.com/Mahima-01/Training-Repository.git/': The requested URL returned error: 403
+
+ git pull fork main
+From https://github.com/Shubham0197/Training-Repository
+ * branch            main       -> FETCH_HEAD
+Auto-merging new.txt
+Merge made by the 'ort' strategy.
+ Git/GitTrain | 501 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 500 insertions(+), 1 deletion(-)
+
+shubh@HOME MINGW64 ~/desktop/gito (master)
+$ git push fork
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 618 bytes | 618.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Shubham0197/Training-Repository.git
+   16a4be5..2fc5175  master -> master
 
 
