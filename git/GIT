@@ -456,7 +456,57 @@ From github.com:Shubham0197/LocalPush
  * branch            new-feature -> FETCH_HEAD
 Already up to date.
 -----------------------------------------------------------------------------------------------------
+Merge Conflicts in the Feature Branch Workflow
 
+$ git push origin
+To github.com:Shubham0197/LocalPush.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'github.com:Shubham0197/LocalPush.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+# Pull the repo first to have the latest repo to work from
+$ git pull origin
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 678 bytes | 67.00 KiB/s, done.
+From github.com:Shubham0197/LocalPush
+   320463d..9123298  master     -> origin/master
+Auto-merging new.txt
+Merge made by the 'ort' strategy.
+ new.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+ 
+ # showing the updates done to the latest file in the remote to the local repo
+ 
+ # and push command  worked
+ $ git push origin
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 365 bytes | 365.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:Shubham0197/LocalPush.git
+   9123298..6cb9e39  master -> master
+   
+   
+Changing file and pushing it again 
+
+This branch has conflicts that must be resolved
+Use the web editor or the  to resolve conflicts.
+Conflicting files
+new.txt
+
+# Resolving conflict in the Github itself
+
+   
  
  
 
