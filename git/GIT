@@ -634,4 +634,97 @@ Total 5 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/Shubham0197/Training-Repository.git
    16a4be5..2fc5175  master -> master
 
+-----------------------------------------------------------------------------------------------------
+git reflog
+#used for Git to record updates made to the tip of branches
 
+$ git reflog
+c454a65 (HEAD -> master) HEAD@{0}: pull origin: Merge made by the 'ort' strategy.
+b8e1ea8 HEAD@{1}: commit: to see untracked files
+3820547 HEAD@{2}: commit: ignored directory created.
+4e774d2 HEAD@{3}: commit: ignored directory created.
+a050542 HEAD@{4}: commit: new feature message
+6cb9e39 HEAD@{5}: pull origin: Merge made by the 'ort' strategy.
+c203dd0 HEAD@{6}: checkout: moving from new-feature to master
+fea8cfc (new-feature) HEAD@{7}: commit: new feature message
+c203dd0 HEAD@{8}: checkout: moving from master to new-feature
+c203dd0 HEAD@{9}: commit (merge): commiting after resolving merge conflicts
+7ce5f87 HEAD@{10}: commit: commit gibberish in master
+8e468a2 HEAD@{11}: checkout: moving from feature to master
+5e774ac (feature) HEAD@{12}: commit: commit gibberish in branch
+8e468a2 HEAD@{13}: checkout: moving from master to feature
+8e468a2 HEAD@{14}: merge feature: Fast-forward
+320463d HEAD@{15}: checkout: moving from feature to master
+8e468a2 HEAD@{16}: commit: commit new features in branch
+b341918 (newbranch) HEAD@{17}: checkout: moving from newbranch to feature
+b341918 (newbranch) HEAD@{18}: commit: adding every file in the directory
+fca22c7 (origin/newbranch) HEAD@{19}: checkout: moving from master to newbranch
+320463d HEAD@{20}: commit: pushcommand
+bcdb567 HEAD@{21}: pull origin: Fast-forward
+288dedd HEAD@{22}: merge origin/master: Fast-forward
+c31bf7b (b1) HEAD@{23}: merge b1: Fast-forward
+307013f HEAD@{24}: checkout: moving from b1 to master
+c31bf7b (b1) HEAD@{25}: commit: first b1 comit
+307013f HEAD@{26}: checkout: moving from master to b1
+307013f HEAD@{27}: commit: commiting without staging
+248d1a2 HEAD@{28}: commit (initial): first commit
+
+#Pass the current branch name to git reflog show, if you want to see the reflog for it
+$ git reflog show b1
+c31bf7b (b1) b1@{0}: commit: first b1 comit
+307013f b1@{1}: branch: Created from master
+
+Timed Reflogs
+There is an attached timestamp to each reflog entry.They can be leveraged as a qualifier which is token of
+Git ref pointer syntax. This allows to filter Git reflogs by time. Here are some examples of time qualifiers
+
+$ git diff master@{0} master@{1.hour.ago}
+diff --git a/.gitignore b/.gitignore
+deleted file mode 100644
+index db0c047..0000000
+--- a/.gitignore
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# Add file names as Regular Expression or name directly for git to not track
+-*.png
+-#will ignore all the jpg files
+-/newfolder/*
+-#will ignore the newfolder and its sub-content
+\ No newline at end of file
+diff --git a/Screenshot (27).png b/Screenshot (27).png
+new file mode 100644
+index 0000000..613dfc1
+Binary files /dev/null and b/Screenshot (27).png differ
+diff --git a/new.txt b/new.txt
+index 4d6f522..17d218a 100644
+--- a/new.txt
++++ b/new.txt
+@@ -18,7 +18,4 @@ working in branch
+
+ why do this
+
+-Feature branch workflow
+-
+-
+ adding to see the different int the diff
+\ No newline at end of file
+
+
+Rebase
+#it is a process to reapply commits on top of another base trip
+$ git rebase -i origin/master
+Successfully rebased and updated refs/heads/master.
+pick 4e774d2 ignored directory created.
+pick 3820547 ignored directory created.
+pick b8e1ea8 to see untracked files
+pick 9574a16 To rebase commiting chenges
+
+$ git reflog
+6fb3790 (HEAD -> master) HEAD@{0}: reset: moving to HEAD@{2}
+5e68f46 HEAD@{1}: rebase (finish): returning to refs/heads/master
+5e68f46 HEAD@{2}: rebase (pick): To rebase commiting chenges
+
+# reset the repo to The commit " To rebase commiting change "
+$ git reset HEAD@{2}
+Unstaged changes after reset:
+M       new.txt
