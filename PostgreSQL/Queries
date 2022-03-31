@@ -122,3 +122,21 @@ test1-#     FROM weather;
  San Francisco
 (2 rows)
 
+#Using Aggregate Functions MAX
+test1=# SELECT max(temp_lo) FROM weather;
+ max
+-----
+  46
+(1 row)
+
+
+test1=# SELECT city, max(temp_lo)
+test1-#     FROM weather
+test1-#     GROUP BY city;
+     city      | max
+---------------+-----
+ Hayward       |  37
+ San Francisco |  46
+(2 rows)
+
+
