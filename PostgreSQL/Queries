@@ -165,3 +165,16 @@ test1=# SELECT * FROM weather;
  San Francisco |      41 |      55 |    0 | 1994-11-29
 (2 rows)
 
+# Views in SQL are kind of virtual tables. A view also has rows and columns as they are in a real table in the database.
+
+test1=# CREATE VIEW myview AS
+test1-#     SELECT name, temp_lo, temp_hi, prcp, date, location
+test1-#         FROM weather, cities
+test1-#         WHERE city = name;
+CREATE VIEW
+test1=# SELECT * FROM myview;
+     name      | temp_lo | temp_hi | prcp |    date    | location
+---------------+---------+---------+------+------------+-----------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27 | (-194,53)
+ San Francisco |      41 |      55 |    0 | 1994-11-29 | (-194,53)
+(2 rows)
