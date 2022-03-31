@@ -1,4 +1,5 @@
 PostgreSQL
+PostgreSQL is an object-relational database management system (ORDBMS) 
 Installed in Windows
 #Show Databases
 
@@ -15,3 +16,31 @@ Installed in Windows
 
 postgres=# CREATE DATABASE TEST;
 CREATE DATABASE
+
+test-#
+Here # shows I am Super User
+test=>
+" => " have rights to the database
+
+# To see current date
+SELECT current_date;
+ current_date
+--------------
+ 2022-03-31
+(1 row)
+
+# Running Arithmatic Commands
+SELECT 2 + 2;
+ ?column?
+----------
+        4
+(1 row)
+
+# \h for help
+# \q to quit
+
+# Postgre uses the SQL language
+# "-- " to write comments in SQL
+
+
+
