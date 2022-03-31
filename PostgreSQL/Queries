@@ -1,1 +1,17 @@
 PostgreSQL
+Installed in Windows
+#Show Databases
+
+\l
+                                         List of databases
+   Name    |  Owner   | Encoding |      Collate       |       Ctype        |   Access privileges
+-----------+----------+----------+--------------------+--------------------+-----------------------
+ postgres  | postgres | UTF8     | English_India.1252 | English_India.1252 |
+ template0 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+ template1 | postgres | UTF8     | English_India.1252 | English_India.1252 | =c/postgres          +
+           |          |          |                    |                    | postgres=CTc/postgres
+(3 rows)
+
+postgres=# CREATE DATABASE TEST;
+CREATE DATABASE
