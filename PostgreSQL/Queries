@@ -42,5 +42,24 @@ SELECT 2 + 2;
 # Postgre uses the SQL language
 # "-- " to write comments in SQL
 
+# Creating the tables in the databse
+
+test1=# CREATE TABLE weather (
+test1(#     city            varchar(80),
+test1(#     temp_lo         int,           -- low temperature
+test1(#     temp_hi         int,           -- high temperature
+test1(#     prcp            real,          -- precipitation
+test1(#     date            date
+test1(# );
+CREATE TABLE
+test1=# CREATE TABLE cities (
+test1(#     name            varchar(80),
+test1(#     location        point
+test1(# );
+CREATE TABLE
+
+# Deleteing the whole table  
+test1=# DROP TABLE cities;
+DROP TABLE
 
 
