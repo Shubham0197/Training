@@ -304,3 +304,53 @@ test1-#     FROM weather w JOIN cities c ON w.city = c.name;
  San Francisco |      43 |      57 |    0 | 1994-11-29 | San Francisco | (-194,53)
 (2 rows)
  
+#INheritence its is a concept in which the table inherits all column from its parent table here city 
+
+test1=# CREATE TABLE city (
+test1(#  name text,
+test1(#  population real,
+test1(#  elevation int -- (in ft)
+test1(# );
+CREATE TABLE
+test1=# CREATE TABLE capitals (
+test1(#  state char(2) UNIQUE NOT NULL
+test1(# ) INHERITS (city);
+CREATE TABLE
+test1=# \d capitals
+                  Table "public.capitals"
+   Column   |     Type     | Collation | Nullable | Default
+------------+--------------+-----------+----------+---------
+ name       | text         |           |          |
+ population | real         |           |          |
+ elevation  | integer      |           |          |
+ state      | character(2) |           | not null |
+Indexes:
+    "capitals_state_key" UNIQUE CONSTRAINT, btree (state)
+Inherits: city
+
+
+
+test1=# insert into capitals values('chandigarh',1234,11,'HA');
+INSERT 0 1
+test1=# insert into city values('faridabad',1224,112);
+INSERT 0 1
+test1=# select * from city;
+    name    | population | elevation
+------------+------------+-----------
+ faridabad  |       1224 |       112
+ chandigarh |       1234 |        11
+(2 rows)
+
+# only to get data from only city
+test1=# select * from only city;
+   name    | population | elevation
+-----------+------------+-----------
+ faridabad |       1224 |       112
+(1 row)
+
+
+test1=# select * from  capitals;
+    name    | population | elevation | state
+------------+------------+-----------+-------
+ chandigarh |       1234 |        11 | HA
+(1 row)
