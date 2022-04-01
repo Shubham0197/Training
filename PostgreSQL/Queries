@@ -178,3 +178,64 @@ test1=# SELECT * FROM myview;
  San Francisco |      46 |      50 | 0.25 | 1994-11-27 | (-194,53)
  San Francisco |      41 |      55 |    0 | 1994-11-29 | (-194,53)
 (2 rows)
+
+
+# Foreign Keys -To maintain refrential integrity of data.
+For Eg in above table if no data should be added in weather if there is no matching data in cities here we use foriegn keys so Postgresql can do this it self and mintain refrential integrity.
+
+#create table cities with mane as primary key
+ create table cities(
+ name varchar(80) primary key,
+ location point
+ );
+ ERROR:  relation "cities" already exists
+ 
+ # and make refrence / foreign key of ctiries name column in weather table
+ create table weather(
+ city varchar(80) references cities(name),
+ temp_lo int,
+ temp_hi int,
+ prcp real,
+ date date
+ );
+ ERROR:  relation "weather" already exists
+ # to describe table name
+ \d tablename
+ test1=# \d cities
+                       Table "public.cities"
+  Column  |         Type          | Collation | Nullable | Default
+----------+-----------------------+-----------+----------+---------
+ name     | character varying(80) |           |          |
+ location | point                 |           |          |
+
+# adding constrain to existing column in table
+alter table cities add constraint cities_pk primary key(name);
+ALTER TABLE
+test1=# \d cities
+                       Table "public.cities"
+  Column  |         Type          | Collation | Nullable | Default
+----------+-----------------------+-----------+----------+---------
+ name     | character varying(80) |           | not null |
+ location | point                 |           |          |
+Indexes:
+    "cities_pk" PRIMARY KEY, btree (name)
+	
+# Alter table to add foreign key constraints
+alter table weather add constraint weather_pk foreign key (city) references cities(name);
+ALTER TABLE
+
+                      Table "public.weather"
+ Column  |         Type          | Collation | Nullable | Default
+---------+-----------------------+-----------+----------+---------
+ city    | character varying(80) |           |          |
+ temp_lo | integer               |           |          |
+ temp_hi | integer               |           |          |
+ prcp    | real                  |           |          |
+ date    | date                  |           |          |
+Foreign-key constraints:
+    "weather_pk" FOREIGN KEY (city) REFERENCES cities(name)
+
+#insert error due to Berkley not present in cities table
+test1=# INSERT INTO weather VALUES ('Berkeley', 45, 53, 0.0, '1994-11-28');
+ERROR:  insert or update on table "weather" violates foreign key constraint "weather_pk"
+DETAIL:  Key (city)=(Berkeley) is not present in table "cities".
