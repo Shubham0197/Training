@@ -253,4 +253,54 @@ if in between donot want to complete transanction just issue command rollback
 called a transaction block
 
 Use "savepoint" and "rollback to" to control transaction inmore granural fashion.
+
+#Joins
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+
+SELECT * FROM weather JOIN cities ON city = name;
+     city      | temp_lo | temp_hi | prcp |    date    |     name      | location
+---------------+---------+---------+------+------------+---------------+-----------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27 | San Francisco | (-194,53)
+ San Francisco |      43 |      57 |    0 | 1994-11-29 | San Francisco | (-194,53)
+(2 rows)
+
+
+test1=# SELECT weather.city, weather.temp_lo, weather.temp_hi,
+test1-#        weather.prcp, weather.date, cities.location
+test1-#     FROM weather JOIN cities ON weather.city = cities.name;
+     city      | temp_lo | temp_hi | prcp |    date    | location
+---------------+---------+---------+------+------------+-----------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27 | (-194,53)
+ San Francisco |      43 |      57 |    0 | 1994-11-29 | (-194,53)
+(2 rows)
+
+
+test1=# SELECT *
+test1-#     FROM weather LEFT OUTER JOIN cities ON weather.city = cities.name;
+     city      | temp_lo | temp_hi | prcp |    date    |     name      | location
+---------------+---------+---------+------+------------+---------------+-----------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27 | San Francisco | (-194,53)
+ San Francisco |      43 |      57 |    0 | 1994-11-29 | San Francisco | (-194,53)
+ Hayward       |      37 |      54 |      | 1994-11-29 |               |
+(3 rows)
+
+
+test1=# SELECT w1.city, w1.temp_lo AS low, w1.temp_hi AS high,
+test1-#        w2.city, w2.temp_lo AS low, w2.temp_hi AS high
+test1-#     FROM weather w1 JOIN weather w2
+test1-#         ON w1.temp_lo < w2.temp_lo AND w1.temp_hi > w2.temp_hi;
+     city      | low | high |     city      | low | high
+---------------+-----+------+---------------+-----+------
+ San Francisco |  43 |   57 | San Francisco |  46 |   50
+ Hayward       |  37 |   54 | San Francisco |  46 |   50
+ 
+ test1=# SELECT *
+test1-#     FROM weather w JOIN cities c ON w.city = c.name;
+     city      | temp_lo | temp_hi | prcp |    date    |     name      | location
+---------------+---------+---------+------+------------+---------------+-----------
+ San Francisco |      46 |      50 | 0.25 | 1994-11-27 | San Francisco | (-194,53)
+ San Francisco |      43 |      57 |    0 | 1994-11-29 | San Francisco | (-194,53)
+(2 rows)
  
