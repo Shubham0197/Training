@@ -354,3 +354,50 @@ test1=# select * from  capitals;
 ------------+------------+-----------+-------
  chandigarh |       1234 |        11 | HA
 (1 row)
+
+
+#SQL syntax
+#Lexical Structure
+sequenceof tokens terminated by ;
+Tokens can be hayward , identifier, constants or literal or special symbol
+#Identifier
+They identify name of tables columns or other db objects called names
+starts with [9-2) followed by any alphabet, digit unserscore or $
+They are case insensitive
+convention  is to write key words in upper case and names in lower case
+#then there is : the delimited identifier or quoted identifier
+It is token in quotes whiuch is never treated as keyword
+Then can contain ny character except 0
+they are case sensitive
+
+# Constants
+Three kinds of implicitly-typed constants in PostgreSQL: 
+>strings-  A string constant in SQL is an arbitrary sequence of characters bounded by single quotes ('), for example 'This is a string'
+,> bit strings, - 
+ and >numbers -
+Constants can also be specified with explicit types, which can enable more accurate representation and
+more efficient handling by the system
+Backslash Escape Sequenceand its  Interpretation
+\b backspace
+\f form feed
+\n newline
+\r carriage return
+\t tab
+\o, \oo, \ooo (o = 0–7) octal byte value
+\xh, \xhh (h = 0–9, A–F) hexadecimal byte value
+\uxxxx, \Uxxxxxxxx (x = 0–9, A–F) 16 or 32-bit hexadecimal Unicode character
+value
+
+*Dollar-Quoted String Constants to revisit???
+
+#Bit-String Constants
+Bit-string constants look like regular string constants with a B (upper or lower case) immediately before the opening quote (no intervening whitespace), e.g., B'1001'. The only characters allowed within bit-string constants are 0 and 1 and for hexadecimal b is replaced with x eg x'12ABF'
+
+#Numeric Constants
+Numeric constants are accepted in these general forms:
+digits
+digits.[digits][e[+-]digits]    --exponent marker (e)
+[digits].digits[e[+-]digits]
+digitse[+-]digits
+
+Typecasting REAL '1.23' numeric treated as Real(float64)
