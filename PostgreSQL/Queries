@@ -239,3 +239,18 @@ Foreign-key constraints:
 test1=# INSERT INTO weather VALUES ('Berkeley', 45, 53, 0.0, '1994-11-28');
 ERROR:  insert or update on table "weather" violates foreign key constraint "weather_pk"
 DETAIL:  Key (city)=(Berkeley) is not present in table "cities".
+
+
+# Transactions
+It is fundamental concept of Database systems.
+It bundles multiple steps into one for all or nothing operation.
+it help to provide atomicity propertty of datatbase ie if some failure occurs that prevents the transaction from completing, then none of the steps affect the database at all
+A transactional database guarantees that all the updates made by a transaction are logged in permanent storage (i.e.,on disk) before the transaction is reported complete.
+a transaction is set up by surrounding the SQL commands of the transaction with
+BEGIN and COMMIT commands.
+if in between donot want to complete transanction just issue command rollback
+ A group of statements surrounded by BEGIN and COMMIT is sometimes
+called a transaction block
+
+Use "savepoint" and "rollback to" to control transaction inmore granural fashion.
+ 
