@@ -512,10 +512,35 @@ test1=# select position('2'IN'111122334');
 (1 row)
 
 #QUOTE()-Escapes the argument for use in an SQL statement
+SELECT QUOTE_IDENT('Foo bar');
+ quote_ident
+-------------
+ "Foo bar"
+(1 row)
+
+SELECT QUOTE_LITERAL(E'O\'Reilly');
+ quote_literal
+---------------
+ 'O''Reilly'
+(1 row)
+
+test1=# SELECT QUOTE_LITERAL(42.5);
+ quote_literal
+---------------
+ '42.5'
+(1 row)
+
+test1=# SELECT QUOTE_NULLABLE(42.5);
+ quote_nullable
+----------------
+ '42.5'
+(1 row)
 
 16	REGEXP
 Pattern matching using regular expressions
 Regular Expression
+RoadBlock
+
 
 #REPEAT()-Repeats a string the specified number of times
 REPEAT(str,count)
