@@ -795,3 +795,6 @@ test1=# GRANT ALL ON COMPANY TO shubh;
 GRANT
 test1=# revoke ALL ON COMPANY from shubh;
 REVOKE
+
+TRUNCATE TABLE command is used to delete complete data from an existing table and drop data to delete data with schema
+test1=# TRUNCATE TABLE COMPANY;
