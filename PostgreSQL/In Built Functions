@@ -362,3 +362,319 @@ test1=# select sqrt(9);
 ------
     3
 (1 row)
+
+
+#ASCII()-Returns numeric value of left-most character
+                     ^
+test1=# select ascii('a');
+ ascii
+-------
+    97
+(1 row)
+
+
+test1=# select ascii('ax');
+ ascii
+-------
+    97
+(1 row)
+
+
+#BIT_LENGTH()-Returns length of argument in bits
+test1=# select bit_length('b');
+ bit_length
+------------
+          8
+(1 row)
+
+
+test1=# select bit_length('@');
+ bit_length
+------------
+          8
+(1 row)
+
+
+test1=# select bit_length('@sdafgfsdfsd');
+ bit_length
+------------
+         96
+(1 row)
+
+
+
+#CHAR_LENGTH()-Returns number of characters in argument
+test1=# select char_length('asad');
+ char_length
+-------------
+           4
+(1 row)
+
+
+test1=# select char_length('asad13123');
+ char_length
+-------------
+           9
+(1 row)
+
+#CHARACTER_LENGTH()-A synonym for CHAR_LENGTH()
+test1=# select character_length('adaws233');
+ character_length
+------------------
+                8
+(1 row)
+
+
+#CONCAT_WS() - Returns concatenate with separator,first argument is the separator for the rest of the arguments
+test1=# select concat_ws('sdas','232','ase','1213','32312');
+          concat_ws
+-----------------------------
+ 232sdasasesdas1213sdas32312
+(1 row)
+
+
+
+#CONCAT()-Returns concatenated string
+test1=# select concat('sdas','232','ase');
+   concat
+------------
+ sdas232ase
+(1 row)
+
+
+#LCASE()-Synonym for LOWER()
+test1=# select LCASE('CSACASDCAS');
+ERROR:  function lcase(unknown) does not exist
+LINE 1: select LCASE('CSACASDCAS');
+
+
+#LEFT()- Returns the leftmost number of characters as specified
+test1=# SELECT LEFT('adafesfewfdr3q2rwecsd',9);
+   left
+-----------
+ adafesfew
+(1 row)
+ 
+#LENGTH()- Returns the length of a string in bytes (looks like char_length())
+
+test1=# select length('14234afsdf!@!@#$');
+ length
+--------
+     16
+(1 row)
+
+
+#LOWER()-Returns the argument in lowercase
+test1=# select lower('SDSDD');
+ lower
+-------
+ sdsdd
+(1 row)
+
+
+test1=# select lower('2132');
+ lower
+-------
+ 2132
+(1 row)
+
+
+11	LPAD()- Returns the string argument, left-padded with the specified string
+test1=# select lpad('qw',4,'11');
+ lpad
+------
+ 11qw
+(1 row)
+
+
+test1=# select lpad('qw121',4,'11');
+ lpad
+------
+ qw12
+(1 row)
+
+#LTRIM()-Removes leading spaces
+test1=# SELECT LTRIM('  basa    ');
+  ltrim
+----------
+ basa
+(1 row)
+
+
+13	MID()
+Returns a substring starting from the specified position
+
+#POSITION()-A synonym for LOCATE()
+test1=# select position('2'IN'111122334');
+ position
+----------
+        5
+(1 row)
+
+#QUOTE()-Escapes the argument for use in an SQL statement
+
+16	REGEXP
+Pattern matching using regular expressions
+Regular Expression
+
+#REPEAT()-Repeats a string the specified number of times
+REPEAT(str,count)
+test1=# select repeat('my',3);
+ repeat
+--------
+ mymymy
+(1 row)
+
+#REPLACE()- Replaces occurrences of a specified string
+REPLACE(str,from_str,to_str)
+test1=# select replace('12345678','2','3');
+ replace
+----------
+ 13345678
+(1 row)
+
+
+#REVERSE()-Reverse the characters in a string
+test1=# select reverse('1232345');
+ reverse
+---------
+ 5432321
+(1 row)
+
+test1=# select reverse('abcdefgh');
+ reverse
+----------
+ hgfedcba
+(1 row)
+
+#RIGHT()-Returns the specified rightmost number of characters
+test1=# select right('adafdff',2);
+ right
+-------
+ ff
+(1 row)
+
+test1=# select right('',2);
+ right
+-------
+
+(1 row)
+
+test1=# select right(NUll,2);
+ right
+-------
+
+(1 row)
+
+#RPAD()- Appends string the specified number of timesIf str is longer than len, the return value is shortened to len characters.
+test1=# select rpad('qw',4,'#');
+ rpad
+------
+ qw##
+(1 row)
+
+
+test1=# select rpad('qwssdas',4,'#');
+ rpad
+------
+ qwss
+(1 row)
+
+RPAD(str,len,padstr)
+
+
+#RTRIM()- Removes trailing spaces
+test1=# select rtrim('asdasdasdea     ');
+    rtrim
+-------------
+ asdasdasdea
+(1 row)
+
+#SUBSTRING(), SUBSTR()-Returns the substring as specified
+SUBSTRING(str,pos), SUBSTRING(str FROM pos), SUBSTRING(str,pos,len), SUBSTRING(str FROM pos FOR len)
+test1=# SELECT SUBSTRING('Quadratically',5);
+ substring
+-----------
+ ratically
+(1 row)
+
+test1=# SELECT SUBSTRING('foobarbar' FROM 4);
+ substring
+-----------
+ barbar
+(1 row)
+
+test1=# SELECT SUBSTRING('Quadratically',5,6);
+ substring
+-----------
+ ratica
+(1 row)
+
+test1=# SELECT SUBSTRING('Quadratically',0,6);
+ substring
+-----------
+ Quadr
+(1 row)
+
+
+TRIM()-Removes leading and trailing spaces
+TRIM([{BOTH | LEADING | TRAILING} [remstr] FROM] str), TRIM([remstr FROM] str)
+test1=# SELECT TRIM('  bar   ');
+ btrim
+-------
+ bar
+(1 row)
+
+test1=# SELECT TRIM(LEADING 'x' FROM 'xxxbarxxx');
+ ltrim
+--------
+ barxxx
+(1 row)
+test1=# SELECT TRIM('  bar   ');
+ btrim
+-------
+ bar
+(1 row)
+
+test1=# SELECT TRIM(LEADING 'x' FROM 'xxxbarxxx');
+ ltrim
+--------
+ barxxx
+(1 row)
+
+test1=# SELECT TRIM(BOTH 'x' FROM 'xxxbarxxx');
+ btrim
+-------
+ bar
+(1 row)
+
+
+test1=# SELECT TRIM(TRAILING 'xyz' FROM 'barxxyz');
+ rtrim
+-------
+ bar
+(1 row)
+test1=# SELECT TRIM(BOTH 'x' FROM 'xxxbarxxx');
+ btrim
+-------
+ bar
+(1 row)
+
+test1=# SELECT TRIM(TRAILING 'xyz' FROM 'barxxyz');
+ rtrim
+-------
+ bar
+(1 row)
+
+#UCASE()-Synonym for UPPER()
+test1=# select UCASE('Dadasda');
+ERROR:  function ucase(unknown) does not exist
+LINE 1: select UCASE('Dadasda');
+               ^
+			   
+#UPPER()- Converts to uppercase
+test1=# select upper('Dadasda');
+  upper
+---------
+ DADASDA
+(1 row)
