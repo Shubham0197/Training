@@ -753,5 +753,45 @@ test1=# select * from company;
 
 If want to alter table with auto increment colunmn after table is created???????
 
+---------------------------------------------------------------------------------------------
+
+Privileges
+Creating User in DB
+test1=# create user shubh with password'123';
+CREATE ROLE
+
+test1=# drop user shubh
+test1-# ;
+DROP ROLE
 
 
+Different Priveleges commands command be given 
+ privileges in PostgreSQL are −
+SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER,
+CREATE,CONNECT,TEMPORAY,EXECUTE, and USAGE
+
+Grant and Revoke are the commands to give privelege to the users
+privilege − values could be: SELECT, INSERT, UPDATE, DELETE, RULE, ALL.
+
+object − The name of an object(table, view, sequence) to which to grant/revoke access
+
+PUBLIC − A short form representing all users.
+
+GROUP group − A group to whom to grant privileges.
+
+username − The name of a user to whom to grant privileges. PUBLIC is a short form representing all users.
+
+
+GRANT privilege [, ...]
+ON object [, ...]
+TO { PUBLIC | GROUP group | username }
+
+REVOKE privilege [, ...]
+ON object [, ...]
+FROM { PUBLIC | GROUP groupname | username }
+
+
+test1=# GRANT ALL ON COMPANY TO shubh;
+GRANT
+test1=# revoke ALL ON COMPANY from shubh;
+REVOKE
