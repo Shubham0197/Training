@@ -1,0 +1,364 @@
+PostgreSQL built-in functions also Aggregate Function
+
+# Count the number rows in the query
+test1=# SELECT COUNT(*) FROM city ;
+ count
+-------
+     2
+(1 row)
+
+test1=# SELECT * FROM city where name = 'faridabad';
+   name    | population | elevation
+-----------+------------+-----------
+ faridabad |       1224 |       112
+(1 row)
+
+
+test1=# SELECT count(*) FROM city where name = 'faridabad';
+ count
+-------
+     1
+(1 row)
+
+#MAX show the maximum value of the column selected
+ test1=# select  max(elevation) from city;
+ max
+-----
+ 112
+(1 row)
+
+#MIN show the minimum value of the column selected
+test1=# select  min(elevation) from city;
+ min
+-----
+  11
+(1 row)
+
+# Can see max and min in same time
+test1=# select  min(elevation) ,max(elevation) from city;
+ min | max
+-----+-----
+  11 | 112
+(1 row)
+
+# Group by in MAX or MIN will show each min / max of group.
+test1=# select * from city;
+    name    |  population  | elevation
+------------+--------------+-----------
+ faridabad  |         1224 |       112
+ faridabad  | 1.212121e+06 |     12121
+ chandigarh |         1234 |        11
+(3 rows)
+
+
+test1=# select name, max(elevation) from city group by name;
+    name    |  max
+------------+-------
+ chandigarh |    11
+ faridabad  | 12121
+(2 rows)
+
+# AVG - shows the average of the selected column
+test1=# select avg(elevation) from city;
+          avg
+-----------------------
+ 4081.3333333333333333
+(1 row)
+
+test1=# select avg(elevation) from city group by name;
+          avg
+-----------------------
+   11.0000000000000000
+ 6116.5000000000000000
+(2 rows)
+
+# Sum - JUst Like avg it sums up all the rows of the selected column
+test1=# select sum(elevation) from city;
+  sum
+-------
+ 12244
+(1 row)
+
+
+test1=# select sum(elevation) from city group by name;
+  sum
+-------
+    11
+ 12233
+(2 rows)
+
+
+#Array_agg concatenate the values into array
+test1=# select array_agg(elevation) from city;
+   array_agg
+----------------
+ {112,12121,11}
+(1 row)
+
+
+test1=# select array_agg(name) from city;
+            array_agg
+----------------------------------
+ {faridabad,faridabad,chandigarh}
+(1 row)
+
+
+
+Numeric Functions
+
+The ABS() function returns the absolute value of X.
+test1=# SELECT ABS(-2);
+ abs
+-----
+   2
+(1 row)
+
+ACOS(X) -  returns the arccosine of X. The value of X must range between -1 and 1 or NULL will be returned
+
+test1=# SELECT ACOS(1);
+ acos
+------
+    0
+(1 row)
+
+
+test1=# SELECT ACOS(-11);
+ERROR:  input is out of range
+test1=# SELECT ACOS(-1);
+       acos
+-------------------
+ 3.141592653589793
+(1 row)
+
+ASIN(X)- like acos() The ASIN() function returns the arcsine of X range[-1,1]
+test1=# SELECT ASIN(1);
+        asin
+--------------------
+ 1.5707963267948966
+(1 row)
+
+
+test1=# SELECT ASIN(0);
+ asin
+------
+    0
+(1 row)
+
+ATAN(X) - This function returns the arctangent of X.
+
+test1=# SELECT ATAN(0);
+ atan
+------
+    0
+(1 row)
+
+
+test1=# SELECT ATAN(1);
+        atan
+--------------------
+ 0.7853981633974483
+(1 row)
+
+ATAN2(Y,X)
+This function returns the arctangent of the two arguments: X and Y. It is similar to the arctangent of Y/X, except that the signs of both are used to find the quadrant of the result.--???????
+test1=# SELECT ATAN2(3,6);
+       atan2
+--------------------
+ 0.4636476090008061
+(1 row)
+
+CEIL(X) / CEILING(X)  - Return the smaller integer value just bigger than arg
+test1=# select ceil(3.232);
+ ceil
+------
+    4
+(1 row) 
+
+test1=# select ceil(3.0);
+ ceil
+------
+    3
+(1 row)
+test1=# select ceil(-3.123);
+ ceil
+------
+   -3
+(1 row)
+
+Floor(x)-  Return the bigger integer value just smaller than arg
+test1=# select floor (2.3343);
+ floor
+-------
+     2
+(1 row)
+
+test1=# select floor (-2.3343);
+ floor
+-------
+    -3
+(1 row)
+
+GREATEST(n1,n2,n3,..........)- Give the greates vlue from the no of parameters.
+test1=# select greatest(121,323,423,31,445,224,25345,4,23,4234,234,32423);
+ greatest
+----------
+    32423
+(1 row)
+
+LEAST(N1,N2,N3,N4,......) - gives the least values from the no of parameters.
+test1=# select least(121,323,423,31,445,224,25345,4,23,4234,234,32423);
+ least
+-------
+     4
+(1 row)
+
+COS(X) -This function returns the cosine of X (in degrees)
+test1=# select cos(0);
+ cos
+-----
+   1
+(1 row)
+
+
+test1=# select cos(90);
+         cos
+---------------------
+ -0.4480736161291701
+(1 row)
+
+COT(X) -This function returns the cotangent of X --???
+test1=# SELECT COT(1);
+        cot
+--------------------
+ 0.6420926159343306
+(1 row)
+
+DEGREES(X)- This function returns the value of X converted from radians to degrees
+test1=# SELECT DEGREES(PI());
+ degrees
+---------
+     180
+(1 row)
+
+
+test1=# SELECT DEGREES(1);
+      degrees
+-------------------
+ 57.29577951308232
+(1 row)
+
+# pi() - returns the value of pi
+test1=# select pi();
+        pi
+-------------------
+ 3.141592653589793
+(1 row)
+
+EXP(X) returns e^x.
+test1=# SELECT EXP(3);
+        exp
+--------------------
+ 20.085536923187668
+(1 row)
+
+test1=# SELECT EXP(1);
+        exp
+-------------------
+ 2.718281828459045
+(1 row)
+
+LOG(X) / LOG(B,X) -  returns the value of log to natural base or base B
+test1=# SELECT LOG(45);
+        log
+--------------------
+ 1.6532125137753437
+(1 row)
+
+
+test1=# SELECT LOG(1);
+ log
+-----
+   0
+(1 row)
+
+test1=# SELECT LOG(2,65536);
+        log
+--------------------
+ 16.000000000000000
+(1 row)
+
+MOD(N,M) - retuns remainder n/m
+test1=# SELECT mod(9,2);
+ mod
+-----
+   1
+(1 row)
+
+POW(X,Y) / POWER(X,Y)-returns x^y
+test1=# select pow(3,2);
+ pow
+-----
+   9
+(1 row)
+
+RADIANS(X)-  converted from degrees to radians.
+test1=# SELECT RADIANS(90);
+      radians
+--------------------
+ 1.5707963267948966
+(1 row)
+
+ROUND(X) / ROUND(X,D) - round to integer or nearest D decimal points
+test1=# SELECT ROUND(5.693893);
+ round
+-------
+     6
+(1 row)
+
+
+test1=# SELECT ROUND(5.693893,2);
+ round
+-------
+  5.69
+(1 row)
+
+SIGN(X)- returns the sign of X (negative, zero, or positive) as -1, 0, or 1.
+test1=# SELECT SIGN(0);
+ sign
+------
+    0
+(1 row)
+
+
+test1=# SELECT SIGN(-0);
+ sign
+------
+    0
+(1 row)
+
+
+test1=# SELECT SIGN(-1.2);
+ sign
+------
+   -1
+(1 row)
+
+
+test1=# SELECT SIGN(1.2);
+ sign
+------
+    1
+(1 row)
+
+SIN(X)- This function returns the sine of X
+test1=# select sin(90);
+        sin
+--------------------
+ 0.8939966636005579
+(1 row)
+SQRT(X) -returns the non-negative square root of X.
+test1=# select sqrt(9);
+ sqrt
+------
+    3
+(1 row)
