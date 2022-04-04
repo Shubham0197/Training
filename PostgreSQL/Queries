@@ -391,7 +391,8 @@ value
 *Dollar-Quoted String Constants to revisit???
 
 #Bit-String Constants
-Bit-string constants look like regular string constants with a B (upper or lower case) immediately before the opening quote (no intervening whitespace), e.g., B'1001'. The only characters allowed within bit-string constants are 0 and 1 and for hexadecimal b is replaced with x eg x'12ABF'
+Bit-string constants look like regular string constants with a B (upper or lower case) immediately before the opening quote (no intervening whitespace),
+e.g., B'1001'. The only characters allowed within bit-string constants are 0 and 1 and for hexadecimal b is replaced with x eg x'12ABF'
 
 #Numeric Constants
 Numeric constants are accepted in these general forms:
