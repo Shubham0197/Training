@@ -703,3 +703,55 @@ test1=# select upper('Dadasda');
 ---------
  DADASDA
 (1 row)
+
+AUTO INCREMENT
+data types smallserial, serial and bigserial; these are not true types, but merely a notational convenience for creating unique identifier columns
+The type name serial creates an integer columns. The type name bigserial creates a bigint column. bigserial should be used if you anticipate the use of more than 231 identifiers over the lifetime of the table. The type name smallserial creates a smallint column.
+
+
+test1=#  CREATE TABLE COMPANY(
+test1(#    ID  SERIAL PRIMARY KEY,
+test1(#    NAME           TEXT      NOT NULL,
+test1(#    AGE            INT       NOT NULL,
+test1(#    ADDRESS        CHAR(50),
+test1(#    SALARY         REAL
+test1(# );
+CREATE TABLE
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ( 'Paul', 32, 'California', 20000.00 );
+INSERT 0 1
+test1=#
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ('Allen', 25, 'Texas', 15000.00 );
+INSERT 0 1
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ('Teddy', 23, 'Norway', 20000.00 );
+INSERT 0 1
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ( 'Mark', 25, 'Rich-Mond ', 65000.00 );
+INSERT 0 1
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ( 'David', 27, 'Texas', 85000.00 );
+INSERT 0 1
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ( 'Kim', 22, 'South-Hall', 45000.00 );
+INSERT 0 1
+test1=# INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)
+test1-# VALUES ( 'James', 24, 'Houston', 10000.00 );
+INSERT 0 1
+test1=# select * from company;
+ id | name  | age |                      address                       | salary
+----+-------+-----+----------------------------------------------------+--------
+  1 | Paul  |  32 | California                                         |  20000
+  2 | Allen |  25 | Texas                                              |  15000
+  3 | Teddy |  23 | Norway                                             |  20000
+  4 | Mark  |  25 | Rich-Mond                                          |  65000
+  5 | David |  27 | Texas                                              |  85000
+  6 | Kim   |  22 | South-Hall                                         |  45000
+  7 | James |  24 | Houston                                            |  10000
+(7 rows)
+
+If want to alter table with auto increment colunmn after table is created???????
+
+
+
