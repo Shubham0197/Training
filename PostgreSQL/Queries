@@ -583,3 +583,44 @@ dROP COLUMN
 ALTER TABLE table_name DROP PRIMARY KEY;
 test1=# ALTER TABLE CITY DROP ID;
 ALTER TABLE
+
+------------------------------------------------
+Upsert
+Allows dml statement to insert data in table if it already exists update the table
+
+INSERT INTO table_name(column_list)  
+VALUES(value_list)
+ON CONFLICT target action;
+
+Target action can be update statement or Do nothing
+
+The target can be :
+(column_name) – any column name.
+ON CONSTRAINT constraint_name – where the constraint name could be the name of the UNIQUE constraint.
+ WHERE predicate  – a WHERE clause with a boolean condition.
+The action can be :
+DO NOTHING – If the row already exists in the table, then do nothing.
+DO UPDATE SET columnA = valueA, …. WHERE condition – update some fields in the table depending upon the condition
+
+test1=# insert into cities (name) values('faridabad') on conflict(name) do nothing ;
+INSERT 0 1
+test1=# Select * from cities;
+     name      | location
+---------------+-----------
+ San Francisco | (-194,53)
+ faridabad     |
+(2 rows)
+
+
+test1=# insert into cities (name) values('faridabad') on conflict(name) do nothing ;
+INSERT 0 0
+
+test1=# insert into cities (name) values('faridabad') on conflict(name) do update set name='asd' ;
+INSERT 0 1
+test1=# Select * from cities;
+     name      | location
+---------------+-----------
+ San Francisco | (-194,53)
+ asd           |
+(2 rows)
+
