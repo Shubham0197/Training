@@ -482,3 +482,104 @@ test1=# select name from city union all  select name from cities;
 test1=# \c
 You are now connected to database "test1" as user "postgres".
 
+--------------------------------------------------------------------------------------------------
+#Alter table - extended clauses
+
+#Add column
+test1=# Alter table city add id int;
+ALTER TABLE
+test1=# \d city
+                  Table "public.city"
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ name       | text    |           |          |
+ population | real    |           |          |
+ elevation  | integer |           |          |
+ id         | integer |           |          |
+Number of child tables: 1 (Use \d+ to list them.)
+
+#Drop column
+test1=# Alter table city drop id ;
+ALTER TABLE
+test1=# \d city
+                  Table "public.city"
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ name       | text    |           |          |
+ population | real    |           |          |
+ elevation  | integer |           |          |
+Number of child tables: 1 (Use \d+ to list them.)
+
+Alter data type
+test1=# Alter table city alter column  id type real;
+ALTER TABLE
+test1=# \d city
+                    Table "public.city"
+   Column   |     Type     | Collation | Nullable | Default
+------------+--------------+-----------+----------+---------
+ name       | text         |           |          |
+ population | real         |           |          |
+ elevation  | integer      |           |          |
+ id         | real         |           |          |
+ gender     | character(1) |           |          |
+Number of child tables: 1 (Use \d+ to list them.)
+
+#not null constraints
+test1=# ALTER TABLE city alter column  id set  NOT NULL;
+ERROR:  column "id" of relation "city" contains null values
+
+test1=# ALTER TABLE city alter column  id set  NOT NULL;
+ERROR:  column "id" of relation "city" contains null values
+test1=# ALTER TABLE city alter column  name set  NOT NULL;
+ALTER TABLE
+test1=# \d city
+                    Table "public.city"
+   Column   |     Type     | Collation | Nullable | Default
+------------+--------------+-----------+----------+---------
+ name       | text         |           | not null |
+ population | real         |           |          |
+ elevation  | integer      |           |          |
+ id         | real         |           |          |
+ gender     | character(1) |           |          |
+Number of child tables: 1 (Use \d+ to list them.)
+
+
+ADD CHECK CONSTRAINT
+What is check constraints
+before any reocrd is inserted in the row query check in the constraints if the is fullfilled of not.
+ALTER TABLE table_name
+ADD CONSTRAINT MyUniqueConstraint CHECK (CONDITION);
+
+DROP CONSTRAINT
+test1=# Alter table weather drop constraint weather_pk;
+ALTER TABLE
+test1=# \d weather
+                      Table "public.weather"
+ Column  |         Type          | Collation | Nullable | Default
+---------+-----------------------+-----------+----------+---------
+ city    | character varying(80) |           |          |
+ temp_lo | integer               |           |          |
+ temp_hi | integer               |           |          |
+ prcp    | real                  |           |          |
+ date    | date                  |           |          |
+
+# use \d+ to get extra data about table 
+test1=# \d+ weather
+                                                 Table "public.weather"
+ Column  |         Type          | Collation | Nullable | Default | Storage  | Compression | Stats target | Description ---------+-----------------------+-----------+----------+---------+----------+-------------+--------------+------------- city    | character varying(80) |           |          |         | extended |             |              |
+ temp_lo | integer               |           |          |         | plain    |             |              |
+ temp_hi | integer               |           |          |         | plain    |             |              |
+ prcp    | real                  |           |          |         | plain    |             |              |
+ date    | date                  |           |          |         | plain    |             |              |
+Access method: heap
+
+
+
+DROP PRIMARY KEY
+ALTER TABLE table_name
+DROP CONSTRAINT MyPrimaryKey;
+
+dROP COLUMN
+ALTER TABLE table_name DROP PRIMARY KEY;
+test1=# ALTER TABLE CITY DROP ID;
+ALTER TABLE
