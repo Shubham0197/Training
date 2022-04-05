@@ -479,4 +479,6 @@ test1=# select name from city union all  select name from cities;
  San Francisco
 (4 rows)
 -=----------------------------------------------------------------------------------------------
+test1=# \c
+You are now connected to database "test1" as user "postgres".
 
