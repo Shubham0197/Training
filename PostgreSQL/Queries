@@ -454,3 +454,29 @@ many null values in columns
 columns that are frequently manipulated---? is it not same as update??
 
 --------------------------------------------------------------------------------------------------------
+Union- Combines combine the result of 2 or more select statement
+test1=# select name from city union select name from cities;
+     name
+---------------
+ chandigarh
+ San Francisco
+ faridabad
+(3 rows)
+
+columns name of the seleted tabel should be same to be shown
+test1=# select name from city union select location from cities;
+ERROR:  UNION types text and point cannot be matched
+LINE 1: select name from city union select location from cities;
+                                           ^
+										   
+Union All- combine the results of two SELECT statements including duplicate rows
+test1=# select name from city union all  select name from cities;
+     name
+---------------
+ faridabad
+ faridabad
+ chandigarh
+ San Francisco
+(4 rows)
+-=----------------------------------------------------------------------------------------------
+
