@@ -650,3 +650,22 @@ test1=# Select * from city order by elevation desc offset 2 row fetch  next 1 ro
 ------------+------------+-----------+--------
  chandigarh |       1234 |        11 |
 (1 row)
+=------------------------------------------------------------------------------------------------
+
+Triggers
+they are the commands automatically occurs when certain database event occured
+ 
+Trigger can fire 
+1 before event
+2 after event 
+3 instead event
+
+Trigger can br marked -'For each row'- Once for every row that the operation modifies or 'for each statement'- once for any given operation
+CREATE  TRIGGER trigger_name [BEFORE|AFTER|INSTEAD OF] event_name
+ON table_name
+[
+ -- Trigger logic goes here....
+];
+
+CREATE TRIGGER example_trigger AFTER INSERT ON COMPANY
+FOR EACH ROW EXECUTE PROCEDURE auditlogfunc();
