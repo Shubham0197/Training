@@ -402,3 +402,55 @@ digits.[digits][e[+-]digits]    --exponent marker (e)
 digitse[+-]digits
 
 Typecasting REAL '1.23' numeric treated as Real(float64)
+
+----------------------------------------------------------------------------------------------
+#Indexes
+Speacial lookup tables used by db search engine to speed up data retreival.It is like a pointer to data in the table
+Speeds up select query with where clause but slows down insert and update query.
+Create Indexes
+test1=# create index abc on city(name,population);
+CREATE INDEX
+
+Types of index
+Single-Column Indexes index created based on only one column in table.
+test1=# create index abc on city(population);
+CREATE INDEX
+
+Multicolumn Indexes  index created based on multiple column in table.
+test1=# create index abc on city(name,population);
+CREATE INDEX
+
+choice of column should be the which is frequently used in quesry where clause.
+
+Unique index
+used for data integrity as it does not allow any duplicated to be inserted into the table.
+test1=# create unique index  uni on city(name);
+ERROR:  could not create unique index "uni"
+DETAIL:  Key (name)=(faridabad) is duplicated.
+
+Partial index - index made over a subset of table it is defined by conditional expression and index contains rows whcih satisfy that condition.
+
+Implicit Indexes
+Implicit indexes are indexes that are automatically created by the database server when an object is created. Indexes are automatically created for primary key constraints and unique constraints.
+test1=# \d city
+                  Table "public.city"
+   Column   |  Type   | Collation | Nullable | Default
+------------+---------+-----------+----------+---------
+ name       | text    |           |          |
+ population | real    |           |          |
+ elevation  | integer |           |          |
+Indexes:
+    "abc" btree (name, population)
+Number of child tables: 1 (Use \d+ to list them.)
+
+ Drop index - deletes the index
+DROP INDEX abd;
+DROP INDEX
+
+Index shoul be avoided in case
+Table is small
+many update and insert operation is done
+many null values in columns
+columns that are frequently manipulated---? is it not same as update??
+
+--------------------------------------------------------------------------------------------------------
