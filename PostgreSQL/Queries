@@ -624,3 +624,29 @@ test1=# Select * from cities;
  asd           |
 (2 rows)
 
+-----------------------------------------------------------------------------------------------
+Fetch clause
+Similair to limit used to get only portion of rows
+Syntax:
+OFFSET start { ROW | ROWS }
+FETCH { FIRST | NEXT } [ row_count ] { ROW | ROWS } ONLY
+test1=# Select * from city fetch next 1 row only;
+   name    | population | elevation | gender
+-----------+------------+-----------+--------
+ faridabad |       1224 |       112 |
+(1 row)
+
+Show the second row
+
+test1=# Select * from city offset 1 row fetch  next 1 row only;
+   name    |  population  | elevation | gender
+-----------+--------------+-----------+--------
+ faridabad | 1.212121e+06 |     12121 |
+(1 row)
+
+show the 3rd highest city 
+test1=# Select * from city order by elevation desc offset 2 row fetch  next 1 row only;
+    name    | population | elevation | gender
+------------+------------+-----------+--------
+ chandigarh |       1234 |        11 |
+(1 row)
