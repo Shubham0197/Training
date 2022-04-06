@@ -859,3 +859,26 @@ test1-#    CAST('F' as BOOLEAN);
 ------+------+------+------
  t    | f    | t    | f
 (1 row)
+-----------------------------------------------------------------------------------------
+The COALESCE function 
+accepts an unlimited number of arguments. It returns the first argument that is not null. If all arguments are null, the COALESCE function will return null.
+
+test1=# insert into company(name) values('sam');
+ERROR:  null value in column "age" of relation "company" violates not-null constraint
+DETAIL:  Failing row contains (8, sam, null, null, null).
+test1=# insert into company(name,age) values('sam',34);
+INSERT 0 1
+test1=# select coalesce(address,'na') from company;
+                      coalesce
+----------------------------------------------------
+ California
+ Texas
+ Norway
+ Rich-Mond
+ Texas
+ South-Hall
+ Houston
+ na
+(8 rows)
+
+
