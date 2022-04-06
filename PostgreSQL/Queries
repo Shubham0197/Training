@@ -772,3 +772,11 @@ test1=# select agecheck(agein=> 28);
         1
 (1 row)
 
+ Drop function
+ drop function [if exists] function_name(argument_list)
+ 
+ (argument_list) in case of function is over loaded
+test1=#  drop function agecheck();
+ERROR:  function agecheck() does not exist
+test1=#  drop function agecheck(int);
+DROP FUNCTION
