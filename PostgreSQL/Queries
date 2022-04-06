@@ -821,3 +821,41 @@ test1=#  drop function agecheck();
 ERROR:  function agecheck() does not exist
 test1=#  drop function agecheck(int);
 DROP FUNCTION
+--------------------------------------------------------------
+postgresql cast operator
+it converts a value from one type to another
+ syntax
+ CAST ( expression AS target_type );
+ 
+ test1=# SELECT
+test1-#  CAST ('100' AS INTEGER);
+ int4
+------
+  100
+(1 row)
+
+Can not convert char to integer
+
+test1=# SELECT
+test1-#  CAST ('10C' AS INTEGER);
+ERROR:  invalid input syntax for type integer: "10C"
+LINE 2:  CAST ('10C' AS INTEGER);
+               ^
+test1=# SELECT
+test1-#    CAST ('2020-01-01' AS DATE),
+test1-#    CAST ('01-OCT-2020' AS DATE);
+    date    |    date
+------------+------------
+ 2020-01-01 | 2020-10-01
+(1 row)
+
+
+test1=# SELECT
+test1-#    CAST('true' AS BOOLEAN),
+test1-#    CAST('false' as BOOLEAN),
+test1-#    CAST('T' as BOOLEAN),
+test1-#    CAST('F' as BOOLEAN);
+ bool | bool | bool | bool
+------+------+------+------
+ t    | f    | t    | f
+(1 row)
