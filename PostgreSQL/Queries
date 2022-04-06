@@ -911,4 +911,137 @@ test1=# select agecheckup(12);
 ERROR:  age low
 CONTEXT:  PL/pgSQL function agecheckup(integer) line 5 at ASSERT
 test1=#
+---------------------------------------------------------------------
+Triggers
+they are the commands automatically occurs when certain database event occured
+ 
+Trigger can fire 
+1 before event
+2 after event 
+3 instead event
 
+Trigger can br marked -'For each row'- Once for every row that the operation modifies or 'for each statement'- once for any given operation
+Special funtion binds to the table
+
+Need to define a trigger function first
+
+Based on CRUD operations
+create trigger company_age_check before insert on company_age_check
+for each row execute procedure agecheck();
+
+create or replace function agecheckuptrigger()
+returns trigger as $$
+begin
+assert NEW.age>20,'age low';
+return NEW;
+end;
+$$ language plpgsql;
+
+test1=# create or replace function agecheckuptrigger()
+test1-# returns trigger as $$
+test1$# begin
+test1$# assert NEW.age>20,'age low';
+test1$# return NEW;
+test1$# end;
+test1$# $$ language plpgsql;
+CREATE FUNCTION
+
+Creating Trigger
+
+CREATE TRIGGER age_check
+    BEFORE INSERT OR UPDATE
+ON company
+FOR EACH ROW 
+    EXECUTE PROCEDURE agecheckuptrigger();
+	
+	test1=# CREATE TRIGGER age_check
+test1-#     BEFORE INSERT OR UPDATE
+test1-# ON company
+test1-# FOR EACH ROW
+test1-#     EXECUTE PROCEDURE agecheckuptrigger();
+CREATE TRIGGER
+
+test1=# insert into company(name,age) values('ram',18);
+ERROR:  age low
+CONTEXT:  PL/pgSQL function agecheckuptrigger() line 3 at ASSERT
+test1=# insert into company(name,age) values('ram',28);
+INSERT 0 1
+
+'new' is like 'this' to reference the object in the current statement
+
+using if statement
+
+
+	create or replace function agecheckuptrigger()
+returns trigger as $$
+begin
+    IF age < 20 OR NEW.age IS NULL THEN
+        RAISE EXCEPTION 'entered age is not correct';
+    END IF;
+	
+return NEW;
+end;
+
+test1=# create or replace function agecheckuptrigger()
+test1-# returns trigger as $$
+test1$# begin
+test1$#     IF new.age < 20 OR NEW.age IS NULL THEN
+test1$#         RAISE EXCEPTION 'entered age is not correct';
+test1$#     END IF;
+test1$#
+test1$# return NEW;
+test1$# end;
+test1$# $$ language plpgsql;
+CREATE FUNCTION
+test1=# insert into company(name,age) values('ram',18);
+ERROR:  entered age is not correct
+CONTEXT:  PL/pgSQL function agecheckuptrigger() line 4 at RAISE
+
+Disabling the Trigger
+Syntax
+ALTER TABLE table_name
+DISABLE TRIGGER trigger_name | ALL
+
+test1=# alter table company
+test1-# disable trigger all;
+ALTER TABLE
+test1=# insert into company(name,age) values('ram',18);
+INSERT 0 1
+
+Enabling the trigger
+
+Syntax:
+ALTER TABLE table_name
+ENABLE TRIGGER trigger_name |  ALL;
+
+test1=# alter table company
+test1-# enable trigger all;
+ALTER TABLE
+test1=# insert into company(name,age) values('ram',18);
+ERROR:  entered age is not correct
+CONTEXT:  PL/pgSQL function agecheckuptrigger() line 4 at RAISE
+
+Crop Trigger - Deleting the trigger
+
+Syntax:
+DROP TRIGGER [IF EXISTS] trigger_name 
+ON table_name [ CASCADE | RESTRICT ];
+
+test1=# \d company
+                                Table "public.company"
+ Column  |     Type      | Collation | Nullable |               Default
+---------+---------------+-----------+----------+-------------------------------------
+ id      | integer       |           | not null | nextval('company_id_seq'::regclass)
+ name    | text          |           | not null |
+ age     | integer       |           | not null |
+ address | character(50) |           |          |
+ salary  | real          |           |          |
+Indexes:
+    "company_pkey" PRIMARY KEY, btree (id)
+Triggers:
+    age_check BEFORE INSERT OR UPDATE ON company FOR EACH ROW EXECUTE FUNCTION agecheckuptrigger()
+
+
+test1=# drop trigger age_check
+test1-# on company;
+DROP TRIGGER
