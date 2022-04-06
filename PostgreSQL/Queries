@@ -880,5 +880,35 @@ test1=# select coalesce(address,'na') from company;
  Houston
  na
 (8 rows)
+---------------------------------------------------
+Assert
+provides the ASSERT statement for inserting important debugging checks in the PL/pgSQL code
 
+Syntax: assert condition [, message]; 
+condition: The condition is a boolean expression that is supposed to return true. 
+If the condition returns true, the assert statement does nothing and the program continues to run.
+However, if the condition is evaluated to false or null, then an ASSERT_FAILURE exception is raised. 
+(If we encounter an error while evaluating the condition, it is reported as a normal error.)
+ 
+message: The message is an optional part which is an expression whose result (if not null) replaces the default error message text  “assertion failed”, should the condition fail.
+
+
+this function will check the age is abvove 20 otherwise gives error
+test1=# create or replace function agecheckup(agein int)
+test1-# returns char(50) as $allowed$
+test1$# declare
+test1$#
+test1$# begin
+test1$# assert agein>20,'age low';
+test1$#
+test1$# end;
+test1$# $allowed$ language plpgsql;
+CREATE FUNCTION
+test1=# select agecheckup(23);
+ERROR:  control reached end of function without RETURN
+CONTEXT:  PL/pgSQL function agecheckup(integer)
+test1=# select agecheckup(12);
+ERROR:  age low
+CONTEXT:  PL/pgSQL function agecheckup(integer) line 5 at ASSERT
+test1=#
 
