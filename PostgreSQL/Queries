@@ -772,6 +772,47 @@ test1=# select agecheck(agein=> 28);
         1
 (1 row)
 
+Function over loading 
+PostgreSQL allows more than one function to have the same name, as long as the arguments are different. When a function is called, PostgreSQL determines the exact function is being called based on the input arguments.
+
+create or replace function agecheck(agein int)
+returns int as $allowed$
+declare
+ageno int;
+begin
+select count(*) into ageno from company where age>agein;
+return ageno;
+end;
+$allowed$ language plpgsql;
+
+create or replace function agecheck(agein int,ageout int)
+returns int as $allowed$
+declare
+ageno int;
+begin
+select count(*) into ageno from company where age between agein and ageout;
+return ageno;
+end;
+$allowed$ language plpgsql;
+
+select count(*) from company where age between 20 and 30;
+
+test1=# select agecheck(25);
+ agecheck
+----------
+        2
+(1 row)
+
+
+test1=# select agecheck(20,30);
+ agecheck
+----------
+        6
+(1 row)
+
+
+
+
  Drop function
  drop function [if exists] function_name(argument_list)
  
