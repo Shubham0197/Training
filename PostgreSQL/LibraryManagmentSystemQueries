@@ -1,0 +1,246 @@
+Create Databse LibraryMS;
+libraryms=# Create Table Author(
+libraryms(# AuthorID serial primary key,
+libraryms(# AuthorName  varchar(100) not null
+libraryms(# );
+CREATE TABLE
+libraryms=# \d author
+                                         Table "public.author"
+   Column   |          Type          | Collation | Nullable |                 Default
+------------+------------------------+-----------+----------+------------------------------------------
+ authorid   | integer                |           | not null | nextval('author_authorid_seq'::regclass)
+ authorname | character varying(100) |           | not null |
+Indexes:
+    "author_pkey" PRIMARY KEY, btree (authorid)
+
+libraryms=# Create Table Publisher(
+libraryms(# PublisherID serial primary key,
+libraryms(# PublisherNAme  varchar(100) not null,
+libraryms(# Address varchar(250)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d publisher
+                                            Table "public.publisher"
+    Column     |          Type          | Collation | Nullable |                    Default
+---------------+------------------------+-----------+----------+------------------------------------------------
+ publisherid   | integer                |           | not null | nextval('publisher_publisherid_seq'::regclass)
+ publishername | character varying(100) |           | not null |
+ address       | character varying(250) |           |          |
+Indexes:
+    "publisher_pkey" PRIMARY KEY, btree (publisherid)
+
+
+libraryms=# Create Table Booktype(
+libraryms(# TypeID serial primary key,
+libraryms(# Type varchar(100) not null,
+libraryms(# Subtype varchar(100)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d booktype
+                                      Table "public.booktype"
+ Column  |          Type          | Collation | Nullable |                 Default
+---------+------------------------+-----------+----------+------------------------------------------
+ typeid  | integer                |           | not null | nextval('booktype_typeid_seq'::regclass)
+ type    | character varying(100) |           | not null |
+ subtype | character varying(100) |           |          |
+Indexes:
+    "booktype_pkey" PRIMARY KEY, btree (typeid)
+
+libraryms=# Create Table AuthorizationType(
+libraryms(# AuthorizationID serial primary key,
+libraryms(# AccessType varchar(100) not null,
+libraryms(# Description varchar(100)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d Authorizationtype
+                                               Table "public.authorizationtype"
+     Column      |          Type          | Collation | Nullable |                          Default                  
+-----------------+------------------------+-----------+----------+------------------------------------------------------------
+ authorizationid | integer                |           | not null | nextval('authorizationtype_authorizationid_seq'::regclass)
+ accesstype      | character varying(100) |           | not null |
+ description     | character varying(100) |           |          |
+Indexes:
+    "authorizationtype_pkey" PRIMARY KEY, btree (authorizationid)
+
+libraryms=# Create Table Department(
+libraryms(# DepartmentID serial primary key,
+libraryms(# DepartmentName varchar(100) not null,
+libraryms(# Maxamtloan INt
+libraryms(# );
+CREATE TABLE
+libraryms=# \d department
+                                             Table "public.department"
+     Column     |          Type          | Collation | Nullable |                     Default
+----------------+------------------------+-----------+----------+--------------------------------------------------
+ departmentid   | integer                |           | not null | nextval('department_departmentid_seq'::regclass)
+ departmentname | character varying(100) |           | not null |
+ maxamtloan     | integer                |           |          |
+Indexes:
+    "department_pkey" PRIMARY KEY, btree (departmentid)
+	
+
+libraryms=# Create Table Book(
+libraryms(# BookID serial primary key,
+libraryms(# PublisherID Int references publisher(publisherid),
+libraryms(# Title varchar(250) not null,
+libraryms(# volume varchar(50) default '1',
+libraryms(# Quantity int,
+libraryms(# Issued_Quantity int,
+libraryms(# TypeID int references booktype(typeid)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d book
+                                          Table "public.book"
+     Column      |          Type          | Collation | Nullable |               Default
+-----------------+------------------------+-----------+----------+--------------------------------------
+ bookid          | integer                |           | not null | nextval('book_bookid_seq'::regclass)
+ publisherid     | integer                |           |          |
+ title           | character varying(250) |           | not null |
+ volume          | character varying(50)  |           |          | '1'::character varying
+ quantity        | integer                |           |          |
+ issued_quantity | integer                |           |          |
+ typeid          | integer                |           |          |
+Indexes:
+    "book_pkey" PRIMARY KEY, btree (bookid)
+Foreign-key constraints:
+    "book_publisherid_fkey" FOREIGN KEY (publisherid) REFERENCES publisher(publisherid)
+    "book_typeid_fkey" FOREIGN KEY (typeid) REFERENCES booktype(typeid)
+
+libraryms=# Create Table Studentclassdetails(
+libraryms(# studentclassid serial primary key,
+libraryms(# departmentid Int references department(departmentid),
+libraryms(# classname varchar(250) not null,
+libraryms(# classyearstart int check(classyearstart>2000),
+libraryms(# classyearend int check(classyearend>2000 and classyearend<3000),
+libraryms(# check (classyearend>classyearstart)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d studentclassdetails
+                                              Table "public.studentclassdetails"
+     Column     |          Type          | Collation | Nullable |                           Default                  
+----------------+------------------------+-----------+----------+-------------------------------------------------------------
+ studentclassid | integer                |           | not null | nextval('studentclassdetails_studentclassid_seq'::regclass)
+ departmentid   | integer                |           |          |
+ classname      | character varying(250) |           | not null |
+ classyearstart | integer                |           |          |
+ classyearend   | integer                |           |          |
+Indexes:
+    "studentclassdetails_pkey" PRIMARY KEY, btree (studentclassid)
+Check constraints:
+    "studentclassdetails_check" CHECK (classyearend > classyearstart)
+    "studentclassdetails_classyearend_check" CHECK (classyearend > 2000 AND classyearend < 3000)
+    "studentclassdetails_classyearstart_check" CHECK (classyearstart > 2000)
+Foreign-key constraints:
+    "studentclassdetails_departmentid_fkey" FOREIGN KEY (departmentid) REFERENCES department(departmentid)
+	
+libraryms=# Create Table Student(
+libraryms(# studentid serial primary key,
+libraryms(# studentclassid Int references studentclassdetails(studentclassid),
+libraryms(# studentname varchar(250) not null,
+libraryms(# Mobile bigint check(mobile>1000000000 and mobile<9999999999)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d student
+                                           Table "public.student"
+     Column     |          Type          | Collation | Nullable |                  Default
+----------------+------------------------+-----------+----------+--------------------------------------------
+ studentid      | integer                |           | not null | nextval('student_studentid_seq'::regclass)
+ studentclassid | integer                |           |          |
+ studentname    | character varying(250) |           | not null |
+ mobile         | bigint                 |           |          |
+Indexes:
+    "student_pkey" PRIMARY KEY, btree (studentid)
+Check constraints:
+    "student_mobile_check" CHECK (mobile > 1000000000 AND mobile < '9999999999'::bigint)
+Foreign-key constraints:
+    "student_studentclassid_fkey" FOREIGN KEY (studentclassid) REFERENCES studentclassdetails(studentclassid)
+
+libraryms=# Create Table BookAuthor(
+libraryms(# bookid Int not null references book(bookid),
+libraryms(# Authorid Int not null references author(authorid)
+libraryms(# );
+CREATE TABLE
+libraryms=#
+libraryms=# \d bookauthor
+              Table "public.bookauthor"
+  Column  |  Type   | Collation | Nullable | Default
+----------+---------+-----------+----------+---------
+ bookid   | integer |           | not null |
+ authorid | integer |           | not null |
+Foreign-key constraints:
+    "bookauthor_authorid_fkey" FOREIGN KEY (authorid) REFERENCES author(authorid)
+    "bookauthor_bookid_fkey" FOREIGN KEY (bookid) REFERENCES book(bookid)
+
+libraryms=# Create Table SystemUser(
+libraryms(# userid serial primary key,
+libraryms(# username varchar(250) not null,
+libraryms(# Mobile bigint check(mobile>1000000000 and mobile<9999999999),
+libraryms(# activestatus boolean not null default 'f' ,
+libraryms(# authorizationid int references authorizationtype(authorizationid)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d systemuser
+                                          Table "public.systemuser"
+     Column      |          Type          | Collation | Nullable |                  Default
+-----------------+------------------------+-----------+----------+--------------------------------------------
+ userid          | integer                |           | not null | nextval('systemuser_userid_seq'::regclass)
+ username        | character varying(250) |           | not null |
+ mobile          | bigint                 |           |          |
+ activestatus    | boolean                |           | not null | false
+ authorizationid | integer                |           |          |
+Indexes:
+    "systemuser_pkey" PRIMARY KEY, btree (userid)
+Check constraints:
+    "systemuser_mobile_check" CHECK (mobile > 1000000000 AND mobile < '9999999999'::bigint)
+Foreign-key constraints:
+    "systemuser_authorizationid_fkey" FOREIGN KEY (authorizationid) REFERENCES authorizationtype(authorizationid)
+
+libraryms=# Create Table IssuereturnDetails(
+libraryms(# Issueid serial primary key,
+libraryms(# bookid  int not null references book(bookid),
+libraryms(# studentid int not null references student(studentid),
+libraryms(# issuerdate date not null default current_date  ,
+libraryms(# returndate date not null,
+libraryms(# issueruserid int not null references systemuser(userid)
+libraryms(# );
+CREATE TABLE
+libraryms=# \d issuereturndetails;
+                                  Table "public.issuereturndetails"
+    Column    |  Type   | Collation | Nullable |                       Default
+--------------+---------+-----------+----------+-----------------------------------------------------
+ issueid      | integer |           | not null | nextval('issuereturndetails_issueid_seq'::regclass)
+ bookid       | integer |           | not null |
+ studentid    | integer |           | not null |
+ issuerdate   | date    |           | not null | CURRENT_DATE
+ returndate   | date    |           | not null |
+ issueruserid | integer |           | not null |
+Indexes:
+    "issuereturndetails_pkey" PRIMARY KEY, btree (issueid)
+Foreign-key constraints:
+    "issuereturndetails_bookid_fkey" FOREIGN KEY (bookid) REFERENCES book(bookid)
+    "issuereturndetails_issueruserid_fkey" FOREIGN KEY (issueruserid) REFERENCES systemuser(userid)
+    "issuereturndetails_studentid_fkey" FOREIGN KEY (studentid) REFERENCES student(studentid)
+
+libraryms=# Create Table fine(
+libraryms(# fineid serial primary key,
+libraryms(# issueid  int not null references issuereturndetails(issueid),
+libraryms(# studentid int not null references student(studentid),
+libraryms(# Amount int not null default 0  ,
+libraryms(# paymentstatus boolean default 'f'
+libraryms(# );
+CREATE TABLE
+libraryms=# \d fine
+                                  Table "public.fine"
+    Column     |  Type   | Collation | Nullable |               Default
+---------------+---------+-----------+----------+--------------------------------------
+ fineid        | integer |           | not null | nextval('fine_fineid_seq'::regclass)
+ issueid       | integer |           | not null |
+ studentid     | integer |           | not null |
+ amount        | integer |           | not null | 0
+ paymentstatus | boolean |           |          | false
+Indexes:
+    "fine_pkey" PRIMARY KEY, btree (fineid)
+Foreign-key constraints:
+    "fine_issueid_fkey" FOREIGN KEY (issueid) REFERENCES issuereturndetails(issueid)
+    "fine_studentid_fkey" FOREIGN KEY (studentid) REFERENCES student(studentid)
+
