@@ -244,3 +244,14 @@ Foreign-key constraints:
     "fine_issueid_fkey" FOREIGN KEY (issueid) REFERENCES issuereturndetails(issueid)
     "fine_studentid_fkey" FOREIGN KEY (studentid) REFERENCES student(studentid)
 
+create function issuedAmt() returns trigger as $issued_amt$
+begin 
+if (select quantity	from book1 where bookid=new.bookid)=(select issued_quantity	from book1 where bookid=new.bookid) then
+raise exception 'all books under this title is issued';
+end if;
+return new;
+end;
+$issued_amt$ language plpgsql;
+
+create trigger issueamount before update on issuereturndetails
+for each row execute function issuedamt();
