@@ -257,3 +257,70 @@ $issued_amt$ language plpgsql;
 
 create trigger issue_amount before insert on issuereturndetails
 for each row execute function issuedamt();
+
+libraryms=# alter table issuereturndetails alter column returndate drop not null;
+ALTER TABLE
+libraryms=# insert into author(authorname) values('Premchand');
+INSERT 0 1
+libraryms=# insert into author(authorname) values('Amithabh');
+INSERT 0 1
+libraryms=# insert into author(authorname) values('Shakespeare');
+INSERT 0 1
+libraryms=# insert into author(authorname) values('Anna');
+INSERT 0 1
+libraryms=# insert into publisher(Publishername) values ('Delhi Publisher');
+INSERT 0 1
+libraryms=# insert into publisher(Publishername) values ('Faridabad Publisher');
+INSERT 0 1
+libraryms=# insert into publisher(Publishername) values ('Indian Publisher');
+INSERT 0 1
+libraryms=# insert into booktype(type) values('classic');
+INSERT 0 1
+libraryms=# insert into booktype(type) values('novel');
+INSERT 0 1
+libraryms=# insert into department(departmentname) values ('Computer');
+INSERT 0 1
+libraryms=# insert into department(departmentname) values ('Mechanical');
+INSERT 0 1
+libraryms=# insert into department(departmentname) values ('Electrical');
+INSERT 0 1
+libraryms=# insert into department(departmentname) values ('Biotech');
+INSERT 0 1
+libraryms=# insert into authorizationtype(accesstype) values('admin');
+INSERT 0 1
+libraryms=# insert into authorizationtype(accesstype) values('issuer');
+INSERT 0 1
+libraryms=# insert into authorizationtype(accesstype) values('editor');
+INSERT 0 1
+libraryms=# Select * from authorizationtype;
+ authorizationid | accesstype | description
+-----------------+------------+-------------
+               1 | admin      |
+               2 | issuer     |
+               3 | editor     |
+(3 rows)
+
+create or replace function issuedAmt() returns trigger as $issued_amt$
+begin 
+if (select quantity from book where bookid=new.bookid)=(select issued_quantity from book where bookid=new.bookid) then
+raise exception 'all books under this title is issued';
+elsif((select quantity from book where bookid=new.bookid)>(select issued_quantity from book where bookid=new.bookid))then
+update book set issued_quantity=(select issued_quantity from book where bookid=new.bookid)+1 where bookid=new.bookid;
+end if;
+return new;
+end;
+$issued_amt$ language plpgsql;
+
+libraryms=# insert into issuereturndetails(bookid,studentid,issueruserid) values(1,1,1);
+INSERT 0 1
+libraryms=# select * from book where bookid=1;
+ bookid | publisherid | title | volume | quantity | issued_quantity | typeid
+--------+-------------+-------+--------+----------+-----------------+--------
+      1 |           1 | godan | 1      |        1 |               1 |
+(1 row)
+
+
+libraryms=# insert into issuereturndetails(bookid,studentid,issueruserid) values(1,1,1);
+ERROR:  all books under this title is issued
+
+
