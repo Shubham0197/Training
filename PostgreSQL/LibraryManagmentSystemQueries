@@ -323,4 +323,24 @@ libraryms=# select * from book where bookid=1;
 libraryms=# insert into issuereturndetails(bookid,studentid,issueruserid) values(1,1,1);
 ERROR:  all books under this title is issued
 
+ 
+ libraryms=# select title from
+libraryms-# book inner join issuereturndetails
+libraryms-# on book.bookid=issuereturndetails.bookid
+libraryms-# inner join student
+libraryms-# on issuereturndetails.studentid=student.studentid;
+ title
+-------
+ godan
+(1 row)
+
+
+libraryms=#  select title from
+libraryms-#  book inner join issuereturndetails
+libraryms-#  on book.bookid=issuereturndetails.bookid
+libraryms-#  inner join student
+libraryms-#  on issuereturndetails.studentid=student.studentid where student.studentid=2 ;
+ title
+-------
+(0 rows)
 
