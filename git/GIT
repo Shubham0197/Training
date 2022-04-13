@@ -71,10 +71,12 @@ $ eval "$(ssh-agent -s)"
 Agent pid 1483
 
 
-ssh-add -K /c/Users/shubh/.ssh/id_rsa
+$ ssh-add /c/Users/Lenovo/.ssh/id_rsa
+Identity added: /c/Users/Lenovo/.ssh/id_rsa (shubhamjain0197@gmail.com)
 
-$ ssh-add -K /c/Users/shubh/.ssh/id_rsa
-Enter PIN for authenticator:
+$ clip < /c/Users/Lenovo/.ssh/id_rsa.pub
+
+
 -----------------------------------------------------------------------------------------------------
 git archive --format=tar HEAD
 
