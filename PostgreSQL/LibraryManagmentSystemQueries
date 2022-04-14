@@ -344,3 +344,249 @@ libraryms-#  on issuereturndetails.studentid=student.studentid where student.stu
 -------
 (0 rows)
 
+Return Book Functionslibraryms=# create or replace function return_book(int,int)
+libraryms-# returns boolean as $$
+libraryms$# declare passed boolen;
+libraryms$# begin
+libraryms$#  update issueretundetails set returndate=current_date where bookid=$1 and studentid=$2 ;
+libraryms$#  update book set issued_quantity=(select issued_quantity from book where bookid=new.bookid)+1 where bookid=$1;
+libraryms$#  if((select current_date-(issuerdate) from issuereturndetails where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1)>7) then
+libraryms$#  insert into fine(issueid,studentid,amount) values (select issueid from issuereturndetails
+libraryms$#  where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1, $2, 50);
+libraryms$#  end if;
+libraryms$#  return passed;
+libraryms$#  end;
+libraryms$#  $$ language plpgsql;
+ERROR:  type "boolen" does not exist
+LINE 3: declare passed boolen;
+                       ^
+libraryms=# create or replace function return_book(int,int)
+libraryms-# returns boolean as $$
+libraryms$# declare passed boolean;
+libraryms$# begin
+libraryms$#  update issueretundetails set returndate=current_date where bookid=$1 and studentid=$2 ;
+libraryms$#  update book set issued_quantity=(select issued_quantity from book where bookid=new.bookid)+1 where bookid=$1;
+libraryms$#  if((select current_date-(issuerdate) from issuereturndetails where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1)>7) then
+libraryms$#  insert into fine(issueid,studentid,amount) values (select issueid from issuereturndetails
+libraryms$#  where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1, $2, 50);
+libraryms$#  end if;
+libraryms$#  return passed;
+libraryms$#  end;
+libraryms$#  $$ language plpgsql;
+ERROR:  syntax error at or near "select"
+LINE 8: ...nsert into fine(issueid,studentid,amount) values (select iss...
+                                                             ^
+libraryms=# create or replace function return_book(int,int)
+libraryms-# returns boolean as $$
+libraryms$# declare passed boolean;
+libraryms$# begin
+libraryms$#  update issueretundetails set returndate=current_date where bookid=$1 and studentid=$2 ;
+libraryms$#  update book set issued_quantity=(select issued_quantity from book where bookid=new.bookid)+1 where bookid=$1;
+libraryms$#  if((select current_date-(issuerdate) from issuereturndetails where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1)>7) then
+libraryms$#  insert into fine(issueid,studentid,amount) select issueid,studentid,50 from issuereturndetails
+libraryms$#  where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1;
+libraryms$#  end if;
+libraryms$#  return passed;
+libraryms$#  end;
+libraryms$#  $$ language plpgsql;
+CREATE FUNCTION
+
+libraryms=# select return_book(1,1);
+
+QUERY:  update book set issued_quantity=(select issued_quantity from book where bookid=new.bookid)+1 where bookid=$1
+CONTEXT:  PL/pgSQL function return_book(integer,integer) line 5 at SQL statement
+libraryms=# create or replace function return_book(int,int)
+libraryms-# returns boolean as $$
+libraryms$# declare passed boolean;
+libraryms$# begin
+libraryms$#  update issuereturndetails set returndate=current_date where bookid=$1 and studentid=$2 ;
+libraryms$#  update book set issued_quantity=(select issued_quantity from book where bookid=$1)+1 where bookid=$1;
+libraryms$#  if((select current_date-(issuerdate) from issuereturndetails where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1)>7) then
+libraryms$#  insert into fine(issueid,studentid,amount) select issueid,studentid,50 from issuereturndetails
+libraryms$#  where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1;
+libraryms$#  end if;
+libraryms$#  return passed;
+libraryms$#  end;
+libraryms$#  $$ language plpgsql;
+CREATE FUNCTION
+libraryms=# select return_book(1,1);
+ return_book
+-------------
+
+(1 row)
+
+
+libraryms=# select * from issuereturndetails;
+ issueid | bookid | studentid | issuerdate | returndate | issueruserid
+---------+--------+-----------+------------+------------+--------------
+       9 |      2 |         2 | 2022-04-14 |            |            1
+      10 |      3 |         2 | 2022-04-14 |            |            1
+      11 |      4 |         4 | 2022-04-14 |            |            1
+       6 |      1 |         1 | 2022-04-12 | 2022-04-14 |            1
+(4 rows)
+
+
+libraryms=#
+libraryms=# insert into issuereturndetails(bookid,studentid,issuerdate,issueruserid) values(1,1,1);
+ERROR:  INSERT has more target columns than expressions
+LINE 1: ...to issuereturndetails(bookid,studentid,issuerdate,issueruser...
+                                                             ^
+libraryms=# select return_book(1,2);
+ return_book
+-------------
+
+(1 row)
+
+
+libraryms=# select * from issuereturndetails;
+ issueid | bookid | studentid | issuerdate | returndate | issueruserid
+---------+--------+-----------+------------+------------+--------------
+       9 |      2 |         2 | 2022-04-14 |            |            1
+      10 |      3 |         2 | 2022-04-14 |            |            1
+      11 |      4 |         4 | 2022-04-14 |            |            1
+       6 |      1 |         1 | 2022-04-12 | 2022-04-14 |            1
+(4 rows)
+
+
+libraryms=# select * from book;
+ bookid | publisherid |      title       | volume | quantity | issued_quantity | typeid
+--------+-------------+------------------+--------+----------+-----------------+--------
+      2 |           2 | amitabhbiography | 1      |        1 |               1 |      1
+      3 |           3 | romeo            | 1      |        1 |               1 |      1
+      4 |           3 | hamlet           | 1      |        1 |               1 |      1
+      1 |           1 | godan            | 1      |        1 |               3 |      1
+(4 rows)
+
+
+libraryms=# create or replace function return_book(int,int)
+libraryms-# returns boolean as $$
+libraryms$# declare passed boolean;
+libraryms$# begin
+libraryms$# if not exists( select * from issuereturndetails where bookid=$1 and studentid=$2 and returndate is null  )then
+libraryms$# raise exception 'not book issued';
+libraryms$# end if;
+libraryms$#  update issuereturndetails set returndate=current_date where bookid=$1 and studentid=$2 and returndate is null;
+libraryms$#
+libraryms$#
+libraryms$#  update book set issued_quantity=(select issued_quantity from book where bookid=$1)-1 where bookid=$1;
+libraryms$#
+libraryms$#  if((select current_date-(issuerdate) from issuereturndetails where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1)>7) then
+libraryms$#  insert into fine(issueid,studentid,amount) select issueid,studentid,50 from issuereturndetails
+libraryms$#  where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1;
+libraryms$#  end if;
+libraryms$#  return passed;
+libraryms$#  end;
+libraryms$#  $$ language plpgsql;
+CREATE FUNCTION
+libraryms=# select return_book(1,1);
+ERROR:  not book issued
+CONTEXT:  PL/pgSQL function return_book(integer,integer) line 5 at RAISE
+libraryms=# select * from book;
+ bookid | publisherid |      title       | volume | quantity | issued_quantity | typeid
+--------+-------------+------------------+--------+----------+-----------------+--------
+      2 |           2 | amitabhbiography | 1      |        1 |               1 |      1
+      3 |           3 | romeo            | 1      |        1 |               1 |      1
+      4 |           3 | hamlet           | 1      |        1 |               1 |      1
+      1 |           1 | godan            | 1      |        1 |               3 |      1
+(4 rows)
+
+                                            
+libraryms=# create or replace function return_book(int,int)
+libraryms-# returns boolean as $$
+libraryms$# declare passed boolean;
+libraryms$# begin
+libraryms$# if not exists( select * from issuereturndetails where bookid=$1 and studentid=$2 and returndate is null  )then
+libraryms$# raise exception 'not book issued';
+libraryms$# end if;
+libraryms$#  update issuereturndetails set returndate=current_date where bookid=$1 and studentid=$2 and returndate is null;
+libraryms$#
+libraryms$#
+libraryms$#  update book set issued_quantity=(select issued_quantity from book where bookid=$1)-1 where bookid=$1;
+libraryms$#
+libraryms$#  if((select current_date-(issuerdate) from issuereturndetails where  bookid=$1 and studentid=$2  order by issuerdate desc limit 1)>7) then
+libraryms$#  insert into fine(issueid,studentid,amount) select issueid,studentid,50 from issuereturndetails
+libraryms$#  where  bookid=$1 and studentid=$2 and returndate=current_date order by issuerdate desc limit 1;
+libraryms$#  end if;
+libraryms$#  return passed;
+libraryms$#  end;
+libraryms$#  $$ language plpgsql;
+CREATE FUNCTION
+libraryms=#  update book set issued_quantity=0 where bookid=1;
+UPDATE 1
+libraryms=# select return_book(2,2);
+ return_book
+-------------
+
+(1 row)
+
+
+libraryms=# select * from book;
+ bookid | publisherid |      title       | volume | quantity | issued_quantity | typeid
+--------+-------------+------------------+--------+----------+-----------------+--------
+      3 |           3 | romeo            | 1      |        1 |               1 |      1
+      4 |           3 | hamlet           | 1      |        1 |               1 |      1
+      1 |           1 | godan            | 1      |        1 |               0 |      1
+      2 |           2 | amitabhbiography | 1      |        1 |               0 |      1
+(4 rows)
+
+
+libraryms=#
+libraryms=# insert into issuereturndetails(bookid,studentid,issuerdate,issueruserid) values(2,1,2021-01-01,1);
+ERROR:  column "issuerdate" is of type date but expression is of type integer
+LINE 1: ...kid,studentid,issuerdate,issueruserid) values(2,1,2021-01-01...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+libraryms=#  insert into issuereturndetails(bookid,studentid,issuerdate,issueruserid) values(2,1,'2021-01-01',1);
+INSERT 0 1
+libraryms=# select * from issuereturndetails;
+ issueid | bookid | studentid | issuerdate | returndate | issueruserid
+---------+--------+-----------+------------+------------+--------------
+      10 |      3 |         2 | 2022-04-14 |            |            1
+      11 |      4 |         4 | 2022-04-14 |            |            1
+       6 |      1 |         1 | 2022-04-12 | 2022-04-14 |            1
+       9 |      2 |         2 | 2022-04-14 | 2022-04-14 |            1
+      12 |      2 |         1 | 2021-01-01 |            |            1
+(5 rows)
+
+
+libraryms=# select return_book(2,1);
+ return_book
+-------------
+
+(1 row)
+
+
+libraryms=# select * from fine;
+ fineid | issueid | studentid | amount | paymentstatus
+--------+---------+-----------+--------+---------------
+      1 |      12 |         1 |     50 | f
+(1 row)
+
+
+libraryms=# select * from issuereturndetails;
+ issueid | bookid | studentid | issuerdate | returndate | issueruserid
+---------+--------+-----------+------------+------------+--------------
+      10 |      3 |         2 | 2022-04-14 |            |            1
+      11 |      4 |         4 | 2022-04-14 |            |            1
+       6 |      1 |         1 | 2022-04-12 | 2022-04-14 |            1
+       9 |      2 |         2 | 2022-04-14 | 2022-04-14 |            1
+      12 |      2 |         1 | 2021-01-01 | 2022-04-14 |            1
+(5 rows)
+
+
+libraryms=# insert into issuereturndetails(bookid,studentid,issuerdate,issueruserid) values(1,2,'2021-01-01',2);
+INSERT 0 1
+libraryms=# select return_book(1,2);
+ return_book
+-------------
+
+(1 row)
+
+
+libraryms=# select * from fine;
+ fineid | issueid | studentid | amount | paymentstatus
+--------+---------+-----------+--------+---------------
+      1 |      12 |         1 |     50 | f
+      2 |      13 |         2 |     50 | f
+(2 rows)
+
