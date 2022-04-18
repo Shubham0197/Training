@@ -5,35 +5,167 @@ hardware->kernel->shell->app
 
 Directory Structure
 
-Create Folder
-Delete Folder
-Rename Folder
-Moving Folder
-Copying Files from folder
+
+Command Syntax
+This command syntax will be the same for every command that you will use in Linux.
+
+command [-argument] [-argument] [--argument] [file]
+Examples:
+ls List files in the current directory
+ls -l Lists files in “long” format
+ls -l --color As above, with colorized output
+cat filename Show contents of a file
+cat -n filename Show contents of a file, with line nu
+
+
+Name -       Create Folder
+Purpose-    Creation of folder
+Examples- Mkdir linux  
+creates the linux folder
+Name -       Delete Folder
+Purpose-  Deletes the folder  
+Examples- rm linux
+Name -       Rename Folder
+Purpose-    
+Examples-
+Name -       Moving Folder
+Purpose-    
+Examples-
+Name -       Copying Files from folder
+Purpose-    
+Examples-
 CP vs SCP
 
 Files
-pwd
-Chmod
-ls
-clear screen
-ps
-shutdown
-touch
-locate
-find
-grep
-sudo
-Chown
-kill
-ping
-wget
-top
-history
-man
-echo
-zip/unzip
+Name -       pwd
+Purpose-    Print Working Directory				   pwd is shell built-in command(pwd) or an actual binary(/bin/pwd).
+Examples- It has 2 options -[LP]
+					pwd -L: Prints the symbolic path. it is default command shwon by pwd 
+					Also by the $pwd variable value is shown
+					pwd -P: Prints the actual path.It is the path shown by /bin/pwd
+itsacheckmate@itsacheckmate:~/tmp$ pwd -L
+/home/itsacheckmate/tmp
+itsacheckmate@itsacheckmate:~/tmp$ pwd -P
+/home/itsacheckmate/tmp
+
+Name -       Chmod
+Purpose-    
+Examples-
+Name -       ls
+Purpose-    lists all the files int the present working directory
+Examples-  itsacheckmate@itsacheckmate:~$ ls
+Desktop    Downloads     Music     Public  Templates  Training
+Documents  GITSetup.txt  Pictures  snap    tmp        Videos
+itsacheckmate@itsacheckmate:~$ ^C
+
+Name -       clear screen
+Purpose-    clears the screen of the terminal
+Examples- clear
+Name -       ps
+Purpose-    
+Examples-
+Name -       shutdown
+Purpose-    used to shutdown the system in a safe way.
+Examples- syntax shutdown [OPTIONS] [TIME] [MESSAGE]
+					sudo shutdown
+					to shutdown the system at a specified time
+The time argument can have two different formats
+schedule a system shutdown at 05 A.M:
+sudo shutdown 05:00
+ system shutdown in 20 minutes from now:
+sudo shutdown +20
+
+to  broadcast a custom message
+sudo shutdown +10 "System upgrade"
+
+How to halt your system
+This can be achieved using the -H option.
+
+shutdown -H
+Halting means stopping all CPUs and powering off also makes sure the main power is disconnected.
+
+How to make shutdown power-off machine
+Although this is by default, you can still use the -P option to explicitly specify that you want shutdown to power off the system.
+
+shutdown -P
+How to reboot using shutdown
+For reboot, the option is -r.
+
+shutdown -r
+You can also specify a time argument and a custom message:
+
+shutdown -r +5 "Updating Your System"
+The command above will reboot the system after 5 minutes and broadcast Updating Your System”
+
+If you have scheduled a shutdown and you want to cancel it you can use the -c argument:
+
+sudo shutdown -c
+ cannot specify a time argument, but can still broadcast a message 
+
+sudo shutdown -c "Canceling the reboot"
+
+Name -       touch
+Purpose-    
+Examples-
+Name -       locate
+Purpose-    
+Examples-
+Name -       find
+Purpose-    
+Examples-
+Name -       grep
+Purpose-    
+Examples-
+Name -       sudo
+Purpose-    
+Examples-
+Name -       Chown
+Purpose-    
+Examples-
+Name -       kill
+Purpose-    
+Examples-
+Name -       ping
+Purpose-    
+Examples-
+Name -       wget
+Purpose-    
+Examples-
+Name -       top
+Purpose-    
+Examples-
+Name -       history
+Purpose-    
+Examples-
+Name -       man
+Purpose-    
+Examples-
+Name -       echo
+Purpose-    Used to display line of text/string that are passed as an argument
+Examples-  echo [option] [string]
+options   -e -> to enable the interpretation of the blackslash escapes
+ \b : it removes all the spaces in between the text
+ \c : suppress trailing new line with backspace interpretor ‘-e‘ to continue without emitting new line.
+In above example, text after \c is not printed and omitted trailing new line.
+\n : this option creates new line from where it is used.
+\t : this option is used to create horizontal tab spaces.
+ \r : carriage return with backspace interpretor ‘-e‘ to have specified carriage return in output.
+In the above example, text before \r is not printed.
+\a : alert return with backspace interpretor ‘-e‘ to have sound alert.
+
+This command when executed, it will produce an alert sound or Bel .
+			 -n -> option is used to omit echoing triling newline
+			 itsacheckmate@itsacheckmate:~/tmp$ echo -n "Geeks for Geeks"
+Geeks for Geeksitsacheckmate@itsacheckmate:~/tmp$
+			 echo * -> prints all the files and folder , similiar to ls
+			 itsacheckmate@itsacheckmate:~/tmp$ echo *
+git-2.35.3 git.tar.gz tmp
 
 
-nano and Vim editor
 
+Name -       zip/unzip
+Purpose-    
+Examples-
+Name -       nano and Vim editor
+Purpose-    
+Examples-
