@@ -1,0 +1,39 @@
+Terminal in Linux is case sensitive to two file Test.txt and test.txt are different.
+To see hidden folder in linux ctrl+h
+
+hardware->kernel->shell->app
+
+Directory Structure
+
+Create Folder
+Delete Folder
+Rename Folder
+Moving Folder
+Copying Files from folder
+CP vs SCP
+
+Files
+pwd
+Chmod
+ls
+clear screen
+ps
+shutdown
+touch
+locate
+find
+grep
+sudo
+Chown
+kill
+ping
+wget
+top
+history
+man
+echo
+zip/unzip
+
+
+nano and Vim editor
+
