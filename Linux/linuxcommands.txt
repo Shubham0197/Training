@@ -47,10 +47,165 @@ itsacheckmate@itsacheckmate:~/tmp$ pwd -L
 /home/itsacheckmate/tmp
 itsacheckmate@itsacheckmate:~/tmp$ pwd -P
 /home/itsacheckmate/tmp
-
+-----------------------------------------------------------------------------------------------------------------------------
 Name -       Chmod
-Purpose-    
-Examples-
+Purpose-      Change the access mode of the file i.e what user have the permission on the file 
+wether they can edit it, or read or execute the file or the directory .
+Examples- Syntax is chmod [reference][operator][mode] file... 
+Here the reference is whoh the permission apply it is represented by folloing letters
+Reference   Class     Description
+u          owner      file's owner
+
+g          group      users who are members of
+                      the file's group
+
+o          others     users who are neither the
+                      file's owner nor members of 
+                      the file's group
+
+a          all       All three of the above, same as ugo
+Then there is operator which specify how the modes of files should be adjusted
+Operator  Description
++         Adds the specified modes to the
+          specified classes
+
+-         Removes the specified modes from 
+          the specified classes
+
+=         The modes specified are to be made
+          the exact modes for the specified 
+          classes
+and the the modes which indicate which permission is to be granted
+r       Permission to read the file.
+w       Permission to write (or delete) the file.
+x       Permission to execute the file, or, in
+        the case of a directory, search it.
+
+the very first column represents the type of the file 
+if its is a directory  'd' or if its a file the  '-'
+then the folling 3set of letter represents the permission of the file owner
+rwx =all three permission or rw- = only the read and write permission 
+
+Then the following set off 3 letters are the group permission and other user permission
+respectively 
+if the directory has only x permission it means that there is premission to search the directory
+
+Then it spescifies the owner and the group which owner belons to  
+ Octal notaions could be used for this
+ octal    binary   fileMode
+ 0			000			---
+ 1			001			--x
+ 2			010			-w-
+ 3			011			-wx
+ 4			100			r--
+ 5			101			r-x
+ 6			110			rw-
+ 7			111			rwx
+ 
+ so for user,group,and other permission willl be written as
+ - rwx--x--x => 711
+ 
+Usage------------
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 8
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 5081 Apr 18 19:10 linuxcommands.txt
+-rw-rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod u=r practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 8
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 5081 Apr 18 19:10 linuxcommands.txt
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ mkdir practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls-l
+ls-l: command not found
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 12
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 5081 Apr 18 19:10 linuxcommands.txt
+drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod u=rw practice
+
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 8
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 5081 Apr 18 19:10 linuxcommands.txt
+-rw-rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod u=r practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 8
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 5081 Apr 18 19:10 linuxcommands.txt
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ mkdir practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls-l
+ls-l: command not found
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 12
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 5081 Apr 18 19:10 linuxcommands.txt
+drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod u=rw practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
+bash: cd: practice: Permission denied
+itsacheckmate@itsacheckmate:~/Training/Linux$ cd u=rwx practice
+bash: cd: too many arguments
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod u=rwx practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod 700 practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls-l
+ls-l: command not found
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 12
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 7916 Apr 19 13:58 linuxcommands.txt
+drwx------ 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+
+Sudo Chmod - This is to used to run the chmod command on the files where we do not have
+ownership of the file
+sudo chmod o+x practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ sudo chmod u+x practice
+[sudo] password for itsacheckmate: 
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 16
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 9639 Apr 19 14:01 linuxcommands.txt
+drwx------ 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ sudo chmod o-x practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 16
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 9639 Apr 19 14:01 linuxcommands.txt
+drwx------ 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ sudo chmod o=x practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 16
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 9639 Apr 19 14:01 linuxcommands.txt
+drwx-----x 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ sudo chmod o+r practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 16
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 9639 Apr 19 14:01 linuxcommands.txt
+drwx---r-x 2 itsacheckmate itsacheckmate 4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate    0 Apr 19 13:46 practice.txt
+
+Recursive Permission change - it is used to change the permission of multiple files in the 
+directory at once   chmod -R is used with find command
+Change all the files 
+sudo find /path/to/someDirectory -type f -print0 | xargs -0 sudo chmod 644
+change for all the directory
+sudo find /path/to/someDirectory -type d -print0 | xargs -0 sudo chmod 755
+
+Sticky Bit - It applies only to the directory and specially used by the derictory which is publicly available 
+it prevents the user to deleting and remaning any file which they do not personally own  for thsi 't' flag is used
+chmod +t <directory>
+chmod -t <directory>
+
+itsacheckmate@itsacheckmate:~/Training/Linux$ chmod +t practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls -l
+total 16
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 11552 Apr 19 14:53 linuxcommands.txt
+drwx---r-t 2 itsacheckmate itsacheckmate  4096 Apr 19 13:48 practice
+-r--rw-r-- 1 itsacheckmate itsacheckmate     0 Apr 19 13:46 practice.txt
+	
+------------------------------------------------------------------------------------------------------------------------------
 Name -       ls
 Purpose-    lists all the files int the present working directory
 Examples-  itsacheckmate@itsacheckmate:~$ ls
@@ -58,12 +213,23 @@ Desktop    Downloads     Music     Public  Templates  Training
 Documents  GITSetup.txt  Pictures  snap    tmp        Videos
 itsacheckmate@itsacheckmate:~$ ^C
 
+ls -l : this will list the file sin the long format
+itsacheckmate@itsacheckmate:~/Training$ ls -l
+total 16
+drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:40 git
+drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:46 Linux
+drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:44 PostgreSQL
+-rw-rw-r-- 1 itsacheckmate itsacheckmate  227 Apr 18 16:40 README.md
+
+
+-----------------------------------------------------------------------------------------------------
 Name -       clear screen
 Purpose-    clears the screen of the terminal
 Examples- clear
 Name -       ps
 Purpose-    
 Examples-
+--------------------------------------------------------------------------------------------------------------------------
 Name -       shutdown
 Purpose-    used to shutdown the system in a safe way.
 Examples- syntax shutdown [OPTIONS] [TIME] [MESSAGE]
@@ -77,6 +243,11 @@ sudo shutdown +20
 
 to  broadcast a custom message
 sudo shutdown +10 "System upgrade"
+
+itsacheckmate@itsacheckmate:~/Training$ sudo shutdown +1 "System upgrade"
+[sudo] password for itsacheckmate: 
+Shutdown scheduled for Mon 2022-04-18 19:11:26 IST, use 'shutdown -c' to cancel.
+
 
 How to halt your system
 This can be achieved using the -H option.
@@ -110,9 +281,11 @@ Examples-
 Name -       locate
 Purpose-    
 Examples-
+---------------------------------------------------------------------------------------------
 Name -       find
 Purpose-    
 Examples-
+---------------------------------------------------------------------------------------------
 Name -       grep
 Purpose-    
 Examples-
@@ -140,6 +313,7 @@ Examples-
 Name -       man
 Purpose-    
 Examples-
+----------------------------------------------------------------------------------------------------------------------------------
 Name -       echo
 Purpose-    Used to display line of text/string that are passed as an argument
 Examples-  echo [option] [string]
@@ -161,7 +335,7 @@ Geeks for Geeksitsacheckmate@itsacheckmate:~/tmp$
 			 itsacheckmate@itsacheckmate:~/tmp$ echo *
 git-2.35.3 git.tar.gz tmp
 
-
+-------------------------------------------------------------------------------------------------------------------------------------
 
 Name -       zip/unzip
 Purpose-    
