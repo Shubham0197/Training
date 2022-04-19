@@ -160,8 +160,45 @@ linuxcommands.txt  practice  practice.txt
 itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
 itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
 aa1.txt  aa.txt  geek.txt  geek.txt~  linuxcommands.txt  practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  geek.txt  geek.txt~
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd ..
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls
+linuxcommands.txt  practice  practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ cp -b -i *.txt practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ cp -i -p  *.txt practice
+cp: overwrite 'practice/linuxcommands.txt'? n
+cp: unwritable 'practice/practice.txt' (mode 0464, r--rw-r--); try anyway? n
+itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  geek.txt  geek.txt~  linuxcommands.txt  practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd ..
+itsacheckmate@itsacheckmate:~/Training/Linux$ cp -b *.txt practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  geek.txt   linuxcommands.txt   practice.txt
+aa.txt   geek.txt~  linuxcommands.txt~  practice.txt~
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd -r practice abvc
+bash: cd: -r: invalid option
+cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cp -r practice abvc
+cp: cannot stat 'practice': No such file or directory
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd ..
+itsacheckmate@itsacheckmate:~/Training/Linux$ cp -r practice copyfolder
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls
+copyfolder  linuxcommands.txt  practice  practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ cd copyfolder
+itsacheckmate@itsacheckmate:~/Training/Linux/copyfolder$ ls
+aa1.txt  geek.txt   linuxcommands.txt   practice.txt
+aa.txt   geek.txt~  linuxcommands.txt~  practice.txt~
+itsacheckmate@itsacheckmate:~/Training/Linux/copyfolder$ 
+
 
 CP vs SCP
+#scp or Secure Copy is primarily used to copy between a local host and remote host, or two remote hosts, via ssh
+scp copies files between hosts on a network.  It uses ssh(1) for data transfer, and uses the same authentication
+ and provides the same security as     ssh(1).  Unlike rcp(1), scp will ask for passwords or passphrases if they are needed for authentication.
+# The cp command is for copying files locally, i.e. within your host's system.
 ------------------------------------------------------------------------------------
 Files
 Name -       pwd
@@ -348,6 +385,66 @@ drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:46 Linux
 drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:44 PostgreSQL
 -rw-rw-r-- 1 itsacheckmate itsacheckmate  227 Apr 18 16:40 README.md
 
+ls -a = shows the whole list with the hidden files also
+
+ls -d */ = only displays the subdirectories 
+ls -g =donot show the owner information
+ls -lG = do not show the group information
+ls ~ = shows the contents of the home directory
+ls ../=  shows the contents of the parent directory
+itsacheckmate@itsacheckmate:~/Training$ ls ../
+ Desktop     GITSetup.txt   Public                Templates   Videos
+ Documents   Music         'Shubham Linux.svgz'   tmp         Write
+ Downloads   Pictures       snap                  Training
+itsacheckmate@itsacheckmate:~/Training$ ls ~
+ Desktop     GITSetup.txt   Public                Templates   Videos
+ Documents   Music         'Shubham Linux.svgz'   tmp         Write
+ Downloads   Pictures       snap                  Training
+itsacheckmate@itsacheckmate:~/Training$ ls -iG
+17174268 abc  17174132 b  17173060 git    17173039 PostgreSQL  17174259 s
+17173117 abs  17174269 d  17173032 Linux  16922561 README.md
+itsacheckmate@itsacheckmate:~/Training$ ls -g
+total 36
+drwxrwxr-- 2 itsacheckmate 4096 Apr 19 15:53 abc
+drwxrwxr-- 2 itsacheckmate 4096 Apr 19 15:53 abs
+drwxrwxr-x 2 itsacheckmate 4096 Apr 19 15:33 b
+drwxrwxr-x 3 itsacheckmate 4096 Apr 19 15:54 d
+drwxrwxr-x 2 itsacheckmate 4096 Apr 18 16:40 git
+drwxrwxr-x 4 itsacheckmate 4096 Apr 19 18:51 Linux
+drwxrwxr-x 2 itsacheckmate 4096 Apr 18 16:44 PostgreSQL
+-rw-rw-r-- 1 itsacheckmate  227 Apr 18 16:40 README.md
+drwxrwxr-x 2 itsacheckmate 4096 Apr 19 15:33 s
+itsacheckmate@itsacheckmate:~/Training$ ls -a
+.  ..  abc  abs  b  d  .git  git  Linux  PostgreSQL  README.md  s
+itsacheckmate@itsacheckmate:~/Training$ ls d */
+abc/:
+
+abs/:
+
+b/:
+
+d:
+v
+
+d/:
+v
+
+git/:
+GIT
+
+Linux/:
+copyfolder  linuxcommands.txt  practice  practice.txt
+
+PostgreSQL/:
+'In Built Functions'                     LibraryManagmentSystemQueries
+'Library Management System'             'Naming Conventions'
+'Library Management System.drawio.png'   Queries
+'Library Management System.drawio.svg'
+
+s/:
+itsacheckmate@itsacheckmate:~/Training$ ls -d */
+abc/  abs/  b/  d/  git/  Linux/  PostgreSQL/  s/
+
 
 -----------------------------------------------------------------------------------------------------
 Name -       clear screen
@@ -419,12 +516,47 @@ Examples-
 Name -       sudo
 Purpose-    
 Examples-
+-----------------------------------------------------------------------------------
 Name -       Chown
-Purpose-    
+Purpose-    command is used to change the file Owner or group
 Examples-
+Syntax
+chown [OPTION]… [OWNER][:[GROUP]] FILE…
+chown [OPTION]… –reference=RFILE FILE…
+chown owner_name file_name
+-c: Reports when a file change is made.
+-v: It is used to show the verbose information for every file processed. 
+-f: It suppresses most of the error messages. If not permitted to change group permissions and shows error, this option forcefully/silently changes the ownership.
+
+---------------------------------------------------------------------------------------
 Name -       kill
-Purpose-    
+Purpose-   is a built-in command which is used to terminate processes manually. 
+kill command sends a signal to a process which terminates the process 
 Examples-
+Options: 
+
+kill -l :To display all the available signals you can use below command option:
+kill pid : To show how to use a PID with the kill command.
+kill -s : To show how to send signal to processes.
+kill -L :This command is used to list available signals in a table format.
+itsacheckmate@itsacheckmate:~/Training$ kill -L
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
+21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
+31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
+43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
+48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
+53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
+58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
+63) SIGRTMAX-1	64) SIGRTMAX	
+
+
+
+-------------------------------------------------------------------------------------------------
 Name -       ping
 Purpose-    
 Examples-
