@@ -16,26 +16,153 @@ ls -l Lists files in “long” format
 ls -l --color As above, with colorized output
 cat filename Show contents of a file
 cat -n filename Show contents of a file, with line nu
-
+----------------------------------------------------------------------------------------------
 
 Name -       Create Folder
 Purpose-    Creation of folder
 Examples- Mkdir linux  
 creates the linux folder
+mkdir -v ab
+displays message for every directory created
+-p flag=> enables command to create parent directory as ncessary
+mkdir -p a/b/c
+itsacheckmate@itsacheckmate:~/Training$ mkdir -v -p d/v/f
+mkdir: created directory 'd'
+mkdir: created directory 'd/v'
+mkdir: created directory 'd/v/f'
+
+
+-m option =>it is used to set the file mode /premision of the folder created
+mkdir -m a=rx abd
+itsacheckmate@itsacheckmate:~/Training$ mkdir -v  -m o=r abc
+mkdir: created directory 'abc'
+itsacheckmate@itsacheckmate:~/Training$ ls -l
+total 32
+drwxrwxr-- 2 itsacheckmate itsacheckmate 4096 Apr 19 15:53 abc
+
+----------------------------------------------------------------------------------------------------------------------
+Name - Change Directory
+Purpose- navigate the directory in the linux terminal 
+Examples- cd is the command used to change the directory 
+Syntax - cd [directory_name] 
+cd /  =>change the directory to the root directory
+cd dir_1/dir_2/dir_3 => to move to inside of the directory
+cd ~ / cd=> used to change the directory to the home directory
+cd .. => goes 1 directory back
+cd "dir name" or cd dir\ name => this used to navigate to the directory with the white spaces
+----------------------------------------------------------------------------------------------------------------------
+
+
+
 Name -       Delete Folder
 Purpose-  Deletes the folder  
-Examples- rm linux
-Name -       Rename Folder
-Purpose-    
-Examples-
-Name -       Moving Folder
-Purpose-    
-Examples-
-Name -       Copying Files from folder
-Purpose-    
-Examples-
-CP vs SCP
+Examples- rmdir is used to remove the emplty folder  
+rmdir [-p] [-v | –verbose] [–ignore-fail-on-non-empty] directories 
+here -p =>option each of the directory argument is treated as a pathname of which all
+ components will be removed, if they are already empty, starting from the last component
+-v/-verbose => this option will show the verbose info
+–ignore-fail-on-non-empty => this option will not report failure if the direcotry is not empty
+itsacheckmate@itsacheckmate:~/Training$ rmdir a
+itsacheckmate@itsacheckmate:~/Training$ ls
+'a b'   b   git   Linux   PostgreSQL   README.md
+itsacheckmate@itsacheckmate:~/Training$ rmdir 'a b' b
+itsacheckmate@itsacheckmate:~/Training$ rmdir git
+rmdir: failed to remove 'git': Directory not empty
+itsacheckmate@itsacheckmate:~/Training$ mkdir a b s
+itsacheckmate@itsacheckmate:~/Training$ rmdir -v a
+rmdir: removing directory, 'a'
 
+#####
+rm - it is the remove command which deletes the objects such as files,directories , symbolic links etc.
+and if the command has executed it cant be undone.
+rm [option] .... FILE ...
+rm a.txt deletes the a.txt file
+rm -i a.txt => this asks for confirmation before deleting the file
+rm -f a.txt => if the file is write protected it foces to delete it but wont work in the write protected directories
+-r (recursive option)- it will perform a tree-walk and will delete all the files and sub-directories recursively
+normally rm donot delete directory but using this option it will delete the directory
+rm -r *
+
+use -- before file name if file name starts with -
+-----------------------------------------------------------------------------------------------
+Name -       Rename Folder
+Purpose-   Rename the named files according to regular expression perlexpr, can change name of multiple files
+Examples-
+rename -s => it is going to ingnore the symbolic links
+rename -v => verbose will show the files which is being renamed
+rename -n=>if the user want  to see only final change
+rename -o =>will not overwrite existing files
+rename -V => shows the version
+rename -help=> help message and exit
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ rename -v 's/a1/b' a.txt
+Substitution replacement not terminated at (user-supplied code).
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ rename -v 's/a1/b/' a.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+a1.txt  aa1.txt  aa.txt  a.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ rename -v 's/a1/b/' a1.txt
+a1.txt renamed as b.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ rename -n 's/a*/b/' a1.txt
+rename(a1.txt, b1.txt)
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ rename -n 's/a*/b/' *.txt
+rename(aa1.txt, b1.txt)
+aa.txt not renamed: b.txt already exists
+a.txt not renamed: b.txt already exists
+rename(b.txt, bb.txt)
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  a.txt  b.txt
+
+-----------------------------------------------------------------------------------
+Name -       Moving Folder
+Purpose-    used to move one or more fiels or directories
+it can also rename files /folders also 
+Examples- syntax  mv [Option] source destination
+mv a.txt geek.txt  //renames the file a.txt to geek.txt
+options 
+-i =interactive it just ask for user confirmation 
+-f = force moves the write protected files or the write protected destination file
+-n = no clobber  prevents the overwriting of the existing files
+-b = backup creates the backup of the existing file that is going to be overwritten
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ mv a.txt geek.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  b.txt  geek.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ mv -n b.txt geek.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  b.txt  geek.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ mv -b b.txt geek.txt
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  geek.txt  geek.txt~
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ mv -i aa.txt geek.txt
+mv: overwrite 'geek.txt'? n
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  geek.txt  geek.txt~
+
+-----------------------------------------------------------------------------------
+Name -  (cp)     Copying Files from folder
+Purpose-    it is to copy files and folder or group of them it creates exact image with different names
+Examples- Syntax
+cp [OPTION] Source Destination
+cp [OPTION] Source Directory
+cp [OPTION] Source-1 Source-2 Source-3 Source-n Directory
+
+option->
+1 . cp a.txt b.txt
+2.cp a.txt b.txt new
+3. -r = recursive copying used to copy directory and all the files in it to other directory
+cp -R Src_directory Dest_directory
+4. -i = interactive with this option it asks the user confirmation
+5 -b = backup creates the destination file backup in the same folder but different name and formats
+6 -f = force used to copy write protected destination files 
+7. -p = preserve it preserves the chracteristics of the souce file int destination like last modification date and time
+cp can be run using the wildcard like cp *.txt amd
+itsacheckmate@itsacheckmate:~/Training/Linux$ cp *.txt practice
+itsacheckmate@itsacheckmate:~/Training/Linux$ ls
+linuxcommands.txt  practice  practice.txt
+itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
+itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
+aa1.txt  aa.txt  geek.txt  geek.txt~  linuxcommands.txt  practice.txt
+
+CP vs SCP
+------------------------------------------------------------------------------------
 Files
 Name -       pwd
 Purpose-    Print Working Directory				   pwd is shell built-in command(pwd) or an actual binary(/bin/pwd).
