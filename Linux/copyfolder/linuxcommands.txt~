@@ -160,45 +160,8 @@ linuxcommands.txt  practice  practice.txt
 itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
 itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
 aa1.txt  aa.txt  geek.txt  geek.txt~  linuxcommands.txt  practice.txt
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
-aa1.txt  aa.txt  geek.txt  geek.txt~
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd ..
-itsacheckmate@itsacheckmate:~/Training/Linux$ ls
-linuxcommands.txt  practice  practice.txt
-itsacheckmate@itsacheckmate:~/Training/Linux$ cp -b -i *.txt practice
-itsacheckmate@itsacheckmate:~/Training/Linux$ cp -i -p  *.txt practice
-cp: overwrite 'practice/linuxcommands.txt'? n
-cp: unwritable 'practice/practice.txt' (mode 0464, r--rw-r--); try anyway? n
-itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
-aa1.txt  aa.txt  geek.txt  geek.txt~  linuxcommands.txt  practice.txt
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd ..
-itsacheckmate@itsacheckmate:~/Training/Linux$ cp -b *.txt practice
-itsacheckmate@itsacheckmate:~/Training/Linux$ cd practice
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ ls
-aa1.txt  geek.txt   linuxcommands.txt   practice.txt
-aa.txt   geek.txt~  linuxcommands.txt~  practice.txt~
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd -r practice abvc
-bash: cd: -r: invalid option
-cd: usage: cd [-L|[-P [-e]] [-@]] [dir]
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cp -r practice abvc
-cp: cannot stat 'practice': No such file or directory
-itsacheckmate@itsacheckmate:~/Training/Linux/practice$ cd ..
-itsacheckmate@itsacheckmate:~/Training/Linux$ cp -r practice copyfolder
-itsacheckmate@itsacheckmate:~/Training/Linux$ ls
-copyfolder  linuxcommands.txt  practice  practice.txt
-itsacheckmate@itsacheckmate:~/Training/Linux$ cd copyfolder
-itsacheckmate@itsacheckmate:~/Training/Linux/copyfolder$ ls
-aa1.txt  geek.txt   linuxcommands.txt   practice.txt
-aa.txt   geek.txt~  linuxcommands.txt~  practice.txt~
-itsacheckmate@itsacheckmate:~/Training/Linux/copyfolder$ 
-
 
 CP vs SCP
-#scp or Secure Copy is primarily used to copy between a local host and remote host, or two remote hosts, via ssh
-scp copies files between hosts on a network.  It uses ssh(1) for data transfer, and uses the same authentication
- and provides the same security as     ssh(1).  Unlike rcp(1), scp will ask for passwords or passphrases if they are needed for authentication.
-# The cp command is for copying files locally, i.e. within your host's system.
 ------------------------------------------------------------------------------------
 Files
 Name -       pwd
@@ -385,66 +348,6 @@ drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:46 Linux
 drwxrwxr-x 2 itsacheckmate itsacheckmate 4096 Apr 18 16:44 PostgreSQL
 -rw-rw-r-- 1 itsacheckmate itsacheckmate  227 Apr 18 16:40 README.md
 
-ls -a = shows the whole list with the hidden files also
-
-ls -d */ = only displays the subdirectories 
-ls -g =donot show the owner information
-ls -lG = do not show the group information
-ls ~ = shows the contents of the home directory
-ls ../=  shows the contents of the parent directory
-itsacheckmate@itsacheckmate:~/Training$ ls ../
- Desktop     GITSetup.txt   Public                Templates   Videos
- Documents   Music         'Shubham Linux.svgz'   tmp         Write
- Downloads   Pictures       snap                  Training
-itsacheckmate@itsacheckmate:~/Training$ ls ~
- Desktop     GITSetup.txt   Public                Templates   Videos
- Documents   Music         'Shubham Linux.svgz'   tmp         Write
- Downloads   Pictures       snap                  Training
-itsacheckmate@itsacheckmate:~/Training$ ls -iG
-17174268 abc  17174132 b  17173060 git    17173039 PostgreSQL  17174259 s
-17173117 abs  17174269 d  17173032 Linux  16922561 README.md
-itsacheckmate@itsacheckmate:~/Training$ ls -g
-total 36
-drwxrwxr-- 2 itsacheckmate 4096 Apr 19 15:53 abc
-drwxrwxr-- 2 itsacheckmate 4096 Apr 19 15:53 abs
-drwxrwxr-x 2 itsacheckmate 4096 Apr 19 15:33 b
-drwxrwxr-x 3 itsacheckmate 4096 Apr 19 15:54 d
-drwxrwxr-x 2 itsacheckmate 4096 Apr 18 16:40 git
-drwxrwxr-x 4 itsacheckmate 4096 Apr 19 18:51 Linux
-drwxrwxr-x 2 itsacheckmate 4096 Apr 18 16:44 PostgreSQL
--rw-rw-r-- 1 itsacheckmate  227 Apr 18 16:40 README.md
-drwxrwxr-x 2 itsacheckmate 4096 Apr 19 15:33 s
-itsacheckmate@itsacheckmate:~/Training$ ls -a
-.  ..  abc  abs  b  d  .git  git  Linux  PostgreSQL  README.md  s
-itsacheckmate@itsacheckmate:~/Training$ ls d */
-abc/:
-
-abs/:
-
-b/:
-
-d:
-v
-
-d/:
-v
-
-git/:
-GIT
-
-Linux/:
-copyfolder  linuxcommands.txt  practice  practice.txt
-
-PostgreSQL/:
-'In Built Functions'                     LibraryManagmentSystemQueries
-'Library Management System'             'Naming Conventions'
-'Library Management System.drawio.png'   Queries
-'Library Management System.drawio.svg'
-
-s/:
-itsacheckmate@itsacheckmate:~/Training$ ls -d */
-abc/  abs/  b/  d/  git/  Linux/  PostgreSQL/  s/
-
 
 -----------------------------------------------------------------------------------------------------
 Name -       clear screen
@@ -516,201 +419,27 @@ Examples-
 Name -       sudo
 Purpose-    
 Examples-
------------------------------------------------------------------------------------
 Name -       Chown
-Purpose-    command is used to change the file Owner or group
+Purpose-    
 Examples-
-Syntax
-chown [OPTION]… [OWNER][:[GROUP]] FILE…
-chown [OPTION]… –reference=RFILE FILE…
-chown owner_name file_name
--c: Reports when a file change is made.
--v: It is used to show the verbose information for every file processed. 
--f: It suppresses most of the error messages. If not permitted to change group permissions and shows error, this option forcefully/silently changes the ownership.
-
----------------------------------------------------------------------------------------
 Name -       kill
-Purpose-   is a built-in command which is used to terminate processes manually. 
-kill command sends a signal to a process which terminates the process 
+Purpose-    
 Examples-
-Options: 
-
-kill -l :To display all the available signals you can use below command option:
-kill pid : To show how to use a PID with the kill command.
-kill -s : To show how to send signal to processes.
-kill -L :This command is used to list available signals in a table format.
-itsacheckmate@itsacheckmate:~/Training$ kill -L
- 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
- 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
-11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
-16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
-21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
-26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
-31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
-38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
-43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
-48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
-53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
-58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
-63) SIGRTMAX-1	64) SIGRTMAX	
-
-
-
--------------------------------------------------------------------------------------------------
 Name -       ping
 Purpose-    
 Examples-
 Name -       wget
 Purpose-    
 Examples-
-------------------------------------------------------------------------------------
 Name -       top
-Purpose-    it is used to show the Linux process. it shows the dynamic real time running view of the system
-Examples- top shows table with the follwing columns
-PID: Shows task’s unique process id.
-PR: The process’s priority. The lower the number, the higher the priority.
-VIRT: Total virtual memory used by the task.
-USER: User name of owner of task.
-%CPU: Represents the CPU usage.
-TIME+: CPU Time, the same as ‘TIME’, but reflecting more granularity through hundredths of a second.
-SHR: Represents the Shared Memory size (kb) used by a task.
-NI: Represents a Nice Value of task. A Negative nice value implies higher priority, and positive Nice value means lower priority.
-%MEM: Shows the Memory usage of task.
-RES: How much physical RAM the process is using, measured in kilobytes.
-COMMAND: The name of the command that started the process.
-1. top command after  sepecific no of repetition and top will show the refreshed info so this will exit the top 
-top -n 10 => this will exit after 10 no of repeition 
-2. Display specific user process
-top -u paras
-3. highlight running process on top - press z option in top console
-4. Show absolute path of the process - press c option 
-5. kill running process - press k option in top console
-6. Sort by cpu utilisation - press shift+p 
-7 shoes the top command syntax -
-top-h  => help
-8. Batch Mode- send output from top to fil or any other program 
-top -b
-9. use top in secure mode 
-top -s
-10. start top with last closed state
-Top -c
-11. Delay time - it tellls the delay time between screen updates
-Top -d seconds.tenths
-top - 13:34:41 up  1:24,  1 user,  load average: 0.35, 0.26, 0.32
-Tasks: 324 total,   1 running, 322 sleeping,   1 stopped,   0 zombie
-%Cpu(s):  0.6 us,  0.5 sy,  0.0 ni, 98.9 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
-MiB Mem :  15772.3 total,   9254.0 free,   2509.3 used,   4009.1 buff/cache
-MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.  12334.8 avail Mem 
-
-    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND  
-   1570 itsache+  20   0  542500 103320  67200 S   2.3   0.6   2:10.13 Xorg     
-   1704 itsache+  20   0 4813980 273176 108380 S   2.3   1.7   1:57.38 gnome-s+ 
-   3863 itsache+  20   0  971052  55400  41828 S   1.7   0.3   0:19.76 gnome-t+ 
-   6015 itsache+  20   0   19356  12076   1660 S   1.3   0.1   0:22.83 wineser+ 
-   6069 itsache+  20   0 2021688  74252  37240 S   1.3   0.5   0:34.48 notepad+ 
-   2562 itsache+  20   0   16.5g 353792 157780 S   0.7   2.2   1:37.49 chrome   
-     13 root      20   0       0      0      0 I   0.3   0.0   0:06.97 rcu_sch+ 
-     74 root      20   0       0      0      0 I   0.3   0.0   0:04.20 kworker+ 
-    544 root      20   0       0      0      0 S   0.3   0.0   0:22.09 napi/ph+ 
-   1730 itsache+  20   0  315076  10724   8720 S   0.3   0.1   0:15.54 ibus-da+ 
-   1737 itsache+  20   0  196024  25896  19528 S   0.3   0.2   0:05.22 ibus-x11 
-   2608 itsache+  20   0   16.3g 109556  82860 S   0.3   0.7   0:27.84 chrome   
-   6039 itsache+  20   0 2218708  24120  10840 S   0.3   0.1   0:16.47 winedev+ 
-   6203 itsache+  20   0 1112.5g 228692 105008 S   0.3   1.4   0:57.47 chrome   
-  16828 root      20   0       0      0      0 I   0.3   0.0   0:00.02 kworker+ 
-      1 root      20   0  169116  13044   8296 S   0.0   0.1   0:01.07 systemd  
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd
-
------------------------------------------------------------------------------
-Name -       history
-Purpose-   it is used to vies the previously executed command. Here each command is treated as event and event no. can be used to recall and change 
+Purpose-    
 Examples-
-history
-history 5-> shows the history to upto 5 previous command 
-!1997 -> to execute command with no. 1997
-!1997:p -> to print cammnd before execution
-history | grep chpasswd  -> to use history command with grep
-!! -> to see most recent command
-Suppose if the command has to be executed without being stored variable HISTFILE has to be unset.
-!hist -> to execute command using part of command
-to remove history used -d option with event no.
-and to remove whole history use -c option
-itsacheckmate@itsacheckmate:~/Training$ history -C
-bash: history: -C: invalid option
-history: usage: history [-c] [-d offset] [n] or history -anrw [filename] or history -ps arg [arg...]
-itsacheckmate@itsacheckmate:~/Training$ history -c
-itsacheckmate@itsacheckmate:~/Training$ history
-    1  history
-itsacheckmate@itsacheckmate:~/Training$ !1
-history
-    1  history
-itsacheckmate@itsacheckmate:~/Training$ !1:p
-history
-itsacheckmate@itsacheckmate:~/Training$ 
-itsacheckmate@itsacheckmate:~/Training$ !!
-history
-    1  history
-itsacheckmate@itsacheckmate:~/Training$ !hi
-history
-    1  history
-itsacheckmate@itsacheckmate:~/Training$ history -d 1
-itsacheckmate@itsacheckmate:~/Training$ $HISTFILE
-bash: /home/itsacheckmate/.bash_history: Permission denied
-itsacheckmate@itsacheckmate:~/Training$ ECHO $HISTFILE
-ECHO: command not found
-itsacheckmate@itsacheckmate:~/Training$ echo $HISTFILE
-/home/itsacheckmate/.bash_history
-itsacheckmate@itsacheckmate:~/Training$ history
-    1  history -d 1
-    2  $HISTFILE
-    3  ECHO $HISTFILE
-    4  echo $HISTFILE
-    5  history
-
-------------------------------------------------------------------------------------------------------------------------------------------
+Name -       history
+Purpose-    
+Examples-
 Name -       man
-Purpose-    used to display the user manual of any command it is the detailed view of the command
-Examples- $man [OPTION]... [COMMAND NAME]..
-Every manual is divided into the following sections:
-
-Executable programs or shell commands
-System calls (functions provided by the kernel)
-Library calls (functions within program libraries
-Games
-Special files (usually found in /dev)
-File formats and conventions eg /etc/passwd
-Miscellaneous (including macro packages and conventions), e.g. groff(7)
-System administration commands (usually only for root)
-Kernel routines [Non standard]
-#man printf
-#man 2 printf --> used to the 2nd section of the manual
--f option -> it gives the section in which the gives command is present
-man -f ls
-itsacheckmate@itsacheckmate:~$ man -f mkdir
-mkdir (1)            - make directories
-mkdir (2)            - create a directory
-itsacheckmate@itsacheckmate:~$ 
-
--a option -> diplay all available into manula pages in succession
-man -a ls
-itsacheckmate@itsacheckmate:~$ man -a mkdir
---Man-- next: mkdir(2) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
-
-shows the man in 2 times as 2 manual
--k option -> this option searches all the occurence of the searched command in the manual and returns the section no. where it is found
-itsacheckmate@itsacheckmate:~$ man -k mkdir
-gvfs-mkdir (1)       - (unknown subject)
-mkdir (1)            - make directories
-mkdir (2)            - create a directory
-mkdirat (2)          - create a directory
-
--w option -> this returns the loaction oin which the manual page of a given command  is present 
-itsacheckmate@itsacheckmate:~$ man -w mkdir
-/usr/share/man/man1/mkdir.1.gz
-itsacheckmate@itsacheckmate:~$ man -w ls
-/usr/share/man/man1/ls.1.gz
-
--I option -> command in case sensitive 
+Purpose-    
+Examples-
 ----------------------------------------------------------------------------------------------------------------------------------
 Name -       echo
 Purpose-    Used to display line of text/string that are passed as an argument
