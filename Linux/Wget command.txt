@@ -1,0 +1,240 @@
+Name -       wget
+Purpose-    	Used to download files from the server even when the user has not logged on to the 
+system and it can work in background without hindering the current process
+It is the Non -interactive network downloader 
+it can download whole website for offline viewing and it works on unstable and slow network and it can also work in the background
+Examples- syntax -> wget [option] [URL]
+wget http://example.com/sample.php
+-b option to save in background 
+wget -b www.google.com
+-c to resume partially downloaded file 
+--tries=10 to try 10 times if there is problem in downloading before exiting
+-o logfile 
+
+itsacheckmate@itsacheckmate:~$ wget -o logfile www.google.com   # ran the command wget and save the logs in logfile 
+itsacheckmate@itsacheckmate:~$ wget -b www.google.com  # ran the command wget in background
+Continuing in background, pid 18105.
+Output will be written to ‘wget-log’.
+
+itsacheckmate@itsacheckmate:~$ wget -a logfile www.google.com  # ran the wget command and append the log in the logfile like in -o option but not overwrite
+
+itsacheckmate@itsacheckmate:~$ touch url.txt
+itsacheckmate@itsacheckmate:~$ nano url.txt
+
+
+Use "fg" to return to nano.
+
+[1]+  Stopped                 nano url.txt
+itsacheckmate@itsacheckmate:~$ fg
+nano url.txt
+
+
+Use "fg" to return to nano.
+
+[1]+  Stopped                 nano url.txt
+
+itsacheckmate@itsacheckmate:~$ fg
+nano url.txt
+itsacheckmate@itsacheckmate:~$ ls url.txt -l
+-rw-rw-r-- 1 itsacheckmate itsacheckmate 33 Apr 20 13:56 url.txt
+itsacheckmate@itsacheckmate:~$ wget -i url.txt  # ran the wget command but for the url saved in the url.txt file
+--2022-04-20 13:56:20--  http://www.google.com/
+Resolving www.google.com (www.google.com)... 172.217.174.228, 2404:6800:4009:82d::2004
+Connecting to www.google.com (www.google.com)|172.217.174.228|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html.5’
+
+index.html.5            [ <=>                ]  15.94K  --.-KB/s    in 0.03s   
+
+2022-04-20 13:56:20 (471 KB/s) - ‘index.html.5’ saved [16324]
+
+--2022-04-20 13:56:20--  http://www.facebook.com/
+Resolving www.facebook.com (www.facebook.com)... 157.240.15.35, 2a03:2880:f10c:83:face:b00c:0:25de
+Connecting to www.facebook.com (www.facebook.com)|157.240.15.35|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://www.facebook.com/ [following]
+--2022-04-20 13:56:21--  https://www.facebook.com/
+Connecting to www.facebook.com (www.facebook.com)|157.240.15.35|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://www.facebook.com/unsupportedbrowser [following]
+--2022-04-20 13:56:21--  https://www.facebook.com/unsupportedbrowser
+Reusing existing connection to www.facebook.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘index.html.6’
+
+index.html.6            [ <=>                ]  57.36K   328KB/s    in 0.2s    
+
+2022-04-20 13:56:22 (328 KB/s) - ‘index.html.6’ saved [58732]
+
+FINISHED --2022-04-20 13:56:22--
+Total wall clock time: 1.9s
+Downloaded: 2 files, 73K in 0.2s (351 KB/s)
+itsacheckmate@itsacheckmate:~$ wget -t 20 avags.in
+--2022-04-20 13:57:02--  http://avags.in/
+Resolving avags.in (avags.in)... 72.167.55.21
+Connecting to avags.in (avags.in)|72.167.55.21|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 44815 (44K) [text/html]
+Saving to: ‘index.html.7’
+
+index.html.7        100%[===================>]  43.76K  79.0KB/s    in 0.6s    
+
+2022-04-20 13:57:05 (79.0 KB/s) - ‘index.html.7’ saved [44815/44815]
+
+itsacheckmate@itsacheckmate:~$ wget -c  avags.in
+--2022-04-20 13:57:18--  http://avags.in/
+Resolving avags.in (avags.in)... 72.167.55.21
+Connecting to avags.in (avags.in)|72.167.55.21|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 44815 (44K) [text/html]
+Saving to: ‘index.html’
+
+index.html          100%[===================>]  43.76K  81.8KB/s    in 0.5s    
+
+2022-04-20 13:57:19 (81.8 KB/s) - ‘index.html’ saved [44815/44815]
+
+itsacheckmate@itsacheckmate:~$ wget -w 10 www.pahe.in #  ran the wget command with 10 s retry internal --wait==second/hour/minute/day can be used
+
+--2022-04-20 13:58:12--  http://www.pahe.in/
+Resolving www.pahe.in (www.pahe.in)... 172.67.192.118, 104.21.60.55, 2606:4700:3030::ac43:c076, ...
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:14--  (try: 2)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:16--  (try: 3)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:19--  (try: 4)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:23--  (try: 5)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:29--  (try: 6)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:35--  (try: 7)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:42--  (try: 8)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+--2022-04-20 13:58:50--  (try: 9)  http://www.pahe.in/
+Connecting to www.pahe.in (www.pahe.in)|172.67.192.118|:80... connected.
+HTTP request sent, awaiting response... Read error (Connection reset by peer) in headers.
+Retrying.
+
+
+itsacheckmate@itsacheckmate:~$ wget -r www.google.com  # recursively download all the links int the specified website
+--2022-04-20 14:00:16--  http://www.google.com/
+Resolving www.google.com (www.google.com)... 216.58.196.68, 2404:6800:4009:80f::2004
+Connecting to www.google.com (www.google.com)|216.58.196.68|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘www.google.com/index.html’
+
+www.google.com/inde     [ <=>                ]  15.97K  --.-KB/s    in 0.03s   
+
+2022-04-20 14:00:16 (538 KB/s) - ‘www.google.com/index.html’ saved [16349]
+
+Loading robots.txt; please ignore errors.
+--2022-04-20 14:00:16--  http://www.google.com/robots.txt
+Reusing existing connection to www.google.com:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 7221 (7.1K) [text/plain]
+Saving to: ‘www.google.com/robots.txt’
+
+www.google.com/robo 100%[===================>]   7.05K  --.-KB/s    in 0s      
+
+2022-04-20 14:00:16 (384 MB/s) - ‘www.google.com/robots.txt’ saved [7221/7221]
+
+--2022-04-20 14:00:16--  http://www.google.com/images/nav_logo229.png
+Reusing existing connection to www.google.com:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 12263 (12K) [image/png]
+Saving to: ‘www.google.com/images/nav_logo229.png’
+
+www.google.com/imag 100%[===================>]  11.98K  --.-KB/s    in 0.007s  
+
+2022-04-20 14:00:17 (1.61 MB/s) - ‘www.google.com/images/nav_logo229.png’ saved [12263/12263]
+
+--2022-04-20 14:00:17--  http://www.google.com/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png
+Reusing existing connection to www.google.com:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 5482 (5.4K) [image/png]
+Saving to: ‘www.google.com/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png’
+
+www.google.com/imag 100%[===================>]   5.35K  --.-KB/s    in 0.009s  
+
+2022-04-20 14:00:17 (613 KB/s) - ‘www.google.com/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png’ saved [5482/5482]
+
+--2022-04-20 14:00:17--  http://www.google.com/advanced_search?hl=en-IN&authuser=0
+Reusing existing connection to www.google.com:80.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://www.google.com/advanced_search?hl=en-IN&authuser=0 [following]
+--2022-04-20 14:00:17--  https://www.google.com/advanced_search?hl=en-IN&authuser=0
+Connecting to www.google.com (www.google.com)|216.58.196.68|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘www.google.com/advanced_search?hl=en-IN&authuser=0’
+
+www.google.com/adva     [ <=>                ] 278.79K  1.37MB/s    in 0.2s    
+
+2022-04-20 14:00:17 (1.37 MB/s) - ‘www.google.com/advanced_search?hl=en-IN&authuser=0’ saved [285478]
+
+Loading robots.txt; please ignore errors.
+--2022-04-20 14:00:17--  https://www.google.com/robots.txt
+Reusing existing connection to www.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: 7221 (7.1K) [text/plain]
+Saving to: ‘www.google.com/robots.txt’
+
+www.google.com/robo 100%[===================>]   7.05K  --.-KB/s    in 0s      
+
+2022-04-20 14:00:18 (63.2 MB/s) - ‘www.google.com/robots.txt’ saved [7221/7221]
+
+--2022-04-20 14:00:18--  http://www.google.com/intl/en/ads/
+Connecting to www.google.com (www.google.com)|216.58.196.68|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://ads.google.com/intl/en/home/ [following]
+--2022-04-20 14:00:18--  https://ads.google.com/intl/en/home/
+Resolving ads.google.com (ads.google.com)... 142.250.183.78, 2404:6800:4009:830::200e
+Connecting to ads.google.com (ads.google.com)|142.250.183.78|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 97355 (95K) [text/html]
+Saving to: ‘www.google.com/intl/en/ads/index.html’
+
+www.google.com/intl 100%[===================>]  95.07K  --.-KB/s    in 0.1s    
+
+2022-04-20 14:00:18 (732 KB/s) - ‘www.google.com/intl/en/ads/index.html’ saved [97355/97355]
+
+--2022-04-20 14:00:18--  http://www.google.com/intl/en/about.html
+Connecting to www.google.com (www.google.com)|216.58.196.68|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: http://www.google.com/intl/en/about/ [following]
+--2022-04-20 14:00:18--  http://www.google.com/intl/en/about/
+Reusing existing connection to www.google.com:80.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://about.google/intl/en/ [following]
+--2022-04-20 14:00:19--  https://about.google/intl/en/
+Resolving about.google (about.google)... ^Z
+[3]+  Stopped                 wget -r www.google.com

@@ -450,8 +450,10 @@ abc/  abs/  b/  d/  git/  Linux/  PostgreSQL/  s/
 Name -       clear screen
 Purpose-    clears the screen of the terminal
 Examples- clear
+-----------------------------------------------------------------------------------------------------
 Name -       ps
-Purpose-    
+Purpose-    Used to list the currently running processes and their PIDs along with some other information 
+depends on different options
 Examples-
 --------------------------------------------------------------------------------------------------------------------------
 Name -       shutdown
@@ -498,23 +500,27 @@ sudo shutdown -c
  cannot specify a time argument, but can still broadcast a message 
 
 sudo shutdown -c "Canceling the reboot"
-
+----------------------------------------------------------------------------------------------------
 Name -       touch
-Purpose-    
+Purpose-    Used to create, change and modify timestamps of a file
 Examples-
+-------------------------------------------------------------------------------------------------
 Name -       locate
-Purpose-    
+Purpose-    Used to find the files by name
 Examples-
 ---------------------------------------------------------------------------------------------
 Name -       find
-Purpose-    
+Purpose-    Used to find files and directories and perform subsequent operations on them
 Examples-
 ---------------------------------------------------------------------------------------------
 Name -       grep
 Purpose-    
 Examples-
-Name -       sudo
-Purpose-    
+---------------------------------------------------------------------------------------
+Name -       sudo(Super User Do)
+Purpose-    Used as a prefix of some command that only superuser are allowed to run
+These users who can use the sudo command need to have an entry in the 
+sudoers file located at “/etc/sudoers”
 Examples-
 -----------------------------------------------------------------------------------
 Name -       Chown
@@ -527,7 +533,30 @@ chown owner_name file_name
 -c: Reports when a file change is made.
 -v: It is used to show the verbose information for every file processed. 
 -f: It suppresses most of the error messages. If not permitted to change group permissions and shows error, this option forcefully/silently changes the ownership.
+chown owner_name file_name
+To Change group ownership
+chown :group1 file1.txt
 
+To change the owner as well as group
+chown master:group1 greek1
+
+To change the owner from particular 
+ownership only
+chown --from=master root greek1
+
+Group only
+chown --from=:group1 root greek1
+
+To copy ownership of one file to another:
+chown --reference=greek1 greek2
+chown master:group greek2 greek3 # in case of group
+itsacheckmate@itsacheckmate:~$ sudo chown root url.txt
+[sudo] password for itsacheckmate: 
+itsacheckmate@itsacheckmate:~$ ls -l url.txt
+-rw-rw-r-- 1 root itsacheckmate 33 Apr 20 13:56 url.txt
+
+itsacheckmate@itsacheckmate:~$ sudo chown -c  itsacheckmate url.txt
+changed ownership of 'url.txt' from root to itsacheckmate
 ---------------------------------------------------------------------------------------
 Name -       kill
 Purpose-   is a built-in command which is used to terminate processes manually. 
@@ -557,12 +586,89 @@ itsacheckmate@itsacheckmate:~/Training$ kill -L
 
 
 -------------------------------------------------------------------------------------------------
-Name -       ping
-Purpose-    
-Examples-
-Name -       wget
-Purpose-    
-Examples-
+Name -       ping (Packet Internet Groper)
+Purpose-    Used to check the network connectivity between host and server/host
+Examples- it takes the input as ip or url and record the time to get response i.e latency
+It uses ICMP (Internet control message Protocol)
+it send icmp echo message to the host and wait for the icmp reply message
+it is measured in milli seconds
+itsacheckmate@itsacheckmate:~$ ping www.google.com
+PING www.google.com (142.250.183.164) 56(84) bytes of data.
+64 bytes from bom07s32-in-f4.1e100.net (142.250.183.164): icmp_seq=1 ttl=116 time=57.3 ms
+64 bytes from bom07s32-in-f4.1e100.net (142.250.183.164): icmp_seq=2 ttl=116 time=63.5 ms
+64 bytes from bom07s32-in-f4.1e100.net (142.250.183.164): icmp_seq=3 ttl=116 time=58.1 ms
+^C
+--- www.google.com ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 57.295/59.637/63.512/2.759 ms
+Here =>
+min: minimum time to get a response
+avg: average time to get responses
+max: maximum time to get a response
+
+controlling the no of pings
+ping -c 5 www.google.com will only ping website 5 times
+
+controlling packet size  => -s option
+ping -s 40 -c -5 www.google.com
+usually it is 64 by default
+itsacheckmate@itsacheckmate:~$ ping -s 40 -c 5 www.google.com
+PING www.google.com (216.58.196.68) 40(68) bytes of data.
+48 bytes from bom05s11-in-f4.1e100.net (216.58.196.68): icmp_seq=1 ttl=115 time=46.3 ms
+48 bytes from bom05s11-in-f4.1e100.net (216.58.196.68): icmp_seq=2 ttl=115 time=36.9 ms
+48 bytes from bom05s11-in-f4.1e100.net (216.58.196.68): icmp_seq=3 ttl=115 time=32.2 ms
+48 bytes from bom05s11-in-f4.1e100.net (216.58.196.68): icmp_seq=4 ttl=115 time=37.1 ms
+48 bytes from bom05s11-in-f4.1e100.net (216.58.196.68): icmp_seq=5 ttl=115 time=41.7 ms
+
+--- www.google.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4005ms
+rtt min/avg/max/mdev = 32.246/38.831/46.271/4.763 ms
+
+changing time interval between pings=> -i option
+by default it is 1 second
+ping -i 10 www.google.com   # now 10 seconds
+
+
+to only get summary => -q option is used 
+ping -c 5 -q www.google.com
+itsacheckmate@itsacheckmate:~$ ping -c 5 -q www.google.com
+PING www.google.com (216.58.203.4) 56(84) bytes of data.
+
+--- www.google.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 55.547/68.757/114.774/23.028 ms
+
+timout ping to stop lingin after certain no. of timeout => -w option is used
+ping -w 3 www.google.com
+
+to test the network robustness flodding the ping is used => -f option
+ping -f www.google.com
+
+To Add Timestamp 
+It is current time of event recorded by a machine over a network. It works by using TS option of IP packet. 
+We have three option with it 
+tsonly (timestamp only)
+tsandaddr (timestamp and address)
+tsprespec (timestamp pre-specified for multiple hosts)
+ ping -T tsonly -c 2 127.0.0.1
+ ping -T tsandaddr -c 2 127.0.0.1
+ 
+ Time to wait for response: Sets time to wait for a response. 
+ ping -c 5 -W 3 www.geeksforgeeks.org
+ here -W is in caps 
+
+To fill packet with data: We can fill data in packet using -p option. Like -p ff will fill packet with ones. 
+ ping -c 5 -p ff www.geeksforgeeks.org
+ PATTERN: 0xff
+ Specify TTL(Time To Live): 
+It is maximum hop a packet can travel before getting discarded.A value 0 will restricty packet to same host. 
+ ping -c 5 -t 64 www.geeksforgeeks.org
+ itsacheckmate@itsacheckmate:~$ ping -c 5 -t 2  www.google.com
+PING www.google.com (142.250.182.228) 56(84) bytes of data.
+From 192.168.1.1 (192.168.1.1) icmp_seq=1 Time to live exceeded
+
+ ----------------------------------------------------------------------------------------
+
 ------------------------------------------------------------------------------------
 Name -       top
 Purpose-    it is used to show the Linux process. it shows the dynamic real time running view of the system
@@ -738,6 +844,70 @@ git-2.35.3 git.tar.gz tmp
 Name -       zip/unzip
 Purpose-    
 Examples-
-Name -       nano and Vim editor
-Purpose-    
+
+----------------------------------------------------------------------------------------------
+Name -       nano editor
+Purpose-simple and WYSIWYG(What You See Is What You Get) text editor
 Examples-
+Creating new file 
+nano filename
+
+to save file 
+ctrl+o
+ 
+ To cut paste in a file. Ctrl+k is used to cut and 
+ Ctrl+u is used to paste the text.
+ to copy select using ctrl+6 and copy using als+shift+6
+ 
+ To search a word in a file. Ctrl+w is used.
+ 
+ To do spell check first press Ctrl+t
+ ctrl+x to exit
+------------------------------------------------------------------------------------
+Name -     Vim editor
+Purpose-  Vim is an advanced and highly configurable text editor 
+built to enable efficient text editing  
+Examples-
+type  ':' to give commmand in the vim editor 
+:help --for help
+:q - to quit
+:wq -- to save and exit
+:q! - to not save and exit
+i = write into file 
+x key to delete the word
+w - until the start of the next word, EXCLUDING its first character.
+e - to the end of the current word, INCLUDING the last character.
+$ - to the end of the line, INCLUDING the last character.
+ i    ->   This key is used to put the cursor before the current position.
+ a    ->   This key is used to put the cursor after the current position.
+ o    ->   This key is used to put the cursor below the line.
+ O    ->   This key is used to puts the cursor above the line.
+ To move courser 2 words forward use the following command
+2w
+dw to delete the word
+d2w to delete 2 words
+d$ to delete the line 
+u to undo
+ and ctrl+r to redo
+ r to replace the character
+ change operator - ce to change the word
+ c$ to change the line
+ 
+ 
+
+To search the word After the cursor uses the backslash key and then write the word = :/word
+Use n to move on next matching word  = :n
+Use N to move on previous matching word = :N
+
+To replace the word in file use s/ command in vim like
+:s/searchword/replaceword/
+
+To do replace all occurrence of word use g 
+:s/searchword/replaceword/g
+
+To confirm before replacements of words use gc
+:s/searchword/replaceword/gc
+
+To use this command in the whole file use % before the command
+:%s/searchword/replaceword/gc
+------------------------------------------------------------------------------------------------------
