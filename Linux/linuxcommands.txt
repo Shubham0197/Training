@@ -503,7 +503,69 @@ sudo shutdown -c "Canceling the reboot"
 ----------------------------------------------------------------------------------------------------
 Name -       touch
 Purpose-    Used to create, change and modify timestamps of a file
+It is used to create a file without any content.
 Examples-
+To modify access time  ->
+itsacheckmate@itsacheckmate:~$ touch -a url
+itsacheckmate@itsacheckmate:~$ stat url.txt
+  File: url.txt
+  Size: 33        	Blocks: 8          IO Block: 4096   regular file
+Device: 10305h/66309d	Inode: 16785990    Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/itsacheckmate)   Gid: ( 1000/itsacheckmate)
+Access: 2022-04-20 18:41:11.726554500 +0530
+Modify: 2022-04-20 13:56:01.863313125 +0530
+Change: 2022-04-20 18:41:11.726554500 +0530
+ Birth: -
+touch -c : This command is used to check whether a file is created or not. 
+If not created then don’t create it.
+touch -c asdf
+file not created
+
+touch -c-d : This is used to update access and modification time.
+itsacheckmate@itsacheckmate:~$ touch -c -d '16 Sep' url
+itsacheckmate@itsacheckmate:~$ stat url
+  File: url
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 10305h/66309d	Inode: 16781564    Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/itsacheckmate)   Gid: ( 1000/itsacheckmate)
+Access: 2022-09-16 00:00:00.000000000 +0530
+Modify: 2022-09-16 00:00:00.000000000 +0530
+Change: 2022-04-20 18:45:06.989284094 +0530
+ Birth: -
+ touch -m : only changes the modification time 
+ itsacheckmate@itsacheckmate:~$ touch -m url
+itsacheckmate@itsacheckmate:~$ stat url
+  File: url
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 10305h/66309d	Inode: 16781564    Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/itsacheckmate)   Gid: ( 1000/itsacheckmate)
+Access: 2022-09-16 00:00:00.000000000 +0530
+Modify: 2022-04-20 18:48:05.093890993 +0530
+Change: 2022-04-20 18:48:05.093890993 +0530
+ Birth: -
+touch -r : this commmand is used to use the timestamp of the another file 
+itsacheckmate@itsacheckmate:~$ touch -r url url.txt
+itsacheckmate@itsacheckmate:~$ stat url.txt
+  File: url.txt
+  Size: 33        	Blocks: 8          IO Block: 4096   regular file
+Device: 10305h/66309d	Inode: 16785990    Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/itsacheckmate)   Gid: ( 1000/itsacheckmate)
+Access: 2022-04-20 18:41:11.726554500 +0530
+Modify: 2022-04-20 13:56:01.863313125 +0530
+Change: 2022-04-20 18:50:44.474972140 +0530
+
+touch -t : This is used to create a file using a specified time.
+itsacheckmate@itsacheckmate:~$ touch -t 9701260101 birth
+itsacheckmate@itsacheckmate:~$ stat birth
+  File: birth
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 10305h/66309d	Inode: 16786076    Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/itsacheckmate)   Gid: ( 1000/itsacheckmate)
+Access: 1997-01-26 01:01:00.000000000 +0530
+Modify: 1997-01-26 01:01:00.000000000 +0530
+Change: 2022-04-20 18:51:57.451596419 +0530
+ Birth: -
+
 -------------------------------------------------------------------------------------------------
 Name -       locate
 Purpose-    Used to find the files by name
@@ -511,7 +573,59 @@ Examples-
 ---------------------------------------------------------------------------------------------
 Name -       find
 Purpose-    Used to find files and directories and perform subsequent operations on them
-Examples-
+Examples-  
+find [where to start searching from ] [-options] [what to find]
+Options :
+
+-exec CMD: The file being searched which meets the above criteria and returns 0 for as its exit status for successful command execution.
+-ok CMD : It works same as -exec except the user is prompted first.
+-inum N : Search for files with inode number ‘N’.
+-links N : Search for files with ‘N’ links.
+-name demo : Search for files that are specified by ‘demo’.
+-newer file : Search for files that were modified/created after ‘file’.
+-perm octal : Search for the file if permission is ‘octal’.
+-print : Display the path name of the files found by using the rest of the criteria.
+-empty : Search for empty files and directories.
+-size +N/-N : Search for files of ‘N’ blocks; ‘N’ followed by ‘c’can be used to measure size in characters; ‘+N’ means size > ‘N’ blocks and ‘-N’ means size < 'N' blocks.
+-user name : Search for files owned by user name or ID ‘name’.
+\(expr \) : True if ‘expr’ is true; used for grouping criteria combined with OR or AND.
+! expr : True if ‘expr’ is false.
+find . -name *txt
+
+-iname =files irrespective of upper and lower case
+-newer file: search for file that are created after the 'file'
+-user name :search for the file owned by user name 
+-perm permission : search for the file with permission specified.
+itsacheckmate@itsacheckmate:~$ touch file.txt file1.txt file.php img.jpg
+itsacheckmate@itsacheckmate:~$ find . -name file.txt
+./file.txt
+itsacheckmate@itsacheckmate:~$ find . -name file10.txt
+itsacheckmate@itsacheckmate:~$ find . -iname FILE.txt
+./file.txt
+itsacheckmate@itsacheckmate:~$ find ./Training -newer index.html
+./Training
+./Training/.git
+./Training/.git/logs/HEAD
+./Training/.git/logs/refs/heads/main
+./Training/.git/logs/refs/remotes/origin/main
+./Training/.git/index
+itsacheckmate@itsacheckmate:~$ find . -user root
+./tmp/git-2.35.3/gitweb/static/gitweb.js
+./tmp/git-2.35.3/gitweb/GITWEB-BUILD-OPTIONS
+./tmp/git-2.35.3/gitweb/gitweb.cgi
+
+itsacheckmate@itsacheckmate:~$ find ./Training  -perm 664
+./Training/.git/logs/HEAD
+./Training/.git/logs/refs/heads/main
+./Training/.git/logs/refs/remotes/origin/main
+./Training/.git/logs/refs/remotes/origin/HEAD
+./Training/.git/packed-refs
+
+itsacheckmate@itsacheckmate:~$ find . -size +50M
+./Downloads/google-chrome-stable_current_amd64.deb
+./Downloads/Telegram Desktop/Ghosts.2021.S01E17.YouthTrendx.mkv
+./d.zip
+
 ---------------------------------------------------------------------------------------------
 Name -       grep
 Purpose-    
@@ -842,10 +956,38 @@ git-2.35.3 git.tar.gz tmp
 -------------------------------------------------------------------------------------------------------------------------------------
 
 Name -       zip/unzip
-Purpose-    
+Purpose-   it is a compression and file packaging utility for Unix
 Examples-
+Syntax = zip [options] zipfile files_list
+$zip myfile.zip filename.txt
+itsacheckmate@itsacheckmate:~$ zip my.zip url.txt
+  adding: url.txt (deflated 9%)
+  
+  to unzip use command=>  unzip filename 
+  itsacheckmate@itsacheckmate:~$ unzip my.zip
+Archive:  my.zip
+replace url.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
 
-----------------------------------------------------------------------------------------------
+if to remove file from zipp then use -d command
+$zip –d filename.zip file.txt
+ to update or add the file in the existing zip use -u option
+ zip -u my.zip url.txt
+itsacheckmate@itsacheckmate:~$ zip -u my.zip url.txt
+itsacheckmate@itsacheckmate:~$ zip -u my.zip newfile
+  adding: newfile (stored 0%)
+  
+  if to remove file after zipping it use -m option 
+  zip -m my.zip url.txt
+  
+  to zip the whole directory use recursive option -r  
+  zip -r my.zip Training
+  
+  
+  -x is used to exclude the files while zipping the current directory
+  zip –x filename.zip file_to_be_excluded
+  
+  -v is the verbose to print all the status are the command is run
+  ----------------------------------------------------------------------------------------------
 Name -       nano editor
 Purpose-simple and WYSIWYG(What You See Is What You Get) text editor
 Examples-
