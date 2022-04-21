@@ -729,4 +729,6 @@ $ git reflog
 # reset the repo to The commit " To rebase commiting change "
 $ git reset HEAD@{2}
 Unstaged changes after reset:
+This is test change
+
 M       new.txt
