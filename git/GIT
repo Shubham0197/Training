@@ -732,3 +732,242 @@ Unstaged changes after reset:
 This is test change
 
 M       new.txt
+
+
+====================================================
+
+itsacheckmate@itsacheckmate:~/Training$ git branch -r
+  origin/HEAD -> origin/main
+  origin/main
+  origin/test
+
+
+itsacheckmate@itsacheckmate:~/Training$ git diff main..test
+diff --git a/README.md b/README.md
+index b5ddb21..628d2ea 100644
+--- a/README.md
+diff --git a/README.md b/README.md
+index b5ddb21..628d2ea 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,6 @@
+ # Training.
+ GIT
+-
++PostgreSQL
+ Physical Design
+ https://www.youtube.com/watch?v=SnZDfD8AVkw&list=PL6XklZATqYx-ADvXHabqbffI3q2HKbUaQ&index=7
+ https://www.youtube.com/watch?v=Dq2Rhd4EcV4&list=PL6XklZATqYx-ADvXHabqbffI3q2HKbUaQ&index=8
+diff --git a/session_cmds b/session_cmds
+index ea591f4..1d3153f 100644
+--- a/session_cmds
++++ b/session_cmds
+@@ -1,4 +1,6 @@
+ Linux CMDs
+ Github CMDs
+ 
+-changes in main branch
++
++adding something
++
+
+[1]+  Stopped                 git diff main..test
+itsacheckmate@itsacheckmate:~/Training$ git diff main...test
+diff --git a/session_cmds b/session_cmds
+index d57816b..1d3153f 100644
+--- a/session_cmds
++++ b/session_cmds
+@@ -1,2 +1,6 @@
+ Linux CMDs
+-Github CMDs
+\ No newline at end of file
++Github CMDs
++
++
++adding something
++
+
+
+## To see difference between staged and commit
+itsacheckmate@itsacheckmate:~/Training$ git diff --cached
+diff --git a/git/GIT b/git/GIT
+index 1144a1c..87b22de 100644
+--- a/git/GIT
++++ b/git/GIT
+@@ -732,3 +732,57 @@ Unstaged changes after reset:
+ This is test change
+ 
+ M       new.txt
++
++
++====================================================
++
++itsacheckmate@itsacheckmate:~/Training$ git branch -r
++  origin/HEAD -> origin/main
++  origin/main
++  origin/test
++
++
++itsacheckmate@itsacheckmate:~/Training$ git diff main..test
++diff --git a/README.md b/README.md
++index b5ddb21..628d2ea 100644
++--- a/README.md
++diff --git a/README.md b/README.md
+
+[2]+  Stopped                 git diff --cached
+
+
+See difference between files in branches
+itsacheckmate@itsacheckmate:~/Training$ git diff main test ./README.md
+diff --git a/README.md b/README.md
+index b5ddb21..628d2ea 100644
+--- a/README.md
++++ b/README.md
+@@ -1,6 +1,6 @@
+ # Training.
+ GIT
+-
++PostgreSQL
+ Physical Design
+ https://www.youtube.com/watch?v=SnZDfD8AVkw&list=PL6XklZATqYx-ADvXHabqbffI3q2HKbUaQ&index=7
+ https://www.youtube.com/watch?v=Dq2Rhd4EcV4&list=PL6XklZATqYx-ADvXHabqbffI3q2HKbUaQ&index=8
+
+itsacheckmate@itsacheckmate:~/Training$ git status -v
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git/GIT
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+
+diff --git a/git/GIT b/git/GIT
+index 1144a1c..87b22de 100644
+--- a/git/GIT
++++ b/git/GIT
+@@ -732,3 +732,57 @@ Unstaged changes after reset:
+ This is test change
+ 
+ M       new.txt
++
++
++====================================================
++
++itsacheckmate@itsacheckmate:~/Training$ git branch -r
++  origin/HEAD -> origin/main
++  origin/main
++  origin/test
++
++
++itsacheckmate@itsacheckmate:~/Training$ git diff main..test
++diff --git a/README.md b/README.md
++index b5ddb21..628d2ea 100644
++--- a/README.md
++diff --git a/README.md b/README.md
++index b5ddb21..628d2ea 100644
++--- a/README.md
+++++ b/README.md
++@@ -1,6 +1,6 @@
++ # Training.
++ GIT
++-
+++PostgreSQL
++ Physical Design
++ https://www.youtube.com/watch?v=SnZDfD8AVkw&list=PL6XklZATqYx-ADvXHabqbffI3q2HKbUaQ&index=7
++ https://www.youtube.com/watch?v=Dq2Rhd4EcV4&list=PL6XklZATqYx-ADvXHabqbffI3q2HKbUaQ&index=8
++diff --git a/session_cmds b/session_cmds
++index ea591f4..1d3153f 100644
++--- a/session_cmds
+++++ b/session_cmds
++@@ -1,4 +1,6 @@
++ Linux CMDs
++ Github CMDs
++ 
++-changes in main branch
+++
+++adding something
+++
++
++[1]+  Stopped                 git diff main..test
++itsacheckmate@itsacheckmate:~/Training$ git diff main...test
++diff --git a/session_cmds b/session_cmds
++index d57816b..1d3153f 100644
++--- a/session_cmds
+++++ b/session_cmds
++@@ -1,2 +1,6 @@
++ Linux CMDs
++-Github CMDs
++\ No newline at end of file
+++Github CMDs
+++
+++
+++adding something
+++
+
+
+Git Stash 
+
+itsacheckmate@itsacheckmate:~/Training$ git stash apply
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git stash list
+stash@{0}: WIP on main: 45074c7 adding in main branchnew
+
+
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+git Alias
+itsacheckmate@itsacheckmate:~/Training$ git config --global alias.co checkout
+itsacheckmate@itsacheckmate:~/Training$ git config --global alias.br branch
+itsacheckmate@itsacheckmate:~/Training$ git config --global alias.ci commit
+itsacheckmate@itsacheckmate:~/Training$ git config --global alias.st status
+itsacheckmate@itsacheckmate:~/Training$ git br
+* main
+  new
+  test
+itsacheckmate@itsacheckmate:~/Training$ git st
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git co
+M	git/GIT
+Your branch is up to date with 'origin/main'.
+itsacheckmate@itsacheckmate:~/Training$ git ci
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+$ git config --global alias.last 'log -1 HEAD'
+itsacheckmate@itsacheckmate:~/Training$ git config --global alias.last 'log -1 HEAD'
+itsacheckmate@itsacheckmate:~/Training$ git last
+commit 45074c79a136ce889865031d8b3ba81214b76a21 (HEAD -> main, origin/main, origin/HEAD, new)
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Thu Apr 21 17:03:13 2022 +0530
+
+    adding in main branchnew
