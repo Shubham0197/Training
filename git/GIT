@@ -971,3 +971,47 @@ Author: Shubham Jain <shubhamjain0197@gmail.com>
 Date:   Thu Apr 21 17:03:13 2022 +0530
 
     adding in main branchnew
+
+
+itsacheckmate@itsacheckmate:~/Training$ git commit -m "Practiced Git diff,alias,stash,status  and their different uses"
+[main b6af2e5] Practiced Git diff,alias,stash,status  and their different uses
+ 1 file changed, 239 insertions(+)
+itsacheckmate@itsacheckmate:~/Training$ git push
+To github.com:Shubham0197/Training.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:Shubham0197/Training.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+itsacheckmate@itsacheckmate:~/Training$ git branch
+* main
+  new
+  test
+itsacheckmate@itsacheckmate:~/Training$ git pull
+remote: Enumerating objects: 44, done.
+remote: Counting objects: 100% (39/39), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 32 (delta 15), reused 26 (delta 10), pack-reused 0
+Unpacking objects: 100% (32/32), 3.53 KiB | 904.00 KiB/s, done.
+From github.com:Shubham0197/Training
+   45074c7..1a010c9  main       -> origin/main
+   abdbf9f..9c14996  test       -> origin/test
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+itsacheckmate@itsacheckmate:~/Training$ git merge test
+Auto-merging session_cmds
+CONFLICT (content): Merge conflict in session_cmds
+Automatic merge failed; fix conflicts and then commit the result.
