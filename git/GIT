@@ -1080,7 +1080,11 @@ Your branch is ahead of 'origin/main' by 1 commit.
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	deleted:    git/GIT
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> c8fefd683b4317a390d300445db069c29597ab3e
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 	git/
@@ -1088,6 +1092,7 @@ Untracked files:
 itsacheckmate@itsacheckmate:~/Training$ git commit -m"commiting changes in git after rm file from staging area " git/GIT 
 [main b629e85] commiting changes in git after rm file from staging area
  1 file changed, 22 insertions(+)
+
 
 itsacheckmate@itsacheckmate:~/Training$ git log --graph --pretty=oneline --abbrev-commit
 * 45074c7 (HEAD -> new) adding in main branchnew
@@ -1552,3 +1557,4 @@ index 59810ef..0000000
 -Github CMDs
 -
 -
+
