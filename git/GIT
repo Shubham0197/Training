@@ -1015,3 +1015,25 @@ itsacheckmate@itsacheckmate:~/Training$ git merge test
 Auto-merging session_cmds
 CONFLICT (content): Merge conflict in session_cmds
 Automatic merge failed; fix conflicts and then commit the result.
+
+
+
+itsacheckmate@itsacheckmate:~$ git config --global alias.tr 'Training'
+itsacheckmate@itsacheckmate:~$ cd tr
+bash: cd: tr: No such file or directory
+itsacheckmate@itsacheckmate:~$ git config --get-regexp alias
+alias.co checkout
+alias.br branch
+alias.ci commit
+alias.st status
+alias.last log -1 HEAD
+alias.tr Training
+itsacheckmate@itsacheckmate:~$ git config --global alias.alias "config --get-regexp ^alias\."
+itsacheckmate@itsacheckmate:~$ git alias
+alias.co checkout
+alias.br branch
+alias.ci commit
+alias.st status
+alias.last log -1 HEAD
+alias.tr Training
+alias.alias config --get-regexp ^alias\.
