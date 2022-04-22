@@ -1015,3 +1015,77 @@ itsacheckmate@itsacheckmate:~/Training$ git merge test
 Auto-merging session_cmds
 CONFLICT (content): Merge conflict in session_cmds
 Automatic merge failed; fix conflicts and then commit the result.
+
+
+
+itsacheckmate@itsacheckmate:~$ git config --global alias.tr 'Training'
+itsacheckmate@itsacheckmate:~$ cd tr
+bash: cd: tr: No such file or directory
+itsacheckmate@itsacheckmate:~$ git config --get-regexp alias
+alias.co checkout
+alias.br branch
+alias.ci commit
+alias.st status
+alias.last log -1 HEAD
+alias.tr Training
+itsacheckmate@itsacheckmate:~$ git config --global alias.alias "config --get-regexp ^alias\."
+itsacheckmate@itsacheckmate:~$ git alias
+alias.co checkout
+alias.br branch
+alias.ci commit
+alias.st status
+alias.last log -1 HEAD
+alias.tr Training
+alias.alias config --get-regexp ^alias\.
+
+
+git unstage files which are added
+git rm --cached filename
+
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Linux/linuxcommands.txt
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git commit -m'partially commiting changes in Linux commnads of using alias' Linux/linuxcommands.txt 
+[main f18f795] partially commiting changes in Linux commnads of using alias
+ 1 file changed, 48 insertions(+), 2 deletions(-)
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git add .
+itsacheckmate@itsacheckmate:~/Training$ git rm --cached GIT
+fatal: pathspec 'GIT' did not match any files
+itsacheckmate@itsacheckmate:~/Training$ git rm --cached git/GIT
+rm 'git/GIT'
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    git/GIT
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git/
+
+itsacheckmate@itsacheckmate:~/Training$ git commit -m"commiting changes in git after rm file from staging area " git/GIT 
+[main b629e85] commiting changes in git after rm file from staging area
+ 1 file changed, 22 insertions(+)
+
