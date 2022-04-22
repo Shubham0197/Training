@@ -212,7 +212,7 @@ itsacheckmate@itsacheckmate:~/tmp$ pwd -L
 itsacheckmate@itsacheckmate:~/tmp$ pwd -P
 /home/itsacheckmate/tmp
 -----------------------------------------------------------------------------------------------------------------------------
-Name -       Chmod
+Name -       s
 Purpose-      Change the access mode of the file i.e what user have the permission on the file 
 wether they can edit it, or read or execute the file or the directory .
 Examples- Syntax is chmod [reference][operator][mode] file... 
@@ -1204,3 +1204,49 @@ To confirm before replacements of words use gc
 To use this command in the whole file use % before the command
 :%s/searchword/replaceword/gc
 ------------------------------------------------------------------------------------------------------
+
+Creating user 
+sudo useradd shubham
+sudo passwd shubham
+Creating Group
+
+ Adding User to the Group
+  sudo usermod  -g itsacheckmate
+  sudo usermod -a -G  itsacheckmate
+  
+  create alias in linux
+  alisa name='commmand'
+  itsacheckmate@itsacheckmate:~$ alias tr='cd ~/Training'
+itsacheckmate@itsacheckmate:~$ tr
+itsacheckmate@itsacheckmate:~/Training$ 
+
+  
+  deleting alias--  unalias name
+  
+  list all alias-- alias
+  
+  itsacheckmate@itsacheckmate:~$ alias tr='./itsachackmate/Training'
+itsacheckmate@itsacheckmate:~$ cd tr
+bash: cd: tr: No such file or directory
+itsacheckmate@itsacheckmate:~$ alias
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+alias tr='./itsachackmate/Training'
+itsacheckmate@itsacheckmate:~$ unalias
+unalias: usage: unalias [-a] name [name ...]
+itsacheckmate@itsacheckmate:~$ unalias tr
+itsacheckmate@itsacheckmate:~$ alias
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
