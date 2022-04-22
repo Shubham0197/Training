@@ -1037,3 +1037,518 @@ alias.st status
 alias.last log -1 HEAD
 alias.tr Training
 alias.alias config --get-regexp ^alias\.
+
+
+git unstage files which are added
+git rm --cached filename
+
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Linux/linuxcommands.txt
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git commit -m'partially commiting changes in Linux commnads of using alias' Linux/linuxcommands.txt 
+[main f18f795] partially commiting changes in Linux commnads of using alias
+ 1 file changed, 48 insertions(+), 2 deletions(-)
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git add .
+itsacheckmate@itsacheckmate:~/Training$ git rm --cached GIT
+fatal: pathspec 'GIT' did not match any files
+itsacheckmate@itsacheckmate:~/Training$ git rm --cached git/GIT
+rm 'git/GIT'
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    git/GIT
+	
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git/
+
+itsacheckmate@itsacheckmate:~/Training$ git commit -m"commiting changes in git after rm file from staging area " git/GIT 
+[main b629e85] commiting changes in git after rm file from staging area
+ 1 file changed, 22 insertions(+)
+
+itsacheckmate@itsacheckmate:~/Training$ git log --graph --pretty=oneline --abbrev-commit
+* 45074c7 (HEAD -> new) adding in main branchnew
+* a89e94c adding in main branch
+* 2f9e9ba new session file added along with GIT file changes
+* ccf823c test commit
+* 1f874d1 Practice ps,locate,grep and sudo commands on terminal
+* 0e0e380 Pacticed the touch,find,zip,unzip commands on terminal
+* f217531 Practiced wget,ping,chown commands and nano and vim editor
+* 26acf60 Practice man,history and top command with their options
+* d1c2b1b Practice ls with options and learn cp vs scp and chown and practice kill commands
+* be01426 Directory Commands with their options rm,rmdir,cd,mv,mkdir,cp
+* 8b7b4da Practice the chmod command,Sudo chmod , Recursive chmod,chmod sticky bit
+* 4e448bd Running Linux Commands mkdir,touch,ls,pwd,shutdown,cd,echo
+* c1c424f Starting Learning Linux
+* 975c366 Some Naming Convention to take care in future
+* 03409a0 Created Return_book(bookid,studentid) function to return book update fine and decrease issued_quantity by 1
+* a3421ec Git SSH key generation and copy commands updated
+* b04f5fe Using Inner join on theree tables
+* 1639b15 Inserted data into the Database tables and checking the working of Trigger
+* 5e737d8 Update Library Management System.drawio.svg
+
+[11]+  Stopped                 git log --graph --pretty=oneline --abbrev-commit
+itsacheckmate@itsacheckmate:~/Training$ git show-tree
+* ebafbe7 (main) partially commiting changes in Linux commnads of using alias
+| * c8fefd6 (origin/main, origin/HEAD) commiting changes in git after rm file from staging area
+| * deaf545 Saving Changes which are conflictiing in Session_cmds
+|/| 
+| | * 17bb247 (refs/stash) WIP on main: 45074c7 adding in main branchnew
+| |/  
+|/|   
+| | * 9c14996 (origin/test) remove file
+| | * 25b2d48 Merge branch 'test' of github.com-whole_cell:Shubham0197/Training into test
+| |/| 
+|/|/  
+| * abdbf9f (test) added
+* | 45074c7 (HEAD -> new) adding in main branchnew
+|/  
+* 668f5a9 Initial commit
+itsacheckmate@itsacheckmate:~/Training$ git rebase main
+Successfully rebased and updated refs/heads/new.
+itsacheckmate@itsacheckmate:~/Training$ git show-tree
+* ebafbe7 (HEAD -> new, main) partially commiting changes in Linux commnads of using alias
+| * c8fefd6 (origin/main, origin/HEAD) commiting changes in git after rm file from staging area
+| | * 17bb247 (refs/stash) WIP on main: 45074c7 adding in main branchnew
+| |/  
+|/|   
+| | * 9c14996 (origin/test) remove file
+| |/  
+| * abdbf9f (test) added
+|/  
+* 668f5a9 Initial commit
+itsacheckmate@itsacheckmate:~/Training$ gitk
+^Z
+[12]+  Stopped                 gitk
+itsacheckmate@itsacheckmate:~/Training$ git checkout main
+Switched to branch 'main'
+Your branch and 'origin/main' have diverged,
+and have 3 and 6 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+itsacheckmate@itsacheckmate:~/Training$ gitk
+^Z
+[13]+  Stopped                 gitk
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 3 and 6 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+nothing to commit, working tree clean
+itsacheckmate@itsacheckmate:~/Training$ git pull
+Auto-merging session_cmds
+CONFLICT (content): Merge conflict in session_cmds
+Automatic merge failed; fix conflicts and then commit the result.
+itsacheckmate@itsacheckmate:~/Training$ git rm session_cmds 
+rm 'session_cmds'
+itsacheckmate@itsacheckmate:~/Training$ git pull
+error: You have not concluded your merge (MERGE_HEAD exists).
+hint: Please, commit your changes before merging.
+fatal: Exiting because of unfinished merge.
+itsacheckmate@itsacheckmate:~/Training$ git add .
+itsacheckmate@itsacheckmate:~/Training$ git push
+To github.com:Shubham0197/Training.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'github.com:Shubham0197/Training.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+itsacheckmate@itsacheckmate:~/Training$ git pull
+error: You have not concluded your merge (MERGE_HEAD exists).
+hint: Please, commit your changes before merging.
+fatal: Exiting because of unfinished merge.
+itsacheckmate@itsacheckmate:~/Training$ git commit -i
+fatal: No paths with --include/--only does not make sense.
+itsacheckmate@itsacheckmate:~/Training$ git commit -i session_cmds 
+[main 497cc3b] Merge branch 'main' of github.com:Shubham0197/Training
+itsacheckmate@itsacheckmate:~/Training$ git pul
+git: 'pul' is not a git command. See 'git --help'.
+
+The most similar commands are
+	pull
+	bulk
+	push
+itsacheckmate@itsacheckmate:~/Training$ git pull
+Already up to date.
+itsacheckmate@itsacheckmate:~/Training$ git log
+commit 497cc3b4c9034762a54d70d0421973cb7b87177c (HEAD -> main)
+Merge: ebafbe7 c8fefd6
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Fri Apr 22 14:21:36 2022 +0530
+
+    Merge branch 'main' of github.com:Shubham0197/Training
+
+commit ebafbe725625371f988772afca7d57c746929230 (new)
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Fri Apr 22 12:45:42 2022 +0530
+
+    partially commiting changes in Linux commnads of using alias
+
+commit 8750c50bbdfc14d8627b7437d601ee720e73c9a2
+Author: khushbugoyal <khushi.0031@gmail.com>
+Date:   Thu Apr 21 17:14:28 2022 +0530
+
+    Test (#1)
+    
+    * added
+    
+    * conflicts resolved
+    
+    * added
+    
+    * test
+    
+    * added
+    
+    * test
+    
+    * test
+    
+    * conflicts resolved
+    
+    * file deleted
+    
+    Co-authored-by: Shubham Jain <shubhamjain0197@gmail.com>
+    Co-authored-by: vinay mehta <vinay.ymca@gmail.com>
+
+commit 98e1261f436e1040838c1ce486fd1ca8350ff352
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Thu Apr 21 16:36:36 2022 +0530
+
+
+[14]+  Stopped                 git log
+itsacheckmate@itsacheckmate:~/Training$ git reflog
+497cc3b (HEAD -> main) HEAD@{0}: commit (merge): Merge branch 'main' of github.com:Shubham0197/Training
+ebafbe7 (new) HEAD@{1}: checkout: moving from new to main
+ebafbe7 (new) HEAD@{2}: rebase (finish): returning to refs/heads/new
+ebafbe7 (new) HEAD@{3}: rebase (start): checkout main
+45074c7 HEAD@{4}: checkout: moving from main to new
+ebafbe7 (new) HEAD@{5}: rebase (continue) (finish): returning to refs/heads/main
+ebafbe7 (new) HEAD@{6}: rebase (continue) (pick): partially commiting changes in Linux commnads of using alias
+8750c50 HEAD@{7}: rebase (continue): Test (#1)
+98e1261 HEAD@{8}: rebase (continue): Rebase Practice from new branch
+b6af2e5 HEAD@{9}: rebase (start): checkout new
+c8fefd6 (origin/main, origin/HEAD) HEAD@{10}: commit: commiting changes in git after rm file from staging area
+f18f795 HEAD@{11}: reset: moving to HEAD^^
+abff7c2 HEAD@{12}: commit: mend
+b629e85 HEAD@{13}: commit: commiting changes in git after rm file from staging area
+f18f795 HEAD@{14}: commit: partially commiting changes in Linux commnads of using alias
+9e8a36e HEAD@{15}: commit (merge): Merge branch 'main' of github.com:Shubham0197/Training
+deaf545 HEAD@{16}: commit (merge): Saving Changes which are conflictiing in Session_cmds
+b6af2e5 HEAD@{17}: commit: Practiced Git diff,alias,stash,status and their different uses
+45074c7 HEAD@{18}: reset: moving to HEAD
+45074c7 HEAD@{19}: commit: adding in main branchnew
+a89e94c HEAD@{20}: commit: adding in main branch
+2f9e9ba HEAD@{21}: checkout: moving from test to main
+abdbf9f (test) HEAD@{22}: commit: added
+2f9e9ba HEAD@{23}: checkout: moving from main to test
+2f9e9ba HEAD@{24}: pull: Fast-forward
+1f874d1 HEAD@{25}: commit: Practice ps,locate,grep and sudo commands on terminal
+0e0e380 HEAD@{26}: commit: Pacticed the touch,find,zip,unzip commands on terminal
+f217531 HEAD@{27}: commit: Practiced wget,ping,chown commands and nano and vim editor
+26acf60 HEAD@{28}: commit: Practice man,history and top command with their options
+d1c2b1b HEAD@{29}: commit: Practice ls with options and learn cp vs scp and chown and practice kill commands
+be01426 HEAD@{30}: commit (amend): Directory Commands with their options rm,rmdir,cd,mv,mkdir,cp
+07fc4bf HEAD@{31}: reset: moving to HEAD^
+ad4e44e HEAD@{32}: reset: moving to HEAD
+ad4e44e HEAD@{33}: commit: mend
+07fc4bf HEAD@{34}: commit: Directory Commands with ther options rm,rmdir,cd,mv,mkdir
+8b7b4da HEAD@{35}: commit (amend): Practice the chmod command,Sudo chmod , Recursive chmod,chmod sticky bit
+7a7d6d8 HEAD@{36}: commit (amend): Practice the chmod command,Sudo chmod , Recursive chmod,chmod sticky bit
+5e1e74d HEAD@{37}: commit: Practice the chmod command,Sudo chmod and Recursive chmod
+4e448bd HEAD@{38}: commit: Running Linux Commands mkdir,touch,ls,pwd,shutdown,cd,echo
+c1c424f HEAD@{39}: commit: Starting Learning Linux
+975c366 HEAD@{40}: clone: from github.com:Shubham0197/Training.git
+itsacheckmate@itsacheckmate:~/Training$ git reflog HEAD@{13}
+b629e85 HEAD@{13}: commit: commiting changes in git after rm file from staging area
+f18f795 HEAD@{14}: commit: partially commiting changes in Linux commnads of using alias
+9e8a36e HEAD@{15}: commit (merge): Merge branch 'main' of github.com:Shubham0197/Training
+deaf545 HEAD@{16}: commit (merge): Saving Changes which are conflictiing in Session_cmds
+b6af2e5 HEAD@{17}: commit: Practiced Git diff,alias,stash,status and their different uses
+45074c7 HEAD@{18}: reset: moving to HEAD
+45074c7 HEAD@{19}: commit: adding in main branchnew
+a89e94c HEAD@{20}: commit: adding in main branch
+2f9e9ba HEAD@{21}: checkout: moving from test to main
+abdbf9f (test) HEAD@{22}: commit: added
+2f9e9ba HEAD@{23}: checkout: moving from main to test
+2f9e9ba HEAD@{24}: pull: Fast-forward
+1f874d1 HEAD@{25}: commit: Practice ps,locate,grep and sudo commands on terminal
+0e0e380 HEAD@{26}: commit: Pacticed the touch,find,zip,unzip commands on terminal
+f217531 HEAD@{27}: commit: Practiced wget,ping,chown commands and nano and vim editor
+26acf60 HEAD@{28}: commit: Practice man,history and top command with their options
+d1c2b1b HEAD@{29}: commit: Practice ls with options and learn cp vs scp and chown and practice kill commands
+be01426 HEAD@{30}: commit (amend): Directory Commands with their options rm,rmdir,cd,mv,mkdir,cp
+07fc4bf HEAD@{31}: reset: moving to HEAD^
+ad4e44e HEAD@{32}: reset: moving to HEAD
+ad4e44e HEAD@{33}: commit: mend
+07fc4bf HEAD@{34}: commit: Directory Commands with ther options rm,rmdir,cd,mv,mkdir
+8b7b4da HEAD@{35}: commit (amend): Practice the chmod command,Sudo chmod , Recursive chmod,chmod sticky bit
+7a7d6d8 HEAD@{36}: commit (amend): Practice the chmod command,Sudo chmod , Recursive chmod,chmod sticky bit
+5e1e74d HEAD@{37}: commit: Practice the chmod command,Sudo chmod and Recursive chmod
+4e448bd HEAD@{38}: commit: Running Linux Commands mkdir,touch,ls,pwd,shutdown,cd,echo
+c1c424f HEAD@{39}: commit: Starting Learning Linux
+975c366 HEAD@{40}: clone: from github.com:Shubham0197/Training.git
+itsacheckmate@itsacheckmate:~/Training$ git reset HEAD@{13}
+Unstaged changes after reset:
+M	git/GIT
+D	session_cmds
+itsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/GIT
+	deleted:    session_cmds
+
+no changes added to commit (use "git add" and/or "git commit -a")
+itsacheckmate@itsacheckmate:~/Training$ git add .
+itsacheckmate@itsacheckmate:~/Training$ git log
+commit b629e8569d845e4a7148be4e0ea49f05294ac7d5 (HEAD -> main)
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Fri Apr 22 12:48:02 2022 +0530
+
+    commiting changes in git after rm file from staging area
+
+commit f18f795ff8a2fcb6c8c29a341bfe5556f4514a08
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Fri Apr 22 12:45:42 2022 +0530
+
+    partially commiting changes in Linux commnads of using alias
+
+commit 9e8a36e7863a56a95838d7b63968892c7a0c269e
+Merge: deaf545 1a010c9
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Thu Apr 21 20:03:01 2022 +0530
+
+    Merge branch 'main' of github.com:Shubham0197/Training
+
+commit deaf5455b23d14642a46d534e1a12d25ca9689f3
+Merge: b6af2e5 abdbf9f
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Thu Apr 21 20:01:30 2022 +0530
+
+    Saving Changes which are conflictiing in Session_cmds
+
+commit b6af2e58e4b8f626bbb0e28e4adb6466b4a01c5e
+Author: Shubham Jain <shubhamjain0197@gmail.com>
+Date:   Thu Apr 21 19:55:48 2022 +0530
+
+    Practiced Git diff,alias,stash,status  and their different uses
+
+commit 1a010c90f3a19a4be2edcbf2ad8551df53ba8939
+Author: khushbugoyal <khushi.0031@gmail.com>
+Date:   Thu Apr 21 17:14:28 2022 +0530
+
+    Test (#1)
+    
+    * added
+    
+    * conflicts resolved
+    
+    * added
+    
+
+[15]+  Stopped                 git log
+itsacheckmate@itsacheckmate:~/Training$ git status -v
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git/GIT
+	deleted:    session_cmds
+
+diff --git a/git/GIT b/git/GIT
+index 914f721..88a4b5f 100644
+--- a/git/GIT
++++ b/git/GIT
+@@ -1037,3 +1037,55 @@ alias.st status
+ alias.last log -1 HEAD
+ alias.tr Training
+ alias.alias config --get-regexp ^alias\.
++
++
++git unstage files which are added
++git rm --cached filename
++
++itsacheckmate@itsacheckmate:~/Training$ git status
++On branch main
++Your branch is up to date with 'origin/main'.
++
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++	modified:   Linux/linuxcommands.txt
++	modified:   git/GIT
++
++no changes added to commit (use "git add" and/or "git commit -a")
++itsacheckmate@itsacheckmate:~/Training$ git commit -m'partially commiting changes in Linux commnads of using alias' Linux/linuxcommands.txt 
++[main f18f795] partially commiting changes in Linux commnads of using alias
++ 1 file changed, 48 insertions(+), 2 deletions(-)
++itsacheckmate@itsacheckmate:~/Training$ git status
++On branch main
++Your branch is ahead of 'origin/main' by 1 commit.
++  (use "git push" to publish your local commits)
++
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++	modified:   git/GIT
++
++no changes added to commit (use "git add" and/or "git commit -a")
++itsacheckmate@itsacheckmate:~/Training$ git add .
++itsacheckmate@itsacheckmate:~/Training$ git rm --cached GIT
++fatal: pathspec 'GIT' did not match any files
++itsacheckmate@itsacheckmate:~/Training$ git rm --cached git/GIT
++rm 'git/GIT'
++itsacheckmate@itsacheckmate:~/Training$ git status
++On branch main
++Your branch is ahead of 'origin/main' by 1 commit.
++  (use "git push" to publish your local commits)
++
++Changes to be committed:
++  (use "git restore --staged <file>..." to unstage)
++	deleted:    git/GIT
++	
++Untracked files:
++  (use "git add <file>..." to include in what will be committed)
++	git/
++
++itsacheckmate@itsacheckmate:~/Training$ git commit -m"commiting changes in git after rm file from staging area " git/GIT 
++[main b629e85] commiting changes in git after rm file from staging area
++ 1 file changed, 22 insertions(+)
++
+diff --git a/session_cmds b/session_cmds
+deleted file mode 100644
+index 59810ef..0000000
+--- a/session_cmds
++++ /dev/null
+@@ -1,4 +0,0 @@
+-Linux CMDs
+-Github CMDs
+-
+-
+itsacheckmate@itsacheckmate:~/Training$ git pull
+Your local changes to the following files would be overwritten by merge:
+  git/GIT session_cmdsitsacheckmate@itsacheckmate:~/Training$ git status
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git/GIT
+	deleted:    session_cmds
+
+itsacheckmate@itsacheckmate:~/Training$ git status -v
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   git/GIT
+	deleted:    session_cmds
+
+diff --git a/git/GIT b/git/GIT
+index 914f721..88a4b5f 100644
+--- a/git/GIT
++++ b/git/GIT
+@@ -1037,3 +1037,55 @@ alias.st status
+ alias.last log -1 HEAD
+ alias.tr Training
+ alias.alias config --get-regexp ^alias\.
++
++
++git unstage files which are added
++git rm --cached filename
++
++itsacheckmate@itsacheckmate:~/Training$ git status
++On branch main
++Your branch is up to date with 'origin/main'.
++
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++	modified:   Linux/linuxcommands.txt
++	modified:   git/GIT
++
++no changes added to commit (use "git add" and/or "git commit -a")
++itsacheckmate@itsacheckmate:~/Training$ git commit -m'partially commiting changes in Linux commnads of using alias' Linux/linuxcommands.txt 
++[main f18f795] partially commiting changes in Linux commnads of using alias
++ 1 file changed, 48 insertions(+), 2 deletions(-)
++itsacheckmate@itsacheckmate:~/Training$ git status
++On branch main
++Your branch is ahead of 'origin/main' by 1 commit.
++  (use "git push" to publish your local commits)
++
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++	modified:   git/GIT
++
++no changes added to commit (use "git add" and/or "git commit -a")
++itsacheckmate@itsacheckmate:~/Training$ git add .
++itsacheckmate@itsacheckmate:~/Training$ git rm --cached GIT
++fatal: pathspec 'GIT' did not match any files
++itsacheckmate@itsacheckmate:~/Training$ git rm --cached git/GIT
++rm 'git/GIT'
++itsacheckmate@itsacheckmate:~/Training$ git status
++On branch main
++Your branch is ahead of 'origin/main' by 1 commit.
++  (use "git push" to publish your local commits)
++
++Changes to be committed:
++  (use "git restore --staged <file>..." to unstage)
++	deleted:    git/GIT
++	
++Untracked files:
++  (use "git add <file>..." to include in what will be committed)
++	git/
++
++itsacheckmate@itsacheckmate:~/Training$ git commit -m"commiting changes in git after rm file from staging area " git/GIT 
++[main b629e85] commiting changes in git after rm file from staging area
++ 1 file changed, 22 insertions(+)
++
+diff --git a/session_cmds b/session_cmds
+deleted file mode 100644
+index 59810ef..0000000
+--- a/session_cmds
++++ /dev/null
+@@ -1,4 +0,0 @@
+-Linux CMDs
+-Github CMDs
+-
+-
