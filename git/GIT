@@ -1558,3 +1558,9 @@ index 59810ef..0000000
 -
 -
 
+deleteing remote branch
+itsacheckmate@itsacheckmate:~/Training$ git push --delete origin test
+To github.com:Shubham0197/Training.git
+ - [deleted]         test
+
+

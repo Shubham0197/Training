@@ -1045,3 +1045,73 @@ Triggers:
 test1=# drop trigger age_check
 test1-# on company;
 DROP TRIGGER
+
+
+//Join Practice
+
+SELECT e.first_name, e.last_name, e.job_id, e.department_id, d.department_name 
+FROM employees e 
+JOIN departments d 
+ON (e.department_id = d.department_id) 
+JOIN locations l ON 
+(d.location_id = l.location_id) 
+WHERE l.city = 'London';
+
+
+SELECT department_name AS "Department Name", 
+COUNT(*) AS "No of Employees" 
+FROM departments 
+INNER JOIN employees 
+ON employees.department_id = departments.department_id 
+GROUP BY departments.department_id, department_name 
+ORDER BY department_name;
+
+SELECT employee_id, job_title, end_date-start_date Days 
+FROM job_history 
+NATURAL JOIN jobs 
+WHERE department_id=90;
+
+//Subqueries
+SELECT first_name, last_name, salary 
+FROM employees 
+WHERE salary > 
+(SELECT salary 
+FROM employees 
+WHERE last_name = 'Bull');
+
+SELECT first_name, last_name 
+FROM employees 
+WHERE manager_id in (select employee_id 
+FROM employees WHERE department_id 
+IN (SELECT department_id 
+FROM departments 
+WHERE location_id 
+IN (select location_id 
+FROM locations 
+WHERE country_id='US')));
+
+
+
+SELECT first_name, last_name, salary 
+FROM employees 
+WHERE salary > (
+SELECT AVG(salary) 
+FROM employees);
+
+
+SELECT first_name, last_name, salary 
+FROM employees 
+WHERE employees.salary = 
+(SELECT min_salary 
+FROM jobs 
+WHERE employees.job_id = jobs.job_id);
+
+SELECT first_name, last_name, salary 
+FROM employees 
+WHERE department_id IN 
+(SELECT department_id 
+FROM departments 
+WHERE department_name LIKE 'IT%') 
+AND salary > (
+SELECT avg(salary) 
+FROM employees);
