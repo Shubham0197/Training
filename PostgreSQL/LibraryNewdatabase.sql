@@ -321,3 +321,166 @@ library=# select * from book;
   8 |            2 | How it works        | 1      |        2 |               0 |       2
 (12 rows)
 
+
+library=# select * from issue_return_details;
+ id | book_id | student_id | issuer_date | return_date | issuer_user_id 
+----+---------+------------+-------------+-------------+----------------
+ 14 |      13 |          5 | 2022-04-25  |             |              2
+ 15 |      12 |          4 | 2022-04-25  |             |              2
+ 16 |      10 |          2 | 2022-04-25  |             |              2
+  5 |       1 |          1 | 2022-03-23  |             |              1
+  6 |       1 |          2 | 2022-03-23  |             |              1
+ 11 |       4 |          5 | 2022-03-23  | 2022-04-25  |              1
+  9 |       2 |          1 | 2022-03-23  | 2022-04-25  |              1
+  8 |       2 |          3 | 2022-03-23  | 2022-04-25  |              1
+ 12 |       6 |          6 | 2022-04-25  | 2022-04-25  |              2
+ 13 |       8 |          5 | 2022-04-25  | 2022-04-25  |              2
+(10 rows)
+
+library=# select * from book;
+ id | publisher_id |        title        | volume | quantity | issued_quantity | type_id 
+----+--------------+---------------------+--------+----------+-----------------+---------
+  3 |            2 | MartialGod          | 1      |        2 |               0 |       1
+  7 |            2 | where is everything | 1      |        2 |               0 |       2
+  9 |            2 | DBA                 | 1      |        2 |               0 |       2
+ 11 |            2 | Let us C            | 1      |        2 |               0 |       2
+  1 |            1 | godan               | 1      |        2 |               2 |       1
+ 13 |            2 | Let us JAVA         | 1      |        2 |               1 |       2
+ 12 |            2 | Let us C++          | 1      |        2 |               1 |       2
+ 10 |            2 | DSA                 | 1      |        2 |               1 |       2
+  4 |            3 | How to win          | 1      |        2 |               0 |       2
+  2 |            2 | sharmdan            | 1      |        2 |               0 |       1
+  6 |            2 | You can do          | 1      |        2 |               0 |       2
+  8 |            2 | How it works        | 1      |        2 |               0 |       2
+(12 rows)
+
+library=# select sum(issued_quantity) from book;
+ sum 
+-----
+   5
+(1 row)
+
+library=# select count from book;
+ERROR:  column "count" does not exist
+LINE 1: select count from book;
+               ^
+library=# select count(*) from book where issued_quantity>0;
+ count 
+-------
+     4
+(1 row)
+
+library=# ^C
+library=# ^C
+library=# select book_id, count(*) where count(*)>2;
+ERROR:  column "book_id" does not exist
+LINE 1: select book_id, count(*) where count(*)>2;
+               ^
+library=# select book_id, count(*) from issue_return_details  where count(*)>2;
+ERROR:  aggregate functions are not allowed in WHERE
+LINE 1: ...ook_id, count(*) from issue_return_details  where count(*)>2...
+ERROR:  syntax error at or near "issue_return_details"n_details  where count(*)>2; 
+LINE 1: select book_id, count(*) asom issue_return_details  where...
+ERROR:  aggregate functions are not allowed in WHERE
+LINE 1: ...ook_id, count(*) from issue_return_details  where count(*)>2...
+                                                             ^
+library=# 
+library=#                                                                         ofrom issue_return_details  where count(*)>2;ere count(*)>2;ssue_return_details  where count(*)>2; 
+ERROR:  syntax error at or near "issue_return_details"
+LINE 1: select book_id, count(*) asfrom issue_return_details  whe...                          f
+ERROR:  aggregate functions are not allowed in WHERE
+LINE 1: ...ook_id, count(*) from issue_return_details  where count(*)>2...
+                                                             ^
+library=# 
+library=# 
+library=# select book_id, count(*) as  from issue_return_details  where count(*)>2;
+ERROR:  syntax error at or near "issue_return_details"
+LINE 1: select book_id, count(*) as  from issue_return_details  wher...
+                                          ^
+library=# 
+library=# 
+library=# 
+library=# select book_id, count(*) as no from issue_return_details  where no > 2;
+ERROR:  column "no" does not exist
+LINE 1: ..._id, count(*) as no from issue_return_details  where no > 2;
+                                                                ^
+library=# select book_id, count(*) as no from issue_return_details  group by book_id having no>1;
+ERROR:  column "no" does not exist
+LINE 1: ... no from issue_return_details  group by book_id having no>1;
+                                                                  ^
+library=# select book_id, count(*) from issue_return_details  group by book_id having count(*)>1;
+ book_id | count 
+---------+-------
+       2 |     2
+       1 |     2
+(2 rows)
+
+library=# select book_id, count(*) from issue_return_details  group by book_id having count(*)=(select count(*) from issue_return_details group by book_id order by count(*) desc limit 1) ;
+ book_id | count 
+---------+-------
+       2 |     2
+       1 |     2
+(2 rows)
+
+library=# select count(*) from group by book_id,student_id;
+ERROR:  syntax error at or near "group"
+LINE 1: select count(*) from group by book_id,student_id;
+                             ^
+library=# select count(*) from issue_return_details group by book_id,student_id;
+ count 
+-------
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+     1
+(10 rows)
+
+library=# select book_id from issue_return_details group by book_id having count(*)=2;
+ book_id 
+---------
+       2
+       1
+(2 rows)
+
+library=# select * from student where mobile like '_7%';
+ERROR:  operator does not exist: bigint ~~ unknown
+LINE 1: select * from student where mobile like '_7%';
+                                           ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+library=# select * from student where cast(mobile,varchar(13)) like '_7%';
+ERROR:  syntax error at or near ","
+LINE 1: select * from student where cast(mobile,varchar(13)) like '_...
+                                               ^
+library=# select * from student where cast(mobile as varchar(13)) like '_7%';
+ id | student_class_id |  name   |   mobile   
+----+------------------+---------+------------
+  1 |                2 | shubham | 8708481323
+  2 |                1 | param   | 8708481223
+  3 |                1 | karam   | 9708481223
+  4 |                3 | pritam  | 7708481223
+(4 rows)
+
+library=# select * from student where cast(mobile as varchar(13)) like '*7%';
+ id | student_class_id | name | mobile 
+----+------------------+------+--------
+(0 rows)
+
+library=# select * from student where cast(mobile as varchar(13)) like '%7%';
+ id | student_class_id |  name   |   mobile   
+----+------------------+---------+------------
+  1 |                2 | shubham | 8708481323
+  2 |                1 | param   | 8708481223
+  3 |                1 | karam   | 9708481223
+  4 |                3 | pritam  | 7708481223
+  5 |                4 | roham   | 7508481223
+  6 |                6 | soham   | 7508481255
+(6 rows)
+
+select distinct(city) from station where city not like '%a' and city not like '%e' and 
+city not like '%i' and city not like '%o' and city not like '%u' ;  
