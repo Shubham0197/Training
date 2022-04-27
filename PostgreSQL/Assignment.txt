@@ -1,0 +1,93 @@
+Assignment PostgreSQL
+FLIGHTS (flno:integer,from:string,to:string,distance:integer,departs:time,arrives:time,price:integer)
+Create table flights (flno int primary key, From_airport varchar(50),to_airport varchar(50),distance int,departs time,arrives time,price int);
+
+AIRCRAFT (aid:integer,aname:string,cruisingrange:integer)
+create table aircraft (id serial primary key, name varchar(50) ,cruising_range int);
+
+CERTIFIED (eid:integer,aid:integer)
+create table certified(employee_id int references employees(id),aircraft_id int references aircraft(id));
+
+EMPLOYEES (eid:integer,ename:string,salary:integer)
+create table employees(id serial primary key, name varchar (100), salary int);
+
+airport=# \d
+                List of relations
+ Schema |       Name       |   Type   |  Owner   
+--------+------------------+----------+----------
+ public | aircraft         | table    | postgres
+ public | aircraft_id_seq  | sequence | postgres
+ public | certified        | table    | postgres
+ public | employees        | table    | postgres
+ public | employees_id_seq | sequence | postgres
+ public | flights          | table    | postgres
+
+
+NOTE: that the EMPLOYEES relation describes pilots and other kinds of employees as well;
+Every pilot is certified for some aircraft,and only pilots are certified to fly.
+
+
+
+a. Find the names of aircraft such that all pilots certified to operate them earn
+more than $80,000.
+
+select distinct(a.name )
+from aircraft a 
+inner join certified c  on
+a.id = c.aircraft_id 
+inner join employees e on
+e.id = c.employee_id
+where e.salary>80000; 
+
+
+
+b. For each pilot who is certified for more than three aircraft, find the eid and the
+maximum cruisingrange of the aircraft for which she or he is certified.
+
+
+c. Find the names of pilots whose salary is less than the price of the cheapest
+route from Los Angeles to Honolulu.
+
+
+d. For all aircraft with cruisingrange over 1000 miles, find the name of the
+aircraft and the average salary of all pilots certified for this aircraft.
+
+
+e. Find the names of pilots certified for some Boeing aircraft.
+
+
+f. Find the aids of all aircraft that can be used on routes from Los Angeles to
+Chicago.
+
+
+g. Identify the routes that can be piloted by every pilot who makes more than
+$100,000.
+
+
+h. Print the enames of pilots who can operate planes with cruisingrange greater
+than 3000 miles but are not certified on any Boeing aircraft.
+
+
+i. A customer wants to travel from Madison to New York with no more than two
+changes of flight. List the choice of departure times from Madison if the
+customer wants to arrive in New York by 6 p.m.
+
+
+j. Compute the difference between the average salary of a pilot and the average
+salary of all employees (including pilots).
+
+
+k. Print the name and salary of every nonpilot whose salary is more than the
+average salary for pilots.
+
+
+l. Print the names of employees who are certified only on aircrafts with cruising
+range longer than 1000 miles.
+
+
+m. Print the names of employees who are certified only on aircrafts with cruising
+range longer than 1000 miles, but on at least two such aircrafts.
+
+
+n. Print the names of employees who are certified only on aircrafts with cruising
+range longer than 1000 miles and who are certified on some Boeing aircraft
