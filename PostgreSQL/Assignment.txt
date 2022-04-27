@@ -1,6 +1,6 @@
 Assignment PostgreSQL
 FLIGHTS (flno:integer,from:string,to:string,distance:integer,departs:time,arrives:time,price:integer)
-Create table flights (flno int primary key, From_airport varchar(50),to_airport varchar(50),distance int,departs time,arrives time,price int);
+Create table flights (flno serial primary key, From_airport varchar(50),to_airport varchar(50),distance int,departs time,arrives time,price int);
 
 AIRCRAFT (aid:integer,aname:string,cruisingrange:integer)
 create table aircraft (id serial primary key, name varchar(50) ,cruising_range int);
@@ -25,11 +25,59 @@ airport=# \d
 
 NOTE: that the EMPLOYEES relation describes pilots and other kinds of employees as well;
 Every pilot is certified for some aircraft,and only pilots are certified to fly.
+Inserted data
+INSERT INTO flights (from_airport,to_Airport,distance,departs,arrives,price) VALUES 
+            ('Bangalore','Pune',360,'10:45:00','12:00:00',10000),
+            ('Bangalore','Delhi',5000,'12:15:00','04:30:00',25000),
+            ('Bangalore','Mumbai',3500,'02:15:00','05:25:00',30000),
+            ('Delhi','Mumbai',4500,'10:15:00','12:05:00',35000),
+            ('Delhi','Pune',18000,'07:15:00','05:30:00',90000),
+            ('Mumbai','Delhi',19500,'10:00:00','07:45:00',95000),
+            ('Pune','Banglore',17000,'12:00:00','06:30:00',99000);
+			
+			
+INSERT INTO aircraft (name,cruising_range) values 
+        ('Airbus320',1000),
+        ('Boeing737',5000),
+        ('Jet01',5000),
+        ('Airbus380',8000),
+        ('Boeing777',500),
+        ('PrivateCraft',800),
+        ('Aircraft200',1000);
+
+INSERT INTO employees (name,salary) VALUES
+        ('Ajay',30000),
+        ('Ajith',85000),
+        ('Arnab',50000),
+        ('Amar',45000),
+        ('Pritam',90000),
+        ('Sam',75000),
+        ('Ram',150000)
+		('shubham',120000),
+		('naman',123345)
+		('hariom',12345);
 
 
+INSERT INTO certified  VALUES
+        (1,1),
+        (2,1),
+        (1,3),
+        (5,3),
+        (7,5),
+        (1,2),
+        (2,6),
+        (2,2),
+        (4,3),
+        (6,4),
+        (3,4),
+        (5,7),
+        (6,7),
+        (3,5),
+        (7,6),
+        (1,7);		
 
-a. Find the names of aircraft such that all pilots certified to operate them earn
-more than $80,000.
+
+a. Find the names of aircraft such that all pilots certified to operate them earn more than $80,000.
 
 select distinct(a.name )
 from aircraft a 
@@ -37,57 +85,146 @@ inner join certified c  on
 a.id = c.aircraft_id 
 inner join employees e on
 e.id = c.employee_id
-where e.salary>80000; 
+where a.id not in (select c.aircraft_id from
+ certified c  
+inner join employees e on
+e.id = c.employee_id where e.salary <80000);
+     name     
+--------------
+ PrivateCraft
+(1 row)
+
+b. For each pilot who is certified for more than three aircraft, find the eid and the maximum cruisingrange of the aircraft for which she or he is certified.
+Ans.
+
+select c.employee_id, max(cruising_range) 
+from certified c
+inner join aircraft a on
+c.aircraft_id = a.id 
+group by c.employee_id
+having count(*) >= 3 ;
+
+ employee_id | max  
+-------------+------
+           1 | 5000
+(1 row)
+ 
+c. Find the names of pilots whose salary is less than the price of the cheapest route from Los Angeles to Honolulu (.
 
 
+d. For all aircraft with cruisingrange over 1000 miles, find the name of the aircraft and the average salary of all pilots certified for this aircraft.
+Solution:
+select a.name, avg (e.salary) 
+from employees e
+inner join certified  c on
+e.id = c.employee_id
+inner join aircraft a on
+a.id = c.aircraft_id 
+where a.cruising_range>1000
+group by a.name ;
 
-b. For each pilot who is certified for more than three aircraft, find the eid and the
-maximum cruisingrange of the aircraft for which she or he is certified.
-
-
-c. Find the names of pilots whose salary is less than the price of the cheapest
-route from Los Angeles to Honolulu.
-
-
-d. For all aircraft with cruisingrange over 1000 miles, find the name of the
-aircraft and the average salary of all pilots certified for this aircraft.
-
+   name    |        avg         
+-----------+--------------------
+ Boeing737 | 57500.000000000000
+ Jet01     | 55000.000000000000
+ Airbus380 | 62500.000000000000
+(3 rows)
 
 e. Find the names of pilots certified for some Boeing aircraft.
+Solution - 
+select e.name 
+from employees e
+inner join certified  c on
+e.id = c.employee_id
+inner join aircraft a on
+a.id = c.aircraft_id
+where a.name like 'Boeing%';
+
+ name  
+-------
+ Ram
+ Ajay
+ Ajith
+ Arnab
+(4 rows)
 
 
-f. Find the aids of all aircraft that can be used on routes from Los Angeles to
-Chicago.
 
 
-g. Identify the routes that can be piloted by every pilot who makes more than
-$100,000.
+f. Find the aids of all aircraft that can be used on routes from Los Angeles to Chicago (Using Banglore and Mumbai).
+Solution -
+select  id  from aircraft  
+where cruising_range > (
+select distance from flights 
+where 
+from_airport='Bangalore' 
+and 
+to_Airport = 'Mumbai');
+
+ id 
+----
+  2
+  3
+  4
+(3 rows)
 
 
-h. Print the enames of pilots who can operate planes with cruisingrange greater
-than 3000 miles but are not certified on any Boeing aircraft.
+
+g. Identify the routes that can be piloted by every pilot who makes more than $100,000.
+Solution:
+select flno 
+from flights
+where distance< (
+Select min(cruising_range) 
+from aircraft where id in(select a.id
+from employees e
+inner join certified  c on
+e.id = c.employee_id
+inner join aircraft a on
+a.id = c.aircraft_id 
+where e.salary >= 100000));
 
 
-i. A customer wants to travel from Madison to New York with no more than two
-changes of flight. List the choice of departure times from Madison if the
-customer wants to arrive in New York by 6 p.m.
+h. Print the enames of pilots who can operate planes with cruising range greater than 3000 miles but are not certified on any Boeing aircraft.
+Solution :
+select e.name 
+from employees e
+inner join certified  c on
+e.id = c.employee_id
+inner join aircraft a on
+a.id = c.aircraft_id 
+where a.cruising_range>3000 and e.name not in ( 
+select e.name 
+from employees e
+inner join certified  c on
+e.id = c.employee_id
+inner join aircraft a on
+a.id = c.aircraft_id  
+where a.name like ('Boeing%'));
+
+  name  
+--------
+ Pritam
+ Amar
+ Sam
+(3 rows)
 
 
-j. Compute the difference between the average salary of a pilot and the average
-salary of all employees (including pilots).
+
+i. A customer wants to travel from Madison to New York with no more than two changes of flight. List the choice of departure times from Madison if the customer wants to arrive in New York by 6 p.m.
 
 
-k. Print the name and salary of every nonpilot whose salary is more than the
-average salary for pilots.
+j. Compute the difference between the average salary of a pilot and the average salary of all employees (including pilots).
+Solution :
+select 
+round ((select avg (salary) from employees) - 
+( select avg (salary) from employees where id in
+ (select employee_id from certified) ),2)
+ as differences; 
+ 
+ differences 
+-------------
+     3069.00
+(1 row)
 
 
-l. Print the names of employees who are certified only on aircrafts with cruising
-range longer than 1000 miles.
-
-
-m. Print the names of employees who are certified only on aircrafts with cruising
-range longer than 1000 miles, but on at least two such aircrafts.
-
-
-n. Print the names of employees who are certified only on aircrafts with cruising
-range longer than 1000 miles and who are certified on some Boeing aircraft
