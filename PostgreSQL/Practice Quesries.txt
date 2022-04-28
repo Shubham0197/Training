@@ -53,3 +53,158 @@ Sample Input
 
 
 select a.x,a.y from functions a inner join functions b on a.x=b.y and a.y=b.x  group by a.x,a.y  having count(*)>1 or a.x<a.y order by a.x asc ;
+
+
+
+Two pairs (X1, Y1) and (X2, Y2) are said to be symmetric pairs if X1 = Y2 and X2 = Y1.
+
+Write a query to output all such symmetric pairs in ascending order by the value of X. List the rows such that X1 ≤ Y1.
+
+Sample Input
+
+select TO_NUMBER((replace(cast(id as varchar(5)) ,'1','')) ,'99') 
+
+
+from issue_return_details;
+
+select truncate(max(lat_n),4) 
+from station where lat_n<137.2345;
+
+
+ select *  from book full outer join issue_return_details 
+ on book.id=book_id where  return_date is null;
+
+
+SELECT job_id, ARRAY_AGG(employee_id) 
+FROM employees 
+GROUP BY job_id;
+job_id	array_agg
+SH_CLERK	{180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199}
+AD_VP	{101,102}
+SA_MAN	{145,146,147,148,149}
+PU_MAN	{114}
+IT_PROG	{103,104,105,106,107}
+ST_CLERK	{133,134,135,136,137,138,139,140,129,130,131,132,141,142,143,144,125,126,127,128}
+FI_MGR	{108}
+PU_CLERK	{115,116,117,118,119}
+HR_REP	{203}
+ST_MAN	{120,121,122,123,124}
+MK_MAN	{201}
+AC_MGR	{205}
+SA_REP	{150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179}
+AD_ASST	{200}
+PR_REP	{204}
+MK_REP	{202}
+AD_PRES	{100}
+FI_ACCOUNT	{109,110,111,112,113}
+AC_ACCOUNT	{206}
+
+
+UPDATE employees 
+SET phone_number = REPLACE(phone_number, '124', '999') 
+WHERE phone_number LIKE '%124%';
+
+
+SELECT * 
+FROM employees  
+WHERE LENGTH(first_name) >= 8;
+employee_id	first_name	last_name	email	phone_number	hire_date	job_id	salary	commission_pct	manager_id	department_id
+103	Alexander	Hunold	SKING	590.423.4567	1987-06-20	IT_PROG	9000.00	0.00	102	60
+115	Alexander	Khoo	SKING	515.127.4562	1987-07-02	PU_CLERK	3100.00	0.00	114	30
+112	Jose Manuel	Urman	SKING	515.999.4469	1987-06-29	FI_ACCOUNT	7800.00	0.00	108	100
+153	Christopher	Olsen	SKING	011.44.1344.498718	1987-08-09	SA_REP	8000.00	0.20	145	80
+163	Danielle	Greene	SKING	011.44.1346.229268	1987-08-19	SA_REP	9500.00	0.15	147	80
+169	Harrison	Bloom	SKING	011.44.1343.829268	1987-08-25	SA_REP	10000.00	0.20	148	80
+172	Elizabeth	Bates	SKING	011.44.1343.529268	1987-08-28	SA_REP	7300.00	0.15	148	80
+176	Jonathon	Taylor	SKING	011.44.1644.429265	1987-09-01	SA_REP	8600.00	0.20	149	80
+178	Kimberely	Grant	SKING	011.44.1644.429263	1987-09-03	SA_REP	7000.00	0.15	149	0
+189	Jennifer	Dilly	SKING	650.505.2876	1987-09-14	SH_CLERK	3600.00	0.00	122	50
+200	Jennifer	Whalen	SKING	515.123.4444	1987-09-25	AD_ASST	4400.00	0.00	101
+
+
+SELECT job_id,  LPAD(trim(to_char(max_salary,'9999999')),7,'*') "Max Salary" ,
+LPAD(trim(to_char(min_salary,'9999999')),7,'*') "Min Salary" 
+FROM jobs;
+
+job_id	Max Salary	Min Salary
+AD_PRES	**40000	**20000
+AD_VP	**30000	**15000
+AD_ASST	***6000	***3000
+FI_MGR	**16000	***8200
+FI_ACCOUNT	***9000	***4200
+AC_MGR	**16000	***8200
+AC_ACCOUNT	***9000	***4200
+SA_MAN	**20000	**10000
+SA_REP	**12000	***6000
+PU_MAN	**15000	***8000
+PU_CLERK	***5500	***2500
+ST_MAN	***8500	***5500
+ST_CLERK	***5000	***2000
+SH_CLERK	***5500	***2500
+IT_PROG	**10000	***4000
+MK_MAN	**15000	***9000
+MK_REP	***9000	***4000
+HR_REP	***9000	***4000
+PR_REP	**10500	***4500
+
+UPDATE employees 
+SET email = CONCAT(email, '@example.com');
+
+
+SELECT employee_id, first_name, hire_date, 
+SUBSTR(TO_CHAR(hire_date,'yyyy MM dd'), 6, 2) AS hire_month 
+FROM employees;
+
+job_id	Max Salary	Min Salary
+AD_PRES	**40000	**20000
+AD_VP	**30000	**15000
+AD_ASST	***6000	***3000
+FI_MGR	**16000	***8200
+FI_ACCOUNT	***9000	***4200
+AC_MGR	**16000	***8200
+AC_ACCOUNT	***9000	***4200
+SA_MAN	**20000	**10000
+SA_REP	**12000	***6000
+PU_MAN	**15000	***8000
+PU_CLERK	***5500	***2500
+ST_MAN	***8500	***5500
+ST_CLERK	***5000	***2000
+SH_CLERK	***5500	***2500
+IT_PROG	**10000	***4000
+MK_MAN	**15000	***9000
+MK_REP	***9000	***4000
+HR_REP	***9000	***4000
+PR_REP	**10500	***4500
+
+SELECT job_id, MAX(salary)  
+FROM employees 
+GROUP BY job_id 
+HAVING MAX(salary) >=4000;
+
+job_id	max
+SH_CLERK	4200.00
+AD_VP	17000.00
+SA_MAN	14000.00
+PU_MAN	11000.00
+IT_PROG	9000.00
+FI_MGR	12000.00
+HR_REP	6500.00
+ST_MAN	8200.00
+MK_MAN	13000.00
+AC_MGR	12000.00
+SA_REP	11500.00
+AD_ASST	4400.00
+PR_REP	10000.00
+MK_REP	6000.00
+AD_PRES	24000.00
+FI_ACCOUNT	9000.00
+AC_ACCOUNT	8300.00
+
+SELECT job_id, SUM(salary), AVG(salary), MAX(salary), MIN(salary) 
+FROM employees 
+WHERE department_id = '90' 
+GROUP BY job_id;
+
+job_id	sum	avg	max	min
+AD_PRES	24000.00	24000.000000000000	24000.00	24000.00
+AD_VP	34000.00	17000.000000000000	17000.00	17000.00
