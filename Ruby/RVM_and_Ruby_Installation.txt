@@ -1,0 +1,188 @@
+itsacheckmate@itsacheckmate:~$ gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+gpg: key 3804BB82D39DC0E3: "Michal Papis (RVM signing) <mpapis@gmail.com>" 1 new signature
+gpg: Total number processed: 1
+gpg:         new signatures: 1
+itsacheckmate@itsacheckmate:~$ sudo apt-get install software-properties-common
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+software-properties-common is already the newest version (0.99.9.8).
+software-properties-common set to manually installed.
+The following package was automatically installed and is no longer required:
+  libfwupdplugin1
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 21 not upgraded.
+itsacheckmate@itsacheckmate:~$ sudo apt-add-repository -y ppa:rael-gc/rvm
+Hit:1 http://security.ubuntu.com/ubuntu focal-security InRelease                 
+Hit:2 https://dl.google.com/linux/chrome/deb stable InRelease                    
+Hit:3 http://in.archive.ubuntu.com/ubuntu focal InRelease                        
+Hit:4 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease                
+Hit:5 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease              
+Hit:6 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/focal pgadmin4 InRelease
+Get:7 https://packages.microsoft.com/repos/edge stable InRelease [7,343 B]       
+Err:7 https://packages.microsoft.com/repos/edge stable InRelease                 
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EB3E94ADBE1229CF
+Err:8 http://ppa.launchpad.net/rael-gc/rvm/ubuntu focal InRelease                
+  Temporary failure resolving 'ppa.launchpad.net'
+Reading package lists... Done                                                    
+W: GPG error: https://packages.microsoft.com/repos/edge stable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EB3E94ADBE1229CF
+E: The repository 'https://packages.microsoft.com/repos/edge stable InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+itsacheckmate@itsacheckmate:~$ sudo apt-get update
+Hit:1 https://dl.google.com/linux/chrome/deb stable InRelease
+Get:2 https://packages.microsoft.com/repos/edge stable InRelease [7,343 B]       
+Err:2 https://packages.microsoft.com/repos/edge stable InRelease                 
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EB3E94ADBE1229CF
+Hit:3 http://security.ubuntu.com/ubuntu focal-security InRelease                 
+Hit:4 http://in.archive.ubuntu.com/ubuntu focal InRelease                        
+Hit:5 http://in.archive.ubuntu.com/ubuntu focal-updates InRelease                
+Hit:6 http://in.archive.ubuntu.com/ubuntu focal-backports InRelease    
+Hit:7 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/focal pgadmin4 InRelease
+Get:8 http://ppa.launchpad.net/rael-gc/rvm/ubuntu focal InRelease [18.1 kB]
+Get:9 http://ppa.launchpad.net/rael-gc/rvm/ubuntu focal/main amd64 Packages [1,316 B]
+Get:10 http://ppa.launchpad.net/rael-gc/rvm/ubuntu focal/main i386 Packages [596 B]
+Get:11 http://ppa.launchpad.net/rael-gc/rvm/ubuntu focal/main Translation-en [940 B]
+Reading package lists... Done                       
+W: GPG error: https://packages.microsoft.com/repos/edge stable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY EB3E94ADBE1229CF
+E: The repository 'https://packages.microsoft.com/repos/edge stable InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+itsacheckmate@itsacheckmate:~$ sudo apt-get install rvm
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  libfwupdplugin1
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  autoconf automake autotools-dev bison gawk libffi-dev libgdbm-dev libltdl-dev
+  libncurses-dev libreadline-dev libsigsegv2 libsqlite3-dev libtool libyaml-dev
+  m4 sqlite3
+Suggested packages:
+  autoconf-archive gnu-standards autoconf-doc bison-doc gawk-doc libtool-doc
+  ncurses-doc readline-doc sqlite3-doc gfortran | fortran95-compiler gcj-jdk
+  libyaml-doc m4-doc
+The following NEW packages will be installed:
+  autoconf automake autotools-dev bison gawk libffi-dev libgdbm-dev libltdl-dev
+  libncurses-dev libreadline-dev libsigsegv2 libsqlite3-dev libtool libyaml-dev
+  m4 rvm sqlite3
+0 upgraded, 17 newly installed, 0 to remove and 21 not upgraded.
+Need to get 5,742 kB of archives.
+After this operation, 23.9 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libsigsegv2 amd64 2.12-2 [13.9 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu focal/main amd64 gawk amd64 1:5.0.1+dfsg-1 [418 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu focal/main amd64 m4 amd64 1.4.18-4 [199 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu focal/main amd64 autoconf all 2.69-11.1 [321 kB]
+Get:5 http://in.archive.ubuntu.com/ubuntu focal/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+Get:6 http://in.archive.ubuntu.com/ubuntu focal/main amd64 automake all 1:1.16.1-4ubuntu6 [522 kB]
+Get:7 http://in.archive.ubuntu.com/ubuntu focal/main amd64 bison amd64 2:3.5.1+dfsg-1 [657 kB]
+Get:8 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libgdbm-dev amd64 1.18.1-5 [83.4 kB]
+Get:9 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libltdl-dev amd64 2.4.6-14 [162 kB]
+Get:10 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libncurses-dev amd64 6.2-0ubuntu2 [339 kB]
+Get:11 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libreadline-dev amd64 8.0-4 [141 kB]
+Get:12 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 libsqlite3-dev amd64 3.31.1-4ubuntu0.2 [696 kB]
+Get:13 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libtool all 2.4.6-14 [161 kB]
+Get:14 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libyaml-dev amd64 0.2.2-1 [58.2 kB]
+Get:15 http://in.archive.ubuntu.com/ubuntu focal-updates/main amd64 sqlite3 amd64 3.31.1-4ubuntu0.2 [860 kB]
+Get:16 http://in.archive.ubuntu.com/ubuntu focal/main amd64 libffi-dev amd64 3.3-4 [57.0 kB]
+Get:17 http://ppa.launchpad.net/rael-gc/rvm/ubuntu focal/main amd64 rvm all 1.29.12-1 [1,013 kB]
+Fetched 5,742 kB in 8s (757 kB/s)                                                
+Selecting previously unselected package libsigsegv2:amd64.
+(Reading database ... 196798 files and directories currently installed.)
+Preparing to unpack .../libsigsegv2_2.12-2_amd64.deb ...
+Unpacking libsigsegv2:amd64 (2.12-2) ...
+Setting up libsigsegv2:amd64 (2.12-2) ...
+Selecting previously unselected package gawk.
+(Reading database ... 196805 files and directories currently installed.)
+Preparing to unpack .../00-gawk_1%3a5.0.1+dfsg-1_amd64.deb ...
+Unpacking gawk (1:5.0.1+dfsg-1) ...
+Selecting previously unselected package m4.
+Preparing to unpack .../01-m4_1.4.18-4_amd64.deb ...
+Unpacking m4 (1.4.18-4) ...
+Selecting previously unselected package autoconf.
+Preparing to unpack .../02-autoconf_2.69-11.1_all.deb ...
+Unpacking autoconf (2.69-11.1) ...
+Selecting previously unselected package autotools-dev.
+Preparing to unpack .../03-autotools-dev_20180224.1_all.deb ...
+Unpacking autotools-dev (20180224.1) ...
+Selecting previously unselected package automake.
+Preparing to unpack .../04-automake_1%3a1.16.1-4ubuntu6_all.deb ...
+Unpacking automake (1:1.16.1-4ubuntu6) ...
+Selecting previously unselected package bison.
+Preparing to unpack .../05-bison_2%3a3.5.1+dfsg-1_amd64.deb ...
+Unpacking bison (2:3.5.1+dfsg-1) ...
+Selecting previously unselected package libgdbm-dev:amd64.
+Preparing to unpack .../06-libgdbm-dev_1.18.1-5_amd64.deb ...
+Unpacking libgdbm-dev:amd64 (1.18.1-5) ...
+Selecting previously unselected package libltdl-dev:amd64.
+Preparing to unpack .../07-libltdl-dev_2.4.6-14_amd64.deb ...
+Unpacking libltdl-dev:amd64 (2.4.6-14) ...
+Selecting previously unselected package libncurses-dev:amd64.
+Preparing to unpack .../08-libncurses-dev_6.2-0ubuntu2_amd64.deb ...
+Unpacking libncurses-dev:amd64 (6.2-0ubuntu2) ...
+Selecting previously unselected package libreadline-dev:amd64.
+Preparing to unpack .../09-libreadline-dev_8.0-4_amd64.deb ...
+Unpacking libreadline-dev:amd64 (8.0-4) ...
+Selecting previously unselected package libsqlite3-dev:amd64.
+Preparing to unpack .../10-libsqlite3-dev_3.31.1-4ubuntu0.2_amd64.deb ...
+Unpacking libsqlite3-dev:amd64 (3.31.1-4ubuntu0.2) ...
+Selecting previously unselected package libtool.
+Preparing to unpack .../11-libtool_2.4.6-14_all.deb ...
+Unpacking libtool (2.4.6-14) ...
+Selecting previously unselected package libyaml-dev:amd64.
+Preparing to unpack .../12-libyaml-dev_0.2.2-1_amd64.deb ...
+Unpacking libyaml-dev:amd64 (0.2.2-1) ...
+Selecting previously unselected package sqlite3.
+Preparing to unpack .../13-sqlite3_3.31.1-4ubuntu0.2_amd64.deb ...
+Unpacking sqlite3 (3.31.1-4ubuntu0.2) ...
+Selecting previously unselected package libffi-dev:amd64.
+Preparing to unpack .../14-libffi-dev_3.3-4_amd64.deb ...
+Unpacking libffi-dev:amd64 (3.3-4) ...
+Selecting previously unselected package rvm.
+Preparing to unpack .../15-rvm_1.29.12-1_all.deb ...
+Unpacking rvm (1.29.12-1) ...
+Setting up libncurses-dev:amd64 (6.2-0ubuntu2) ...
+Setting up libyaml-dev:amd64 (0.2.2-1) ...
+Setting up gawk (1:5.0.1+dfsg-1) ...
+Setting up m4 (1.4.18-4) ...
+Setting up libreadline-dev:amd64 (8.0-4) ...
+Setting up libffi-dev:amd64 (3.3-4) ...
+Setting up autotools-dev (20180224.1) ...
+Setting up libsqlite3-dev:amd64 (3.31.1-4ubuntu0.2) ...
+Setting up autoconf (2.69-11.1) ...
+Setting up bison (2:3.5.1+dfsg-1) ...
+update-alternatives: using /usr/bin/bison.yacc to provide /usr/bin/yacc (yacc) in auto mode
+Setting up libgdbm-dev:amd64 (1.18.1-5) ...
+Setting up sqlite3 (3.31.1-4ubuntu0.2) ...
+Setting up automake (1:1.16.1-4ubuntu6) ...
+update-alternatives: using /usr/bin/automake-1.16 to provide /usr/bin/automake (automake) in auto mode
+Setting up libtool (2.4.6-14) ...
+Setting up libltdl-dev:amd64 (2.4.6-14) ...
+Setting up rvm (1.29.12-1) ...
+Creating group 'rvm'
+Installing RVM to /usr/share/rvm/
+Installation of RVM in /usr/share/rvm/ is almost complete:
+
+  * First you need to add all users that will be using rvm to 'rvm' group,
+    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
+
+  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
+    in all your open shell windows, in rare cases you need to reopen all shell windows.
+  * Please do NOT forget to add your users to the rvm group.
+     The installer no longer auto-adds root or users to the rvm group. Admins must do this.
+     Also, please note that group memberships are ONLY evaluated at login time.
+     This means that users must log out then back in before group membership takes effect!
+Thanks for installing RVM 🙏
+Please consider donating to our open collective to help us maintain RVM.
+
+👉  Donate: https://opencollective.com/rvm/donate
+
+
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for install-info (6.7.0.dfsg.2-5) ...
+itsacheckmate@itsacheckmate:~$ sudo usermod -a -G rvm $USER
+itsacheckmate@itsacheckmate:~$ echo 'source "/etc/profile.d/rvm.sh"' >> ~/.bashrc
+itsacheckmate@itsacheckmate:~$ 
