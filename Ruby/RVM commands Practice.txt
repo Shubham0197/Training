@@ -1,0 +1,249 @@
+RVM Commands
+RVM(1)                          [FIXME: manual]                         RVM(1)
+
+NAME
+       rvm - The Ruby Version Manager
+	   
+ACTIONS
+version
+           Show the rvm version installed in rvm_path.
+
+use
+           Setup current shell to use a specific ruby version.
+
+reload
+           Reload rvm source itself (useful after changing rvm source).
+
+do
+           Executes the command against either all or a listed subset of
+           rubies. eg. rvm do gem --version ; rvm 1.8.7,1.9.2 do rake
+           --version
+
+env
+           Displays information about an environment specified but the given
+           ruby string. Useful for getting a sourceable path or an evaluatable
+           set of shell variable declarations.
+ reset
+           Remove current and stored default & system settings. (If you
+           experience odd behavior try this second).
+
+info
+           Show the current environment information for current ruby.
+
+ install
+           Install one or many ruby versions.
+           https://rvm.io/rubies/installing/
+
+uninstall
+           Uninstall one or many ruby versions, leaves their sources.
+
+remove
+           Uninstall one or many ruby versions and remove their sources.
+
+
+		   
+Practice
+
+
+
+itsacheckmate@itsacheckmate:~$ rvm list known
+RVM version 1.29.12 (latest) is installed, yet version 1.29.12 (manual) is loaded.
+
+Please open a new shell or run one of the following commands:
+
+    rvm reload
+    echo rvm_auto_reload_flag=1 >> ~/.rvmrc # OR for auto reload with msg
+    echo rvm_auto_reload_flag=2 >> ~/.rvmrc # OR for silent auto reload
+
+itsacheckmate@itsacheckmate:~$ rvm reload
+RVM reloaded!
+itsacheckmate@itsacheckmate:~$ rvm list known
+# MRI Rubies
+[ruby-]1.8.6[-p420]
+[ruby-]1.8.7[-head] # security released on head
+[ruby-]1.9.1[-p431]
+[ruby-]1.9.2[-p330]
+[ruby-]1.9.3[-p551]
+[ruby-]2.0.0[-p648]
+[ruby-]2.1[.10]
+[ruby-]2.2[.10]
+[ruby-]2.3[.8]
+[ruby-]2.4[.10]
+[ruby-]2.5[.8]
+[ruby-]2.6[.6]
+[ruby-]2.7[.2]
+[ruby-]3[.0.0]
+ruby-head
+
+# for forks use: rvm install ruby-head-<name> --url https://github.com/github/ruby.git --branch 2.2
+
+# JRuby
+jruby-1.6[.8]
+jruby-1.7[.27]
+jruby-9.1[.17.0]
+jruby[-9.2.14.0]
+jruby-head
+
+# Rubinius
+rbx-1[.4.3]
+rbx-2.3[.0]
+rbx-2.4[.1]
+rbx-2[.5.8]
+rbx-3[.107]
+rbx-4[.20]
+rbx-5[.0]
+rbx-head
+
+# TruffleRuby
+truffleruby[-20.3.0]
+
+# Opal
+opal
+
+# Minimalistic ruby implementation - ISO 30170:2012
+mruby-1.0.0
+mruby-1.1.0
+mruby-1.2.0
+mruby-1.3.0
+mruby-1[.4.1]
+mruby-2.0.1
+mruby-2[.1.1]
+mruby[-head]
+
+# Ruby Enterprise Edition
+ree-1.8.6
+ree[-1.8.7][-2012.02]
+
+# Topaz
+topaz
+
+# MagLev
+maglev-1.0.0
+maglev-1.1[RC1]
+maglev[-1.2Alpha4]
+maglev-head
+
+# Mac OS X Snow Leopard Or Newer
+macruby-0.10
+macruby-0.11
+macruby[-0.12]
+macruby-nightly
+macruby-head
+
+# IronRuby
+ironruby[-1.1.3]
+ironruby-head
+
+
+itsacheckmate@itsacheckmate:~$ rvm env
+export PATH="/home/itsacheckmate/.rvm/gems/ruby-3.0.0/bin:/home/itsacheckmate/.rvm/gems/ruby-3.0.0@global/bin:/usr/share/rvm/rubies/ruby-3.0.0/bin:$PATH"
+export GEM_HOME='/home/itsacheckmate/.rvm/gems/ruby-3.0.0'
+export GEM_PATH='/home/itsacheckmate/.rvm/gems/ruby-3.0.0:/home/itsacheckmate/.rvm/gems/ruby-3.0.0@global'
+export MY_RUBY_HOME='/usr/share/rvm/rubies/ruby-3.0.0'
+export IRBRC='/usr/share/rvm/rubies/ruby-3.0.0/.irbrc'
+unset MAGLEV_HOME
+unset RBXOPT
+export RUBY_VERSION='ruby-3.0.0'
+itsacheckmate@itsacheckmate:~$ rvm info
+
+ruby-3.0.0:
+
+  system:
+    uname:        "Linux itsacheckmate 5.13.0-40-generic #45~20.04.1-Ubuntu SMP Mon Apr 4 09:38:31 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux"
+    name:         "Ubuntu"
+    version:      "20.04"
+    architecture: "x86_64"
+    bash:         "/usr/bin/bash => GNU bash, version 5.0.17(1)-release (x86_64-pc-linux-gnu)"
+    zsh:          " => not installed"
+    remote_path:  "ubuntu/20.04/x86_64"
+
+  rvm:
+    version:      "1.29.12 (latest)"
+    updated:      "7 minutes 48 seconds ago"
+    path:         "/usr/share/rvm"
+    autolibs:     "[disable] Limit RVM automation as much as possible."
+
+  ruby:
+    interpreter:  "ruby"
+    version:      "3.0.0p0"
+    date:         "2020-12-25"
+    platform:     "x86_64-linux"
+    patchlevel:   "2020-12-25 revision 95aff21468"
+    full_version: "ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]"
+
+  homes:
+    gem:          "/home/itsacheckmate/.rvm/gems/ruby-3.0.0"
+    ruby:         "/usr/share/rvm/rubies/ruby-3.0.0"
+
+  binaries:
+    ruby:         "/usr/share/rvm/rubies/ruby-3.0.0/bin/ruby"
+    irb:          "/usr/share/rvm/rubies/ruby-3.0.0/bin/irb"
+    gem:          "/usr/share/rvm/rubies/ruby-3.0.0/bin/gem"
+    rake:         "/usr/share/rvm/rubies/ruby-3.0.0/bin/rake"
+
+  environment:
+    PATH:         "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/bin:/home/itsacheckmate/.rvm/gems/ruby-3.0.0@global/bin:/usr/share/rvm/rubies/ruby-3.0.0/bin:/usr/share/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+    GEM_HOME:     "/home/itsacheckmate/.rvm/gems/ruby-3.0.0"
+    GEM_PATH:     "/home/itsacheckmate/.rvm/gems/ruby-3.0.0:/home/itsacheckmate/.rvm/gems/ruby-3.0.0@global"
+    MY_RUBY_HOME: "/usr/share/rvm/rubies/ruby-3.0.0"
+    IRBRC:        "/usr/share/rvm/rubies/ruby-3.0.0/.irbrc"
+    RUBYOPT:      ""
+    gemset:       ""
+
+
+
+itsacheckmate@itsacheckmate:~$ rvm get
+Ruby enVironment Manager 1.29.12 (latest) (c) 2009-2020 Michal Papis, Piotr Kuczynski, Wayne E. Seguin
+
+# rvm get
+
+Update RVM
+
+## Usage
+
+  rvm get {stable|latest|latest-x.y|x.y.z|head|master|branch|help} [--auto-dotfiles] [--autolibs=X]
+
+## Options
+
+  stable     - install the latest RVM stable release
+
+  latest     - install the latest RVM release
+
+  latest-minor
+             - install the latest minor RVM release for currently installed version
+
+  latest-x.y - install the latest RVM release matching the x.y* pattern
+
+  x.y.z      - install a specific RVM release
+
+  head
+  master     - install the latest RVM development version
+
+  --auto-dotfiles
+             - automatically update shell profile files.
+
+  --autolibs=X
+             - update autolibs mode to `X`, read more: `rvm autolibs`
+
+  help       - Output this message.
+
+## Branches
+
+    branch <branch>
+    branch /<branch>
+    branch <repo>/
+    branch <repo>/<branch>
+
+## Defaults
+
+    branch: master
+    repo:   rvm
+
+## Examples
+
+    rvm get branch shoes   # will fetch branch shoes from rvm/rvm repo
+    rvm get branch mpapis/ # will fetch branch master from mpapis/rvm repo
+
+For additional documentation please visit https://rvm.io
+
+itsacheckmate@itsacheckmate:~$ rvm reset
