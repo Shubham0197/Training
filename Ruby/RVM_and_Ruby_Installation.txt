@@ -186,3 +186,6 @@ Processing triggers for install-info (6.7.0.dfsg.2-5) ...
 itsacheckmate@itsacheckmate:~$ sudo usermod -a -G rvm $USER
 itsacheckmate@itsacheckmate:~$ echo 'source "/etc/profile.d/rvm.sh"' >> ~/.bashrc
 itsacheckmate@itsacheckmate:~$ 
+
+Installing and Setting up visual Studio consider
+https://medium.com/hugh-greethead/how-to-configure-vscode-for-ruby-developers-ae1f078ed143

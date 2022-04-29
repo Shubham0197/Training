@@ -1,0 +1,111 @@
+Making File and Running it Basic
+itsacheckmate@itsacheckmate:~/Training$ ruby -v
+ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]
+itsacheckmate@itsacheckmate:~/Training$ cd Ruby
+itsacheckmate@itsacheckmate:~/Training/Ruby$ ruby test.rb
+Hello World
+
+Running Print << in irb
+
+3.0.0 :008"> EOF
+Wrinting MUltiple Lines
+3.0.0 :011'> EOC
+echo to execute commands using echo
+ => nil 
+3.0.0 :012'> print <<'EOC'
+3.0.0 :013'> echo "to execute commands using echo"
+3.0.0 :014 > EOC
+echo "to execute commands using echo"
+ => nil 
+3.0.0 :015"> print<<"hel" , <<"llo"
+3.0.0 :016"> i said 
+3.0.0 :017"> hel
+3.0.0 :018"> i sail hello
+3.0.0 :019"> ll
+
+print <<"foo", <<"bar" 
+	I said foo.
+foo
+	I said bar.
+bar
+
+itsacheckmate@itsacheckmate:~/Training/Ruby$ irb
+3.0.0 :001"> print <<"hel" , <<"llo"
+3.0.0 :002"> it works 1.
+3.0.0 :003"> hel
+3.0.0 :004"> it doesnot works
+3.0.0 :005 > llo
+it works 1.
+it doesnot works
+ => nil 
+
+
+ Ruby Begin ==> Declares code to be called before the program is run 
+ BEGIN {
+     code
+ }
+
+test.rb >>>
+ puts 'Hello World';
+
+BEGIN{
+    puts "Its works first"
+}
+
+<<<<<
+itsacheckmate@itsacheckmate:~/Training/Ruby$ ruby test.rb
+Its works first
+Hello World
+
+Ruby END Statement==>Declares to be called at the end of the program
+END{
+    code
+}
+
+test.rb>>>>>>>>
+END{
+    puts"IT works in the end";
+}
+puts 'Hello World';
+
+BEGIN{
+    puts "Its works first"
+}
+<<<<<<<<
+
+itsacheckmate@itsacheckmate:~/Training/Ruby$ ruby test.rb
+Its works first
+Hello World
+IT works in the end
+
+Creating Comments in Ruby
+using #
+
+# Hey i am in the commnts
+# can be used to create comment son every line
+ and Another way of doing this is =being/=end
+ =begin
+     THis is inside of the comment
+     multiline comment
+=end
+
+
+test.rb>>>>>>>>
+END{
+    puts"IT works in the end";
+}
+puts 'Hello World';
+=begin
+THis is inside of the comment
+multiline comment
+=end
+
+BEGIN{
+    puts "Its works first"
+}
+<<<<<<<<
+
+itsacheckmate@itsacheckmate:~/Training/Ruby$ ruby test.rb
+Its works first
+Hello World
+IT works in the end
