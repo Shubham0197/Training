@@ -641,6 +641,155 @@ Executes code while conditional is false.
     or a semicolon
 
 
+Ruby For Statement
 
+Executes code once for each element in expression.
 
+Syntax
+for variable [, variable ...] in expression [do]
+   code
+end
 
+3.0.0 :001 > for i in 0..5
+3.0.0 :002 >    puts "Value of local variable is #{i}"
+3.0.0 :003 > end
+Value of local variable is 0
+Value of local variable is 1
+Value of local variable is 2
+Value of local variable is 3
+Value of local variable is 4
+Value of local variable is 5
+
+3.0.0 :016 > for i in 0..5
+3.0.0 :017 >    print ("Value of local variable is ")
+3.0.0 :018 > end
+Value of local variable is Value of local variable is Value of
+ local variable is Value of local variable is Value of 
+ local variable is Value of local variable is  => 0..5 
+
+ 3.0.0 :001 > (0...5).each do |i|
+    3.0.0 :002 >    puts "Value of local variable is #{i}"
+    3.0.0 :003 > end
+    Value of local variable is 0
+    Value of local variable is 1
+    Value of local variable is 2
+    Value of local variable is 3
+    Value of local variable is 4
+     => 0...5 
+
+Ruby Break Statement
+Break
+it terminates the internal where it is called
+3.0.0 :004 > for i in 0..5
+3.0.0 :005 >     if i>2
+3.0.0 :006 >       break
+3.0.0 :007 >     end
+3.0.0 :008 >     puts i
+3.0.0 :009 > end
+0
+1
+2
+ => nil
+
+ 3.0.0 :016 > for i in 0..2
+3.0.0 :017 >     for i in 0..4
+3.0.0 :018 >         if i>2
+3.0.0 :019 >           break
+3.0.0 :020 >         end
+3.0.0 :021 >         puts i
+3.0.0 :022 >     end
+3.0.0 :023 > end
+0
+1
+2
+0
+1
+2
+0
+1
+2
+ => 0..2 
+
+ Ruby next Statement
+ Jumps to the next iteration of the most internal loop. 
+ Terminates execution of a block if called within a block
+  (with yield or call returning nil).
+
+  3.0.0 :032 > for i in 0..
+3.0.0 :032 > for i in 0..5
+3.0.0 :033 >    if i < 2 then
+3.0.0 :034 >       next
+3.0.0 :035 >    end
+3.0.0 :036 >    puts "Value of local variable is #{i}"
+3.0.0 :037 > end
+Value of local variable is 2
+Value of local variable is 3
+Value of local variable is 4
+Value of local variable is 5
+ => 0..5 
+
+Ruby redo Statement
+redo
+Restarts this iteration of the most internal loop, 
+without checking loop condition. Restarts yield or 
+call if called within a block.
+3.0.0 :039 > for i in 0..5
+3.0.0 :040 >     if c<3 
+3.0.0 :041?>       puts i 
+3.0.0 :042 >       c+=1
+3.0.0 :043 >       redo
+3.0.0 :044?>     end
+3.0.0 :045 > end
+0
+0
+ => 0..5
+
+ Ruby retry Statement
+ If retry appears in rescue clause of begin expression, 
+    restart from the beginning of the begin body.
+        begin
+            do_something # exception raised
+         rescue
+            # handles error
+            retry  # restart from beginning
+         end
+
+If retry appears in the iterator, the block, or 
+the body of the for expression, restarts the invocation 
+of the iterator call. Arguments to the iterator is re-evaluated.
+
+         for i in 1..5
+            retry if some_condition # restart from i == 1
+         end
+
+         for i in 0..5
+            retry if i > 2
+         puts "Value of local variable is #{i}"
+         end
+This will produce the following result and will go in an infinite loop −
+
+         Value of local variable is 1
+         Value of local variable is 2
+         Value of local variable is 1
+
+        end
+    end
+end
+
+Ruby - Methods
+Ruby methods are very similar to functions in any other programming language.
+
+3.0.0 :046 > def test(a1 = "Ruby", a2 = "Perl")
+3.0.0 :047 >    puts "The programming language is #{a1}"
+3.0.0 :048 >    puts "The programming language is #{a2}"
+3.0.0 :049 > end
+ => :test 
+3.0.0 :050 > test "C", "C++"
+The programming language is C
+The programming language is C++
+ => nil 
+
+ 3.0.0 :051 > test
+The programming language is Ruby
+The programming language is Perl
+ => nil 
