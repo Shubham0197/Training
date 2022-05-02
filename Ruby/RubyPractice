@@ -109,3 +109,191 @@ itsacheckmate@itsacheckmate:~/Training/Ruby$ ruby test.rb
 Its works first
 Hello World
 IT works in the end
+
+Variable are the memory locations where data used is being kept.
+There are five types of varibles supported by ruby
+1. Ruby Global Variable->
+It begins with $ .
+Uninitialized they have nil Value.
+Assignments to global variables alters the global status.
+$global_variable = 10
+
+????NOTE − In Ruby, you CAN access value of any variable or constant 
+by putting a hash (#) character just before that variable or constant.
+
+puts "Global variable in Class2 is #$global_variable"
+
+
+2.Ruby Instance Variable
+INstance Vsriable starts with @ .
+UNInitialized with value nil.
+Its constant is restricted to whatever the object 
+itself refers to
+The ruby instance variables do not need a declaration. 
+This implies a flexible object structure.
+Every instance variable is dynamically appended to an object
+when it is first referenced
+One instance object can alter the values of its instance 
+variables without modifying any other instance.
+An Instance variable can be used by several class methods
+except when the method is considered to be static.
+
+
+
+@cust_id = id
+
+class Geek
+   
+    # defining instance method getAge
+    def getAge(n)
+          
+      # instance variable     
+      @geekAge = n
+    end  
+       
+    # defining instance method incrementAge
+    def incrementAge() 
+        @geekAge +=1
+    end
+
+    # defining instance method displayDetails
+    def displayDetails() 
+        puts "Geek age is #@geekAge"
+    end   
+
+end
+
+
+3. Ruby Class Variable=>
+Class variables begin with @@ and must be 
+initialized before they can be used in method definitions.
+Referencing an uninitialized class variable produces an error.
+Class variables are shared among descendants of the class or 
+module in which the class variables are defined.
+
+4.Ruby Local Variable
+Local Variable begins with Lowercase Letter or ' _ '.
+Assignment to uninitialized local variables also serves as variable declaration. 
+The variables start to exist until the end of the current scope is reached. 
+The lifetime of local variables is determined when Ruby parses the program.
+
+5. Ruby Constants
+Constants begin with UpperCase Letter
+If they are defined withing class then they can be accessed within
+that module only.
+And if constants are defined outside class or module then it is treated as 
+globally accessable
+Refrencing an uninitialized constants will produce an error
+
+There are also Ruby Pseudo variables
+They are special variable  that have apperance of local variable nut behave like
+constants 
+They cannot be assigned any value.
+Eg.
+self-> The reciever object of the current method
+true-> It represents true 
+false-> it represents false
+nil-> value reprensenting  undefined value just like null in databasse
+_FILE_ -> The name of the current source File
+_LINE_ -> The Current line number in the source File.
+
+Ruby Basic Literal===>
+
+Integer Number-->
+range from -2^30 to 2^30-1 or -2^62 to 2^62-1
+in range Fixnum
+outside range Bignum
+
+123                  # Fixnum decimal
+1_234                # Fixnum decimal with underline
+-500                 # Negative Fixnum
+0377                 # octal
+0xff                 # hexadecimal
+0b1011               # binary
+?a                   # character code for 'a'
+?\n                  # code for a newline (0x0a)
+12345678901234567890 # Bignum
+
+Floating Number:
+They are numbers with decimals
+
+String Literals:
+They are simply sequences of 8 Byte. they are object of class String
+Double-quoted strings allow substitution and backslash 
+notation but single-quoted strings donot allow substitution
+but allow backslash notation only for \\ and \'
+
+eg..
+puts 'escape using "\\"';
+puts 'That\'s right';
+
+Output:
+escape using "\"
+That's right
+
+You can substitute the value of any Ruby expression into a 
+string using the sequence #{ expr }. 
+Here, expr could be any ruby expression.
+eg..
+
+puts "Multiplication Value : #{24*60*60}";
+
+output:
+Multiplication Value : 86400
+
+Backslash Notations
+Following is the list of Backslash notations supported
+by Ruby −
+
+Notation	Character represented
+\n	Newline (0x0a)
+\r	Carriage return (0x0d)
+\f	Formfeed (0x0c)
+\b	Backspace (0x08)
+\a	Bell (0x07)
+\e	Escape (0x1b)
+\s	Space (0x20)
+\nnn	Octal notation (n being 0-7)
+\xnn	Hexadecimal notation (n being 0-9, a-f, or A-F)
+\cx, \C-x	Control-x
+\M-x	Meta-x (c | 0x80)
+\M-\C-x	Meta-Control-x
+\x	Character x
+
+
+Ruby Arrays
+They are literals which are created by comma separeted series of
+object refrences between square brackets.
+
+ary = [  "fred", 10, 3.14, "This is a string", "last element", ]
+ary.each do |i|
+   puts i
+end
+
+Output:
+fred
+10
+3.14
+This is a string
+last element
+
+Ruby Hashes
+A literal ruby hash is created by placing a list of key/value pair between 
+braces with either comma or the sequence  =>between the key and value pair
+
+hsh = colors = { "red" => 0xf00, "green" => 0x0f0, "blue" => 0x00f }
+hsh.each do |key, value|
+   print key, " is ", value, "\n"
+end
+
+red is 3840
+green is 240
+blue is 15
+
+Ruby Ranges 
+A range represents an interval which is a set of values with a start and an end.
+Ranges may be constructed using the s..e and s...e literals, or with Range.new.
+
+(10..15).each do |n| 
+    print n, ' ' 
+ end
