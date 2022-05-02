@@ -246,19 +246,19 @@ Following is the list of Backslash notations supported
 by Ruby −
 
 Notation	Character represented
-\n	Newline (0x0a)
-\r	Carriage return (0x0d)
-\f	Formfeed (0x0c)
-\b	Backspace (0x08)
-\a	Bell (0x07)
-\e	Escape (0x1b)
-\s	Space (0x20)
+\n  	Newline (0x0a)
+\r	    Carriage return (0x0d)
+\f  	Formfeed (0x0c)
+\b  	Backspace (0x08)
+\a  	Bell (0x07)
+\e  	Escape (0x1b)
+\s  	Space (0x20)
 \nnn	Octal notation (n being 0-7)
 \xnn	Hexadecimal notation (n being 0-9, a-f, or A-F)
 \cx, \C-x	Control-x
 \M-x	Meta-x (c | 0x80)
 \M-\C-x	Meta-Control-x
-\x	Character x
+\x	    Character x
 
 
 Ruby Arrays
@@ -297,3 +297,206 @@ Ranges may be constructed using the s..e and s...e literals, or with Range.new.
 (10..15).each do |n| 
     print n, ' ' 
  end
+
+ Ruby Operators
+ There are many operator supported by ruby and most of them are method calls
+ like => a+b is a.+(b)
+ here a calls + method with b as an argument
+
+ Ruby Arithmatic Operators
++ is addition
+- is subtraction
+* is Multiplication
+/ is division
+% is modulus
+** is exponent
+
+Ruby Comparision Operator
+== it checks if the 2 values are equal or not
+!= it also checks if 2 vaiables are equal or not but gives true when they are not equal
+>  it checks the greater than condition
+<  it checks the less than condition
+>= it checks the greater than  and Equal to condition
+<= it checks the less than  and Equal to condition
+<=> it is combined comparision operator
+    Returns 0 if first operand equals second,
+    1 if first operand is greater than the second and 
+    -1 if first operand is less than the second.
+So 10<=>20 is -1, 20<=>20 is 0 and 20<=>10 is 1
+
+===  is used to test the equality within a when clause of a case Statement
+    (1..10)===5 is true
+
+.eql?  true if the reciever and argument have bothe the same type and values
+    eg 1==1.0 is true but 1.eql?(1.0) is false as they have different data type
+
+equal? tru if the reciever and argument have the same object id.
+????what is the object id 
+eg..  True if the receiver and argument have the same object id.	
+if aObj is duplicate of bObj then aObj == bObj is true,
+     a.equal?bObj is false but a.equal?aObj is true
+
+
+Ruby Assignment Operator
+ 
+= it is simple assignmnet operator
++= add and assignment operator
+-= subtract and assignment operator
+*=
+/=
+%=
+**=
+ all above are arithmatic and assignment operator which behave in same way
+ fist the arithmatic operator works and than the result value is assigned to 
+ the left operand
+
+ 3.0.0 :001 > a=4
+ => 4 
+3.0.0 :002 > b=5
+ => 5 
+3.0.0 :003 > a+b
+ => 9 
+3.0.0 :004 > a+=b
+ => 9 
+3.0.0 :005 > a
+ => 9 
+
+ Parallel Assignment
+ This enables multiple values to be initialized  within single line
+
+ eg  a,b,c =10,20,30
+ 
+3.0.0 :006 > a,b,c = 10, 20, 30
+ => [10, 20, 30] 
+3.0.0 :007 > a
+ => 10 
+3.0.0 :008 > b
+ => 20 
+ => 30 
+3.0.0 :011 > puts(a,b,c)
+10
+20
+30
+ => nil
+
+ Ruby Bitwise Operators
+  Bitwise Operators works on Bits and Perform Bit by Bit Operation
+  a    =  0011 1100
+  b    =  0000 1101
+  ------------------
+  a&b  =  0000 1100   it is binary AND
+  a|b  =  0011 1101   it is binary OR
+  a^b  =  0011 0001   it is binary XOR
+  ~a   =  1100 0011   it is complemantary operator
+
+  << it is Left Shift Operator moved by the no of bits speacified
+  >> It is Right Shift Operator moved by the no of bits speacified
+eg, if a is 0011 1100
+ a<<2 is 1111 0000
+a>>2  is 0000 1111
+
+Ruby Logical Operator
+
+and  logical and Operator both conditions must be true 
+or  logical or operator either conditions should be true 
+&&  anothe way of writing AND but bothe side must be non zero
+||  another way of writing OR but either side need to be non zero
+!   Logical NOT Operator reverses the state of the operator
+not  same as above
+
+
+Ruby Ternary Operator
+?:  Conditonal expression
+If Condition is true ? Then value X : Otherwise value Y
+
+
+Ruby Range Operator
+It is used to create a range of successive values - 
+consisting of a start value, an end value, and a 
+range of values in between.
+
+The two-dot form creates an inclusive range, 
+while the three-dot form creates a range that 
+excludes the specified high value.
+so 1..10 is 1,2,3,4,5,6,7,8,9,10
+and 1...10 is 1,2,3,4,5,6,7,8,9
+
+Ruby defined? Operator
+defined? is a special Operator 
+it is a method call to determine whether or not the
+ passed expression is defined.
+
+ It returns a description string of the expression,
+  or nil if the expression isn't defined.
+
+  eg,3.0.0 :014 > not (a)
+  => false 
+  3.0.0 :015 > defined? a
+  => "local-variable" 
+  3.0.0 :016 > $abc =10
+  => 10 
+  3.0.0 :017 > defined? abc
+  => nil 
+  => "global-variable" 
+  Traceback (most recent call last):ain>'ad'
+  3.0.0 :020 > defined? x
+  => nil 
+  3.0.0 :021 > defined? a.class 
+  => "method"
+   # True if a method exists that can be called with super user ????
+  3.0.0 :022 > defined? super
+  => nil 
+   # True if a code block has been passed  ????
+  3.0.0 :023 > defined? yield
+  => nil 
+  
+  
+  Ruby Dot and Double Colon Operator
+  You call a module method by preceding its name with the module's name and a period,
+   and you reference a constant using the module name and two colons.
+  
+   The :: is a unary operator that allows: constants,
+    instance methods and class methods defined within a 
+    class or module, to be accessed from anywhere outside 
+      the class or module.
+  
+  In Ruby, classes and methods may be considered constants too.
+  
+  MR_COUNT = 0         # constant defined on main Object class
+  module Foo
+     MR_COUNT = 0
+     ::MR_COUNT = 1    # set global count to 1
+     MR_COUNT = 2      # set local count to 2
+  end
+  puts MR_COUNT        # this is the global constant
+  puts Foo::MR_COUNT   # this is the local "Foo" constant
+  
+  
+  
+  ##########
+  Ruby operator do have precedance according to table
+      Method	Operator	Description
+  Yes	::	Constant resolution operator
+  Yes	[ ] [ ]=	Element reference, element set
+  Yes	**	Exponentiation (raise to the power)
+  Yes	! ~ + -	Not, complement, unary plus and minus (method names for the last two are +@ and -@)
+  Yes	* / %	Multiply, divide, and modulo
+  Yes	+ -	Addition and subtraction
+  Yes	>> <<	Right and left bitwise shift
+  Yes	&	Bitwise 'AND'
+  Yes	^ |	Bitwise exclusive `OR' and regular `OR'
+  Yes	<= < > >=	Comparison operators
+  Yes	<=> == === != =~ !~	Equality and pattern match operators (!= and !~ may not be defined as methods)
+       &&	Logical 'AND'
+       ||	Logical 'OR'
+       .. ...	Range (inclusive and exclusive)
+       ? :	Ternary if-then-else
+       = %= { /= -= += |= &= >>= <<= *= &&= ||= **=	Assignment
+       defined?	Check if specified symbol defined
+       not	Logical negation
+       or and	Logical composition
+  
+  
+  
+  
+  

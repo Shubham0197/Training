@@ -10,3 +10,4 @@ multiline comment
 BEGIN {
     puts 'Its works first'
 }
+
