@@ -1,0 +1,8 @@
+String:
+
+It has an arbitrary Sequence of bytes representing text or binay data
+It can be created using 
+String::new
+or as literals
+
+Substitution Methods

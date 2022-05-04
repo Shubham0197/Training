@@ -1124,3 +1124,52 @@ samp.a2
 samp.b1
 samp.b2
 samp.s1
+
+
+Ruby Iterators
+
+Iterators are nothing but methods supported by collections. 
+Objects that store a group of data members are called collections.
+ In Ruby, arrays and hashes can be termed collections.
+
+Iterators return all the elements of a collection, 
+one after the other.
+
+two common iterators are, each and collect
+
+Ruby each Iterator
+The each iterator returns all the elements of an array or a
+ hash.
+
+ Executes code for each element in collection. 
+ Here, collection could be an array or a ruby hash.
+
+Syntax
+collection.each do |variable|
+   code
+end
+
+3.0.0 :134 > ary = [1,2,3,4,5]
+ => [1, 2, 3, 4, 5] 
+3.0.0 :135 > ary.each do |i|
+3.0.0 :136 >    puts i
+3.0.0 :137 > end
+1
+2
+3
+4
+5
+ => [1, 2, 3, 4, 5] 
+
+
+ Ruby collect Iterator
+The collect iterator returns all the elements of a collection.
+Syntax
+collection = collection.collect
+
+The collect method need not always be associated with a block.
+ The collect method returns the entire collection,
+ regardless of whether it is an array or a hash.
+
+ 
+

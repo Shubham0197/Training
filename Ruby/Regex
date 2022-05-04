@@ -1,0 +1,50 @@
+Reqular Expression== Regex
+
+Used for patern matching or string matching
+
+[abc] ==> a,b or c
+[^abc]  ==> anycharacter except a, b, c
+[a-z]  ==> a to z 
+[A - Z] ==> A to Z 
+[a -z A - Z] ==> a to z, A to Z  any character
+[0 - 9] ==> 0 to 9 any digit 
+
+quantifiers 
+in bracket anything from above eg. can comes
+[ ] ?      occurs 0 or 1 times
+[ ] +       occurs 1 or more times
+[ ] *       occurs 0 or more times
+[ ]{n}      occurs n times
+[ ]{n,}     occurs n or more times
+[ ]{y,z}    orrurs atleast y times but less than z times
+
+Regex Metacharacters  => They are the shortforms for writing chracters matching
+
+\d  [0-9]
+\D  [^0-9]
+\w  [a-z A-Z _ 0-9]
+\W  [^ \w]
+\s  white Space
+\S   not White Space
+\b   word boundry (space)
+\B   not a word boundry
+^   begining of String
+$   end of the string
+\ tells comp uter to treat following characters as search characters for '+''.'
+\(escape chraracters)
+
+Eg.----->
+
+
+
+1.Regex for Mobile No.
+
+[6 7 8 9] [0-9]{9} 
+
+2. Regex for Email id
+ 
+[\w \- \.]+ [@] [a-z]+ [\.] [a-z]{2,3}
+
+
+So the meta characters which needs to be escaped are 
+.[{()}]\^$|?*+

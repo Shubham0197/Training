@@ -1,5 +1,4 @@
 
-
 $LOAD_PATH << '.'
 require "trig"
 
@@ -17,3 +16,9 @@ puts Week::FIRST_DAY
 Week.weeks_in_month
 Week.weeks_in_year
 d1.no_of_months
+
+a = [1,2,3,4,5]
+b = Array.new
+b = a.collect
+puts a
+puts b
