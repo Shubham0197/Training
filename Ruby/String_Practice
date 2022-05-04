@@ -5,4 +5,237 @@ It can be created using
 String::new
 or as literals
 
-Substitution Methods
+Get the String Length
+3.0.0 :066 > a. size
+ => 4 
+ 3.0.0 :069 > a
+ => "Abcd" 
+3.0.0 :070 > a.length
+ => 4 
+
+ Check if the string is empty
+
+ we can define an empty string as a string of zero length.
+ A blank string is a string that has either zero-length, 
+ or is composed ONLY of white space characters.
+
+ 3.0.0 :071 > a.size == 0
+ => false
+ 3.0.0 :073 > c =String.new
+ => "" 
+ 3.0.0 :074 > c.size==0
+ => true 
+
+ 3.0.0 :075 > c.empty?
+ => true 
+3.0.0 :076 > a.empty?
+ => false 
+
+ ## String Interpolation
+ it allows to combine strings together
+
+3.0.0 :077 > name ='Shubham'
+=> "Shubham" 
+3.0.0 :078 > puts "Hello #{name}"
+Hello Shubham
+=> nil 
+Actual code can be written inside the Interpolation
+eg. 
+3.0.0 :079 > puts " No of characters #{name.size}"
+ No of characters 7
+ => nil 
+3.0.0 :080 > puts " No of characters #{name.size==0}"
+ No of characters false
+ => nil 
+
+ Ruby calls the to_s method on the string interpolation block, 
+ this tells the object to convert itself into a string.
+ So to convert to string we use to_s
+ 3.0.0 :084 > name+a.to_s
+ => "Shubham3" 
+3.0.0 :085 > number=007
+ => 7 
+3.0.0 :086 > name+number.to_s
+ => "Shubham7" 
+
+ How to extract a substring
+ A substring is samller part of string that is of some use to us 
+ i.e specific part of the string
+One way for extracting substring is 
+using the index no. in the square brackets
+3.0.0 :088 > name
+ => "Shubham" 
+3.0.0 :089 > name[3]
+ => "b" 
+3.0.0 :090 > name[3,3]
+ => "bha" 
+3.0.0 :091 > name[0,3]
+ => "Shu" 
+ if only one character then that particular charactaer is picked 
+ and if 2 numbers in bracket then the character from that index to 
+ the number of character in the second number.
+So,The first number is the starting index
+and rhe second no. is the range
+
+and if we use negative range
+for eg -2 it starting from the given index to the second to last character
+ syntax variable[index..-2]
+ 3.0.0 :093 > name[3..-1]
+ => "bham" 
+3.0.0 :094 > name[6..-1]
+ => "m" 
+3.0.0 :095 > name[7..-1]
+ => "" 
+3.0.0 :096 > name[7..-2]
+ => "" 
+
+ If we want to remove or replace the strings we can assign the value 
+ to the above substring
+ 3.0.0 :097 > hello="hello"
+3.0.0 :098 > hello[5]
+3.0.0 :099 > hello[4]
+3.0.0 :100 > hello[4]="0"
+ => "0" 
+3.0.0 :101 > hello
+ => "hell0" 
+3.0.0 :102"> hello[0,2]=""
+ => "" 
+3.0.0 :103 > hello
+ => "ll0" 
+3.0.0 :104 > hello.size
+ => 3 
+
+ 3.0.0 :105 > p hello
+"ll0"
+ => "ll0"    ????
+
+ How to find out if a string contains another string??
+ we can use include?
+ 3.0.0 :107 > day='Today is wednesday'
+ => "Today is wednesday" 
+3.0.0 :108 > day.include?("day")
+ => true 
+
+ We can use index method
+ 3.0.0 :109 > day.index("day")
+ => 2 
+3.0.0 :110 > day.index("wed")
+ => 9 
+
+Above methods looks for the partial words too . 
+and index will also tell the index of first match also.
+
+
+How to pad a ruby string?
+
+One way to pad a string is to use the 
+rjust method with two arguments
+
+3.0.0 :116 > hello.rjust(4,"o")
+ => "Hello" 
+3.0.0 :117 > binary_string = "1111"
+ => "1111" 
+3.0.0 :118 > binary_string.ljust(8, "0")
+ => "11110000" 
+3.0.0 :119 > hello.ljust(8, "0")
+ => "Hello000" 
+3.0.0 :120 > hello.rjust(8, "0")
+ => "000Hello" 
+
+ Compare Strings ignoring characters
+ As string comparsion is case sensitive to make sure the two 
+ strings  comparing are same or not 
+ So the The common way to do that is to make both sides of the
+  equation downcase or upcase
+  3.0.0 :121 > hELLO="HELLO"
+ => "HELLO" 
+3.0.0 :122 > hello.upcase==hELLO.upcase
+ => true 
+
+ Casecmp
+ it compares for the substring gives ans 0,1,-1
+for eqal ,greater or smaller string
+ 3.0.0 :126 > hello.casecmp(hELLO)
+3.0.0 :127 > hello.casecmp("asdf")
+ => 1 
+3.0.0 :128 > hello.casecmp("asdfa")
+ => 1 
+3.0.0 :129 > hello.casecmp("asdfaa")
+ => 1 
+3.0.0 :130 > hello.casecmp("asdfaaa")
+ => 1 
+3.0.0 :131 > hello.casecmp("as")
+ => 1 
+3.0.0 :132 > hello
+ => "Hello" 
+3.0.0 :133 > 'hello'.casecmp(hello)
+ => 0 
+3.0.0 :134 > 'helloq'.casecmp(hello)
+ => 1 
+3.0.0 :135 > 'hell'.casecmp(hello)
+ => -1 
+3.0.0 :136 > 'hasd'.casecmp(hello)
+ => -1 
+3.0.0 :137 > 'hasdaas'.casecmp(hello)
+ => -1 
+3.0.0 :138 > 'hasdaas'.casecmp(hello)
+ => -1 
+3.0.0 :139 > 'hel'.casecmp(hello)
+ => -1 
+3.0.0 :140 > 'hello1'.casecmp(hello)
+ => 1 
+
+ Casecmp?
+ true, false or nil
+
+ 3.0.0 :145 > '1'.casecmp?(hello)
+ => false 
+
+ 3.0.0 :141 > 'hello1'.casecmp?(hello)
+ => false 
+3.0.0 :142 > 'hello'.casecmp?(hello)
+ => true 
+3.0.0 :143 > 'hell'.casecmp?(hello)
+ => false 
+
+ How to trim a string and Remove white space
+
+ Strip methdo is used to remove space from string
+ 3.0.0 :149 > sapce= "    "
+ => "    " 
+3.0.0 :150 > sapce.strip
+ => "" 
+
+ If you only want to remove the white space from o
+ ne of the sides (left / right) you can use
+  the lstrip & rstrip methods instead.
+
+3.0.0 :151 > sapce= "    "
+3.0.0 :152 > sapce.lstrip
+3.0.0 :153 > sapce= "    "
+3.0.0 :154 > sapce.rstrip
+3.0.0 :155 > sapce= "   a  "
+ => "   a  " 
+3.0.0 :156 > sapce.lstrip
+ => "a  " 
+3.0.0 :157 > sapce= "   a  "
+ => "   a  " 
+3.0.0 :158 > sapce.rstrip
+ => "   a" 
+ 
+ String Prefix & Suffix
+
+ can use the start_with? method to check if  a string starts
+  with a specific prefix.
+  3.0.0 :159 > string = "ruby programming"
+ => "ruby programming" 
+3.0.0 :160 > 
+3.0.0 :161 > string.start_with? "ruby"
+ => true 
+
+ There is also an end_with? method:
+ 3.0.0 :162 > string = "ruby programming"
+ => "ruby programming" 
+3.0.0 :163 > 
+3.0.0 :164 > string.end_with? "programming"
+ => true 
