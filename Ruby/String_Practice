@@ -239,3 +239,269 @@ for eqal ,greater or smaller string
 3.0.0 :163 > 
 3.0.0 :164 > string.end_with? "programming"
  => true 
+
+ and delete_prefix & delete_suffix methods to delete accordingly
+ 
+
+ Converts a String to an array of characters
+ Taking a string and breaking it down into an array of characters
+  using "split" methods
+
+It split the string based on the spaces  by default 
+ 3.0.0 :001 > name = "Shubham"
+ => "Shubham" 
+3.0.0 :002 > name.split
+ => ["Shubham"] 
+3.0.0 :003 > name = "S h u b h a m"
+ => "S h u b h a m" 
+3.0.0 :004 > name.split
+ => ["S", "h", "u", "b", "h", "a", "m"] 
+
+ but this can be split based on other delimiter
+ like ',' 
+ 3.0.0 :005 > csv="a,s,d,f,g,h"
+ => "a,s,d,f,g,h" 
+3.0.0 :006 > csv.split
+ => ["a,s,d,f,g,h"] 
+ 3.0.0 :010 > name="Shubham"
+ => "Shubham" 
+3.0.0 :011 > name.split("b")
+ => ["Shu", "ham"] 
+
+ Convert an array to string
+ to take an array of strings and join them
+ to make a single big string
+ use  == join method
+
+
+ 3.0.0 :014 > arr=["Hello","How","are", "you?"]
+ => ["Hello", "How", "are", "you?"] 
+3.0.0 :015 > arr
+ => ["Hello", "How", "are", "you?"] 
+3.0.0 :016 > puts arr
+Hello
+How
+are
+you?
+ => nil 
+3.0.0 :017 > arr.join
+ => "HelloHowareyou?" 
+
+Special caracter can be give to join to add between different elements
+while joining
+3.0.0 :018 > arr=["Hello","How","are", "you?"]
+ => ["Hello", "How", "are", "you?"] 
+3.0.0 :019 > arr.join("-")
+ => "Hello-How-are-you?"
+
+ Convert a String into an integer
+ using to_i can convert "49" to 49
+ using = to_i method
+ only no are converted not characters otherwise zero is printed 
+ 3.0.0 :022 > tonum.to_i
+ => 0 
+3.0.0 :023 > tonum="90"
+ => "90" 
+3.0.0 :024 > tonum.to_i
+ => 90 
+
+ To check if a string is a number
+ if the string is made fully of number
+ can use regex to compare the string
+using match? method
+
+write match?(/regex/)
+3.0.0 :031 > tonum.match?(/\d/)
+3.0.0 :032 >   
+ => true 
+
+
+
+How to append charactess
+Strings can be appended to add on the string it same as string
+concatenation.
+can be done using << method
+3.0.0 :003"> string=""
+ => "" 
+3.0.0 :004 > string << "hello"
+3.0.0 :005 > 
+ => "hello" 
+3.0.0 :006 > string << "hello"
+ => "hellohello" 
+3.0.0 :007 > string << " hello"
+ => "hellohello hello" 
+
+ not to use += for string concatenation because that will create
+  a new string every time, which is not good for performance
+
+  How to iterate over a character of strings 
+1. can use each_char method
+3.0.0 :009 > string
+ => "hellohello hello hello" 
+3.0.0 :010 > string.each_char{ |ch| puts ch}
+h
+e
+l
+l
+o
+h
+e
+l
+l
+o
+ 
+h
+e
+l
+l
+o
+ 
+h
+e
+l
+l
+o
+ => "hellohello hello hello" 
+
+ 2. can use chars method to convert the string into array of characters
+ and then can use "each" on this array to iterate
+  3.0.0 :011 > array_char=string.chars
+ => ["h", "e", "l", "l", "o", "h", "e", "l", "l", "o", " ", "h", "e", "l", ... 
+3.0.0 :012 > 
+
+To convert a string to upper lower case or capitalize
+using 
+upcase method
+downcase method
+capitalize method
+
+3.0.0 :012 > string.upcase
+ => "HELLOHELLO HELLO HELLO" 
+3.0.0 :013 > string.downcase
+ => "hellohello hello hello" 
+3.0.0 :014 > string.capitalize
+ => "Hellohello hello hello" 
+
+ Creating Multiline Strings
+ can create multi line string in 2 ways
+ 1. Using heredocs:
+
+3.0.0 :016"> x = <<-STRING
+3.0.0 :017"> aaa
+3.0.0 :018"> hello
+3.0.0 :019"> what
+3.0.0 :020"> to 
+3.0.0 :021"> create multiline
+3.0.0 :022"> string
+3.0.0 :023 > STRING
+ => "aaa\nhello\nwhat\nto \ncreate multiline\nstring\n" 
+3.0.0 :024 > x
+ => "aaa\nhello\nwhat\nto \ncreate multiline\nstring\n" 
+3.0.0 :025 > puts x
+aaa
+hello
+what
+to 
+create multiline
+string
+ => nil 
+
+2. Method is to use %Q:
+a = %Q
+3.0.0 :027"> multi= %Q( here 
+3.0.0 :028"> using multiline come
+3.0.0 :029"> comment)
+ => " here \nusing multiline come\ncomment" 
+3.0.0 :030 > puts multi
+ here 
+using multiline come
+comment
+ => nil 
+
+3. to use escape sequence \n
+3.0.0 :031 > multin=" usning \n commentg \n to use \n here"
+ => " usning \n commentg \n to use \n here" 
+3.0.0 :032 > puts multin
+ usning 
+ commentg 
+ to use 
+ here
+
+
+#Replace Text Inside a String Using The Gsub Method
+3.0.0 :033 > string
+ => "hellohello hello hello" 
+3.0.0 :034 > string.gsub("llo","oll")
+ => "heollheoll heoll heoll" 
+
+ but it replcases every occurences of that character 
+ it can also be used to remove occurence of that character
+ 3.0.0 :035 > string.gsub("llo","")
+ => "hehe he he" 
+ 
+ gsub returns new string so to create changen in that sring have to use
+ gsub!
+ gsub can also be used to  with regex to find substring to replace
+
+3.0.0 :037 > string.gsub(/\w/,",")
+ => ",,,,,,,,,, ,,,,, ,,,,," 
+3.0.0 :038 > string.gsub(/\s/,",")
+ => "hellohello,hello,hello" 
+3.0.0 :040 > string
+ => "hellohello hello hello" 
+3.0.0 :041 > string.gsub!(/\s/,",")
+ => "hellohello,hello,hello" 
+3.0.0 :042 > string
+ => "hellohello,hello,hello"
+
+
+Remove the Last Character From a String
+chomp method  to remove \n from last by default
+3.0.0 :042 > string
+ => "hellohello,hello,hello" 
+3.0.0 :043 > string.chomp
+ => "hellohello,hello,hello" 
+
+can give character to chomp method if that character is not there 
+it will return original string 
+3.0.0 :044 > string.chomp("o")
+ => "hellohello,hello,hell" 
+ 3.0.0 :045 > string.chomp("o")
+ => "hellohello,hello,hell"
+
+ How to Change String Encodings
+Strings are stored as a sequence of bytes , they are turned into 
+character based on encoding before we can see them
+eg A is 65
+but there can be complex encoding for different language character like
+UTF-8
+ encoding method is used to see it
+ 3.0.0 :046 > string.encoding
+ => #<Encoding:UTF-8> 
+
+ if some languadge is not supported by default encoding then it can be
+ fixed using this method like
+ "abc".force_encoding("UTF-8")
+
+
+ Counting Character
+
+ count method can be used to count the no of specific character in the string
+
+3.0.0 :051 > string.count("h")
+ => 4 
+3.0.0 :052 > string.count("he")
+ => 8 
+3.0.0 :053 > string
+ => "hellohello,hello,hello" 
+3.0.0 :054 > string.count("hl")
+ => 12 
+
+
+
+
+
+
+
+
+
