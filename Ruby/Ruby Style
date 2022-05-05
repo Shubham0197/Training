@@ -1,0 +1,155 @@
+Ruby Style guidelines
+Consistency with this style guide is important.
+Use UTF-8 as the source file encoding.
+Use only spaces for indentation. No hard tabs
+Use two spaces per indentation level (aka soft tabs).
+
+Maximum Line Length
+Limit lines to 80 characters.
+
+No Trailing Whitespace
+
+Line Endings
+Use Unix-style line endings.[2]
+
+TIP
+If you’re using Git you might want to add the following configuration setting to protect your project from Windows line endings creeping in:
+$ git config --global core.autocrlf true
+
+End each file with a newline.
+
+
+
+***Don’t use ; to terminate statements and expressions.
+
+Use one expression per line.
+
+# bad
+puts 'foo'; puts 'bar' # two expressions on the same line
+
+# good
+puts 'foo'
+puts 'bar'
+
+Spaces and Operators
+Use spaces around operators, after commas, colons and semicolons. Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper use is the key to writing easily readable code.
+
+sum = 1 + 2
+a, b = 1, 2
+class FooError < StandardError; end
+
+There are a few exceptions:
+
+Exponent operator:
+
+# bad
+e = M * c ** 2
+
+# good
+e = M * c**2
+Slash in rational literals:
+
+# bad
+o_scale = 1 / 48r
+
+# good
+o_scale = 1/48r
+Safe navigation operator:
+
+# bad
+foo &. bar
+foo &.bar
+foo&. bar
+
+# good
+foo&.bar
+Spaces and Braces
+No spaces after (, [ or before ], ). Use spaces around { and before }.
+
+# bad
+some( arg ).other
+[ 1, 2, 3 ].each{|e| puts e}
+
+# good
+some(arg).other
+[1, 2, 3].each { |e| puts e }
+
+No space after !
+
+No space inside range literals.
+
+# bad
+1 .. 3
+'a' ... 'z'
+
+# good
+1..3
+'a'...'z'
+
+Indent when as deep as case.    
+# good
+case
+when song.name == 'Misty'
+  puts 'Not again!'
+when song.duration > 120
+  puts 'Too long!'
+when Time.now.hour > 21
+  puts "It's too late"
+else
+  song.play
+end
+
+Use empty lines between method definitions and also to break up methods into logical paragraphs internally.
+
+Use empty lines around attribute accessor.
+# good
+class Foo
+  attr_reader :foo
+
+  def foo
+    # do something...
+  end
+end
+
+Use empty lines around access modifier.
+# good
+class Foo
+  def bar; end
+
+  private
+
+  def baz; end
+end
+
+Don’t use empty lines around method, class, module, block bodies.
+# good
+class Foo
+  def foo
+    begin
+      do_something do
+        something
+      end
+    rescue
+      something
+    end
+  end
+end
+
+Avoid line continuation with \ where not required. In practice, avoid using line continuations for anything but string concatenation.
+
+# bad (\ is required, but still ugly as hell)
+result = 1 \
+         - 2
+
+# good
+result = 1 -
+         2
+
+long_string = 'First part of the long string' \
+              ' and second part of the long string'
+
+Use shorthand self assignment operators whenever applicable.
+
+Prefer is_a? over kind_of?. The two methods are synonyms, but is_a? is the more commonly used name in the wild.
+
+Avoid explicit use of the case equality operator ===. 
