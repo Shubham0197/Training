@@ -153,3 +153,7 @@ Use shorthand self assignment operators whenever applicable.
 Prefer is_a? over kind_of?. The two methods are synonyms, but is_a? is the more commonly used name in the wild.
 
 Avoid explicit use of the case equality operator ===. 
+
+
+Use Snake case in the naming 
+Ruby_practice.rb
