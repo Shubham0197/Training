@@ -1,0 +1,238 @@
+You can create an Array object explicitly with:
+
+An array literal.
+
+You can convert certain objects to Arrays with:
+
+Method Array.
+Array indexing starts at 0, as in C or Java.
+
+A positive index is an offset from the first element:
+
+Index 0 indicates the first element.
+
+Index 1 indicates the second element.
+
+…
+
+A negative index is an offset, backwards, from the end of the array:
+
+Index -1 indicates the last element.
+
+Index -2 indicates the next-to-last element.
+
+…
+
+A non-negative index is in range if it is smaller than the size of the array. For a 3-element array:
+
+Indexes 0 through 2 are in range.
+
+Index 3 is out of range.
+
+A negative index is in range if its absolute value is not larger than the size of the array. For a 3-element array:
+
+Indexes -1 through -3 are in range.
+
+Index -4 is out of range.
+in ruby An Array can contain different types of objects. For example, the array  contains an Integer, a String and a Float:
+itsacheckmate@itsacheckmate:~/Training$ irb
+3.0.0 :001 > arr = ['a', 'b', 'c', 'd', 'e', 'f']
+ => ["a", "b", "c", "d", "e", "f"] 
+3.0.0 :002 > arr.fetch(1)
+3.0.0 :003 > arr.fetch(10)
+        5: from /usr/share/rvm/rubies/ruby-3.0.0/bi
+        4: from /usr/share/rvm/rubies/ruby-3.0.0/bi
+        3: from /usr/share/rvm/rubies/ruby-3.0.0/lip (required)>'
+        1: from (irb):3:in `fetch'6)
+3.0.0 :003 > arr.first
+ => "a" 
+3.0.0 :004 > arr.last 
+ => "f" 
+3.0.0 :005 > arr.take(3)
+ => ["a", "b", "c"] 
+ Methods for Deleting¶ ↑
+Each of these methods removes elements from self:
+
+pop
+Removes and returns the last element.
+
+shift
+Removes and returns the first element.
+
+compact!
+Removes all non-nil elements.
+
+delete
+Removes elements equal to a given object.
+
+delete_at
+Removes the element at a given offset.
+
+delete_if
+Removes elements specified by a given block.
+
+keep_if
+Removes elements not specified by a given block.
+
+reject!
+Removes elements specified by a given block.
+
+select!, filter!
+Removes elements not specified by a given block.
+
+slice!
+Removes and returns a sequence of elements.
+
+uniq!
+Removes duplicates.
+length, size
+Returns the count of elements.
+3.0.0 :006 > arr.drop(3)
+ => ["d", "e", "f"] 
+3.0.0 :007 > arr.length
+ => 6 
+3.0.0 :008 > arr.count
+ => 6 
+3.0.0 :009 > arr.push (45)
+ => ["a", "b", "c", "d", "e", "f", 45] 
+3.0.0 :010 > arr.shift
+ => "a" 
+3.0.0 :011 > arr.shift(4)
+ => ["b", "c", "d", "e"] 
+3.0.0 :012 > arr
+ => ["f", 45] 
+
+3.0.0 :023 > arr.unshift(3)
+ => [3, 4, 6] 
+3.0.0 :024 > arr.unshift(0)
+ => [0, 3, 4, 6] 
+3.0.0 :025 > arr.insert(2)
+ => [0, 3, 4, 6] 
+3.0.0 :026 > arr.insert(2,23)
+ => [0, 3, 23, 4, 6] 
+3.0.0 :027 > arr.insert(2,32,434,5345)
+ => [0, 3, 32, 434, 5345, 23, 4, 6] 
+ => 6 
+ => 0 
+ => [3, 32, 434, 5345, 23, 4] 
+ => 434 
+3.0.0 :033 > arr
+3.0.0 :034 > arr.delete(2)
+ => nil 
+ => 32 
+ => [3, 5345, 23, 4] 
+3.0.0 :037 > arr = Array.new(10)
+3.0.0 :038 > arr.compact
+3.0.0 :039 > arril] 
+ => [nil, nil, 34, 5, 4, 5, 3, 78, 9, 519, 587, nil, nil, nil, nil, nil, nil, nil, nil] 
+3.0.0 :041 > arr.compact
+ => [34, 5, 4, 5, 3, 78, 9, 519, 587] 
+3.0.0 :042 > arr
+ => [nil, nil, 34, 5, 4, 5, 3, 78, 9, 519, 587, nil, nil, nil, nil, nil, nil, nil, nil] 
+3.0.0 :043 > arr.compact!
+ => [34, 5, 4, 5, 3, 78, 9, 519, 587] 
+3.0.0 :044 > arr
+3.0.0 :045 > #remove unique values from array
+3.0.0 :047 > arr.uniq
+3.0.0 :048 > arr
+3.0.0 :049 > arr.uniq!
+3.0.0 :050 > arr
+3.0.0 :051 > #iterating over arrays using each can 
+3.0.0 :052 > words=%w[hello how are you?]
+3.0.0 :053 > arr.map {|a| a*2}
+ => [68, 10, 8, 6, 156, 18, 1038, 1174] 
+ => [34, 5, 4, 3, 78, 9, 519, 587] 
+ => ["hellohello", "howhow", "areare", "you?you?"] 
+ => [68, 10, 8, 6, 156, 18, 1038, 1174] 
+ => [68, 10, 8, 6, 156, 18, 1038, 1174] 
+3.0.0 :058 > #selecting item from array non destruc
+tive way
+ => nil 
+3.0.0 :059 > arr.select
+ => #<Enumerator: [68, 10, 8, 6, 156, 18, 1038, 1174]:select> 
+3.0.0 :060 > arr.select{|a| a>3}
+ => [68, 10, 8, 6, 156, 18, 1038, 1174] 
+3.0.0 :061 > arr.select{|a| a>356}
+ => [1038, 1174] 
+3.0.0 :062 > arr.reject{|a| a>356}
+
+Did you mean?  drop_while
+3.0.0 :064 > arr.drop_while{|a| a>356}
+ => [68, 10, 8, 6, 156, 18, 1038, 1174]
+
+3.0.0 :014 > arr.delete_if{|a| a>5}
+ => [1, 2, 3, 4, 5] 
+3.0.0 :015 > arr.keep_if {|a| a<2}
+ => [1] 
+3.0.0 :016 > arr
+ => [1] 
+ 3.0.0 :015 > arr=[2,8,3,9]
+3.0.0 :016 > arr & arr2
+3.0.0 :017 > arr2& arr
+3.0.0 :018 > arr=[3,8,2,9]
+3.0.0 :019 > arr2& arr
+3.0.0 :020 > arr3 = arr+arr2 
+3.0.0 :021 > arr.uniq
+3.0.0 :022 > arr.uniq?
+        4: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `<main>'
+        2: from /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/irb-1.
+        1: from (irb):22:in `<main>''
+Did you mean?  uniq
+               uniq!
+3.0.0 :023 > arr.uniq!
+ => nil 
+3.0.0 :024 > arr
+ => [3, 8, 2, 9] 
+3.0.0 :025 > arr3.uniq
+ => [3, 8, 2, 9, 0, 1, 4, 5, 6] 
+ => [3, 8, 2, 9, 0, 1, 4, 5, 6] 
+3.0.0 :027 > arr3
+ => [3, 8, 2, 9, 0, 1, 4, 5, 6] 
+3.0.0 :028 > arr3 - arr
+ => [0, 1, 4, 5, 6] 
+3.0.0 :029 > arr3
+ => [3, 8, 2, 9, 0, 1, 4, 5, 6] 
+ push, append, <<
+Appends trailing elements.
+3.0.0 :030 > arr << 2
+ => [3, 8, 2, 9, 2] 
+ => [3, 8, 2, 9, 2, [2]] 
+3.0.0 :032 > arr << arr3
+
+
+3.0.0 :035 > arr << arr3
+]] 
+ => [3, 8, 2, 9, 2, [2], [3, 8, 2, 9, 0, 1, 4, 5, 6], [3, 8, 2, 9, 0, 1, 4, 5, 6
+3.0.0 :037 > arr[2,5]
+3.0.0 :038 > arr[2,-5]
+ => nil 
+3.0.0 :039 > arr[2,-3]
+ => nil 
+3.0.0 :040 > arr[2..-3]
+ => [2, 9, 2, [2]] 
+3.0.0 :041 > arr[-2..-3]
+3.0.0 :042 > arr[-2..3]
+3.0.0 :043 > arr[-2..5]
+ => [] 
+3.0.0 :044 > arr[-1..5]
+ => [] 
+3.0.0 :045 > arr[-1..3]
+ => [] 
+3.0.0 :046 > arr[-7..4]
+ => [8, 2, 9, 2] 
+3.0.0 :047 > arr[(-7..4).step(2)]
+ => [8, 9] 
+3.0.0 :048 > a = [:foo, 'bar', 2]
+ => [:foo, "bar", 2] 
+3.0.0 :049 > a[:foo]
+Traceback (most recent call last):
+        4: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `<main>'
+        3: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `load'
+        2: from /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/irb-1.3.0/exe/irb:11:in `<top (required)>'
+        1: from (irb):49:in `<main>'""`
+TypeError (no implicit conversion of Symbol into Integer)
+3.0.0 :050 > a[0]
+ => :foo 
+3.0.0 :051 > a[0,2]
+ => [:foo, "bar"] 
+
