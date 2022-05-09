@@ -236,3 +236,651 @@ TypeError (no implicit conversion of Symbol into Integer)
 3.0.0 :051 > a[0,2]
  => [:foo, "bar"] 
 
+
+
+
+Methods for Querying¶ ↑
+length, size
+Returns the count of elements.
+
+include?
+Returns whether any element == a given object.
+
+empty?
+Returns whether there are no elements.
+
+all?
+Returns whether all elements meet a given criterion.
+itsacheckmate@itsacheckmate:~/Training$ irb
+3.0.0 :001 > a =[1,2,3,4,5,6,7,8,9]
+ => [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+3.0.0 :002 > a.all?
+ => true 
+3.0.0 :003 > b = [1,3,4,6,nil]
+ => [1, 3, 4, 6, nil] 
+3.0.0 :004 > b.all?
+ => false 
+ 3.0.0 :007 > a.any?{1}
+ => true 
+ => true 
+3.0.0 :009 > b.any?{|a| a>6}
+Traceback (most recent call last):
+        6: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `<main>'
+        5: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `load'
+        4: from /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/irb-1.3.0/exe/irb:11:in `<top (required)>'
+        3: from (irb):9:in `<main>'
+        2: from (irb):9:in `any?'
+        1: from (irb):9:in `block in <main>'
+NoMethodError (undefined method `>' for nil:NilClass)`
+3.0.0 :010 > #error if there is any null element in the array
+
+{} = > search for the individual elements
+() => search for the all the elements in the array
+
+
+any?
+Returns whether any element meets a given criterion.
+will give false if any elements is false
+=> ["a", "d", "d", false] 
+=> true 
+3.0.0 :018 > d = [nil]
+=> [nil] 
+3.0.0 :019 > d.any?
+=> false 
+3.0.0 :020 > d = [false]
+=> [false] 
+3.0.0 :021 > d.any?
+=> false 
+3.0.0 :022 > [0, 1, 2].any?(1)
+=> true 
+3.0.0 :023 > [0, 1, 2].any?(3)
+=> false 
+
+
+none?
+Returns whether no element == a given object.
+3.0.0 :024 > d.none?
+ => true 
+3.0.0 :025 > a.none?
+ => false 
+3.0.0 :026 > b.none?
+ => false 
+3.0.0 :027 > c.none?
+ => false 
+ 3.0.0 :028 > a.none?{|a| a >10}
+ => true 
+3.0.0 :029 > a.none?{|a| a <10}
+ => false 
+3.0.0 :030 > a.none?(1)
+ => false 
+3.0.0 :031 > a.none?(10)
+ => true 
+3.0.0 :032 > a
+ => [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+
+one?
+Returns whether exactly one element == a given object.
+one? → true or falseclick to toggle source
+one? {|element| ... } → true or false
+one?(obj) → true or false
+Returns true if exactly one element of self meets a given criterion.
+[1, 1, 2].one?(0)
+=> false
+[0, 0, 1].one?(0)
+=> false 
+3.0.0 :003 > [0, 1, 2].one?(0)
+ => true 
+3.0.0 :004 > [0, 1, 2].one?
+ => false 
+3.0.0 :005 > [0, 0].one? 
+ => false 
+3.0.0 :006 > [0, nil].one? 
+ => true 
+3.0.0 :007 > [].one?(/foo/)
+ => false 
+3.0.0 :008 > ['food','drinks'].one?(/foo/)
+ => true
+
+count
+Returns the count of elements that meet a given criterion.
+count → an_integer
+With no argument and no block, returns the count of all elements:
+count(obj) → an_integer
+count {|element| ... } → an_integer
+3.0.0 :009 > a = [1,2,3,4,5,6,7,89]
+ => [1, 2, 3, 4, 5, 6, 7, 89] 
+3.0.0 :010 > a.count
+ => 8 
+3.0.0 :011 > [].count
+ => 0 
+3.0.0 :012 > [].count(3)
+ => 0 
+3.0.0 :013?> a.count(3)
+ => 1 
+ 3.0.0 :015 > a.count{|a| a>12}
+ => 1 
+
+find_index, index
+Returns the index of the first element that meets a given criterion.
+index(object) → integer or nilclick to toggle source
+index {|element| ... } → integer or nil
+index → new_enumerator
+=> 1 
+3.0.0 :016 > a.index(89)
+ => 7 
+3.0.0 :017 > b = [1,1,1,1,2,2,2,3,3,3,4,]
+ => [1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4] 
+3.0.0 :018 > b.index(2)
+ => 4 
+3.0.0 :019 > c= ['food','drink']
+ => ["food", "drink"] 
+3.0.0 :020 > c.index(/foof/)
+ => nil 
+3.0.0 :021 > c.index(/fof/)
+ => nil 
+3.0.0 :022 > c.index(/fo/)
+ => nil 
+3.0.0 :023 > c.index(/food/)
+ => nil 
+3.0.0 :024 > c.index('food')
+ => 0 
+3.0.0 :025 > c.index{|a| a=='food'}
+ => 0 
+
+rindex
+Returns the index of the last element that meets a given criterion.
+3.0.0 :027 > b.rindex(2)
+ => 6 
+3.0.0 :028 > c.rindex('food')
+ => 0 
+
+hash
+Returns the integer hash code.
+3.0.0 :029 > b.hash
+ => -2332784923847193225 
+3.0.0 :030 > a.hash
+ => 2021912564530979645 
+3.0.0 :031 > x = [1,2,3]
+ => [1, 2, 3] 
+3.0.0 :032 > y = [1,2,3]
+ => [1, 2, 3] 
+3.0.0 :033 > x.hash = y.hash
+3.0.0 :034 > x.hash == y.hash
+ => true 
+
+Methods for Fetching¶ ↑
+These methods do not modify self.
+fetch
+Returns the element at a given offset.
+3.0.0 :035 > a.fetch(1) {|index| raise 'Cannot happen' }
+ => 2 
+3.0.0 :036 > a.fetch(13) {|index| raise 'Cannot happen' }
+Traceback (most recent call last):
+        6: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `<main>'
+        5: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `load'
+        4: from /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/irb-1.3.0/exe/irb:11:in `<top (required)>'
+        3: from (irb):36:in `<main>'
+        2: from (irb):36:in `fetch'
+        1: from (irb):36:in `block in <main>'
+RuntimeError (Cannot happen)
+
+3.0.0 :037 > a.fetch(1) {|index| "Value for #{index}" }
+ => 2 
+3.0.0 :038 > a.fetch(1, nil)
+ => 2 
+3.0.0 :039 > a
+ => [1, 2, 3, 4, 5, 6, 7, 89]
+
+
+
+max
+Returns one or more maximum-valued elements, as determined by <=> or a given block.
+=> [1, 2, 3, 4, 5, 6, 7, 89] 
+3.0.0 :040 > a.max
+ => 89 
+3.0.0 :041 > a.max(3)
+ => [89, 7, 6] 
+3.0.0 :042 > ['0', '00', '000'].max(2) {|a, b| a.size <=> b.size }
+ => ["000", "00"] 
+3.0.0 :043 > ['0', '00', '000'].max {|a, b| a.size <=> b.size }
+ => "000" 
+3.0.0 :044 > ['0', '00', '000'].max(4) {|a, b| a.size <=> b.size }
+ => ["000", "00", "0"] 
+3.0.0 :045 > a[0].size
+ => 8 
+3.0.0 :046 > a[2].size
+ => 8 
+3.0.0 :047 > a.size
+ => 8 
+3.0.0 :048 > a
+ => [1, 2, 3, 4, 5, 6, 7, 89] 
+
+minmax
+Returns the minimum-valued and maximum-valued elements, as determined by <=> or a given block.
+minmax → [min_val, max_val]
+minmax {|a, b| ... } → [min_val, max_val]
+
+3.0.0 :049 > a.minmax
+ => [1, 89] 
+3.0.0 :050 > b
+ => [1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4] 
+3.0.0 :051 > c
+ => ["food", "drink"] 
+3.0.0 :052 > c.minmax
+ => ["drink", "food"] 
+3.0.0 :053 > c +=['a','c']
+ => ["food", "drink", "a", "c"] 
+3.0.0 :054 > c.minmax
+ => ["a", "food"] 
+3.0.0 :056 > c.minmax {|a, b| a.size <=> b.size }
+ => ["a", "drink"] 
+
+assoc
+Returns the first element that is an array whose first element == a given object.
+3.0.0 :058 > a = [{foo: 0}, [2, 4], [4, 5, 6], [4, 5]]
+ => [{:foo=>0}, [2, 4], [4, 5, 6], [4, 5]] 
+3.0.0 :059 > a.assoc(4)
+ => [4, 5, 6] 
+
+rassoc
+Returns the first element that is an array whose second element == a given object.
+3.0.0 :058 > a = [{foo: 0}, [2, 4], [4, 5, 6], [4, 5]]
+ => [{:foo=>0}, [2, 4], [4, 5, 6], [4, 5]] 
+3.0.0 :059 > a.assoc(4)
+ => [4, 5, 6] 
+
+
+dig
+Returns the object in nested objects that is specified by a given index and additional arguments.
+=> [:foo, [:bar, :baz, [:bat, :bam]]] 
+3.0.0 :036 > a.dig(2,2)
+ => nil 
+3.0.0 :037 > a.dig(1,3)
+ => nil 
+3.0.0 :038 > a.dig(1,2)
+ => [:bat, :bam] 
+3.0.0 :039 > a.dig(1,1)
+ => :baz 
+3.0.0 :040 > a.dig(1,0)
+ => :bar 
+
+drop
+Returns trailing elements as determined by a given index.
+3.0.0 :043 > a.drop(1)
+ => [[:bar, :baz, [:bat, :bam]]] 
+
+ take
+Returns leading elements as determined by a given index.
+.0.0 :044 > a.take(50)
+ => [:foo, [:bar, :baz, [:bat, :bam]]] 
+3.0.0 :045 > a.take(0)
+ => [] 
+3.0.0 :046 > a.take(2)
+ => [:foo, [:bar, :baz, [:bat, :bam]]] 
+
+drop_while
+Returns trailing elements as determined by a given block.
+3.0.0 :049 > a.drop_while {|element| true }
+ => [] 
+
+take_while
+Returns leading elements as determined by a given block.
+3.0.0 :048 > a.take_while {|element| true }
+ => [:foo, [:bar, :baz, [:bat, :bam]]]
+
+slice
+Returns consecutive elements as determined by a given argument.
+
+sort
+Returns all elements in an order determined by <=> or a given block.
+3.0.0 :025 > a.sort_by
+ => #<Enumerator: [1, 2]:sort_by> 
+3.0.0 :026 > a.sort_by!
+ => #<Enumerator: [1, 2]:sort_by!> 
+3.0.0 :027 > a.sort_by! {|element| element.size }
+ => [1, 2] 
+
+reverse
+Returns all elements in reverse order.
+
+3.0.0 :032 > c.reverse
+ => [3, 4, 5, 6, 5, 5, 4, 3, 2, 1, 2, 3, 4, 3, 2, 2, 1, 23, 3, 2, 1] 
+
+rotate
+Returns all elements with some rotated from one end to the other.
+3.0.0 :051 > c
+ => [1, 2, 3, 23, 1, 2, 2, 3, 4, 3, 2, 1, 2, 3, 4, 5, 5, 6, 5, 4, 3] 
+3.0.0 :052 > c.rotate(2)
+ => [3, 23, 1, 2, 2, 3, 4, 3, 2, 1, 2, 3, 4, 5, 5, 6, 5, 4, 3, 1, 2] 
+3.0.0 :053 > c.rotate
+ => [2, 3, 23, 1, 2, 2, 3, 4, 3, 2, 1, 2, 3, 4, 5, 5, 6, 5, 4, 3, 1] 
+
+bsearch
+Returns an element selected via a binary search as determined by a given block.
+3.0.0 :055 > c.bsearch
+ => #<Enumerator: [1, 2, 3, 23, 1, 2, 2, 3, 4, 3, 2, 1, 2, 3, 4, 5, 5, 6, 5, 4, 3]:bsearch> 
+3.0.0 :056 > c.bsearch {|a| a == 6}
+ => nil 
+3.0.0 :057 > c.bsearch {|a| a > 6}
+ => nil 
+3.0.0 :058 > c.bsearch {|a| a > 6}
+ => nil 
+3.0.0 :059 > c.bsearch {|a| a < 6}
+ => 1 
+
+bsearch_index
+Returns the index of an element selected via a binary search as determined by a given block.
+3.0.0 :063 > c.bsearch_index {|a| a == 6}
+ => nil 
+3.0.0 :064 > c.bsearch_index {|a| true}
+ => 0 
+3.0.0 :065 > c.bsearch_index {|a| a>5}
+ => nil 
+ ????
+
+sample
+Returns one or more random elements.
+3.0.0 :066 > a.sample
+ => :foo 
+3.0.0 :067 > b.sample
+ => 3 
+3.0.0 :068 > c.sample(3)
+ => [5, 1, 3] 
+3.0.0 :069 > a.sample(a.size * 2)
+ => [:foo, [:bar, :baz, [:bat, :bam]]] 
+3.0.0 :070 > 
+shuffle
+Returns elements in a random order.
+3.0.0 :070 > b.shuffle
+ => [3, 2] 
+3.0.0 :071 > b.shuffle(random: Random.new(1))
+ => [2, 3] 
+3.0.0 :072 > b
+ => [2, 3]
+Methods for Assigning¶ ↑
+These methods add, replace, or reorder elements in self.
+
+fill
+Replaces specified elements with specified objects.
+fill(obj) → selfclick to toggle source
+fill(obj, start) → self
+fill(obj, start, length) → self
+fill(obj, range) → self
+fill {|index| ... } → self
+fill(start) {|index| ... } → self
+fill(start, length) {|index| ... } → self
+fill(range) {|index| ... } → self
+3.0.0 :078 > c.fill(:w,- 5)
+ => [1, 2, 3, 23, 1, :X, :X, :X, :X, :X, :X, :X, :X, :X, :X, :X, :w, :w, :w, :w, :w] 
+3.0.0 :079 > c.fill(:w,- 5,4)
+ => [1, 2, 3, 23, 1, :X, :X, :X, :X, :X, :X, :X, :X, :X, :X, :X, :w, :w, :w, :w, :w] 
+3.0.0 :080 > c.fill(:t,- 5,4)
+ => [1, 2, 3, 23, 1, :X, :X, :X, :X, :X, :X, :X, :X, :X, :X, :X, :t, :t, :t, :t, :w] 
+3.0.0 :081 > c.fill(:t,9,15)
+ => [1, 2, 3, 23, 1, :X, :X, :X, :X, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t] 
+3.0.0 :082 > c.fill(:t,19,0)
+ => [1, 2, 3, 23, 1, :X, :X, :X, :X, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t] 
+3.0.0 :083 > c.fill(:r,22,0)
+ => [1, 2, 3, 23, 1, :X, :X, :X, :X, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t] 
+3.0.0 :084 > c.fill(:r,2..4)
+ => [1, 2, :r, :r, :r, :X, :X, :X, :X, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t, :t] 
+
+replace
+Replaces the content of self with the content of a given array.
+3.0.0 :073 > a
+ => [:foo, [:bar, :baz, [:bat, :bam]]] 
+3.0.0 :074 > a.replace(['foo', :bar, 3])
+ => ["foo", :bar, 3] 
+3.0.0 :075 > b.replace(a)
+ => ["foo", :bar, 3] 
+3.0.0 :076 > b
+ => ["foo", :bar, 3]
+
+sort_by!
+Replaces self with its elements sorted, as determined by a given block.
+Methods for Combining¶ ↑
+3.0.0 :025 > a.sort_by
+ => #<Enumerator: [1, 2]:sort_by> 
+3.0.0 :026 > a.sort_by!
+ => #<Enumerator: [1, 2]:sort_by!> 
+3.0.0 :027 > a.sort_by! {|element| element.size }
+ => [1, 2] 
+
+
++
+Returns an array containing all elements of self followed by all elements of a given array.
+3.0.0 :024 > a+b
+ => [1, 2, 2, 3] 
+
+-
+Returns an array containiing all elements of self that are not found in a given array.
+3.0.0 :021 > a-b
+ => [1] 
+3.0.0 :022 > a
+ => [1, 2] 
+3.0.0 :023 > b
+ => [2, 3] 
+#|
+Returns an array containing all elements of self and all elements of a given array, duplicates removed.
+3.0.0 :020 > a1|a2
+ => [3, 4, 5, 6] 
+
+union
+Returns an array containing all elements of self and all elements of given arrays, duplicates removed.
+3.0.0 :014 > b = [2,3]
+ => [2, 3] 
+3.0.0 :015 > a.union(b)
+ => [1, 2, 3] 
+difference
+Returns an array containing all elements of self that are not found in any of the given arrays..
+3.0.0 :012 > a.difference(a1)
+ => [1, 2] 
+3.0.0 :013 > a1.difference(a2)
+ => [3, 4] 
+product
+Returns or yields all combinations of elements from self and given arrays.
+3.0.0 :006 > a1 = [3, 4]
+ => [3, 4] 
+3.0.0 :007 > a2 = [5, 6]
+ => [5, 6] 
+3.0.0 :008 > p = a.product(a1)
+ => [[1, 3], [1, 4], [2, 3], [2, 4]] 
+
+Methods for Iterating¶ ↑
+each
+Passes each element to a given block.
+
+reverse_each
+Passes each element, in reverse order, to a given block.
+
+each_index
+Passes each element index to a given block.
+
+cycle
+Calls a given block with each element, then does so again, for a specified number of times, or forever.
+3.0.0 :151 > a.cycle(2){|a| puts a}
+a0
+a1
+b0
+b1
+c0
+c1
+a0
+a1
+b0
+b1
+c0
+c1
+
+a.cycle(2){|a| print a}
+[:a0, :a1][:b0, :b1][:c0, :c1][:a0, :a1][:b0, :b1][:c0, :c1] => nil 
+# Prints 0 and 1 forever.
+[0, 1].cycle {|element| puts element }
+[0, 1].cycle(nil) {|element| puts element }
+3.0.0 :003 > a= [1,2]
+ => [1, 2] 
+3.0.0 :004 > a.cycle.first(4)
+ => [1, 2, 1, 2] 
+3.0.0 :005 > a.cycle.first(5)
+ => [1, 2, 1, 2, 1] 
+
+combination
+Calls a given block with combinations of elements of self; a combination does not use the same element more than once.
+3.0.0 :144 > a.combination(2) {|combination| p combination }
+[[:a0, :a1], [:b0, :b1]]
+[[:a0, :a1], [:c0, :c1]]
+[[:b0, :b1], [:c0, :c1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+3.0.0 :145 > a.combination(3) {|combination| p combination }
+[[:a0, :a1], [:b0, :b1], [:c0, :c1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+
+permutation
+Calls a given block with permutations of elements of self; a permutation does not use the same element more than once.
+3.0.0 :143 > a.permutation(2) {|permutation| p permutation }
+[[:a0, :a1], [:b0, :b1]]
+[[:a0, :a1], [:c0, :c1]]
+[[:b0, :b1], [:a0, :a1]]
+[[:b0, :b1], [:c0, :c1]]
+[[:c0, :c1], [:a0, :a1]]
+[[:c0, :c1], [:b0, :b1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+ 3.0.0 :146 > a.permutation(3) {|permutation| p permutation }
+[[:a0, :a1], [:b0, :b1], [:c0, :c1]]
+[[:a0, :a1], [:c0, :c1], [:b0, :b1]]
+[[:b0, :b1], [:a0, :a1], [:c0, :c1]]
+[[:b0, :b1], [:c0, :c1], [:a0, :a1]]
+[[:c0, :c1], [:a0, :a1], [:b0, :b1]]
+[[:c0, :c1], [:b0, :b1], [:a0, :a1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+
+repeated_combination
+Calls a given block with combinations of elements of self; a combination may use the same element more than once.
+3.0.0 :140 > e = a.repeated_combination(2)
+ => #<Enumerator: [[:a0, :a1], [:b0, :b1], [:c0, :c1]]:repeated_combination(2)> 
+3.0.0 :141 > e.size
+ => 6 
+3.0.0 :142 > e.to_a
+ => [[[:a0, :a1], [:a0, :a1]], [[:a0, :a1], [:b0, :b1]], [[:a0, :a1], [:c0, :c1]], [[:b0, :b1], [:b0, :b1]], [[:b0, :b1], [:c0, :c1]], [[:c0, :c1], [:c0, :c1]]] 
+
+repeated_permutation
+Calls a given block with permutations of elements of self; a permutation may use the same element more than once.
+3.0.0 :133 > a.repeated_permutation(1) {|permutation| p permutation }
+[[:a0, :a1]]
+[[:b0, :b1]]
+[[:c0, :c1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+3.0.0 :134 > a.repeated_permutation(2) {|permutation| p permutation }
+[[:a0, :a1], [:a0, :a1]]
+[[:a0, :a1], [:b0, :b1]]
+[[:a0, :a1], [:c0, :c1]]
+[[:b0, :b1], [:a0, :a1]]
+[[:b0, :b1], [:b0, :b1]]
+[[:b0, :b1], [:c0, :c1]]
+[[:c0, :c1], [:a0, :a1]]
+[[:c0, :c1], [:b0, :b1]]
+[[:c0, :c1], [:c0, :c1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+3.0.0 :135 > 
+
+
+Methods for Converting¶ ↑
+
+map!, collect!
+Replaces each element with a block return-value.
+3.0.0 :125 > a.flatten
+ => [:a0, :a1, :b0, :b1, :c0, :c1] 
+3.0.0 :126 > a
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+
+flatten!
+Replaces each nested array in self with the elements from that array.
+3.0.0 :125 > a.flatten
+ => [:a0, :a1, :b0, :b1, :c0, :c1] 
+3.0.0 :126 > a
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+
+inspect, to_s
+Returns a new String containing the elements.
+3.0.0 :123 > a.inspect
+ => "[[:a0, :a1], [:b0, :b1], [:c0, :c1]]" 
+3.0.0 :124 > b.inspect
+ => "[1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4]" 
+
+join
+Returns a newsString containing the elements joined by the field separator.
+3.0.0 :120 > a.join
+ => "a0a1b0b1c0c1" 
+3.0.0 :121 > c.join
+ => "fooddrinkac" 
+3.0.0 :122 > c.join(" ")
+ => "food drink a c" 
+
+to_a
+Returns self or a new array containing all elements. like to_i, to_c
+3.0.0 :118 > a.to_a
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+3.0.0 :119 > b.to_a
+ => [1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4] 
+
+to_ary
+Returns self.
+3.0.0 :116 > b.to_ary
+ => [1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4] 
+3.0.0 :117 > a.to_ary
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+
+to_h
+Returns a new hash formed from the elements.
+3.0.0 :107 > a.to_h
+ => {:a0=>:a1, :b0=>:b1, :c0=>:c1} 
+3.0.0 :108 > a
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+
+transpose
+Transposes self, which must be an array of arrays.
+3.0.0 :101 > a = [[:a0, :a1], [:b0, :b1], [:c0, :c1]]
+ => [[:a0, :a1], [:b0, :b1], [:c0, :c1]] 
+3.0.0 :102 > a.transpose
+ => [[:a0, :b0, :c0], [:a1, :b1, :c1]] 
+
+zip
+Returns a new array of arrays containing self and given arrays; 
+3.0.0 :086 > a
+ => [{:foo=>0}, [2, 4], [4, 5, 6], [4, 5]] 
+3.0.0 :087 > b
+ => [1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4] 
+3.0.0 :088 > c
+ => ["food", "drink", "a", "c"] 
+
+3.0.0 :084 > d= a.zip(b,c)
+ => [[{:foo=>0}, 1, "food"], [[2, 4], 1, "drink"], [[4, 5, 6], 1, "a"], [[4,... 
+3.0.0 :085 > d
+ => [[{:foo=>0}, 1, "food"], [[2, 4], 1, "drink"], [[4, 5, 6], 1, "a"], [[4, 5], 1, "c"]] 
+
+ 3.0.0 :089 > d = b.zip(a,c)
+ => [[1, {:foo=>0}, "food"], [1, [2, 4], "drink"], [1, [4, 5, 6], "a"], [1, ... 
+3.0.0 :090 > d
+ => [[1, {:foo=>0}, "food"], [1, [2, 4], "drink"], [1, [4, 5, 6], "a"], [1, [4, 5], "c"], [2, nil, nil], [2, nil, nil], [2, nil, nil], [3, nil, nil], [3, nil, nil], [3, nil, nil], [4, nil, nil]] 
+
+abbrev
+Returns a hash of unambiguous abbreviations for elements.
+cant find????
+
+pack
+Packs the elements into a binary sequence.
+see documntations
+=> ["food", "drink", "a", "c"] 
+3.0.0 :076 > c.pack("a3a3a3") 
+3.0.0 :077 > c.pack("A3A3A3")
+ => "foodria  " 
+3.0.0 :078 > c.pack("ccccc")
+
+sum
+Returns a sum of elements according to either + or a given block.
+3.0.0 :069 > b[2,6].sum
+ => 11 
+3.0.0 :070 > b.sum
+ => 23 
+ 3.0.0 :073 >  a.sum('Coerced and concatenated: ') {|element| element.to_s }
+ => "Coerced and concatenated: {:foo=>0}[2, 4][4, 5, 6][4, 5]" 
