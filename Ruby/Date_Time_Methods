@@ -1,0 +1,185 @@
+DateTime
+A subclass of Date that easily handles date, hour, minute, second, and offset.
+The Ruby Time Class
+You can use the Time class in Ruby to represent a time & date.
+
+This date has three components:
+
+day
+month
+year
+And time:
+
+hours
+minutes
+seconds
+
+You can get an object that represents the current time using Time.now
+Time.now
+ => 2022-05-09 19:51:00.635946575 +0530 
+
+You can create a Time object using an Unix timestamp & the at method
+Time.new(2018, 1, 1)
+ => 2018-01-01 00:00:00 +0530 
+
+You can give the starting date in numbers to Time.new (format: year/month/day)
+Time.at(15000000000)
+ => 2445-05-01 08:10:00 +0530 
+3.0.0 :103 > t = Time.now
+ => 2022-05-09 19:52:24.90058573 +0530 
+3.0.0 :104 > puts t.day
+9
+ => nil 
+3.0.0 :105 > puts t.month
+5
+ => nil 
+3.0.0 :106 > puts t.hour
+19
+
+
+3.0.0 :107 > puts t.friday?
+false
+ => nil 
+3.0.0 :108 > puts t.monday?
+true
+ => nil 
+
+3.0.0 :109 > t.zone
+ => "IST" 
+3.0.0 :110 > t.utc_offset
+
+3.0.0 :113 > Time.now
+ => 2022-05-09 19:56:11.793226042 +0530 
+3.0.0 :114 > Time.now.utc
+ => 2022-05-09 14:26:19.820053399 UTC 
+ Ruby Time Formatting
+Ruby formats Time objects in a specific way by default.
+This method is strftime, which basically means ‘format time’.
+It works by passing a string with format specifiers, these specifiers will be replaced by a value.
+
+3.0.0 :115 > time = Time.new
+3.0.0 :116 > time.strftime("%d/%m/%Y")        
+3.0.0 :117 > time.strftime("%k:%M")           
+ => "19:57" 
+3.0.0 :118 > time.strftime("%I:%M %p")        
+ => "07:57 PM" 
+3.0.0 :119 > time.strftime("Today is %A")     
+ => "Today is Monday" 
+3.0.0 :120 > time.strftime("%d of %B, %Y")    
+ => "09 of May, 2022" 
+3.0.0 :121 > time.strftime("Unix time is %s")
+ => "Unix time is 1652106441" 
+Strftime Format Table
+Format	Description
+%d	Day of the month (01..31)
+%m	Month of the year (01..12) Use %-m for (1..12)
+%k	Hour (0..23)
+%M	Minutes
+%S	Seconds (00..60)
+%I	Hour (1..12)
+%p	AM/PM
+%Y	Year
+%A	Day of the week (name)
+%B	Month (name)
+
+Generating a timestamp
+3.0.0 :122 > Time.now.to_i
+ => 1652106547
+ time = Time.new + 10
+ => 2022-05-09 19:59:40.933721816 +0530 
+3.0.0 :124 > Time.new > time
+ => true 
+
+3.0.0 :125 > Time.now - 86400
+ => 2022-05-08 20:00:07.838124698 +0530 
+
+The Date Class
+The Date class has no concept of minutes, seconds or hours. This class stores everything internally in terms of days.
+
+To use the Date class you need to require 'date'.
+
+You can get the current date using Date.today.
+3.0.0 :127 > Date.new
+ => #<Date: -4712-01-01 ((0j,0s,0n),+0s,2299161j)> 
+3.0.0 :128 > Date.today
+ => #<Date: 2022-05-09 ((2459709j,0s,0n),+0s,2299161j)> 
+3.0.0 :129 > Date.today + 1 
+ => #<Date: 2022-05-10 ((2459710j,0s,0n),+0s,2299161j)> 
+
+Date & Time Parsing
+The Date.parse method will try to parse any string that looks like a date.
+
+It uses a simple heuristic algorithm that tries to detect the input format.
+3.0.0 :130 > Date.parse("10/10/2010")
+ => #<Date: 2010-10-10 ((2455480j,0s,0n),+0s,2299161j)> 
+3.0.0 :131 > Date.parse("September 3")
+ => #<Date: 2022-09-03 ((2459826j,0s,0n),+0s,2299161j)> 
+3.0.0 :132 > Date.parse("May I have a cup of coffee, please?")
+ => #<Date: 2022-05-01 ((2459701j,0s,0n),+0s,2299161j)> 
+
+You can use the Date.strptime method & a set of format specifiers to provide your own custom input format.
+ These are the same specifiers that you can use for strftime.
+3.0.0 :133 > Date.iso8601("2018-10-01")
+ => #<Date: 2018-10-01 ((2458393j,0s,0n),+0s,2299161j)> 
+Date.strptime("3 of September", "%d of %B")
+ => #<Date: 2022-09-03 ((2459826j,0s,0n),+0s,2299161j)> 
+
+3.0.0 :137 > require 'time'
+ => true 
+3.0.0 :138 > 
+3.0.0 :139 > Time.strptime("1 of December 2017", "%d of %B %Y")
+ => 2017-12-01 00:00:00 +0530 
+
+Date Constants
+The Date class has some constants that you may find useful.
+
+For example, there is an array with the months of the year and another with the days of the week.
+
+Months start at index 1 so you can get a direct month number -> month name mapping.
+
+The days start with Sunday, but you can use the rotate method to have the week start on Monday.
+3.0.0 :140 > Date::MONTHNAMES # (index 0 = nil)
+ => [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
+3.0.0 :141 > Date::DAYNAMES.rotate(1)
+ => ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] 
+3.0.0 :142 > DateTime.superclass
+ => Date 
+3.0.0 :143 > DateTime.now
+ => #<DateTime: 2022-05-09T20:08:37+05:30 ((2459709j,52717s,405180492n),+19800s,2299161j)> 
+
+
+DateTime.new(2001,-11,-26,-20,-55,-54,
+'+7')
+ => #<DateTime: 2001-02-03T04:05:06+07:00 ((2451943j,75906s,0n),+25200s,2299161j)>
+
+ DateTime.new(2001,2,3,4,5,6,'+7')
+ => #<DateTime: 2001-02-03T04:05:06+07:00 ((2451943j,75906s,0n),+25200s,2299161j)> 
+ DateTime.new(2001,2,3) 
+ => #<DateTime: 2001-02-03T00:00:00+00:00 ((2451944j,0s,0n),+0s,2299161j)> 
+
+DateTime.commercial(2001)
+ => #<DateTime: 2001-01-01T00:00:00+00:00 ((2451911j,0s,0n),+0s,2299161j)> 
+
+DateTime.commercial(2001,5,6,4,5,6,'+7
+')
+ => #<DateTime: 2001-02-03T04:05:06+07:00 ((2451943j,75906s,0n),+25200s,2299161j)> 
+
+DateTime.httpdate('Sat, 03 Feb 2001 04:05:06 GMT')
+DateTime.httpdate('Sat, 03 Feb 2001 04
+:05:06 GMT')
+ => #<DateTime: 2001-02-03T04:05:06+00:00 ((2451944j,14706s,0n),+0s,2299161j)> 
+3.0.0 :096 > 
+
+DateTime.iso8601('2001-02-03T04:05:06+
+07:00')
+ => #<DateTime: 2001-02-03T04:05:06+07:00 ((2451943j,75906s,0n),+25200s,2299161j)> 
+
+ DateTime.iso8601('20010203T040506+0700
+')
+ => #<DateTime: 2001-02-03T04:05:06+07:00 ((2451943j,75906s,0n),+25200s,2299161j)> 
+ DateTime.jd(2451945)   
+ => #<DateTime: 2001-02-04T00:00:00+00:00 ((2451945j,0s,0n),+0s,2299161j)> 
+
+  DateTime.now  
+ => #<DateTime: 2022-05-09T19:36:59+05:30 ((2459709j,50819s,85528493n),+19800s,2299161j)> 
+
