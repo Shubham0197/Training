@@ -1,0 +1,483 @@
+Hash
+A Hash maps each of its unique keys to a specific value.
+A Hash has certain similarities to an Array, but:
+An Array index is always an Integer.
+A Hash key can be (almost) any object.
+
+Here, class Hash provides methods that are useful for:
+
+Creating a Hash
+Setting Hash State
+Querying
+Comparing
+Fetching
+Assigning
+Deleting
+Iterating
+Converting
+Transforming Keys and Values
+
+Class Hash also includes methods from module Enumerable.
+
+Methods for Creating a Hash¶ ↑
+::[]
+3.0.0 :170 > has = {name: 'shubham', age: 25}
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :171 > has1 = {name: 'shubham', age: 25,add: 'india' }
+ => {:name=>"shubham", :age=>25, :add=>"india"} 
+3.0.0 :172 > has
+3.0.0 :173 > has1
+ => {:name=>"shubham", :age=>25, :add=>"india"}
+ 3.0.0 :177 > has1
+ => {:name=>"shubham", :age=>25, :add=>"india"} 
+3.0.0 :178 > has
+ => {:name=>"shubham", :age=>25} 
+Returns a new hash populated with given objects.
+3.0.0 :180 > Hash[:name,'shubh',:age,32]
+ => {:name=>"shubh", :age=>32} 
+3.0.0 :181 > a=Hash[:name,'shubh',:age,32]
+ => {:name=>"shubh", :age=>32} 
+3.0.0 :182 > a
+ => {:name=>"shubh", :age=>32} 
+
+::new
+Returns a new empty hash.
+3.0.0 :187 > h=Hash.new(true)
+ => {} 
+3.0.0 :188 > has.default
+ => nil 
+3.0.0 :189 > has.default_proc
+ => nil 
+3.0.0 :190 > h=Hash.new{|a,y| "Value #{a}"}
+ => {} 
+3.0.0 :191 > h.default_proc
+ => #<Proc:0x0000557e84fb7a40 (irb):190> 
+3.0.0 :192 > h.default
+ => nil 
+
+::try_convert
+Returns a new hash created from a given object.
+Otherwise if obj responds to :to_hash, calls obj.to_hash and returns the result.
+Returns nil if obj does not respond to :to_hash
+Raises an exception unless obj.to_hash returns a Hash object.
+
+Methods for Setting Hash State¶ ↑
+compare_by_identity
+Sets self to consider only identity in comparing keys.
+3.0.0 :205 > x.compare_by_identity
+ => {} 
+3.0.0 :206 > x.compare_by_identity?
+ => true 
+3.0.0 :207 > x['x'] = 1
+ => 1 
+3.0.0 :208 > x['x'] = 0
+ => 0 
+3.0.0 :209 > x
+ => {"x"=>1, "x"=>0} 
+
+default=
+Sets the default to a given value.
+3.0.0 :212 > q = {}
+ => {} 
+3.0.0 :213 > q.default = true
+ => true 
+3.0.0 :214 > q.default
+ => true 
+
+default_proc=
+Sets the default proc to a given proc.
+3.0.0 :216 > q.default_proc = proc {|hash, key| "Default value for #{key}" 
+}
+ => #<Proc:0x0000557e84ff34c8 (irb):216> 
+3.0.0 :217 > q.default_proc
+ => #<Proc:0x0000557e84ff34c8 (irb):216> 
+
+
+rehash
+Rebuilds the hash table by recomputing the hash index for each key.
+3.0.0 :219 > has
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :220 > has1.rehash
+ => {:name=>"shubham", :age=>25, :add=>"india"} 
+
+Methods for Querying
+any?
+Returns whether any element satisfies a given criterion.
+3.0.0 :231 > has.any?([:name,'sam'])
+ => false 
+3.0.0 :232 > has.any?([:name,'shubham'])
+ => true 
+compare_by_identity?
+Returns whether the hash considers only identity when comparing keys.
+3.0.0 :233 > has
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :234 > has.any?
+ => true 
+
+empty?
+Returns whether there are no entries.
+3.0.0 :236 > h.empty?
+ => true 
+3.0.0 :237 > has.empty?
+ => false 
+
+eql? = equal?
+Returns whether a given object is equal to self.
+3.0.0 :239 > has.equal?(has1)
+ => false 
+3.0.0 :240 > has.equal?(a)
+ => false 
+3.0.0 :241 > hass = has
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :242 > has.equal?(hass)
+ => true 
+
+hash
+Returns the integer hash code.
+3.0.0 :249 > a.hash == has.hash
+ => true 
+3.0.0 :250 > a
+ => {:name=>"shubh", :age=>32} 
+3.0.0 :251 > has
+ => {:name=>"shubham", :age=>25} 
+
+has_value?
+Returns whether a given object is a value in self.
+
+include?, has_key?, member?, key?
+Returns whether a given object is a key in self.
+3.0.0 :255 > a.keys
+ => [:name, :age] 
+3.0.0 :256 > 
+
+length, size
+Returns the count of entries.
+3.0.0 :258 > has.length
+ => 2 
+3.0.0 :259 > has1.count
+ => 3 
+
+value?
+Returns whether a given object is a value in self.
+
+Methods for Comparing¶ ↑
+#<
+Returns whether self is a proper subset of a given object.
+3.0.0 :197 > a<has
+ => false 
+3.0.0 :198 > a<has1
+ => false 
+3.0.0 :199 > a>has
+ => false 
+3.0.0 :200 > a>has1
+ => false 
+3.0.0 :201 > has <has1
+ => true 
+#<=
+Returns whether self is a subset of a given object.
+3.0.0 :264 > has1>=has
+ => true 
+3.0.0 :265 > a>=has
+ => false 
+3.0.0 :266 > a>=has1
+ => false 
+#==
+Returns whether a given object is equal to self.
+
+#>
+Returns whether self is a proper superset of a given object
+3.0.0 :262 > has<has1
+ => true 
+3.0.0 :263 > has1>has
+ => true 
+#>=
+Returns whether self is a proper superset of a given object.
+3.0.0 :264 > has1>=has
+ => true 
+3.0.0 :265 > a>=has
+ => false 
+3.0.0 :266 > a>=has1
+ => false 
+
+Methods for Fetching¶ ↑
+assoc
+Returns a 2-element array containing a given key and its value.
+3.0.0 :268 > has.assoc(:adr)
+ => nil 
+3.0.0 :269 > has
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :270 > has1
+ => {:name=>"shubham", :age=>25, :add=>"india"} 
+3.0.0 :271 > has1.assoc(:add)
+ => [:add, "india"] 
+
+dig
+Returns the object in nested objects that is specified by a given key and additional arguments.
+3.0.0 :272 > h = {foo: {bar: {baz: 2}}}
+ => {:foo=>{:bar=>{:baz=>2}}} 
+3.0.0 :273 > h.dig(:foo, :bar)
+ => {:baz=>2} 
+3.0.0 :274 > h.dig(:foo, :bar, 2)
+ => nil 
+3.0.0 :275 > h = {foo: {bar: [:a, :b, :c]}}
+ => {:foo=>{:bar=>[:a, :b, :c]}} 
+3.0.0 :276 > h.dig(:foo, :bar, 2)
+ => :c 
+
+fetch
+Returns the value for a given key.
+3.0.0 :371 > h.fetch(:bar)
+ => 1 
+3.0.0 :372 > h.fetch(:bar) {|key,v| "No key #{v}"}
+ => 1 
+3.0.0 :373 > h.fetch(:bar1) {|key| "No key #{key}"}
+ => "No key bar1" 
+
+fetch_values
+Returns array containing the values associated with given keys.
+3.0.0 :374 > h.fetch_values(:bar1) {|key| "No key #{key}"}
+ => ["No key bar1"] 
+3.0.0 :375 > h.fetch_values(:bar) {|key,v| "No key #{v}"}
+ => [1] 
+ 3.0.0 :376 > h.fetch_values(:baz, :foo)
+ => [2, 0] 
+ 
+key
+Returns the key for the first-found entry with a given value.
+3.0.0 :367 > has.key('shubham')
+ => :name 
+
+rassoc
+Returns a 2-element array consisting of the key and value of the first-found entry having a given value.
+3.0.0 :366 > has.rassoc('shubham')
+ => [:name, "shubham"] 
+
+values
+Returns an array containing all values in self/
+3.0.0 :254 > a.values
+ => ["shubh", 32] 
+
+values_at
+Returns an array containing values for given keys.
+3.0.0 :260 > has1.values_at(:name)
+ => ["shubham"] 
+3.0.0 :261 > has1.values_at(:name,:age)
+ => ["shubham", 25] 
+
+Methods for Assigning¶ ↑
+
+merge
+Returns the hash formed by merging each given hash into a copy of self.
+3.0.0 :319 > has.merge(has1,a)
+ => {:name=>"shubh", :age=>32, :add=>"india"} 
+3.0.0 :320 > has.merge(has1,h)
+ => {:name=>"shubham", :age=>25, :add=>"india", :foo=>0, :bar=>1, :baz=>2} 
+3.0.0 :321 > 
+
+merge!, update
+Merges each given hash into self.
+3.0.0 :321 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+3.0.0 :322 > h1 = {bat: 3, bar: 4}
+ => {:bat=>3, :bar=>4} 
+3.0.0 :323 > h2 = {bam: 5, bat:6}
+ => {:bam=>5, :bat=>6} 
+3.0.0 :324 > h3 = h.merge!(h1, h2) { |key, old_value, new_value| old_value 
++ new_value }
+ => {:foo=>0, :bar=>5, :baz=>2, :bat=>9, :bam=>5} 
+
+replace
+Replaces the entire contents of self with the contents of a givan hash.
+3.0.0 :325 > h.replace(has)
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :326 > h
+ => {:name=>"shubham", :age=>25} 
+
+Methods for Deleting¶ ↑
+These methods remove entries from self
+clear
+Removes all entries from self.
+3.0.0 :326 > h
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :327 > h.clear
+ => {} 
+3.0.0 :328 > h
+ => {} 
+
+compact!
+Removes all nil-valued entries from self.
+compact
+Returns a copy of self with all nil-valued entries removed.
+
+3.0.0 :330 > h = {name: 'shubham',age:nil }
+ => {:name=>"shubham", :age=>nil} 
+3.0.0 :331 > h.compact
+ => {:name=>"shubham"} 
+
+delete
+Removes the entry for a given key.
+3.0.0 :332 > h
+ => {:name=>"shubham", :age=>nil} 
+3.0.0 :333 > h.delete(:age)
+ => nil 
+3.0.0 :334 > h
+ => {:name=>"shubham"} 
+
+delete_if
+Removes entries selected by a given block.
+3.0.0 :341 > h2.delete_if{|key,value| value <6 }
+ => {:bat=>6} 
+3.0.0 :342 > 
+
+filter!, select!
+Keep only those entries selected by a given block.
+filter, select
+Returns a copy of self with only those entries selected by a given block.
+
+
+keep_if
+Keep only those entries selected by a given block.
+3.0.0 :349 > a
+ => {:name=>"shubh", :age=>32} 
+3.0.0 :350 > a.keep_if { |key, value| key.start_with?('b') }
+ => {} 
+3.0.0 :351 > a
+ => {} 
+reject
+Returns a copy of self with entries removed as specified by a given block.
+reject!
+Removes entries selected by a given block.
+3.0.0 :352 > h = {foo: 0, bar: 1, baz: 2}
+ => {:foo=>0, :bar=>1, :baz=>2} 
+3.0.0 :353 > h.reject! {|key, value| value > 1 }
+ => {:foo=>0, :bar=>1} 
+
+shift
+Removes and returns the first entry.
+ => {:foo=>0, :bar=>1} 
+3.0.0 :354 > h.shift
+ => [:foo, 0] 
+3.0.0 :355 > h
+ => {:bar=>1} 
+
+These methods return a copy of self with some entries removed:
+except
+Returns a copy of self with entries removed for specified keys.
+3.0.0 :357 > h.except(:foo)
+ => {:bar=>1, :baz=>2} 
+
+slice
+Returns a hash containing the entries for given keys.
+3.0.0 :358 > h.slice(:baz, :foo)
+ => {:baz=>2, :foo=>0} 
+3.0.0 :359 > h
+ => {:foo=>0, :bar=>1, :baz=>2}
+
+Methods for Iterating¶ ↑
+each, each_pair
+Calls a given block with each key-value pair.
+3.0.0 :360 > h.each_pair {|key, value| puts "#{key}: #{value}"}
+foo: 0
+bar: 1
+baz: 2
+ => {:foo=>0, :bar=>1, :baz=>2} 
+3.0.0 :361 > h.each_pair {|key, value| print "#{key}: #{value}"}
+foo: 0bar: 1baz: 2 => {:foo=>0, :bar=>1, :baz=>2} 
+3.0.0 :363 > h.each {|key, value| puts "#{key}: #{value}"}
+foo: 0
+bar: 1
+baz: 2
+ => {:foo=>0, :bar=>1, :baz=>2} 
+
+each_key
+Calls a given block with each key.
+3.0.0 :364 > h.each_key {|key| puts key }
+foo
+bar
+baz
+ => {:foo=>0, :bar=>1, :baz=>2} 
+
+each_value
+Calls a given block with each value.
+3.0.0 :365 > h.each_value {|value| puts value }
+0
+1
+2
+ => {:foo=>0, :bar=>1, :baz=>2} 
+
+Methods for Converting
+inspect, to_s
+Returns a new String containing the hash entries.
+3.0.0 :317 > h1.inspect
+ => "{\"shubham\"=>:name, 25=>:age, \"india\"=>:add}" 
+3.0.0 :318 > h1.to_s
+ => "{\"shubham\"=>:name, 25=>:age, \"india\"=>:add}" 
+
+to_a
+Returns a new array of 2-element arrays; each nested array contains a key-value pair from self.
+3.0.0 :316 > h1.to_a
+ => [["shubham", :name], [25, :age], ["india", :add]] 
+
+to_h
+Returns self if a Hash; if a subclass of Hash, returns a Hash containing the entries from self.
+3.0.0 :312 > has.to_hash
+ => {:name=>"shubham", :age=>25} 
+ => {"shubham"=>:name, 25=>:age, "india"=>:add} 
+3.0.0 :315 > h1
+ => {"shubham"=>:name, 25=>:age, "india"=>:add} 
+
+to_hash
+Returns self.
+3.0.0 :312 > has.to_hash
+ => {:name=>"shubham", :age=>25} 
+
+to_proc
+Returns a proc that maps a given key to its value.
+3.0.0 :302 > pr=has.to_proc
+ => #<Proc:0x0000557e84eeb2b0 (lambda)> 
+3.0.0 :303 > pr
+ => #<Proc:0x0000557e84eeb2b0 (lambda)> 
+3.0.0 :304 > pr.class
+ => Proc 
+ 3.0.0 :311 > pr.call(:name)
+ => "shubham" 
+
+Methods for Transforming Keys and Values¶ ↑
+transform_keys
+Returns a copy of self with modified keys.
+transform_keys!
+Modifies keys in self
+3.0.0 :293 > has
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :294 > has.transform_keys(name: :name)  
+ => {:name=>"shubham", :age=>25} 
+3.0.0 :295 > has.transform_keys(name: :Name)  
+ => {:Name=>"shubham", :age=>25} 
+3.0.0 :296 > 
+
+transform_values
+Returns a copy of self with modified values.
+transform_values!
+Modifies values in self.
+3.0.0 :280 > h.transform_values {|a| if a.class == Integer then a += 1 end 
+}  
+ => {:foo=>nil} 
+3.0.0 :281 > h
+ => {:foo=>{:bar=>[:a, :b, :c]}} 
+3.0.0 :282 > has.transform_values {|a| if a.class == Integer then a += 1 en
+d }  
+ => {:name=>nil, :age=>26} 
+3.0.0 :283 > has
+ => {:name=>"shubham", :age=>25} 
+
+Other Methods
+flatten
+Returns an array that is a 1-dimensional flattening of self.
+3.0.0 :278 > has.flatten
+ => [:name, "shubham", :age, 25] 
+
+invert
+Returns a hash with the each key-value pair inverted.
+3.0.0 :277 > has.invert
+ => {"shubham"=>:name, 25=>:age} 
+3.0.0 :278 > 
