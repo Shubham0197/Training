@@ -581,9 +581,441 @@ like casecmp?
  => 11 
 
 
+Here, class String provides methods that are useful for:
+
+Creating a String
+
+Frozen/Unfrozen Strings
+
+Querying
+
+Comparing
+
+Modifying a String
+
+Converting to New String
+
+Converting to Non-String
+
+Iterating
+
+Methods for a Frozen/Unfrozen String¶ ↑
+The freeze method in Ruby is used to ensure that an object cannot be modified. 
+This method is a great way to create immutable objects.
+#+string
+Returns a string that is not frozen: self, if not frozen; self.dup otherwise.
+
+#-string
+Returns a string that is frozen: self, if already frozen; self.freeze otherwise.
+3.0.0 :001 > a = 'abcdefgh'
+ => "abcdefgh" 
+3.0.0 :002 > +a
+ => "abcdefgh" 
+3.0.0 :003 > -a
+
+freeze
+Freezes self, if not already frozen; returns self.
+3.0.0 :006 > a.freeze
+ => "abcdefgh" 
+3.0.0 :007 > a.frozen?
+ => true 
 
 
+Methods for Querying¶ ↑
+Counts
+count the no of chracter in the string of or the specified charatchter occurences3.0.0 :018 > a = "hello world"
+ => "hello world" 
+3.0.0 :019 > a.count "lo"     
+ => 5 
+3.0.0 :020 > a.count "l"     
+ => 3 
+3.0.0 :021 > a.count "ld"     
+ => 4
 
+bytesize
+Returns the count of bytes.
+3.0.0 :022 > a.bytesize
+ => 11 
+
+
+Substrings
+index
+Returns the index of the first occurrence of a given substring; returns nil if none found.
+3.0.0 :024 > a
+ => "hello world" 
+3.0.0 :025 > a.index("l", -4)
+ => 9 
+3.0.0 :026 > a.index("l")
+ => 2 
+3.0.0 :027 > a.index("l",6)
+ => 9 
+
+rindex
+Returns the index of the last occurrence of a given substring; returns nil if none found.
+3.0.0 :028 > a.rindex("l",6)
+ => 3 
+3.0.0 :029 > a.rindex("l")
+ => 9 
+3.0.0 :030 > a.rindex("l", -4)
+ => 3 
+
+match
+Returns a MatchData object if the string matches a given Regexp; nil otherwise.
+3.0.0 :031 > a.match('l')
+ => #<MatchData "l"> 
+3.0.0 :032 > a.match('b')
+ => nil 
+3.0.0 :033 > a.match('H',8)
+ => nil 
+3.0.0 :034 > a.match('H')
+ => nil 
+3.0.0 :035 > a.match('h')
+ => #<MatchData "h"> 
+3.0.0 :036 > a.match('h',6)
+ => nil 
+ 3.0.0 :041 > a.match(/o/) {|a| print a}
+o => nil 
+
+Other
+
+sum
+Returns a basic checksum for the string: the sum of each byte.
+
+hash
+Returns the integer hash code.
+3.0.0 :046 > a.sum
+ => 1116 
+3.0.0 :047 > a.hash
+ => 1249307583530095904 
+3.0.0 :048 > b = a
+ => "hello world" 
+3.0.0 :049 > a.sum
+ => 1116 
+3.0.0 :050 > a.hash
+ => 1249307583530095904 
+3.0.0 :051 > 
+
+Methods for Comparing
+
+eql?
+Returns true if the content is the same as the given other string.
+3.0.0 :051 > a.eql?('helllo')
+ => false 
+3.0.0 :052 > a.eql?('hello')
+ => false 
+3.0.0 :053 > a.eql?('hello world')
+ => true 
+
+Methods for Modifying a String¶ ↑
+Each of these methods modifies self.
+
+
+Substitution
+
+succ!, next!
+Returns self modified to become its own successor.
+3.0.0 :054 > a.succ
+ => "hello worle" 
+3.0.0 :057 > a.next!
+ => "hello worle" 
+3.0.0 :058 > a
+ => "hello worle" 
+
+replace
+Returns self with its entire content replaced by a given string.
+
+3.0.0 :059 > b.replace('gello')
+ => "gello" 
+3.0.0 :060 > b
+ => "gello" 
+
+reverse!
+Returns self with its characters in reverse order.
+3.0.0 :061 > b.reverse
+ => "olleg" 
+ 
+setbyte
+Sets the byte at a given integer offset to a given value; returns the argument.
+3.0.0 :062 > b
+ => "gello" 
+3.0.0 :063 > b.setbyte(0,98)
+ => 98 
+3.0.0 :064 > b
+ => "bello" 
+3.0.0 :065 > 
+3.0.0 :066 > b.setbyte(0,112)
+ => 112 
+3.0.0 :067 > b
+ => "pello" 
+
+tr!
+Replaces specified characters in self with specified replacement characters; returns self if any changes, nil otherwise.
+3.0.0 :073 > b
+ => "pello" 
+3.0.0 :074 > b.tr!('pello','hello')
+ => "hello" 
+3.0.0 :075 > b
+
+tr_s!
+Replaces specified characters in self with specified replacement characters, removing duplicates from the substrings that were modified; returns self if any changes, nil otherwise.
+3.0.0 :082 > b.tr_s!('dello','dellooooo000')
+ => "delo" 
+Casing
+
+swapcase!
+Upcases each downcase character and downcases each upcase character; returns self if any changes, nil otherwise.
+3.0.0 :083 > c = 'DEfkefomSS'
+ => "DEfkefomSS" 
+3.0.0 :084 > c.swapcase
+ => "deFKEFOMss"
+
+Deletion
+
+clear
+Removes all content, so that self is empty; returns self.
+3.0.0 :086 > c.clear
+ => "" 
+3.0.0 :087 > c
+ => "" 
+
+Methods for Converting to New String¶ ↑
+Each of these methods returns a new String based on self, often just a modified copy of self.
+
+Extension
+
+center
+Returns a copy of self centered between pad substring.
+3.0.0 :161 > a.center(6)
+ => "everythinghello to ruby programming" 
+3.0.0 :162 > a.center(40)
+ => "  everythinghello to ruby programming   " 
+3.0.0 :163 > a.center(40, "***")
+ => "**everythinghello to ruby programming***" 
+3.0.0 :164 > 
+concat
+Returns the concatenation of self with given other strings.
+3.0.0 :164 > a.concat(32, 'bar', 32, 'baz')
+ => "everythinghello to ruby programming bar baz" 
+3.0.0 :165 > a.concat(32, 'bar', 2, 'baz')
+ => "everythinghello to ruby programming bar baz bar\u0002baz" 
+ 3.0.0 :166 > a.concat('bar', 'baz')
+ => "everythinghello to ruby programming bar baz bar\u0002bazbarbaz" 
+prepend
+Returns the concatenation of a given other string with self.
+3.0.0 :159 > a.prepend("everything")
+ => "everythinghello to ruby programming" 
+
+Encoding
+
+b
+Returns a copy of self with ASCII-8BIT encoding.
+
+scrub
+Returns a copy of self with each invalid byte replaced with a given character.
+??????
+Substitution
+
+dump
+Returns a copy of +self with all non-printing characters replaced by xHH notation and all special characters escaped.
+undump
+Returns a copy of +self with all \xNN notation replace by \uNNNN notation and all escaped characters unescaped.
+3.0.0 :152 > a.dump
+ => "\"hello to ruby programming\"" 
+ => "hello to ruby programming" 
+3.0.0 :154 > "\f\x00\xff\\\"" .undump
+
+Deletion
+
+delete
+Returns a copy of self with characters removed
+3.0.0 :144 > a.delete "l"
+ => "heo to ruby programming" 
+3.0.0 :145 > a.delete "m"
+ => "hello to ruby prograing" 
+ 3.0.0 :147 > a.delete "aeiou" "^m"
+ => "hll t rby prgrng" 
+3.0.0 :148 > a.delete  "^m" "aeiou"
+ => "eoouoammi" 
+ 
+chop
+Returns a copy of self with trailing whitespace or the last character removed.
+3.0.0 :142 > a.chop
+ => "hello to ruby programmin" 
+3.0.0 :143 > a.chop.chop
+ => "hello to ruby programmi" 
+
+squeeze
+Returns a copy of self with contiguous duplicate characters removed.
+3.0.0 :140 > a.squeeze
+ => "helo to ruby programing"
+
+byteslice
+Returns a substring determined by a given index, start/length, or range.
+3.0.0 :138 > a
+ => "hello to ruby programming" 
+3.0.0 :139 > a.byteslice(4..9)
+ => "o to r" 
+
+3.0.0 :137 > a.byteslice(4)
+ => "o" 
+3.0.0 :138 > a
+ => "hello to ruby programming" 
+chr
+Returns the first character.
+3.0.0 :135 > a.chr
+ => "h" 
+3.0.0 :
+Methods for Converting to Non-String¶ ↑
+Each of these methods converts the contents of self to a non-String.
+
+Characters, Bytes, and Clusters
+
+bytes
+Returns an array of the bytes in self.
+chars
+Returns an array of the characters in self.
+3.0.0 :128 > a.chars
+ => ["h", "e", "l", "l", "o", " ", "t", "o", " ", "r", "u", "b", "y", " ", "p", "r", "o", "g", "r", "a", "m", "m", "i", "n", "g"] 
+3.0.0 :129 > a.bytes
+ => [104, 101, 108, 108, 111, 32, 116, 111, 32, 114, 117, 98, 121, 32, 112, 114, 111, 103, 114, 97, 109, 109, 105, 110, 103] 
+grapheme_clusters
+Returns an array of the grapheme clusters in self.
+
+Splitting
+
+lines
+Returns an array of the lines in self, as determined by a given record separator.
+3.0.0 :133 > a.lines
+ => ["hello to ruby programming"] 
+3.0.0 :134 > a.lines(' ')
+ => ["hello ", "to ", "ruby ", "programming"] 
+
+partition
+Returns a 3-element array determined by the first substring that matches a given substring or regexp,
+rpartition
+Returns a 3-element array determined by the last substring that matches a given substring or regexp,
+3.0.0 :131 > a.rpartition(/.l/)
+ => ["he", "ll", "o to ruby programming"] 
+3.0.0 :132 > a.partition(/.l/)
+ => ["h", "el", "lo to ruby programming"] 
+
+Matching
+
+scan
+Returns an array of substrings matching a given regexp or string, or, if a block given, passes each matching substring to the block.
+3.0.0 :125 > a.scan(/.../) 
+ => ["hel", "lo ", "to ", "rub", "y p", "rog", "ram", "min"] 
+3.0.0 :126 > a.scan(/\w+/) {|w| print "<<#{w}>> " }
+<<hello>> <<to>> <<ruby>> <<programming>>  => "hello to ruby programming" 
+3.0.0 :127 > a.scan(/(.)(.)/) {|x,y| print y, x }
+ehll ootr bu yrpgoarmmni => "hello to ruby programming" 
+
+unpack
+Returns an array of substrings extracted from self according to a given format.
+unpack1
+Returns the first substring extracted from self according to a given format.
+3.0.0 :121 > "abc \0\0abc \0\0".unpack1('A6Z6')
+ => "abc" 
+3.0.0 :122 > "abc \0\0abc \0\0".unpack('A6Z6')
+ => ["abc", "abc "] 
+3.0.0 :123 > "abc".unpack1("C*")
+ => 97 
+Numerics
+
+hex
+Returns the integer value of the leading characters, interpreted as hexadecimal digits.
+3.0.0 :119 > "123".hex
+ => 291 
+3.0.0 :120 > a.hex
+ => 0 
+
+oct
+Returns the integer value of the leading characters, interpreted as octal digits.
+3.0.0 :117 > a.oct
+ => 0 
+3.0.0 :118 > "123".oct 
+ => 83 
+ord
+Returns the integer ordinal of the first character in self.
+3.0.0 :116 > a.ord
+ => 104 
+to_i
+Returns the integer value of leading characters, interpreted as an integer.
+
+to_f
+Returns the floating-point value of leading characters, interpreted as a floating-point number.
+3.0.0 :113 > a.to_f
+ => 0.0 
+3.0.0 :114 > a.to_i
+ => 0 
+3.0.0 :115 > a
+ => "hello to ruby programming" 
+
+Strings and Symbols
+
+to_sym, intern
+Returns the symbol corresponding to self.
+3.0.0 :111 > a.intern
+ => :"hello to ruby programming" 
+3.0.0 :112 > a.to_sym
+ => :"hello to ruby programming" 
+
+Methods for Iterating¶ ↑
+each_byte
+Calls the given block with each successive byte in self.
+3.0.0 :110 > a.each_byte {|c| print c, ' ' }
+104 101 108 108 111 32 116 111 32 114 117 98 121 32 112 114 111 103 114 97 109 109 105 110 103  => "hello to ruby programming" 
+3.0.0 :111 > 
+
+each_char
+Calls the given block with each successive character in self.
+3.0.0 :109 > a.each_char {|c| print c, ' ' }
+h e l l o   t o   r u b y   p r o g r a m m i n g  => "hello to ruby programming" 
+
+each_codepoint
+Calls the given block with each successive integer codepoint in self.
+3.0.0 :107 > '\nhello'.each_codepoint {|c| print c, ' ' }
+92 110 104 101 108 108 111  => "\\nhello" 
+3.0.0 :108 > a.each_codepoint {|c| print c, ' ' }
+104 101 108 108 111 32 116 111 32 114 117 98 121 32 112 114 111 103 114 97 109 109 105 110 103  => "hello to ruby programming" 
+
+each_grapheme_cluster
+Calls the given block with each successive grapheme cluster in self.
+3.0.0 :103 > a.each_char.to_a.size
+ => 25 
+3.0.0 :104 > a.each_grapheme_cluster.to_a.size
+ => 25 
+3.0.0 :105 > '\nhello'.each_grapheme_cluster.to_a.size
+ => 7 
+3.0.0 :106 > '\nhello'.each_char.to_a.size
+ => 7 
+
+each_line
+Calls the given block with each successive line in self, as determined by a given record separator.
+3.0.0 :100 > a. each_line('l') {|a| p a}
+"hel"
+"l"
+"o to ruby programming"
+ => "hello to ruby programming" 
+3.0.0 :101 > a. each_line {|a| p a}
+"hello to ruby programming"
+ => "hello to ruby programming" 
+3.0.0 :102'> a. each_line(' ') {|a| p a}
+"hello "
+"to "
+"ruby "
+"programming"
+ => "hello to ruby programming"
+
+upto
+Calls the given block with each string value returned by successive calls to succ.
+3.0.0 :088 > '25'.upto('5') {|s| fail s }
+ => "25" 
+3.0.0 :089 > 'a8'.upto('b6') {|s| print s, ' ' }
+a8 a9 b0 b1 b2 b3 b4 b5 b6  => "a8" 
+If argument exclusive is given as a truthy object, the last value is omitted:
+3.0.0 :090 > 'a8'.upto('b6', true) {|s| print s, ' ' }
+a8 a9 b0 b1 b2 b3 b4 b5  => "a8" 
 
 
 
