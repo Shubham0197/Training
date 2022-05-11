@@ -1,0 +1,373 @@
+Ruby - File I/O
+All the I/O methods are derived from the class IO.
+The class IO provides all the basic methods, such as read, write, gets, puts, readline, getc, and printf.
+The putc Statement
+prints one character at a time
+3.0.0 :005"> c = "Hello" 
+ => "Hello" 
+3.0.0 :006 > putc c
+H => "Hello" 
+
+Opening and Closing Files
+
+The File.new Method
+Syntax
+aFile = File.new("filename", "mode")
+   # ... process the file
+aFile.close
+
+The File.open Method
+Syntax
+File.open("filename", "mode") do |aFile|
+   # ... process the file
+end
+
+The difference is that the File.open method can be associated with a block, whereas you cannot do the same using the File.new method.
+
+ list of The Different Modes of opening a File −
+ Sr.No.	Modes & Description
+1	r
+Read-only mode. The file pointer is placed at the beginning of the file. This is the default mode.
+
+2	r+
+Read-write mode. The file pointer will be at the beginning of the file.
+
+3	w
+Write-only mode. Overwrites the file if the file exists. If the file does not exist, creates a new file for writing.
+
+4	w+
+Read-write mode. Overwrites the existing file if the file exists. If the file does not exist, creates a new file for reading and writing.
+
+5	a
+Write-only mode. The file pointer is at the end of the file if the file exists. That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+
+6	a+
+Read and write mode. The file pointer is at the end of the file if the file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+
+
+Reading and Writing Files
+The sysread Method
+method sysread to read the contents of a file while  opening the file in any of the modes 
+
+The syswrite Method
+method syswrite to write the contents into a file. You need to open the file in write mode when using the method syswrite
+
+The each_byte Method
+
+aFile = File.new("input.txt", "r+")
+if aFile
+   aFile.syswrite("ABCDEF")
+   aFile.each_byte {|ch| putc ch; putc ?. }
+else
+   puts "Unable to open file!"
+end
+
+3.0.0 :008 > aFile = File.new("input.txt", "w+")
+ => #<File:input.txt> 
+3.0.0 :009 > if aFile
+3.0.0 :010 >    aFile.syswrite("ABCDEF")
+3.0.0 :011 >    aFile.each_byte {|ch| putc ch; putc ?. }
+3.0.0 :012 > else
+3.0.0 :013 >    puts "Unable to open file!"
+3.0.0 :014 > end
+ => #<File:input.txt> 
+3.0.0 :015 > 
+The each_byte Method
+This method belongs to the class File. The method each_byte is always associated with a block
+3.0.0 :016 > if aFile
+3.0.0 :017 >    aFile.syswrite("ABCDEF")
+3.0.0 :018 > else
+3.0.0 :019 >    puts "Unable to open file!"
+3.0.0 :020 > end
+ => 6 
+3.0.0 :021 > aFile = File.new("input.txt", "r+")
+ => #<File:input.txt> 
+3.0.0 :022 > if aFile
+3.0.0 :023 >    aFile.syswrite("ABCDEF")
+3.0.0 :024 >    aFile.each_byte {|ch| putc ch; putc ?. }
+3.0.0 :025 > else
+3.0.0 :026 >    puts "Unable to open file!"
+3.0.0 :027 > end
+ => #<File:input.txt> 
+3.0.0 :028 > 
+
+The IO.readlines Method
+The class File is a subclass of the class IO. The class IO also has some methods, which can be used to manipulate files.
+3.0.0 :028 > 
+3.0.0 :029 > arr = IO.readlines("input.txt")
+ => ["ABCDEF"] 
+3.0.0 :030 > puts arr[0]
+ABCDEF
+ => nil 
+3.0.0 :031 > puts arr[1]
+
+ => nil 
+The IO.foreach Method
+This method also returns output line by line.
+ 3.0.0 :032 > IO.foreach("input.txt"){|block| puts block}
+ABCDEF
+ => nil
+
+ xt))
+3.0.0 :034 > File.rename( "input.txt", "test2.txt" )
+ => 0 
+
+ File.delete("test2.txt") 
+
+File Modes and Ownership
+Use the chmod method with a mask to change the mode or permissions/access list of a file −
+
+Following is the example to change mode of an existing file test.txt to a mask value 
+3.0.0 :036 > file = File.new( "test.txt", "w" )
+ => #<File:test.txt> 
+3.0.0 :037 > file.chmod( 0755 )
+ => 0 
+
+ different mask for chmod method −
+Sr.No.	Mask & Description
+1	
+0700
+
+rwx mask for owner
+
+2	
+0400
+
+r for owner
+
+3	
+0200
+
+w for owner
+
+4	
+0100
+
+x for owner
+
+5	
+0070
+
+rwx mask for group
+
+6	
+0040
+
+r for group
+
+7	
+0020
+
+w for group
+
+8	
+0010
+
+x for group
+
+9	
+0007
+
+rwx mask for other
+
+10	
+0004
+
+r for other
+
+11	
+0002
+
+w for other
+
+12	
+0001
+
+x for other
+
+13	
+4000
+
+Set user ID on execution
+
+14	
+2000
+
+Set group ID on execution
+
+15	
+1000
+
+Save swapped text, even after use
+
+File Inquiries
+The following command tests whether a file exists before opening it −
+3.0.0 :038 > File.open("file.rb") if File::exists?( "file.rb" )
+ => nil 
+3.0.0 :039 > File.file?( "text.txt" ) 
+ => false 
+3.0.0 :040 > File::directory?( "/usr/local/bin" )
+ => true 
+File::directory?( "file.rb" )
+3.0.0 :041 > File::directory?( "file.rb" )
+ => false 
+
+ 3.0.0 :042 > File.readable?( "test.txt" )
+ => true 
+3.0.0 :043 > File.writable?( "test.txt" )
+ => true 
+3.0.0 :044 > File.executable?( "test.txt" )
+ => true 
+
+The following command can be used to find out a type of file −
+
+#!/usr/bin/ruby
+
+File::ftype( "test.txt" ) 
+
+3.0.0 :048 > File::ftype( "test.txt" ) 
+ => "file" 
+when a file was created, modified, or last accessed
+
+3.0.0 :049 > File::ctime( "test.txt" ) 
+ => 2022-05-11 22:08:36.69464733 +0530 
+3.0.0 :050 > File::mtime( "text.txt" ) 
+File::atime( "text.txt" ) 
+
+Directories in Ruby
+All files are contained within various directories, and Ruby has no problem handling these too.
+
+To change directory within a Ruby program, use Dir.chdir
+3.0.0 :058 > Dir.chdir("/usr/bin")
+ => 0 
+
+3.0.0 :059 > puts Dir.entries("/usr/bin").join(' ')
+. .. usbhid-dump chown mt-gnu foo2zjs-icc2ps lessecho gcov-tool-9 gtk-encode-symbolic-svg pf2afm avahi-resolve nsenter volname git-rscp systemd-analyze x86_64-linux-gnu-gcc-9 msexpand gtk-query-settings tsort vmwarectrl gnome-terminal fold fincore bashbug ucf echo smproxy grub-mkrelpath nmtui-edit hostnamectl gtbl wdctl xdg-desktop-menu nm-applet git-rebase-patch gnome-text-editor gunzip colcrt git-ignore-io locale-check xdg-icon-resource mandb min12xxw see pdfdetach nmcli gnome-logs transicc dpkg-maintscript-helper monitor-sensor gnome-language-selector gvfs-cat gst-inspect-1.0 
+ => nil 
+
+Dir.foreach("/usr/bin") do |entry|
+   puts entry
+end 
+is equal to Dir["/usr/bin/*"]
+
+Creating a Directory
+3.0.0 :001 > Dir.mkdir("mynewdir")
+ => 0 
+3.0.0 :002 > Dir.mkdir( "mynewdir", 755 )
+Traceback (most recent call last):
+        5: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `<main>'
+        4: from /usr/share/rvm/rubies/ruby-3.0.0/bin/irb:23:in `load'
+        3: from /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/gems/3.0.0/gems/irb-1.3.0/exe/irb:11:in `<top (required)>'
+        2: from (irb):2:in `<main>'
+Errno::EEXIST (File exists @ dir_s_mkdir - mynewdir)
+3.0.0 :004 > Dir.delete("mynewdir")
+ => 0 
+Creating Files & Temporary Directories
+Temporary files are those that might be created briefly during a program's execution but aren't a permanent store of information.
+
+Dir.tmpdir provides the path to the temporary directory on the current system, although the method is not available by default. To make Dir.tmpdir available it's necessary to use require 'tmpdir'.
+
+require 'tmpdir'
+   tempfilename = File.join(Dir.tmpdir, "tingtong")
+   tempfile = File.new(tempfilename, "w")
+   tempfile.puts "This is a temporary file"
+   tempfile.close
+   File.delete(tempfilename)
+
+This code creates a temporary file, writes data to it, and deletes it. Ruby's standard library also includes a library called Tempfile that can create temporary files for you −
+
+require 'tempfile'
+   f = Tempfile.new('tingtong')
+   f.puts "Hello"
+   puts f.path
+   f.close
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
