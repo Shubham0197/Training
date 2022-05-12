@@ -1,0 +1,227 @@
+Ruby - Exceptions
+Errors needs to be handeled properly if not they will stop the program and 
+will lead bad quality program
+So exceptions is used to handle various types of errors whihc may occurs during program execution and take appropriate steps to handle that code.
+in ruby there is block to handle exceptions
+Syntax
+begin  
+# -  
+rescue OneTypeOfException  
+# -  
+rescue AnotherTypeOfException  
+# -  
+else  
+# Other exceptions
+ensure
+# Always will be executed
+end
+Everything from begin to rescue is protected. If an exception occurs during the execution of this block of code, control is passed to the block between rescue and end.
+irb(main):001:0>    file = open("/unexistant_file")
+(irb):1:in `initialize': No such file or directory @ rb_sysopen - /unexistant_file (Errno::ENOENT)     
+        from (irb):1:in `open'
+        from (irb):1:in `<main>'
+        from C:/Ruby31-x64/lib/ruby/gems/3.1.0/gems/irb-1.4.1/exe/irb:11:in `<top (required)>'
+        from C:/Ruby31-x64/bin/irb:33:in `load'
+        from C:/Ruby31-x64/bin/irb:33:in `<main>'
+irb(main):002:1*    if file
+irb(main):003:1*       puts "File opened successfully"
+irb(main):004:0>    end
+
+but if exceptions are handeled correctly
+irb(main):041:1* begin
+irb(main):042:1*    file = open("/unexistant_file")
+irb(main):043:2*    if file
+irb(main):044:2*       puts "File opened successfully"
+irb(main):045:1*    end
+irb(main):046:1* rescue
+irb(main):047:1*       file = STDIN
+irb(main):048:0> end
+irb(main):049:0> print file, "==", STDIN, "\n"
+#<IO:0x0000014162cdd5d0>==#<IO:0x0000014162cdd5d0>
+=> nil
+error is produced but handeled  and did not stoped in between
+using rescue statement
+
+Using retry Statement
+You can capture an exception using rescue block and then use retry statement to execute begin block from the beginning.
+
+Syntax
+begin
+   # Exceptions raised by this code will 
+   # be caught by the following rescue clause
+rescue
+   # This block will capture all types of exceptions
+   retry  # This will move control to the beginning of begin
+end
+fname = "/unexistant_file"
+begin
+   file = open(fname)
+   if file
+      puts "File opened successfully"
+   end
+rescue
+   fname = "test.txt"
+   retry
+end
+The following is the flow of the process −
+
+An exception occurred at open.
+Went to rescue. fname was re-assigned.
+By retry went to the beginning of the begin.
+This time file opens successfully.
+Continued the essential process
+$ irb
+irb(main):001:1* begin
+irb(main):002:1*    file = open("/unexistant_file")
+irb(main):003:2*    if file
+irb(main):004:2*       puts "File opened successfully"irb(main):005:1*    end
+irb(main):006:1* rescue
+irb(main):007:1*    fname = "test.txt"
+irb(main):008:1*    retry
+irb(main):009:0> end
+
+code goes to infinite loop
+so , use retry carefully
+
+fname = "/unexistant_file"
+irb(main):044:1* begin
+irb(main):045:1*    file = open(fname)
+irb(main):046:2*    if file
+irb(main):047:2*       puts "File opened successfully"
+irb(main):048:1*    end
+irb(main):049:1* rescue
+irb(main):050:1*    fname = "test.txt"
+irb(main):051:1*    retry
+irb(main):052:0> end
+File opened successfully
+=> nil
+
+Using raise Statement
+You can use raise statement to raise an exception. The following method raises an exception whenever it's called. It's second message will be printed.
+
+Syntax
+raise 
+OR
+raise "Error Message" 
+OR
+raise ExceptionType, "Error Message"
+OR
+raise ExceptionType, "Error Message" condition
+The first form simply re-raises the current exception (or a RuntimeError if there is no current exception). This is used in exception handlers that need to intercept an exception before passing it on.
+The second form creates a new RuntimeError exception, setting its message to the given string. This exception is then raised up the call stack.
+The third form uses the first argument to create an exception and then sets the associated message to the second argument.
+The fourth form is similar to the third form but you can add any conditional statement like unless to raise an exception.
+
+irb(main):082:1* begin
+irb(main):083:1*    puts 'I am before the raise.'
+irb(main):084:1*    raise 'An error has occurred.'
+irb(main):085:1*    puts 'I am after the raise.'
+irb(main):086:1* rescue
+irb(main):087:1*    puts 'I am rescued.'
+irb(main):088:0> end
+irb(main):089:0> puts 'I am after the begin block.'
+I am before the raise.
+I am rescued.
+I am after the begin block.
+
+begin  
+   raise 'A test exception.'  
+rescue Exception => e  
+   puts e.message  
+   puts e.backtrace.inspect  
+end  
+A test exception.
+["(irb):144:in `<top (required)>'"\
+
+Using ensure Statement
+if you need to guarantee that some processing is done at the end of a block of code, regardless of whether an exception was raised ensure statement is used for that
+The ensure clause does just this. ensure goes after the last rescue clause and contains a chunk of code that will always be executed as the block terminates. It doesn't matter if the block exits normally, if it raises and rescues an exception, or if it is terminated by an uncaught exception, the ensure block will get run.
+Syntax
+begin 
+   #.. process 
+   #..raise exception
+rescue 
+   #.. handle error 
+ensure 
+   #.. finally ensure execution
+   #.. This will always execute.
+end
+irb(main):157:1* beginirb(main):158:1*    raise 'A test exception.'irb(main):159:1* rescue Exception => e
+irb(main):160:1*    puts e.message
+irb(main):161:1* ensure
+irb(main):162:1*    puts "Ensuring execution"
+irb(main):163:0> end
+A test exception.
+Ensuring execution
+=> nil
+irb(main):157:1* beginirb(main):158:1*    raise 'A test exception.'irb(main):159:1* rescue Exception => e
+irb(main):160:1*    puts e.message
+irb(main):161:1* ensure
+irb(main):162:1*    puts "Ensuring execution"
+irb(main):163:0> end
+A test exception.
+Ensuring execution
+=> nil
+
+Using else Statement
+If the else clause is present, it goes after the rescue clauses and before any ensure.
+
+The body of an else clause is executed only if no exceptions are raised by the main body of code.
+
+Syntax
+begin 
+   #.. process 
+   #..raise exception
+rescue 
+   # .. handle error
+else
+   #.. executes if there is no exception
+ensure 
+   #.. finally ensure execution
+   #.. This will always execute.
+end
+irb(main):232:1* begin
+irb(main):233:1*    # raise 'A test exception.'
+irb(main):234:1*    puts "I'm not raising exception"
+irb(main):235:1* rescue Exception => e
+irb(main):236:1*    puts e.message
+irb(main):237:1* else
+irb(main):238:1*    puts "Congratulations-- no errors!"
+irb(main):239:1* ensure
+irb(main):240:1*    puts "Ensuring execution"
+irb(main):241:0> end
+I'm not raising exception
+Congratulations-- no errors!
+Ensuring execution
+=> nil
+Catch and Throw
+ to be able to jump out of some deeply nested construct during normal processing. This is where catch and throw come in handy.
+
+The catch defines a block that is labeled with the given name (which may be a Symbol or a String). The block is executed normally until a throw is encountered.
+Syntax
+throw :lablename
+#.. this will not be executed
+catch :lablename do
+#.. matching catch will be executed after a throw is encountered.
+end
+
+OR
+
+throw :lablename condition
+#.. this will not be executed
+catch :lablename do
+#.. matching catch will be executed after a throw is encountered.
+end
+
+Class Exception
+Ruby's standard classes and modules raise exceptions. All the exception classes form a hierarchy, with the class Exception at the top. The next level contains seven different types −
+
+Interrupt
+NoMemoryError
+SignalException
+ScriptError
+StandardError
+SystemExit
+There is one other exception at this level, Fatal, but the Ruby interpreter only uses this internally.
+
+Both ScriptError and StandardError have a number of subclasses, but we do not need to go into the details here. The important thing is that if we create our own exception classes, they need to be subclasses of either class Exception or one of its descendants.
