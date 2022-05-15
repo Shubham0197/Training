@@ -13,9 +13,9 @@ end
 
 def fib_array(array)
   fib_array = []
-  array.each {|a| fib_array << fib(a); print a,fib(a)}
+  array.each {|a| fib_array << fib(a);}
   fib_array
 end
 
-array = [1,2,3,4,5,6,7,10,11,12,13,14,19,17,23,37,89]
-print fib_array(array) , "\n"
+# array = [1,2,3,4,5,6,7,10,11,12,13,14,19,17,23,37]
+# print fib_array(array) , "\n"

@@ -5,7 +5,7 @@ If target is not found in the array, return [-1, -1].
 =end
 # Question done using array have to do with hash ????
 module Range
-  def search_range_using_array(nums, target)
+  def self.search_range_using_array(nums, target)
     position = [-1, -1]
     if nums.rindex { |element| element == target }
       position[1] = nums.rindex { |element| element == target }

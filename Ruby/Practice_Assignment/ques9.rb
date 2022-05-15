@@ -2,7 +2,7 @@
 module Non_repeating_char
   def Non_repeating_char.first_non_repeating_char(string)
     counter = 0
-    (string.chars.uniq.sort).each { |char| 
+    (string.chars.uniq.sort).each { |char|
       if string.count(char) == 1
         return string.index(char)
       end
@@ -11,5 +11,5 @@ module Non_repeating_char
   end
 end
 
-string = "aassddffedddf"
-print Non_repeating_char.first_non_repeating_char(string), "\n"
+# string = "aassddffedddf"
+# print Non_repeating_char.first_non_repeating_char(string), "\n"
