@@ -3,11 +3,13 @@ module Anagram
   def Anagram.anagram?(s,t)
     hash_s = Hash.new
     hash_t = Hash.new
-    (s.chars.uniq.sort).each { |char| hash_s[char] =   s.count(char) }
-    (t.chars.uniq.sort).each { |char| hash_t[char] =   t.count(char) }
+    (s.chars.uniq.sort).each { |char| hash_s[char] = s.count(char) }
+    (t.chars.uniq.sort).each { |char| hash_t[char] = t.count(char) }
     print hash_s, hash_t, "\n"
     if hash_s == hash_t
-      print "it is anagram", "\n"
+      print "It is anagram", "\n"
+    else
+      print "Not a anagram" , "\n"
     end
   end
 end
