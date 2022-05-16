@@ -1171,5 +1171,126 @@ The collect method need not always be associated with a block.
  The collect method returns the entire collection,
  regardless of whether it is an array or a hash.
 
+
+ Lambda Function – Ruby
  
+ In Computer Programming, Lambda functions are anonymous functions
+
+Everything in Ruby is treated as an object, lambdas are also objects in Ruby.
+Lambdas in Ruby allow us to wrap data and logic in a portable package. 
+
+Syntax to create Lambda function in Ruby:
+
+lambda = lambda {}   
+
+lambda = ->() {}  
+Lambda function is an instance of the Proc class of Ruby. 
+
+3.0.0 :001 > lambda_function = lambda {puts "Hello"}
+ => #<Proc:0x00005619f5b60098 (irb):1 (lambda)> 
+3.0.0 :002 > lambda_function
+ => #<Proc:0x00005619f5b60098 (irb):1 (lambda)> 
+3.0.0 :003 > lambda_function.class
+ => Proc 
+
+
+ We have different ways to call this function. 
+ We can use my_lambda.call, my_lambda.() , my_lambda.[] or my_lambda.=== to call the lambda function . 
+ 3.0.0 :012 > lambda_function.call
+ Hello
+  => nil 
+ 3.0.0 :013 > lambda_function.()
+ Hello
+  => nil 
+ 3.0.0 :014?> lambda_function.[]
+ Hello
+  => nil 
+ 3.0.0 :015 > lambda_function.===
+ Hello
+  => nil 
+
+  To pass arguments in the lambda function, we can either use normal lambda syntax or use the literal lambda operator ” -> ” 
+  3.0.0 :016 > lambda_with_args = lambda {| s | puts "Hello "+ s }
+  => #<Proc:0x00005619f5dc68a0 (irb):16 (lambda)> 
+ 3.0.0 :018 > lambda_with_args.call("World")
+ Hello World
+
+ To use lambda functions along with a normal function, we can pass lambda function as an argument.
+
+ 3.0.0 :013 > lambda_function.()
+ Hello
+ 3.0.0 :014?> lambda_function.[]
+ Hello
+ 3.0.0 :015 > lambda_function.===
+  => nil 
+  => #<Proc:0x00005619f5dc68a0 (irb):16 (lambda)> 
+ Hello Geeks
+ 3.0.0 :018 > lambda_with_args.call("World")
+  => nil 
+  => nil 
+  => #<Proc:0x00005619f5e82000 (irb):22 (lambda)> 
+  
+  3.0.0 :036 > add_10 = lambda { |num| num + 10 }
+  3.0.0 :037 > multiply_2 = lambda { |num| num * 2 }
+   => #<Proc:0x00005619f5d2f478 (irb):37 (lambda)> 
+  3.0.0 :038 >   puts lambda.call(number)
+   
+  end
+  3.0.0 :038 > def using_lambda_with_functions(lambda, number)
+  3.0.0 :039 >  
+  3.0.0 :040 >   puts lambda.call(number)
+  3.0.0 :041 >  
+  3.0.0 :042 > end
+   => :using_lambda_with_functions 
+  3.0.0 :043 >  using_lambda_with_functions(add_10, 10)
+  20
+   => nil 
+  => :using_lambda_with_functions 
+ 3.0.0 :033 > using_lambda_with_functions(add_10, 10)
+ 20
+  => nil 
+
+  The behavior of the return statement
+The return statement is handled differently as well. 
+The return statement in a lambda function stops the lambda and returns control to the calling code.
+ The return statement in a Proc, in contrast, returns from both the Proc and the calling code.
+ the return statement in the proc terminates the program flow.
+
+ my_lambda = lambda do |name|
+   puts "lambda says hello " + name 
+   return "lambda done" 
+ end
+ 
+ my_proc = Proc.new do |name| 
+   puts "proc says hello " + name
+   return "proc done"
+ end
+ 
+ def call_lambda(lmbda)
+   value = lmbda.call("world")
+    puts value
+ end 
+ call_lambda(my_lambda)
+ 
+ def call_proc(prc)
+   value = prc.call("world")
+    puts value
+ end
+ 
+ call_proc(my_proc)
+
+ The output:
+
+ lambda says hello world
+ lambda done
+ proc says hello world
+
+
+
+
+
+
+
+
+
 
