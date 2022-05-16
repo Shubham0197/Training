@@ -3,10 +3,22 @@
 # Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
 module Anagram
   def self.min_step_anagram(s ,t)
-    hash = Hash.new
-    steps = 0
-    t.chars.each {|char| hash[char] = t.count(char)}
-    s.chars.uniq.each {|char| if hash[char] then steps += (hash[char] - s.count).abs else steps += s.count end}
-    steps
-    end
+    hash = t.chars.tally
+    steps_remove = 0
+    steps_add = 0
+    steps = []
+    s.chars.uniq.each { |char|
+      if hash[char]
+        if hash[char] > s.count(char)
+          steps_remove += (hash[char] - s.count(char)).abs
+        elsif hash[char] < s.count(char)
+          steps_add += (hash[char] - s.count(char)).abs
+        end
+      else
+        steps_add += s.count(char)
+      end
+    }
+    steps << steps_remove << steps_add
+    steps.max()
+  end
 end
