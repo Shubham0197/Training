@@ -1286,11 +1286,83 @@ The return statement in a lambda function stops the lambda and returns control t
  proc says hello world
 
 
+ Ruby | Blocks
+A block is the same thing as a method, but it does not belong to an object. 
+Blocks are called closures in other programming languages.
+There are some important points about Blocks in Ruby:
+
+Block can accept arguments and returns a value.
+Block does not have their own name.
+Block consist of chunks of code.
+A block is always invoked with a function or can say passed to a method call.
+To call a block within a method with a value, yield statement is used.
+Blocks can be called just like methods from inside the method that it is passed to.
 
 
+def blocks
+  puts "Inside Method!"
+  yield
+  puts "Again Inside Method!"
+  yield
+end
+blocks{puts "Inside Block!"}
+
+output - 
+Inside Method!
+Inside Block!
+Again Inside Method!
+Inside Block!
+
+Method is a collection of statements that perform some specific task and return the result. 
+Methods are time savers and help the user to reuse the code without retyping the code
+
+Ruby Singleton Classes
+it same as metaclasses or eigenclasses
+The Singleton pattern is simply an object-oriented programming pattern where you make sure to have 1 and only 1 instance of some class.
+Ruby implement the Singleton pattern with a module: just write Include Singleton in your class definition and you are good to go.
+
+This module basically hides the :new method. MySingletonObject.new will always ERROR.
+ Instead, it will give you an instance method that will always return the same unique instance of your class.
+
+ require 'singleton'
+
+class NotSingleton
+  def initialize
+    puts 'This will be printed many times'
+  end
+end
+
+class MySingleton
+  include Singleton
+  def initialize
+    puts 'This will be printed once'
+  end
+end
+
+NotSingleton.new
+NotSingleton.new
+NotSingleton.new
+
+MySingleton.instance # => 'This will be printed once'
+MySingleton.instance # Nothing is printed
+MySingleton.instance
 
 
+This is useful if you ever want to restrict a class so it never creates more than one instance of itself.
 
+The Eigenclass
+When you create an instance of a class,
+ Ruby creates a hidden class, basically a copy of the original class, but which is owned exclusively by this instance. 
+ This is the Eigenclass. If you modify the Eigenclass of your first instance, it wont change anything for another instance.
+
+ singleton methods are the methods that are defined for only a single object rather than a class of objects. 
+ To define a singleton method sum on an object Point
+
+ So for point  the sum is the singleton method
+
+ def Point.sum
+   # Method body goes here
+ end
 
 
 
