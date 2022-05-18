@@ -1,0 +1,60 @@
+Ruby Object Model
+Ancestor chain
+ancestors method returns an Array that represents the ancestor chain
+It is the representation of the class hierarchy in Ruby.
+In order, it contains:
+
+The calling class
+its included modules
+its parent class
+the included modules of its parents class
+the parent class of its parent class
+3.0.0 :001 > Array.ancestors
+ => [Array, Enumerable, Object, Kernel, BasicObject] 
+3.0.0 :002 > Object.ancestors
+ => [Object, Kernel, BasicObject] 
+3.0.0 :003 > Array::included_modules
+ => [Enumerable, Kernel] 
+
+
+ When  a method is called  inside of object, what Ruby does is to first check if this method exists inside the self context. 
+ If it doesn't find it there, it continues up the ancestor chain until it finds the method.
+ 3.0.0 :010 > class Car
+3.0.0 :011 >   def to_s
+3.0.0 :012 >     "4 wheels"
+3.0.0 :013 >   end
+3.0.0 :014 > end
+ => :to_s 
+3.0.0 :015 > Car.new.to_s
+ => "4 wheels" 
+3.0.0 :016 > Car.inspect
+ => "Car" 
+
+Object is the default root class in Ruby. 
+This means that any new class inherit from object by default
+ 3.0.0 :017 > Car.superclass
+ => Object 
+
+BasicObject
+The BasicObject class is the top parent of all class.
+It contains a bare minimum of methods for object creation and object comparison.
+
+Kernel
+The Kernel module is included in the Object class. It contains all the “object manipulation” logic.
+
+Object
+As theKernel module contains the majority of the methods, Object is more used as an interface (for its name) by all its children.
+3.0.0 :018 > Object.ancestors
+ => [Object, Kernel, BasicObject] 
+
+The main object
+When a new program starts, Ruby automatically creates the main object which is an instance of the Object class.
+ main is the top-level context of any program.
+
+
+
+
+
+
+
+
