@@ -1,0 +1,6 @@
+[submodule "Rails_lms"]
+	path = Rails_lms
+	url = git@github.com:Shubham0197/Rails_lms.git
+[submodule "Ruby/Rails/Rails_lms"]
+	path = Ruby/Rails/Rails_lms
+	url = git@github.com:Shubham0197/Rails_lms.git
