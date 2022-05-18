@@ -22,3 +22,5 @@ sum_lines = array.map{|line| line.sum()}
 # here used map to on array which is enumerable on each element in it
 # and replcaing the need to use each loop
 print sum_lines,"\n"
+
+# only one if block can be used 
