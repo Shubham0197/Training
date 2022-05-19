@@ -26,3 +26,16 @@ This layer is responsible for manipulating the data that will be processed in th
   Controller
    This layer is responsible for intermediating the communication between the View and the Model. 
    In our scenario of the one-button app, the Controller would be notified by the View when the user pressed the button.
+
+Object Relation MApping
+ORM stands for Object-Relational-Mapping. 
+Object Relational Mapper. It means you don't have to manually call the database yourself; the ORM handles it for you.
+Ruby on Rails uses one called ActiveRecord, and it's a really good one.
+It basically means that Active Record takes data which is stored in a database table using rows and columns,
+ which needs to be modified or retrieved by writing SQL statements (if you're using a SQL database), 
+ and it lets you interact with that data as though it was a normal Ruby object.
+
+ Class maps to Tables 
+ Object Maps to Records
+ Attributes mapps to Attribute or columns
+ 
