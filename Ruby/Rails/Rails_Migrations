@@ -379,8 +379,69 @@ ID | EMPLOYEE_ID | AIRCRAFT_ID | CREATED_AT              | UPDATED_AT
 16 | 1           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
  => 0.002454202 
 
+Column Modifiers
+ Column modifiers can be applied when creating or changing a column:
+ 
+ comment Adds a comment for the column.
+ collation Specifies the collation for a string or text column.
+ In database systems, Collation specifies how data is sorted and compared in a database.
+  Collation provides the sorting rules, case, and accent sensitivity properties for the data in the database.
+    Option	Explanation
+    Case-sensitive (_CS)	Lowercase letters sort ahead of their uppercase versions.
+    Case-insensitive (_CI)	Uppercase and lowercase versions of letters are considered identical for sorting purposes.
+    Accent-sensitive (_AS)	Distinguishes between accented and unaccented characters. For example, a is not equal to ấ.
+    Accent-insensitive (_AI)	Accented and unaccented versions of letters are considered identical for sorting purposes. For example, a is equal to ấ.
+
+    Latin1_General_CI_AI_WS	Latin1-General, case-insensitive, accent-insensitive, kanatype-insensitive, width-sensitive
 
 
+ default Allows to set a default value on the column. Note that if you are using a dynamic value (such as a date), the default will only be calculated the first time (i.e. on the date the migration is applied). Use nil for NULL.
+ limit Sets the maximum number of characters for a string column and the maximum number of bytes for text/binary/integer columns.
+ null Allows or disallows NULL values in the column.
+ precision Specifies the precision for decimal/numeric/datetime/time columns.
+ scale Specifies the scale for the decimal and numeric columns, representing the number of digits after the decimal point.
+ 
+ For add_column or change_column there is no option for adding indexes. They need to be added separately using add_index.
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails g migration using_column_modifiers
+ invoke  active_record
+ create    db/migrate/20220523155125_using_column_modifiers.rb
 
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate
+== 20220523155125 UsingColumnModifiers: migrating =============================
+-- change_column(:employees, :name, :string, {:null=>false})
+   -> 0.0014s
+-- change_column(:employees, :mobile_number, :string, {:limit=>12})
+   -> 0.0029s
+-- change_column(:employees, :DOB, :date, {:default=>"01/01/1997"})
+   -> 0.0009s
+== 20220523155125 UsingColumnModifiers: migrated (0.0054s) ====================
 
+Diretly run the sql query in rails using execute method
+3.0.0 :016 > Book.connection.execute("Update books set quantity = 2 where 1=1")
+(0.5ms)  Update books set quantity = 2 where 1=1
+=> #<PG::Result:0x000055c4ca165050 status=PGRES_COMMAND_OK ntuples=0 nfields=0 cmd_tuples=0> 
 
+3.0.0 :002 > tp Employee.all
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees"
+ID | NAME    | SALARY | MOBILE_NUMBER | DOB | CREATED_AT              | UPDATED_AT             
+---|---------|--------|---------------|-----|-------------------------|------------------------
+1  | Ajay    | 30000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+2  | Ajith   | 85000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+3.0.0 :003 > Employee.connection.execute("update employees set mobile_number = '999999999' ")
+   (7.6ms)  update employees set mobile_number = '999999999' 
+ => #<PG::Result:0x00005614f3fdbbd8 status=PGRES_COMMAND_OK ntuples=0 nfields=0 cmd_tuples=10> 
+3.0.0 :004 > tp Employee.all
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees"
+ID | NAME    | SALARY | MOBILE_NUMBER | DOB | CREATED_AT              | UPDATED_AT             
+---|---------|--------|---------------|-----|-------------------------|------------------------
+1  | Ajay    | 30000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+2  | Ajith   | 85000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+3  | Arnab   | 50000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+4  | Amar    | 45000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+5  | Pritam  | 90000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+6  | Sam     | 75000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+7  | Ram     | 150000 | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+8  | shubham | 120000 | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+9  | naman   | 123345 | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+10 | hariom  | 12345  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+ => 0.001695617 
