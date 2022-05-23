@@ -1,0 +1,2 @@
+class Certified < ApplicationRecord
+end
