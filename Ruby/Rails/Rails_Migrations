@@ -284,6 +284,103 @@ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
 == 20220523110356 AddingForeignKeyToBookId: migrated (0.0031s) ================
 
 itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ ^C
+If the migration name is of the form "CreateXXX" and is followed by a list of column names and 
+types then a migration creating the table XXX with the columns listed will be generated
 
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails g migration CreateCountry name:string citiy:string
+      invoke  active_record
+      create    db/migrate/20220523135619_create_country.rb
 
 Create join table  
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails g migration CreateJoinTableCertifiedEmployee certified employee
+      invoke  active_record
+      create    db/migrate/20220523135928_create_join_table_certified_employee.rb
+
+      3.0.0 :001 > ActiveRecord::Base.connection.tables
+      => 
+     ["schema_migrations",
+      "ar_internal_metadata",
+      "flights",
+      "aircrafts",
+      "employees",
+      "certifieds",
+      "countries",
+      "certifieds_employees"] 
+
+      
+Added data to the tables
+using table print gem to print data in tables from rails console
+
+3.0.0 :002 > require 'table_print'
+ => false 
+3.0.0 :004 > tp Employee.all
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees"
+ID | NAME    | SALARY | MOBILE_NUMBER | DOB | CREATED_AT              | UPDATED_AT                                                                 
+---|---------|--------|---------------|-----|-------------------------|------------------------                                                    
+1  | Ajay    | 30000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+2  | Ajith   | 85000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+3  | Arnab   | 50000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+4  | Amar    | 45000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+5  | Pritam  | 90000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+6  | Sam     | 75000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+7  | Ram     | 150000 |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+8  | shubham | 120000 |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+9  | naman   | 123345 |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+10 | hariom  | 12345  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+ => 0.00158745 
+
+ 3.0.0 :005 > tp Flight.all
+ Flight Load (0.4ms)  SELECT "flights".* FROM "flights"
+ID | FROM      | DESTINATION | DISTANCE | DEPARTS                 | ARRIVES                 | PRICE | CREATED_AT              | UPDATED_AT             
+---|-----------|-------------|----------|-------------------------|-------------------------|-------|-------------------------|------------------------
+1  | Bangalore | Pune        | 360      | 2000-01-01 10:45:00     | 2000-01-01 12:00:00     | 10000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+2  | Bangalore | Delhi       | 5000     | 2000-01-01 12:15:00     | 2000-01-01 04:30:00     | 25000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+3  | Bangalore | Mumbai      | 3500     | 2000-01-01 02:15:00     | 2000-01-01 05:25:00     | 30000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+4  | Delhi     | Mumbai      | 4500     | 2000-01-01 10:15:00     | 2000-01-01 12:05:00     | 35000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+5  | Delhi     | Pune        | 18000    | 2000-01-01 07:15:00     | 2000-01-01 05:30:00     | 90000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+6  | Mumbai    | Delhi       | 19500    | 2000-01-01 10:00:00     | 2000-01-01 07:45:00     | 95000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+7  | Pune      | Banglore    | 17000    | 2000-01-01 12:00:00     | 2000-01-01 06:30:00     | 99000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+8  | Pune      | Mumbai      | 3060     | 2000-01-01 13:00:00     | 2000-01-01 14:00:00     | 10000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+9  | Mumbai    | Delhi       | 5000     | 2000-01-01 14:15:00     | 2000-01-01 16:30:00     | 25000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+=> 0.002234801
+
+3.0.0 :007 > tp Aircraft.all
+  Aircraft Load (0.3ms)  SELECT "aircrafts".* FROM "aircrafts"
+ID | NAME         | CRUISING_RANGE | CREATED_AT              | UPDATED_AT                                             
+---|--------------|----------------|-------------------------|------------------------                                
+1  | Airbus320    | 1000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56                                    
+2  | Boeing737    | 5000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56                                    
+3  | Jet01        | 5000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56                                    
+4  | Airbus380    | 8000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+5  | Boeing777    | 500            | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+6  | PrivateCraft | 800            | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+7  | Aircraft200  | 1000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+ => 0.000921882 
+
+ 3.0.0 :008 > tp Certified.all
+  Certified Load (0.3ms)  SELECT "certifieds".* FROM "certifieds"
+ID | EMPLOYEE_ID | AIRCRAFT_ID | CREATED_AT              | UPDATED_AT                                                                     
+---|-------------|-------------|-------------------------|------------------------                                    
+1  | 1           | 1           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+2  | 2           | 1           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+3  | 1           | 3           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+4  | 5           | 3           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+5  | 7           | 5           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+6  | 1           | 2           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+7  | 2           | 6           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+8  | 2           | 2           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+9  | 4           | 3           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+10 | 6           | 4           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+11 | 3           | 4           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+12 | 5           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+13 | 6           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+14 | 3           | 5           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+15 | 7           | 6           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+16 | 1           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+ => 0.002454202 
+
+
+
+
+
+
