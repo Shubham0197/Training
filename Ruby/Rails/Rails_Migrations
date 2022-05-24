@@ -853,6 +853,31 @@ Don't know how to build task 'db:sessions:clear' (See the list of available task
 (See full trace by running task with --trace)
 
 
+Fixtures
+Fixtures contain data which can be loaded into your database using migrations. For 
+example, to load data into a table named customers...
+1. Create a directory, db/migrate/data
+2. Create a file, customers.yml, inside db/migrate/data
+3. Generate a new migration file: ruby script/generate migration load_customers_data
+4. Edit it to load data from the customers.yml file into your customers table
+
+
+
+Error in fixtures
+== 20220524150605 LoadCustomersData: migrating ================================
+rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled:
+
+uninitialized constant LoadCustomersData::Fixtures
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in `up'
+
+Caused by:
+NameError: uninitialized constant LoadCustomersData::Fixtures
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in `up'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+
+
 
 
 
