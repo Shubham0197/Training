@@ -771,9 +771,86 @@ NameError: uninitialized constant ReversibleUsage::SQL
 Tasks: TOP => db:migrate
 (See full trace by running task with --trace)
 
+Rake Tasks-->
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:version
+Current version: 20220524110434
 
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:create:all
+Database 'ecommerce_development' already exists
+Database 'ecommerce_test' already exists
 
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:up
+rails aborted!
+VERSION is required
 
+Tasks: TOP => db:migrate:up
+(See full trace by running task with --trace)
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:down
+rails aborted!
+VERSION is required - To go down one migration, use db:rollback
+
+Tasks: TOP => db:migrate:down
+(See full trace by running task with --trace)
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:migrate test
+Running 7 tests in a single process (parallelization threshold is 50)
+Run options: --seed 17788
+
+# Running:
+
+.......
+
+Finished in 0.249503s, 28.0558 runs/s, 36.0717 assertions/s.
+7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:schema:dump
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ 
+
+db:schema:dump Create a db/schema.rb file that can be portably used against 
+any database supported by ActiveRecord
+db:schema:load Load a schema.rb file into the database
+db:sessions:create Create a sessions table for use with CGI::Sessions::Activ
+eRecordStore
+db:sessions:clear Clear the sessions table
+db:structure:dump Dump database structure to SQL file
+db:reset Drops the database, creates the database and then runs migra- tions against the database. Takes a VERSION argument as well as RAILS_ENV
+db:rollback STEP=4 Takes a STEP argument to determine how many version to rollback, the default being one version
+db:test:prepare Clone your database structure into the test database
+db:version Tells you the current version your database is at
+b:create
+db:create:all
+Creates a single database specified in config/databases.yml for the current RAILS_ENV or creates all the databases
+db:drop
+db:drop:all Drops a single database specified in config/databases.yml for the current RAILS_ENV or drops all the databases
+db:fixtures:load Load fixtures from test/fixtures into the current environments database
+db:migrate Run all unapplied migrations
+db:migrate:up
+db:migrate:down Move forward to the next migration, or back to the previous 
+migration
+db:migrate VERSION=18 Migrate database to specific version
+db:migrate RAILS_
+ENV=production Use migrations to recreate tables in the testing or production
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:test:prepare
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ 
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:reset
+Dropped database 'ecommerce_development'
+Dropped database 'ecommerce_test'
+Created database 'ecommerce_development'
+Created database 'ecommerce_test'
+itsacheckmate@itsacheckmate:~/Train
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rake db:sessions:create
+rake aborted!
+Don't know how to build task 'db:sessions:create' (See the list of available tasks with `rake --tasks`)
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+(See full trace by running task with --trace)
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rake db:sessions:clear
+rake aborted!
+Don't know how to build task 'db:sessions:clear' (See the list of available tasks with `rake --tasks`)
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+(See full trace by running task with --trace)
 
 
 

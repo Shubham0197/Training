@@ -22,7 +22,7 @@ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:migrate
    -> 0.0005s
 == 20220524142535 AddReversibleUsage: migrated (0.0018s) ======================
 
-itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:rollback
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:rollback STEP = 1
 == 20220524142535 AddReversibleUsage: reverting ===============================
 rails aborted!
 StandardError: An error has occurred, this and all later migrations canceled:

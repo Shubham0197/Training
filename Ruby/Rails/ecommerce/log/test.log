@@ -1,0 +1,171 @@
+  [1m[35m (13.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ecommerce_test"[0m
+  [1m[35m (24.3ms)[0m  [1m[35mCREATE DATABASE "ecommerce_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" text, "description" float)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "customers" CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "customers" ("id" bigserial primary key, "name" text, "mobile_number" character varying, "zipcode" bigint, "sku" integer)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "customrs" CASCADE[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "customrs" ("id" bigserial primary key, "name" character varying, "mobile_number" character varying, "email_address" integer, "DOB" date, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" text, "price" decimal(5,2) DEFAULT 100.0, "category_id" integer, "description" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMENT ON TABLE "products" IS 'Products data'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMENT ON COLUMN "products"."price" IS 'Price column'[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20220524142535)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20220524122240),
+(20220524132220),
+(20220524135739);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2022-05-24 14:42:18.406627"], ["updated_at", "2022-05-24 14:42:18.406627"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "5423d65e29a20f6a484fe608c4eb18beab4f22ac"], ["created_at", "2022-05-24 14:42:18.408901"], ["updated_at", "2022-05-24 14:42:18.408901"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "categories" DISABLE TRIGGER ALL;ALTER TABLE "customers" DISABLE TRIGGER ALL;ALTER TABLE "customrs" DISABLE TRIGGER ALL;ALTER TABLE "products" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM "customrs";
+INSERT INTO "customrs" ("id", "name", "mobile_number", "email_address", "DOB", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 1, '2022-05-24', '2022-05-24 14:42:18.476733', '2022-05-24 14:42:18.476733'), (298486374, 'MyString', 'MyString', 1, '2022-05-24', '2022-05-24 14:42:18.476733', '2022-05-24 14:42:18.476733')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ENABLE TRIGGER ALL;ALTER TABLE "customers" ENABLE TRIGGER ALL;ALTER TABLE "customrs" ENABLE TRIGGER ALL;ALTER TABLE "products" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mdo $$
+  declare r record;
+BEGIN
+FOR r IN (
+  SELECT FORMAT(
+    'UPDATE pg_constraint SET convalidated=false WHERE conname = ''%I''; ALTER TABLE %I VALIDATE CONSTRAINT %I;',
+    constraint_name,
+    table_name,
+    constraint_name
+  ) AS constraint_check
+  FROM information_schema.table_constraints WHERE constraint_type = 'FOREIGN KEY'
+)
+  LOOP
+    EXECUTE (r.constraint_check);
+  END LOOP;
+END;
+$$;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+CustomrsControllerTest: test_should_create_customr
+--------------------------------------------------
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mCustomr Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "customrs"[0m
+Started POST "/customrs" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#create as HTML
+  Parameters: {"customr"=>{"DOB"=>"2022-05-24", "email_address"=>"1", "mobile_number"=>"MyString", "name"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomr Create (0.2ms)[0m  [1m[32mINSERT INTO "customrs" ("name", "mobile_number", "email_address", "DOB", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "MyString"], ["mobile_number", "MyString"], ["email_address", 1], ["DOB", "2022-05-24"], ["created_at", "2022-05-24 14:42:18.555837"], ["updated_at", "2022-05-24 14:42:18.555837"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/customrs/980190963
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 3904)
+  [1m[36mCustomr Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "customrs"[0m
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" ORDER BY "customrs"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+CustomrsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mCustomr Load (0.2ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/customrs/980190962/edit" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering customrs/edit.html.erb within layouts/application
+  Rendered customrs/_form.html.erb (Duration: 3.9ms | Allocations: 4138)
+  Rendered customrs/edit.html.erb within layouts/application (Duration: 4.6ms | Allocations: 4744)
+  Rendered layout layouts/application.html.erb (Duration: 130.7ms | Allocations: 94314)
+Completed 200 OK in 134ms (Views: 132.0ms | ActiveRecord: 0.1ms | Allocations: 97324)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+CustomrsControllerTest: test_should_destroy_customr
+---------------------------------------------------
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mCustomr Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "customrs"[0m
+Started DELETE "/customrs/980190962" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCustomr Destroy (0.1ms)[0m  [1m[31mDELETE FROM "customrs" WHERE "customrs"."id" = $1[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/customrs
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms | Allocations: 673)
+  [1m[36mCustomr Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "customrs"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+CustomrsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/customrs/new" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering customrs/new.html.erb within layouts/application
+  Rendered customrs/_form.html.erb (Duration: 1.1ms | Allocations: 1227)
+  Rendered customrs/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1436)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2834)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3186)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------
+CustomrsControllerTest: test_should_show_customr
+------------------------------------------------
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/customrs/980190962" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering customrs/show.html.erb within layouts/application
+  Rendered customrs/_customr.html.erb (Duration: 0.4ms | Allocations: 249)
+  Rendered customrs/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1070)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 2460)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms | Allocations: 2943)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+CustomrsControllerTest: test_should_update_customr
+--------------------------------------------------
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/customrs/980190962" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#update as HTML
+  Parameters: {"customr"=>{"DOB"=>"2022-05-24", "email_address"=>"1", "mobile_number"=>"MyString", "name"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/customrs/980190962
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms | Allocations: 694)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+CustomrsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mCustomr Load (0.1ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/customrs" for 127.0.0.1 at 2022-05-24 20:12:18 +0530
+Processing by CustomrsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering customrs/index.html.erb within layouts/application
+  [1m[36mCustomr Load (0.2ms)[0m  [1m[34mSELECT "customrs".* FROM "customrs"[0m
+  Rendered customrs/_customr.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered customrs/_customr.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered customrs/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 685)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2084)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 2455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
