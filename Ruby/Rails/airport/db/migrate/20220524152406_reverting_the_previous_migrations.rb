@@ -6,6 +6,7 @@ class RevertingThePreviousMigrations < ActiveRecord::Migration[7.0]
   end
 end
 
+
 =begin
 output
 itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate
