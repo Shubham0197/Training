@@ -657,3 +657,154 @@ Processing by CustomrsController#index as TURBO_STREAM
 Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 3309)
 
 
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductTableUsingMethodsInIt (20220524132220)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductTableUsingMethodsInIt (20220524132220)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" text, "price" float, "categoryid" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" text, "description" float)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ADD "description" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "categoryid" TO "category_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "created_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "updated_at" timestamp(6) NOT NULL[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductTableUsingMethodsInIt (20220524132220)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" text, "price" float, "categoryid" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" text, "description" float)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "description" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "categoryid" TO "category_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "created_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "updated_at" timestamp(6) NOT NULL[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductTableUsingMethodsInIt (20220524132220)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" text, "price" float, "categoryid" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" text, "description" float)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ADD "description" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "categoryid" TO "category_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "created_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "updated_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "updated_at" DROP NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "updated_at", DROP COLUMN "created_at"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categorys" ("id")
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductTableUsingMethodsInIt (20220524132220)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" text, "price" float, "categoryid" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" text, "description" float)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ADD "description" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "categoryid" TO "category_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "created_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "updated_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "updated_at" DROP NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "updated_at", DROP COLUMN "created_at"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" DROP CONSTRAINT "fk_rails_fb915499a4"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" DROP COLUMN "updated_at", DROP COLUMN "created_at"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_categories_on_name" ON "categories" ("name")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mALTER INDEX "index_categories_on_name" RENAME TO "index_productcategories_on_name"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_productcategories_on_name"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "updated_at"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProductTableUsingMethodsInIt (20220524132220)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" text, "price" float, "categoryid" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" text, "description" float)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ADD "description" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "categoryid" TO "category_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "created_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "updated_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "updated_at" DROP NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "updated_at", DROP COLUMN "created_at"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" DROP CONSTRAINT "fk_rails_fb915499a4"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "categories" DROP COLUMN "updated_at", DROP COLUMN "created_at"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_categories_on_name" ON "categories" ("name")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "index_categories_on_name" RENAME TO "index_productcategories_on_name"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_productcategories_on_name"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "description"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "categories" ADD "name_id" bigint[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_categories_on_name_id" ON "categories" ("name_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "categories" DROP COLUMN "name_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220524132220"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeTableInMigrations (20220524135739)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "price" TYPE decimal(5,2)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "desccription" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "desccription" TO "description"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "cutomrs" RENAME TO "customers"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeTableInMigrations (20220524135739)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.1ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "price" TYPE decimal(5,2)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "desccription" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "desccription" TO "description"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "cutomrs" ("id" bigserial primary key, "name" text, "mobile_number" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "cutomrs" RENAME TO "customers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "cutomrs_pkey" RENAME TO "customers_pkey"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "public"."cutomrs_id_seq" RENAME TO "customers_id_seq"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "customers" ADD "zipcode" bigint[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "price" SET DEFAULT 100.0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMENT ON COLUMN "products"."price" IS 'Price column'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON TABLE "products" IS 'Products data'[0m
+  [1m[35m (0.7ms)[0m  [1m[35m          ALTER TABLE customers
+            ADD CONSTRAINT zipchk
+              CHECK (char_length(zipcode) = 5) NO INHERIT;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeTableInMigrations (20220524135739)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "price" TYPE decimal(5,2)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ADD "desccription" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" RENAME COLUMN "desccription" TO "description"[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "cutomrs" ("id" bigserial primary key, "name" text, "mobile_number" character varying)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "cutomrs" RENAME TO "customers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "cutomrs_pkey" RENAME TO "customers_pkey"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "public"."cutomrs_id_seq" RENAME TO "customers_id_seq"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "customers" ADD "zipcode" bigint[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "products" ALTER COLUMN "price" SET DEFAULT 100.0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMENT ON COLUMN "products"."price" IS 'Price column'[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCOMMENT ON TABLE "products" IS 'Products data'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220524135739"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5291487476256315705)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
