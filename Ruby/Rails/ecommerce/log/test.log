@@ -169,3 +169,27 @@ Processing by CustomrsController#index as HTML
   Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2084)
 Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 2455)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7406768085028936680)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to UsingShorcutMethodToChangeCustomersTable (20220524145015)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "customers" DROP COLUMN "sku"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "customers" ALTER COLUMN "mobile_number" SET DEFAULT '100000'[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "customers" ADD "user_id" bigint[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE INDEX "index_customers_on_user_id" ON "customers" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "customers" ADD "products_id" bigint[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_customers_on_products_id" ON "customers" ("products_id")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "customers" ADD CONSTRAINT "fk_rails_7d4bfe36d2"
+FOREIGN KEY ("products_id")
+  REFERENCES "products" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "customers" DROP COLUMN "user_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "customers" DROP COLUMN "products_id"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "customers" ADD "created_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "customers" ADD "updated_at" timestamp(6) NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_customers_on_mobile_number" ON "customers" ("mobile_number")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_customers_on_mobile_number"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220524145015"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to LoadCustomersData (20220524150605)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7406768085028936680)[0m

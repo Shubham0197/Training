@@ -869,14 +869,39 @@ rails aborted!
 StandardError: An error has occurred, this and all later migrations canceled:
 
 uninitialized constant LoadCustomersData::Fixtures
-/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in `up'
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in up
 
 Caused by:
 NameError: uninitialized constant LoadCustomersData::Fixtures
-/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in `up'
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in 'up'
 Tasks: TOP => db:migrate
 (See full trace by running task with --trace)
 
+
+
+
+Re-Running all migrations	rake db:migrate:redo	This will re-run all the migrations
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:down VERSION=20220524175923
+== 20220524175923 UpDownReversibleAddingColumn: reverting =====================
+-- remove_column(:products, :sku)
+   -> 0.0016s
+== 20220524175923 UpDownReversibleAddingColumn: reverted (0.0061s) ============
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:up VERSION=20220524175923
+== 20220524175923 UpDownReversibleAddingColumn: migrating =====================
+-- add_column(:products, :sku, :integer)
+   -> 0.0014s
+== 20220524175923 UpDownReversibleAddingColumn: migrated (0.0015s) ============
+
+
+Both the commands, rails db:schema:{dump,load} and rails db:structure:{dump,load} will run rails db:schema:{dump,load} depending on the value specified for config.active_record.schema_format.
+
+So running, rails db:schema:dump or rails db:structure:dump will dump db/schema.rb file.
+
+If we specify :sql as the value for config.active_record.schema_format, running rails db:schema:dump or rails db:structure:dump will dump db/stucture.sql file.
+
+Running rails db:structure:{dump,load} will result in a deprecation warning, as these commands will be removed in Rails 6.2:
 
 
 
