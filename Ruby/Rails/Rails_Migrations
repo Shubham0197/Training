@@ -558,3 +558,211 @@ Indexes:
 [8, "shubham", 120000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
 [9, "naman", 123345, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
 [10, "hariom", 12345, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+
+
+Scaffolding in rails
+rails g scaffold command.
+A scaffold is a set of automatically generated files which forms the basic structure of a Rails project.
+These files include:
+
+A controller
+A model
+Views for every standard controller action (index, edit, show, new)
+A new route.
+And a migration to prepare your database.
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails g scaffold customers
+[WARNING] The model name 'customers' was recognized as a plural, using the singular 'customer' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20220524120706_create_customers.rb
+      create    app/models/customer.rb
+      invoke    test_unit
+      create      test/models/customer_test.rb
+      create      test/fixtures/customers.yml
+      invoke  resource_route
+       route    resources :customers
+      invoke  scaffold_controller
+      create    app/controllers/customers_controller.rb
+      invoke    erb
+      create      app/views/customers
+      create      app/views/customers/index.html.erb
+      create      app/views/customers/edit.html.erb
+      create      app/views/customers/show.html.erb
+      create      app/views/customers/new.html.erb
+      create      app/views/customers/_form.html.erb
+      create      app/views/customers/_customer.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      create      test/controllers/customers_controller_test.rb
+      create      test/system/customers_test.rb
+      invoke    helper
+      create      app/helpers/customers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/customers/index.json.jbuilder
+      create      app/views/customers/show.json.jbuilder
+      create      app/views/customers/_customer.json.jbuilder
+
+      This example creates:
+
+      A BController
+      A  model
+      A new resources  route added to your config/routes.rb file
+      A set of testing-related files
+      View files under app/views/ (five in total)
+      
+
+      itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:create:all
+Created database 'ecommerce_development'
+Created database 'ecommerce_test'
+There is an issue connecting to your database with your username/password, username: ecommerce.
+
+Please check your database configuration to ensure the username/password are valid.
+Couldn't create 'ecommerce_production database. Please check your configuration.
+rails aborted!
+ActiveRecord::DatabaseConnectionError: There is an issue connecting to your database with your username/password, username: ecommerce.
+
+Please check your database configuration to ensure the username/password are valid.
+
+
+Caused by:
+PG::ConnectionBad: FATAL:  Peer authentication failed for user "ecommerce"
+
+Tasks: TOP => db:create:all
+(See full trace by running task with --trace)
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:migrate
+== 20220524120706 CreateCustomers: migrating ==================================
+-- create_table(:customers)
+   -> 0.0025s
+== 20220524120706 CreateCustomers: migrated (0.0025s) =========================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails server
+=> Booting Puma
+=> Rails 7.0.3 application starting in development 
+=> Run `bin/rails server --help` for more startup options
+Puma starting in single mode...
+* Puma version: 5.6.4 (ruby 3.0.0-p0) ("Birdie's Version")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: development
+*          PID: 29764
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
+Use Ctrl-C to stop
+
+3.0.0 :006 > cust = Customer.connection.execute("Select * from customers"
+)
+   (0.2ms)  Select * from customers
+ => #<PG::Result:0x00005594c349cca0 status=PGRES_TUPLES_OK ntuples=...
+
+3.0.0 :005 > cust.each_row {|a| print a}
+[2, 2022-05-24 12:10:28.321892 UTC, 2022-05-24 12:10:28.321892 UTC][3, 2022-05-24 12:10:31.426021 UTC, 2022-05-24 12:10:31.426021 UTC] => nil    
+3.0.0 :006 > 
+
+
+By default model only gets timestamp fields, which means that the only information
+ that you can record about your books (or whatever model you’re working with) 
+ is the time at which they were created, or updated.
+
+ Deleting scaffolds created  this will DELETE the files created by the scaffolding process.
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails d scaffold customers             
+[WARNING] The model name 'customers' was recognized as a plural, using the singular 'customer' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record 
+      remove    db/migrate/20220524120706_create_customers.rb
+      remove    app/models/customer.rb
+      invoke    test_unit
+      remove      test/models/customer_test.rb
+      remove      test/fixtures/customers.yml
+      invoke  resource_route
+       route    resources :customers
+      invoke  scaffold_controller
+      remove    app/controllers/customers_controller.rb
+      invoke    erb
+      remove      app/views/customers
+      remove      app/views/customers/index.html.erb
+      remove      app/views/customers/edit.html.erb
+      remove      app/views/customers/show.html.erb
+      remove      app/views/customers/new.html.erb
+      remove      app/views/customers/_form.html.erb
+      remove      app/views/customers/_customer.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      remove      test/controllers/customers_controller_test.rb
+      remove      test/system/customers_test.rb
+      invoke    helper
+      remove      app/helpers/customers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      remove      app/views/customers
+      remove      app/views/customers/index.json.jbuilder
+      remove      app/views/customers/show.json.jbuilder
+      remove      app/views/customers/_customer.json.jbuilder
+
+      scaffold with extra fields:
+      rails g scaffold customers name:string mobile_number:string email_address:integer DOB:date
+
+      [WARNING] The model name 'customers' was recognized as a plural, using the singular 'customer' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20220524121621_create_customers.rb
+      create    app/models/customer.rb
+      invoke    test_unit
+      create      test/models/customer_test.rb
+      create      test/fixtures/customers.yml
+      invoke  resource_route
+       route    resources :customers
+      invoke  scaffold_controller
+      create    app/controllers/customers_controller.rb
+      invoke    erb
+      create      app/views/customers
+      create      app/views/customers/index.html.erb
+      create      app/views/customers/edit.html.erb
+      create      app/views/customers/show.html.erb
+      create      app/views/customers/new.html.erb
+      create      app/views/customers/_form.html.erb
+      create      app/views/customers/_customer.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      create      test/controllers/customers_controller_test.rb
+      create      test/system/customers_test.rb
+      invoke    helper
+      create      app/helpers/customers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/customers/index.json.jbuilder
+      create      app/views/customers/show.json.jbuilder
+      create      app/views/customers/_customer.json.jbuilder
+
+
+   ===> This the same syntax we use for creating migrations with rails g migration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
