@@ -1,0 +1,22 @@
+Active Records Associations
+In Rails, an association is a connection between two Active Record models
+With Active Record associations, we can streamline  operations by declaratively telling Rails that there is a connection between the two models
+
+The Types of Associations
+Rails supports six types of associations:
+
+belongs_to
+has_one
+has_many
+has_many :through
+has_one :through
+has_and_belongs_to_many
+
+belong _to associations
+it sets up a connection with another model,
+ such that each instance of the declaring model
+ "belongs to" one instance of the other model.
+ When used alone, belongs_to produces a one-directional one-to-one connection. 
+ belongs_to does not ensure reference consistency, 
+ so depending on the use case, you might also need to add a database-level 
+ foreign key constraint on the reference column,

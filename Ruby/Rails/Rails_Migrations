@@ -903,6 +903,8 @@ If we specify :sql as the value for config.active_record.schema_format, running 
 
 Running rails db:structure:{dump,load} will result in a deprecation warning, as these commands will be removed in Rails 6.2:
 
+Fixtures -
+
 
 
 
