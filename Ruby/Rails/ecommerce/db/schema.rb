@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_162111) do
   create_table "product_options", id: false, force: :cascade do |t|
     t.text "product_option"
     t.integer "product_id"
+    t.index ["product_id"], name: "index_product_options_on_product_id", unique: true
   end
 
   create_table "products", comment: "Products data", force: :cascade do |t|
