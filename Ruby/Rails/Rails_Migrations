@@ -905,6 +905,30 @@ Running rails db:structure:{dump,load} will result in a deprecation warning, as 
 
 Fixtures -
 
+UUID - 
+insted of regular id uuid can be used to replace id with randomly gerenerated string which is always unique
+You can generate UUID with Ruby by running:
+
+require "securerandom"
+
+SecureRandom.uuid => "b436517a-e294-4211-8312-8576933f2db1"
+To enable UUID in PostgreSQL, you need to create the following migration:
+
+class EnableUUID < ActiveRecord::Migration
+  def change
+    enable_extension 'pgcrypto'
+  end
+end
+
+UUID is a random string in a predefined format. Sample value looks like that:
+
+ccbb63c0-a8cd-47b7-8445-5d85e9c80977
+
+Frontend “independence”
+UUID primary keys allow frontend applications to independently generate new objects, together with IDs, without talking to the backend. A unique ID can be created using the JavaScript code, and the chances of collision with already existing objects are negligible.
+
+This approach opens up a whole array of possibilities for frontend developers, e.g., to batch create objects together with their associations without the overhead of API calls.
+
 
 
 
