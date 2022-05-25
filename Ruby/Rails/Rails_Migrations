@@ -979,6 +979,32 @@ imit 10;
  Prodcut99990   |      99990
 (10 rows)
 
+Creating the index concurrently
+By default, Postgres locks writes (but not reads) to a table while creating an index on it. 
+That can result in unacceptable downtime during a production deploy. On a large table, indexing can take hours.
+
+However, Postgres has a CONCURRENTLY option for CREATE INDEX that creates the index without preventing concurrent INSERTs, UPDATEs, or DELETEs on the table.
+
+To make this option easier to use in migrations, ActiveRecord 4 introduced an algorithm: :concurrently option for add_index.
+
+Here’s an example:
+
+class AddIndexToAsksActive < ActiveRecord::Migration
+  disable_ddl_transaction!
+
+  def change
+    add_index :asks, :active, algorithm: :concurrently
+  end
+end
+The caveat is that concurrent indexes must be created outside a transaction. By default, ActiveRecord migrations are run inside a transaction.
+
+ActiveRecord 4’s new disable_ddl_transaction! method must therefore be used in combination with algorithm: :concurrently migrations (as seen above).
+
+The disable_ddl_transaction! method applies only to that migration file. Adjacent migrations still run in their own transactions and roll back automatically if they fail. 
+Therefore, it’s a good idea to isolate concurrent index migrations to their own migration files.
+
+Use this technique with ActiveRecord 4 to create Postgres indexes concurrently and avoid accidental downtime caused by long, write-blocking database indexing.
+
 
 
 

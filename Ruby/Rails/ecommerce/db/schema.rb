@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_162111) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_165048) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_162111) do
     t.text "product_option"
     t.integer "product_id"
     t.index ["product_id"], name: "index_product_options_on_product_id", unique: true
+    t.index ["product_option"], name: "index_product_options_on_product_option"
   end
 
   create_table "products", comment: "Products data", force: :cascade do |t|
