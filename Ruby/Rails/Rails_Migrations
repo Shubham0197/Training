@@ -963,6 +963,23 @@ ecommerce_development-# ;
   3 |      | 122.12 |             | 
 (3 rows)
 
+Seed run command to insert data:
+imit 10;
+ product_option | product_id 
+----------------+------------
+ Prodcut99999   |      99999
+ Prodcut99998   |      99998
+ Prodcut99997   |      99997
+ Prodcut99996   |      99996
+ Prodcut99995   |      99995
+ Prodcut99994   |      99994
+ Prodcut99993   |      99993
+ Prodcut99992   |      99992
+ Prodcut99991   |      99991
+ Prodcut99990   |      99990
+(10 rows)
+
+
 
 
 

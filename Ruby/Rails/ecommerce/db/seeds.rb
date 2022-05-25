@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+100000.times do |i|
+  ProductOption.create(product_option: "Prodcut#{i}", product_id: i)
+end
