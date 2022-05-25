@@ -929,8 +929,39 @@ UUID primary keys allow frontend applications to independently generate new obje
 
 This approach opens up a whole array of possibilities for frontend developers, e.g., to batch create objects together with their associations without the overhead of API calls.
 
-
-
+Usage of the Presicion and scale in decimal and how it affects the data inserted in the table
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db
+psql (12.10 (Ubuntu 12.10-0ubuntu0.20.04.1))
+Type "help" for help.                     
+                                          
+ecommerce_development=# \d
+ecommerce_development=# \d                
+ecommerce_development=# insert into products(price) values (123.34);
+INSERT 0 1                            
+ecommerce_development=# insert into products(price) values (123.342);
+INSERT 0 1                  
+ecommerce_development=# insert into products(price) values (123222.342);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (123222.3);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (123222);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (12322);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (122.12232);
+INSERT 0 1
+ecommerce_development=# select * from products
+ecommerce_development-# ;
+ id | name | price  | category_id | description 
+----+------+--------+-------------+-------------
+  1 |      | 123.34 |             | 
+  2 |      | 123.34 |             | 
+  3 |      | 122.12 |             | 
+(3 rows)
 
 
 
