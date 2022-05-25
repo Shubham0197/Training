@@ -20,3 +20,75 @@ it sets up a connection with another model,
  belongs_to does not ensure reference consistency, 
  so depending on the use case, you might also need to add a database-level 
  foreign key constraint on the reference column,
+
+The has_one Association
+A has_one association indicates that one other model has a reference to this model. 
+That model can be fetched through this association.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

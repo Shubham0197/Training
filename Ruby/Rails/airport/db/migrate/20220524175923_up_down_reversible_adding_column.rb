@@ -34,3 +34,4 @@ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:up V
 
 itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ 
 =end
+
