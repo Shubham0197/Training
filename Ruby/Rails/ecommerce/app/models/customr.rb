@@ -1,2 +1,0 @@
-class Customr < ApplicationRecord
-end

@@ -1,0 +1,1259 @@
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220519155639 CreateBooks: migrating ======================================
+-- create_table(:books)
+   -> 0.0106s
+== 20220519155639 CreateBooks: migrated (0.0107s) =============================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails generate model publisher
+      invoke  active_record
+      create    db/migrate/20220519155640_create_publishers.rb
+      create    app/models/publisher.rb
+      invoke    test_unit
+      create      test/models/publisher_test.rb
+      create      test/fixtures/publishers.yml
+  itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220519155640 CreatePublishers: migrating =================================
+-- create_table(:publishers)
+   -> 0.0040s
+== 20220519155640 CreatePublishers: migrated (0.0040s) ========================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails g migration add_address_column_in_publishers_table
+      invoke  active_record
+      create    db/migrate/20220519155641_add_address_column_in_publishers_table.rb
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220519155641 AddAddressColumnInPublishersTable: migrating ================
+-- add_column(:publishers, :address, :string)
+   -> 0.0012s
+   itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+   == 20220519155640 CreatePublishers: migrating =================================
+   -- create_table(:publishers)
+      -> 0.0040s
+   == 20220519155640 CreatePublishers: migrated (0.0040s) ========================
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails g migration add_address_column_in_publishers_table
+         invoke  active_record
+         create    db/migrate/20220519155641_add_address_column_in_publishers_table.rb
+   itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+   == 20220519155641 AddAddressColumnInPublishersTable: migrating ================
+   -- add_column(:publishers, :address, :string)
+      -> 0.0012s
+
+To see all tables in db in rails change
+3.0.0 :004 > ActiveRecord::Base.connection.tables
+ => ["schema_migrations", "ar_internal_metadata", "books", "publishers"] 
+ 3.0.0 :008 > book.class
+ => Book(id: integer, title: text, volume: text, publisher_id: integer, quantity: integer, issued_quantity: integer, type_id: integer, created_at: datetime, updated_at: datetime) 
+
+ 3.0.0 :011 > book.save
+  TRANSACTION (0.3ms)  BEGIN
+  Book Create (1.0ms)  INSERT INTO "books" ("title", "volume", "publisher_id", "quantity", "issued_quantity", "type_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["title", "Something"], ["volume", nil], ["publisher_id", nil], ["quantity", nil], ["issued_quantity", nil], ["type_id", nil], ["created_at", "2022-05-19 14:24:43.926018"], ["updated_at", "2022-05-19 14:24:43.926018"]]
+  TRANSACTION (6.9ms)  COMMIT   
+
+  itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+  == 20220519155642 AddingForegnKeyInBooksTableFromPublishersTable: migrating ===
+  -- add_foreign_key(:books, :publishers)
+     -> 0.0101s
+  == 20220519155642 AddingForegnKeyInBooksTableFromPublishersTable: migrated (0.0101s) 
+
+  Table "public.books"
+  Column      |              Type              | Collation | Nullable |              Default              
+-----------------+--------------------------------+-----------+----------+-----------------------------------
+id              | bigint                         |           | not null | nextval('books_id_seq'::regclass)
+title           | text                           |           |          | 
+volume          | text                           |           |          | 
+publisher_id    | integer                        |           |          | 
+quantity        | integer                        |           |          | 
+issued_quantity | integer                        |           |          | 
+type_id         | integer                        |           |          | 
+created_at      | timestamp(6) without time zone |           | not null | 
+updated_at      | timestamp(6) without time zone |           | not null | 
+Indexes:
+ "books_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+ "fk_rails_d7ae2b039e" FOREIGN KEY (publisher_id) REFERENCES publishers(id)
+
+ 3.0.0 :001 > Publisher.create(name: "India Publishing House")
+  TRANSACTION (0.1ms)  BEGIN
+  Publisher Create (0.3ms)  INSERT INTO "publishers" ("name", "created_at", "updated_at", "address") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "India Publishing House"], ["created_at", "2022-05-20 11:18:44.814652"], ["updated_at", "2022-05-20 11:18:44.814652"], ["address", nil]]    
+  TRANSACTION (6.6ms)  COMMIT                                    
+ =>                                                              
+#<Publisher:0x00007ff5709d9c30                                   
+ id: 1,                                                          
+ name: "India Publishing House",                                 
+ created_at: Fri, 20 May 2022 11:18:44.814652000 UTC +00:00,     
+ updated_at: Fri, 20 May 2022 11:18:44.814652000 UTC +00:00,     
+ address: nil>  
+    
+ 3.0.0 :010 > publisher1 = Publisher.find(1)
+  Publisher Load (0.6ms)  SELECT "publishers".* FROM "publishers" WHERE "publishers"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                 
+ =>                                                               
+#<Publisher:0x000055c4ca6a7b80  
+3.0.0 :012 > publisher1.name
+=> "India Publishing House" 
+3.0.0 :013 > 
+
+3.0.0 :015 > publisher1
+ => 
+#<Publisher:0x000055c4ca6a7b80                                    
+ id: 1,                                                           
+ name: "India Publishing House",                                  
+ created_at: Fri, 20 May 2022 11:18:44.814652000 UTC +00:00,      
+ updated_at: Fri, 20 May 2022 11:18:44.814652000 UTC +00:00,      
+ address: "Delhi">    
+
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails g model book_tpe
+      invoke  active_record
+      create    db/migrate/20220520112834_create_book_tpes.rb
+      create    app/models/book_tpe.rb
+      invoke    test_unit
+      create      test/models/book_tpe_test.rb
+      create      test/fixtures/book_tpes.yml
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220520112834 CreateBookTpes: migrating ===================================
+-- create_table(:book_tpes)
+   -> 0.0051s
+== 20220520112834 CreateBookTpes: migrated (0.0052s) ==========================
+
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220520113049 RenamingColumnBookType: migrating ===========================
+-- rename_column(:book_tpes, :subtype, :sub_type)
+   -> 0.0020s
+== 20220520113049 RenamingColumnBookType: migrated (0.0020s) ==================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220520113254 RenamingTableBookType: migrating ============================
+-- rename_table("book_tpes", "book_types")
+   -> 0.0038s
+== 20220520113254 RenamingTableBookType: migrated (0.0038s) ===================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220520113506 AddingForegnKeyInBooksTableFromBookTypeTable: migrating =====
+-- add_column(:books, :book_type_id, :integer)
+   -> 0.0015s
+-- add_foreign_key(:books, :book_types)
+   -> 0.0013s
+-- remove_column(:books, :type_id)
+   -> 0.0046s
+== 20220520113506 AddingForegnKeyInBooksTableFromBookTypeTable: migrated (0.0075s) 
+
+Table "public.book_types"
+Column   |              Type              | Collation | Nullable |                Default                 
+------------+--------------------------------+-----------+----------+----------------------------------------
+id         | bigint                         |           | not null | nextval('book_types_id_seq'::regclass)
+type       | text                           |           |          | 
+sub_type   | text                           |           |          | 
+created_at | timestamp(6) without time zone |           | not null | 
+updated_at | timestamp(6) without time zone |           | not null | 
+Indexes:
+ "book_types_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+ TABLE "books" CONSTRAINT "fk_rails_88bd3fc602" FOREIGN KEY (book_type_id) REFERENCES book_types(id)
+
+
+Table "public.books"
+Column      |              Type              | Collation | Nullable |              Default              
+-----------------+--------------------------------+-----------+----------+-----------------------------------
+id              | bigint                         |           | not null | nextval('books_id_seq'::regclass)
+title           | text                           |           |          | 
+volume          | text                           |           |          | 
+publisher_id    | integer                        |           |          | 
+quantity        | integer                        |           |          | 
+issued_quantity | integer                        |           |          | 
+created_at      | timestamp(6) without time zone |           | not null | 
+updated_at      | timestamp(6) without time zone |           | not null | 
+book_type_id    | integer                        |           |          | 
+Indexes:
+"books_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+"fk_rails_88bd3fc602" FOREIGN KEY (book_type_id) REFERENCES book_types(id)
+"fk_rails_d7ae2b039e" FOREIGN KEY (publisher_id) REFERENCES publishers(id)
+
+Using the up/down Methods
+You can also use the old style of migration using up and down methods instead of the change method.
+ The up method should describe the transformation youd like to make to your schema, 
+ and the down method of your migration should revert the transformations done by the up method. 
+ In other words, the database schema should be unchanged if you do an up followed by a down. 
+  For example, if you create a table in the up method, you should drop it in the down method. 
+  It is wise to perform the transformations in precisely the reverse order they were made in the up method.
+
+  itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+  == 20220520114626 UsingUpDownMethos: migrating ================================
+  -- create_table(:distributors)
+     -> 0.0077s
+  -- execute("      ALTER TABLE distributors\n        ADD CONSTRAINT zipchk\n        CHECK (char_length(zipcode) = 5);\n")
+     -> 0.0008s
+  -- add_column(:books, :home_page_url, :string)
+     -> 0.0008s
+  -- rename_column(:books, :title, :books_name)
+     -> 0.0014s
+  == 20220520114626 UsingUpDownMethos: migrated (0.0109s) =======================
+  
+
+  itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:rollback
+== 20220520114626 UsingUpDownMethos: reverting ================================
+-- rename_column(:books, :books_name, :title)
+   -> 0.0017s
+-- remove_column(:books, :home_page_url)
+   -> 0.0005s
+-- execute("      ALTER TABLE distributors\n        DROP CONSTRAINT zipchk\n")
+   -> 0.0006s
+-- drop_table(:distributors)
+   -> 0.0040s
+== 20220520114626 UsingUpDownMethos: reverted (0.0069s) =======================
+
+Resetting the Database
+The bin/rails db:reset command will drop the database and set it up again. 
+This is functionally equivalent to bin/rails db:drop db:setup.
+
+Running in different environments
+By default running bin/rails db:migrate will run in the development environment. 
+To run migrations against another environment you can specify it using the RAILS_ENV environment variable while running the command. 
+to run migrations against the test environment 
+$ bin/rails db:migrate RAILS_ENV=test
+
+Reversible 
+If for a migration to do something that Active Record doesnt know how to reverse, we use reversible
+it can be used like as above up down method 
+def change
+  reversible do |dir|
+    change_table :books do |t|
+      dir.up   { t.change :quantity, :integer }
+      dir.down { t.change :quantity, :string }
+    end
+  end
+end
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails g model author
+      invoke  active_record
+      create    db/migrate/20220523105730_create_authors.rb
+      create    app/models/author.rb
+      invoke    test_unit
+      create      test/models/author_test.rb
+      create      test/fixtures/authors.yml
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220520114626 UsingUpDownMethos: migrating ================================
+-- create_table(:distributors)
+   -> 0.0048s
+-- execute("      ALTER TABLE distributors\n        ADD CONSTRAINT zipchk\n        CHECK (char_length(zipcode) = 5);\n")
+   -> 0.0008s
+-- add_column(:books, :home_page_url, :string)
+   -> 0.0007s
+-- rename_column(:books, :title, :books_name)
+   -> 0.0023s
+== 20220520114626 UsingUpDownMethos: migrated (0.0088s) =======================
+
+== 20220523105730 CreateAuthors: migrating ====================================
+-- create_table(:authors)
+   -> 0.0032s
+== 20220523105730 CreateAuthors: migrated (0.0032s) ===========================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:rollback
+== 20220523105730 CreateAuthors: reverting ====================================
+-- drop_table(:authors)
+   -> 0.0020s
+== 20220523105730 CreateAuthors: reverted (0.0149s) ===========================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220523105730 CreateAuthors: migrating ====================================
+-- create_table(:authors)
+   -> 0.0105s
+== 20220523105730 CreateAuthors: migrated (0.0106s) ===========================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails g model book_author
+      invoke  active_record
+      create    db/migrate/20220523110116_create_book_authors.rb
+      create    app/models/book_author.rb
+      invoke    test_unit
+      create      test/models/book_author_test.rb
+      create      test/fixtures/book_authors.yml
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220523110116 CreateBookAuthors: migrating ================================
+-- create_table(:book_authors)
+   -> 0.0035s
+== 20220523110116 CreateBookAuthors: migrated (0.0035s) =======================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails g migration adding_foreign_key_to_book_id
+      invoke  active_record
+      create    db/migrate/20220523110356_adding_foreign_key_to_book_id.rb
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ rails db:migrate
+== 20220523110356 AddingForeignKeyToBookId: migrating =========================
+-- add_foreign_key(:book_authors, :books)
+   -> 0.0019s
+-- add_foreign_key(:book_authors, :authors)
+   -> 0.0011s
+== 20220523110356 AddingForeignKeyToBookId: migrated (0.0031s) ================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/Rails_lms$ ^C
+If the migration name is of the form "CreateXXX" and is followed by a list of column names and 
+types then a migration creating the table XXX with the columns listed will be generated
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails g migration CreateCountry name:string citiy:string
+      invoke  active_record
+      create    db/migrate/20220523135619_create_country.rb
+
+Create join table  
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails g migration CreateJoinTableCertifiedEmployee certified employee
+      invoke  active_record
+      create    db/migrate/20220523135928_create_join_table_certified_employee.rb
+
+      3.0.0 :001 > ActiveRecord::Base.connection.tables
+      => 
+     ["schema_migrations",
+      "ar_internal_metadata",
+      "flights",
+      "aircrafts",
+      "employees",
+      "certifieds",
+      "countries",
+      "certifieds_employees"] 
+
+      
+Added data to the tables
+using table print gem to print data in tables from rails console
+
+3.0.0 :002 > require 'table_print'
+ => false 
+3.0.0 :004 > tp Employee.all
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees"
+ID | NAME    | SALARY | MOBILE_NUMBER | DOB | CREATED_AT              | UPDATED_AT                                                                 
+---|---------|--------|---------------|-----|-------------------------|------------------------                                                    
+1  | Ajay    | 30000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+2  | Ajith   | 85000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+3  | Arnab   | 50000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+4  | Amar    | 45000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+5  | Pritam  | 90000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10                                                        
+6  | Sam     | 75000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+7  | Ram     | 150000 |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+8  | shubham | 120000 |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+9  | naman   | 123345 |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+10 | hariom  | 12345  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+ => 0.00158745 
+
+ 3.0.0 :005 > tp Flight.all
+ Flight Load (0.4ms)  SELECT "flights".* FROM "flights"
+ID | FROM      | DESTINATION | DISTANCE | DEPARTS                 | ARRIVES                 | PRICE | CREATED_AT              | UPDATED_AT             
+---|-----------|-------------|----------|-------------------------|-------------------------|-------|-------------------------|------------------------
+1  | Bangalore | Pune        | 360      | 2000-01-01 10:45:00     | 2000-01-01 12:00:00     | 10000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+2  | Bangalore | Delhi       | 5000     | 2000-01-01 12:15:00     | 2000-01-01 04:30:00     | 25000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+3  | Bangalore | Mumbai      | 3500     | 2000-01-01 02:15:00     | 2000-01-01 05:25:00     | 30000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+4  | Delhi     | Mumbai      | 4500     | 2000-01-01 10:15:00     | 2000-01-01 12:05:00     | 35000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+5  | Delhi     | Pune        | 18000    | 2000-01-01 07:15:00     | 2000-01-01 05:30:00     | 90000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+6  | Mumbai    | Delhi       | 19500    | 2000-01-01 10:00:00     | 2000-01-01 07:45:00     | 95000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+7  | Pune      | Banglore    | 17000    | 2000-01-01 12:00:00     | 2000-01-01 06:30:00     | 99000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+8  | Pune      | Mumbai      | 3060     | 2000-01-01 13:00:00     | 2000-01-01 14:00:00     | 10000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+9  | Mumbai    | Delhi       | 5000     | 2000-01-01 14:15:00     | 2000-01-01 16:30:00     | 25000 | 2022-05-23 19:50:08     | 2022-05-23 19:50:08    
+=> 0.002234801
+
+3.0.0 :007 > tp Aircraft.all
+  Aircraft Load (0.3ms)  SELECT "aircrafts".* FROM "aircrafts"
+ID | NAME         | CRUISING_RANGE | CREATED_AT              | UPDATED_AT                                             
+---|--------------|----------------|-------------------------|------------------------                                
+1  | Airbus320    | 1000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56                                    
+2  | Boeing737    | 5000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56                                    
+3  | Jet01        | 5000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56                                    
+4  | Airbus380    | 8000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+5  | Boeing777    | 500            | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+6  | PrivateCraft | 800            | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+7  | Aircraft200  | 1000           | 2022-05-23 19:45:56     | 2022-05-23 19:45:56    
+ => 0.000921882 
+
+ 3.0.0 :008 > tp Certified.all
+  Certified Load (0.3ms)  SELECT "certifieds".* FROM "certifieds"
+ID | EMPLOYEE_ID | AIRCRAFT_ID | CREATED_AT              | UPDATED_AT                                                                     
+---|-------------|-------------|-------------------------|------------------------                                    
+1  | 1           | 1           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+2  | 2           | 1           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+3  | 1           | 3           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+4  | 5           | 3           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+5  | 7           | 5           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00                                        
+6  | 1           | 2           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+7  | 2           | 6           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+8  | 2           | 2           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+9  | 4           | 3           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+10 | 6           | 4           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+11 | 3           | 4           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+12 | 5           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+13 | 6           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+14 | 3           | 5           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+15 | 7           | 6           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+16 | 1           | 7           | 2022-05-23 19:53:00     | 2022-05-23 19:53:00    
+ => 0.002454202 
+
+Column Modifiers
+ Column modifiers can be applied when creating or changing a column:
+ 
+ comment Adds a comment for the column.
+ collation Specifies the collation for a string or text column.
+ In database systems, Collation specifies how data is sorted and compared in a database.
+  Collation provides the sorting rules, case, and accent sensitivity properties for the data in the database.
+    Option	Explanation
+    Case-sensitive (_CS)	Lowercase letters sort ahead of their uppercase versions.
+    Case-insensitive (_CI)	Uppercase and lowercase versions of letters are considered identical for sorting purposes.
+    Accent-sensitive (_AS)	Distinguishes between accented and unaccented characters. For example, a is not equal to ấ.
+    Accent-insensitive (_AI)	Accented and unaccented versions of letters are considered identical for sorting purposes. For example, a is equal to ấ.
+
+    Latin1_General_CI_AI_WS	Latin1-General, case-insensitive, accent-insensitive, kanatype-insensitive, width-sensitive
+
+
+ default Allows to set a default value on the column. Note that if you are using a dynamic value (such as a date), the default will only be calculated the first time (i.e. on the date the migration is applied). Use nil for NULL.
+ limit Sets the maximum number of characters for a string column and the maximum number of bytes for text/binary/integer columns.
+ null Allows or disallows NULL values in the column.
+ precision Specifies the precision for decimal/numeric/datetime/time columns.
+ scale Specifies the scale for the decimal and numeric columns, representing the number of digits after the decimal point.
+ 
+ For add_column or change_column there is no option for adding indexes. They need to be added separately using add_index.
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails g migration using_column_modifiers
+ invoke  active_record
+ create    db/migrate/20220523155125_using_column_modifiers.rb
+
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate
+== 20220523155125 UsingColumnModifiers: migrating =============================
+-- change_column(:employees, :name, :string, {:null=>false})
+   -> 0.0014s
+-- change_column(:employees, :mobile_number, :string, {:limit=>12})
+   -> 0.0029s
+-- change_column(:employees, :DOB, :date, {:default=>"01/01/1997"})
+   -> 0.0009s
+== 20220523155125 UsingColumnModifiers: migrated (0.0054s) ====================
+
+Diretly run the sql query in rails using execute method
+3.0.0 :016 > Book.connection.execute("Update books set quantity = 2 where 1=1")
+(0.5ms)  Update books set quantity = 2 where 1=1
+=> #<PG::Result:0x000055c4ca165050 status=PGRES_COMMAND_OK ntuples=0 nfields=0 cmd_tuples=0> 
+
+3.0.0 :002 > tp Employee.all
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees"
+ID | NAME    | SALARY | MOBILE_NUMBER | DOB | CREATED_AT              | UPDATED_AT             
+---|---------|--------|---------------|-----|-------------------------|------------------------
+1  | Ajay    | 30000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+2  | Ajith   | 85000  |               |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+3.0.0 :003 > Employee.connection.execute("update employees set mobile_number = '999999999' ")
+   (7.6ms)  update employees set mobile_number = '999999999' 
+ => #<PG::Result:0x00005614f3fdbbd8 status=PGRES_COMMAND_OK ntuples=0 nfields=0 cmd_tuples=10> 
+3.0.0 :004 > tp Employee.all
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees"
+ID | NAME    | SALARY | MOBILE_NUMBER | DOB | CREATED_AT              | UPDATED_AT             
+---|---------|--------|---------------|-----|-------------------------|------------------------
+1  | Ajay    | 30000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+2  | Ajith   | 85000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+3  | Arnab   | 50000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+4  | Amar    | 45000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+5  | Pritam  | 90000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+6  | Sam     | 75000  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+7  | Ram     | 150000 | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+8  | shubham | 120000 | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+9  | naman   | 123345 | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+10 | hariom  | 12345  | 999999999     |     | 2022-05-23 19:47:10     | 2022-05-23 19:47:10    
+ => 0.001695617 
+
+
+ Schema in db folder in Rails project 
+ Schema
+It tends to be faster and less error prone to create a new instance of your applications database by 
+loading the schema file via bin/rails db:schema:load than it is to replay the entire migration history.
+The format of the schema dump generated by Rails is controlled by the config.active_record.schema_format setting in config/application.rb. 
+By default, the format is :ruby, but can also be set to :sql.
+If :ruby is selected, then the schema is stored in db/schema.rb
+The Active Record way claims that intelligence belongs in your models, not in the database. 
+As such, features such as triggers or constraints, which push some of that intelligence back into the database, are not heavily use
+
+Seeing the table of all the migrations done in the project 
+The db/schema.rb or db/structure.sql is a snapshot of the current state of your database 
+and is the authoritative source for rebuilding that database. 
+This makes it possible to delete old migration files.
+When you delete migration files in the db/migrate/ directory, any environment 
+where bin/rails db:migrate was run when those files still existed will hold a reference to the 
+migration timestamp specific to them inside an internal Rails database table named schema_migrations. 
+This table is used to keep track of whether migrations have been executed in a specific environment.
+If you run the bin/rails db:migrate:status command, which displays the status (up or down) of each migration
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/rails_lms_project$ rails db:migrate:status
+
+database: lms_development
+
+ Status   Migration ID    Migration Name
+--------------------------------------------------
+   up     20220519155639  Create books
+   up     20220519155640  Create publishers
+   up     20220519155641  Add address column in publishers table
+   up     20220519155642  Adding foregn key in books table from publishers table
+   up     20220520112834  Create book tpes
+   up     20220520113049  Renaming column book type
+   up     20220520113254  Renaming table book type
+   up     20220520113506  Adding foregn key in books table from book type table
+   up     20220520114626  Using up down methos
+   up     20220523105730  Create authors
+   up     20220523110116  Create book authors
+   up     20220523110356  Adding foreign key to book
+  down    20220523130100  Create students
+
+
+  changing output of running migrations
+Several methods are provided in migrations that allow you to control all this:
+
+Method	Purpose
+suppress_messages	Takes a block as an argument and suppresses any output generated by the block.
+say	                           Takes a message argument and outputs it as is. A second boolean argument can be passed to specify whether to indent or not.
+say_with_time	           Outputs text along with how long it took to run its block. If the block returns an integer it assumes it is the number of rows affected.
+
+== 20220523170125 ChangingOutputOfRunningMigrations: migrating ================
+-- Created a table
+   -> and an index!
+-- Waiting for a while
+   -> 10.0102s
+   -> 250 rows
+== 20220523170125 ChangingOutputOfRunningMigrations: migrated (10.0163s) ====
+
+This will rollback the latest migration, either by reverting the change method or by running the down method. If you need to undo several migrations you can provide a STEP parameter:
+
+$ bin/rails db:rollback STEP=3
+
+will revert the last 3 migrations.
+
+The db:migrate:redo command is a shortcut for doing a rollback and then migrating back up again. As with the db:rollback command, you can use the STEP parameter if you need to go more than one version back, for example:
+
+$ bin/rails db:migrate:redo STEP=3
+
+add_timestamps(table_name, **options)
+Adds timestamps (created_at and updated_at) columns to table_name. Additional options (like :null) are forwarded to add_column.
+add_timestamps(:suppliers, null: true)
+
+Sets a new default value for a column:
+Passing a hash containing :from and :to will make this change reversible in migration:
+change_column_default(:posts, :state, from: nil, to: "draft")
+
+Removes the column from the table definition.
+remove_column(:suppliers, :qualification)
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate
+== 20220523183505 Usingchangemethod: migrating ================================
+-- remove_timestamps(:countries)
+   -> 0.0012s
+-- remove_column(:countries, :citiy)
+   -> 0.0005s
+== 20220523183505 Usingchangemethod: migrated (0.0018s) =======================
+
+Table "public.countries"
+Column |       Type        | Collation | Nullable |                Default                
+--------+-------------------+-----------+----------+---------------------------------------
+id     | bigint            |           | not null | nextval('countries_id_seq'::regclass)
+name   | character varying |           |          | 
+Indexes:
+   "countries_pkey" PRIMARY KEY, btree (id)
+
+
+   3.0.0 :013 > employee_table = Employee.connection.execute("Select * from employees")
+   (0.4ms)  Select * from employees
+ => #<PG::Result:0x000055eaddeac518 status=PGRES_TUPLES_OK ntuples=10 nfields=7 cmd_tuples=10> 
+3.0.0 :014 > 
+
+
+   3.0.0 :012 > employee_table.each_row {|a| print a,"\n"}
+[1, "Ajay", 30000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[2, "Ajith", 85000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[3, "Arnab", 50000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[4, "Amar", 45000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[5, "Pritam", 90000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[6, "Sam", 75000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[7, "Ram", 150000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[8, "shubham", 120000, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[9, "naman", 123345, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+[10, "hariom", 12345, "999999999", nil, 2022-05-23 19:47:10.970648 UTC, 2022-05-23 19:47:10.970648 UTC]
+
+
+Scaffolding in rails
+rails g scaffold command.
+A scaffold is a set of automatically generated files which forms the basic structure of a Rails project.
+These files include:
+
+A controller
+A model
+Views for every standard controller action (index, edit, show, new)
+A new route.
+And a migration to prepare your database.
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails g scaffold customers
+[WARNING] The model name 'customers' was recognized as a plural, using the singular 'customer' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20220524120706_create_customers.rb
+      create    app/models/customer.rb
+      invoke    test_unit
+      create      test/models/customer_test.rb
+      create      test/fixtures/customers.yml
+      invoke  resource_route
+       route    resources :customers
+      invoke  scaffold_controller
+      create    app/controllers/customers_controller.rb
+      invoke    erb
+      create      app/views/customers
+      create      app/views/customers/index.html.erb
+      create      app/views/customers/edit.html.erb
+      create      app/views/customers/show.html.erb
+      create      app/views/customers/new.html.erb
+      create      app/views/customers/_form.html.erb
+      create      app/views/customers/_customer.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      create      test/controllers/customers_controller_test.rb
+      create      test/system/customers_test.rb
+      invoke    helper
+      create      app/helpers/customers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/customers/index.json.jbuilder
+      create      app/views/customers/show.json.jbuilder
+      create      app/views/customers/_customer.json.jbuilder
+
+      This example creates:
+
+      A BController
+      A  model
+      A new resources  route added to your config/routes.rb file
+      A set of testing-related files
+      View files under app/views/ (five in total)
+      
+
+      itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:create:all
+Created database 'ecommerce_development'
+Created database 'ecommerce_test'
+There is an issue connecting to your database with your username/password, username: ecommerce.
+
+Please check your database configuration to ensure the username/password are valid.
+Couldn't create 'ecommerce_production database. Please check your configuration.
+rails aborted!
+ActiveRecord::DatabaseConnectionError: There is an issue connecting to your database with your username/password, username: ecommerce.
+
+Please check your database configuration to ensure the username/password are valid.
+
+
+Caused by:
+PG::ConnectionBad: FATAL:  Peer authentication failed for user "ecommerce"
+
+Tasks: TOP => db:create:all
+(See full trace by running task with --trace)
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:migrate
+== 20220524120706 CreateCustomers: migrating ==================================
+-- create_table(:customers)
+   -> 0.0025s
+== 20220524120706 CreateCustomers: migrated (0.0025s) =========================
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails server
+=> Booting Puma
+=> Rails 7.0.3 application starting in development 
+=> Run `bin/rails server --help` for more startup options
+Puma starting in single mode...
+* Puma version: 5.6.4 (ruby 3.0.0-p0) ("Birdie's Version")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: development
+*          PID: 29764
+* Listening on http://127.0.0.1:3000
+* Listening on http://[::1]:3000
+Use Ctrl-C to stop
+
+3.0.0 :006 > cust = Customer.connection.execute("Select * from customers"
+)
+   (0.2ms)  Select * from customers
+ => #<PG::Result:0x00005594c349cca0 status=PGRES_TUPLES_OK ntuples=...
+
+3.0.0 :005 > cust.each_row {|a| print a}
+[2, 2022-05-24 12:10:28.321892 UTC, 2022-05-24 12:10:28.321892 UTC][3, 2022-05-24 12:10:31.426021 UTC, 2022-05-24 12:10:31.426021 UTC] => nil    
+3.0.0 :006 > 
+
+
+By default model only gets timestamp fields, which means that the only information
+ that you can record about your books (or whatever model you’re working with) 
+ is the time at which they were created, or updated.
+
+ Deleting scaffolds created  this will DELETE the files created by the scaffolding process.
+ itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails d scaffold customers             
+[WARNING] The model name 'customers' was recognized as a plural, using the singular 'customer' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record 
+      remove    db/migrate/20220524120706_create_customers.rb
+      remove    app/models/customer.rb
+      invoke    test_unit
+      remove      test/models/customer_test.rb
+      remove      test/fixtures/customers.yml
+      invoke  resource_route
+       route    resources :customers
+      invoke  scaffold_controller
+      remove    app/controllers/customers_controller.rb
+      invoke    erb
+      remove      app/views/customers
+      remove      app/views/customers/index.html.erb
+      remove      app/views/customers/edit.html.erb
+      remove      app/views/customers/show.html.erb
+      remove      app/views/customers/new.html.erb
+      remove      app/views/customers/_form.html.erb
+      remove      app/views/customers/_customer.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      remove      test/controllers/customers_controller_test.rb
+      remove      test/system/customers_test.rb
+      invoke    helper
+      remove      app/helpers/customers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      remove      app/views/customers
+      remove      app/views/customers/index.json.jbuilder
+      remove      app/views/customers/show.json.jbuilder
+      remove      app/views/customers/_customer.json.jbuilder
+
+      scaffold with extra fields:
+      rails g scaffold customers name:string mobile_number:string email_address:integer DOB:date
+
+      [WARNING] The model name 'customers' was recognized as a plural, using the singular 'customer' instead. Override with --force-plural or setup custom inflection rules for this noun before running the generator.
+      invoke  active_record
+      create    db/migrate/20220524121621_create_customers.rb
+      create    app/models/customer.rb
+      invoke    test_unit
+      create      test/models/customer_test.rb
+      create      test/fixtures/customers.yml
+      invoke  resource_route
+       route    resources :customers
+      invoke  scaffold_controller
+      create    app/controllers/customers_controller.rb
+      invoke    erb
+      create      app/views/customers
+      create      app/views/customers/index.html.erb
+      create      app/views/customers/edit.html.erb
+      create      app/views/customers/show.html.erb
+      create      app/views/customers/new.html.erb
+      create      app/views/customers/_form.html.erb
+      create      app/views/customers/_customer.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      create      test/controllers/customers_controller_test.rb
+      create      test/system/customers_test.rb
+      invoke    helper
+      create      app/helpers/customers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/customers/index.json.jbuilder
+      create      app/views/customers/show.json.jbuilder
+      create      app/views/customers/_customer.json.jbuilder
+
+
+   ===> This the same syntax we use for creating migrations with rails g migration
+
+
+
+Irreversible migrations
+
+reversible do |dir|
+   dir.up do
+     add_column :customers, :sku, :integer
+     change_column :customers, :mobile_number, :string
+     SQL
+   end
+   dir.down do
+   raise ActiveRecord::IrreversibleMigrations
+   end
+ end
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:migrate
+== 20220524141900 ReversibleUsage: migrating ==================================
+-- add_column(:customers, :sku, :integer)
+   -> 0.0012s
+-- change_column(:customers, :mobile_number, :string)
+   -> 0.0006s
+rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled:
+
+uninitialized constant ReversibleUsage::SQL
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524141900_reversible_usage.rb:7:in `block (2 levels) in change'
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524141900_reversible_usage.rb:4:in `block in change'
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524141900_reversible_usage.rb:3:in `change'
+
+Caused by:
+NameError: uninitialized constant ReversibleUsage::SQL
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524141900_reversible_usage.rb:7:in `block (2 levels) in change'
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524141900_reversible_usage.rb:4:in `block in change'
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524141900_reversible_usage.rb:3:in `change'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+
+Rake Tasks-->
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:version
+Current version: 20220524110434
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:create:all
+Database 'ecommerce_development' already exists
+Database 'ecommerce_test' already exists
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:up
+rails aborted!
+VERSION is required
+
+Tasks: TOP => db:migrate:up
+(See full trace by running task with --trace)
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:down
+rails aborted!
+VERSION is required - To go down one migration, use db:rollback
+
+Tasks: TOP => db:migrate:down
+(See full trace by running task with --trace)
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:migrate test
+Running 7 tests in a single process (parallelization threshold is 50)
+Run options: --seed 17788
+
+# Running:
+
+.......
+
+Finished in 0.249503s, 28.0558 runs/s, 36.0717 assertions/s.
+7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:schema:dump
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ 
+
+db:schema:dump Create a db/schema.rb file that can be portably used against 
+any database supported by ActiveRecord
+db:schema:load Load a schema.rb file into the database
+db:sessions:create Create a sessions table for use with CGI::Sessions::Activ
+eRecordStore
+db:sessions:clear Clear the sessions table
+db:structure:dump Dump database structure to SQL file
+db:reset Drops the database, creates the database and then runs migra- tions against the database. Takes a VERSION argument as well as RAILS_ENV
+db:rollback STEP=4 Takes a STEP argument to determine how many version to rollback, the default being one version
+db:test:prepare Clone your database structure into the test database
+db:version Tells you the current version your database is at
+b:create
+db:create:all
+Creates a single database specified in config/databases.yml for the current RAILS_ENV or creates all the databases
+db:drop
+db:drop:all Drops a single database specified in config/databases.yml for the current RAILS_ENV or drops all the databases
+db:fixtures:load Load fixtures from test/fixtures into the current environments database
+db:migrate Run all unapplied migrations
+db:migrate:up
+db:migrate:down Move forward to the next migration, or back to the previous 
+migration
+db:migrate VERSION=18 Migrate database to specific version
+db:migrate RAILS_
+ENV=production Use migrations to recreate tables in the testing or production
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:test:prepare
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ 
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db:reset
+Dropped database 'ecommerce_development'
+Dropped database 'ecommerce_test'
+Created database 'ecommerce_development'
+Created database 'ecommerce_test'
+itsacheckmate@itsacheckmate:~/Train
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rake db:sessions:create
+rake aborted!
+Don't know how to build task 'db:sessions:create' (See the list of available tasks with `rake --tasks`)
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+(See full trace by running task with --trace)
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rake db:sessions:clear
+rake aborted!
+Don't know how to build task 'db:sessions:clear' (See the list of available tasks with `rake --tasks`)
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rake-13.0.6/exe/rake:27:in `<top (required)>'
+(See full trace by running task with --trace)
+
+
+Fixtures
+Fixtures contain data which can be loaded into your database using migrations. For 
+example, to load data into a table named customers...
+1. Create a directory, db/migrate/data
+2. Create a file, customers.yml, inside db/migrate/data
+3. Generate a new migration file: ruby script/generate migration load_customers_data
+4. Edit it to load data from the customers.yml file into your customers table
+
+
+
+Error in fixtures
+== 20220524150605 LoadCustomersData: migrating ================================
+rails aborted!
+StandardError: An error has occurred, this and all later migrations canceled:
+
+uninitialized constant LoadCustomersData::Fixtures
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in up
+
+Caused by:
+NameError: uninitialized constant LoadCustomersData::Fixtures
+/home/itsacheckmate/Training/Ruby/Rails/ecommerce/db/migrate/20220524150605_load_customers_data.rb:6:in 'up'
+Tasks: TOP => db:migrate
+(See full trace by running task with --trace)
+
+
+
+
+Re-Running all migrations	rake db:migrate:redo	This will re-run all the migrations
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:down VERSION=20220524175923
+== 20220524175923 UpDownReversibleAddingColumn: reverting =====================
+-- remove_column(:products, :sku)
+   -> 0.0016s
+== 20220524175923 UpDownReversibleAddingColumn: reverted (0.0061s) ============
+
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/airport$ rails db:migrate:up VERSION=20220524175923
+== 20220524175923 UpDownReversibleAddingColumn: migrating =====================
+-- add_column(:products, :sku, :integer)
+   -> 0.0014s
+== 20220524175923 UpDownReversibleAddingColumn: migrated (0.0015s) ============
+
+
+Both the commands, rails db:schema:{dump,load} and rails db:structure:{dump,load} will run rails db:schema:{dump,load} depending on the value specified for config.active_record.schema_format.
+
+So running, rails db:schema:dump or rails db:structure:dump will dump db/schema.rb file.
+
+If we specify :sql as the value for config.active_record.schema_format, running rails db:schema:dump or rails db:structure:dump will dump db/stucture.sql file.
+
+Running rails db:structure:{dump,load} will result in a deprecation warning, as these commands will be removed in Rails 6.2:
+
+Fixtures -
+
+UUID - 
+insted of regular id uuid can be used to replace id with randomly gerenerated string which is always unique
+You can generate UUID with Ruby by running:
+
+require "securerandom"
+
+SecureRandom.uuid => "b436517a-e294-4211-8312-8576933f2db1"
+To enable UUID in PostgreSQL, you need to create the following migration:
+
+class EnableUUID < ActiveRecord::Migration
+  def change
+    enable_extension 'pgcrypto'
+  end
+end
+
+UUID is a random string in a predefined format. Sample value looks like that:
+
+ccbb63c0-a8cd-47b7-8445-5d85e9c80977
+
+Frontend “independence”
+UUID primary keys allow frontend applications to independently generate new objects, together with IDs, without talking to the backend. A unique ID can be created using the JavaScript code, and the chances of collision with already existing objects are negligible.
+
+This approach opens up a whole array of possibilities for frontend developers, e.g., to batch create objects together with their associations without the overhead of API calls.
+
+Usage of the Presicion and scale in decimal and how it affects the data inserted in the table
+itsacheckmate@itsacheckmate:~/Training/Ruby/Rails/ecommerce$ rails db
+psql (12.10 (Ubuntu 12.10-0ubuntu0.20.04.1))
+Type "help" for help.                     
+                                          
+ecommerce_development=# \d
+ecommerce_development=# \d                
+ecommerce_development=# insert into products(price) values (123.34);
+INSERT 0 1                            
+ecommerce_development=# insert into products(price) values (123.342);
+INSERT 0 1                  
+ecommerce_development=# insert into products(price) values (123222.342);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (123222.3);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (123222);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (12322);
+ERROR:  numeric field overflow
+DETAIL:  A field with precision 5, scale 2 must round to an absolute value less than 10^3.
+ecommerce_development=# insert into products(price) values (122.12232);
+INSERT 0 1
+ecommerce_development=# select * from products
+ecommerce_development-# ;
+ id | name | price  | category_id | description 
+----+------+--------+-------------+-------------
+  1 |      | 123.34 |             | 
+  2 |      | 123.34 |             | 
+  3 |      | 122.12 |             | 
+(3 rows)
+
+Seed run command to insert data:
+imit 10;
+ product_option | product_id 
+----------------+------------
+ Prodcut99999   |      99999
+ Prodcut99998   |      99998
+ Prodcut99997   |      99997
+ Prodcut99996   |      99996
+ Prodcut99995   |      99995
+ Prodcut99994   |      99994
+ Prodcut99993   |      99993
+ Prodcut99992   |      99992
+ Prodcut99991   |      99991
+ Prodcut99990   |      99990
+(10 rows)
+
+Creating the index concurrently
+By default, Postgres locks writes (but not reads) to a table while creating an index on it. 
+That can result in unacceptable downtime during a production deploy. On a large table, indexing can take hours.
+
+However, Postgres has a CONCURRENTLY option for CREATE INDEX that creates the index without preventing concurrent INSERTs, UPDATEs, or DELETEs on the table.
+
+To make this option easier to use in migrations, ActiveRecord 4 introduced an algorithm: :concurrently option for add_index.
+
+Here’s an example:
+
+class AddIndexToAsksActive < ActiveRecord::Migration
+  disable_ddl_transaction!
+
+  def change
+    add_index :asks, :active, algorithm: :concurrently
+  end
+end
+The caveat is that concurrent indexes must be created outside a transaction. By default, ActiveRecord migrations are run inside a transaction.
+
+ActiveRecord 4’s new disable_ddl_transaction! method must therefore be used in combination with algorithm: :concurrently migrations (as seen above).
+
+The disable_ddl_transaction! method applies only to that migration file. Adjacent migrations still run in their own transactions and roll back automatically if they fail. 
+Therefore, it’s a good idea to isolate concurrent index migrations to their own migration files.
+
+Use this technique with ActiveRecord 4 to create Postgres indexes concurrently and avoid accidental downtime caused by long, write-blocking database indexing.
+
+Naming Conventions
+Rails will pluralize your class names to find the respective database table.
+ So, for a class Book, you should have a database table called books. 
+ The Rails pluralization mechanisms are very powerful, being capable of pluralizing 
+ (and singularizing) both regular and irregular words. 
+ When using class names composed of two or more words, 
+ the model class name should follow the Ruby conventions, using the CamelCase form, 
+ while the table name must use the snake_case form.
+
+Schema Conventions
+Foreign keys - These fields should be named following the pattern singularized_table_name_id (e.g., item_id, order_id).
+These are the fields that Active Record will look for when you create associations between your models.
+Primary keys - By default, Active Record will use an integer column named id as the tables primary key (bigint for PostgreSQL and MySQL, integer for SQLite).
+ When using Active Record Migrations to create your tables, this column will be automatically created.
+
+ There are also some optional column names that will add additional features to Active Record instances:
+
+ created_at - Automatically gets set to the current date and time when the record is first created.
+ updated_at - Automatically gets set to the current date and time whenever the record is created or updated.
+ lock_version - Adds optimistic locking to a model.
+ type - Specifies that the model uses Single Table Inheritance.
+ (association_name)_type - Stores the type for polymorphic associations.
+ (table_name)_count - Used to cache the number of belonging objects on associations. 
+                        For example, a comments_count column in an Article class that has many instances of 
+                        Comment will cache the number of existent comments for each article.
+
+
+Overriding the Naming Conventions                       
+ApplicationRecord inherits from ActiveRecord::Base, which defines a number of helpful methods
+in model can define different thinggs apart from convention but then will have to specify thode thing when they are required as Theywolud be using the defaults
+
+It's also possible to override the column that should be used as the table's primary key using the ActiveRecord::Base.primary_key= method:
+
+class Product < ApplicationRecord
+  self.primary_key = "product_id"
+end
+
+CRUD: Reading and Writing Data
+CRUD is an acronym for the four verbs we use to operate on data: 
+Create, Read, Update and Delete.
+Active Record automatically creates methods to allow an application to read and manipulate data stored within its tables.
+5.1 Create
+Active Record objects can be created from a hash, a block, or have their attributes manually set after creation. The new method will return a new object while create will return the object and save it to the database.
+
+For example, given a model User with attributes of name and occupation, the create method call will create and save a new record into the database:
+
+user = User.create(name: "David", occupation: "Code Artist")
+Copy
+Using the new method, an object can be instantiated without being saved:
+
+user = User.new
+user.name = "David"
+user.occupation = "Code Artist"
+Copy
+A call to user.save will commit the record to the database.
+
+Finally, if a block is provided, both create and new will yield the new object to that block for initialization:
+
+user = User.new do |u|
+  u.name = "David"
+  u.occupation = "Code Artist"
+end
+
+Active Record provides a rich API for accessing data within a database. 
+Below are a few examples of different data access methods provided by Active Record.
+
+3.0.0 :004 > Flight.first
+  Flight Load (0.3ms)  SELECT "flights".* FROM "flights" ORDER BY "flights"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ =>                                    
+#<Flight:0x00007fc6f06ebe28            
+ id: 1,                                
+ from: "Bangalore",                    
+ destination: "Pune",                  
+ distance: 360,                        
+ departs: Sat, 01 Jan 2000 10:45:00.000000000 UTC +00:00,
+ arrives: Sat, 01 Jan 2000 12:00:00.000000000 UTC +00:00,
+ price: 10000,                         
+ created_at: Mon, 23 May 2022 19:50:08.619182000 UTC +00:00,
+ updated_at: Mon, 23 May 2022 19:50:08.619182000 UTC +00:00> 
+
+
+ 3.0.0 :005 > emp = Employee.find_by(name: 'Shubham')
+ Employee Load (0.9ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Shubham"], ["LIMIT", 1]]                                             
+=> nil  
+3.0.0 :008 > emp = Employee.where(mobile_number: "999999999").order(created_at: :desc)
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" = $1 ORDER BY "employees"."created_at" DESC  [["mobile_number", "999999999"]]
+ =>                                                    
+[#<Employee:0x00005626f2f21ec0
+... 
+
+Update
+3.0.0 :017 > Employee.update(:all,mobile_number: "123456789")
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees"
+  TRANSACTION (0.3ms)  BEGIN                                                            
+  Employee Update (2.3ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.964898"], ["id", 1]]
+  TRANSACTION (0.6ms)  COMMIT                                                           
+  TRANSACTION (0.2ms)  BEGIN                                                            
+  Employee Update (0.2ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.971275"], ["id", 2]]
+  TRANSACTION (0.3ms)  COMMIT                                                           
+  TRANSACTION (0.0ms)  BEGIN                                                            
+  Employee Update (0.2ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.973659"], ["id", 3]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.2ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.975047"], ["id", 4]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.976349"], ["id", 5]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.1ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.977471"], ["id", 6]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.978501"], ["id", 7]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.979496"], ["id", 8]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.980433"], ["id", 9]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.981298"], ["id", 10]]
+  TRANSACTION (0.3ms)  COMMIT
+ => 
+[#<Employee:0x00005626f297cf60
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00>,
+ #<Employee:0x00005626f297ce98
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00>,
+ #<Employee:0x00005626f297cdd0
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00>,
+ #<Employee:0x00005626f297cd08
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00>,
+ #<Employee:0x00005626f297cc40
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00>,
+ #<Employee:0x00005626f297cb78
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00>,
+ #<Employee:0x00005626f297cab0
+  id: 7,
+  name: "Ram",
+  salary: 150000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00>,
+ #<Employee:0x00005626f297c9e8
+  id: 8,
+  name: "shubham",
+  salary: 120000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00>,
+ #<Employee:0x00005626f297c920
+  id: 9,
+  name: "naman",
+  salary: 123345,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.980433000 UTC +00:00>,
+ #<Employee:0x00005626f297c858
+  id: 10,
+  name: "hariom",
+  salary: 12345,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.981298000 UTC +00:00>] 
+
+  destroy
+  3.0.0 :020 > emp = Employee.find_by(name: 'Shubham')
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Shubham"], ["LIMIT", 1]]                        
+ => nil                                          
+3.0.0 :023 > emp.destroy
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Destroy (7.7ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 10]]
+  TRANSACTION (0.4ms)  COMMIT                              
+ =>                                                        
+#<Employee:0x00005626f3792a00                              
+ id: 10,                                                   
+ name: "hariom",                                           
+ salary: 12345,                                            
+ mobile_number: "123456789",                               
+ DOB: nil,                                                 
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.981298000 UTC +00:00> 
+
+ Validations
+ Active Record allows you to validate the state of a model before it gets written into the database. There are several methods that you can use to check your models and validate that an attribute value is not empty, is unique and not already in the database, follows a specific format, and many more.
+
+Validation is a very important issue to consider when persisting to the database, so the methods save and update take it into account when running: they return false when validation fails and they dont actually perform any operations on the database. All of these have a bang counterpart (that is, save! and update!), which are stricter in that they raise the exception ActiveRecord::RecordInvalid if validation fails. A quick example to illustrate:
+
+class User < ApplicationRecord
+  validates :name, presence: true
+end
+Copy
+irb> user = User.new
+irb> user.save
+=> false
+irb> user.save!
+ActiveRecord::RecordInvalid: Validation failed: Name cant be blank
+Copy
+You can learn more about validations in the Active Record Validations guide.
+
+7 Callbacks
+Active Record callbacks allow you to attach code to certain events in the life-cycle 
+of your models. This enables you to add behavior to your models by transparently executing 
+code when those events occur, like when you create a new record, update it, destroy it, and so on. 
+
+
+
+
+
+
+
+

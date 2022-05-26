@@ -1,2 +1,0 @@
-class BookTpe < ApplicationRecord
-end
