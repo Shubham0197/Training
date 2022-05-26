@@ -39,3 +39,13 @@ It basically means that Active Record takes data which is stored in a database t
  Object Maps to Records
  Attributes mapps to Attribute or columns
  
+ Staging environment vs Sandbox environment
+Staging environment
+A good staging environment will be a close replica (less the data) of the production system. It is used to test upgrades and patches prior to going to production. This means that it should be a controlled environment where the engineers responsible for the production deployment are allowed to test the rollout instructions.
+
+Access restrictions in a staging environment should be as close to production as possible. I.E. deployment by those engineers who are responsible for deployment. No root (or privileged access for developers).
+
+Sandbox environment
+As the name suggests this typically a playground for the engineering team. It has less restrictions than a staging environment because it is designed to allow the engineers to try out things easily and quickly. A sandbox environment is likely to drift away from the production environment as engineers try out different versions of the product, dependancies, plugins etc.
+
+Access to a sandbox environment typically allows privileged access to any engineer (developer, QA etc.) who are working on the project for easy / quick deployment and debugging.
