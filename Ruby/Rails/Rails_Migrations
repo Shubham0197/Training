@@ -1027,17 +1027,206 @@ Primary keys - By default, Active Record will use an integer column named id as 
  lock_version - Adds optimistic locking to a model.
  type - Specifies that the model uses Single Table Inheritance.
  (association_name)_type - Stores the type for polymorphic associations.
- (table_name)_count - Used to cache the number of belonging objects on associations. For example, a comments_count column in an Article class that has many instances of Comment will cache the number of existent comments for each article.
+ (table_name)_count - Used to cache the number of belonging objects on associations. 
+                        For example, a comments_count column in an Article class that has many instances of 
+                        Comment will cache the number of existent comments for each article.
 
 
+Overriding the Naming Conventions                       
+ApplicationRecord inherits from ActiveRecord::Base, which defines a number of helpful methods
+in model can define different thinggs apart from convention but then will have to specify thode thing when they are required as Theywolud be using the defaults
+
+It's also possible to override the column that should be used as the table's primary key using the ActiveRecord::Base.primary_key= method:
+
+class Product < ApplicationRecord
+  self.primary_key = "product_id"
+end
+
+CRUD: Reading and Writing Data
+CRUD is an acronym for the four verbs we use to operate on data: 
+Create, Read, Update and Delete.
+Active Record automatically creates methods to allow an application to read and manipulate data stored within its tables.
+5.1 Create
+Active Record objects can be created from a hash, a block, or have their attributes manually set after creation. The new method will return a new object while create will return the object and save it to the database.
+
+For example, given a model User with attributes of name and occupation, the create method call will create and save a new record into the database:
+
+user = User.create(name: "David", occupation: "Code Artist")
+Copy
+Using the new method, an object can be instantiated without being saved:
+
+user = User.new
+user.name = "David"
+user.occupation = "Code Artist"
+Copy
+A call to user.save will commit the record to the database.
+
+Finally, if a block is provided, both create and new will yield the new object to that block for initialization:
+
+user = User.new do |u|
+  u.name = "David"
+  u.occupation = "Code Artist"
+end
+
+Active Record provides a rich API for accessing data within a database. 
+Below are a few examples of different data access methods provided by Active Record.
+
+3.0.0 :004 > Flight.first
+  Flight Load (0.3ms)  SELECT "flights".* FROM "flights" ORDER BY "flights"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ =>                                    
+#<Flight:0x00007fc6f06ebe28            
+ id: 1,                                
+ from: "Bangalore",                    
+ destination: "Pune",                  
+ distance: 360,                        
+ departs: Sat, 01 Jan 2000 10:45:00.000000000 UTC +00:00,
+ arrives: Sat, 01 Jan 2000 12:00:00.000000000 UTC +00:00,
+ price: 10000,                         
+ created_at: Mon, 23 May 2022 19:50:08.619182000 UTC +00:00,
+ updated_at: Mon, 23 May 2022 19:50:08.619182000 UTC +00:00> 
 
 
+ 3.0.0 :005 > emp = Employee.find_by(name: 'Shubham')
+ Employee Load (0.9ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Shubham"], ["LIMIT", 1]]                                             
+=> nil  
+3.0.0 :008 > emp = Employee.where(mobile_number: "999999999").order(created_at: :desc)
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" = $1 ORDER BY "employees"."created_at" DESC  [["mobile_number", "999999999"]]
+ =>                                                    
+[#<Employee:0x00005626f2f21ec0
+... 
 
+Update
+3.0.0 :017 > Employee.update(:all,mobile_number: "123456789")
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees"
+  TRANSACTION (0.3ms)  BEGIN                                                            
+  Employee Update (2.3ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.964898"], ["id", 1]]
+  TRANSACTION (0.6ms)  COMMIT                                                           
+  TRANSACTION (0.2ms)  BEGIN                                                            
+  Employee Update (0.2ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.971275"], ["id", 2]]
+  TRANSACTION (0.3ms)  COMMIT                                                           
+  TRANSACTION (0.0ms)  BEGIN                                                            
+  Employee Update (0.2ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.973659"], ["id", 3]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.2ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.975047"], ["id", 4]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.976349"], ["id", 5]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.1ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.977471"], ["id", 6]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.978501"], ["id", 7]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.979496"], ["id", 8]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.980433"], ["id", 9]]
+  TRANSACTION (0.3ms)  COMMIT
+  TRANSACTION (0.0ms)  BEGIN
+  Employee Update (0.1ms)  UPDATE "employees" SET "mobile_number" = $1, "updated_at" = $2 WHERE "employees"."id" = $3  [["mobile_number", "123456789"], ["updated_at", "2022-05-26 09:47:38.981298"], ["id", 10]]
+  TRANSACTION (0.3ms)  COMMIT
+ => 
+[#<Employee:0x00005626f297cf60
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00>,
+ #<Employee:0x00005626f297ce98
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00>,
+ #<Employee:0x00005626f297cdd0
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00>,
+ #<Employee:0x00005626f297cd08
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00>,
+ #<Employee:0x00005626f297cc40
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00>,
+ #<Employee:0x00005626f297cb78
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00>,
+ #<Employee:0x00005626f297cab0
+  id: 7,
+  name: "Ram",
+  salary: 150000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00>,
+ #<Employee:0x00005626f297c9e8
+  id: 8,
+  name: "shubham",
+  salary: 120000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00>,
+ #<Employee:0x00005626f297c920
+  id: 9,
+  name: "naman",
+  salary: 123345,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.980433000 UTC +00:00>,
+ #<Employee:0x00005626f297c858
+  id: 10,
+  name: "hariom",
+  salary: 12345,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.981298000 UTC +00:00>] 
 
-
-
-
-
+  destroy
+  3.0.0 :020 > emp = Employee.find_by(name: 'Shubham')
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Shubham"], ["LIMIT", 1]]                        
+ => nil                                          
+3.0.0 :023 > emp.destroy
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Destroy (7.7ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 10]]
+  TRANSACTION (0.4ms)  COMMIT                              
+ =>                                                        
+#<Employee:0x00005626f3792a00                              
+ id: 10,                                                   
+ name: "hariom",                                           
+ salary: 12345,                                            
+ mobile_number: "123456789",                               
+ DOB: nil,                                                 
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.981298000 UTC +00:00> 
 
 
 
