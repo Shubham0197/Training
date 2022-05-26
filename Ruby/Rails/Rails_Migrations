@@ -1005,8 +1005,29 @@ Therefore, it’s a good idea to isolate concurrent index migrations to their ow
 
 Use this technique with ActiveRecord 4 to create Postgres indexes concurrently and avoid accidental downtime caused by long, write-blocking database indexing.
 
+Naming Conventions
+Rails will pluralize your class names to find the respective database table.
+ So, for a class Book, you should have a database table called books. 
+ The Rails pluralization mechanisms are very powerful, being capable of pluralizing 
+ (and singularizing) both regular and irregular words. 
+ When using class names composed of two or more words, 
+ the model class name should follow the Ruby conventions, using the CamelCase form, 
+ while the table name must use the snake_case form.
 
+Schema Conventions
+Foreign keys - These fields should be named following the pattern singularized_table_name_id (e.g., item_id, order_id).
+These are the fields that Active Record will look for when you create associations between your models.
+Primary keys - By default, Active Record will use an integer column named id as the tables primary key (bigint for PostgreSQL and MySQL, integer for SQLite).
+ When using Active Record Migrations to create your tables, this column will be automatically created.
 
+ There are also some optional column names that will add additional features to Active Record instances:
+
+ created_at - Automatically gets set to the current date and time when the record is first created.
+ updated_at - Automatically gets set to the current date and time whenever the record is created or updated.
+ lock_version - Adds optimistic locking to a model.
+ type - Specifies that the model uses Single Table Inheritance.
+ (association_name)_type - Stores the type for polymorphic associations.
+ (table_name)_count - Used to cache the number of belonging objects on associations. For example, a comments_count column in an Article class that has many instances of Comment will cache the number of existent comments for each article.
 
 
 
