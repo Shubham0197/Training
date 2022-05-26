@@ -2,3 +2,10 @@ All tables in DB should contain primary key as id
 Shoud not use entity name in giving attribute name 
 Foreign Key attribute should be like (table name where it is prmarykey)_id
 give space after '=' to keep code clean
+
+
+Taking Database Backup
+postgres@itsacheckmate:/home/itsacheckmate/Training/PostgreSQL$ pg_dump library > library.sql
+
+Restore Backup
+pg_dump library < library.sql
