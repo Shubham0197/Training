@@ -83,9 +83,41 @@ because validations are automatically run only when the object is saved, such as
 
  Validation Helpers
 
+ you can use them  directly inside your class definitions.
+ Every time a validation fails, an error is added to the objects errors collection, and this is associated with the attribute being validated.
+ Each helper accepts an arbitrary number of attribute names, so with a single line of code you can add the same kind of validation to several attributes.
+ All of them accept the :on and :message options, which define when the validation should be run and what message should be added to the errors collection if it fails, respectively.
+  The :on option takes one of the values :create or :update.
+   There is a default error message for each one of the validation helpers. 
+   These messages are used when the :message option isnt specified.
+
+1. acceptance
+This method validates that a checkbox on the user interface was checked when a form was submitted. 
+This is typically used when the user needs to agree to your applications terms of service, confirm that some text is read, or any similar concept.
+It defaults to ['1', true] and can be easily changed.
+This validation is very specific to web applications and this 'acceptance' does not need to be recorded anywhere in your database. 
+If you dont have a field for it, the helper will create a virtual attribute. 
+If the field does exist in your database, the accept option must be set to or include true or else the validation will not run.
 
 
- 
+3.0.0 :007 > wallet.valid?
+ => false 
+3.0.0 :008 > wallet.available = 1
+ => 1 
+3.0.0 :009 > wallet.valid?
+ => false 
+ 3.0.0 :014 > wallet.available = true
+ => true 
+3.0.0 :015 > wallet.save!
+ => true 
+
+ 3.0.0 :002 > wallet.name = "Amazon"
+ => "Amazon" 
+3.0.0 :003 > wallet.available = true
+ => true 
+3.0.0 :004 > wallet.save!
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in `raise_validation_error': Validation failed: Available Accept this (ActiveRecord::RecordInvalid)
+3.0.0 :005 > 
 
 
 
