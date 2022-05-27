@@ -5,3 +5,5 @@ class Wallet < ApplicationRecord
   validates :available, acceptance: {accept: 1 ,message: "Accept this"}
   validates :amount, confirmation: true
 end
+
+

@@ -134,17 +134,44 @@ There is also a :case_sensitive option that you can use to define whether the co
 3.0.0 :011 > wallet.errors.objects.second.full_message
  => "Amount confirmation doesn't match Amount" 
 
+ # Case_sensitive example
  3.0.0 :008 > wallet.name_confirmation = "Shubham"
  => "Shubham" 
 3.0.0 :009 > wallet.name = "shubham"
  => "shubham" 
- 
+
  3.0.0 :006 > wallet.valid?
  => true 
 
+ 3. comparison
+ This check will validate a comparison between any two comparable values.
+  The validator requires a compare option be supplied. 
+  Each option accepts a value, proc, or symbol. 
+  Any class that includes Comparable can be compared.
+  These options are all supported:
 
+  :greater_than - Specifies the value must be greater than the supplied value. The default error message for this option is "must be greater than %{count}".
+  :greater_than_or_equal_to - Specifies the value must be greater than or equal to the supplied value. The default error message for this option is "must be greater than or equal to %{count}".
+  :equal_to - Specifies the value must be equal to the supplied value. The default error message for this option is "must be equal to %{count}".
+  :less_than - Specifies the value must be less than the supplied value. The default error message for this option is "must be less than %{count}".
+  :less_than_or_equal_to - Specifies the value must be less than or equal to the supplied value. The default error message for this option is "must be less than or equal to %{count}".
+  :other_than - Specifies the value must be other than the supplied value. The default error message for this option is "must be other than %{count}".
 
+  3.0.0 :007 > order.errors[:customer_id]
+ => ["must be greater than 12"]
 
+ 3.0.0 :001 > order = Order.new
+ => 
+#<Order:0x000055ba060ee960                                   
+...                                                          
+3.0.0 :002 > order.customer_id= 10
+ => 10 
+3.0.0 :003 > order.product_id= 10
+ => 10 
+3.0.0 :004 > order.valid?
+ => false 
+3.0.0 :005 > order.errors[:customer_id]
+ => ["must be other than 10"] 
 
 
 
