@@ -116,11 +116,31 @@ If the field does exist in your database, the accept option must be set to or in
 3.0.0 :003 > wallet.available = true
  => true 
 3.0.0 :004 > wallet.save!
-/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in `raise_validation_error': Validation failed: Available Accept this (ActiveRecord::RecordInvalid)
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in 'raise_validation_error': Validation failed: Available Accept this (ActiveRecord::RecordInvalid)
 3.0.0 :005 > 
 
+2. confirmation
 
+use this helper when you have two text fields that should receive exactly the same content. 
+For example, you may want to confirm an email address or a password. 
+This validation creates a virtual attribute whose name is the name of the field that has to be confirmed with "_confirmation" appended.
+This check is performed only if email_confirmation is not nil. To require confirmation, make sure to add a presence check for the confirmation attribute
 
+There is also a :case_sensitive option that you can use to define whether the confirmation constraint will be case sensitive or not
+  3.0.0 :013 > wallet.amount_confirmation = 11
+  => 11 
+ 3.0.0 :014 > wallet.amount = 10
+  => 10 
+3.0.0 :011 > wallet.errors.objects.second.full_message
+ => "Amount confirmation doesn't match Amount" 
+
+ 3.0.0 :008 > wallet.name_confirmation = "Shubham"
+ => "Shubham" 
+3.0.0 :009 > wallet.name = "shubham"
+ => "shubham" 
+ 
+ 3.0.0 :006 > wallet.valid?
+ => true 
 
 
 
