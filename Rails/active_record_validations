@@ -191,11 +191,32 @@ There is also a :case_sensitive option that you can use to define whether the co
  => false 
 3.0.0 :004 > order.errors[:customer_id]
  => ["10 not to be used"] 
+ 3.0.0 :005 > order.customer_id= 22
+ => 22 
+3.0.0 :006 > order.valid?
+ => true 
+3.0.0 :007 > order.errors[:customer_id]
+ => [] 
 
 
+ 5.format
+ This helper validates the attributes values by testing whether they match a given regular expression, which is specified using the :with option.
+ Alternatively,  require that the specified attribute does not match the regular expression by using the :without option.
 
- 
+ 3.0.0 :004 > customer.errors.objects.first.full_message
+ => "Email address is invalid" 
 
+ 6. inclusion
+ This helper validates that the attributes values are included in a given set.
+    In fact, this set can be any enumerable object.
+    The inclusion helper has an option :in that receives the set of values that will be accepted. 
+  The :in option has an alias called :within that you can use for the same purpose, if youd like to.
+  3.0.0 :004 > cat.errors.objects.first.full_message
+  => "Name is not included in the list" 
+ 3.0.0 :005 > cat.name = "clothes"
+  => "clothes" 
+ 3.0.0 :006 > cat.valid?
+  => true 
 
 
 
