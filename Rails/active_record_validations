@@ -64,7 +64,59 @@ because validations are automatically run only when the object is saved, such as
  3.0.0 :042 > wallet.errors.objects.first.full_message
  => "Name can't be blank" 
  3.0.0 :043 > wallet.save!
- /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in 'raise_validation_error': Validation failed: Name can't be blank (ActiveRecord::RecordInvalid) 
+ /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in 'raise_validation_error': Validation failed: Name cant be blank (ActiveRecord::RecordInvalid) 
+
+
+ # ==>errors[]
+
+ To verify whether or not a particular attribute of an object is valid, you can use errors[:attribute]. 
+ It returns an array of all the error messages for :attribute. 
+ If there are no errors on the specified attribute, an empty array is returned.
+ This method is only useful after validations have been run, because it only inspects the errors collection and does not trigger validations itself.
+
+ 3.0.0 :047 > wallet.errors[:name]
+ => ["can't be blank"] 
+ 3.0.0 :048 > wallet = Wallet.new
+ => #<Wallet:0x0000557b37a5ed78 id: nil, name: nil, amount: nil, lock_version: 0, type: nil, created_at: nil, updated_at: nil> 
+3.0.0 :049 > wallet.errors[:name]
+ => [] 
+
+ Validation Helpers
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
