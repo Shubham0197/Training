@@ -218,10 +218,22 @@ There is also a :case_sensitive option that you can use to define whether the co
  3.0.0 :006 > cat.valid?
   => true 
 
+ 7. presence
+ This helper validates that the specified attributes are not empty.
+It uses the blank? method to check if the value is either nil or a blank string, that is, a string that is either empty or consists of whitespace.
+eg.   has_many :line_items, inverse_of: :order
 
+8. absence
+This helper validates that the specified attributes are absent.
+ It uses the present? method to check if the value is not either nil or a blank string,
+ that is, a string that is either empty or consists of whitespace.
 
-
-
+ 3.0.0 :009 > cat.description = "clothes"
+ => "clothes" 
+3.0.0 :010 > cat.valid?
+ => false 
+ 3.0.0 :012 > cat.errors.objects.first.full_message
+ => "Description must be blank" 
 
 
 
