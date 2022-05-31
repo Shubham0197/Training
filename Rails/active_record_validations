@@ -378,6 +378,134 @@ There is also a :case_sensitive option that you can use to define whether the un
  => {:aircraft_id=>["has already been taken"]} 
 
 
+ # Working with Validation Errors
+ dig deeper into each individual error by using various methods from the errors collection.
+1. errors
+3.0.0 :004 > cert.errors.full_messages
+ => ["Employee is not a number", "Aircraft is not a number"] 
+
+2. errors[]
+It is used when you want to check the error messages for a specific attribute.
+It returns an array of strings with all error messages for the given attribute, each string with one error message. 
+If there are no errors related to the attribute, it returns an empty array.
+3.0.0 :005 > cert.errors[:employee_id]
+ => ["is not a number"] 
+
+3 errors.where and error object
+Sometimes we may need more information about each error beside its message. 
+Each error is encapsulated as an ActiveModel::Error object, and where method is the most common way of access.
+where returns an array of error objects, filtered by various degree of conditions
+3.0.0 :021 > cert.errors.where(:employee_id, :less_than)
+ => [] 
+3.0.0 :022 > cert.errors.where(:employee_id, :less_than_or_equal_to)
+ => [#<ActiveModel::Error attribute=employee_id, type=less_than_or_equal_to, options={:value=>21, :count=>20}>] 
+3.0.0 :023 > cert.errors.where(:employee_id, :odd)
+ => [] 
+ 3.0.0 :034 > error = cert.errors.where(:employee_id, :less_than_or_equal_to).last
+ => #<ActiveModel::Error attribute=employee_id, type=less_than_or_equal_to, options={:value=>21, :count=>20}> 
+3.0.0 :035 > error.attribute
+ => :employee_id 
+3.0.0 :036 > error.type
+ => :less_than_or_equal_to 
+3.0.0 :037 > error.options[:count]
+ => 20 
+ 3.0.0 :041 > error.message
+ => "must be less than or equal to 20" 
+3.0.0 :042 > error.full_message
+ => "Employee must be less than or equal to 20" 
+ <ActiveModel::Error attribute=employee_id, type=less_than_or_equal_to, options={:value=>21, :count=>20}>
+
+4 errors.add
+
+The add method creates the error object by taking the attribute, the error type and additional options hash.
+This is useful for writing your own validator.
+3.0.0 :006 > product.description = "Helllo"
+ => "Helllo" 
+3.0.0 :007 > product.errors.full_messages
+ => ["Description is not cool enough"] 
+3.0.0 :008 > product.valid?
+ => false 
+3.0.0 :009 > product.errors.full_messages
+ => ["Description is not cool enough"] 
+3.0.0 :005 > product.errors.full_messages
+ => ["Description is same as product"] 
+
+5 errors[:base]
+You can add errors that are related to the objects state as a whole, instead of being related to a specific attribute. 
+You can add errors to :base when you want to say that the object is invalid, no matter the values of its attributes.
+3.0.0 :003 > product.description = "hello"
+ => "hello" 
+3.0.0 :004 > product.errors.messages
+ => {} 
+3.0.0 :005 > product.valid?
+ => false 
+3.0.0 :006 > product.errors.messages
+ => {:description=>["is same as product"]} 
+ 3.0.0 :001 > product =Product.new
+ => #<Product:0x0000557cd3809878 id: nil, name: nil, description: nil, created_at: nil, updated_at: nil, sk... 
+3.0.0 :002 > product.description = "hello"
+ => "hello" 
+3.0.0 :003 > product.valid?
+ => false 
+3.0.0 :004 > product.errors.messages
+ => {:base=>["is invalid without name"]} 
+ 3.0.0 :005 > product.errors.full_messages
+ => ["is invalid without name"] 
+
+6 errors.clear
+The clear method is used when you intentionally want to clear the errors collection. 
+Of course, calling errors.clear upon an invalid object wont actually make it valid: 
+the errors collection will now be empty, but the next time you call valid? or any method 
+that tries to save this object to the database, the validations will run again. 
+If any of the validations fail, the errors collection will be filled again.
+3.0.0 :061 > cert.valid?
+  Certified Exists? (0.5ms)  SELECT 1 AS one FROM "certifieds" WHERE "certifieds"."aircraft_id" IS NULL AND "certifieds"."employee_id" = $1 LIMIT $2  [["employee_id", 21], ["LIMIT", 1]]
+ => false  
+ 3.0.0 :063 > cert.errors.messages
+ => {:employee_id=>["must be less than or equal to 20"], :aircraft_id=>["is not a number"]} 
+ 3.0.0 :065 > cert.errors.empty?
+ => false 
+ 3.0.0 :067 > cert.errors.clear
+ => [] 
+ 3.0.0 :068 > cert.errors.empty?
+ => true 
+
+7 errors.size
+The size method returns the total number of errors for the object.
+
+3.0.0 :071 > cert.errors.messages
+ => {} 
+3.0.0 :072 > cert.errors.size
+ => 0 
+cert.valid?
+ => false                                                      
+3.0.0 :074 > cert.errors.size
+ => 2 
+3.0.0 :075 > cert.errors.messages
+ => {:employee_id=>["must be less than or equal to 20"], :aircraft_id=>["is not a number"]} 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
