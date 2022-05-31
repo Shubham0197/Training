@@ -235,10 +235,81 @@ This helper validates that the specified attributes are absent.
  3.0.0 :012 > cat.errors.objects.first.full_message
  => "Description must be blank" 
 
+ 9. length
+ This helper validates the length of the attributes values.
+  It provides a variety of options, so you can specify length constraints in different ways
+  The possible length constraint options are:
 
+:minimum - The attribute cannot have less than the specified length.
+:maximum - The attribute cannot have more than the specified length.
+:in (or :within) - The attribute length must be included in a given interval. The value for this option must be a range.
+:is - The attribute length must be equal to the given value.
 
+Change default error messages using the :wrong_length, :too_long, and :too_short options and %{count} 
+3.0.0 :016 > flights.errors.objects.first.full_message
+ => "Destination is too short (minimum is 2 characters)" 
+ 3.0.0 :019 > flights.errors.objects.first.full_message
+ => "Destination is too long (maximum is 12 characters)" 
+ 3.0.0 :002 > flights.from = "amastedam"
+ => "amastedam" 
+3.0.0 :003 > flights.destination = "adassf"
+ => "adassf" 
+3.0.0 :004 > flights.price = 1234522
+ => 1234522 
+3.0.0 :005 > flights.valid?
+ => false 
+3.0.0 :006 > flights.errors.objects.first.full_message
+ => "Price you gave wrong length" 
 
+ 10 .numericality 
+ This helper validates that your attributes have only numeric values.
+ By default, it will match an optional sign followed by an integer or floating point number
 
+ The default error message for :only_integer is "must be an integer".
+
+Besides :only_integer, this helper also accepts the following options to add constraints to acceptable values:
+
+:greater_than - Specifies the value must be greater than the supplied value. The default error message for this option is "must be greater than %{count}".
+:greater_than_or_equal_to - Specifies the value must be greater than or equal to the supplied value. The default error message for this option is "must be greater than or equal to %{count}".
+:equal_to - Specifies the value must be equal to the supplied value. The default error message for this option is "must be equal to %{count}".
+:less_than - Specifies the value must be less than the supplied value. The default error message for this option is "must be less than %{count}".
+:less_than_or_equal_to - Specifies the value must be less than or equal to the supplied value. The default error message for this option is "must be less than or equal to %{count}".
+:other_than - Specifies the value must be other than the supplied value. The default error message for this option is "must be other than %{count}".
+:in - Specifies the value must be in the supplied range. The default error message for this option is "must be in %{count}".
+:odd - Specifies the value must be an odd number if set to true. The default error message for this option is "must be odd".
+:even - Specifies the value must be an even number if set to true. The default error message for this option is "must be even".
+
+By default, numericality does not allow nil values. You can use allow_nil: true option to permit it.
+
+3.0.0 :002 > flights.from = "amastedam"
+ => "amastedam" 
+3.0.0 :003 > flights.destination = "adassf"
+ => "adassf" 
+3.0.0 :004 > flights.price = 60000
+ => 60000 
+3.0.0 :005 > flights.valid?
+ => false 
+3.0.0 :006 > flights.errors.objects.first.full_message
+ => "Price must be in 10000..59999" 
+ 3.0.0 :011 > cert.errors.messages
+ => {:employee_id=>["must be odd"], :aircraft_id=>["must be even"]} 
+3.0.0 :012 > cert.aircraft_id = 21
+ => 21 
+3.0.0 :013 > cert.employee_id = 4
+ => 4
+
+ 3.0.0 :015 > cert.aircraft_id = 1
+ => 1 
+3.0.0 :016 > cert.valid?
+ => false 
+3.0.0 :017 > cert.errors.messages
+ => {:employee_id=>["must be odd"], :aircraft_id=>["must be greater than 1", "must be even"]} 
+3.0.0 :018 > cert.aircraft_id = 4
+ => 2 
+3.0.0 :019 > cert.valid?
+ => false 
+3.0.0 :020 > cert.errors.messages
+ => {:employee_id=>["must be odd"]} 
 
 
 
