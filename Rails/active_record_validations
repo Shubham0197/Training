@@ -485,19 +485,40 @@ cert.valid?
  => {:employee_id=>["must be less than or equal to 20"], :aircraft_id=>["is not a number"]} 
 
 
+ # Common Validation Options
 
+ 1 :allow_nil
+ The :allow_nil option skips the validation when the value being validated is nil.
+ 3.0.0 :002 > f.valid?
+ Flight Exists? (0.4ms)  SELECT 1 AS one FROM "flights" WHERE "flights"."from" IS NULL AND "flights"."destination" IS NULL LIMIT $1  [["LIMIT", 1]]
+=> false 
+3.0.0 :003 > f.errors.messages
+=> 
+{:destination=>["is too short (minimum is 2 characters)"],
+:price=>["you gave wrong length", "is not a number", "is not a number"]} 
 
+2 :allow_blank
 
-
-
-
+The :allow_blank option is similar to the :allow_nil option. 
+This option will let validation pass if the attributes value is blank?, like nil or an empty string for example.
+#<Flight:0x000055b56939f8b8       
+... 
+3.0.0 :002 > f.valid?
+  Flight Exists? (0.4ms)  SELECT 1 AS one FROM "flights" WHERE "flights"."from" IS NULL AND "flights"."destination" IS NULL LIMIT $1  [["LIMIT", 1]]
+ => false 
+3.0.0 :003 > f.errors.messages
+ => {:price=>["you gave wrong length", "is not a number", "is not a number"]} 
  
+ 3 :message
+ As you have already seen, the :message option lets you specify the message that will be added to the errors collection when validation fails
 
 
+ 4 :on
+ The :on option lets you specify when the validation should happen. 
+ The default behavior for all the built-in validation helpers is to be run on save (both when youre creating a new record and when youre updating it). 
+ If you want to change it, you can use on: :create to run the validation only when a new record is created or on: :update to run the validation only when a record is updated.
 
-
-
-
+ You can also use on: to define custom contexts. Custom contexts need to be triggered explicitly by passing the name of the context to valid?, invalid?, or save.
 
 
 
