@@ -312,11 +312,70 @@ By default, numericality does not allow nil values. You can use allow_nil: true 
  => {:employee_id=>["must be odd"]} 
 
 
+=begin
+ 1.3 Skipping Validations
+The following methods skip validations, and will save the object to the database regardless of its validity. They should be used with caution.
 
+decrement!
+decrement_counter
+increment!
+increment_counter
+insert
+insert!
+insert_all
+insert_all!
+toggle!
+touch
+touch_all
+update_all
+update_attribute
+update_column
+update_columns
+update_counters
+upsert
+upsert_all
+Note that save also has the ability to skip validations if passed validate:
+false as an argument. This technique should be used with caution.
 
+save(validate: false)
+3.0.0 :005 > cert.employee_id = 4
+ => 4 
+3.0.0 :006 > cert.aircraft_id = 2
+ => 2 
+3.0.0 :007 > cert.valid?
+ => false
+ 3.0.0 :009 > cert.save!
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in 'raise_validation_error': Validation failed: Employee must be odd, Aircraft must be greater than 2 (ActiveRecord::RecordInvalid)   
 
+3.0.0 :011 > cert.save(validate: false)
+  TRANSACTION (0.1ms)  BEGIN
+  Certified Create (4.8ms)  INSERT INTO "certifieds" ("employee_id", "aircraft_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["employee_id", 4], ["aircraft_id", 2], ["created_at", "2022-05-31 09:35:13.397631"], ["updated_at", "2022-05-31 09:35:13.397631"]]
+  TRANSACTION (0.5ms)  COMMIT                  
+ => true  
 
+=end
 
+11. uniqueness
+This helper validates that the attributes value is unique right before the object gets saved. 
+It does not create a uniqueness constraint in the database, so it may happen that two different 
+database connections create two records with the same value for a column that you intend to be unique.
+
+There is a :scope option that you can use to specify one or more attributes that are used to limit the uniqueness check.
+There is also a :case_sensitive option that you can use to define whether the uniqueness constraint will be case sensitive, case insensitive, or respects default database collation.
+
+  id: 11,
+  employee_id: 3,
+  aircraft_id: 4,
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  3.0.0 :007 > cert = Certified.new
+  => #<Certified:0x00007f9eb46aeb90 id: nil, employee_id: nil, aircraft_id: nil, created_at: nil, updated_at... 
+ 3.0.0 :008 > cert.aircraft_id =4
+  => 4 
+ 3.0.0 :009 > cert.employee_id =3
+  => 3 
+  3.0.0 :006 > cert.errors.messages
+ => {:aircraft_id=>["has already been taken"]} 
 
 
 
