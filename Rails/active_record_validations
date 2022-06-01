@@ -630,6 +630,16 @@ The custom validator is called using the validates_with method.
 3.0.0 :004 > po.errors.messages
  => {:product_option=>["atleast give word in option"]} 
 
+ For global custom validator can make them in model/concern
+ 3.0.0 :001 > po = ProductOption.new
+ => #<ProductOption:0x0000561457f6e318 product_option: nil, product_id: nil> 
+3.0.0 :002 > po.product_option = "12234"
+ => "12234" 
+3.0.0 :003 > po.valid?
+ => false 
+3.0.0 :004 > po.errors.messages
+ => {:product_option=>["atleast give word in option"]}
+
 2 Custom Methods
 create methods that verify the state of your models and add errors to the errors collection when they are invalid
 You must then register these methods by using the validate class method, passing in the symbols for the validation methods names.

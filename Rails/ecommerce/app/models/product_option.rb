@@ -5,7 +5,7 @@ class MyValidator < ActiveModel::Validator
     end
   end
 end
-
+=begin
 class WordValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     unless record.product_option =~ /[a-z]+/
@@ -13,7 +13,7 @@ class WordValidator < ActiveModel::EachValidator
     end
   end
 end
-
+=end
 class ProductOption < ApplicationRecord
   include ActiveModel::Validations
   validates_with MyValidator
