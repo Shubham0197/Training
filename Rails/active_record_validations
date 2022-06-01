@@ -604,8 +604,44 @@ Can apply both :if and :unless to the same validation.
 3.0.0 :015 > ord.errors.messages
  => {:customer_id=>["must be other than 60"]} 
 
+# Performing Custom Validations
+With this can write our own validators or validation methods as you prefer.
 
+1 Custom Validators
+Custom validators are classes that inherit from ActiveModel::Validator. 
+These classes must implement the validate method which takes a record as an argument and performs the validation on it. 
+The custom validator is called using the validates_with method.
 
+3.0.0 :004 > po = ProductOption.new
+ => #<ProductOption:0x00007f3114ab6818 product_option: nil, product_id: nil> 
+3.0.0 :005 > po.valid?
+ => false 
+3.0.0 :006 > po.product_option = "clothes"
+ => "clothes" 
+3.0.0 :007 > po.valid?
+ => true 
 
+ 3.0.0 :001 > po = ProductOption.new
+ => #<ProductOption:0x000055c5c3031068 product_option: nil, product_id: nil> 
+3.0.0 :002 > po.product_option = "12234"
+ => "12234" 
+3.0.0 :003 > po.valid?
+ => false 
+3.0.0 :004 > po.errors.messages
+ => {:product_option=>["atleast give word in option"]} 
 
+2 Custom Methods
+create methods that verify the state of your models and add errors to the errors collection when they are invalid
+You must then register these methods by using the validate class method, passing in the symbols for the validation methods names.
+But it is also possible to control when to run these custom validations by giving an :on option to the validate method, with either: :create or :update.
 
+3.0.0 :010 > product = Product.new
+ => #<Product:0x0000558ee8db8748 id: nil, name: nil, price: 0.1e3, category_id: nil, description: nil> 
+3.0.0 :011 > product.valid?
+ => false 
+3.0.0 :012 > product.errors.messages
+ => {:name=>["Name can't be blank"]} 
+3.0.0 :013 > product.name = "Apple"
+ => "Apple" 
+3.0.0 :014 > product.valid?
+ => true 
