@@ -519,14 +519,90 @@ This option will let validation pass if the attributes value is blank?, like nil
  If you want to change it, you can use on: :create to run the validation only when a new record is created or on: :update to run the validation only when a record is updated.
 
  You can also use on: to define custom contexts. Custom contexts need to be triggered explicitly by passing the name of the context to valid?, invalid?, or save.
+ 3.0.0 :020 > pr.valid?(:account_setup)
+ => false 
+3.0.0 :021 > pr.errors.messages
+ => {:description=>["is too long (maximum is 12 characters)"]} 
 
+ # 4 Strict Validations
+ You can also specify validations to be strict and raise ActiveModel::StrictValidationFailed when the object is invalid.
+ these are to speacify the user that they strict validation or can change the exception raised
+ 
+ 3.0.0 :004 > fl.valid?
+ /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activemodel-7.0.3/lib/active_model/errors.rb:323:in 'add': Price is not a number (ActiveModel::StrictValidationFailed)       
+ 3.0.0 :012 > fl.save(validate: false)
+ TRANSACTION (0.1ms)  BEGIN
+ Flight Create (0.2ms)  INSERT INTO "flights" ("from", "destination", "distance", "departs", "arrives", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["from", "dadfsgsfgdssdfdsgsfgfgfds"], ["destination", nil], ["distance", nil], ["departs", nil], ["arrives", nil], ["price", nil], ["created_at", "2022-05-31 15:52:48.801396"], ["updated_at", "2022-05-31 15:52:48.801396"]]
+ TRANSACTION (0.6ms)  COMMIT
+=> true 
 
+# Conditional Validation
+Sometimes it will make sense to validate an object only when a given predicate is satisfied. 
+It can be done by using the :if and :unless options, which can take a symbol, a Proc or an Array
 
+1 Using a Symbol with :if and :unless
 
+3.0.0 :005 > aircraft = Aircraft.new
+ => #<Aircraft:0x000055ca73e3d508 id: nil, name: nil, cruising_range: nil, created_at: nil, updated_at: nil> 
+3.0.0 :006 > aircraft.valid?
+ => true 
+3.0.0 :007 > aircraft.name = "Airbus"
+ => "Airbus" 
+3.0.0 :008 > aircraft.valid?
+ => false 
 
+ 2 Using a Proc with :if and :unless
+ Using a Proc object gives you the ability to write an inline condition instead of a separate method
 
+ 3.0.0 :001 > aircraft = Aircraft.new
+ => #<Aircraft:0x00005601ecf0bd80 id: nil, name: nil, cruising_range: nil, created_at: nil, updated_at: nil> 
+3.0.0 :002 > aircraft.valid?
+ => true 
+3.0.0 :003 > aircraft.name = "Airbus"
+ => "Airbus" 
+3.0.0 :004 > aircraft.valid?
+ => false 
+3.0.0 :005 > aircraft.cruising_range = 1200
+ => 1200 
+3.0.0 :006 > aircraft.valid?
+ => false 
+ 3.0.0 :007 > aircraft.errors.messages
+ => {:name_confirmation=>["can't be blank"]} 
 
+3 Grouping Conditional validations
 
+Sometimes it is useful to have multiple validations use one condition.
+It can be easily achieved using with_options.
+3.0.0 :001 > cust = Customr.new
+ => 
+#<Customr:0x000055682e17bec0
+...                         
+3.0.0 :002 > cust.valid?
+ => true 
+ 3.0.0 :005 > cust.name = "sam"
+ => "sam" 
+3.0.0 :006 > cust.valid?
+ => false 
+
+ 4 Combining Validation Conditions
+
+For multiple conditions define whether or not a validation should happen, an Array can be used. 
+Can apply both :if and :unless to the same validation.
+
+3.0.0 :006 > ord.valid?
+ => false 
+3.0.0 :007 > ord.errors.messages
+ => {:customer_id=>["10 not to be used"]} 
+3.0.0 :008 > ord.customer_id = 60
+ => 60 
+3.0.0 :009 > ord.valid?
+ => true 
+ 3.0.0 :013 > ord.amount = 60
+ => 60 
+3.0.0 :014 > ord.valid?
+ => false 
+3.0.0 :015 > ord.errors.messages
+ => {:customer_id=>["must be other than 60"]} 
 
 
 

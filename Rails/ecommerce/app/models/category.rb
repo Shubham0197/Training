@@ -1,4 +1,8 @@
 class Category < ApplicationRecord
   validates :name , inclusion: {in: ["clothes", "electronics"]}
-  validates :description, absence: true
+  validates :description, presence: true, if: :description?
+
+  def description?
+    description =~ /[\w]+/
+  end
 end
