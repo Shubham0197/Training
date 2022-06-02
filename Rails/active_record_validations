@@ -317,6 +317,17 @@ By default, numericality does not allow nil values. You can use allow_nil: true 
 The following methods skip validations, and will save the object to the database regardless of its validity. They should be used with caution.
 
 decrement!
+3.0.0 :009 > wallet.decrement!(:amount,1)
+  Wallet Update All (1.0ms)  UPDATE "wallets" SET "amount" = COALESCE("amount", 0) + $1, "lock_version" = COALESCE("lock_version", 0) + $2 WHERE "wallets"."id" IS NULL  [["amount", 98.0], ["lock_version", 1]]
+ => 
+#<Wallet:0x00005589cb9dd118
+ id: nil,
+ name: nil,
+ amount: 98.0,
+ lock_version: 1,
+ type: nil,
+ created_at: nil,
+ updated_at: nil>
 decrement_counter
 increment!
 increment_counter

@@ -18,4 +18,16 @@ class ProductOption < ApplicationRecord
   include ActiveModel::Validations
   validates_with MyValidator
   validates :product_option, Word: true 
+
+  before_create do 
+    puts "Hello before create here"
+  end
+ 
+  after_create :print_after
+  private
+    def print_after
+      puts "Hello after create here"
+    end
+
 end
+

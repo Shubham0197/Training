@@ -1,0 +1,18 @@
+Active Record Callbacks
+The Object Life Cycle
+objects may be created, updated, and destroyed. Active Record provides hooks into this object life cycle
+Callbacks allow to trigger logic before or after an alteration of an object's state.
+
+Callbacks Overview
+In order to use the available callbacks, you need to register them. You can implement the callbacks as ordinary methods and use a macro-style class method to register them as callbacks
+The macro-style class methods can also receive a block. Consider using this style if the code inside your block is so short that it fits in a single line
+It is considered good practice to declare callback methods as private. If left public, they can be called from outside of the model and violate the principle of object encapsulation.
+Callbacks can also be registered to only fire on certain life cycle events
+
+3.0.0 :005 > po.save!
+Hello before create here
+  TRANSACTION (0.2ms)  BEGIN                              
+  ProductOption Create (1.8ms)  INSERT INTO "product_options" ("product_option", "product_id") VALUES ($1, $2)  [["product_option", "Mobile"], ["product_id", nil]]        
+Hello after create here                                   
+  TRANSACTION (0.6ms)  COMMIT                             
+ => true 
