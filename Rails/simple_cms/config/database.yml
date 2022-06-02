@@ -82,5 +82,3 @@ test:
 production:
   <<: *default
   database: simple_cms_production
-  username: simple_cms
-  password: <%= ENV["SIMPLE_CMS_DATABASE_PASSWORD"] %>
