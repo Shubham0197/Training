@@ -328,6 +328,7 @@ decrement!
  type: nil,
  created_at: nil,
  updated_at: nil>
+ 
 decrement_counter
 increment!
 increment_counter

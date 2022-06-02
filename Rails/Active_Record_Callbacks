@@ -16,3 +16,38 @@ Hello before create here
 Hello after create here                                   
   TRANSACTION (0.6ms)  COMMIT                             
  => true 
+
+
+ Available Callbacks
+ list with all the available Active Record callbacks, 
+ listed in the same order in which they will get called during the respective operations
+
+1 Creating an Object
+
+before_validation- 
+after_validation-
+Defines a callback that will get called right after or before validation.
+Runs 
+3.0.0 :007 > po = ProductOption.new
+ => #<ProductOption:0x00007f7d10a036a8 product_option: nil, product_id: nil> 
+3.0.0 :008 > po.product_option= "Mobile"
+ => "Mobile" 
+ 3.0.0 :009 > po.valid?
+Before validation
+ => true  
+ 3.0.0 :010 > po.product_option
+ => "MOBILE" 
+before_save-
+around_save-
+before_create-
+around_create-
+after_create-
+after_save-
+after_commit / after_rollback-
+
+
+
+
+
+
+

@@ -18,6 +18,13 @@ class ProductOption < ApplicationRecord
   include ActiveModel::Validations
   validates_with MyValidator
   validates :product_option, Word: true 
+  before_validation do 
+    puts "Before validation"
+  end
+
+  after_validation do 
+    product_option.upcase!
+  end
 
   before_create do 
     puts "Hello before create here"
