@@ -1,2 +1,1374 @@
   [1m[35m (60.5ms)[0m  [1m[35mCREATE DATABASE "simple_cms_development" ENCODING = 'unicode'[0m
   [1m[35m (25.5ms)[0m  [1m[35mCREATE DATABASE "simple_cms_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2022-06-02 22:51:59 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1077)
+  Rendered layout layouts/application.html.erb (Duration: 117.4ms | Allocations: 89349)
+Completed 200 OK in 125ms (Views: 120.2ms | ActiveRecord: 0.0ms | Allocations: 95770)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:52:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2387)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2467)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2770)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Demo#hello</h1>
+<p>Find me in app/views/demo/hello.html.erb</p>
+
+<% target = "World"%>
+<%= "Hello #{target}"%>
+
+<%@array.each |a|%>
+<p><%= a %> </p>
+<% end%>
+):
+1:    <h1>Demo#hello</h1>
+2:    <p>Find me in app/views/demo/hello.html.erb</p>
+3:    
+4:    <% target = "World"%>
+5:    <%= "Hello #{target}"%>
+6:    
+7:    <%@array.each |a|%>
+8:    <p><%= a %> </p>
+9:    <% end%>
+  
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:52:36 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1153)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1233)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2099)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Demo#hello</h1>
+<p>Find me in app/views/demo/hello.html.erb</p>
+
+<% target = "World"%>
+<%= "Hello #{target}"%>
+
+<%@array.each |a|%>
+<p><%= a %> </p>
+<%end%>
+):
+1:    <h1>Demo#hello</h1>
+2:    <p>Find me in app/views/demo/hello.html.erb</p>
+3:    
+4:    <% target = "World"%>
+5:    <%= "Hello #{target}"%>
+6:    
+7:    <%@array.each |a|%>
+8:    <p><%= a %> </p>
+9:    <%end%>
+  
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:52:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1143)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1223)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1508)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Demo#hello</h1>
+<p>Find me in app/views/demo/hello.html.erb</p>
+
+<% target = "World"%>
+<%= "Hello #{target}"%>
+
+<%@array.each |a|%>
+<p><%= a %> </p>
+<%end%>
+):
+1:    <h1>Demo#hello</h1>
+2:    <p>Find me in app/views/demo/hello.html.erb</p>
+3:    
+4:    <% target = "World"%>
+5:    <%= "Hello #{target}"%>
+6:    
+7:    <%@array.each |a|%>
+8:    <p><%= a %> </p>
+9:    <%end%>
+  
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting end-of-input
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:52:58 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1608)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1688)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2558)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <%@array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:00 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1365)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1444)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1728)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <%@array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1442)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1724)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <%@array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:12 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1552)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1631)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2496)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:13 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1442)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1725)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:14 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1442)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1724)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:14 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1362)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1440)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1722)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:14 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1362)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1440)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1722)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:30 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2004)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2083)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2948)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:31 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1814)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 1892)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2175)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1812)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1890)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2172)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1812)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1890)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2172)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1812)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 1890)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2172)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1823)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1909)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2199)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1824)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 2023)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 4231)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:53:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1823)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2585)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 3874)
+
+
+  
+ActionView::Template::Error (undefined method `each' for 4:Integer):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% 1..4.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:54:05 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.4ms | Allocations: 214)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 3007)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 3910)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:54:30 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1523)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1602)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2503)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:54:30 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1442)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1724)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <%end%>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:00 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1553)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 1632)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2497)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1442)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1725)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1362)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1440)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1722)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1362)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1440)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1722)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1362)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1440)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1722)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:01 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1373)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1611)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2937)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:02 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1442)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1724)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:02 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1367)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1524)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2005)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:02 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1364)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1442)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1724)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @array.each do |a|%>
+    8: <p><%= a %> </p>
+    9: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:21 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1154)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1234)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2100)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Demo#hello</h1>
+<p>Find me in app/views/demo/hello.html.erb</p>
+
+<% target = "World"%>
+<%= "Hello #{target}"%>
+
+<% 4.times do |a|%>
+<p><%= a,@array %> </p>
+<% end %>
+):
+1:    <h1>Demo#hello</h1>
+2:    <p>Find me in app/views/demo/hello.html.erb</p>
+3:    
+4:    <% target = "World"%>
+5:    <%= "Hello #{target}"%>
+6:    
+7:    <% 4.times do |a|%>
+8:    <p><%= a,@array %> </p>
+9:    <% end %>
+  
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:9: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:9: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:9: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:9: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:9: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:9: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:11: syntax error, unexpected `end', expecting ')'
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:55:41 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.4ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 14197)
+Completed 200 OK in 11ms (Views: 10.7ms | ActiveRecord: 0.0ms | Allocations: 15099)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:56:06 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 207)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 2992)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 3894)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:56:07 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.0ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2513)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 2832)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:18 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 220)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 14119)
+Completed 200 OK in 11ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 15051)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:18 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.0ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2505)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 2823)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2513)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 2831)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2515)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 2833)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 2509)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms | Allocations: 2828)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.2ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2532)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 2850)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2507)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2826)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2523)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2841)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:36 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.5ms | Allocations: 234)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3011)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3912)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2526)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 2845)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2525)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2843)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2521)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2839)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2509)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2827)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2519)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2837)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:38 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2511)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2829)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:38 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2515)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2833)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:58:48 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1572)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1651)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2521)
+
+
+  
+ActionView::Template::Error (undefined method `times' for nil:NilClass):
+    4: <% target = "World"%>
+    5: <%= "Hello #{target}"%>
+    6: 
+    7: <% @numb.times do |a|%>
+    8: <p><%= @array_number %> </p>
+    9: <p><%= "#{@numb}" %> </p>
+   10: <% end %>
+  
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:59:32 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1169)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1249)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2116)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Demo#hello</h1>
+<p>Find me in app/views/demo/hello.html.erb</p>
+
+<% target = "World"%>
+<%= "Hello #{target}"%>
+
+<% 4.times do |a|%>
+<p><%= a,@array_number %> </p>
+<p><%= "#{@numb}" %> </p>
+<% end %>
+):
+1:    <h1>Demo#hello</h1>
+2:    <p>Find me in app/views/demo/hello.html.erb</p>
+3:    
+4:    <% target = "World"%>
+5:    <%= "Hello #{target}"%>
+6:    
+7:    <% 4.times do |a|%>
+8:    <p><%= a,@array_number %> </p>
+9:    <p><%= "#{@numb}" %> </p>
+10:    <% end %>
+  
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:12: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:12: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:12: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:12: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:12: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:8: syntax error, unexpected ')', expecting '='
+app/views/demo/hello.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/demo/hello.html.erb:12: syntax error, unexpected `end', expecting ')'
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:59:43 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1159)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1238)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2106)
+
+
+  
+ActionView::Template::Error (nil can't be coerced into Integer):
+     5: <%= "Hello #{target}"%>
+     6: 
+     7: <% 4.times do |a|%>
+     8: <p><%= a+@array_number %> </p>
+     9: <p><%= "#{@numb}" %> </p>
+    10: <% end %>
+  
+app/views/demo/hello.html.erb:8:in `+'
+app/views/demo/hello.html.erb:8
+app/views/demo/hello.html.erb:7:in `times'
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:59:44 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.3ms | Allocations: 950)
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | Allocations: 1028)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1311)
+
+
+  
+ActionView::Template::Error (nil can't be coerced into Integer):
+     5: <%= "Hello #{target}"%>
+     6: 
+     7: <% 4.times do |a|%>
+     8: <p><%= a+@array_number %> </p>
+     9: <p><%= "#{@numb}" %> </p>
+    10: <% end %>
+  
+app/views/demo/hello.html.erb:8:in `+'
+app/views/demo/hello.html.erb:8
+app/views/demo/hello.html.erb:7:in `times'
+app/views/demo/hello.html.erb:7
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 22:59:56 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.8ms | Allocations: 228)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 3033)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 3934)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 23:00:17 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 609)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3103)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 3475)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:19 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2520)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 2841)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:45 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 13802)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 14568)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:46 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2520)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 2839)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:46 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 2518)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 2836)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:47 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2522)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 2840)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:47 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.0ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2520)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 2838)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:47 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2528)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2846)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:00:48 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 2524)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 2842)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:01:48 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.1ms | Allocations: 742)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 14727)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms | Allocations: 15660)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:01:49 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.2ms | Allocations: 107)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 2605)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 2923)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 23:01:51 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 240)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2740)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms | Allocations: 3118)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 23:06:25 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 653)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 14639)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 15688)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 23:06:25 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 100)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2588)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 2908)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 23:06:26 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 100)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 2592)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2912)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:06:27 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 354)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2846)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 3167)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:06:37 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 483)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3264)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 4165)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:06:38 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 236)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2736)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 3113)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:07:14 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.4ms | Allocations: 200)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2690)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 3011)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:08:42 +0530
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 7.1. (called from block in <main> at /home/itsacheckmate/Training/Rails/simple_cms/config/routes.rb:6)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 7.1. (called from block in <main> at /home/itsacheckmate/Training/Rails/simple_cms/config/routes.rb:6)
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 545)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 14329)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 15102)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:08:45 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 101)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | Allocations: 2599)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 2919)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:08:46 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 101)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 2589)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2909)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:08:47 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 203)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2693)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 3014)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:08:50 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 101)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2585)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2908)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:09:34 +0530
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 7.1. (called from block in <main> at /home/itsacheckmate/Training/Rails/simple_cms/config/routes.rb:6)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 7.1. (called from block in <main> at /home/itsacheckmate/Training/Rails/simple_cms/config/routes.rb:6)
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 567)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 14262)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 15030)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:09:35 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 107)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2609)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 2929)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:09:38 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.4ms | Allocations: 203)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2715)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3036)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:09:39 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 107)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2621)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2944)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:10:02 +0530
+DEPRECATION WARNING: Using a dynamic :controller segment in a route is deprecated and will be removed in Rails 7.1. (called from block in <main> at /home/itsacheckmate/Training/Rails/simple_cms/config/routes.rb:6)
+DEPRECATION WARNING: Using a dynamic :action segment in a route is deprecated and will be removed in Rails 7.1. (called from block in <main> at /home/itsacheckmate/Training/Rails/simple_cms/config/routes.rb:6)
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.7ms | Allocations: 660)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 14345)
+Completed 200 OK in 10ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 15114)
+
+
+Started GET "/demo/index/1?name=sam" for 127.0.0.1 at 2022-06-02 23:10:03 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"name"=>"sam", "id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 108)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 2610)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 2933)
+
+
+Started GET "/demo/index/1?name=sam" for 127.0.0.1 at 2022-06-02 23:13:23 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/demo/index/1"):
+  
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:13:31 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.0ms | Allocations: 925)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 14911)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 15929)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:13:33 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 359)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 2845)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3222)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:13:35 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.3ms | Allocations: 202)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2678)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3014)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:13:37 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 195)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2689)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 3012)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:13:38 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.3ms | Allocations: 202)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2674)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 3009)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-02 23:13:40 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 195)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2699)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 3022)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-02 23:13:41 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.5ms | Allocations: 200)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2684)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 3023)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:14:32 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 381)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3156)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 4175)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-02 23:14:35 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.2ms | Allocations: 510)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2979)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 3368)
+
+
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8363530219080587145)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220602180522)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "content_users" ("id" bigserial primary key, "name" character varying, "mobile" character varying, "email" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220602180522"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-06-02 18:07:02.178482"], ["updated_at", "2022-06-02 18:07:02.178482"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8363530219080587145)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

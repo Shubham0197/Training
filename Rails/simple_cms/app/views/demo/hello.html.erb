@@ -4,6 +4,16 @@
 <% target = "World"%>
 <%= "Hello #{target}"%>
 
-<%1..4.each |a|%>
+<% 4.times do |a|%>
 <p><%= a %> </p>
-<% end%>
+<p><%= @numb %> </p>
+<% end %>
+
+<%= link_to("Index",{:action => 'index'})%>
+
+</br>
+<%= link_to("Index_params",{:action => 'index',:id => 1, :name => 'sam'})%>
+id = <%= @id%>
+id = <%= params['id']%>
+name = <%= @name%>
+
