@@ -94,18 +94,111 @@ now after the associations are give it will not add new record of object with ou
 3.0.0 :021 > product.save!
 /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in `raise_validation_error': Validation failed: Category must exist (ActiveRecord::RecordInvalid)   
 
+Appending to the category new associations
+
+3.0.0 :022 > category.products << product
+  TRANSACTION (0.1ms)  BEGIN
+  Product Create (0.2ms)  INSERT INTO "products" ("name", "price", "category_id", "description") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Mobile MI"], ["price", "100.0"], ["category_id", 1], ["description", nil]]                  
+  TRANSACTION (6.6ms)  COMMIT                               
+  Product Load (0.1ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]   
+ =>                                                         
+[#<Product:0x0000561e6ccfdb78                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>,
+ #<Product:0x0000561e6d567480
+  id: 5,
+  name: "Mobile MI",
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>,
+ #<Product:0x0000561e6cd87710
+  id: nil,
+  name: nil,
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>,
+ #<Product:0x00007f2c049f86c0
+  id: nil,
+  name: nil,
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>] 
+
+  To check whether if the associations has empty belongs_to
+  3.0.0 :023 > category.products.empty?
+ => false
+but when created new it shows empty? = true
+ 3.0.0 :025 > category2.products.empty?
+  Product Exists? (0.3ms)  SELECT 1 AS one FROM "products" WHERE "products"."category_id" = $1 LIMIT $2  [["category_id", 2], ["LIMIT", 1]]                                         
+ => true   
 
 
+To see all the associations use of size options
+
+3.0.0 :026 > category2.products.size
+  Product Count (2.4ms)  SELECT COUNT(*) FROM "products" WHERE "products"."category_id" = $1  [["category_id", 2]]      
+ => 0                                                       
+3.0.0 :027 > category.products.size
+ => 4 
+
+To see all the associations of the category in prodcts table record
+
+3.0.0 :028 > category.products.all
+  Product Load (0.2ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]   
+ =>                                                         
+[#<Product:0x0000561e6dbe3688                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,                                        
+ #<Product:0x0000561e6dbe3390                               
+  id: 5,                                                    
+  name: "Mobile MI",                                        
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>] 
 
 
+Above method will give the array of records if saved in different variable 
 
+3.0.0 :032 > product_electronics = category.products.all
+  Product Load (0.3ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]   
+ =>                                                         
+[#<Product:0x0000561e6d5fdb10                               
+... 
 
+3.0.0 :044 > product_electronics.class
+ => Product::ActiveRecord_AssociationRelation 
 
+but if used first option
 
+3.0.0 :045 > product_electronics = category.products.all.fir
+st
+  Product Load (0.2ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1 ORDER BY "products"."id" ASC LIMIT $2  [["category_id", 1], ["LIMIT", 1]]           
+ =>                                                         
+#<Product:0x00007f2c04bfd1c8                                
+...  
 
+it will create object with product class
+3.0.0 :046 > product_electronics.class
+ => Product(id: integer, name: text, price: decimal, category_id: integer, description: string) 
+ all variables  are directly accessible
 
-
-
+3.0.0 :047 > category2.products.create(:name => "Jeans")
+  TRANSACTION (0.1ms)  BEGIN
+  Product Create (0.2ms)  INSERT INTO "products" ("name", "price", "category_id", "description") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Jeans"], ["price", "100.0"], ["category_id", 2], ["description", nil]]                      
+  TRANSACTION (6.6ms)  COMMIT                               
+ =>                                                         
+#<Product:0x0000561e6dc300f0                                
+ id: 6,                                                     
+ name: "Jeans",                                             
+ price: 0.1e3,                                              
+ category_id: 2,                                            
+ description: nil> 
 
 
 
