@@ -7,4 +7,5 @@ class Product < ApplicationRecord
     end
   end
   
+  belongs_to :category
 end

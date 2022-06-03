@@ -33,7 +33,66 @@ A has_many :through association is often used to set up a many-to-many connectio
 This association indicates that the declaring model can be matched with zero or more instances of another model by proceeding through a third model.
 
 
+Can break all object relation with each other
 
+## belongs to
+gives foreign key
+t.belongs_to :table_name
+t.references :table_name 
+
+belongs_to is singular so have to give table name singular
+
+post.author / reads the author that post belongs to 
+post.author = / assigns the author that post will belong to or set the author
+will gives the category id by default to products while ceating new object of product
+3.0.0 :011 > product = category.products.new
+ => 
+#<Product:0x00007f2c049f86c0                                
+...  
+3.0.0 :013 > product
+ => 
+#<Product:0x0000561e6ccfdb78                                
+ id: nil,                                                   
+ name: nil,                                                 
+ price: 0.1e3,                                              
+ category_id: 1,                                            
+ description: nil>
+
+ 3.0.0 :018 > Product.all
+  Product Load (0.2ms)  SELECT "products".* FROM "products"
+ =>                                                         
+[#<Product:0x0000561e6dbc0a48                               
+  id: 1,                                                    
+  name: nil,                                                
+  price: 0.12334e3,                                         
+  category_id: nil,       
+  description: nil>,      
+ #<Product:0x0000561e6dbc0908
+  id: 2,                  
+  name: nil,              
+  price: 0.12334e3,
+  category_id: nil,
+  description: nil>,
+ #<Product:0x0000561e6dbc0840
+  id: 3,
+  name: nil,
+  price: 0.12212e3,
+  category_id: nil,
+  description: nil>,
+ #<Product:0x0000561e6dbc0778
+  id: 4,
+  name: "mobile",
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>] 
+
+
+now after the associations are give it will not add new record of object with out category id
+
+3.0.0 :020 > product.name = "Mobile MI"
+ => "Mobile MI" 
+3.0.0 :021 > product.save!
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in `raise_validation_error': Validation failed: Category must exist (ActiveRecord::RecordInvalid)   
 
 
 

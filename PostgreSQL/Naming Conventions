@@ -8,4 +8,5 @@ Taking Database Backup
 postgres@itsacheckmate:/home/itsacheckmate/Training/PostgreSQL$ pg_dump library > library.sql
 
 Restore Backup
-pg_dump library < library.sql
+create database
+psql library < library.sql

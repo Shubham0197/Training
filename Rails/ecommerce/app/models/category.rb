@@ -5,4 +5,6 @@ class Category < ApplicationRecord
   def description?
     description =~ /[\w]+/
   end
+
+  has_many :products
 end
