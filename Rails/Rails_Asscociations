@@ -343,12 +343,56 @@ reload option
 
   so got the new data
 
+2 Avoiding Name Collisions
+It is a bad idea to give an association a name that is already used for an instance method of ActiveRecord::Base. 
+The association method would override the base method and break things. 
+For instance, attributes or connection are bad names for associations.
+
+3 Updating the Schema
+Responsible for maintaining your database schema to match your associations.
+Like
+1. For belongs_to associations you need to create foreign keys
+2. for has_and_belongs_to_many associations you need to create the appropriate join table
+
+1 Creating Foreign Keys for belongs_to Associations
+When you declare a belongs_to association, you need to create foreign keys as appropriate. 
+either when creating table via t.refrence :table_name
+or add through migrations
+add_reference :table_name, :table_name
+
+It only creates for rails 
+So ,if you wish to enforce referential integrity at the database level, add the foreign_key: true option to the ‘reference’ column declarations above.
+
+2 Creating Join Tables for has_and_belongs_to_many Associations
+For a has_and_belongs_to_many association, you need to explicitly create the joining table
+Unless the name of the join table is explicitly specified by using the :join_table option, 
+Active Record creates the name by using the lexical order of the class names. 
+So a join between author and book models will give the default join table name of "authors_books" because "a" outranks "b" in lexical ordering.
+So we  must manually generate the join table with an appropriate migration.And this his table should be created without a primary key.
+
+class CreateAssembliesPartsJoinTable < ActiveRecord::Migration[7.0]
+  def change
+    create_table :assemblies_parts, id: false do |t|
+      t.bigint :assembly_id
+      t.bigint :part_id
+    end
+
+    add_index :assemblies_parts, :assembly_id
+    add_index :assemblies_parts, :part_id
+  end
+end
+
+We pass id: false to create_table because that table does not represent a model. 
+That's required for the association to work properly. 
+
+4 Controlling Association Scope
+
+By default, associations look for objects only within the current module's scope. This can be important when you declare Active Record models within a module
+To associate a model with a model in a different namespace, you must specify the complete class name in your association declaration like
+class_name: "MyApplication::Billing::Account"
 
 
-
-
-
-
+5 Bi-directional Associations
 
 
 
