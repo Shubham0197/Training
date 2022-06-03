@@ -200,13 +200,148 @@ it will create object with product class
  category_id: 2,                                            
  description: nil> 
 
+Delete the assiciations only
+3.0.0 :051 > category2.products.delete(1)
+  Product Delete All (0.7ms)  DELETE FROM "products" WHERE "products"."category_id" = $1 AND "products"."id" = $2  [["category_id", 2], ["id", 1]]                                  
+ => 0                                                       
+3.0.0 :052 > category2.products.delete(6)
+  Product Delete All (6.9ms)  DELETE FROM "products" WHERE "products"."category_id" = $1 AND "products"."id" = $2  [["category_id", 2], ["id", 6]]                                  
+ => 1     
+
+ 3 Tips, Tricks, and Warnings
+  know to make efficient use of Active Record associations
+
+Controlling caching
+Avoiding name collisions
+Updating the schema
+Controlling association scope
+Bi-directional associations                                                  
+
+1 Controlling Caching
+All of the association methods are built around caching, which keeps the result of the most recent query available for further operations. 
+The cache is even shared across methods.
+
+If there some changes int he database but the data we have asscessed have been cached we want to get the latest cope instead of cached one we will use 
+reload option
+3.0.0 :053 > category.products.load
+ => 
+[#<Product:0x0000561e6ccfdb78                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,                                        
+ #<Product:0x0000561e6d567480                               
+  id: 5,                                                    
+  name: "Mobile MI",                                        
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,
+3.0.0 :054 > category.products.load
+ => 
+[#<Product:0x0000561e6ccfdb78                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,                                        
+ #<Product:0x0000561e6d567480                               
+  id: 5,                                                    
+  name: "Mobile MI",                                        
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,
+  id: nil,
+  price: 0.1e3,
+  description: nil>,
+ #<Product:0x00007f2c049f86c0
+  id: nil,
+  name: nil,
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>] 
+
+## Added new object
+
+3.0.0 :002 > category.products.create(:name => "Earphone")
+  TRANSACTION (0.1ms)  BEGIN
+  Product Create (0.2ms)  INSERT INTO "products" ("name", "price", "category_id", "description") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Earphone"], ["price", "100.0"], ["category_id", 1], ["description", nil]]                   
+  TRANSACTION (6.5ms)  COMMIT                               
+ =>                                                         
+#<Product:0x000055af9dcf4fc0                                
+ id: 7,                                                     
+ name: "Earphone",                                          
+ price: 0.1e3,                                              
+ category_id: 1,                                            
+ description: nil>
+
+## but load still is cached 
+##so have to reload
+
+3.0.0 :053 > category.products.load
+ => 
+[#<Product:0x0000561e6ccfdb78                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,                                        
+ #<Product:0x0000561e6d567480                               
+  id: 5,                                                    
+  name: "Mobile MI",                                        
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,
+3.0.0 :054 > category.products.load
+ => 
+[#<Product:0x0000561e6ccfdb78                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,                                        
+ #<Product:0x0000561e6d567480                               
+  id: 5,                                                    
+  name: "Mobile MI",                                        
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,
+  id: nil,
+  price: 0.1e3,
+  description: nil>,
+ #<Product:0x00007f2c049f86c0
+  id: nil,
+  name: nil,
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>] 
+
+  ## After reloading got new data
 
 
+3.0.0 :055 > category.products.reload
+  Product Load (0.2ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]   
+ =>                                                         
+[#<Product:0x0000561e6d3ecdf8                               
+  id: 4,                                                    
+  name: "mobile",                                           
+  price: 0.1e3,                                             
+  category_id: 1,                                           
+  description: nil>,                                        
+ #<Product:0x0000561e6d3ecc68                               
+  id: 5,                                                    
+  name: "Mobile MI",                                        
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>,
+ #<Product:0x0000561e6d3ecad8
+  id: 7,
+  name: "Earphone",
+  price: 0.1e3,
+  category_id: 1,
+  description: nil>] 
 
-
-
-
-
+  so got the new data
 
 
 
