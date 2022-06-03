@@ -411,27 +411,111 @@ class Author < ApplicationRecord
 end
 
 and the association will make sense for rails.
+---------------------------------------------------------------------------------------------
+1 belongs_to Association
+belongs_to association says that this model's table contains a column which represents a reference to another table. 
+1 Methods Added by belongs_to
+the declaring class automatically gains 8 methods related to the association
+association
+association=(associate)
+build_association(attributes = {})
+create_association(attributes = {})
+create_association!(attributes = {})
+reload_association
+association_changed?
+association_previously_changed?
+In all of these methods, association is replaced with the symbol passed as the first argument to belongs_to. so in case of  belongs_to :author
+the methods becomes 
+
+author
+author=
+build_author
+create_author
+create_author!
+reload_author
+author_changed?
+author_previously_changed?
+
+1 association- 
+The association method returns the associated object
+3.0.0 :003 > category2.products
+  Product Load (0.3ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 2]]
+ => []                                                               
+3.0.0 :004 > 
+2 association=(associate)
+The association= method assigns an associated object to this object.
+3.0.0 :013 > product1.category= category2
+ => #<Category:0x0000558fc833c6d0 id: 2, name: "clothes", description: nil>
+ 3.0.0 :014 > product1
+ => #<Product:0x0000558fc82d4cb0 id: 2, name: nil, price: 0.12334e3, category_id: 2, description: nil>  
+
+3 build_association(attributes = {})
+The build_association method returns a new object of the associated type. But does not save the onbject will have to save using save method
 
 
+3.0.0 :028 > category = product1.build_category(name: "computers")
+ => #<Category:0x00007f4b285418c8 id: nil, name: "computers", description: nil> 
+
+4 create_association(attributes = {})
+it returns a new object of the associated type.  And also save the object by default.if any validaton fails
+will only retun object but not any error
+3.0.0 :032 > category = product1.create_category(name: "computers")
+ => #<Category:0x00007f4b284fc610 id: nil, name: "computers", description: nil> 
+validation failed
+
+3.0.0 :033 > category = product1.create_category(name: "electronics")
+  TRANSACTION (0.1ms)  BEGIN
+  Category Create (7.4ms)  INSERT INTO "categories" ("name", "description") VALUES ($1, $2) RETURNING "id"  [["name", "electronics"], ["description", nil]]                                          
+  TRANSACTION (0.9ms)  COMMIT                                              
+ => #<Category:0x0000558fc8211e90 id: 3, name: "electronics", description: nil> 
 
 
+5 create_association!(attributes = {})
+Does the same as create_association above, but raises ActiveRecord::RecordInvalid if the record is invalid.
+3.0.0 :034 > category = product1.create_category!(name: "computers")
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/associations/singular_association.rb:60:in `_create_record': Validation failed: Name is not included in the list (ActiveRecord::RecordInvalid)
+3.0.0 :035 > category = product1.create_category!(name: "electronics")
+  TRANSACTION (0.2ms)  BEGIN
+  Category Create (0.3ms)  INSERT INTO "categories" ("name", "description") VALUES ($1, $2) RETURNING "id"  [["name", "electronics"], ["description", nil]]
+  TRANSACTION (1.4ms)  COMMIT
+ => #<Category:0x00007f4b285d1338 id: 4, name: "electronics", description: nil> 
+ 
+6 association_changed?
+The association_changed? method returns true if a new associated object has been assigned and the foreign key will be updated in the next save.
+3.0.0 :020 > category1 = Category.find(1)
+  Category Load (0.3ms)  SELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                                     
+ => #<Category:0x00007f4b28664138 id: 1, name: "electronics", description: nil> 
+ 3.0.0 :021 > product1.category_changed?
+ => false 
+ 3.0.0 :022 > product1.category= category1
+ => #<Category:0x00007f4b28664138 id: 1, name: "electronics", description: nil> 
+3.0.0 :023 > product1.category_changed?
+ => true 
+ 3.0.0 :024 > product1.save!
+  TRANSACTION (0.4ms)  BEGIN
+  Product Update (0.7ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."id" = $2  [["category_id", 1], ["id", 2]]                                                            
+  TRANSACTION (6.8ms)  COMMIT                                   
+ => true                                                        
+3.0.0 :025 > product1.category_changed?
+ => false 
 
+7 association_previously_changed?
+The association_previously_changed? method returns true if the previous save updated the association to reference a new associate object.
+3.0.0 :014 > product1.category= category2
+ => #<Category:0x0000558fc833c6d0 id: 2, name: "clothes", description: nil> 
+3.0.0 :015 > product1.save!
+ => true 
+3.0.0 :016 > product1.category_previously_changed?
+ => true 
+3.0.0 :017 > product1.category= category2
+ => #<Category:0x0000558fc833c6d0 id: 2, name: "clothes", description: nil> 
+3.0.0 :018 > product1.save!
+ => true 
+3.0.0 :019 > product1.category_previously_changed?
+ => false 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+8 reload_Associations
+It reloads the cache and get the latest data from the database .
 
 
 
