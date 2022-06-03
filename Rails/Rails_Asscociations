@@ -393,10 +393,24 @@ class_name: "MyApplication::Billing::Account"
 
 
 5 Bi-directional Associations
+For working of associations to work it needs to declaration on two different models for the association to make sense
+Active Record supports automatic identification for most associations with standard names. 
+However, Active Record will not automatically identify bi-directional associations that contain the :through or :foreign_key options
 
+class Author < ApplicationRecord
+  has_many :books
+end
 
+class Book < ApplicationRecord
+  belongs_to :writer, class_name: 'Author', foreign_key: 'author_id'
+end
 
+as the :write is given so author to book associations is not ok but book to author is  so have  to specify in author that book will look for :writer with the help of inverse_of :writer option
+class Author < ApplicationRecord
+  has_many :books, inverse_of: 'writer'
+end
 
+and the association will make sense for rails.
 
 
 
