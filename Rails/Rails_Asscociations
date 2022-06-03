@@ -479,7 +479,7 @@ Does the same as create_association above, but raises ActiveRecord::RecordInvali
   Category Create (0.3ms)  INSERT INTO "categories" ("name", "description") VALUES ($1, $2) RETURNING "id"  [["name", "electronics"], ["description", nil]]
   TRANSACTION (1.4ms)  COMMIT
  => #<Category:0x00007f4b285d1338 id: 4, name: "electronics", description: nil> 
- 
+
 6 association_changed?
 The association_changed? method returns true if a new associated object has been assigned and the foreign key will be updated in the next save.
 3.0.0 :020 > category1 = Category.find(1)
@@ -518,11 +518,28 @@ The association_previously_changed? method returns true if the previous save upd
 It reloads the cache and get the latest data from the database .
 
 
+## Options for belongs_to
 
+when to customize the behavior of the belongs_to association reference have to pass options to do 
+different from default behaviour 
+Which can be done by passing options and scope blocks while creating the association.
 
+The belongs_to association supports these options:
 
+:autosave
+:class_name
+:counter_cache
+:dependent
+:foreign_key
+:primary_key
+:inverse_of
+:polymorphic
+:touch
+:validate
+:optional
 
-
-
-
+1 :autosave
+Rails will save any loaded association members and destroy members that are marked for destruction whenever you save the parent object.
+:autosave to false is not the same as not setting the :autosave option
+If the option is not present, then new associated objects will be saved, but updated associated objects will not be saved.
 
