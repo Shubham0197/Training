@@ -549,3 +549,30 @@ Rails will save any loaded association members and destroy members that are mark
 :autosave to false is not the same as not setting the :autosave option
 If the option is not present, then new associated objects will be saved, but updated associated objects will not be saved.
 
+2. :class_name
+:class_name option to supply the model name if the name of the other model cannot be derived from the association name
+3.0.0 :006 > cert = Certified.find(1)
+  Certified Load (0.5ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                              
+ =>                                         
+#<Certified:0x0000558200d7ab40              
+... 
+3.0.0 :007 > cert.pilots
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                  
+ =>                                         
+#<Employee:0x0000558201258400               
+ id: 1,
+ name: "Ajay",
+ salary: 30000,
+ mobile_number: "123456789",
+ DOB: nil,
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00> 
+
+3. foreign_key
+By convention, Rails assumes that the column used to hold the foreign key on this model is the name of the association with the suffix _id added.
+ The :foreign_key option lets you set the name of the foreign key directly.
+ rails donot create foreign key by default migrations do so have to do it manually .
+
+
+
+
