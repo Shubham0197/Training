@@ -623,5 +623,26 @@ destroy will delete current record and associated record (Has callback)
   Employee Destroy (1.2ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 1]]
   TRANSACTION (0.1ms)  ROLLBACK 
 
+6. :primary_key
+It is the option given if the primary key is not the default one.
+but the foreign key is default used ie tablename_id if no foreign key option is used to specify different one.
 
+7. :inverse_of
+it is just used to specify the table on the other side 
 
+8. :optional
+it by default false but when set to true it will let object creation without the need of associated object
+9. :validate
+it is false by default when set to true it will validate the new associated object before saving 
+
+10. :touch
+will update the updated time if the associated object is updated or deleted and can also specify the 
+aby other colummn to be updated if the default column is not to be used
+  TRANSACTION (0.2ms)  BEGIN
+  Aircraft Load (0.4ms)  SELECT "aircrafts".* FROM "aircrafts" WHERE "aircrafts"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                  
+  Certified Update (0.6ms)  UPDATE "certifieds" SET "employee_id" = $1, "updated_at" = $2 WHERE "certifieds"."id" = $3  [["employee_id", 4], ["updated_at", "2022-06-06 13:40:48.889935"], ["id", 2]]
+  Employee Update All (0.2ms)  UPDATE "employees" SET "count_of_pilots" = COALESCE("count_of_pilots", 0) + $1 WHERE "employees"."id" = $2  [["count_of_pilots", 1], ["id", 4]]  
+  Employee Update All (0.1ms)  UPDATE "employees" SET "count_of_pilots" = COALESCE("count_of_pilots", 0) - $1 WHERE "employees"."id" = $2  [["count_of_pilots", 1], ["id", 2]]  
+  Aircraft Update (0.1ms)  UPDATE "aircrafts" SET "updated_at" = $1 WHERE "aircrafts"."id" = $2  [["updated_at", "2022-06-06 13:40:48.895413"], ["id", 1]]                      
+  TRANSACTION (0.3ms)  COMMIT                               
+ => true  
