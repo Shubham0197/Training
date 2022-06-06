@@ -3,7 +3,9 @@ class Customr < ApplicationRecord
 #    customer.validates :email_address, format: { with: /\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})/ }
 #  end
   has_many :orders, as: :orderable
-
+  
+  has_one :wallet
+  
   def name_valid?
     !name.blank?
   end

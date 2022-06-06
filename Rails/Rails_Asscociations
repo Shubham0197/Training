@@ -670,3 +670,136 @@ or
       t.bigint  :reviewable_id
       t.string  :reviewable_type
 
+-------------------------------------------------------------------------------------------
+
+## Scopes for belongs_to
+
+where
+includes
+readonly
+select
+
+1 where
+
+The where method lets you specify the conditions that the associated object must meet.
+
+
+2 includes
+includes method to specify second-order associations that should be eager-loaded when this association is used
+
+3 readonly
+If you use readonly, then the associated object will be read-only when retrieved via the association.
+
+4 select
+The select method lets you override the SQL SELECT clause that is used to retrieve data about the associated object
+
+## Do Any Associated Objects Exist?
+
+nil? method to see if any association exists
+3.0.0 :007 > cert.aircraft.nil?
+ => false
+
+## When are Objects Saved?
+assigning object does not automatically save the object and associated object 
+???? will using save method save the object 
+saving both ojects found
+3.0.0 :006 > cert.save
+  TRANSACTION (0.3ms)  BEGIN
+  Aircraft Create (0.6ms)  INSERT INTO "aircrafts" ("name", "cruising_range", "created_at", "updated_at", "aircraft_updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", nil], ["cruising_range", nil], ["created_at", "2022-06-06 17:20:21.956603"], ["updated_at", "2022-06-06 17:20:21.956603"], ["aircraft_updated_at", nil]]
+  Certified Update (0.8ms)  UPDATE "certifieds" SET "aircraft_id" = $1, "updated_at" = $2 WHERE "certifieds"."id" = $3  [["aircraft_id", 10], ["updated_at", "2022-06-06 17:20:21.966436"], ["id", 2]]
+
+----------------------------------------------------------------------------------------------
+
+## has_one Association.
+has_one association creates a one-to-one match with another model
+
+ Methods Added by has_one
+has_one association the declaring class automatically gains 6 methods related to the association
+
+association
+association=(associate)
+build_association(attributes = {})
+create_association(attributes = {})
+create_association!(attributes = {})
+reload_association
+
+1 association
+The association method returns the associated object, if any. If no associated object is found, it returns nil
+
+2 association=(associate)
+The association= method assigns an associated object to this object
+
+3 build_association(attributes = {})
+The build_association method returns a new object of the associated type with foreign key will be set, but the associated object will not yet be saved
+
+4 create_association(attributes = {})
+will do same as above but will also save the object
+
+5 create_association!(attributes = {})
+create_association above, but raises ActiveRecord::RecordInvalid if the record is invalid.
+ie is it creates the object but will output the error if there is any error
+
+3.0.0 :006 > wallet = Wallet.find(1)
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                                     
+ =>                                                                    
+#<Wallet:0x000055d3d12d1ce8                                            
+...                           
+3.0.0 :007 > cust.wallet = wallet
+  Wallet Load (0.2ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."customr_id" = $1 LIMIT $2  [["customr_id", 1], ["LIMIT", 1]]                                                     
+  TRANSACTION (0.1ms)  BEGIN                                           
+  Wallet Update (0.3ms)  UPDATE "wallets" SET "updated_at" = $1, "customr_id" = $2, "lock_version" = $3 WHERE "wallets"."id" = $4 AND "wallets"."lock_version" = $5  [["updated_at", "2022-06-06 18:08:03.179917"], ["customr_id", 1], ["lock_version", 6], ["id", 1], ["lock_version", 5]]         
+  TRANSACTION (0.4ms)  COMMIT                               
+ =>                                                         
+#<Wallet:0x000055d3d12d1ce8                                 
+... 
+
+wallet = cust.build_wallet
+  Wallet Load (0.3ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."customr_id" = $1 LIMIT $2  [["customr_id", 2], ["LIMIT", 1]]                                          
+ =>                                                         
+#<Wallet:0x000055d3d13fa4a8                                 
+...                                                         
+3.0.0 :018 > wallet
+ => 
+#<Wallet:0x000055d3d13fa4a8                                 
+ id: nil,                                                   
+ name: nil,                                                 
+ amount: nil,                                               
+ lock_version: 0,                                           
+ type: nil,                                                 
+ created_at: nil,         
+ updated_at: nil,
+ customr_id: 2> 
+
+ 3.0.0 :020 > wallet = cust.create_wallet(:name => "phonepe")
+  TRANSACTION (0.1ms)  BEGIN
+  Wallet Create (0.2ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "phonepe"], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-06 18:12:19.897525"], ["updated_at", "2022-06-06 18:12:19.897525"], ["customr_id", 2]]     
+  TRANSACTION (6.8ms)  COMMIT
+
+  #<Wallet:0x000055d3d26447a8
+ id: 4,                   
+ name: "phonepe",         
+ amount: nil,             
+ lock_version: 0,         
+ type: nil,               
+ created_at: Mon, 06 Jun 2022 18:12:13.428386000 UTC +00:00,
+ updated_at: Mon, 06 Jun 2022 18:12:13.428386000 UTC +00:00,
+ customr_id: 2> 
+
+ 3.0.0 :022 > wallet = cust.create_wallet!(:name => "phonepe")
+  TRANSACTION (0.1ms)  BEGIN
+  Wallet Create (0.3ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "phonepe"], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-06 18:13:23.216276"], ["updated_at", "2022-06-06 18:13:23.216276"], ["customr_id", 2]]
+  TRANSACTION (1.5ms)  COMMIT
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/associations/has_one_association.rb:105:in `remove_target!': Failed to remove the existing associated wallet. The record failed to save after its foreign key was set to nil. (ActiveRecord::RecordNotSaved)
+
+
+3.0.0 :023 > cust.wallet
+ => 
+#<Wallet:0x000055d3d26447a8                                 
+ id: 4,                                                     
+ name: "phonepe",                                           
+ amount: nil,                                               
+ lock_version: 0,                                           
+ type: nil,                                                 
+ created_at: Mon, 06 Jun 2022 18:12:13.428386000 UTC +00:00,
+ updated_at: Mon, 06 Jun 2022 18:12:13.428386000 UTC +00:00,
+ customr_id: 2>
