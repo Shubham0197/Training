@@ -573,6 +573,17 @@ By convention, Rails assumes that the column used to hold the foreign key on thi
  The :foreign_key option lets you set the name of the foreign key directly.
  rails donot create foreign key by default migrations do so have to do it manually .
 
+4. :counter_cache
+The :counter_cache option can be used to make finding the number of belonging objects more efficient.
+It makes the count be stod in varialbe than to run count(*) every time in the database.
+It return that value in response to the size method.
+The :counter_cache option is specified on the model that includes the belongs_to declaration, 
+the actual column must be added to the associated (has_many) model.
+Also can override the default column name by specifying a custom column name in the counter_cache declaration instead of true.
+ Counter cache columns are added to the containing model's list of read-only attributes through attr_readonly.
 
+3.0.0 :004 > pilot.certifieds.size
+  Certified Count (0.5ms)  SELECT COUNT(*) FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 1]]                                                                                   
+ => 4     
 
 
