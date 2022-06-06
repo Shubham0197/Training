@@ -646,3 +646,27 @@ aby other colummn to be updated if the default column is not to be used
   Aircraft Update (0.1ms)  UPDATE "aircrafts" SET "updated_at" = $1 WHERE "aircrafts"."id" = $2  [["updated_at", "2022-06-06 13:40:48.895413"], ["id", 1]]                      
   TRANSACTION (0.3ms)  COMMIT                               
  => true  
+
+11 Polymorphic
+Passing true to the :polymorphic option indicates that this is a polymorphic association. 
+Polymorphic Associations
+With polymorphic associations, a model can belong to more than one other model, on a single association
+single association to connect to many different model from single belongs_to command
+The database representation of this polymorphism consists of two columns, which represent the ID and the type
+
+Syntax example in models-
+
+has_many :reviews, :as => :reviewable
+belongs_to :reviewable, :polymorphic => true
+
+Syntax example in migration
+the belong_to model migration will have two column
+add_references :table_name, :reviewable, polymorphic: true
+or
+t.references :reviewable, ploymorphic: true
+
+or
+ the belong_to model migration will have two column
+      t.bigint  :reviewable_id
+      t.string  :reviewable_type
+
