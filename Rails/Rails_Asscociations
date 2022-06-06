@@ -587,3 +587,41 @@ Also can override the default column name by specifying a custom column name in 
  => 4     
 
 
+5. :dependent
+ It creates some behavior for the model to do for certain actions
+ 
+:destroy, when the object is destroyed, destroy will be called on its associated objects.
+
+:delete, when the object is destroyed, all its associated objects will be deleted directly from the database without calling their destroy method.
+
+:destroy_async: when the object is destroyed, an ActiveRecord::DestroyAssociationAsyncJob job is enqueued which will call destroy on its associated objects. Active Job must be set up for this to work. 
+
+destroy vs delete 
+Basically "delete" sends a query directly to the database to delete the record. In that case Rails doesn't know what attributes are in the record it is deleting nor if there are any callbacks (such as before_destroy).
+The "destroy" method takes the passed id, fetches the model from the database using the "find" method, then calls destroy on that. This means the callbacks are triggered.
+You would want to use "delete" if you don't want the callbacks to be triggered or you want better performance. Otherwise (and most of the time) you will want to use "destroy".
+delete will delete current record from db (No callback)
+destroy will delete current record and associated record (Has callback)
+3.0.0 :003 > cert.delete
+  Certified Destroy (2.0ms)  DELETE FROM "certifieds" WHERE "certifieds"."id" = $1  [["id", 1]]
+ =>                                                                                    
+#<Certified:0x00007feec0dea600                                                         
+ id: 1,                                                                                
+ employee_id: 1,                                                                       
+ aircraft_id: 1,                                                                       
+ created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,                           
+ updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00> 
+
+3.0.0 :005 > cert.save
+  TRANSACTION (0.1ms)  BEGIN
+  Aircraft Load (1.1ms)  SELECT "aircrafts".* FROM "aircrafts" WHERE "aircrafts"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                  
+  TRANSACTION (0.1ms)  ROLLBACK                             
+ => false 
+
+3.0.0 :006 > cert.destroy
+  TRANSACTION (0.3ms)  BEGIN
+  Employee Destroy (1.2ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 1]]
+  TRANSACTION (0.1ms)  ROLLBACK 
+
+
+
