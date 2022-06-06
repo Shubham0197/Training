@@ -412,6 +412,12 @@ end
 
 and the association will make sense for rails.
 ---------------------------------------------------------------------------------------------
+## Choosing Between belongs_to and has_one
+IN case of one to one relationship  where to put has_one and belongs to association
+as belongs to goes to moldel where foreign key is defined so have to choose where foreign key is defined.
+So here it makes sense to add foreign key to relation where it is not fully dependendent attribute 
+
+---------------------------------------------------------------------------------------------
 1 belongs_to Association
 belongs_to association says that this model's table contains a column which represents a reference to another table. 
 1 Methods Added by belongs_to
