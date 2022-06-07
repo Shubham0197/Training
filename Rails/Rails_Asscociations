@@ -1500,8 +1500,49 @@ Does the same as above , but raises ActiveRecord::RecordInvalid if the record is
 
 3.0.0 :003 > author = book3.authors.create!()
 /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/validations.rb:80:in `raise_validation_error': Validation failed: Name can't be blank (ActiveRecord::RecordInvalid) 
+
 18 collection.reload
 The collection.reload method returns a Relation of all of the associated objects, forcing a database read. If there are no associated objects, it returns an empty Relation.
 
 book3.authors.reload
 
+
+
+-------------------------------------------------------
+## Options for has_and_belongs_to_many
+ when you want to customize the behavior of the has_and_belongs_to_many association reference. 
+ Such customizations can easily be accomplished by passing options when you create the association
+
+ association supports these options:
+
+:association_foreign_key
+:autosave
+:class_name
+:foreign_key
+:join_table
+:validate
+
+1 :association_foreign_key
+it is assumed by rails that column in the join table used to hold the foreign key pointing to the other model is the name of that model with the suffix _id added. 
+But if it is something other that it is to given with this option 
+
+2 :autosave
+If you set the :autosave option to true, Rails will save any loaded association members and destroy members that are marked for destruction whenever you save the parent object. 
+Setting :autosave to false is not the same as not setting the :autosave option.
+ If the :autosave option is not present, then new associated objects will be saved, but updated associated objects will not be saved.
+
+
+3 :class_name
+If the name of the other model cannot be derived from the association name, you can use the :class_name option to supply the model name.
+
+4 :foreign_key
+By convention, Rails assumes that the column in the join table used to hold the foreign key pointing to this model is the name of this model with the suffix _id added. The :foreign_key option lets you set the name of the foreign key directly:
+
+5 :join_table
+If the default name of the join table, based on lexical ordering, is not what you want, you can use the :join_table option to override the default.
+
+
+
+6 :validate
+If you set the :validate option to false, then new associated objects will not be validated whenever you save this object.
+By default, this is true: new associated objects will be validated when this object is saved.
