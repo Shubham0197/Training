@@ -581,10 +581,15 @@ The :counter_cache option is specified on the model that includes the belongs_to
 the actual column must be added to the associated (has_many) model.
 Also can override the default column name by specifying a custom column name in the counter_cache declaration instead of true.
  Counter cache columns are added to the containing model's list of read-only attributes through attr_readonly.
+Employee.find_each { |emp| Employee.reset_counters(emp.id, :certifieds) }
+to run for existing data to update the counters
 
 3.0.0 :004 > pilot.certifieds.size
   Certified Count (0.5ms)  SELECT COUNT(*) FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 1]]                                                                                   
- => 4     
+ => 4 
+ working for default variable but not for different one ????    
+ 3.0.0 :002 > aircraft.certifieds.size
+ => 1 
 
 
 5. :dependent
@@ -803,3 +808,255 @@ wallet = cust.build_wallet
  created_at: Mon, 06 Jun 2022 18:12:13.428386000 UTC +00:00,
  updated_at: Mon, 06 Jun 2022 18:12:13.428386000 UTC +00:00,
  customr_id: 2>
+
+
+ Methods Added by has_many:
+ When the has_many associations is decalred it adds 17 methods in the related to associations.
+ collection
+collection<<(object, ...)
+collection.delete(object, ...)
+collection.destroy(object, ...)
+collection=(objects)
+collection_singular_ids
+collection_singular_ids=(ids)
+collection.clear
+collection.empty?
+collection.size
+collection.find(...)
+collection.where(...)
+collection.exists?(...)
+collection.build(attributes = {})
+collection.create(attributes = {})
+collection.create!(attributes = {})
+collection.reload
+
+In here collection is replaced with the symbol passed as the first argument to has_many, and collection_singular is replaced with the singularized version of that symbol.
+
+
+1 collection
+The collection method returns a Relation of all of the associated objects. 
+If there are no associated objects, it returns an empty Relation.
+
+3.0.0 :011 > category = Category.find(1)
+  Category Load (0.2ms)  SELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                         
+ => #<Category:0x0000560fdac41f68 id: 1, name: "electronics", description: nil> 
+3.0.0 :012 > category.products
+  Product Load (0.4ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]                                                     
+ =>                                                   
+[#<Product:0x0000560fdaf91e98 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf91a10 id: 5, name: "Mobile MI", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf918f8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf917e0 id: 2, name: nil, price: 0.12334e3, category_id: 1, description: nil>] 
+
+ 2 collection<<(object, ...)
+
+ It is like append 
+It adds one or more objects to the collection by setting their foreign keys to the primary key of the calling model.
+3.0.0 :013 > product = Product.create(:name => "VR")
+  TRANSACTION (0.2ms)  BEGIN
+  Product Create (7.6ms)  INSERT INTO "products" ("name", "price", "category_id", "description") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "VR"], ["price", "100.0"], ["category_id", nil], ["description", nil]]
+  TRANSACTION (0.4ms)  COMMIT                                                                    
+ => #<Product:0x0000560fda82b1e0 id: 8, name: "VR", price: 0.1e3, category_id: nil, description: nil> 
+
+ 3.0.0 :014 > category.products << product
+  TRANSACTION (0.3ms)  BEGIN
+  Product Update (0.2ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."id" = $2  [["category_id", 1], ["id", 8]]                                                                                       
+  TRANSACTION (6.7ms)  COMMIT                                                                    
+ =>                                                                                              
+[#<Product:0x0000560fdaf91e98 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf91a10 id: 5, name: "Mobile MI", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf918f8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf917e0 id: 2, name: nil, price: 0.12334e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fda82b1e0 id: 8, name: "VR", price: 0.1e3, category_id: 1, description: nil>] 
+3.0.0 :015 > 
+
+3 collection.delete(object, ...)
+This method removes one or more objects from the collection by setting their foreign keys to NULL.
+3.0.0 :015 > category.products.delete(product)
+  TRANSACTION (0.1ms)  BEGIN
+  Product Update All (0.2ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."category_id" = $2 AND "products"."id" = $3  [["category_id", nil], ["category_id", 1], ["id", 8]]                  
+  TRANSACTION (1.3ms)  COMMIT                                                           
+ => [#<Product:0x0000560fda82b1e0 id: 8, name: "VR", price: 0.1e3, category_id: 1, description: nil>] 
+3.0.0 :017 > category.products
+ => 
+[#<Product:0x0000560fdaf91e98 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf91a10 id: 5, name: "Mobile MI", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf918f8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x0000560fdaf917e0 id: 2, name: nil, price: 0.12334e3, category_id: 1, description: nil>] 
+
+ 3.0.0 :018 > product.reload
+  Product Load (0.7ms)  SELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2  [["id", 8], ["LIMIT", 1]]                                                                                  
+ => #<Product:0x0000560fda82b1e0 id: 8, name: "VR", price: 0.1e3, category_id: nil, description: nil> 
+
+ 4 collection.destroy(object, ...)
+ This method removes one or more objects from the collection by running destroy on each object.
+3.0.0 :019 > product = Product.find(2)
+  Product Load (0.4ms)  SELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]                                                                      
+ => #<Product:0x0000560fdae6eb60 id: 2, name: nil, price: 0.12334e3, category_id: 1, description: nil> 
+ 3.0.0 :020 > category.products.destroy(product)
+  TRANSACTION (0.3ms)  BEGIN
+  Product Destroy (0.5ms)  DELETE FROM "products" WHERE "products"."id" = $1  [["id", 2]]
+  TRANSACTION (1.3ms)  COMMIT                                            
+ => [#<Product:0x0000560fdae6eb60 id: 2, name: nil, price: 0.12334e3, category_id: 1, description: nil>] 
+
+ runs rollback type operations thats is different from delete destroy  DELETES the object but delete only removes the foreign key 
+
+ 5 collection=(objects)
+   The collection= method makes the collection contain only the supplied objects, by adding and deleting as appropriate. The changes are persisted to the database.
+  
+   3.0.0 :012 > product = cat.products
+  Product Load (0.1ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]                                                                                    
+ =>                                                                                  
+[#<Product:0x000055fbac36fb70 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+3.0.0 :035 > cat.products.reload
+  Product Load (0.3ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]                                                                                  
+ =>                                                                                
+[#<Product:0x000055fbab8c7768 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbab8c7268 id: 5, name: "Mobile MI", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbab8c6db8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbab8c4b80 id: 3, name: nil, price: 0.12212e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf9411bfc8 id: 9, name: "Mouse", price: 0.1e3, category_id: 1, description: nil>]3.0.0 :041 > cat.products = product
+  TRANSACTION (0.1ms)  BEGIN
+  Product Update All (0.2ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."category_id" = $2 AND "products"."id" = $3  [["category_id", nil], ["category_id", 1], ["id", 9]]
+  TRANSACTION (6.7ms)  COMMIT                           
+ =>                                                     
+[#<Product:0x000055fbac5193b8 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+...                                                     
+which becomes
+3.0.0 :021 > cat.products.reload
+  Product Load (0.2ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]                                                           
+ =>                                                         
+[#<Product:0x00007fcf94b231d8 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf94b22e40 id: 5, name: "Mobile MI", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf94b22aa8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf94b21b80 id: 3, name: nil, price: 0.12212e3, category_id: 1, description: nil>] 
+
+ 6 collection_singular_ids
+This method method returns an array of the ids of the objects in the collection.
+3.0.0 :049 > product = cat.product_ids
+ => [4, 5, 7, 3] 
+
+ 7 collection_singular_ids=(ids)
+
+The collection_singular_ids= method makes the collection contain only the objects identified by the supplied primary key values, by adding and deleting as appropriate
+3.0.0 :052 > product_id = [3,4]
+ => [1, 2, 3, 4] 
+3.0.0 :055 > cat.product_ids= product_id
+  Product Load (0.4ms)  SELECT "products".* FROM "products" WHERE "products"."id" IN ($1, $2)  [["id", 3], ["id", 4]]                                                                               
+  TRANSACTION (0.1ms)  BEGIN                                                    
+  Product Update All (0.2ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."category_id" = $2 AND "products"."id" IN ($3, $4)  [["category_id", nil], ["category_id", 1], ["id", 5], ["id", 7]]
+  TRANSACTION (1.2ms)  COMMIT
+ => [3, 4] 
+ 3.0.0 :056 > cat.products
+ => 
+[#<Product:0x000055fbabf6e5d0 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbabf6e6e8 id: 3, name: nil, price: 0.12212e3, category_id: 1, description: nil>] 
+
+8 collection.clear
+
+The collection.clear method removes all objects from the collection according to the strategy specified by the dependent option. 
+If no option is given, it follows the default strategy. 
+The default strategy for has_many :through associations is delete_all, and for has_many associations is to set the foreign keys to NULL.
+
+here foreign key set to null 
+3.0.0 :061 > cat.products.clear
+  Product Update All (7.3ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."category_id" = $2  [["category_id", nil], ["category_id", 1]]                                                   
+ => [] 
+
+Objects will be deleted if they're associated with option
+ dependent: :destroy or 
+ dependent: :destroy_async, 
+ just like dependent: :delete_all.
+
+ 9 collection.empty?
+ This method returns method returns true if the collection does not contain any associated objects.
+3.0.0 :062 > cat.products.empty?
+ => true 
+ As it was just cleared
+
+10 collection.size
+This  method returns the number of objects in the collection.
+Here 0 as empty. 
+
+3.0.0 :063 > cat.products.size
+ => 0 
+ 3.0.0 :064 > cat.product_ids= product_id["id", 3]]                                                                         
+  Product Update (0.2ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."id" = $2  [["category_id", 1], ["id", 4]]                                                                         
+  Product Update (0.1ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."id" = $2  [["category_id", 1], ["id", 8]]                                                                         
+  Product Update (0.1ms)  UPDATE "products" SET "category_id" = $1 WHERE "products"."id" = $2  [["category_id", 1], ["id", 7]]                                                      
+  TRANSACTION (6.5ms)  COMMIT                                   
+ => [3, 4, 8, 7]                                                
+3.0.0 :065 > cat.products.size
+ => 4 
+
+11 collection.find(...)
+Will find the associated object through that objects id
+
+3.0.0 :066 > cat.products.find(4)
+  Product Load (0.1ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT $3  [["category_id", 1], ["id", 4], ["LIMIT", 1]]                       
+ => #<Product:0x000055fbac649670 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil> 
+3.0.0 :067 > 
+
+12 collection.where(...)
+This method finds objects within the collection based on the conditions supplied but the objects are loaded lazily meaning that the database is queried only when the object(s) are accessed.
+3.0.0 :067 > cat.products.where(name: "mobile")
+  Product Load (0.5ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1 AND "products"."name" = $2  [["category_id", 1], ["name", "mobile"]]                                   
+ => [#<Product:0x000055fbabf6de78 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>] 
+
+13 collection.exists?(...)
+This method checks whether an object meeting the supplied conditions exists in the collection's table.
+description: nil>,
+3.0.0 :064 > cat.product_ids= product_id
+3.0.0 :069 > cat.products.exists?(id: 4)
+  Product Exists? (0.7ms)  SELECT 1 AS one FROM "products" WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT $3  [["category_id", 1], ["id", 4], ["LIMIT", 1]]     
+ => true                                                        
+3.0.0 :070 > cat.products.exists?(id: 1)
+  Product Exists? (0.7ms)  SELECT 1 AS one FROM "products" WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT $3  [["category_id", 1], ["id", 1], ["LIMIT", 1]]                        
+ => false 
+
+14 collection.build(attributes = {})
+This method initiate the object of the associated class.
+this method returns a single or array of new objects of the associated type and the link through their foreign key will be created, but the associated objects will not yet be saved.
+
+15 collection.create(attributes = {})
+
+this method does the same thing as above but save the object too.
+
+16 collection.create!(attributes = {})
+does the same as above method but will return error if there is any error.
+
+3.0.0 :073 > cat.products.build(:name => "watch")
+ => #<Product:0x00007fcf94537828 id: nil, name: "watch", price: 0.1e3, category_id: 1, description: nil> 
+ 3.0.0 :074 > cat.products
+ => 
+[#<Product:0x000055fbac48a848 id: 3, name: nil, price: 0.12212e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbac48a780 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbac48a5f0 id: 8, name: "VR", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbac48a6b8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf94537828 id: nil, name: "watch", price: 0.1e3, category_id: 1, description: nil>
+ id is nil as the object is not saved
+
+ 3.0.0 :076 > cat.products
+ => 
+[#<Product:0x000055fbac48a848 id: 3, name: nil, price: 0.12212e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbac48a780 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbac48a5f0 id: 8, name: "VR", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbac48a6b8 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf94537828 id: nil, name: "watch", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x00007fcf94b95508 id: 10, name: "watch", price: 0.1e3, category_id: 1, description: nil>] 
+
+3.0.0 :078 > cat.products.create!(:name1 => "watch")
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activemodel-7.0.3/lib/active_model/attribute_assignment.rb:51:in `_assign_attribute': unknown attribute 'name1' for Product. (ActiveModel::UnknownAttributeError)
+
+17 collection.reload
+This method will reload  the cache if there any changes to loaded.
+
+category.products.reload
+3.0.0 :077 > cat.products.reload
+  Product Load (0.3ms)  SELECT "products".* FROM "products" WHERE "products"."category_id" = $1  [["category_id", 1]]                                                                                  
+ =>                                                                                
+[#<Product:0x000055fbaa80ae20 id: 3, name: nil, price: 0.12212e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbaa80aba0 id: 4, name: "mobile", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbaa80a8f8 id: 8, name: "VR", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbaa80a5b0 id: 7, name: "Earphone", price: 0.1e3, category_id: 1, description: nil>,
+ #<Product:0x000055fbaa80a380 id: 10, name: "watch", price: 0.1e3, category_id: 1, description: nil>] 

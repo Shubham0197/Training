@@ -7,5 +7,5 @@ class Product < ApplicationRecord
     end
   end
   has_many :orders, as: :orderable  
-#  belongs_to :category
+  belongs_to :category
 end
