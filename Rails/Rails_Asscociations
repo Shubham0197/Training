@@ -1249,4 +1249,105 @@ The collection method returns a Relation of all of the associated objects. If th
   updated_at:
    Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00>]
 
- 
+4 collection.delete(object, ...)
+This method removes one or more objects from the collection by deleting records in the join table 
+but this does not destroy the objects.
+
+3.0.0 :004 > book1.authors.delete(author1)
+  TRANSACTION (0.1ms)  BEGIN
+  Book::HABTM_Authors Delete All (6.8ms)  DELETE FROM "authors_books" WHERE "authors_books"."book_id" = $1 AND "authors_books"."author_id" = $2  [["book_id", 1], ["author_id", 1]]                                         
+  TRANSACTION (0.5ms)  COMMIT                                                      
+ =>                                                                                
+[#<Author:0x00005575d73ab2c0                                                       
+  id: 1,
+  name: "premchand",
+  created_at: Tue, 07 Jun 2022 13:20:45.278530000 UTC +00:00,
+  updated_at: Tue, 07 Jun 2022 13:20:45.278530000 UTC +00:00>] 
+  3.0.0 :005 > author1
+ => 
+#<Author:0x00005575d73ab2c0
+ id: 1,                
+ name: "premchand",    
+ created_at: Tue, 07 Jun 2022 13:20:45.278530000 UTC +00:00,
+ updated_at: Tue, 07 Jun 2022 13:20:45.278530000 UTC +00:00> 
+ 3.0.0 :007 > book1.authors
+  Author Load (0.3ms)  SELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1  [["book_id", 1]]                  
+ =>                                                                
+[#<Author:0x00005575d7380d40                                     
+  id: 2,                                                         
+  name: "amitabh",                                               
+  created_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00,    
+  updated_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00>,   
+ #<Author:0x00005575d7380ae8                                     
+  id: 3,                                                         
+  name: "sam",                                                   
+  created_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00,    
+  updated_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00>]
+
+  3.0.0 :008 > author1.books
+  Book Load (0.3ms)  SELECT "books".* FROM "books" INNER JOIN "authors_books" ON "books"."id" = "authors_books"."book_id" WHERE "authors_books"."author_id" = $1  [["author_id", 1]]                        
+ => []  
+
+5 collection.destroy(object, ...)
+
+This method removes one or more objects from the collection by deleting records in the join table. 
+This does not destroy the objects.
+So maybe behaves just like delete method
+3.0.0 :010 > book1.authors.destroy(author3)
+  TRANSACTION (0.1ms)  BEGIN
+  HABTM_Authors Load (0.2ms)  SELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" = $1 AND "authors_books"."author_id" = $2  [["book_id", 1], ["author_id", 3]]              
+  Book::HABTM_Authors Delete All (0.2ms)  DELETE FROM "authors_books" WHERE "authors_books"."book_id" = $1 AND "authors_books"."author_id" = $2  [["book_id", 1], ["author_id", 3]]                    
+  TRANSACTION (1.2ms)  COMMIT                                 
+ =>                                                           
+[#<Author:0x00005575d7492bc0                                  
+  id: 3,                                                      
+  name: "sam",                                                
+  created_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00, 
+  updated_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00>] 
+
+3.0.0 :011 > book1.authors
+ => 
+[#<Author:0x00005575d7380d40                                     
+  id: 2,                                                         
+  name: "amitabh",                                               
+  created_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00,    
+  updated_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00>]   
+
+  3.0.0 :012 > author3.books
+  Book Load (0.4ms)  SELECT "books".* FROM "books" INNER JOIN "authors_books" ON "books"."id" = "authors_books"."book_id" WHERE "authors_books"."author_id" = $1  [["author_id", 3]]                        
+ =>                                                                
+[#<Book:0x00005575d72bc760                                         
+  id: 2,                                                           
+  books_name: "bio",                                               
+  volume: nil,                                                     
+  publisher_id: nil,                                               
+  quantity: nil,                                                   
+  issued_quantity: nil,                                            
+  created_at: Tue, 07 Jun 2022 13:22:11.496787000 UTC +00:00,      
+  updated_at: Tue, 07 Jun 2022 13:22:11.496787000 UTC +00:00,      
+  book_type_id: nil,                                               
+  home_page_url: nil>,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
