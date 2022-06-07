@@ -1546,3 +1546,17 @@ If the default name of the join table, based on lexical ordering, is not what yo
 6 :validate
 If you set the :validate option to false, then new associated objects will not be validated whenever you save this object.
 By default, this is true: new associated objects will be validated when this object is saved.
+
+----------------------------------------------------
+## Choosing Between has_many :through and has_and_belongs_to_many
+To establish the association between many to many relationship models we need 2 types of associations can be used 
+has_many :through
+and has_and_belongs_to_many
+
+If want to just make association simply without any valiation , 
+callbacks or attribute can simply use has_and_belongs_to_many but 
+if in need of any of the above then need to use  has_many :through 
+has_many :through uses 3rd model as join model also  the relationship model is an independent entity.
+and has_and_belongs_to_many uses self_join table
+
+
