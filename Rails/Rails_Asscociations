@@ -1329,25 +1329,147 @@ So maybe behaves just like delete method
   home_page_url: nil>,
 
 
+6 collection=(objects)
 
+The collection= method makes the collection contain only the supplied objects, by adding and deleting as appropriate. The changes are persisted to the database.
 
+3.0.0 :020 > book3.authors
+  Author Load (0.3ms)  SELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1  [["book_id", 3]]                
+ => []  
 
+ 3.0.0 :023 > book1.authors
+ => 
+[#<Author:0x00005575d7380d40                                               
+  id: 2,                                                                   
+  name: "amitabh",                                                         
+  created_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00,              
+  updated_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00>]        
 
+  3.0.0 :022 > authors = book1.authors
+ => 
+[#<Author:0x00005575d7380d40                                               
+...                  
 
+3.0.0 :024 > book3.authors = authors
+  TRANSACTION (0.2ms)  BEGIN
+  Book::HABTM_Authors Create (0.3ms)  INSERT INTO "authors_books" ("book_id", "author_id") VALUES ($1, $2)  [["book_id", 3], ["author_id", 2]]                                                            
+  TRANSACTION (1.3ms)  COMMIT                                    
+ =>                                                              
+[#<Author:0x00005575d7380d40                                     
+... 
 
+3.0.0 :025 > book3.authors
+ => 
+[#<Author:0x00005575d7380d40                                     
+  id: 2,                                                         
+  name: "amitabh",                                               
+  created_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00,    
+  updated_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00>]   
+3.0.0 :026 > 
 
+7 collection_singular_ids
+This method returns an array of the ids of the objects in the collection.
+3.0.0 :032 > author2.book_ids
+ => [1, 3] 
 
+8 collection_singular_ids=(ids)
+This  method makes the collection contain only the objects identified by the supplied primary key values, 
+by adding and deleting as appropriate. 
+The changes are persisted to the database.
+3.0.0 :034 > author3.book_ids = books
+  Book Load (0.4ms)  SELECT "books".* FROM "books" WHERE "books"."id" IN ($1, $2)  [["id", 1], ["id", 3]]
+  TRANSACTION (0.1ms)  BEGIN                                       
+  Author::HABTM_Books Delete All (0.1ms)  DELETE FROM "authors_books" WHERE "authors_books"."author_id" = $1 AND "authors_books"."book_id" IN ($2, $3)  [["author_id", 3], ["book_id", 2], ["book_id", 2]]  
+  Author::HABTM_Books Create (0.1ms)  INSERT INTO "authors_books" ("book_id", "author_id") VALUES ($1, $2)  [["book_id", 1], ["author_id", 3]]                                                              
+  Author::HABTM_Books Create (0.1ms)  INSERT INTO "authors_books" ("book_id", "author_id") VALUES ($1, $2)  [["book_id", 3], ["author_id", 3]]                                                              
+  TRANSACTION (6.5ms)  COMMIT                                      
+ => [1, 3]  
 
+ 9 collection.clear
+  This method method removes every object from the collection by deleting the rows from the joining table.
+   This does not destroy the associated objects.
+3.0.0 :035 > book2.authors
+ => 
+[#<Author:0x00005575d7886e98                                                       
+  id: 3,                                                                           
+  name: "sam",                                                                     
+  created_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00,                      
+  updated_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00>,                     
+ #<Author:0x00005575d7886da8                                                       
+  id: 3,                                                                           
+  name: "sam",                                                                     
+  created_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00,                      
+  updated_at: Tue, 07 Jun 2022 13:20:56.656215000 UTC +00:00>]  
 
+  3.0.0 :036 > book2.authors.clear
+  Book::HABTM_Authors Delete All (0.3ms)  DELETE FROM "authors_books" WHERE "authors_books"."book_id" = $1 AND "authors_books"."author_id" IN ($2, $3)  [["book_id", 2], ["author_id", 3], ["author_id", 3]]                 
+ => []     
 
+10 collection.empty?
+this method returns true if the collection does not contain any associated objects.
+3.0.0 :037 > book2.authors.empty?
+ => true 
 
+11 collection.size
 
+This method returns the number of objects in the collection.
+3.0.0 :038 > book2.authors.size
+ => 0 
+3.0.0 :039 > book3.authors.size
+ => 1 
 
+12 collection.find(...) 
+The collection.find method finds objects within the collection's table. 
+3.0.0 :040 > book3.authors.find(1)
+  Author Load (0.3ms)  SELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1 AND "authors"."id" = $2 LIMIT $3  [["book_id", 3], ["id", 1], ["LIMIT", 1]]
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/finder_methods.rb:381:in `raise_record_not_found_exception!': Couldn't find Author with 'id'=1 [WHERE "authors_books"."book_id" = $1] (ActiveRecord::RecordNotFound)
+3.0.0 :041 > book3.authors.find(2)
+  Author Load (0.7ms)  SELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1 AND "authors"."id" = $2 LIMIT $3  [["book_id", 3], ["id", 2], ["LIMIT", 1]]
+ =>                                                                                 
+#<Author:0x00005575d65a3bf0                                                         
+ id: 2,                                                                             
+ name: "amitabh",                                                                   
+ created_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00,                        
+ updated_at: Tue, 07 Jun 2022 13:20:53.137843000 UTC +00:00>    
 
+13 collection.where(...)
 
+The collection.where method finds objects within the collection based on the conditions supplied but the objects are loaded lazily meaning that the database is queried only when the object(s) are accessed.
 
+???? what is loaded lazily??
 
+3.0.0 :043 > author2.books.where( :name == "biopic")
+  Book Load (0.4ms)  SELECT "books".* FROM "books" INNER JOIN "authors_books" ON "books"."id" = "authors_books"."book_id" WHERE "authors_books"."author_id" = $1  [["author_id", 2]]                                                  
+ =>                                                                                          
+[#<Book:0x00005575d78d4c60                                                                   
+  id: 1,                                                                                     
+  books_name: nil,                                                                           
+  volume: nil,                                                                               
+  publisher_id: nil,                                                                         
+  quantity: nil,                                                                             
+  issued_quantity: nil,                                                                      
+  created_at: Tue, 07 Jun 2022 13:21:41.816297000 UTC +00:00,                                
+  updated_at: Tue, 07 Jun 2022 13:21:41.816297000 UTC +00:00,                                
+  book_type_id: nil,                                                                         
+  home_page_url: nil>,
+ #<Book:0x00005575d78d4b70
+  id: 3,
+  books_name: "biopic",
+  volume: nil,
+  publisher_id: nil,
+  quantity: nil,
+  issued_quantity: nil,
+  created_at: Tue, 07 Jun 2022 13:22:14.033334000 UTC +00:00,
+  updated_at: Tue, 07 Jun 2022 13:22:14.033334000 UTC +00:00,
+  book_type_id: nil,
+  home_page_url: nil>] 
 
-
+  14 collection.exists?(...)
+  This  method checks whether an object meeting the supplied conditions exists in the collection's table. 
+  3.0.0 :045 > author3.books.exists?
+  Book Exists? (0.4ms)  SELECT 1 AS one FROM "books" INNER JOIN "authors_books" ON "books"."id" = "authors_books"."book_id" WHERE "authors_books"."author_id" = $1 LIMIT $2  [["author_id", 3], ["LIMIT", 1]]                
+ => true  
+ 3.0.0 :049 > author3.books.exists?(:name == "biopic")
+ => false 
 
 
