@@ -1559,4 +1559,8 @@ if in need of any of the above then need to use  has_many :through
 has_many :through uses 3rd model as join model also  the relationship model is an independent entity.
 and has_and_belongs_to_many uses self_join table
 
+------------------------------------------------
 
+## The has_one :through Association
+
+This association is used to set up a one-to-one connection with other model via another model.  

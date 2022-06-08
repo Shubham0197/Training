@@ -5,6 +5,7 @@ class Customr < ApplicationRecord
   has_many :orders, as: :orderable
   
   has_one :wallet
+  has_one :identification, through: :wallet
   
   def name_valid?
     !name.blank?

@@ -5,6 +5,7 @@ class Wallet < ApplicationRecord
 #  validates :available, acceptance: {accept: 1 ,message: "Accept this"}
 #  validates :amount, confirmation: true, numericality: {greater_than: 90}
   belongs_to :customr
+  has_one :identification
 end
 
 
