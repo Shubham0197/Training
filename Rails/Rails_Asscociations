@@ -31,8 +31,6 @@ A has_many association is similar to has_one, but indicates a one-to-many connec
 The has_many :through Association
 A has_many :through association is often used to set up a many-to-many connection with another model.
 This association indicates that the declaring model can be matched with zero or more instances of another model by proceeding through a third model.
-
-
 Can break all object relation with each other
 
 ## belongs to
@@ -1563,4 +1561,42 @@ and has_and_belongs_to_many uses self_join table
 
 ## The has_one :through Association
 
-This association is used to set up a one-to-one connection with other model via another model.  
+This association is used to set up a one-to-one connection with other model via another model. 
+
+-------------------------------------------------
+## Self Joins
+They are used to create associations to model which is itself only. That is relation with self only.
+To do this in rails will have to add a references column to the model itself in migrations/schema.
+Like 
+  t.references :manager, foreign_key: { to_table: :employees }
+
+  3.0.0 :004 > employee.trainee.build
+ => 
+#<Employee:0x0000563381c200f0                                                          
+ id: nil,                                                                              
+ name: nil,                                                                            
+ salary: nil,                                                                          
+ mobile_number: nil,                                                                   
+ DOB: Wed, 01 Jan 1997,                                                                
+ created_at: nil,                                                                      
+ updated_at: nil,                                                                      
+ count_of_pilots: nil,                                 
+ trainer_id: 1> 
+
+3.0.0 :009 > trainer = employee.build_trainer
+ => 
+#<Employee:0x00005633819af7a8                                   
+...                                                             
+3.0.0 :023 > employee
+ => 
+#<Employee:0x0000563382d45010                                    
+ id: 1,                                                          
+ name: "Ajay",                                                   
+ salary: 30000,                                                  
+ mobile_number: "123456789",                                     
+ DOB: nil,                                                       
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,     
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+ count_of_pilots: 3,        
+ trainer_id: 13> 
+ 
