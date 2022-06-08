@@ -1599,4 +1599,61 @@ Like
  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
  count_of_pilots: 3,        
  trainer_id: 13> 
- 
+---------------------------------------------------------------------
+
+## Single Table Inheritance (STI)
+Sometimes, you may want to share fields and behavior between different models. 
+
+If some common methods  is needed for all of them, but having some specific behavior for each, and separated controllers too.
+Then create a parent class and then create child class which inherits methods and variables from parent class.
+STI need type feild to work in the parent table.
+STI won't work without a "type" field in the table.
+
+While creating child class will ahve to give option --parent= MODEL_NAME
+and this  will generate a model that inherits from the specified parent and without equivalent migration
+
+This means that all behavior added to parent class is available for child class too, as associations, public methods, etc.
+
+And object created for child will save data in parent class type.
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/simple_cms$ rails db:migrate
+== 20220608064852 CreateParagraphs: migrating =================================
+-- create_table(:paragraphs)
+   -> 0.0070s
+== 20220608064852 CreateParagraphs: migrated (0.0070s) ========================
+
+== 20220608101712 AddColumnToContentUsers: migrating ==========================
+-- add_column(:content_users, :type, :string)
+   -> 0.0011s
+-- rename_table(:content_users, :users)
+   -> 0.0030s
+== 20220608101712 AddColumnToContentUsers: migrated (0.0041s) =================
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/simple_cms$ rails generate model content_user --parent= User
+      invoke  active_record
+      create    app/models/content_user.rb
+      invoke    test_unit
+      create      test/models/content_user_test.rb
+      create      test/fixtures/content_users.yml
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/simple_cms$ rails generate model admin_user --parent= User
+      invoke  active_record
+      create    app/models/admin_user.rb
+      invoke    test_unit
+      create      test/models/admin_user_test.rb
+      create      test/fixtures/admin_users.yml
+
+
+      3.0.0 :002 > ContentUser.create(name: "Shubham")
+  TRANSACTION (0.1ms)  BEGIN
+  ContentUser Create (7.5ms)  INSERT INTO "users" ("name", "mobile", "email", "created_at", "updated_at", "type") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Shubham"], ["mobile", nil], ["email", nil], ["created_at", "2022-06-08 10:25:28.182570"], ["updated_at", "2022-06-08 10:25:28.182570"], ["type", "ContentUser"]]
+  TRANSACTION (0.4ms)  COMMIT 
+ =>                           
+#<ContentUser:0x00007fc0f84595a0
+ id: 1,                       
+ name: "Shubham",             
+ mobile: nil,
+ email: nil,
+ created_at: Wed, 08 Jun 2022 10:25:28.182570000 UTC +00:00,
+ updated_at: Wed, 08 Jun 2022 10:25:28.182570000 UTC +00:00,
+ type: "ContentUser"> 
+

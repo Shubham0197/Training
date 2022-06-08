@@ -1,0 +1,2 @@
+class ContentUser < User
+end
