@@ -306,3 +306,153 @@ The find_by! method behaves exactly like find_by, except that it will raise Acti
  3.0.0 :052 > Employee.find_by! name: "Ajit"
   Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Ajit"], ["LIMIT", 1]]
 /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/finder_methods.rb:378:in `raise_record_not_found_exception!': Couldn't find Employee with [WHERE "employees"."name" = $1] (ActiveRecord::RecordNotFound)
+
+
+## Retrieving Multiple Objects in Batches
+
+
+
+
+
+
+---------------------------------------------------------------
+
+##  Ordering
+To retrieve records from the database in a specific order, you can use the order method.
+can give both asc and desc but by default is asc
+3.0.0 :054 > Employee.order(name: :desc).limit 4
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."name" DESC LIMIT $1  [["LIMIT", 4]]
+ =>                                                                          
+[#<Employee:0x00007f2744b0b7e8                                               
+  id: 13,                                                                    
+  name: "Tesh",                                                              
+  salary: nil,                                                               
+  mobile_number: nil,                                                        
+  DOB: Wed, 01 Jan 1997,                                                     
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,                
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,                
+  count_of_pilots: nil,                                                      
+  trainer_id: nil>,                                                          
+ #<Employee:0x00007f2744b0b720                                               
+  id: 8,
+  name: "shubham",
+  salary: 120000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00,
+  count_of_pilots: 0,
+  trainer_id: nil>,
+ #<Employee:0x00007f2744b0b658
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f2744b0b590
+  id: 7,
+  name: "Ram",
+  salary: 150000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+  can order by multiple columns
+  3.0.0 :057 > Employee.order(mobile_number: :desc, id: :asc).limit 4
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."mobile_number" DESC, "employees"."id" ASC LIMIT $1  [["LIMIT", 4]]                            
+ =>                                       
+[#<Employee:0x000055fd7be20a08            
+  id: 11,                                 
+  name: "Gustav",                      
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055fd7be20940
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055fd7be20878
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055fd7be207b0
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+  Can call order multiple times 
+  If you want to call order multiple times, subsequent orders will be appended to the first
+  but that will work like above.
+  3.0.0 :058 > Employee.order(mobile_number: :desc).order( id: :asc).limit 4
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."mobile_number" DESC, "employees"."id" ASC LIMIT $1  [["LIMIT", 4]]                                                                    
+ =>                                                                               
+[#<Employee:0x000055fd7b414e10                                                    
+  id: 11,                                                                         
+  name: "Gustav",                                                                 
+  salary: nil,                                                                    
+  mobile_number: nil,                                                             
+  DOB: Wed, 01 Jan 1997,                                                          
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                     
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                     
+  count_of_pilots: nil,                                                           
+  trainer_id: nil>,                                                               
+ #<Employee:0x000055fd7b414d48
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055fd7b414c80
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055fd7b414bb8
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+3.0.0 :059 > 
