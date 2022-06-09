@@ -1,0 +1,20 @@
+Action View
+Web requests are handled by Action Controller and Action View.
+Action View is then responsible for compiling the response.
+
+Naming Convention in rails 
+The views share their name with the associated controller action
+The complete HTML returned to the client is composed of a combination of this ERB file, a layout template that wraps it, and all the partials that the view may reference.
+So for book action in library controller the corrresponding view would be in library subfolder in 
+view the file would be book.html.erb
+Templates
+If the template file has a .erb extension then it uses a mixture of ERB (Embedded Ruby) and HTML
+If the template file has a .builder extension then the Builder::XmlMarkup library is used.
+
+1. ERB
+So to run ruby code in erb have to write code in <% ... %>
+The <% %> tags are used to execute Ruby code that does not return anything, such as conditions, loops, or blocks, and the <%= %> tags are used when you want output.
+
+(<%= %>). regular output functions such as print and puts won't be rendered to the view with ERB templates so instead of them have to write = replace insteaad of print or puts
+
+2. Builder

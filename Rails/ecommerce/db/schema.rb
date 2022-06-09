@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_08_070700) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_09_101622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_070700) do
     t.string "mobile_number"
     t.integer "email_address"
     t.date "DOB"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groceries", force: :cascade do |t|
+    t.string "product"
+    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +76,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_070700) do
     t.decimal "price", precision: 5, scale: 2, default: "100.0", comment: "Price column"
     t.integer "category_id"
     t.string "description"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.string "password"
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   create_table "wallets", force: :cascade do |t|

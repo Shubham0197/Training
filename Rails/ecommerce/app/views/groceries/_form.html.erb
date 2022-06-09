@@ -1,0 +1,27 @@
+<%= form_with(model: grocery) do |form| %>
+  <% if grocery.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(grocery.errors.count, "error") %> prohibited this grocery from being saved:</h2>
+
+      <ul>
+        <% grocery.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :product, style: "display: block" %>
+    <%= form.text_field :product %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
