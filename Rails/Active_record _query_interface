@@ -305,7 +305,7 @@ The find_by! method behaves exactly like find_by, except that it will raise Acti
 
  3.0.0 :052 > Employee.find_by! name: "Ajit"
   Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Ajit"], ["LIMIT", 1]]
-/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/finder_methods.rb:378:in `raise_record_not_found_exception!': Couldn't find Employee with [WHERE "employees"."name" = $1] (ActiveRecord::RecordNotFound)
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/finder_methods.rb:378:in raise_record_not_found_exception!': Couldn't find Employee with [WHERE "employees"."name" = $1] (ActiveRecord::RecordNotFound)
 
 
 ## Retrieving Multiple Objects in Batches
@@ -456,3 +456,61 @@ can give both asc and desc but by default is asc
   count_of_pilots: 2,
   trainer_id: nil>] 
 3.0.0 :059 > 
+-------------------------------------------------------------------------------
+## Selecting Specific Fields
+
+Model.find selects all the fields from the result set using select *
+To select only a subset of fields from the result set, you can specify the subset via the select method.
+3.0.0 :001 > Employee.select(:name, :mobile_number)
+  Employee Load (1.0ms)  SELECT "employees"."name", "employees"."mobile_number" FROM "employees"
+ =>                                                                                            
+[#<Employee:0x0000557b04d08fe8 id: nil, name: "Ajay", mobile_number: "123456789">,             
+ #<Employee:0x0000557b04dc32a8 id: nil, name: "Ajith", mobile_number: "123456789">,            
+ #<Employee:0x0000557b04dc31e0 id: nil, name: "Arnab", mobile_number: "123456789">,            
+ #<Employee:0x0000557b04dc3118 id: nil, name: "Amar", mobile_number: "123456789">,             
+ #<Employee:0x0000557b04dc3050 id: nil, name: "Pritam", mobile_number: "123456789">,           
+ #<Employee:0x0000557b04dc2f88 id: nil, name: "Sam", mobile_number: "123456789">,              
+ #<Employee:0x0000557b04dc2ec0 id: nil, name: "Ram", mobile_number: "123456789">,              
+ #<Employee:0x0000557b04dc2df8 id: nil, name: "shubham", mobile_number: "123456789">,          
+ #<Employee:0x0000557b04dc2d30 id: nil, name: "naman", mobile_number: "123456789">,            
+ #<Employee:0x0000557b04dc2c68 id: nil, name: "Gustav", mobile_number: nil>,                   
+ #<Employee:0x0000557b04dc2ba0 id: nil, name: "Tesh", mobile_number: nil>] 
+
+ So this also means you're initializing a model object with only the fields that you've selected.
+  If you attempt to access a field that is not in the initialized record you'll receive'
+  3.0.0 :002 > emp = Employee.select(:name, :mobile_number).first
+  Employee Load (0.6ms)  SELECT "employees"."name", "employees"."mobile_number" FROM "employees" ORDER BY "employees"."id" ASC LIMIT $1  [["LIMIT", 1]]                                                 
+ => #<Employee:0x0000557b0511bcc0 id: nil, name: "Ajay", mobile_number: "123456789"> 
+ 3.0.0 :004 > emp.salary
+ /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activemodel-7.0.3/lib/active_model/attribute.rb:226:in value': 'missing attribute: salary (ActiveModel::MissingAttributeError)    
+
+ But The id method will not raise the ActiveRecord::MissingAttributeError, so have to be careful when working with associations because they need the id method to function properly.
+ 
+ 
+ If you would like to only grab a single record per unique value in a certain field, you can use distinct
+ 3.0.0 :006 > emp = Employee.select( :mobile_number).distinct
+ Employee Load (1.2ms)  SELECT DISTINCT "employees"."mobile_number" FROM "employees"
+=>                                                                                           
+[#<Employee:0x0000557b0588af88 id: nil, mobile_number: "123456789">,                          
+...                                                     
+    
+Can also remove distinct constraint
+3.0.0 :008 > emp.distinct(false)
+  Employee Load (0.2ms)  SELECT "employees"."mobile_number" FROM "employees"
+ =>                                                                                 
+[#<Employee:0x0000557b05c93aa8 id: nil, mobile_number: "123456789">,                
+ #<Employee:0x0000557b05c93990 id: nil, mobile_number: "123456789">,                
+ #<Employee:0x0000557b05c938a0 id: nil, mobile_number: "123456789">,                
+ #<Employee:0x0000557b05c93788 id: nil, mobile_number: "123456789">,                
+ #<Employee:0x0000557b05c93670 id: nil, mobile_number: "123456789">,
+ #<Employee:0x0000557b05c93580 id: nil, mobile_number: "123456789">,
+ #<Employee:0x0000557b05c93468 id: nil, mobile_number: "123456789">,
+ #<Employee:0x0000557b05c93350 id: nil, mobile_number: "123456789">,
+ #<Employee:0x0000557b05c93260 id: nil, mobile_number: "123456789">,
+ #<Employee:0x0000557b05c93148 id: nil, mobile_number: nil>,
+ #<Employee:0x0000557b05c93030 id: nil, mobile_number: nil>] 
+3.0.0 :009 > 
+
+
+-------------------------------------------------------------------------------
+## Limit and Offset
