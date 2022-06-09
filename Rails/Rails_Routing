@@ -24,3 +24,31 @@ On successful deletion, return HTTP status 200 (OK) along with a response body, 
 Either that or return HTTP status 204 (NO CONTENT) with no response body.
 
 Rails Routing from the Outside In
+Routes
+The Rails router recognizes URLs and dispatches them to a controller's action, or to a Rack application.
+It can also generate paths and URLs, avoiding the need to hardcode strings in your views.
+Types of Routes
+
+Simple match routes
+Default routes
+Root routes
+Resourceful routes
+
+Root Routes
+HEre the simply the root page of the application is defined
+root "Controller#action"
+
+Simple match Routes
+Here the the simple machin of the Http request is done with the controller and action
+get "/books" , to: "Controler#Action"
+so for above if there is get /book request it goes to corresponding action
+
+or can directly write 
+get "homes/book"
+here rails thinks it is calling Homes conroller and books action in it and will show corresponding view to it.
+
+Rails uses snake_case for controller names , if you have a multiple word controller like MonsterTrucksController, you want to use monster_trucks#show for example.
+
+The routes for your application or engine live in the file config/routes.rb
+
+Resource Routing: the Rails Default 
