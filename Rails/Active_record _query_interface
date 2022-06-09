@@ -64,3 +64,245 @@ Methods that find a single entity, such as find and first, return a single insta
 
 1. annotate
 Adds an SQL comment to queries generated from this relation.
+3.0.0 :008 > Aircraft.annotate("selecting aircraft names").select(:name)
+  Aircraft Load (0.6ms)  SELECT "aircrafts"."name" FROM "aircrafts" /* selecting aircraft names */
+ =>                                                         
+[#<Aircraft:0x00007f2744d63090 id: nil, name: "Airbus320">, 
+ #<Aircraft:0x00007f2744d62fa0 id: nil, name: "Boeing737">, 
+ #<Aircraft:0x00007f2744d62eb0 id: nil, name: "Jet01">,     
+ #<Aircraft:0x00007f2744d62de8 id: nil, name: "Airbus380">, 
+ #<Aircraft:0x00007f2744d62d20 id: nil, name: "Boeing777">, 
+ #<Aircraft:0x00007f2744d62c08 id: nil, name: "PrivateCraft">,
+ #<Aircraft:0x00007f2744d62af0 id: nil, name: "Aircraft200">,
+ #<Aircraft:0x00007f2744d62a28 id: nil, name: nil>] 
+
+
+ ## Retrieving a Single Object
+  
+  
+  1. find
+  Using the find method, it retrieve the object corresponding to the specified primary key that matches any supplied options
+  The find method will raise an ActiveRecord::RecordNotFound exception unless a matching record is found for all of the supplied primary keys.
+  3.0.0 :011 > Aircraft.find(1)
+  Aircraft Load (0.7ms)  SELECT "aircrafts".* FROM "aircrafts" WHERE "aircrafts"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                      
+ =>                                                             
+#<Aircraft:0x00007f2744ab9470                                   
+ id: 1,                                                         
+ name: "Airbus320",                                             
+ cruising_range: 1234566,                                       
+ created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,    
+ updated_at: Mon, 06 Jun 2022 13:40:48.895413000 UTC +00:00,    
+ aircraft_updated_at: nil,                                      
+ certifieds_count: 1>  
+
+ can also use this method to query for multiple objects. Call the find method and pass in an array of primary keys. 
+ The return will be an array containing all of the matching records for the supplied primary keys.
+ 3.0.0 :012 > keys = [1,2,3,4]
+ => [1, 2, 3, 4] 
+3.0.0 :013 > Aircraft.find(keys)
+  Aircraft Load (0.8ms)  SELECT "aircrafts".* FROM "aircrafts" WHERE "aircrafts"."id" IN ($1, $2, $3, $4)  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]                                                  
+ =>                                                             
+[#<Aircraft:0x00007f27444bc180                                  
+  id: 1,                                                        
+  name: "Airbus320",                                            
+  cruising_range: 1234566,                                      
+  created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,   
+  updated_at: Mon, 06 Jun 2022 13:40:48.895413000 UTC +00:00,   
+  aircraft_updated_at: nil,                                     
+  certifieds_count: 1>,                                         
+ #<Aircraft:0x00007f27444bc068
+  id: 2,
+  name: "Boeing737",
+  cruising_range: 5000,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,
+  aircraft_updated_at: nil,
+  certifieds_count: 3>,
+ #<Aircraft:0x000055fd7aa55e88
+  id: 3,
+  name: "Jet01",
+  cruising_range: 5000,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,
+  aircraft_updated_at: nil,
+  certifieds_count: 3>,
+ #<Aircraft:0x00007f2744740be0
+  id: 4,
+  name: "Airbus380",
+  cruising_range: 8000,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,
+  aircraft_updated_at: nil,
+  certifieds_count: 2>
+
+2 take
+The take method retrieves a record without any implicit ordering
+The take method returns nil if no record is found and no exception will be raised.
+
+3.0.0 :035 > Certified.take
+  Certified Load (0.4ms)  SELECT "certifieds".* FROM "certifieds" LIMIT $1  [["LIMIT", 1]]
+ =>                           
+#<Certified:0x00007f2744bb0ec8
+ id: 3,                       
+ aircraft_id: 3,              
+ created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+ updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00> 
+3.0.0 :036 > Certified.take(1)
+  Certified Load (0.4ms)  SELECT "certifieds".* FROM "certifieds" LIMIT $1  [["LIMIT", 1]]
+ =>                         
+[#<Certified:0x00007f2744d122f8
+  id: 3,                  
+  employee_id: 1,
+  aircraft_id: 3,
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>] 
+3.0.0 :037 > Certified.take(2)
+  Certified Load (0.6ms)  SELECT "certifieds".* FROM "certifieds" LIMIT $1  [["LIMIT", 2]]
+ => 
+
+You can pass in a numerical argument to the take method to return up to that number of results
+3.0.0 :037 > Certified.take(2)
+  Certified Load (0.6ms)  SELECT "certifieds".* FROM "certifieds" LIMIT $1  [["LIMIT", 2]]
+ => 
+[#<Certified:0x00007f274411fd38
+  id: 3,
+  employee_id: 1,
+  aircraft_id: 3,
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+ #<Certified:0x00007f274411fc48
+  id: 4,
+  employee_id: 5,
+  aircraft_id: 3,
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>] 
+3.0.0 :038 > 
+The take! method behaves exactly like take, except that it will raise ActiveRecord::RecordNotFound if no matching record is found.
+
+
+3 first
+The first method finds the first record ordered by primary key (default) but if any order method is defined in scope the it will order according to that.
+The first method returns nil if no matching record is found and no exception will be raised.
+3.0.0 :038 > Employee.first
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ =>                                                              
+#<Employee:0x00007f2744356840                                    
+ id: 1,                                                          
+ name: "Ajay",                                                   
+ salary: 30000,                                                  
+ mobile_number: "123456789",                                     
+ DOB: nil,                                                       
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,     
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,     
+ count_of_pilots: 3,                                             
+ trainer_id: nil>  
+
+can pass in a numerical argument to the first method to return up to that number of results.
+3.0.0 :039 > Employee.first(2)
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT $1  [["LIMIT", 2]]
+ =>                                      
+[#<Employee:0x000055fd7b348a18           
+  id: 1,                                 
+  name: "Ajay",                          
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055fd7b348950
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+  collection that is ordered using order, first will return the first record ordered by the specified attribute for order.
+
+  3.0.0 :044 > Employee.order(name: :desc).first
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."name" DESC LIMIT $1  [["LIMIT", 1]]
+ =>                                                    
+#<Employee:0x000055fd7b9397b0                          
+ id: 13,                                               
+ name: "Tesh",                                         
+ salary: nil,                                          
+ mobile_number: nil,                                   
+ DOB: Wed, 01 Jan 1997,                                
+ created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+ updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+ count_of_pilots: nil,                                 
+ trainer_id: nil>  
+ The first! method behaves exactly like first, except that it will raise ActiveRecord::RecordNotFound if no matching record is found.
+
+ 4 last
+ The last method finds the last record ordered by primary key (default).
+ It function same as  first but in opposite order. Like if fisrt is ascending then last is descending.
+
+3.0.0 :045 > Employee.last(2)
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1  [["LIMIT", 2]]
+ =>                                                             
+[#<Employee:0x00007f2744d4eb90                                  
+  id: 11,                                                       
+  name: "Gustav",                                               
+  salary: nil,                                                  
+  mobile_number: nil,                                           
+  DOB: Wed, 01 Jan 1997,                                        
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,   
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,   
+  count_of_pilots: nil,                                         
+  trainer_id: nil>,                                             
+ #<Employee:0x00007f2744d4ec58                                  
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>] 
+
+  3.0.0 :046 > Employee.order(name: :desc).last
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."name" ASC LIMIT $1  [["LIMIT", 1]]
+ =>                                                                      
+#<Employee:0x000055fd7baab648                                            
+ id: 1,                                                                  
+ name: "Ajay",                                                           
+ salary: 30000,                                                          
+ mobile_number: "123456789",                                             
+ DOB: nil,                                                               
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,             
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,             
+ count_of_pilots: 3,                                                     
+ trainer_id: nil> 
+
+ 5 find_by    
+ The find_by method finds the first record matching some conditions.
+ Here as find only see primary key here have to specify the column to match
+As there e is no ORDER BY so  find_by conditions can match multiple records, have apply an order to guarantee a deterministic result.
+The find_by! method behaves exactly like find_by, except that it will raise ActiveRecord::RecordNotFound if no matching record is found
+3.0.0 :049 > Employee.find_by name: "Ajit"
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Ajit"], ["LIMIT", 1]]
+ => nil 
+3.0.0 :050 > Employee.find_by name: "Ajith"
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Ajith"], ["LIMIT", 1]]
+ => 
+#<Employee:0x000055fd7b20cd20
+ id: 2,
+ name: "Ajith",
+ salary: 85000,
+ mobile_number: "123456789",
+ DOB: nil,
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+ count_of_pilots: 2,
+ trainer_id: nil> 
+
+ 3.0.0 :052 > Employee.find_by! name: "Ajit"
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Ajit"], ["LIMIT", 1]]
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/finder_methods.rb:378:in `raise_record_not_found_exception!': Couldn't find Employee with [WHERE "employees"."name" = $1] (ActiveRecord::RecordNotFound)
