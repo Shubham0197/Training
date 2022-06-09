@@ -514,3 +514,191 @@ Can also remove distinct constraint
 
 -------------------------------------------------------------------------------
 ## Limit and Offset
+To apply LIMIT to the SQL fired by the Model.find, you can specify the LIMIT using limit and offset methods on the relation.
+Limit constraints the no of rows it has to return and offset constrsaints will tell limit to start from that row.
+
+3.0.0 :010 > Employee.limit 2
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" LIMIT $1  [["LIMIT", 2]]
+ =>                                                             
+[#<Employee:0x0000557b06068570                                  
+  id: 1,                                                        
+  name: "Ajay",                                                 
+  salary: 30000,                                                
+  mobile_number: "123456789",                                   
+  DOB: nil,                                                     
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,   
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,   
+  count_of_pilots: 3,                                           
+  trainer_id: nil>,                                             
+ #<Employee:0x0000557b060684a8                                  
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+
+  3.0.0 :012 > Employee.limit(2).offset 3
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" LIMIT $1 OFFSET $2  [["LIMIT", 2], ["OFFSET", 3]]
+ =>                                                           
+[#<Employee:0x0000557b05202418                                
+  id: 4,                                                      
+  name: "Amar",                                               
+  salary: 45000,                                              
+  mobile_number: "123456789",                                 
+  DOB: nil,                                                   
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00, 
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00, 
+  count_of_pilots: 3,                                         
+  trainer_id: nil>,
+ #<Employee:0x0000557b05202350
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>]
+
+  ----------------------------------------------------------------------------
+  ## Group
+  To apply a GROUP BY clause to the SQL fired by the finder, have to  use the group method.
+  Certified Load (6.8ms)  SELECT "certifieds"."employee_id" FROM "certifieds" GROUP BY "certifieds"."employee_id"
+ =>                                                                                                          
+[#<Certified:0x0000557b05870bb0 id: nil, employee_id: 3>,                                                    
+ #<Certified:0x0000557b0589b450 id: nil, employee_id: 5>,                                                    
+ #<Certified:0x0000557b0589b388 id: nil, employee_id: 4>,                                                    
+ #<Certified:0x0000557b0589b2c0 id: nil, employee_id: 6>,                                                    
+ #<Certified:0x0000557b0589b1f8 id: nil, employee_id: 2>,                                                    
+ #<Certified:0x0000557b0589b130 id: nil, employee_id: 7>,                                                    
+ #<Certified:0x0000557b0589b068 id: nil, employee_id: 1>] 
+ 3.0.0 :016 > Certified.select(:employee_id, :aircraft_id).group(:employee_id, :aircraft_id)
+  Certified Load (0.3ms)  SELECT "certifieds"."employee_id", "certifieds"."aircraft_id" FROM "certifieds" GROUP BY "certifieds"."employee_id", "certifieds"."aircraft_id"                                                               
+ =>                                                                                                                 
+[#<Certified:0x0000557b060b3098 id: nil, employee_id: 4, aircraft_id: 1>,                                           
+ #<Certified:0x0000557b060b2e68 id: nil, employee_id: 1, aircraft_id: 3>,                                           
+ #<Certified:0x0000557b060b2c88 id: nil, employee_id: 4, aircraft_id: 2>,                                           
+ #<Certified:0x0000557b060b2aa8 id: nil, employee_id: 2, aircraft_id: 2>,                                           
+ #<Certified:0x0000557b060b2828 id: nil, employee_id: 7, aircraft_id: 6>,                                           
+ #<Certified:0x0000557b060b2648 id: nil, employee_id: 3, aircraft_id: 4>,                                           
+ #<Certified:0x0000557b060b2468 id: nil, employee_id: 6, aircraft_id: 7>,                                           
+ #<Certified:0x0000557b060b21e8 id: nil, employee_id: 4, aircraft_id: 3>,                                           
+ #<Certified:0x0000557b060b1ec8 id: nil, employee_id: 2, aircraft_id: 6>,                                           
+ #<Certified:0x0000557b060b1ba8 id: nil, employee_id: 1, aircraft_id: 2>,                                           
+ #<Certified:0x0000557b060b1888 id: nil, employee_id: 3, aircraft_id: 5>,
+ #<Certified:0x0000557b060b1608 id: nil, employee_id: 5, aircraft_id: 3>,
+ #<Certified:0x0000557b060b1428 id: nil, employee_id: 1, aircraft_id: 7>,
+ #<Certified:0x0000557b060b11a8 id: nil, employee_id: 7, aircraft_id: 5>,
+ #<Certified:0x0000557b060b0f50 id: nil, employee_id: 6, aircraft_id: 4>,
+ #<Certified:0x0000557b060b0dc0 id: nil, employee_id: 5, aircraft_id: 7>]
+
+Total of the grouped items
+HAve to call count after the group.
+3.0.0 :018 > Certified.select(:employee_id).group(:employee_id).count
+  Certified Count (7.6ms)  SELECT COUNT("certifieds"."employee_id") AS "count_employee_id", "certifieds"."employee_id" AS "certifieds_employee_id" FROM "certifieds" GROUP BY "certifieds"."employee_id"                                
+ => {3=>2, 5=>2, 4=>3, 6=>2, 2=>2, 7=>2, 1=>3}
+
+ --------------------------------------------------------------------------------------
+
+ ## Readonly Objects
+
+ It is to create object which is as name suggests read only 
+ Active Record provides the readonly method on a relation to explicitly disallow modification of any of the returned objects. 
+ Any attempt to alter a readonly record will not succeed, raising an ActiveRecord::ReadOnlyRecord exception.
+
+ 3.0.0 :022 > emp = Employee.readonly.find(2)
+ Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]                                                                                    
+=>                                                                                           
+#<Employee:0x0000557b048db0b0                                                                 
+... 
+3.0.0 :025 > emp.name = "changin"
+ => "changin" 
+3.0.0 :026 > emp.save!
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/persistence.rb:1123:in '_raise_readonly_record_error': Employee is marked as readonly (ActiveRecord::ReadOnlyRecord)
+
+Functions to check read only
+
+
+----------------------------------------------------------------------------------------------------
+## Null Relation
+
+ ???? when to use null realtion
+
+ The none method returns a chainable relation with no records.
+
+ 3.0.0 :030 > emp = Employee.none
+ => [] 
+3.0.0 :031 > emp.class
+ => Employee::ActiveRecord_Relation 
+  
+ 3.0.0 :032 > emp.name = "shubham"
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/delegation.rb:110:in `method_missing': undefined method `name=' for #<ActiveRecord::Relation []> (NoMethodError)
+3.0.0 :033 > '
+
+
+--------------------------------------------------------------------------------
+## Running EXPLAIN
+
+You can run explain on a relation. EXPLAIN output varies for each database.
+3.0.0 :034 > Certified.select(:employee_id).group(:employee_id).explain
+  Certified Load (0.3ms)  SELECT "certifieds"."employee_id" FROM "certifieds" GROUP BY "certifieds"."employee_id"
+ =>                                                                                             
+EXPLAIN for: SELECT "certifieds"."employee_id" FROM "certifieds" GROUP BY "certifieds"."employee_id"
+                             QUERY PLAN                                                         
+--------------------------------------------------------------------                            
+ HashAggregate  (cost=27.00..29.00 rows=200 width=4)                                            
+   Group Key: employee_id                                                                       
+   ->  Seq Scan on certifieds  (cost=0.00..23.60 rows=1360 width=4)                             
+(3 rows)                                                                                        
+           
+
+------------------------------------------------------------------------------
+
+## Calculations
+
+1. Count
+to see how many records are in your models table
+This section uses count as an example method in this preamble, but the options described apply to all sub-sections.
+3.0.0 :035 > Employee.count
+  Employee Count (0.8ms)  SELECT COUNT(*) FROM "employees"
+ => 11  
+
+2.average
+If you want to see the average of a certain number in one of your tables you can call the average method on the class that relates to the table.
+
+3.0.0 :044 > Certified.select(:id).average("id")
+  Certified Average (0.4ms)  SELECT AVG("certifieds"."id") FROM "certifieds"
+ => 0.95e1                                                                                                   
+3.0.0 :045 > Certified.select(:id).average("id").class
+  Certified Average (0.7ms)  SELECT AVG("certifieds"."id") FROM "certifieds"
+ => BigDecimal  
+
+
+ 3 Minimum
+ If you want to find the minimum value of a field in your table you can call the minimum method on the class that relates to the table.
+ 3.0.0 :049 > Employee.minimum(:salary)
+ Employee Minimum (0.8ms)  SELECT MIN("employees"."salary") FROM "employees"
+=> 30000 
+
+ 4 Maximum
+ If you want to find the maximum value of a field in your table you can call the maximum method on the class that relates to the table.
+
+ 3.0.0 :048 > Employee.maximum(:salary)
+ Employee Maximum (0.7ms)  SELECT MAX("employees"."salary") FROM "employees"
+=> 150000
+
+ 5 Sum
+ If you want to find the sum of a field for all records in your table you can call the sum method on the class that relates to the table.
+ 3.0.0 :047 > Employee.sum(:salary)
+ Employee Sum (0.9ms)  SELECT SUM("employees"."salary") FROM "employees"
+=> 768345 
+
+
+
+
