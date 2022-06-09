@@ -1,0 +1,66 @@
+Active Record Query Interface
+
+It is the different ways to retrieve data from the database using Active Record. 
+Instead of using the sql queries can use use to same things via Active record methods
+
+## Retrieving Objects from the Database
+To retrieve objects from the database, Active Record provides several finder methods.
+The methods are:
+
+annotate
+find
+create_with
+distinct
+eager_load
+extending
+extract_associated
+from
+group
+having
+includes
+joins
+left_outer_joins
+limit
+lock
+none
+offset
+optimizer_hints
+order
+preload
+readonly
+references
+reorder
+reselect
+reverse_order
+select
+where
+
+Finder methods that return a collection, such as where and group, return an instance of ActiveRecord::Relation.
+3.0.0 :004 > aircrafts = Aircraft.where("id > 4" )
+  Aircraft Load (7.2ms)  SELECT "aircrafts".* FROM "aircrafts" WHERE (id > 4)
+ =>                                                                                          
+[#<Aircraft:0x000055fd7b227c38                                                               
+... 
+3.0.0 :005 > aircrafts.class
+ => Aircraft::ActiveRecord_Relation 
+
+
+Methods that find a single entity, such as find and first, return a single instance of the model.
+3.0.0 :006 > air = Aircraft.find(4)
+  Aircraft Load (0.2ms)  SELECT "aircrafts".* FROM "aircrafts" WHERE "aircrafts"."id" = $1 LIMIT $2  [["id", 4], ["LIMIT", 1]]                                                            
+ =>                                                                   
+#<Aircraft:0x000055fd7b1dfde8                                         
+...  
+3.0.0 :007 > air.class
+ => Aircraft(id: integer, name: text, cruising_range: integer, created_at: datetime, updated_at: datetime, aircraft_updated_at: datetime, certifieds_count: integer)  
+
+ So the operation steps are as followed
+ The primary operation of Model.find(options) can be summarized as:
+
+1 Convert the supplied options to an equivalent SQL query.
+2 Fire the SQL query and retrieve the corresponding results from the database.
+3 Instantiate the equivalent Ruby object of the appropriate model for every resulting row.
+4 Run after_find and then after_initialize callbacks, if any.
+
+1. annotate
+Adds an SQL comment to queries generated from this relation.
