@@ -865,4 +865,214 @@ This method uses escape_character to escape all occurrences of itself, “_” a
   Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE (name like 'A\%')
  => []
 
+ 3 Hash Conditions
+ Active Record also allows you to pass in hash conditions which can increase the readability of your conditions syntax. 
+ With hash conditions, you pass in a hash with keys of the fields you want qualified and the values of how you want to qualify them
+
+ But only equality, range, and subset checking are possible with Hash conditions.
+
+ 1 Equality Conditions
+ 3.0.0 :023 > Employee.where(id: true) 
+ =>                                                                                                         
+[#<Employee:0x000055d38bffca08                            
+  id: 1,                                                  
+  name: "Ajay",                                           
+  salary: 30000,                                          
+  mobile_number: "123456789",                             
+  DOB: nil,                                               
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,                                     
+  trainer_id: nil>]                                       
+3.0.0 :024 > Employee.where(name: true) 
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1  [["name", "t"]]
+ => [] 
+Other way of writing this is field within string
+3.0.0 :025 > Employee.where("name" => true) 
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1  [["name", "t"]]
+ => []  
+ In the case of a belongs_to relationship, an association key can be used to specify the model if an Active Record object is used as the value. 
+  This method works with polymorphic relationships as well.
+  3.0.0 :026 > emp = Employee.where(id: true) 
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1  [["id", 1]]
+ =>                                                              
+[#<Employee:0x000055d38c21c810                                   
+...   
+3.0.0 :027 > Certified.where(employee: emp)
+  Certified Load (0.5ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee" IN (SELECT "employees"."id" FROM "employees" WHERE "employees"."id" = $1)  [["id", 1]]
+(Object doesnt support #inspect)                                
+ =>                                                              
+3.0.0 :028 > Certified.where(employee_id: emp)
+  Certified Load (8.0ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" IN (SELECT "employees"."id" FROM "employees" WHERE "employees"."id" = $1)  [["id", 1]]
+ =>                                                              
+[#<Certified:0x000055d38c44e458                                  
+  id: 3,                                                         
+  employee_id: 1,                                                
+  aircraft_id: 3,                                                
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+ #<Certified:0x000055d38c47c010
+  id: 6,
+  employee_id: 1,
+  aircraft_id: 2,
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+ #<Certified:0x000055d38c477e98
+  id: 16,
+  employee_id: 1,
+  aircraft_id: 7,
+  created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>]
+
+ 2 Range Conditions
+It is done by using a BETWEEN SQL statement
+3.0.0 :029 > Employee.where(salary: 10000..30000) 
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."salary" BETWEEN $1 AND $2  [["salary", 10000], ["salary", 30000]]                                                                     
+ =>                                                                                                 
+[#<Employee:0x000055d38c4de468                                                                      
+  id: 1,                                                                                            
+  name: "Ajay",                                                                                     
+  salary: 30000,                                                                                    
+  mobile_number: "123456789",                                                                       
+  DOB: nil,                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                       
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,                                       
+  count_of_pilots: 3,                                                                               
+  trainer_id: nil>] 
+  3.0.0 :030 > Employee.where(salary: 10000...30000) 
+  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."salary" >= $1 AND "employees"."salary" < $2  [["salary", 10000], ["salary", 30000]]                                                    
+ => [] 
+ 
+ 3 Subset Conditions
+ find records using the IN expression
+ 3.0.0 :031 > Employee.where(salary: [30000, 40000, 50000]) 
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."salary" IN ($1, $2, $3)  [["salary", 30000], ["salary", 40000], ["salary", 50000]]                                                     
+ =>                                                                                                  
+[#<Employee:0x000055d38d1070f0                                                                       
+  id: 1,                                                                                             
+  name: "Ajay",                                                                                      
+  salary: 30000,                                                                                     
+  mobile_number: "123456789",                                                                        
+  DOB: nil,                                                                                          
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                        
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,                                        
+  count_of_pilots: 3,                                                                                
+  trainer_id: nil>,
+ #<Employee:0x000055d38d107000
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+  4 NOT Conditions
+  NOT SQL queries can be built by where.not
+  3.0.0 :032 > Employee.where.not(salary: [30000, 40000, 50000]).limit(1) 
+  Employee Load (0.8ms)  SELECT "employees".* FROM "employees" WHERE "employees"."salary" NOT IN ($1, $2, $3) LIMIT $4  [["salary", 30000], ["salary", 40000], ["salary", 50000], ["LIMIT", 1]]                                         
+ =>                                                                                                                 
+[#<Employee:0x000055d38cfb49f0                                                                                      
+  id: 2,                                                                                                            
+  name: "Ajith",                                                                                                    
+  salary: 85000,                                                                                                    
+  mobile_number: "123456789",                                                                                       
+  DOB: nil,                                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                                       
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,                                                       
+  count_of_pilots: 2,                                                                                               
+  trainer_id: nil>] 
+ 
+  This will not show any value which is nil after not condition has been fullfilled
+  3.0.0 :033 > Employee.where.not(mobile_number: "123456789") 
+  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" != $1  [["mobile_number", "123456789"]]                                                                                                
+ => []
+ 3.0.0 :034 > Employee.where(mobile_number: nil) 
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NULL
+ =>                                                                                                                 
+[#<Employee:0x000055d38c7167a8                                                                                      
+  id: 11,                                                                                                           
+  name: "Gustav",                                                                                                   
+  salary: nil,                                                                       
+  mobile_number: nil,                                                                
+  DOB: Wed, 01 Jan 1997,                                                             
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                        
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                        
+  count_of_pilots: nil,                                                              
+  trainer_id: nil>,    
+
+  
+  5 OR Conditions
+  Employee.where(id: 1) or (Employee.where(mobile_number: nil))
+  OR conditions between two relations can be built by calling or on the first relation, 
+  and passing the second one as an argument.
+  3.0.0 :039 > Employee.where(id: 1).or(Employee.where(mobile_number: nil))
+  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE ("employees"."id" = $1 OR "employees"."mobile_number" IS NULL)  [["id", 1]]                                        
+ =>                                                                 
+[#<Employee:0x000055d38cceeba8                                      
+  id: 1,                                                            
+  name: "Ajay",                                                     
+  salary: 30000,                                                    
+  mobile_number: "123456789",                                       
+  DOB: nil,                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,       
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,       
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055d38cceeae0
+  id: 11,
+  name: "Gustav",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055d38cceea18
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>]
+
+  6 AND Conditions
+  AND conditions can be built by chaining where conditions.
+  3.0.0 :042 > Employee.where(id: 11).where(mobile_number: nil)
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 AND "employees"."mobile_number" IS NULL  [["id", 11]]                                                                 
+ =>                                                                                          
+[#<Employee:0x000055d38c2d4028                                                               
+  id: 11,                                                                                    
+  name: "Gustav",                                                                            
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>] 
+  
+  another way of doing same is AND conditions for the logical intersection between relations can be built by calling and on the first relation, and passing the second one as an argument.
+3.0.0 :040 > Employee.where(id: 11).and(Employee.where(mobile_number: nil))
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 AND "employees"."mobile_number" IS NULL  [["id", 11]]                                                                
+ =>                                                                                         
+[#<Employee:0x000055d38d09c2f0                                                              
+  id: 11,                                                                                   
+  name: "Gustav",                                                                           
+  salary: nil,                                                                              
+  mobile_number: nil,                                                                       
+  DOB: Wed, 01 Jan 1997,                                                                    
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                               
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                               
+  count_of_pilots: nil,
+  trainer_id: nil>] 
+
+
+
 
