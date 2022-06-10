@@ -700,5 +700,169 @@ If you want to see the average of a certain number in one of your tables you can
 => 768345 
 
 
+-------------------------------------------------------------------------------
+
+## Array Conditions
+To use condition to get specific result can use where 
+Here for eg.
+1 Pure String Conditions 
+Active Record will take the first argument as the conditions string and any additional arguments will replace the question marks (?) in it.
+
+3.0.0 :001 > Employee.where("salary > ?", 100000) 
+  Employee Load (1.8ms)  SELECT "employees".* FROM "employees" WHERE (salary > 100000)
+ =>                                                                                                  
+[#<Employee:0x000055d38c10c678                                                                       
+  id: 7,                                                                                             
+  name: "Ram",                                                                                       
+  salary: 150000,                                                                                    
+  mobile_number: "123456789",                                                                        
+  DOB: nil,                                                                                          
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                        
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00,                                        
+  count_of_pilots: 2,                                                                                
+  trainer_id: nil>,                                                                                  
+
+So based on above condition can also give multiple condition
+3.0.0 :004 > Employee.where("salary < ? or name = ? ", 100000, "Ajith") 
+  Employee Load (0.8ms)  SELECT "employees".* FROM "employees" WHERE (salary < 100000 or name = 'Ajith' )
+ => 
+[#<Employee:0x000055d38c6860b8
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055d38c685ff0
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+
+  The method below used should not be used in project as it makes system vunerable to sql injection.
+  As Putting the variable directly into the conditions string will pass the variable to the database as-is.
+  3.0.0 :005 > salary = 10000 
+ => 10000 
+ Putting the variable directly into the conditions string will pass the variable to the database as-is.
+ 3.0.0 :006 > Employee.where("salary < #{salary}") 
+ Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE (salary < 10000)
+=> []                                                             
+3.0.0 :007 > Employee.where("salary > #{salary}") 
+ Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE (salary > 10000)
+=>                                                                
+[#<Employee:0x00007f64e07d9258                                     
+ id: 1,                                                           
+ name: "Ajay",                                                    
+ salary: 30000,                                                   
+ mobile_number: "123456789",                                      
+ DOB: nil,                                                        
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,      
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,      
+ count_of_pilots: 3,
+ trainer_id: nil>,
+#<Employee:0x00007f64e07d8f60
+ id: 2,
+ name: "Ajith",
+ salary: 85000,
+ mobile_number: "123456789",
+ DOB: nil,
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+ count_of_pilots: 2,
+ trainer_id: nil>,
+#<Employee:0x00007f64e07d8df8
+
+1 Placeholder Conditions
+The above method used is the (?) replacement style of params .
+This can also be done using specifing keys in condition string along with corresponding key value pair.
+This makes for clearer readability if you have a large number of variable conditions.
+
+created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+3.0.0 :008 > Employee.where("salary > :salary_min", salary_min: salary) 
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees" WHERE (salary > 10000)
+ =>                                                                                              
+[#<Employee:0x000055d38bf9c1d0                                                                   
+  id: 1,                                                                                         
+  name: "Ajay",                                                                                  
+  salary: 30000,                                                                                 
+  mobile_number: "123456789",                                                                    
+  DOB: nil,                                                                                      
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                    
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,                                    
+  count_of_pilots: 3,                                                                            
+  trainer_id: nil>
+
+  2 Conditions That Use LIKE
+  Using the like condition as in used in sql statement. 
+  Although condition arguments are automatically escaped to prevent SQL injection, SQL LIKE wildcards (i.e., % and _) are not escaped.
+
+  3.0.0 :010 > Employee.where("name like ?","A"+ "%") 
+  Employee Load (0.8ms)  SELECT "employees".* FROM "employees" WHERE (name like 'A%')
+ => 
+[#<Employee:0x000055d38c406f90
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055d38c406ec8
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x000055d38c406e00
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x000055d38c406d38
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>] 
+3.0.0 :011 > Employee.where("name like ?","A") 
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE (name like 'A')
+ => [] 
+
+ it treaks % and _ as wild cards evenif the that is not their intended use in ruby but that is in sql 
+ so there is need to sanitize that in ruby before the are passed to like condition.
+
+ sanitize_sql_like(string, escape_character = "\\")
+Sanitizes a string so that it is safe to use within an SQL LIKE statement.
+This method uses escape_character to escape all occurrences of itself, “_” and "%".
+3.0.0 :017 > sanitize_sql_like("100% true!")
+ => "100\\% true!" 
+ 3.0.0 :018 > sanitize_sql_like("100%", "!")
+ => "100!%" 
+
+ 3.0.0 :020 > Employee.where("name like ?",Employee.sanitize_sql_like("A%")) 
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE (name like 'A\%')
+ => []
 
 
