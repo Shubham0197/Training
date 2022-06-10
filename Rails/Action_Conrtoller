@@ -20,4 +20,4 @@ To access the parameters sent by the user in controller
 two kinds of parameters possible in a web application.
 
 The first are parameters that are sent as part of the URL, called query string parameters
-The query string is everything after "?" in the URL.
+The query string is everything after "?" in the URL.  

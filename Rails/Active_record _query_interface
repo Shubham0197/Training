@@ -1341,3 +1341,60 @@ The reorder method overrides the default scope order.
       updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
       count_of_pilots: nil,
       trainer_id: nil>] 
+
+      ---------------------------------------------------------------------------
+
+## Locking Records for Update
+
+Locking is helpful for preventing race conditions when updating records in the database and ensuring atomic updates.
+
+What is a race condition?
+A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, 
+but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.
+
+Active Record provides two locking mechanisms:
+
+Optimistic Locking
+Pessimistic Locking
+
+1 Optimistic Locking
+Optimistic locking allows multiple users to access the same record for edits, and assumes a minimum of conflicts with the data.
+It does this by checking whether another process has made changes to a record since it was opened. 
+An ActiveRecord::StaleObjectError exception is thrown if that has occurred and the update is ignored.
+It is done by updating locking columns when record is updated and when it is updates the value of locking coolumn
+is checked and if it is changed then then error is raised.
+
+So here it needs a locking column
+the table needs to have a column called lock_version of type integer.
+ Each time the record is updated, Active Record increments the lock_version column. 
+ If an update request is made with a lower value in the lock_version field than is currently in the lock_version column in the database,
+  the update request will fail with an "ActiveRecord::StaleObjectError."
+
+Responsibility for dealing with the conflict by rescuing the exception and either rolling back,
+ merging, or otherwise apply the business logic needed to resolve the conflict.
+
+ This behavior can be turned off by setting ActiveRecord::Base.lock_optimistically = false.
+
+To override the name of the lock_version column, ActiveRecord::Base provides a class attribute called locking_column:
+#<Wallet:0x00007fdfec1aaad0
+3.0.0 :024 > wallet1
+ => 
+#<Wallet:0x00007fdfec1aaad0                                        
+3.0.0 :029 > wallet1.save!
+  TRANSACTION (0.1ms)  BEGIN
+  Customr Load (0.2ms)  SELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                             
+  Wallet Update (0.2ms)  UPDATE "wallets" SET "amount" = $1, "updated_at" = $2, "lock_version" = $3 WHERE "wallets"."id" = $4 AND "wallets"."lock_version" = $5  [["amount", 12345678.0], ["updated_at", "2022-06-10 12:52:58.877018"], ["lock_version", 3], ["id", 1], ["lock_version", 2]]               
+  TRANSACTION (0.2ms)  ROLLBACK                                    
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/locking/optimistic.rb:108:in 'update_row': Attempted to update a stale object: Wallet. (ActiveRecord::StaleObjectError)
+To override the name of the lock_version column, ActiveRecord::Base provides a class attribute called locking_column
+inn class have to write .
+after creating the columns 
+self.locking_column = :lock_customer_column
+
+2 Pessimistic Locking
+Pessimistic locking uses a locking mechanism provided by the underlying database.
+Using lock when building a relation obtains an exclusive lock on the selected rows. 
+Relations using lock are usually wrapped inside a transaction for preventing deadlock conditions.
+ 
+
+???? NOt able use Pessimistic locking
