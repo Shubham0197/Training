@@ -1452,3 +1452,61 @@ can also use any? and many? to check for existence on a model or relation. many?
 3.0.0 :015 > Employee.where("id > 3").many?
   Employee Count (0.8ms)  SELECT COUNT(*) FROM (SELECT 1 AS one FROM "employees" WHERE (id > 3) LIMIT $1) subquery_for_count  [["LIMIT", 2]]                                                             
  => true
+
+ ================================================================================
+
+ ##  Dynamic Finders
+ For every field (also known as an attribute) you define in your table, 
+ Active Record provides a finder method. If you have a field called first_name on your Customer model for example, 
+ you get the instance method find_by_first_name for free from Active Record.
+ 3.0.0 :018 > Employee.find_by_name("Ajay") 
+ Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Ajay"], ["LIMIT", 1]]
+ =>                                              
+#<Employee:0x00007f0644c934d8                    
+ id: 1,                                          
+ name: "Ajay",                                   
+ salary: 30000,                                  
+ mobile_number: "123456789",                     
+ DOB: nil,                                       
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+ count_of_pilots: 3,                             
+ trainer_id: nil>                                
+3.0.0 :019 > Employee.find_by_id(1)
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+ => 
+#<Employee:0x00007f0644db99e8
+ id: 1,
+ name: "Ajay",
+ salary: 30000,
+ mobile_number: "123456789",
+ DOB: nil,
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+ count_of_pilots: 3,
+ trainer_id: nil>
+
+ exclamation point (!) on the end of the dynamic finders to get them to raise an ActiveRecord::RecordNotFound error if they do not return any record  
+  3.0.0 :022 > Employee.find_by_name("ajay")
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "ajay"], ["LIMIT", 1]]                
+ => nil 
+  3.0.0 :021 > Employee.find_by_name!("ajay")
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "ajay"], ["LIMIT", 1]]
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7.0.3/lib/active_record/relation/finder_methods.rb:378:in 'raise_record_not_found_exception!': Couldn't find Employee with [WHERE "employees"."name" = $1] (ActiveRecord::RecordNotFound)'
+
+  If we want to find both by first_name and orders_count, you can chain these finders together by simply typing "and" between the fields. 
+  For example, Customer.find_by_first_name_and_orders_count("Ryan", 5).
+  3.0.0 :025 > Employee.find_by_name_and_id("Ajay",1)
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 AND "employees"."id" = $2 LIMIT $3  [["name", "Ajay"], ["id", 1], ["LIMIT", 1]]
+ => 
+#<Employee:0x000055b575a4f5a8
+ id: 1,
+ name: "Ajay",
+ salary: 30000,
+ mobile_number: "123456789",
+ DOB: nil,
+ created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+ updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+ count_of_pilots: 3,
+ trainer_id: nil> 
+
