@@ -1057,7 +1057,7 @@ It is done by using a BETWEEN SQL statement
   updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
   count_of_pilots: nil,
   trainer_id: nil>] 
-  
+
   another way of doing same is AND conditions for the logical intersection between relations can be built by calling and on the first relation, and passing the second one as an argument.
 3.0.0 :040 > Employee.where(id: 11).and(Employee.where(mobile_number: nil))
   Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 AND "employees"."mobile_number" IS NULL  [["id", 11]]                                                                
@@ -1073,6 +1073,271 @@ It is done by using a BETWEEN SQL statement
   count_of_pilots: nil,
   trainer_id: nil>] 
 
+  ---------------------------------------------------------------------------------------------
+  8 Having
+  It is just like having clause in sql that is used to specify the condition on the group by fields
+  3.0.0 :046 >           having("count(*) > ?", 2) 
+  Certified Load (0.3ms)  SELECT Employee_id, count(*) as Total_certified_airplane FROM "certifieds" GROUP BY Employee_id HAVING (count(*) > 2)                                                     
+ => [#<Certified:0x000055d38cedc848 id: nil, employee_id: 4>, #<Certified:0x000055d38cedc780 id: nil, employee_id: 1>]   
+
+ 3.0.0 :047 > emp = Certified.select("Employee_id, count(*) as Total_certified_airplane").
+ 3.0.0 :048 > group("Employee_id").
+ 3.0.0 :049 >           having("count(*) > ?", 1) 
+   Certified Load (0.3ms)  SELECT Employee_id, count(*) as Total_certified_airplane FROM "certifieds" GROUP BY Employee_id HAVING (count(*) > 1)
+  => 
+ [#<Certified:0x000055d38d15cde8 id: nil, employee_id: 3>,
+  #<Certified:0x000055d38d15cd20 id: nil, employee_id: 5>,
+  #<Certified:0x000055d38d15cc58 id: nil, employee_id: 4>,
+  #<Certified:0x000055d38d15cb40 id: nil, employee_id: 6>,
+  #<Certified:0x000055d38d15ca50 id: nil, employee_id: 2>,
+  #<Certified:0x000055d38d15c960 id: nil, employee_id: 7>,
+  #<Certified:0x000055d38d15c870 id: nil, employee_id: 1>] 
+
+  3.0.0 :055 > emp.class
+  => Certified::ActiveRecord_Relation 
+
+  3.0.0 :061 > emp[0].total_certified_airplane
+ => 2 
 
 
+--------------------------------------------------------------------------------------------
+## 9 Overriding Conditions
 
+It overrides different conditions written in the query
+1 unscope
+
+specify certain conditions to be removed using the unscope method
+3.0.0 :064 > emp = Certified.select("employee_id, count(*) as total_certified_airplane").
+3.0.0 :065 > group("Employee_id").
+3.0.0 :066 >           having("count(*) > ?", 1) .unscope(:having)
+  Certified Load (0.5ms)  SELECT employee_id, count(*) as total_certified_airplane FROM "certifieds" GROUP BY Employee_id                                                                                                               
+ =>                                                                                                                 
+[#<Certified:0x000055d38cf3cf68 id: nil, employee_id: 3>,                                                           
+...             
+
+Here the unscope work to remove conditoion applied by having clause so no having clause in sql query.
+Can also unscope specific where clauses
+3.0.0 :073 > Employee.where(id: 11, mobile_number: nil).unscope(where: :id)
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NULL
+ =>                                                                                                                 
+[#<Employee:0x000055d38c1aea68                                                                                      
+  id: 11,                                                                                                           
+  name: "Gustav",                                                                                                   
+  salary: nil,                                                                                                      
+  mobile_number: nil,                                                                                               
+  DOB: Wed, 01 Jan 1997,                                                                                            
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                                                       
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                                                       
+  count_of_pilots: nil,                                                                                             
+  trainer_id: nil>,
+ #<Employee:0x000055d38c1ae9a0
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>] 
+3.0.0 :074 > 
+
+2. only
+
+You can also override conditions using the only method
+3.0.0 :077 > Employee.where(id: 11, mobile_number: nil).unscope(where: :id).limit(1).only(:where)
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NULL
+ => 
+[#<Employee:0x000055d38ce5dea8
+  id: 11,
+  name: "Gustav",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055d38ce5dde0
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>] 
+
+  3 reselect
+  The reselect method overrides an existing select statement.
+  3.0.0 :078 > emp = Certified.select("employee_id").reselect("aircraft_id")
+  Certified Load (0.3ms)  SELECT "certifieds"."aircraft_id" FROM "certifieds"
+ =>                                                                                                                 
+[#<Certified:0x000055d38bcc5d30 id: nil, aircraft_id: 3>,                                                           
+...                                                                                                                 
+3.0.0 :079 > 
+
+We can also use select twice to select more columns
+3.0.0 :079 > emp = Certified.select("employee_id").select("aircraft_id")
+  Certified Load (0.6ms)  SELECT "certifieds"."employee_id", "certifieds"."aircraft_id" FROM "certifieds"
+ =>                                                                                                                 
+[#<Certified:0x000055d38c29da50 id: nil, employee_id: 1, aircraft_id: 3>,                                           
+...                                                                        
+
+4 reorder
+The reorder method overrides the default scope order. 
+3.0.0 :081 > Employee.where.not(mobile_number: nil).order(name: :asc)
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NOT NULL ORDER BY "employees"."name" ASC                                                                                            
+ =>                                                                                                                 
+[#<Employee:0x000055d38d379888                                                                                      
+  id: 1,                                                                                                            
+  name: "Ajay",                                                                                                     
+  salary: 30000,                                                                                                    
+  mobile_number: "123456789",                                                                                       
+  DOB: nil,                                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                                       
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,                                                       
+  count_of_pilots: 3,
+  trainer_id: nil>,
+
+  3.0.0 :082 > Employee.where.not(mobile_number: nil).order(name: :asc).reorder(name: :desc)
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NOT NULL ORDER BY "employees"."name" DESC                                                                                           
+ =>                                                                                                                 
+[#<Employee:0x000055d38d4102b0                                                                                      
+  id: 8,                                                                                                            
+  name: "shubham",                                                                                                  
+  salary: 120000,                                                                                                   
+  mobile_number: "123456789",                                                                                       
+  DOB: nil,                                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                                       
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00,                                                       
+  count_of_pilots: 0,
+  trainer_id: nil>,
+ #<Employee:0x000055d38d4101e8
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>
+
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NOT NULL ORDER BY "employees"."salary" DESC                                                                              
+  =>                                                                                                      
+ [#<Employee:0x000055d38cfa4668                                                                           
+   id: 7,                                                                                                 
+   name: "Ram",                                                                                           
+   salary: 150000,                                                                                        
+   mobile_number: "123456789",                                                                            
+   DOB: nil,                                                                                              
+   created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                            
+   updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00,                                            
+   count_of_pilots: 2,
+   trainer_id: nil>,
+
+   5 reverse_order
+   The reverse_order method reverses the ordering clause if specified.
+   3.0.0 :084 > Employee.where.not(mobile_number: nil).order(name: :asc).reverse_order
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NOT NULL ORDER BY "employees"."name" DESC                                                                                           
+ =>                                                                                                                 
+[#<Employee:0x000055d38cd05240                                                                                      
+  id: 8,                                                                                                            
+  name: "shubham",                                                                                                  
+  salary: 120000,                                                                                                   
+  mobile_number: "123456789",                                                                                       
+  DOB: nil,                                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                                       
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00,                                                       
+  count_of_pilots: 0,
+  trainer_id: nil>,
+ #<Employee:0x000055d38cd05178
+
+ 3.0.0 :085 > Employee.where.not(mobile_number: nil).order(name: :asc).reorder(salary: :desc).reverse_order
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NOT NULL ORDER BY "employees"."salary" ASC                                                                                          
+ =>                                                                                                                 
+[#<Employee:0x000055d38cdae4f8                                                                                      
+  id: 1,                                                                                                            
+  name: "Ajay",                                                                                                     
+  salary: 30000,                                                                                                    
+  mobile_number: "123456789",                                                                                       
+  DOB: nil,                                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,                                                       
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,                                                       
+  count_of_pilots: 3,
+  trainer_id: nil>,
+
+  6 rewhere
+  This rewhere method overrides an existing, named where condition.
+  3.0.0 :086 > Employee.where.not(mobile_number: nil).order(name: :asc).reorder(salary: :desc).reverse_order.rewhere(m
+    obile_number: nil)
+      Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NULL ORDER BY "employees"."salary" ASC                                                                                              
+     =>                                                                                                                 
+    [#<Employee:0x000055d38cbc42a0                                                                                      
+      id: 11,                
+      name: "Gustav",
+      salary: nil,
+      mobile_number: nil,
+      DOB: Wed, 01 Jan 1997,
+      created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+      updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+      count_of_pilots: nil,
+      trainer_id: nil>,
+     #<Employee:0x000055d38cbc41d8
+      id: 13,
+      name: "Tesh",
+      salary: nil,
+      mobile_number: nil,
+      DOB: Wed, 01 Jan 1997,
+      created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+      updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+      count_of_pilots: nil,
+      trainer_id: nil>] 
+    
+      If the rewhere clause is not used, the where clauses are ANDed together
+      Different case when rewhere is used multiple times.
+
+      3.0.0 :088 > Employee.where(id: 11).where.not(mobile_number: nil).rewhere(mobile_number: nil)
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" = $1 AND "employees"."mobile_number" IS NULL  [["id", 11]]                                                                                        
+ =>                                                                                                                 
+[#<Employee:0x000055d38c63fc80                                                                                      
+  id: 11,                                                                                                           
+  name: "Gustav",                                                                                                   
+  salary: nil,                                                                                                      
+  mobile_number: nil,                                                                                               
+  DOB: Wed, 01 Jan 1997,                                                                                            
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                                                       
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,                                                       
+  count_of_pilots: nil,
+  trainer_id: nil>]
+
+  3.0.0 :089 > Employee.where(id: 11).where.not(mobile_number: nil).rewhere(mobile_number: nil).rewhere(id: 13)
+  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NULL AND "employees"."id" = $1  [["id", 13]]                                                                                        
+ =>                                                                                                                 
+[#<Employee:0x000055d389697438                                                                                      
+  id: 13,                                                                                                           
+  name: "Tesh",                                                                                                     
+  salary: nil,                                                                                                      
+  mobile_number: nil,                                                                                               
+  DOB: Wed, 01 Jan 1997,                                                                                            
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,                                                       
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,                                                       
+  count_of_pilots: nil,
+  trainer_id: nil>] 
+
+  3.0.0 :091 > Employee.where(id: 11).and(Employee.where.not(mobile_number: nil)).rewhere(mobile_number: nil).rewhere(
+    id: 13)
+      Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."mobile_number" IS NULL AND "employees"."id" = $1  [["id", 13]]                                                                     
+     =>                                                                                              
+    [#<Employee:0x000055d38d04ec58                                                             
+      id: 13,                                                                                  
+      name: "Tesh",                                                                            
+      salary: nil,                                                                             
+      mobile_number: nil,                                                                      
+      DOB: Wed, 01 Jan 1997,                                                                   
+      created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,                              
+      updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+      count_of_pilots: nil,
+      trainer_id: nil>] 
