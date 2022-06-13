@@ -65,7 +65,7 @@ Methods that find a single entity, such as find and first, return a single insta
 1. annotate
 Adds an SQL comment to queries generated from this relation.
 3.0.0 :008 > Aircraft.annotate("selecting aircraft names").select(:name)
-  Aircraft Load (0.6ms)  SELECT "aircrafts"."name" FROM "aircrafts" /* selecting aircraft names */
+  Aircraft Load (0.6ms)  SELECT "aircrafts"."name" FROM "aircrafts" /* selecting aircraft names */''
  =>                                                         
 [#<Aircraft:0x00007f2744d63090 id: nil, name: "Airbus320">, 
  #<Aircraft:0x00007f2744d62fa0 id: nil, name: "Boeing737">, 
@@ -309,6 +309,112 @@ The find_by! method behaves exactly like find_by, except that it will raise Acti
 
 
 ## Retrieving Multiple Objects in Batches
+
+1 find_each
+The find_each method retrieves records in batches and then yields each one to the block. 
+find_each retrieves  in batches of 1000 and yields them to the block one by one
+
+3.0.0 :012 > Employee.find_each do |employee| print employee.certifieds.ids end
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT $1  [["LIMIT", 1000]]
+  Certified Pluck (0.2ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 1]]
+[3, 6, 16]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 2]]                                                      
+[7, 8]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 3]]
+[11, 14]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 4]]
+[9, 17, 2]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 5]]                                                      
+[4, 12]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 6]]
+[10, 13]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 7]]
+[5, 15]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 8]]
+[]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 9]]
+[]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 11]]
+[]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 13]]
+[] => nil 
+Options for find_each
+
+:batch_size = ption allows you to specify the number of records to be retrieved in each batch, before being passed individually to the block
+
+3.0.0 :013 > Employee.find_each(batch_size:5) do |employee| print employee.certifieds.ids end
+
+  :start
+  records are fetched in ascending order of the primary key. 
+  
+The :start option allows you to configure the first ID of the sequence whenever the lowest ID is not the one you need
+This would be useful, for example, if you wanted to resume an interrupted batch process, provided you saved the last processed ID as a checkpoint.
+
+3.0.0 :014 > Employee.find_each(start: 5) do |employee| print employee.certifieds.ids end
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" >= $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 5], ["LIMIT", 1000]]                                    
+  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 5]]
+[4, 12]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 6]]
+[10, 13]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 7]]
+[5, 15]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 8]]
+[]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 9]]
+[]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 11]]
+[]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 13]]
+[] => nil 
+
+
+:finish
+This  allows you to configure the last ID of the sequence whenever the highest ID is not the one you need.
+3.0.0 :015 > Employee.find_each(start: 5, finish:7) do |employee| print employee.certifieds.ids end
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" >= $1 AND "employees"."id" <= $2 ORDER BY "employees"."id" ASC LIMIT $3  [["id", 5], ["id", 7], ["LIMIT", 1000]]
+  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 5]]
+[4, 12]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 6]]
+[10, 13]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 7]]
+[5, 15] => nil   
+
+
+:error_on_ignore
+
+Overrides the application config to specify if an error should be raised when an order is present in the relation.
+
+2 find_in_batches
+
+The find_in_batches method is similar to find_each, since both retrieve batches of records. 
+The difference is that find_in_batches yields batches to the block as an array of models, instead of individually. 
+The following example will yield to the supplied block an array of up to 1000 customers at a time, 
+with the final block containing any remaining customers
+
+3.0.0 :004 > Employee.find_in_batches do |employee| print em
+  ployee.size end
+    Employee Load (0.4ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT $1  [["LIMIT", 1000]]
+  11 => nil
+
+Options for find_in_batches
+:batch_size
+establishes how many records will be retrieved in each group.
+3.0.0 :006 > Employee.find_in_batches(batch_size:5) do |empl
+  oyee| print employee.size end
+    Employee Load (0.3ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" ASC LIMIT $1  [["LIMIT", 5]]
+  5  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 5], ["LIMIT", 5]]
+  5  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" > $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 11], ["LIMIT", 5]]
+  1 => nil 
+
+
+  :start
+
+  The start option allows specifying the beginning ID from where records will be selected.
+  3.0.0 :007 > Employee.find_in_batches(batch_size:5, start:3 
+    ) do |employee| print employee.size end
+      Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" >= $1 ORDER BY "employees"."id" ASC LIMIT $2  [["id", 3], ["LIMIT", 5]]                       
+    5  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" >= $1 AND "employees"."id" > $2 ORDER BY "employees"."id" ASC LIMIT $3  [["id", 3], ["id", 7], ["LIMIT", 5]]                                             
+    4 => nil   
+
+    :finish
+
+    The finish option allows specifying the ending ID of the records to be retrieved.
+    3.0.0 :008 > Employee.find_in_batches(batch_size:5, start:3,
+      finish: 9 ) do |employee| print employee.size end
+       Employee Load (0.2ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" >= $1 AND "employees"."id" <= $2 ORDER BY "employees"."id" ASC LIMIT $3  [["id", 3], ["id", 9], ["LIMIT", 5]]
+     5  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" WHERE "employees"."id" >= $1 AND "employees"."id" <= $2 AND "employees"."id" > $3 ORDER BY "employees"."id" ASC LIMIT $4  [["id", 3], ["id", 9], ["id", 7], ["LIMIT", 5]]
+     2 => nil 
+
+     :error_on_ignore
+
+The error_on_ignore option overrides the application config to specify if an error should be raised when a specific order is present in the relation.
+
+
+
+
+
 
 
 
@@ -1509,4 +1615,7 @@ can also use any? and many? to check for existence on a model or relation. many?
  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
  count_of_pilots: 3,
  trainer_id: nil> 
+
+
+
 
