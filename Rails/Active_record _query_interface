@@ -2259,3 +2259,32 @@ will execute just 2 queries, as opposed to the  n+1 queries
 
   The eager_load method uses an array, hash, or a nested hash of array/hash in the same way as the includes method to load any number of associations with a single Model.find call.
   Also, like the includes method, you can specify conditions for eager loaded associations.
+
+------------------------------------------------------------------------------------------------
+
+## Method Chaining
+The Active Record pattern implements Method Chaining, which allow us to use multiple Active Record methods together in a simple and straightforward way.
+
+ chain methods works for  a statement when the previous method called returns an ActiveRecord::Relation, like all, where, and joins.
+ Methods that return a single object (see Retrieving a Single Object Section) have to be at the end of the statement. 
+
+ 1 Retrieving filtered data from multiple tables
+ 3.0.0 :029 > Customr.select("customrs.name").joins(:wallet).where("wallets.amount > 0")
+  Customr Load (0.6ms)  SELECT "customrs"."name" FROM "customrs" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" WHERE (wallets.amount > 0)                                                                            
+ => [#<Customr:0x0000558562ec87a8 id: nil, name: "asdfsdf">]   
+
+ 2 Retrieving specific data from multiple tables
+
+
+ 3.0.0 :030 > Customr.select("customrs.name").joins(:wallet).find(1)
+ Customr Load (0.3ms)  SELECT "customrs"."name" FROM "customrs" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" WHERE "customrs"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                        
+=> #<Customr:0x00005585644853e8 id: nil, name: "asdfsdf">    
+3.0.0 :031 > Customr.select("customrs.name").joins(:wallet).find_by(id: 1)
+Customr Load (0.3ms)  SELECT "customrs"."name" FROM "customrs" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" WHERE "customrs"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                      
+=> #<Customr:0x0000558562fd8c38 id: nil, name: "asdfsdf">    
+
+
+
+
+
+
