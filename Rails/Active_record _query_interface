@@ -1766,7 +1766,41 @@ Here we can supply the raw SQL specifying the JOIN clause to joins
   => []  
 
   ## Specifying Conditions on the Joined Tables
+  specify conditions on the joined tables using the regular Array and String conditions. 
 
+  3.0.0 :034 > Employee.joins(:certifieds).where('employees.salary < 40000')
+  Employee Load (0.4ms)  SELECT "employees".* FROM "employees" INNER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id" WHERE (employees.salary < 40000)                     
+ =>                                                                      
+[#<Employee:0x00007f3d04347590                                           
+  id: 1,                                                                 
+  name: "Ajay",                                                          
+  salary: 30000,                                                         
+  mobile_number: "123456789",                                            
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d043474c8
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04347388
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>]
 
   2 left_outer_joins  
 
@@ -1974,10 +2008,254 @@ Here we can supply the raw SQL specifying the JOIN clause to joins
   updated_at: Thu, 26 May 2022 09:47:38.980433000 UTC +00:00,
   count_of_pilots: 0,
   trainer_id: nil>] 
+-------------------------------------------------------------------------------------------------------
+
+## Eager Loading Associations
+Eager loading is the mechanism for loading the associated records of the objects returned by Model.find using as few queries as possible
+
+n+1 query problem 
+it runs 1 query to get all n records
+Then it runs n numbers of queries to fetch all association related to all the records it fetched.
+
+It can be done more efficiently by pre loading via eager loading 
+Active Record lets you specify in advance all the associations that are going to be loaded.
+
+The methods are:
+
+includes
+preload
+eager_load
+
+1 includes
+With includes, Active Record ensures that all of the specified associations are loaded 
+using the minimum possible number of queries.
+3.0.0 :037 > Employee.includes(:certifieds).limit 2
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" LIMIT $1  [["LIMIT", 2]]
+  Certified Load (0.4ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" IN ($1, $2)  [["employee_id", 1], ["employee_id", 2]]
+ => 
+[#<Employee:0x000055dfb7d51f50
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb7d51e88
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+3.0.0 :038 > 
+
+Eager Loading Multiple Associations
+Array of Multiple Associations
+
+3.0.0 :021 > Customr.includes(:orders, :wallet )  
+  Customr Load (0.4ms)  SELECT "customrs".* FROM "customrs"
+  Order Load (0.1ms)  SELECT "orders".* FROM "orders" WHERE "orders"."orderable_type" = $1 AND "orders"."orderable_id" = $2  [["orderable_type", "Customr"], ["orderable_id", 1]]                                   
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."customr_id" = $1  [["customr_id", 1]]
+ =>                                                                                             
+[#<Customr:0x000055856433dff8                                                                   
+  id: 1,                                                                                        
+  name: "asdfsdf",                                           
+  mobile_number: nil,                                        
+  email_address: nil,                                        
+  DOB: nil,                                                  
+  created_at: Fri, 10 Jun 2022 12:50:04.437623000 UTC +00:00,
+  updated_at: Fri, 10 Jun 2022 13:20:58.919337000 UTC +00:00,
+  lock_customer: 1>] 
+3.0.0 :022 > 
+
+Nested Associations Hash
+
+3.0.0 :022 > Customr.includes(:orders, wallet: [:identification] )  
+  Customr Load (0.4ms)  SELECT "customrs".* FROM "customrs"
+  Order Load (0.2ms)  SELECT "orders".* FROM "orders" WHERE "orders"."orderable_type" = $1 AND "orders"."orderable_id" = $2  [["orderable_type", "Customr"], ["orderable_id", 1]]  
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."customr_id" = $1  [["customr_id", 1]]
+  Identification Load (0.1ms)  SELECT "identifications".* FROM "identifications" WHERE "identifications"."wallet_id" = $1  [["wallet_id", 1]]                                      
+ =>                                                            
+[#<Customr:0x0000558563c6cad0                                  
+  id: 1,                                                       
+  name: "asdfsdf",                                             
+  mobile_number: nil,                                          
+  email_address: nil,                                          
+  DOB: nil,                                                    
+  created_at: Fri, 10 Jun 2022 12:50:04.437623000 UTC +00:00,
+  updated_at: Fri, 10 Jun 2022 13:20:58.919337000 UTC +00:00,
+  lock_customer: 1>] 
+3.0.0 :023 > 
 
 
 
+Specifying Conditions on Eager Loaded Associations
+Even though Active Record lets you specify conditions on the eager loaded associations just 
+like joins, the recommended way is to use joins instead.
+Have to use where to specify condition
+This would generate a query which contains a LEFT OUTER JOIN whereas the joins method would generate one using the INNER JOIN function instead.
+3.0.0 :043 > Employee.includes(:certifieds).where(employees: { salary: 30000})
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."salary" = $1  [["salary", 30000]]
+  Certified Load (0.3ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 1]]
+ => 
+[#<Employee:0x000055dfb8c4b858
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>] 
+
+Using where like this will only work when you pass it a Hash. For SQL-fragments you need to use references to force joined tables
+
+3.0.0 :044 > Employee.includes(:certifieds).where( "employees.salary= 30000").references(:certifieds)
+  SQL (1.0ms)  SELECT "employees"."id" AS t0_r0, "employees"."name" AS t0_r1, "employees"."salary" AS t0_r2, "employees"."mobile_number" AS t0_r3, "employees"."DOB" AS t0_r4, "employees"."created_at" AS t0_r5, "employees"."updated_at" AS t0_r6, "employees"."count_of_pilots" AS t0_r7, "employees"."trainer_id" AS t0_r8, "certifieds"."id" AS t1_r0, "certifieds"."employee_id" AS t1_r1, "certifieds"."aircraft_id" AS t1_r2, "certifieds"."created_at" AS t1_r3, "certifieds"."updated_at" AS t1_r4 FROM "employees" LEFT OUTER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id" WHERE (employees.salary= 30000)                                                                             
+ =>                                                                                                                 
+[#<Employee:0x000055dfb7d19c40                                                                                      
+  id: 1,                                                                                                            
+  name: "Ajay",                                                                                                     
+  salary: 30000,                                                                                                    
+  mobile_number: "123456789",                                                                                       
+  DOB: nil,                                                                                                         
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>] 
+
+If no refrences is given it fetches 2 queries instead of joins
+3.0.0 :045 > Employee.includes(:certifieds).where( "employees.salary= 30000")
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees" WHERE (employees.salary= 30000)
+  Certified Load (0.4ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 1]]                                                                                                           
+ =>   
 
 
+2 preload
+Active Record loads each specified association using one query per association.
+will execute just 2 queries, as opposed to the  n+1 queries
+3.0.0 :048 > Employee.preload(:certifieds).limit 5
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees" LIMIT $1  [["LIMIT", 5]]
+  Certified Load (0.6ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" IN ($1, $2, $3, $4, $5)  [["employee_id", 1], ["employee_id", 2], ["employee_id", 3], ["employee_id", 4], ["employee_id", 5]]
+ => 
+[#<Employee:0x000055dfb7cba8f8
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb7cba830
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb7cba718
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb7cba650
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb7cba588
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+  3 eager_load
+
+  eager_load, Active Record loads all specified associations using a LEFT OUTER JOIN.
+  code will execute just 2 queries, as opposed to the 6
+
+  3.0.0 :049 > Employee.eager_load(:certifieds).limit 5
+  SQL (0.3ms)  SELECT DISTINCT "employees"."id" FROM "employees" LEFT OUTER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id" LIMIT $1  [["LIMIT", 5]]             
+  SQL (0.3ms)  SELECT "employees"."id" AS t0_r0, "employees"."name" AS t0_r1, "employees"."salary" AS t0_r2, "employees"."mobile_number" AS t0_r3, "employees"."DOB" AS t0_r4, "employees"."created_at" AS t0_r5, "employees"."updated_at" AS t0_r6, "employees"."count_of_pilots" AS t0_r7, "employees"."trainer_id" AS t0_r8, "certifieds"."id" AS t1_r0, "certifieds"."employee_id" AS t1_r1, "certifieds"."aircraft_id" AS t1_r2, "certifieds"."created_at" AS t1_r3, "certifieds"."updated_at" AS t1_r4 FROM "employees" LEFT OUTER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id" WHERE "employees"."id" IN ($1, $2, $3, $4, $5)  [["id", 3], ["id", 8], ["id", 11], ["id", 9], ["id", 13]]
+ =>                                                             
+[#<Employee:0x000055dfb6fc6020                                  
+  id: 3,                                                        
+  name: "Arnab",                                                
+  salary: 50000,                                                
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb6fb5e50
+  id: 11,
+  name: "Gustav",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb6fb4758
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb6fac940
+  id: 8,
+  name: "shubham",
+  salary: 120000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00,
+  count_of_pilots: 0,
+  trainer_id: nil>,
+ #<Employee:0x000055dfb6fa76c0
+  id: 9,
+  name: "naman",
+  salary: 123345,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.980433000 UTC +00:00,
+  count_of_pilots: 0,
+  trainer_id: nil>] 
 
 
+  The eager_load method uses an array, hash, or a nested hash of array/hash in the same way as the includes method to load any number of associations with a single Model.find call.
+  Also, like the includes method, you can specify conditions for eager loaded associations.
