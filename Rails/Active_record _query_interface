@@ -347,7 +347,7 @@ This would be useful, for example, if you wanted to resume an interrupted batch 
 [10, 13]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 7]]
 [5, 15]  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 8]]
 []  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 9]]
-[]  Certified Pluck (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 11]]
+[]  Certified    (0.1ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 11]]
 []  Certified Pluck (0.0ms)  SELECT "certifieds"."id" FROM "certifieds" WHERE "certifieds"."employee_id" = $1  [["employee_id", 13]]
 [] => nil 
 
@@ -2283,8 +2283,148 @@ The Active Record pattern implements Method Chaining, which allow us to use mult
 Customr Load (0.3ms)  SELECT "customrs"."name" FROM "customrs" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" WHERE "customrs"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                      
 => #<Customr:0x0000558562fd8c38 id: nil, name: "asdfsdf">    
 
+-----------------------------------------------------------------------------------------
+Enums
+
+------------------------------------------------------------------------------------------
+## Find or Build a New Object
+It we need to find a record or create it if it doesnt exist. 
+This can be done with the find_or_create_by and find_or_create_by! methods
+
+1 find_or_create_by
+
+The find_or_create_by method checks whether a record with the specified attributes exists. If it doesnt, then create is called
+
+3.0.0 :050 > emp = Employee.find_or_create_by(name: "Amit")
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amit"], ["LIMIT", 1]]                                                                         
+  TRANSACTION (0.2ms)  BEGIN                                                                
+  Employee Create (7.9ms)  INSERT INTO "employees" ("name", "salary", "mobile_number", "DOB", "created_at", "updated_at", "count_of_pilots", "trainer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["name", "Amit"], ["salary", nil], ["mobile_number", nil], ["DOB", "1997-01-01"], ["created_at", "2022-06-13 14:30:18.657499"], ["updated_at", "2022-06-13 14:30:18.657499"], ["count_of_pilots", nil], ["trainer_id", nil]]        
+  TRANSACTION (0.5ms)  COMMIT                                                               
+ =>                                                                                         
+#<Employee:0x000055dfb8d72a60                                                               
+...       
+
+IT is created as no Amit
+but as it is created now if same is done it will onl;y select
+
+3.0.0 :051 > emp = Employee.find_or_create_by(name: "Amit")
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amit"], ["LIMIT", 1]]
+ => 
+#<Employee:0x000055dfb8e480e8
+... 
+
+If we want to want to set any attribute to false if we're creating a new record, but we don't want to include it in the query.
+this can done as below
+
+Customer.create_with(locked: false).find_or_create_by(first_name: 'Andy')
+3.0.0 :052 > emp = Employee.create_with(salary:100000).find_or_create_by(name: "Amit")
+  Employee Load (0.7ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amit"], ["LIMIT", 1]]                                                                   
+ =>                                                                                   
+#<Employee:0x000055dfb8de25b8                                                         
+...        
+3.0.0 :053 > emp
+ => 
+#<Employee:0x000055dfb8de25b8                                                         
+ id: 14,                                                                              
+ name: "Amit",                                                                        
+ salary: nil,                                                                         
+ mobile_number: nil,                                                                  
+ DOB: Wed, 01 Jan 1997,                                                               
+ created_at: Mon, 13 Jun 2022 14:30:18.657499000 UTC +00:00,                          
+ updated_at: Mon, 13 Jun 2022 14:30:18.657499000 UTC +00:00,
+ count_of_pilots: nil,      
+ trainer_id: nil> 
+
+ but if it creates
+ trainer_id: nil>           
+ 3.0.0 :054 > emp = Employee.create_with(salary:100000).find_or_create_by(name: "Amita")
+   Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amita"], ["LIMIT", 1]]        
+   TRANSACTION (0.1ms)  BEGIN
+   Employee Create (0.2ms)  INSERT INTO "employees" ("name", "salary", "mobile_number", "DOB", "created_at", "updated_at", "count_of_pilots", "trainer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["name", "Amita"], ["salary", 100000], ["mobile_number", nil], ["DOB", "1997-01-01"], ["created_at", "2022-06-13 14:36:41.243159"], ["updated_at", "2022-06-13 14:36:41.243159"], ["count_of_pilots", nil], ["trainer_id", nil]]
+   TRANSACTION (6.5ms)  COMMIT
+  => 
+ #<Employee:0x00007f3d04d00488
+ ... 
+ 3.0.0 :055 > emp
+  => 
+ #<Employee:0x00007f3d04d00488
+  id: 15,
+  name: "Amita",
+  salary: 100000,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Mon, 13 Jun 2022 14:36:41.243159000 UTC +00:00,
+  updated_at: Mon, 13 Jun 2022 14:36:41.243159000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil> 
+ 3.0.0 :056 > 
 
 
+another way is
 
+3.0.0 :056 > emp = Employee.find_or_create_by(name: "Amitra") do |c|
+  3.0.0 :057 >   c.salary = 123456
+  3.0.0 :058 > end
+    Employee Load (0.7ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amitra"], ["LIMIT", 1]]                                                               
+    TRANSACTION (0.3ms)  BEGIN                                                        
+    Employee Create (0.2ms)  INSERT INTO "employees" ("name", "salary", "mobile_number", "DOB", "created_at", "updated_at", "count_of_pilots", "trainer_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["name", "Amitra"], ["salary", 123456], ["mobile_number", nil], ["DOB", "1997-01-01"], ["created_at", "2022-06-13 14:37:37.350959"], ["updated_at", "2022-06-13 14:37:37.350959"], ["count_of_pilots", nil], ["trainer_id", nil]]
+    TRANSACTION (6.5ms)  COMMIT                                                      
+   =>                                                                                
+  #<Employee:0x000055dfb7d318b8                                                      
+  ...                         
+  3.0.0 :059 > emp
+  => 
+ #<Employee:0x000055dfb7d318b8
+  id: 16,                    
+  name: "Amitra",            
+  salary: 123456,            
+  mobile_number: nil,        
+  DOB: Wed, 01 Jan 1997,     
+  created_at: Mon, 13 Jun 2022 14:37:37.350959000 UTC +00:00,
+  updated_at: Mon, 13 Jun 2022 14:37:37.350959000 UTC +00:00,
+  count_of_pilots: nil,      
+  trainer_id: nil> 
 
+  but do not work if its not already there
 
+  3.0.0 :063 > emp = Employee.find_or_create_by(name: "Amitra") do |c|
+    3.0.0 :064 >   c.salary = 123
+    3.0.0 :065 > end
+      Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amitra"], ["LIMIT", 1]]
+     => 
+    #<Employee:0x000055dfb4cd2730
+    ... 
+    3.0.0 :066 > emp
+     => 
+    #<Employee:0x000055dfb4cd2730
+     id: 16,
+     name: "Amitra",
+     salary: 123456,
+     mobile_number: nil,
+     DOB: Wed, 01 Jan 1997,
+     created_at: Mon, 13 Jun 2022 14:37:37.350959000 UTC +00:00,
+     updated_at: Mon, 13 Jun 2022 14:37:37.350959000 UTC +00:00,
+     count_of_pilots: nil,
+     trainer_id: nil> 
+
+The block will only be executed if the customer is being created. The second time we run this code, the block will be ignored.
+
+2 find_or_create_by!
+This do the same thing as above but give error if any validation fails ..
+
+3 find_or_initialize_by
+The find_or_initialize_by method will work just like find_or_create_by but it will call new instead of create
+
+So same as new vs create 
+3.0.0 :068 > emp = Employee.find_or_initialize_by(name: "Amita")
+  Employee Load (0.5ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amita"], ["LIMIT", 1]]                                                  
+ =>                                                                   
+#<Employee:0x000055dfb8681030                                         
+...  
+3.0.0 :074 > emp1 = Employee.find_or_initialize_by(name: "Amitaq")
+  Employee Load (0.3ms)  SELECT "employees".* FROM "employees" WHERE "employees"."name" = $1 LIMIT $2  [["name", "Amitaq"], ["LIMIT", 1]]
+ => 
+#<Employee:0x000055dfb7bb1b50
+... 
+3.0.0 :075 > emp1.new_record?
+ => true 
