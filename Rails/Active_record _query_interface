@@ -2428,3 +2428,142 @@ So same as new vs create
 ... 
 3.0.0 :075 > emp1.new_record?
  => true 
+
+
+ ============================================================================
+ ## Finding by SQL
+
+The find_by_sql method will return an array of objects even if the underlying query returns just a single record.
+It provides you with a simple way of making custom calls to the database and retrieving instantiated objects.
+
+3.0.0 :001 > Employee.find_by_sql("select * from aircrafts")
+  Employee Load (1.2ms)  select * from aircrafts
+ =>                                                             
+[#<Employee:0x000055c56bae6c40                                  
+  id: 1,                                                        
+  name: "Airbus320",                                            
+  created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,   
+  updated_at: Mon, 06 Jun 2022 13:40:48.895413000 UTC +00:00>,  
+ #<Employee:0x000055c56bb48fa8                                  
+  id: 2,                                                        
+  name: "Boeing737",                                            
+  created_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00,   
+  updated_at: Mon, 23 May 2022 19:45:56.466482000 UTC +00:00>]
+
+  3.0.0 :005 > Employee.find_by_sql("select name from aircrafts where id <8").to_a
+  Employee Load (0.6ms)  select name from aircrafts where id <8
+ =>                                                                                                                 
+[#<Employee:0x00007f4f44ab4ba0 id: nil, name: "Airbus320">,                                                         
+ #<Employee:0x00007f4f44ab4ad8 id: nil, name: "Boeing737">,                             
+ #<Employee:0x00007f4f44ab4a10 id: nil, name: "Jet01">,                                 
+ #<Employee:0x00007f4f44ab4948 id: nil, name: "Airbus380">,
+ #<Employee:0x00007f4f44ab4880 id: nil, name: "Boeing777">,
+ #<Employee:0x00007f4f44ab47b8 id: nil, name: "PrivateCraft">,
+ #<Employee:0x00007f4f44ab46f0 id: nil, name: "Aircraft200">] 
+
+
+ 1. select_all
+ find_by_sql has a close relative called connection.select_all. 
+ select_all will retrieve objects from the database using custom SQL just like find_by_sql but will not instantiate them.
+
+ 3.0.0 :011 > Employee.connection.select_one("select name from aircrafts where id <8").to_a
+   (0.4ms)  select name from aircrafts where id <8
+ => [["name", "Airbus320"]]                                                                       
+3.0.0 :012 > Employee.connection.select_all("select name from aircrafts where id <8").to_a
+   (0.7ms)  select name from aircrafts where id <8
+ =>                                                                                               
+[{"name"=>"Airbus320"},                                                                           
+ {"name"=>"Boeing737"},                                                                           
+ {"name"=>"Jet01"},                                                                               
+ {"name"=>"Airbus380"},
+ {"name"=>"Boeing777"},
+ {"name"=>"PrivateCraft"},
+ {"name"=>"Aircraft200"}]
+
+ 2 pluck
+
+ pluck can be used to query single or multiple columns from the underlying table of a model. 
+ It accepts a list of column names as an argument and returns an array of values of the specified columns with the corresponding data type.
+ any model method overrides will not be available for pluck
+ 
+ 3.0.0 :015 > Employee.find_by_sql("select * from aircrafts where id <8").pluck(:name)
+ Employee Load (0.4ms)  select * from aircrafts where id <8
+=> ["Airbus320", "Boeing737", "Jet01", "Airbus380", "Boeing777", "PrivateCraft", "Aircraft200"]                    
+3.0.0 :016 > 
+3.0.0 :016 > Aircraft.all.pluck(:name)
+  Aircraft Pluck (0.2ms)  SELECT "aircrafts"."name" FROM "aircrafts"
+ => ["Airbus320", "Boeing737", "Jet01", "Airbus380", "Boeing777", "PrivateCraft", "Aircraft200", nil]               
+3.0.0 :017 > 
+3.0.0 :020 > Aircraft.pluck(:name, :cruising_range)
+  Aircraft Pluck (0.6ms)  SELECT "aircrafts"."name", "aircrafts"."cruising_range" FROM "aircrafts"
+ =>                                                
+[["Airbus320", 1234566],                           
+ ["Boeing737", 5000],                              
+ ["Jet01", 5000],                                  
+ ["Airbus380", 8000],                              
+ ["Boeing777", 500],                               
+ ["PrivateCraft", 800],                            
+ ["Aircraft200", 1000],                            
+ [nil, 1000]]  
+ 3.0.0 :021 > Aircraft.distinct.pluck( :cruising_range)
+  Aircraft Pluck (0.8ms)  SELECT DISTINCT "aircrafts"."cruising_range" FROM "aircrafts"
+ => [1234566, 500, 800, 8000, 1000, 5000]                                                       
+3.0.0 :022 > 
+
+Can query in multiple tables like joins
+3.0.0 :025 > Employee.joins(:certifieds).pluck("employees.name, certifieds.aircraft_id")
+  Employee Pluck (9.2ms)  SELECT employees.name, certifieds.aircraft_id FROM "employees" INNER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id"                                                                       
+ => 
+[["Ajay", 3],
+ ["Pritam", 3],
+ ["Ram", 5],
+ ["Ajay", 2],
+ ["Ajith", 6],
+ ["Ajith", 2],
+ ["Amar", 3],
+ ["Sam", 4],
+ ["Arnab", 4],
+ ["Pritam", 7],
+ ["Sam", 7],
+ ["Arnab", 5],
+ ["Ram", 6],
+ ["Ajay", 7],
+ ["Amar", 2],
+
+unlike select and other Relation scopes, pluck triggers an immediate query, and thus cannot be chained with any further scopes,
+although it can work with scopes already constructed earlier
+3.0.0 :028 > Aircraft.pluck( :cruising_range).limit(1)
+  Aircraft Pluck (0.3ms)  SELECT "aircrafts"."cruising_range" FROM "aircrafts"
+(irb):28:in '<main>': undefined method 'limit' for [1234566, 5000, 5000, 8000, 500, 800, 1000, 1000]:Array (NoMethodError)                                                                                  
+
+3.0.0 :029 > Aircraft.limit(1).pluck( :cruising_range)
+  Aircraft Pluck (0.5ms)  SELECT "aircrafts"."cruising_range" FROM "aircrafts" LIMIT $1  [["LIMIT", 1]]
+ => [1234566] 
+ 3.0.0 :033 > employees = Employee.includes(:certifieds).limit 10
+ Employee Load (0.3ms)  SELECT "employees".* FROM "employees" LIMIT $1  [["LIMIT", 10]]
+ Certified Load (0.6ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)  [["employee_id", 1], ["employee_id", 2], ["employee_id", 3], ["employee_id", 4], ["employee_id", 5], ["employee_id", 6], ["employee_id", 7], ["employee_id", 8], ["employee_id", 9], ["employee_id", 11]]
+=>                                                                                     
+[#<Employee:0x000055c56cd799e8                                                          
+...                                                                                     
+3.0.0 :034 > employees.pluck(:name)
+=> ["Ajay", "Ajith", "Arnab", "Amar", "Pritam", "Sam", "Ram", "shubham", "naman", "Gustav"] 
+
+ 3.0.0 :035 > employees.limit(1).pluck(:name)
+  SQL (0.5ms)  SELECT DISTINCT "employees"."id" FROM "employees" LEFT OUTER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id" LIMIT $1  [["LIMIT", 1]]                                      
+  Employee Pluck (0.3ms)  SELECT "employees"."name" FROM "employees" LEFT OUTER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id" WHERE "employees"."id" = $1  [["id", 1]]                  
+ => ["Ajay", "Ajay", "Ajay"] 
+
+We can avoid this using unscope to includes
+ 3.0.0 :036 > employees.unscope(:includes).limit(1).pluck(:name)
+  Employee Pluck (0.1ms)  SELECT "employees"."name" FROM "employees" LIMIT $1  [["LIMIT", 1]]
+ => ["Ajay"]                                                                              
+3.0.0 :037 > 
+
+3 ids
+
+ids can be used to pluck all the IDs for the relation using the table's primary key.'
+
+
+3.0.0 :023 > Aircraft.ids
+  Aircraft Pluck (0.3ms)  SELECT "aircrafts"."id" FROM "aircrafts"
+ => [1, 2, 3, 4, 5, 6, 7, 8] 
