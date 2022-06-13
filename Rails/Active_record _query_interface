@@ -1615,6 +1615,368 @@ can also use any? and many? to check for existence on a model or relation. many?
  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
  count_of_pilots: 3,
  trainer_id: nil> 
+-----------------------------------------------------------
+
+## Joining Tables
+THere 2 join methods
+joins and
+left_outer_joins
+
+Here  joins is used for INNER JOIN or custom queries,
+ and left_outer_joins is used for queries using LEFT OUTER JOIN
+
+ 1 joins
+There different ways to use join methods
+
+# Using a String SQL Fragment
+Here we can supply the raw SQL specifying the JOIN clause to joins
+
+3.0.0 :015 > Employee.joins("Inner join certifieds on employ
+  ees.id= certifieds.employee_id and employees.salary < 40000 
+  ")
+    Employee Load (0.4ms)  SELECT "employees".* FROM "employees" Inner join certifieds on employees.id= certifieds.employee_id and employees.salary < 40000
+   => 
+  [#<Employee:0x000055dfb73b0758
+    id: 1,
+    name: "Ajay",
+    salary: 30000,
+    mobile_number: "123456789",
+    DOB: nil,
+    created_at:
+     Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+    updated_at:
+     Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+    count_of_pilots: 3,
+    trainer_id: nil>,
+   #<Employee:0x000055dfb73b0668
+    id: 1,
+    name: "Ajay",
+    salary: 30000,
+    mobile_number: "123456789",
+    DOB: nil,
+    created_at:
+     Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+    updated_at:
+     Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+    count_of_pilots: 3,
+    trainer_id: nil>,
+   #<Employee:0x000055dfb73b0528
+    id: 1,
+    name: "Ajay",
+    salary: 30000,
+    mobile_number: "123456789",
+    DOB: nil,
+    created_at:
+     Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+    updated_at:
+     Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+    count_of_pilots: 3,
+    trainer_id: nil>] 
+
+    2 Using Array/Hash of Named Associations
+    use the names of the associations defined on the model as a shortcut for specifying JOIN clauses for those associations when using the joins method
+    3.0.0 :016 > Employee.joins(:certifieds).distinct
+  Employee Load (1.3ms)  SELECT DISTINCT "employees".* FROM "employees" INNER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id"                                                      
+ =>                                                         
+[#<Employee:0x00007f3d04c85bc0                              
+  id: 4,                                                    
+  name: "Amar",                                             
+  salary: 45000,                                            
+  mobile_number: "123456789",                               
+  DOB: nil,                                                 
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00,
+  count_of_pilots: 3,                                       
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04c85aa8
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04c859b8
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04c858a0
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04c85788
+  id: 7,
+  name: "Ram",
+  salary: 150000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04c85698
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04c85580
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>] 
+
+
+  3 Joining Multiple Associations
+  3.0.0 :006 > Customr.joins(:wallet, :orders)
+  Customr Load (0.3ms)  SELECT "customrs".* FROM "customrs" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" INNER JOIN "orders" ON "orders"."orderable_type" = $1 AND "orders"."orderable_id" = "customrs"."id"  [["orderable_type", "Customr"]]                         
+ => []   
+ #### Joining Nested Associations (Single Level)
+ 3.0.0 :009 > Customr.joins(wallet: :identificat
+  ion)
+    Customr Load (1.3ms)  SELECT "customrs".* FROM "customrs" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" INNER JOIN "identifications" ON "identifications"."wallet_id" = "wallets"."id"
+   => [] 
+
+   2 Joining Nested Associations (Multiple Level)
+   3.0.0 :018 > Customr.joins(:orders, wallet: [:identification] )  
+   Customr Load (0.4ms)  SELECT "customrs".* FROM "customrs" INNER JOIN "orders" ON "orders"."orderable_type" = $1 AND "orders"."orderable_id" = "customrs"."id" INNER JOIN "wallets" ON "wallets"."customr_id" = "customrs"."id" INNER JOIN "identifications" ON "identifications"."wallet_id" = "wallets"."id"  [["orderable_type", "Customr"]]         
+  => []  
+
+  ## Specifying Conditions on the Joined Tables
+
+
+  2 left_outer_joins  
+
+  If you want to select a set of records whether or not they have associated records you can use the left_outer_joins method
+  3.0.0 :032 > Employee.left_outer_joins(:certifieds)
+  Employee Load (0.9ms)  SELECT "employees".* FROM "employees" LEFT OUTER JOIN "certifieds" ON "certifieds"."employee_id" = "employees"."id"                                        
+ =>                                                             
+[#<Employee:0x00007f3d04b54378                                  
+  id: 1,                                                        
+  name: "Ajay",                                                 
+  salary: 30000,                                                
+  mobile_number: "123456789",                                   
+  DOB: nil,                                                     
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,   
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,   
+  count_of_pilots: 3,                                           
+  trainer_id: nil>,                                             
+ #<Employee:0x00007f3d04b542b0
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b54080
+  id: 7,
+  name: "Ram",
+  salary: 150000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4ffa8
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4fee0
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4fe18
+  id: 2,
+  name: "Ajith",
+  salary: 85000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.971275000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4fd50
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4fc88
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4fbc0
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4faf8
+  id: 5,
+  name: "Pritam",
+  salary: 90000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.976349000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4fa30
+  id: 6,
+  name: "Sam",
+  salary: 75000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.977471000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f968
+  id: 3,
+  name: "Arnab",
+  salary: 50000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.973659000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f8a0
+  id: 7,
+  name: "Ram",
+  salary: 150000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.978501000 UTC +00:00,
+  count_of_pilots: 2,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f7d8
+  id: 1,
+  name: "Ajay",
+  salary: 30000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.964898000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f710
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f648
+  id: 4,
+  name: "Amar",
+  salary: 45000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.975047000 UTC +00:00,
+  count_of_pilots: 3,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f580
+  id: 11,
+  name: "Gustav",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:30:36.537466000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f4b8
+  id: 13,
+  name: "Tesh",
+  salary: nil,
+  mobile_number: nil,
+  DOB: Wed, 01 Jan 1997,
+  created_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  updated_at: Wed, 08 Jun 2022 08:31:29.169877000 UTC +00:00,
+  count_of_pilots: nil,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f3f0
+  id: 8,
+  name: "shubham",
+  salary: 120000,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.979496000 UTC +00:00,
+  count_of_pilots: 0,
+  trainer_id: nil>,
+ #<Employee:0x00007f3d04b4f328
+  id: 9,
+  name: "naman",
+  salary: 123345,
+  mobile_number: "123456789",
+  DOB: nil,
+  created_at: Mon, 23 May 2022 19:47:10.970648000 UTC +00:00,
+  updated_at: Thu, 26 May 2022 09:47:38.980433000 UTC +00:00,
+  count_of_pilots: 0,
+  trainer_id: nil>] 
+
+
+
 
 
 
