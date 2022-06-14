@@ -2763,3 +2763,120 @@ Topic.optimizer_hints("SeqScan(topics)", "Parallel(topics 8)")
 # SELECT /*+ SeqScan(topics) Parallel(topics 8) */ "topics".* FROM "topics"
 -------------------------------------------------------------------------------------------------
 ## Scopes
+
+Scopes are custom queries that you define inside your Rails models with the scope method.
+Every scope takes two arguments:
+
+A name, which you use to call this scope in your code.
+A lambda, which implements the query.
+
+And result of calling a scope, you’ll get an ActiveRecord::Relation object.
+Which means we can combine methods and other scopes to it.
+3.0.0 :007 >  Category.cat
+  Category Load (0.5ms)  SELECT "categories".* FROM "categories" WHERE (name is not null )
+ =>                                            
+[#<Category:0x0000556bdb681db0 id: 2, name: "clothes", description: 0.0>,
+ #<Category:0x0000556bdb681ce8 id: 3, name: "electronics", description: 0.0>]
+
+ Usinjg Rails Scopes With Arguments
+To introduce a variable into a scope so you can make it more flexible.
+
+3.0.0 :001 >  Category.limit_num
+  Category Load (0.1ms)  SELECT "categories".* FROM "categories" LIMIT $1  [["LIMIT", 1]]
+ => [#<Category:0x0000558554f10f70 id: 1, name: nil, description: nil>]    
+3.0.0 :002 >  Category.limit_num(3)
+  Category Load (0.2ms)  SELECT "categories".* FROM "categories" LIMIT $1  [["LIMIT", 3]]
+ =>                                                                        
+[#<Category:0x0000558555071798 id: 1, name: nil, description: nil>,        
+ #<Category:0x00005585550716d0 id: 2, name: "clothes", description: 0.0>,  
+ #<Category:0x0000558555071608 id: 3, name: "electronics", description: 0.0>] 
+
+ Scope vs Class Method
+They’re just methods same thing can be done using class methods.
+
+
+But there are design advantages to using scopes over class methods.
+Scopes result in cleaner code because of their syntax
+Scopes are used for exactly one thing, so you know what you get the moment you see one
+Scopes aren’t mixed with other methods, so they’re easier to spot
+In terms of functionality, the only difference is that scopes guarantee an ActiveRecord::Relation, and class methods don’t.
+
+
+
+Default Scopes
+scope to be applied across all queries to the model we can use the default_scope method within the model itself.
+A default scope is one which is automatically applied to your model.
+default_scope { where(description: true) }
+So not recommended to be used
+As beacuse of them progam run into strange errors, andthen will have to waste precious time debugging.
+3.0.0 :001 > category = Category.create!(name: "clothes")
+  TRANSACTION (0.1ms)  BEGIN
+  Category Create (0.2ms)  INSERT INTO "categories" ("name", "description") VALUES ($1, $2) RETURNING "id"  [["name", "clothes"], ["description", 1.0]]                                        
+  TRANSACTION (0.4ms)  COMMIT                                              
+ => #<Category:0x00007efc7c801b58 id: 6, name: "clothes", description: 1.0> 
+3.0.0 :002 > category = Category.create!(name: "electronics", description: "Mouse")
+  TRANSACTION (0.1ms)  BEGIN
+  Category Create (0.2ms)  INSERT INTO "categories" ("name", "description") VALUES ($1, $2) RETURNING "id"  [["name", "electronics"], ["description", 0.0]]            
+  TRANSACTION (6.1ms)  COMMIT                      
+ => #<Category:0x0000560d39b20d80 id: 7, name: "electronics", description: 0.0> 
+ Loading development environment (Rails 7.0.3)                    
+ 3.0.0 :001 >  Category.limit_num(3)
+   Category Load (0.1ms)  SELECT "categories".* FROM "categories" WHERE "categories"."description" = $1 LIMIT $2  [["description", 1.0], ["LIMIT", 3]]                                
+  => [#<Category:0x00007f3a10877548 id: 6, name: "clothes", description: 1.0>] 
+
+
+
+  Merging of scopes
+  Just like where clauses, scopes are merged using AND conditions
+  3.0.0 :001 >  Category.limit_num(3).cat
+  Category Load (0.2ms)  SELECT "categories".* FROM "categories" WHERE (description is not null ) LIMIT $1  [["LIMIT", 3]]                                                                                       
+ =>                                                                                          
+[#<Category:0x0000560654270d70 id: 2, name: "clothes", description: 0.0>,                    
+ #<Category:0x000056065423b2d8 id: 3, name: "electronics", description: 0.0>,                
+ #<Category:0x000056065423b210 id: 6, name: "clothes", description: 1.0>] 
+ (base) itsacheckmate@itsacheckmate:~/Training/Rails/ecommerce$ rails c
+Loading development environment (Rails 7.0.3)                                                
+3.0.0 :001 >  Category.limit_num(3).cat
+  Category Load (0.4ms)  SELECT "categories".* FROM "categories" WHERE (description = 0.0 ) LIMIT $1  [["LIMIT", 3]]
+ =>                                                                                          
+[#<Category:0x000055a5a008e3c8 id: 2, name: "clothes", description: 0.0>,                    
+ #<Category:0x00007fdf30c14988 id: 3, name: "electronics", description: 0.0>,                
+ #<Category:0x00007fdf30c148c0 id: 7, name: "electronics", description: 0.0>] 
+3.0.0 :002 > 
+
+using scopes with where  condition
+3.0.0 :002 >  Category.limit_num(3).cat.where(name: "clothes")
+  Category Load (0.5ms)  SELECT "categories".* FROM "categories" WHERE (description = 0.0 ) AND "categories"."name" = $1 LIMIT $2  [["name", "clothes"], ["LIMIT", 3]]                                               
+ => [#<Category:0x00007fdf309bc0f0 id: 2, name: "clothes", description: 0.0>]        
+
+ One important caveat is that default_scope will be prepended in scope and where conditions.
+
+ Removing All Scoping
+ to remove scoping for any reason we can use the unscoped method. This is especially useful if a default_scope is specified in the model and should not be applied for this particular query.
+
+ 3.0.0 :001 > Category.unscoped.load
+ Category Load (0.2ms)  SELECT "categories".* FROM "categories"
+=>                                                                                              
+[#<Category:0x00005580b0150398 id: 1, name: nil, description: nil>,                              
+#<Category:0x00005580b011a900 id: 2, name: "clothes", description: 0.0>,                        
+#<Category:0x00005580b011a838 id: 3, name: "electronics", description: 0.0>,                    
+#<Category:0x00005580b011a770 id: 4, name: "clothes", description: nil>,                        
+#<Category:0x00005580b011a6a8 id: 5, name: "clothes", description: nil>,               
+#<Category:0x00005580b011a5e0 id: 6, name: "clothes", description: 1.0>,               
+#<Category:0x00005580b011a518 id: 7, name: "electronics", description: 0.0>,           
+#<Category:0x00005580b011a450 id: 8, name: "electronics", description: 0.0>,           
+#<Category:0x00005580b011a388 id: 9, name: "electronics", description: 0.0>,           
+#<Category:0x00005580b011a2c0 id: 10, name: "electronics", description: 0.0>]  
+
+unscoped can also accept a block.
+3.0.0 :003 > Category.unscoped.where(name: "clothes")
+  Category Load (0.2ms)  SELECT "categories".* FROM "categories" WHERE "categories"."name" = $1  [["name", "clothes"]]                                                                                      
+ =>                                                                                     
+[#<Category:0x00007f9cf43b1d78 id: 2, name: "clothes", description: 0.0>,               
+ #<Category:0x00007f9cf43b1cb0 id: 4, name: "clothes", description: nil>,               
+ #<Category:0x00007f9cf43b1be8 id: 5, name: "clothes", description: nil>,               
+ #<Category:0x00007f9cf43b1b20 id: 6, name: "clothes", description: 1.0>]   
+
+
+
+
