@@ -6,6 +6,10 @@ class Wallet < ApplicationRecord
 #  validates :amount, confirmation: true, numericality: {greater_than: 90}
   belongs_to :customr
   has_one :identification
+
+  def transaction (amount)
+    print amount, "deducted"
+  end
 end
 
 

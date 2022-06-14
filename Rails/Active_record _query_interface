@@ -2567,3 +2567,199 @@ ids can be used to pluck all the IDs for the relation using the table's primary 
 3.0.0 :023 > Aircraft.ids
   Aircraft Pluck (0.3ms)  SELECT "aircrafts"."id" FROM "aircrafts"
  => [1, 2, 3, 4, 5, 6, 7, 8] 
+ ------------------------------------------------------------------------------------------
+ extract_associated(association)
+Extracts a named association from the relation. The named association is first preloaded, then the individual association records are collected from the relation.
+3.0.0 :003 > Employee.extract_associated(:certifieds)
+  Employee Load (0.6ms)  SELECT "employees".* FROM "employees"
+  Certified Load (0.2ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."employee_id" IN ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)  [["employee_id", 1], ["employee_id", 2], ["employee_id", 3], ["employee_id", 4], ["employee_id", 5], ["employee_id", 6], ["employee_id", 7], ["employee_id", 8], ["employee_id", 9], ["employee_id", 11], ["employee_id", 13], ["employee_id", 14], ["employee_id", 15], ["employee_id", 16]]          
+ =>                                                                                                             
+[[#<Certified:0x000055eec55e1e38                                                                                
+   id: 3,                                                                                                       
+   employee_id: 1,                                                                                              
+   aircraft_id: 3,                                                                                              
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,  
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>, 
+  #<Certified:0x000055eec55c29c0                                
+   id: 6,                                                       
+   employee_id: 1,
+   aircraft_id: 2,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec55937b0
+   id: 16,
+   employee_id: 1,
+   aircraft_id: 7,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>],
+ [#<Certified:0x000055eec55c21f0
+   id: 7,
+   employee_id: 2,
+   aircraft_id: 6,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec55c1610
+   id: 8,
+   employee_id: 2,
+   aircraft_id: 2,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>],
+ [#<Certified:0x000055eec55a3138
+   id: 11,
+   employee_id: 3,
+   aircraft_id: 4,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec5598cb0
+   id: 14,
+   employee_id: 3,
+   aircraft_id: 5,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>],
+ [#<Certified:0x000055eec55c0f58
+   id: 9,
+   employee_id: 4,
+   aircraft_id: 3,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec5591eb0
+   id: 17,
+   employee_id: 4,
+   aircraft_id: 2,
+   created_at: Tue, 31 May 2022 09:35:13.397631000 UTC +00:00,
+   updated_at: Tue, 31 May 2022 09:35:13.397631000 UTC +00:00>,
+  #<Certified:0x000055eec55910f0
+   id: 2,
+   employee_id: 4,
+   aircraft_id: 1,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 06 Jun 2022 13:40:48.889935000 UTC +00:00>],
+ [#<Certified:0x000055eec55c8de8
+   id: 4,
+   employee_id: 5,
+   aircraft_id: 3,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec55a0910
+   id: 12,
+   employee_id: 5,
+   aircraft_id: 7,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>],
+ [#<Certified:0x000055eec55b1530
+   id: 10,
+   employee_id: 6,
+   aircraft_id: 4,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec559aad8
+   id: 13,
+   employee_id: 6,
+   aircraft_id: 7,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>],
+ [#<Certified:0x000055eec55c2f38
+   id: 5,
+   employee_id: 7,
+   aircraft_id: 5,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>,
+  #<Certified:0x000055eec55981c0
+   id: 15,
+   employee_id: 7,
+   aircraft_id: 6,
+   created_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+   updated_at: Mon, 23 May 2022 19:53:00.270890000 UTC +00:00>],
+ [],
+ [],
+ [],
+ [],
+ [],
+ [],
+ []] 
+------------------------------------------------------------------------------------------------
+From -
+
+from(value, subquery_name = nil)Link
+Specifies the table from which the records will be fetched.
+3.0.0 :015 > Certified.select('name').from('employees')
+  Certified Load (0.3ms)  SELECT name FROM employees
+ =>                                                                                   
+[#<Certified:0x000055eec6daec50 id: nil>,                                             
+ #<Certified:0x000055eec6daeb88 id: nil>,                                             
+ #<Certified:0x000055eec6daeac0 id: nil>,                                             
+ #<Certified:0x000055eec6dae9f8 id: nil>,              
+ #<Certified:0x000055eec6dae930 id: nil>,              
+ #<Certified:0x000055eec6dae868 id: nil>,              
+ #<Certified:0x000055eec6dae7a0 id: nil>,              
+ #<Certified:0x000055eec6dae6d8 id: nil>,              
+ #<Certified:0x000055eec6dae610 id: nil>,              
+ #<Certified:0x000055eec6dae548 id: nil>,              
+ #<Certified:0x000055eec6dae480 id: nil>,              
+ #<Certified:0x000055eec6dae3b8 id: nil>,              
+ #<Certified:0x000055eec6dae2f0 id: nil>,
+ #<Certified:0x000055eec6dae228 id: nil>] 
+
+ 3.0.0 :017 > emp = Certified.select('name').from('employees')
+  Certified Load (0.5ms)  SELECT name FROM employees
+ =>                                                    
+[#<Certified:0x000055eec7775a90 id: nil>,              
+...      
+3.0.0 :018 > emp.first.name
+ => "Ajay" 
+------------------------------------------------------------------------------------------------
+extending(*modules, &block)
+Used to extend a scope with additional methods, either through a module or through a block provided.
+3.0.0 :006 > wallet = Wallet.all.extending(Amount)
+  Wallet Load (0.6ms)  SELECT "wallets".* FROM "wallets"
+ =>                                                                    
+[#<Wallet:0x00007f4258813520                                           
+...                                                                    
+3.0.0 :007 > wallet = Wallet.first.extend(Amount)
+  Wallet Load (0.6ms)  SELECT "wallets".* FROM "wallets" ORDER BY "wallets"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ =>                                                                    
+#<Wallet:0x00007f4258a61548                                            
+...     
+
+3.0.0 :001 > wallet = Wallet.all.extending(Amount)
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets"
+ =>                         
+[#<Wallet:0x0000563e7a750f58
+...                         
+3.0.0 :002 > wallet.debits(1)
+debited amount1 => nil 
+3.0.0 :003 > wallet = Wallet.first.extend(Amount)
+  Wallet Load (0.5ms)  SELECT "wallets".* FROM "wallets" ORDER BY "wallets"."id" ASC LIMIT $1  [["LIMIT", 1]]
+ =>                         
+#<Wallet:0x0000563e7abf81a0 
+... 
+3.0.0 :004 > 
+3.0.0 :005 > wallet.debits(1)
+debited amount1 => nil 
+
+extending using  a block
+3.0.0 :011 > wallet = Wallet.all.extending do
+  3.0.0 :012 >   def credits(amt)
+  3.0.0 :013 >     print "amount credited", amt
+  3.0.0 :014 >   end
+  3.0.0 :015 > end
+    Wallet Load (0.2ms)  SELECT "wallets".* FROM "wallets"
+   =>                    "amount credited", amt                          
+  [#<Wallet:0x0000563e793339d0                                           
+  ...      
+
+  3.0.0 :016 > wallet.credits(10)
+amount credited10 => nil 
+3.0.0 :017 > 
+
+
+optimizer_hints(*args)
+
+how to use this
+Specify optimizer hints to be used in the SELECT statement.
+Example (for PostgreSQL with pg_hint_plan):
+
+Topic.optimizer_hints("SeqScan(topics)", "Parallel(topics 8)")
+# SELECT /*+ SeqScan(topics) Parallel(topics 8) */ "topics".* FROM "topics"
+-------------------------------------------------------------------------------------------------
+## Scopes

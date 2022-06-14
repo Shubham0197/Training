@@ -7,5 +7,6 @@ class Category < ApplicationRecord
   end
 
   has_many :products
+  scope :cat, -> { where("name is not null ") }
 end
   
