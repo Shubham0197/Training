@@ -17,6 +17,51 @@ Hello after create here
   TRANSACTION (0.6ms)  COMMIT                             
  => true 
 
+ 4 Running Callbacks
+The following methods trigger callbacks:
+create
+create!
+destroy
+destroy!
+destroy_all
+destroy_by
+save
+save!
+save(validate: false)
+toggle!
+touch
+update_attribute
+update
+update!
+valid?
+Additionally, the after_find callback is triggered by the following finder methods:
+
+all
+first
+find
+find_by
+find_by_*
+find_by_*!
+find_by_sql
+last
+The after_initialize callback is triggered every time a new object of the class is initialized.
+
+The find_by_* and find_by_*! methods are dynamic finders 
+
+
+ Halting Execution
+As you start registering new callbacks for your models, they will be queued for execution.
+ This queue will include all your model's validations, the registered callbacks, and the database operation to be executed.
+
+The whole callback chain is wrapped in a transaction. 
+If any callback raises an exception, the execution chain gets halted and a ROLLBACK is issued. 
+
+To intentionally stop a chain use an write follwing  in the catch and throw exception
+
+throw :abort
+
+
+
 
  Available Callbacks
  list with all the available Active Record callbacks, 
@@ -38,12 +83,98 @@ Before validation
  3.0.0 :010 > po.product_option
  => "MOBILE" 
 before_save-
+3.0.0 :001 > Wallet.create!
+Callback before_save  TRANSACTION (0.1ms)  BEGIN
+  Wallet Create (1.9ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", nil], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-14 16:22:02.295859"], ["updated_at", "2022-06-14 16:22:02.295859"], ["customr_id", nil]]           
+  TRANSACTION (0.4ms)  COMMIT
+ =>                         
+#<Wallet:0x000055c5d7e0f5e0 
 around_save-
+3.0.0 :005 > Wallet.create(name: "asasasa")
+Callback around_save 
+  =>                                                          
+#<Wallet:0x00007f4ec4873538                                   
+ id: nil,                             
+ name: "asasasa",                     
+ amount: nil,
+ lock_version: 0,
+ type: nil,
+ created_at: nil,
+ updated_at: nil,
+ customr_id: nil> 
+
 before_create-
+3.0.0 :001 > Wallet.create(name: "asasasa")
+Callback before_create 
+   TRANSACTION (0.0ms)  BEGIN         
+  Wallet Create (0.2ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "asasasa"], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-14 16:25:46.424883"], ["updated_at", "2022-06-14 16:25:46.424883"], ["customr_id", nil]]     
+  TRANSACTION (0.4ms)  COMMIT
+ =>                         
+#<Wallet:0x00007f5cb480c718 
+ id: 3,                     
+ name: "asasasa",
+ amount: nil,
+ lock_version: 0,
+ type: nil,
+ created_at: Tue, 14 Jun 2022 16:25:46.424883000 UTC +00:00,
+ updated_at: Tue, 14 Jun 2022 16:25:46.424883000 UTC +00:00,
+ customr_id: nil> 
+
 around_create-
+3.0.0 :001 > w = Wallet.create(name: "amazon")
+Callback around_create 
+  =>              
+#<Wallet:0x00007fac7481f600
+ id: nil,
+ name: "amazon",
+ amount: nil,
+ lock_version: 0,
+ type: nil,
+ created_at: Tue, 14 Jun 2022 16:26:35.970641000 UTC +00:00,
+ updated_at: Tue, 14 Jun 2022 16:26:35.970641000 UTC +00:00,
+ customr_id: nil>
+ 3.0.0 :004 > w.save!
+Callback around_create 
+  => true 
 after_create-
+3.0.0 :001 > w = Wallet.create(name: "payzapp")
+  TRANSACTION (0.1ms)  BEGIN
+  Wallet Create (0.3ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "payzapp"], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-14 16:27:55.844276"], ["updated_at", "2022-06-14 16:27:55.844276"], ["customr_id", nil]]                                       
+Callback after_create                                         
+   TRANSACTION (0.4ms)  COMMIT                                
+ =>                                                           
+#<Wallet:0x000056363eadd7f0 
+...                         
 after_save-
+3.0.0 :001 > w = Wallet.new(name: "payzapp")
+ => 
+#<Wallet:0x00007fa7a43532e0                                       
+...  
+3.0.0 :002 > w.save
+  TRANSACTION (0.1ms)  BEGIN
+  Wallet Create (0.3ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "payzapp"], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-14 16:29:32.055481"], ["updated_at", "2022-06-14 16:29:32.055481"], ["customr_id", nil]]                                           
+Callback after_save
+
 after_commit / after_rollback-
+3.0.0 :002 > w = Wallet.create(name: "payzapp")
+  TRANSACTION (0.1ms)  BEGIN
+  Wallet Create (0.3ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "payzapp"], ["amount", nil], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-14 16:30:50.074559"], ["updated_at", "2022-06-14 16:30:50.074559"], ["customr_id", nil]]                      
+  TRANSACTION (0.4ms)  COMMIT            
+Callback after_commit / after_rollback   
+  => 
+#<Wallet:0x0000560bba76d01
+
+3.2 Updating an Object
+before_validation
+after_validation
+before_save
+around_save
+before_update
+around_update
+after_update
+after_save
+after_commit / after_rollback
+
 
 
 
