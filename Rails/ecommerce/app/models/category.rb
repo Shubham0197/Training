@@ -1,7 +1,8 @@
 class Category < ApplicationRecord
   validates :name , inclusion: {in: ["clothes", "electronics"]}
   validates :description, presence: true, if: :description?
-  default_scope { where(description: true) }
+#  default_scope { where(description: true) }
+  enum :description, [:stock, :cancelled]
 
   def description?
     description =~ /[\w]+/

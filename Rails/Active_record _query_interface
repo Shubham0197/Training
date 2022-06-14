@@ -2878,5 +2878,54 @@ unscoped can also accept a block.
  #<Category:0x00007f9cf43b1b20 id: 6, name: "clothes", description: 1.0>]   
 
 
+============================================================================
+
+Enums
+An enum lets you define an Array of values for an attribute and refer to them by name. 
+The actual value stored in the database is an integer that has been mapped to one of the values.
+
+Declaring an enum will:
+
+Create scopes that can be used to find all objects that have or do not have one of the enum values
+Create an instance method that can be used to determine if an object has a particular value for the enum
+Create an instance method that can be used to change the enum value of an object
+
+These scopes are created automatically and can be used to find all objects with or without a particular value for attriibutes.  
+3.0.0 :001 > Category.stock
+  Category Load (0.1ms)  SELECT "categories".* FROM "categories" WHERE "categories"."description" = $1  [["description", 0.0]]                                                                              
+ =>                                                             
+[#<Category:0x00007f55e0b26758 id: 2, name: "clothes", description: "stock">,
+ #<Category:0x00007f55e0b58c80 id: 3, name: "electronics", description: "stock">,
+ #<Category:0x00007f55e0b58bb8 id: 7, name: "electronics", description: "stock">,
+ #<Category:0x00007f55e0b58af0 id: 8, name: "electronics", description: "stock">,
+ #<Category:0x00007f55e0b58a28 id: 9, name: "electronics", description: "stock">,
+ #<Category:0x00007f55e0b58960 id: 10, name: "electronics", description: "stock">] 
+
+ 3.0.0 :002 > Category.not_stock
+  Category Load (0.2ms)  SELECT "categories".* FROM "categories" WHERE "categories"."description" != $1  [["description", 0.0]]                                                     
+ => [#<Category:0x000055677c817980 id: 6, name: "clothes", description: "cancelled">] 
 
 
+ 3.0.0 :003 > cat = Category.first
+ Category Load (0.1ms)  SELECT "categories".* FROM "categories" ORDER BY "categories"."id" ASC LIMIT $1  [["LIMIT", 1]]                                                                  
+=> #<Category:0x000055677c815220 id: 1, name: nil, description: nil> 
+3.0.0 :005 > cat.stock?
+ => false 
+ 3.0.0 :006 > cat.cancelled?
+ => false 
+ 3.0.0 :008 > cat.name = "clothes"
+ => "clothes" 
+3.0.0 :009 > cat.cancelled!
+  TRANSACTION (0.3ms)  BEGIN
+  Category Update (1.0ms)  UPDATE "categories" SET "name" = $1, "description" = $2 WHERE "categories"."id" = $3  [["name", "clothes"], ["description", 1.0], ["id", 1]]        
+  TRANSACTION (6.8ms)  COMMIT                              
+ => true 
+
+ 3.0.0 :010 > cat.stock!
+  TRANSACTION (0.2ms)  BEGIN
+  Category Update (0.2ms)  UPDATE "categories" SET "description" = $1 WHERE "categories"."id" = $2  [["description", 0.0], ["id", 1]]                                          
+  TRANSACTION (6.5ms)  COMMIT                              
+ => true                                                   
+3.0.0 :011 > cat.stock?
+ => true 
+ 
