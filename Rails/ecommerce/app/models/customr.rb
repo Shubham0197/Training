@@ -7,6 +7,13 @@ class Customr < ApplicationRecord
   has_one :wallet
   has_one :identification, through: :wallet
   
+  after_touch :log_customer_touched
+
+  private
+    def log_customer_touched
+      puts 'Customer/Wallet was touched'
+    end
+
   def name_valid?
     !name.blank?
   end

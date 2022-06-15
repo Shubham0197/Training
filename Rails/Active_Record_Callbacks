@@ -269,3 +269,31 @@ after initialize100.0
  =>                                                                    
 #<Wallet:0x00007f5888898400                                            
 ...    
+
+-----------------------------------------------------------------------------------------------
+after_touch
+The after_touch callback will be called whenever an Active Record object is touched.
+
+3.0.0 :002 > wallet.touch
+  TRANSACTION (0.4ms)  BEGIN
+  Wallet Update (0.9ms)  UPDATE "wallets" SET "updated_at" = $1, "lock_version" = $2 WHERE "wallets"."id" = $3 AND "wallets"."lock_version" = $4  [["updated_at", "2022-06-15 13:00:54.012717"], ["lock_version", 1], ["id", 7], ["lock_version", 0]]                                                      
+call back touch                                                    
+  TRANSACTION (5.2ms)  COMMIT                                      
+ => true   
+
+ It can be used along with belongs_to:
+
+ 3.0.0 :001 > wallet = Wallet.find(1)
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                                 
+ =>                                                                
+#<Wallet:0x00007fee70480a88                                        
+...                                                                
+3.0.0 :002 > wallet.touch
+  TRANSACTION (0.2ms)  BEGIN
+  Wallet Update (0.3ms)  UPDATE "wallets" SET "updated_at" = $1, "lock_version" = $2 WHERE "wallets"."id" = $3 AND "wallets"."lock_version" = $4  [["updated_at", "2022-06-15 13:19:11.504603"], ["lock_version", 5], ["id", 1], ["lock_version", 4]]                                                      
+  Customr Load (0.1ms)  SELECT "customrs".* FROM "customrs" WHERE "customrs"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+call back touch
+  Customr Update (0.1ms)  UPDATE "customrs" SET "updated_at" = $1, "lock_customer" = $2 WHERE "customrs"."id" = $3 AND "customrs"."lock_customer" = $4  [["updated_at", "2022-06-15 13:19:11.516583"], ["lock_customer", 3], ["id", 1], ["lock_customer", 2]]
+Customer/Wallet was touched
+  TRANSACTION (0.4ms)  COMMIT
+ => true 
