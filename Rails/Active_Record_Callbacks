@@ -238,6 +238,14 @@ def around_save
 end
 
 
+The difference between after_create, after_save and after_commit in Rails is that:
+
+after_save is invoked when an object is created and updated
+after_commit is called on create, update and destroy.
+after_create is only called when creating an object
+
+
+
 after_initialize and after_find
 
 
