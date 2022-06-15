@@ -12,11 +12,27 @@ class Wallet < ApplicationRecord
 #  around_create :printing
 #  after_create :printing
 #  after_save :printing
-  after_commit :printing
+#  after_commit :printing
 #  after_rollback :printing
+#  before_update :printing
+#  around_update :printing
+#  after_update :printing
+  before_destroy :printing
+  around_destroy :around_callbacks
+#  after_destroy  :printing
+  
+  
 
   def printing
-    print "Callback after_commit / after_rollback  \n "
+    print "Callback for destroy run here \n "
+  end
+
+  def around_callbacks
+    print "Before yield "
+    print amount
+    yield
+    print "after yield "
+    print amount
   end
 
   def transaction (amount)

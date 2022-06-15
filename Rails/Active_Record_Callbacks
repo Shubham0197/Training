@@ -174,10 +174,71 @@ around_update
 after_update
 after_save
 after_commit / after_rollback
+3.0.0 :004 > wallet = Wallet.find(1)
+  Wallet Load (0.2ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]                                                                 
+ =>                                                                
+#<Wallet:0x000055866437b208                      
+...   
+3.0.0 :007 > wall.update(:amount => 100)
+Callback run here   
+ Callback run here                                                                  
+ Callback run here                                                                  
+  => true  
+
+Destroying an Object
+before_destroy
+around_destroy
+after_destroy
 
 
+3.0.0 :001 > wallet = Wallet.find(2)
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."id" = $1 LIMIT $2  [["id", 2], ["LIMIT", 1]]                                                                 
+ =>                                                                
+#<Wallet:0x000055d8cdcb4278                                        
+...                                                                
+3.0.0 :002 > wallet.destroy
+  TRANSACTION (0.2ms)  BEGIN
+  Wallet Destroy (0.8ms)  DELETE FROM "wallets" WHERE "wallets"."id" = $1 AND "wallets"."lock_version" = $2  [["id", 2], ["lock_version", 0]]                         
+Callback for destroy run here  100.0             
+   TRANSACTION (1.4ms)  COMMIT    
+
+3.0.0 :001 > wallet = Wallet.find(6)
+  Wallet Load (0.1ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."id" = $1 LIMIT $2  [["id", 6], ["LIMIT", 1]]                                                                     
+ =>                                                                    
+#<Wallet:0x00007fee8cd96480                                            
+...                                                                    
+3.0.0 :002 > wallet.persisted?
+ => true 
+3.0.0 :003 > wallet.destroy
+Callback for destroy run here 
+ Before yield 100.0  TRANSACTION (0.2ms)  BEGIN                        
+  Wallet Destroy (0.7ms)  DELETE FROM "wallets" WHERE "wallets"."id" = $1 AND "wallets"."lock_version" = $2  [["id", 6], ["lock_version", 0]]                        
+Before yield 100.0  TRANSACTION (1.5ms)  COMMIT  
+ =>                                              
+#<Wallet:0x00007fee8cd96480
+ id: 6,
+ name: "payzapp",
+ amount: 100.0,
+ lock_version: 0,
+ type: nil,
+ created_at: Tue, 14 Jun 2022 16:29:32.055481000 UTC +00:00,
+ updated_at: Tue, 14 Jun 2022 16:29:32.055481000 UTC +00:00,
+ customr_id: nil> 
+
+around_* callbacks are invoked before the action, then when you want to invoke the action itself, you yield to it, then continue execution. That's why it's called around
+
+The order goes like this: before, around, after.
+
+So, a typical around_save would look like this:
+
+def around_save
+   #do something...
+   yield #saves
+   #do something else...
+end
 
 
+after_initialize and after_find
 
 
 
