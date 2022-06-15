@@ -1,12 +1,13 @@
 class Wallet < ApplicationRecord
-#  validates :name, presence: {strict: true}, on: :update
+#  validates :name, presence: true, on: :update
 #  validates :name, confirmation: {case_sensitive: false}
 #  validates :name_confirmation, presence: true, if: ->{!name.blank?}
 #  validates :available, acceptance: {accept: 1 ,message: "Accept this"}
 #  validates :amount, confirmation: true, numericality: {greater_than: 90}
-  belongs_to :customr, touch: true
+#  belongs_to :customr, touch: true
   has_one :identification
-#  before_save :printing
+  before_save :printing , if: :name?, unless: Proc.new{ walllet?}
+  after_update :printing, if: [:name?, :walllet?]
 #  around_save :printing
 #  before_create :printing
 #  around_create :printing
@@ -17,7 +18,7 @@ class Wallet < ApplicationRecord
 #  before_update :printing
 #  around_update :printing
 #  after_update :printing
-  before_destroy :printing
+#  before_destroy :printing
   around_destroy :around_callbacks
 #  after_destroy  :printing
 =begin
@@ -37,7 +38,7 @@ class Wallet < ApplicationRecord
 
 
   def printing
-    print "Callback for destroy run here \n "
+    print "Callback  run here \n "
   end
 
   def around_callbacks
@@ -47,6 +48,23 @@ class Wallet < ApplicationRecord
     print "after yield "
     print amount
   end
+
+  def name?
+    if name.blank?
+      false
+    else
+      true
+    end
+  end
+
+  def walllet? 
+    if amount > 0
+      true
+    else
+      false
+    end
+  end
+
 
   def transaction (amount)
     print amount, "deducted"

@@ -320,14 +320,52 @@ Customer/Wallet was touched
  updated_at: Wed, 15 Jun 2022 13:19:11.504603000 UTC +00:00,
  customr_id: 1> 
 
- 
+=======================================================
+##  Conditional Callbacks
+ As with validations,  calling of a callback method can be conditional on the satisfaction of a given predicate
+It can be done  using the :if and :unless options, which can take a symbol, a Proc or an Array.
+:if is used option when want to specify under which conditions the callback should be called. 
+For the  conditions under which the callback should not be called, then :unless option is used
+
+1 Using :if and :unless with a Symbol
+2 Using :if and :unless with a Proc
+3 Using both :if and :unless
+Here the both conditoions mut be satisfies for the callbacks to be run
+
+3.0.0 :001 > Wallet.create!(name: "HDFC", amount: 500)
+Callback  run here 
+   TRANSACTION (0.0ms)  BEGIN                               
+  Wallet Create (0.3ms)  INSERT INTO "wallets" ("name", "amount", "lock_version", "type", "created_at", "updated_at", "customr_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "HDFC"], ["amount", 500.0], ["lock_version", 0], ["type", nil], ["created_at", "2022-06-15 17:36:50.439389"], ["updated_at", "2022-06-15 17:36:50.439389"], ["customr_id", nil]]                                                  
+  TRANSACTION (0.4ms)  COMMIT                               
+ =>                                                    
+#<Wallet:0x000055c756b1b228                            
+ id: 12,                                               
+ name: "HDFC",
+ amount: 500.0,
+ lock_version: 0,
+ type: nil,
+ created_at: Wed, 15 Jun 2022 17:36:50.439389000 UTC +00:00,
+ updated_at: Wed, 15 Jun 2022 17:36:50.439389000 UTC +00:00,
+ customr_id: nil> 
+
+ 3.0.0 :003 > w.save
+Callback  run here 
+   TRANSACTION (0.1ms)  BEGIN                               
+  Wallet Update (0.3ms)  UPDATE "wallets" SET "name" = $1, "updated_at" = $2, "lock_version" = $3 WHERE "wallets"."id" = $4 AND "wallets"."lock_version" = $5  [["name", "sdefeasfdgsdfsfs"], ["updated_at", "2022-06-15 17:46:35.203773"], ["lock_version", 4], ["id", 14], ["lock_version", 3]]           
+  TRANSACTION (6.5ms)  COMMIT                               
+ => true    
+
+4 Multiple Callback Conditions
+HEre the  callback only runs when all the :if conditions and none of the :unless conditions are evaluated to true.
 
 
-
-
-
-
-
+3.0.0 :003 > y.save
+Callback  run here 
+   TRANSACTION (0.1ms)  BEGIN                          
+  Wallet Update (0.3ms)  UPDATE "wallets" SET "amount" = $1, "updated_at" = $2, "lock_version" = $3 WHERE "wallets"."id" = $4 AND "wallets"."lock_version" = $5  [["amount", 100.0], ["updated_at", "2022-06-15 17:35:39.089368"], ["lock_version", 1], ["id", 10], ["lock_version", 0]]     
+Callback  run here                           
+   TRANSACTION (6.6ms)  COMMIT               
+ => true 
 
 
 
