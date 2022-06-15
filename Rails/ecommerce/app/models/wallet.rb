@@ -20,8 +20,16 @@ class Wallet < ApplicationRecord
   before_destroy :printing
   around_destroy :around_callbacks
 #  after_destroy  :printing
-  
-  
+
+  after_initialize do |wallet|
+    wallet.amount = 100
+    print "after initialize", amount, "\n"
+  end
+
+  after_find do |wallet|
+    wallet.amount = 0
+    print "after find", amount, "\n"
+  end
 
   def printing
     print "Callback for destroy run here \n "
