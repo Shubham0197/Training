@@ -297,3 +297,38 @@ call back touch
 Customer/Wallet was touched
   TRANSACTION (0.4ms)  COMMIT
  => true 
+========================================
+## Relational Callbacks
+Callbacks work through model relationships, and can even be defined by them.
+
+3.0.0 :002 > cust.wallet.destroy
+  Wallet Load (0.5ms)  SELECT "wallets".* FROM "wallets" WHERE "wallets"."customr_id" = $1 LIMIT $2  [["customr_id", 1], ["LIMIT", 1]]                                              
+Callback for destroy run here                               
+ Before yield 100.0  TRANSACTION (0.1ms)  BEGIN             
+  Wallet Destroy (0.2ms)  DELETE FROM "wallets" WHERE "wallets"."id" = $1 AND "wallets"."lock_version" = $2  [["id", 1], ["lock_version", 5]]                                       
+after yield 100.0  Customr Update (0.2ms)  UPDATE "customrs" SET "updated_at" = $1, "lock_customer" = $2 WHERE "customrs"."id" = $3 AND "customrs"."lock_customer" = $4  [["updated_at", "2022-06-15 16:59:00.747320"], ["lock_customer", 4], ["id", 1], ["lock_customer", 3]]                              
+Customer/Wallet was touched                                 
+  TRANSACTION (0.4ms)  COMMIT
+ => 
+#<Wallet:0x000055eb4f979e70
+ id: 1,
+ name: "Ashish",
+ amount: 100.0,
+ lock_version: 5,
+ type: nil,
+ created_at: Fri, 10 Jun 2022 12:50:35.515809000 UTC +00:00,
+ updated_at: Wed, 15 Jun 2022 13:19:11.504603000 UTC +00:00,
+ customr_id: 1> 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
