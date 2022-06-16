@@ -417,19 +417,156 @@ It is also used by JavaScript to access and manipulate the element with the spec
 In the css file The syntax for id is: write a hash character (#), followed by an id name.
 Then, define the CSS properties within curly braces {}.
 
+===================================================
+Html Tables
+it is defined using the <table> tag
+Table has row define by the <tr>
+and   
+Each table cell is defined by a <td> and a </td> tag.
+
+The table header will be defined int he table rows usnig <th> instead of the <td> for columns
+
+Table borders
+
 
 Difference Between Class and ID
 A class name can be used by multiple HTML elements, while an id name must only be used by one HTML element within the page
 ID helps with the bookmarks and links in the HTML page.
 The id attribute can also be used by JavaScript to perform some tasks for that specific element.
 
+When you add a border to a table, you also add borders around each table cell 	 	 
+To add a border, use the CSS border property on table, th, and td elements.
+table, th, td
+{
+  border: 1px solid black;
+}
+
+By default it is the double border to not have double border set the property 
+border-collapse property to collapse
+
+Can also set the background color of the cells
+also can set the color of the border as background color to give the impression of the invisible border.{border-color:red;}
+Can also set the radius of the cell border to have round table border.  border-radius: 10px;
+Dotted table border is also possible with
+border-style
+
+The following values are allowed:
+dotted     
+dashed     
+solid     
+double     
+groove     
+ridge     
+inset     
+outset     
+none     
+hidden     
+
+Table Size
+Can set the table width and height for each individualy table , tr, or td/th tag
+
+
+HTML Table headers
+Instead of the td whihc is for table data have to define header with <th> tag.
+Which specifies the heading in the first row of the table if done <th> in 1st <tr> tag.
+or can also give verticle table header with 1st column as <th> for every <tr>
+
+text-align property can help to set the alignment of the text in the table cells.
+left, right, center
+
+Table Caption
+You can add a caption that serves as a heading for the entire table.
+using the <caption> tag:
+  <caption>Monthly savings</caption>
+
+
+HTML Table Padding & Spacing
+
+HTML tables can adjust the padding inside the cells, and also the space between the cells.
+
+Cell padding is the space between the cell edges and the cell content.
+ CSS padding : padding: 15px;
+ the padding can be individually decided 
+ using the padding-top, padding-bottom, padding-left, and padding-right properties.
+
+
+ Cell spacing is the space between each cell.
+ By default it is 2px.
+
+HTML Table 
+Colspan - To make a cell span over multiple columns
+Rowspan - To make a cell span over multiple rows
+
+HTML Table Styling
+
+HTML Table - Zebra Stripes
+To style every other table row element, use the :nth-child(even)
+HTML Table - Vertical Zebra Stripes
+Set the :nth-child(even) for table data elements like this
+Combine Vertical and Horizontal Zebra Stripes haveto use above two property simultaneously.
+Can also define Horizontal Dividers have to add the border-bottom property to all tr elements to get horizontal dividers like border-bottom: 1px solid #ddd;
+Hoverable Table - Using the :hover selector on tr to highlight table rows on mouse over
+
+HTML Table Colgroup
+The <colgroup> element is used to style specific columns of a table.
+
+using the <colgroup> and <col> elements.
+The <colgroup> element should be used as a container for the column specifications.
+Each group are specified with a <col> element.
+The span attribute specifies how many columns that gets the style.
+The style attribute specifies the style to give the columns
+
+There are only a very limited selection of CSS properties that are allowed to be used in the colgroup
+width property
+visibility property
+background properties
+border properties
+
+To style more colgroup have to use more <col> elements inside the <colgroup>
+If want to style columns in the middle of a table, insert a "empty" <col> element (with no styles) for the columns before
+To Hide Columns You can hide columns with the visibility: collapse property
+
+
+HTML Lists
+
+Unordered HTML List
+An unordered list starts with the <ul> tag. Each list item starts with the <li> tag.
+The list items will be marked with bullets (small black circles) by default
+Choose List Item Marker using CSS list-style-type property 
+Value	Description
+disc	Sets the list item marker to a bullet (default)
+circle	Sets the list item marker to a circle
+square	Sets the list item marker to a square
+none	The list items will not be marked
+
+Ordered HTML List
+An ordered list starts with the <ol> tag. Each list item starts with the <li> tag.
+The list items will be marked with numbers by default
+The Type Attribute
+The type attribute of the <ol> tag, defines the type of the list item marker
+Type	Description
+type="1"	The list items will be numbered with numbers (default)
+type="A"	The list items will be numbered with uppercase letters
+type="a"	The list items will be numbered with lowercase letters
+type="I"	The list items will be numbered with uppercase roman numbers
+type="i"	The list items will be numbered with lowercase roman numbers
+
+we can also Control List Counting by default it starts from 1st or a but can change using the start attribute
+
+HTML Description Lists
+A description list is a list of terms, with a description of each term.
+The <dl> tag defines the description list, the <dt> tag defines the term (name), and the <dd> tag describes each term
 
 
 
-
-
-
-
-
-
-
+Lists can be nested
+Horizontal List with CSS
+HTML lists can be styled in many different ways with CSS.
+One popular way is to style a list horizontally, to create a navigation menu
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
