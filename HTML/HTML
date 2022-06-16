@@ -235,7 +235,58 @@ Use the CSS border property for borders
 Use the CSS padding property for space inside the border
 Use the CSS margin property for space outside the border
 
+===================================================
+## HTML Links
 
+Links allow users to click their way from page to page.
+<a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+
+By default, links will appear as follows in all browsers:
+An unvisited link is underlined and blue
+A visited link is underlined and purple
+An active link is underlined and red
+
+The target Attribute
+By default, the linked page will be displayed in the current browser window. 
+To change this, you must specify another target for the link.
+The target attribute specifies where to open the linked document.
+
+_self - Default. Opens the document in
+the same window/tab as it was clicked
+_blank - Opens the document in a new window or tab
+_parent - Opens the document in the parent frame
+_top - Opens the document in the full body of the window
+
+absolute URL (a full web address) in the href attribute.
+
+A local link (a link to a page within the same website) is specified with a relative URL 
+(without the "https://www" part)
+Use mailto: inside the href attribute to create a link that opens the user's email program (to let them send a new email)
+<a href="mailto:someone@example.com">Send email</a>
+
+HTML Links - Different Colors
+Css element to change the behaviour 
+a:link {
+}
+a:visited {
+}
+a:hover {
+}
+a:active {
+}
+
+Create a Bookmark in HTML - 
+Link to the same page
+Using id
+Bookmarks can be useful if a web page is very long.
+To create a bookmark - first create the bookmark, then add a link
+to it.
+When the link is clicked, the page will scroll down or up to the location with the
+bookmark.
+
+Use the id attribute (id="value") to define bookmarks in a page
+Use the href attribute (href="#value") to link to the bookmark
+Or can use the  (href="www.page.html#value") to go that part of page from another page .
 
 
 
