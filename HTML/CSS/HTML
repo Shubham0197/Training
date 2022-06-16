@@ -3,6 +3,23 @@ It describes the structure of a web page
 It consists of a series of elements
 Elements tell the browser how to display the content
 
+
+HTML Page Structure
+Below is a visualization of an HTML page structure:
+
+<html>
+<head>
+<title>Page title</title>
+</head>
+<body>
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+</body>
+</html>
+
+
+
 HTMl Elements 
 The <!DOCTYPE html> declaration defines that this document is an HTML5 document
 The <html> element is the root element of an HTML page
@@ -12,9 +29,81 @@ The <body> element defines the document's body, and is a container for all the v
 The <h1> element defines a large heading
 The <p> element defines a paragraph
 
+HTML Elements
+An HTML element is defined by a start tag, some content, and an end tag.
+Elements can be nested and HTML document is of nested html elements.
+The <html> element is the root element and it defines the whole HTML document.
+It has a start tag <html> and an end tag </html>.
+Then, inside the <html> element there is a <body> element
+
+There are some elements tag which need end tag 
+for them there is need for them to not skip end tag but they will work without them .
+And there is are also elements called Empty HTML elements like <br> tag
+
+HTML is Not Case Sensitive
+HTML tags are not case sensitive: <P> means the same as <p>.
+The HTML standard does not require lowercase tags, but W3C recommends lowercase in HTML, 
+and demands lowercase for stricter document types like XHTML.
+
+====================================================
+## HTML Attributes
+HTML attributes provide additional information about HTML elements.
+
+All HTML elements can have attributes
+Attributes provide additional information about elements
+Attributes are always specified in the start tag
+Attributes usually come in name/value pairs like: name="value"
+ href attribute of <a> tag
+ src attribute of <img> tag
+ width and height attributes for img tag
+ alt attribute for the <img> tag -  it gives the alternate name if image is not displayed
+
+The style Attribute
+The style attribute is used to add styles to an element, such as color, font, size, and more.
+
+The lang Attribute
+lang attribute inside the <html> tag, to declare the language of the Web page
+<html lang="en">
+The title Attribute
+The title attribute defines some extra information about an element.
+=>  Always Quote Attribute Values
+
+Single or Double Quotes?
+Both of them are acceptable and double are common.
+when the attribute value itself contains double quotes, it is necessary to use single quotes.
+====================================================
+HTML Headings
+HTML headings are titles or subtitles that you want to display on a webpage.
+headings are defined with the <h1> to <h6> tags.
+
+<h1> defines the most important heading. 
+<h6> defines the least important heading.
+
+Headings Are Important as Search engines use the headings to index the structure and content of your web pages.
+
+We can define bigger heading instead of the default size can increaze the size using the font-size property of css
 
 
+==================================================
+## HTML Paragraphs
+A paragraph always starts on a new line, and is usually a block of text.
+<p> element defines a paragraph
+A paragraph always starts on a new line, 
+and browsers automatically add some white space (a margin) before and after a paragraph.
 
+With html cannot be certain how will it display body 
+With HTML cannot change the display by adding extra spaces or extra lines in your HTML code.
+The browser will automatically remove any extra spaces and lines when the page is displayed.
+
+HTML Horizontal Rules - <hr> is  displayed as a horizontal rule.
+
+The HTML <br> element defines a line break.
+
+Can also use the preformatted text means it will display what is written as it is written like it is preformatted.
+ The HTML <pre> element defines preformatted text.
+
+The text inside a <pre> element is displayed in a fixed-width font (usually Courier),
+ and it preserves both spaces and line breaks
 
 
 
