@@ -106,6 +106,95 @@ The text inside a <pre> element is displayed in a fixed-width font (usually Cour
  and it preserves both spaces and line breaks
 
 
+===============================================================================================
+## HTML Styles
+style attribute is used to add styles to an element, such as color, font, size, and more.
+Syntax
+<tagname style="property:value;">
+
+Style property
+
+1 background-color
+2 color - for text colour
+3 font-family - for setting font style
+4 font-size - for settig text size
+5 text-align - for setting the text alignment in the page left right center
+
+
+HTML Text Formatting
+these elemnt are use to format the text on the page
+
+<b> - Bold text
+<strong> - Important text , This also bolds the text
+<i> - Italic text
+<em> - Emphasized text, This also italics the text
+<mark> - Marked text, highlights the text 
+<small> - Smaller text
+<del> - Deleted text , strike a line through the text
+<ins> - Inserted text, underline this text
+<sub> - Subscript text
+<sup> - Superscript text
+
+
+HTML Quotation and Citation Elements
+
+<abbr>	Defines an abbreviation or acronym
+<address>	Defines contact information for the author/owner of a document, italics the text
+<bdo>	Defines the text dire
+ction
+<blockquote>	Defines a section that is quoted from another source
+<cite>	Defines the title of a work
+<q>	Defines a short inline quotation
+<bdo> for Bi-Directional Override
+BDO stands for Bi-Directional Override.
+The HTML <bdo> tag is used to override
+the current text direction: using attribute attr
+
+HTML Comments
+
+HTML comments are not displayed in the browser,
+ but they can help document your HTML source code.
+Syntax 
+<!-- Write your comments here -->
+this can be used to hide the HTML tags and iinline contents too .
+
+HTML Colors
+
+HTML colors are specified with predefined color names, or with RGB, HEX, HSL, RGBA, or HSLA values.
+
+Border Color
+
+style="border:2px solid Tomato;"
+
+Color Values
+<h1 style="background-color:rgb(255, 99, 71);">...</h1>
+<h1 style="background-color:#ff6347;">...</h1>
+<h1 style="background-color:hsl(9, 100%, 64%);">...</h1>
+
+<h1 style="background-color:rgba(255, 99, 71, 0.5);">...</h1>
+<h1 style="background-color:hsla(9, 100%, 64%, 0.5);">...</h1>
+
+An RGB color value represents RED, GREEN, and BLUE light sources. rgb(red, green, blue)
+An RGBA color value is an extension of RGB with an
+Alpha channel (opacity).
+
+HTML HEX Colors
+
+In HTML, a color can be specified using a hexadecimal value in the form:
+
+#rrggbb
+Where rr (red), gg (green) and bb (blue) are hexadecimal values between 00 and ff (same as decimal 0-255).
+Shades of Gray
+Shades of gray are often defined using equal values for all three parameters:
+
+In HTML, a color can be specified using hue, saturation, and lightness (HSL) in the form:
+hsl(hue, saturation, lightness)
+
+
+
+
+
+
 
 
 
