@@ -190,14 +190,50 @@ Shades of gray are often defined using equal values for all three parameters:
 In HTML, a color can be specified using hue, saturation, and lightness (HSL) in the form:
 hsl(hue, saturation, lightness)
 
+=====================================================
+
+
+HTML Styles - CSS
+Cascading Style Sheets (CSS) is used to format the layout of a webpage.
+
+CSS can be added to HTML documents in 3 ways:
+Inline - by using the style attribute inside HTML elements
+An inline CSS is used to apply a unique style to a single HTML element.
+An inline CSS uses the style attribute of an HTML element.
+
+
+Internal - by using a <style> element in the <head> section
+An internal CSS is used to define a style for a single HTML page.
+
+An internal CSS is defined in the <head> section of an HTML page, within a <style> element.
 
 
 
+External - by using a <link>
+element to link to an external CSS file
+An external style sheet is used to define the style for many HTML pages.
+To use an external style sheet, add a link to it in the <head> section of each HTML page
+
+ The extenal file must not contain any
+HTML code, and must be saved with a .css extension.
+Syntax to specify external css in html head
+<link rel="stylesheet" href="styles.css">
+
+The most common way to add CSS, is to keep the styles in external CSS
+files.
 
 
 
+Use the CSS border property for borders
+Use the CSS padding property for space inside the border
+Use the CSS margin property for space outside the border
 
-
+Use the CSS color property for text colors
+Use the CSS font-family property for text fonts
+Use the CSS font-size property for text sizes
+Use the CSS border property for borders
+Use the CSS padding property for space inside the border
+Use the CSS margin property for space outside the border
 
 
 
