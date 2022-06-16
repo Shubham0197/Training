@@ -287,7 +287,83 @@ bookmark.
 Use the id attribute (id="value") to define bookmarks in a page
 Use the href attribute (href="#value") to link to the bookmark
 Or can use the  (href="www.page.html#value") to go that part of page from another page .
+================================================
 
+## image HTML
+
+To show image in html <img> tag is used and it has two required
+attributes:
+src - Specifies the path to the image
+
+alt - Specifies an alternate text for the image
+if no image is shown like description of the image
+
+Image Size - Width and Height using direct as attribute or in the style attribute property.
+
+Image can be be in the same folder or another folder, or on another server and website just have to give the correct address in the src attribute.
+
+we can also give the animated imgaes to the img elements
+and can also use the image as the link in the <a>  tag 
+
+Image can also float using 
+ the CSS float property let the image float to the right or to the left of a text.
+
+ HTML Image Maps
+
+ The HTML <map> tag defines an image map.
+  An image map is an image with clickable areas. 
+ The areas are defined with one or more <area> tags.
+ The idea behind an image map is that you should be able to perform different actions depending on where in the image you click.
+ he only difference from other images is that you must add a usemap attribute
+
+ <img src="workplace.jpg" alt="Workplace" usemap="#workmap">
+ Then, add a <map> element.
+The <map> element is used to create an image map, and is linked to the image by using the required name attribute
+<map name="workmap">
+The area of the click in the image can be 
+rectangle - need coordinate of the diagonal
+circle - need coordinat eof the centre and radius
+poly - need coordinate of the every corner.
+
+<area shape= "rect" coords="34, 44, 270,350" href="link">
+
+HTML Background Images
+To add a background image on an HTML element, use the HTML style attribute and the CSS background-image property
+<p style="background-image: url('img_girl.jpg');">
+
+but if want to show background image for hte page have to give  in the body element tag
+body {
+  background-image: url('img_girl.jpg');
+}
+
+If the background image is smaller than the element, the image will repeat itself, horizontally and vertically, until it reaches the end of the element
+So, To avoid the background image from repeating itself, set the background-repeat property
+to no-repeat
+Can also set background-size to cover to the cover the whole element.
+Can   set  background-size: 100% 100%; to strech the image
+  background-attachment: fixed; this property is used to make the image fixed and entire element is always covered.
+
+
+HTML <picture> Element
+The HTML <picture> element allows you to display different pictures for different devices or screen sizes.
+The <picture> element contains one or more <source> elements, each referring to different images through the srcset attribute.
+ This way the browser can choose the image that best fit the current view and/or device.
+Each <source> element has a media attribute that defines when the image is the most suitable and in that will have to define the dimension whiich suits that image the most.
+<picture>
+  <source media="(min-width: 650px)" srcset="img_food.jpg">
+  <source media="(min-width: 465px)" srcset="img_car.jpg">
+  <img src="img_girl.jpg">
+</picture>
+
+This element is used for 2 main reasons
+1. to save the bandwidth and to laosd the most appropriate image nned according to device as small device would need only small image.
+and 2. would be the format support if one donot support some format it would give diffrent image format to show.
+
+
+HTML Favicon - A favicon is a small image displayed next to the page title in the browser tab. it is the .ico file .
+
+it is declared in the head element tag of the 
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
 
 
