@@ -836,3 +836,32 @@ required	Specifies that an input field is required (must be filled out)
 size	Specifies the width (in characters) of an input field
 step	Specifies the legal number intervals for an input field
 value	Specifies the default value for an input field
+
+
+HTML Input Attributes
+The input value attribute specifies an initial value for an input field
+The input readonly attribute specifies that an input field is read-only.
+The input disabled attribute specifies that an input field should be disabled
+The input size attribute specifies the visible width, in characters, of an input field.
+The input maxlength attribute specifies the maximum number of characters allowed in an input field.
+The input min and max attributes specify the minimum and maximum values for an input field.It work with the following input types: number, range, date, datetime-local, month, time and week.
+The input multiple attribute specifies that the user is allowed to enter more than one value in an input field.
+The input pattern attribute specifies a regular expression that the input field's value is checked against, when the form is submitted
+The input placeholder attribute specifies a short hint that describes the expected value of an input field (a sample value or a short description of the expected format).
+The input required attribute specifies that an input field must be filled out before submitting the form.
+The input step attribute specifies the legal number intervals for an input field.
+The input autofocus attribute specifies that an input field should automatically get focus when the page loads.
+The input height and width attributes specify the height and width of an <input type="image"> element.
+The input list attribute refers to a <datalist> element that contains pre-defined options for an <input> element.
+The input autocomplete attribute specifies whether a form or an input field should have autocomplete on or off.
+
+
+
+HTML Input form* Attributes
+The input form attribute specifies the form the <input> element belongs to.
+The input formaction attribute specifies the URL of the file that will process the input when the form is submitted.
+The input formenctype attribute specifies how the form-data should be encoded when submitted (only for forms with method="post").
+The input formmethod attribute defines the HTTP method for sending form-data to the action URL.
+The input formtarget attribute specifies a name or a keyword that indicates where to display the response that is received after submitting the form.
+The input formnovalidate attribute specifies that an <input> element should not be validated when submitted.
+
