@@ -1,0 +1,29 @@
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+}
+
+a.link{
+  color:green
+}
+a:visited{
+  color:blue
+}
+a:hover{
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a.active{
+  color: purple;
+  background-color: transparent;
+  text-decoration: underline;
+}
+img {
+  width: 100%;
+}
