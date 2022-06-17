@@ -2,11 +2,24 @@
 <html>
 <head>
   <link rel="stylesheet" href="styles.css">
-  
+  <link rel="icon" type="image/x-icon" href="images/office_folder_icon_219512.ico">
+<style>
+  body {
+  background-image: url('images/picker.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>  
 
 </head>
 <body>
-
+  <ul id="header" style="list-style-type:none;">
+    <li><a href="page.html">Index</a></li>
+    <li><a href="use_external.html">External</a></li>
+    <li><a href="responsive.html">Table and List</a></li>
+    <li><a href="frames.html">Frames</a></li>
+  </ul>
 <h1>This is a heading</h1>
 <p>This is a paragraph.</p>
 <a href="page.html" target="_self"> Index_self</a>
@@ -15,19 +28,19 @@
 <a href="page.html" target="_top"> Index_top</a>
 <a href="mailto:shubhamjain0197@gamil.com" title ="Mail to Shubham JAin">Mail me</a>
 <button
-onclick="document.location='default.asp'">Index Button</button>
+onclick="document.location='page.html'">Index Button</button>
 <a href="page.html#BDO">Jump to  BDO part of index page</a>
 <caption>Showing the floating image</caption>
 <a href="google.com">
   <img src="images/library.gif" alt="library gif floating" style="float:right;width:42px;height:42px;" >
 </a>
 
-<img src="images/workplace.jpg" alt="workplace" usemap="#workmap">
+<img src="images/workplace.jpg" alt="workplace" usemap="#workmap" width="400px" length="400px">
 
-<map name="wokmap">
+<map name="workmap">
   <area shape="rect" coords="34,44,270,350" alt="Computer" href="https://www.lenovo.com">
   <area shape="rect" coords="290,172,333,250" alt="Phone" href="https://www.amazon.com">
-  <area shape="circle" coords="337,300,44" alt="Coffee" href="https://www.tata.com">
+  <area shape="circle" coords="337,300,44" alt="Coffee" href="responsive.html">
   <area shape="poly" coords="288,4,287,118,371,113,381,28,339,1" alt="Index" href="index.html">
 </map>
 

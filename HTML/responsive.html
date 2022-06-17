@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <title> Responsive Web Site</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      #table1 table,tr,td,th{
+        border:1px solid black;
+        border-collapse: collapse;
+        border-spacing: 30px;
+      }
+      #table1 tr,td{
+        border-radius: 10px;
+        border-style: dotted;
+        border-collapse: initial;
+        border-color: #96D4D4;
+        padding: 15px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        padding-right: 40px;
+      }
+      #table1 tr:nth-child(even) {
+        background-color: #D6EEEE;
+      }
+      #table1 td:nth-child(even),
+      #table1 th:nth-child(even) {
+        background-color: #D6EEEE;
+      }
+      .heading {
+        background-color: tomato;
+        color: white;
+        padding: 10px;
+        width: 220px;
+      }
+      .fontfamily {
+        font-family:'Courier New';
+      }
+      #table2 tr {
+        border-bottom: 1px solid #ddd;
+      }
+      #table2 table {
+        border: none;
+      }
+      #table2 tr:hover {background-color: #eed9d6;}
+
+    </style>
+  </head>
+  <body>
+
+    <ul id="header" style="list-style-type:none;">
+      <li><a href="page.html">Index</a></li>
+      <li><a href="use_external.html">External</a></li>
+      <li><a href="responsive.html">Table and List</a></li>
+      <li><a href="frames.html">Frames</a></li>
+    </ul>
+
+    <table  id="table1" style="width:100%">
+      <caption> Table </caption>
+      <tr style="height:20px">
+        <th>S no</th>
+        <th style="width:70%">Name</th>
+        <th colspan="2">Phone</th>
+      </tr>
+      <tr>
+        <td> 1</td>
+        <td>Ashish Mohale</td>
+        <td>555-8745</td>
+        <td>555-8745</td>
+      </tr>
+      <tr>
+        <td> 2</td>
+        <td>Sunny Rajput</td>
+        <td>555-8745</td>
+        <td>555-8745</td>
+      </tr>
+      <tr>
+        <td rowspan="2"> 3</td>
+        <td>Shubham Jain</td>
+        <td>555-8745</td>
+        <td>555-8745</td>
+      </tr>
+      <tr>
+        <td>Shubham Jain</td>
+        <td>555-8745</td>
+        <td>555-8745</td>
+      </tr>
+
+    </table>
+
+    <table id="table2">
+      <colgroup>
+        <col span="1" style="background-color: pink ; width:100px; border:12px solid black; ">
+        <col span="1"  >
+        <col span="1" style="visibility: collapse">
+      </colgroup>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td>Ashish</td>
+        <td>Mohale</td>
+        <td>$100000000</td>
+      </tr>
+      <tr>
+        <td>Sunny</td>
+        <td>Rajput</td>
+        <td>$15000000000</td>
+      </tr>
+      <tr>
+        <td>Shubham</td>
+        <td>Jain</td>
+        <td>$300000</td>
+      </tr>
+      <tr>
+        <td>Cleveland</td>
+        <td>Brown</td>
+        <td>$250</td>
+      </tr>
+    </table>
+    <h2 class="fontfamily">Beverage</h2>
+    <ul style="list-style-type:disc;">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <ul>
+        <li>Black tea</li>
+        <li>Green tea</li>
+      </ul>
+      <li>Milk</li>
+    </ul>
+    <h2 class="heading fontfamily">Games</h2>
+    <ol type="A" start="50">
+      <li>Pool</li>
+      <li>Table Tennis</li>
+      <li>UNO</li>
+    </ol>
+    <h2 class="heading">Abbreviation</h2>
+    <dl>
+      <dt>Mr.</dt>
+      <dd>- Mister</dd>
+      <dt>Ms</dt>
+      <dd>- Miss</dd>
+    </dl>
+    <div>Using division here to see block level elements </div>
+    <span style="color:blue;font-weight:bold">Using span here to see inline level elements</span>
+  </body>
+</html>
