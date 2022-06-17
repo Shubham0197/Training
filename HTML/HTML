@@ -758,4 +758,29 @@ When autocomplete is on, the browser automatically complete values based on valu
 
 
 
+HTML form Elements
 
+The HTML <form> element can contain one or more of the following form elements:
+<input>
+<label>
+<select> - The <select> element defines a drop-down list
+The <option> elements defines an option that can be selected.
+By default, the first item in the drop-down list is selected.
+To define a pre-selected option, add the selected attribute to the option
+The size attribute is used to specify the number of visible values
+The multiple attribute is used to allow the user to select more than one value
+
+<textarea> - The <textarea> element defines a multi-line input field (a text area)
+The rows attribute specifies the visible number of lines in a text area.
+The cols attribute specifies the visible width of a text area.
+
+<button>- The <button> element defines a clickable button
+<fieldset> - The <fieldset> element is used to group related data in a form
+<legend>-The <legend> element defines a caption for the fieldset element
+<datalist> - The <datalist> element specifies a list of pre-defined options for an <input> element.
+The list attribute of the <input> element, must refer to the id attribute of the <datalist> element.
+
+
+<output> - The <output> element represents the result of a calculation (like one performed by a script).
+<option> - Defines an option in a drop-down list
+<optgroup> - Defines a group of related options in a drop-down list

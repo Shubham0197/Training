@@ -33,6 +33,32 @@
         <input type="button" id="why" name="why" value="Why?">
         <input type="submit" value="Submit">
       </form>
+      <form>
+        <label for="city">Choose city</label>
+        <select id="city" name="city" size="2" multiple>
+          <option value="faridabad">Faridabad</option>
+          <option value="delhi" selected>Delhi</option>
+          <option value="gurugram">Gurugram</option>
+        </select> 
+        <textarea name="message" rows="10" cols="10">Type your message here</textarea>
+        <button type="button" onclick="refresh">Refresh</button>
+        <fieldset>
+          <legend>Introdution</legend>
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" value="First Name"><br><br>
+          <label for="fname">Last Name</label>
+          <input type="text" id="lname" name="lname" value="Last Name"><br><br>    
+        </fieldset>
+        <input list="browsers">
+        <datalist id="browsers">
+          <option value="Internet Explorer">
+          <option value="Firefox">
+          <option value="Chrome">
+          <option value="Opera">
+          <option value="Safari">
+        </datalist>
+        <output name="result" for="browsers"></output> 
+      </form>
     </div>
   </body>
 </html>
