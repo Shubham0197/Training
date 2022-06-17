@@ -718,6 +718,44 @@ The for attribute of the <label> tag should be equal to the id attribute of the 
 The Name Attribute for <input>
 The name attribute specifies the name of an <input> element. 
 The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
-Only form elements with a name attribute will have their values passed when submitting a form
+Only form elements with a name attribute will have their values passed when submitting a form.
+
+
+HTML Form Attributes
+Action Attribute
+The action attribute defines the action to be performed when the form is submitted.
+the form data is sent to a file on the server when the user clicks on the submit button.
+
+Target Attribute
+The target attribute specifies where to display the response that is received after submitting the form.
+Just like the target attribute of the a tag
+
+The target attribute can have one of the following values
+Value	Description
+_blank	The response is displayed in a new window or tab
+_self	The response is displayed in the current window
+_parent	The response is displayed in the parent frame
+_top	The response is displayed in the full body of the window
+framename	The response is displayed in a named iframe
+
+
+The Method Attribute
+The method attribute specifies the HTTP method to be used when submitting the form data.
+The form-data can be sent as URL variables (with method="get") or as HTTP post transaction (with method="post").
+The default HTTP method when submitting form data is GET. 
+ Always use POST if the form data contains sensitive or personal information!
+GET vs POST
+Use get for the non sesitive data as it is visible in the url and its length limit is 2048 and use post for the snsitive data and there is no length limit  and data is not visible in the url 
+the data in the form is sent using the name/ value pair.
+
+Novalidate Attribute
+The novalidate attribute is a boolean attribute.
+When present, it specifies that the form-data (input) should not be validated when submitted.
+
+Autocomplete Attribute
+The autocomplete attribute specifies whether a form should have autocomplete on or off.
+When autocomplete is on, the browser automatically complete values based on values that the user has entered before.
+
+
 
 

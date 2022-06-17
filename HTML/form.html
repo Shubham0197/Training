@@ -6,14 +6,17 @@
   </head>
   <body>
     <div>
-      <form>
+      <form action="page.html" method="get" target="_blank" autocomplete="on">
         <label for="fname">First Name</label>
         <input type="text" id="fname" name="fname" value="First Name"><br><br>
-        <input type="radio" id="yes" id="yes" value="yes">
+      </form>
+      
+      <form action="responsive.html" method="post" novalidate>
+        <input type="radio" id="yes" name="yesno" value="yes">
         <label for="yes">Yes</label>
         <br>
-        <input type="radio" id="no" id="yes" value="no">
-        <label for="yes">Yes</label>
+        <input type="radio" id="no" name="yesno" value="no">
+        <label for="no">No</label>
         <br>
         <input type="checkbox" id="reading" name="hobby1" value="reading">
         <label for="reading">Reading</label>
@@ -27,7 +30,7 @@
         <input type="checkbox" id="movies" name="hobby4" value="movies">
         <label for="reading">Movies</label>
         <br>
-        <input type="button" id="why" name="why">
+        <input type="button" id="why" name="why" value="Why?">
         <input type="submit" value="Submit">
       </form>
     </div>
