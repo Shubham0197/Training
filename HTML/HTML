@@ -690,3 +690,34 @@ For readability, add two spaces of indentation. Do not use the tab key.
 Never Skip the <title> Element
 You should always include the lang attribute inside the <html> tag, to declare the language of the Web page.
 To ensure proper interpretation and correct search engine indexing, both the language and the character encoding <meta charset="charset"> should be defined as early as possible in an HTML document.
+
+==================================================
+## HTML Forms
+An HTML form is used to collect user input
+The HTML <form> element is used to create an HTML form for user input.
+The <form> element is a container for different types of input elements,such as: text fields, checkboxes, radio buttons, submit buttons, etc
+
+An <input> element can be displayed in many ways, depending on the type attribute.
+Type	Description
+<input type="text">	Displays a single-line text input field
+<input type="radio">	Displays a radio button (for selecting one of many choices)
+<input type="checkbox">	Displays a checkbox (for selecting zero or more of many choices)
+<input type="submit">	Displays a submit button (for submitting the form)
+<input type="button">	Displays a clickable button
+
+
+Label Element 
+The <label> tag defines a label for many
+form elements.
+The <label> element also help users who have
+difficulty clicking on very small regions (such as radio buttons or checkboxes)
+- because when the user clicks the text within the <label> element, it toggles the radio button/checkbox.
+The for attribute of the <label> tag should be equal to the id attribute of the <input> element to bind them together.
+
+
+The Name Attribute for <input>
+The name attribute specifies the name of an <input> element. 
+The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
+Only form elements with a name attribute will have their values passed when submitting a form
+
+
