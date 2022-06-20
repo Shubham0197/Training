@@ -923,6 +923,23 @@ HTML Responsive Web Design
 A responsive web design will automatically adjust for different screen sizes and viewports so as to creating web pages that look good on all devices.
 
 First we have to set the viewport by adding it in the webpage using meta tag 
+This will set the viewport of your page, which will give the browser instructions on how to control the page's dimensions and scaling
 
 
+Responsive images are images that scale nicely to fit any browser size.
+If the CSS width property is set to 100%, the image will be responsive and scale up and down
+If the max-width property is set to 100%, the image will scale down if it has to, but never scale up to be larger than its original size.
 
+Responsive Text Size
+The text size can be set with a "vw" unit, which means the "viewport width".
+style="font-size:10vw"
+
+
+In addition to resize text and images, it is also common to use media queries in responsive web pages.
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px)
+
+Responsive Web Design - Frameworks
+Example
+W3.CSS
+Bootstrap
