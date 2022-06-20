@@ -865,3 +865,64 @@ The input formmethod attribute defines the HTTP method for sending form-data to 
 The input formtarget attribute specifies a name or a keyword that indicates where to display the response that is received after submitting the form.
 The input formnovalidate attribute specifies that an <input> element should not be validated when submitted.
 
+====================================================
+HTML Layout
+Websites often display content in multiple columns (like a magazine or a newspaper).
+HTML has several semantic elements that define the different parts of a web page:
+<header> - Defines a header for a document or a section
+<nav> - Defines a set of navigation links
+<section> - Defines a section in a document
+<article> - Defines an independent, self-contained content
+<aside> - Defines content aside from the content (like a sidebar)
+<footer> - Defines a footer for a document or a section
+<details> - Defines additional details that the user can open and close on demand
+<summary> - Defines a heading for the <details> element
+
+There are four different techniques to create multicolumn layouts. Each technique has its pros and cons:
+CSS framework
+CSS float property -It is common to do entire web layouts using the CSS float property. Just need to remember how the float and clear properties work.
+CSS flexbox- Use of flexbox ensures that elements behave predictably when the page layout must accommodate different screen sizes and different display devices.
+CSS grid- The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design web pages without having to use floats and positioning.
+
+HTML Semantic Elements
+A semantic element clearly describes its meaning to both the browser and the developer.
+But a non-semantic elements: <div> and <span> - Tells nothing about its content.
+Many web sites contain HTML code like: <div id="nav"> <div class="header"> <div id="footer"> to indicate navigation, header, and footer.
+
+In HTML there are some semantic elements that can be used to define different parts of a web page:  
+
+<article>
+<aside>
+<details>
+<figcaption>
+<figure>
+<footer>
+<header>
+<main>
+<mark>
+<nav>
+<section>
+<summary>
+<time>
+
+The <section> element defines a section in a document.
+The <article> element specifies independent, self-contained content.
+Aticle vs section 
+The <article> element specifies independent, self-contained content.
+The <section> element defines section in a document.
+The <header> element represents a container for introductory content or a set of navigational links.
+The <footer> element defines a footer for a document or section
+The <nav> element defines a set of navigation links
+The <aside> element defines some content aside from the content it is placed in (like a sidebar).
+The <figure> tag specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.
+The <figcaption> tag defines a caption for a <figure> element. The <figcaption> element can be placed as the first or as the last child of a <figure> element.
+
+================================================
+
+HTML Responsive Web Design
+A responsive web design will automatically adjust for different screen sizes and viewports so as to creating web pages that look good on all devices.
+
+First we have to set the viewport by adding it in the webpage using meta tag 
+
+
+

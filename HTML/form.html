@@ -3,8 +3,19 @@
     <title>
       Forms Library
     </title>
+    <script>
+      document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    </script>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
   </head>
   <body>
+    <p id="demo">HTML</p>
+    <script>
+      document.getElementById("demo").innerHTML = "Hello JavaScript!";
+      document.getElementById("demo").style.fontSize = "25px";
+      document.getElementById("demo").style.color = "red";
+      document.getElementById("demo").style.backgroundColor = "yellow";
+    </script>
     <div>
       <form action="page.html" method="get" target="_blank" autocomplete="on">
         <label for="fname">First Name</label>
