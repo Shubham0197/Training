@@ -1657,3 +1657,80 @@ And object created for child will save data in parent class type.
  updated_at: Wed, 08 Jun 2022 10:25:28.182570000 UTC +00:00,
  type: "ContentUser"> 
 
+========================================================================================
+## Association Callbacks
+Association callbacks are similar to normal callbacks, but they are triggered by events in the life cycle of a collection.
+
+There are four available association callbacks:
+
+before_add
+after_add
+before_remove
+after_remove
+Here define association callbacks by adding options to the association declaration
+Rails passes the object being added or removed to the callback.
+If a before_add callback throws :abort, the object does not get added to the collection.
+Similarly, if a before_remove callback throws :abort, the object does not get removed from the collection
+
+
+3.0.0 :004 > cert = Certified.new
+ => 
+#<Certified:0x00007f4f143cb350              
+...                                         
+3.0.0 :005 > cert.employee_id=1
+ => 1 
+3.0.0 :006 > cert.save!
+  TRANSACTION (0.3ms)  BEGIN
+  Certified Create (1.5ms)  INSERT INTO "certifieds" ("employee_id", "aircraft_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["employee_id", 1], ["aircraft_id", nil], ["created_at", "2022-06-20 16:07:08.378329"], ["updated_at", "2022-06-20 16:07:08.378329"]]
+  Employee Update All (0.2ms)  UPDATE "employees" SET "count_of_pilots" = COALESCE("count_of_pilots", 0) + $1 WHERE "employees"."id" = $2  [["count_of_pilots", 1], ["id", 1]]
+  TRANSACTION (6.5ms)  COMMIT
+ => true 
+
+ 3.0.0 :003 > air.certifieds << cert
+Before add association Callbacks  TRANSACTION (0.1ms)  BEGIN
+  Certified Update (0.5ms)  UPDATE "certifieds" SET "aircraft_id" = $1, "updated_at" = $2 WHERE "certifieds"."id" = $3  [["aircraft_id", 1], ["updated_at", "2022-06-20 16:19:41.042106"], ["id", 21]]                              
+  TRANSACTION (6.7ms)  COMMIT
+  Certified Load (0.2ms)  SELECT "certifieds".* FROM "certifieds" WHERE "certifieds"."aircraft_id" = $1  [["aircraft_id", 1]]
+ => 
+[#<Certified:0x000055c046b2f550
+  id: 2,
+  employee_id: 4,
+  aircraft_id: 1,
+  created_at:
+   Mon, 23 May 2022 19:53:00.270890000 UTC +00:00,
+  updated_at:
+   Mon, 06 Jun 2022 13:40:48.889935000 UTC +00:00>,
+ #<Certified:0x000055c046518c20
+  id: 21,
+  employee_id: nil,
+  aircraft_id: 1,
+  created_at:
+   Mon, 20 Jun 2022 16:09:32.310058000 UTC +00:00,
+  updated_at:
+   Mon, 20 Jun 2022 16:19:41.042106000 UTC +00:00>] 
+3.0.0 :004 > 
+
+# Triggers `before_add`, and 'after_add' callback
+author.books << book
+author.books = [book, book2]
+
+# Does not trigger the `before_add` callback
+book.update(author_id: 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

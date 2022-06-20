@@ -1,6 +1,6 @@
 class Aircraft < ApplicationRecord
   #self.primary_key = 'name'
-  has_many :certifieds
+  has_many :certifieds, before_add: :check_ceritfieds
   # validates :name, confirmation: true, unless: ->{ name.blank? }
   #validates :name_confirmation, presence: true, if: Proc.new {|aircraft| !aircraft.name.blank? }
   #validates :cruising_range, presence: true, unless: :cruising_range?
@@ -8,5 +8,9 @@ class Aircraft < ApplicationRecord
   #def cruising_range?
    # name.blank?
   #end
+  def check_ceritfieds(certified)
+    print "Before add association Callbacks"
+    self.cruising_range += 100
+  end
 
 end
