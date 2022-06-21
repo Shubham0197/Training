@@ -370,7 +370,116 @@ Callback  run here
 ===================================================================================
 ## Transaction Callbacks
 
+There are two additional callbacks that are triggered by the completion of a database transaction: after_commit and after_rollback
+
+Since using the after_commit callback only on create, update, or delete is common, there are aliases for those operations:
+after_create_commit
+after_update_commit
+after_destroy_commit
+
+There is also an alias for using the after_commit callback for both create and update together:
+after_save_commit
 
 
+The code executed within after_commit or after_rollback callbacks is itself not enclosed within a transaction.
 
+3.0.0 :008 > emp.delete
+  Employee Destroy (0.6ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 21]]     
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7
+3.0.0 :001 > emp = Employee.last
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1  [["LIMIT", 1]]
+ =>                                      
+#<Employee:0x000055ee49bac3a8            
+...                                      
+3.0.0 :002 > emp.delete
+  Employee Destroy (0.8ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 21]]        
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7
+3.0.0 :003 > emp.destroy
+  TRANSACTION (0.2ms)  BEGIN
+  Employee Destroy (0.8ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 21]]                           
+  TRANSACTION (0.1ms)  ROLLBACK                             
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7
+3.0.0 :001 > emp = Employee.last
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1  [["LIMIT", 1]]
+ =>                                            
+#<Employee:0x000055cb27246cb8                  
+...                                            
+3.0.0 :002 > emp.destroy
+  TRANSACTION (0.1ms)  BEGIN
+  Employee Destroy (0.8ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 21]]              
+  TRANSACTION (0.3ms)  ROLLBACK               
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7 rails c                    
+Loading development environment (Rails 7.0.3)
+3.0.0 :001 > emp = Employee.last
+  Employee Load (0.2ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1  [["LIMIT", 1]]
+ =>                                            
+#<Employee:0x000056274d395c90                  
+...                                            
+3.0.0 :002 > emp.destroy
+before destory  TRANSACTION (0.1ms)  BEGIN
+  Employee Destroy (0.8ms)  DELETE FROM "employees" WHERE "employees"."id" = $1  [["id", 21]]              
+  TRANSACTION (0.1ms)  ROLLBACK               
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activerecord-7
+3.0.0 :003 > emp.certifieds << Certified.last
+  Certified Load (0.1ms)  SELECT "certifieds".* FROM "certifieds" ORDER BY "certifieds"."id" DESC LIMIT $1  [["LIMIT", 1]]                                                          
+  TRANSACTION (0.1ms)  BEGIN                                
+  Certified Update (0.4ms)  UPDATE "certifieds" SET "employee_id" = $1, "updated_at" = $2 WHERE "certifieds"."id" = $3  [["employee_id", 21], ["updated_at", "2022-06-21 08:00:18.78
+3.0.0 :004 > emp.destroy
+before destory  TRANSACTION (0.4ms)  BEGIN
+  Certified Update All (0.6ms)  UPDATE "certifieds" SET "employee_id" = $1 WHERE "certifieds"."employee_id" = $2  [["employee_id", nil], ["employee_id", 21]]                        rails c                                                
+Loading development environment (Rails 7.0.3)               
+3.0.0 :001 > emp = Employee.last
+  Employee Load (0.1ms)  SELECT "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1  [["LIMIT", 1]]  
+ =>                                                         
+#<Employee:0x000055f98adce4c8                               
+...                                                         
+3.0.0 :002 > emp.destroy
+before destory  TRANSACTION (0.1ms)  BEGIN
+  Certified Update All (0.2ms)  UPDATE "certifieds" SET "employee_id" = $1 WHERE "certifieds"."employee_id" = $2  [["employee_id", nil], ["employee_id", 20]]         
+ name: "Harsh",             
+ salary: nil,               
+ mobile_number: nil,        
+ DOB: Wed, 01 Jan 1997,     
+ created_at: Mon, 20 Jun 2022 16:09:55.949928000 UTC +00:00,
+ updated_at: Mon, 20 Jun 2022 16:09:55.949928000 UTC +00:00,
+ count_of_pilots: 0,        
+ trainer_id: nil>           
+3.0.0 :003 > emp.destroy
+before destory  TRANSACTION (0.1ms)  BEGIN
+  Certified Update All (0.2ms)  UPDATE "certifieds" SET "employee_id" = $1 WHERE "certifieds"."employee_id" = $2  [["employee_id", nil], ["employee_id", 19]]         
+3.0.0 :006 > emp.destroy
+before destory  TRANSACTION (0.2ms)  BEGIN
+  Certified Update All (0.2ms)  UPDATE "certifieds" SET "employee_id" = $1 WHERE "certifieds"."employee_id" = $2  [["employee_id", nil], ["employee_id", 19]]                       
+  TRANSACTION (0.1ms)  COMMIT                               
+true =>                                                     
+#<Employee:0x000055ad82d25818                               
+ id: 19,                                                    
+ name: "Harsh",                                             
+ salary: nil,                                               
+ mobile_number: nil,                                        
+ DOB: Wed, 01 Jan 1997,                                     
+ created_at: Mon, 20 Jun 2022 16:09:55.949928000 UTC +00:00,
+ updated_at: Mon, 20 Jun 2022 16:09:55.949928000 UTC +00:00,
+ count_of_pilots: 0,
+ trainer_id: nil> 
+
+===================================================
+## Callback Classes
+Sometimes the callback methods that you'll write will be useful enough to be reused by other models. 
+Active Record makes it possible to create classes that encapsulate the callback methods, so they can be reused
+
+When declared inside a class, as above, the callback methods will receive the model object as a parameter. 
+
+we needed to instantiate a new  object of the class , since we declared our callback as an instance method. 
+This is particularly useful if the callbacks make use of the state of the instantiated object. 
+Often, however, it will make more sense to declare the callbacks as class methods
+You can declare as many callbacks as you want inside your callback classes
+
+3.0.0 :001 > fa = FlightsAircraft.create!
+  TRANSACTION (0.1ms)  BEGIN
+  FlightsAircraft Create (0.2ms)  INSERT INTO "flights_aircrafts" ("flight_id", "aircraft_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["flight_id", nil], ["aircraft_id", nil], ["created_at", "2022-06-21 16:43:39.661282"], ["updated_at", "2022-06-21 16:43:39.661282"]]                                
+  TRANSACTION (6.5ms)  COMMIT                                                        
+Flight Is emptyAricraft id is empty =>                                               
+#<FlightsAircraft:0x000055b7ff48d020      
+...  
 
