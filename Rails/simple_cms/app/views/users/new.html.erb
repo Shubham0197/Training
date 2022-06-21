@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title> Add New Users </title>
+  </head>
+  <body>
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+   <form class="new_user" id="new_user" action="/users" method="post">
+    <table>
+      <tr>
+        <th>First Name</th>
+        <td><%= text_field(:user,:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= text_field(:user,:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= text_field(:user,:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= collection_check_boxes(:user,:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= submit_tag("Create User") %>
+      </div>
+   </form>
+  </body>
+</html>

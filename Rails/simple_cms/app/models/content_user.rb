@@ -1,2 +1,0 @@
-class ContentUser < User
-end

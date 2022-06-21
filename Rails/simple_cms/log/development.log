@@ -1524,3 +1524,1467 @@ FOREIGN KEY ("user_id")
   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8363530219080587145)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:34:03 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1189)
+  Rendered layout layouts/application.html.erb (Duration: 31.4ms | Allocations: 35968)
+Completed 200 OK in 44ms (Views: 39.9ms | ActiveRecord: 0.0ms | Allocations: 41245)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-21 22:35:46 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.4ms | Allocations: 526)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 3035)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 3432)
+
+
+Started GET "/?id=1&name=sam" for 127.0.0.1 at 2022-06-21 22:35:51 +0530
+Processing by DemoController#index as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 197)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2700)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 3027)
+
+
+Started GET "/demo/hello" for 127.0.0.1 at 2022-06-21 22:35:52 +0530
+Processing by DemoController#hello as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.6ms | Allocations: 205)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2698)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 3038)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:35:54 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 197)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2686)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 3013)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-21 22:35:55 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.5ms | Allocations: 208)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 2702)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 3041)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-21 22:36:49 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 1.0ms | Allocations: 665)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 14338)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 15119)
+
+
+Started GET "/demo/hello?id=1&name=sam" for 127.0.0.1 at 2022-06-21 22:36:50 +0530
+Processing by DemoController#hello as HTML
+  Parameters: {"id"=>"1", "name"=>"sam"}
+  Rendering layout layouts/application.html.erb
+  Rendering demo/hello.html.erb within layouts/application
+  Rendered demo/hello.html.erb within layouts/application (Duration: 0.3ms | Allocations: 211)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2694)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 3026)
+
+
+Started GET "/demo/index" for 127.0.0.1 at 2022-06-21 22:36:51 +0530
+Processing by DemoController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering demo/index.html.erb within layouts/application
+  Rendered demo/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 197)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2695)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3018)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:36:54 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 5354)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 5433)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.1ms | Allocations: 7420)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_path' for #<ActionView::Base:0x0000000000fb40>
+Did you mean?  users_new_path):
+    3: <div class="users index">
+    4:   <h2>Users</h2>
+    5: 
+    6:   <%= link_to("Add New User", new_user_path, :class => 'action new') %>
+    7: 
+    8:   <table class="listing" summary="User list">
+    9:     <tr class="header">
+  
+app/views/users/index.html.erb:6
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:37:40 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 4518)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 4597)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 5616)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_path' for #<ActionView::Base:0x0000000000fe88>
+Did you mean?  users_new_path):
+    3: <div class="users index">
+    4:   <h2>Users</h2>
+    5: 
+    6:  <!-- <%= link_to("Add New User", new_user_path, :class => 'action new') %> -->
+    7: 
+    8:   <table class="listing" summary="User list">
+    9:     <tr class="header">
+  
+app/views/users/index.html.erb:6
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:37:42 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 4191)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4272)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 4594)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_path' for #<ActionView::Base:0x00000000010158>
+Did you mean?  users_new_path):
+    3: <div class="users index">
+    4:   <h2>Users</h2>
+    5: 
+    6:  <!-- <%= link_to("Add New User", new_user_path, :class => 'action new') %> -->
+    7: 
+    8:   <table class="listing" summary="User list">
+    9:     <tr class="header">
+  
+app/views/users/index.html.erb:6
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:37:43 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 4190)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 4268)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 4585)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_path' for #<ActionView::Base:0x00000000010428>
+Did you mean?  users_new_path):
+    3: <div class="users index">
+    4:   <h2>Users</h2>
+    5: 
+    6:  <!-- <%= link_to("Add New User", new_user_path, :class => 'action new') %> -->
+    7: 
+    8:   <table class="listing" summary="User list">
+    9:     <tr class="header">
+  
+app/views/users/index.html.erb:6
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:37:52 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 943)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 3745)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 4799)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:39:21 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 980)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 14956)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 1.1ms | Allocations: 16990)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:39:22 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 596)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 3078)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 3430)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:39:24 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2606)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 2980)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:42:07 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 915)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3698)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 4747)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:42:08 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 582)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3080)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 3433)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:42:08 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 582)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3072)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 3424)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:42:09 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 582)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3076)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 3428)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-21 22:42:09 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 589)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3083)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 3435)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:42:11 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 116)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2609)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 2983)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:45:42 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 3061)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3140)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.6ms | Allocations: 9524)
+
+
+  
+ActionView::Template::Error (Missing partial users/_form, application/_form with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/simple_cms/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  action_text/attachables/remote_image
+               action_text/contents/content
+               active_storage/blobs/blob
+               layouts/action_text/contents/content
+               action_text/attachables/missing_attachable
+               action_text/attachment_galleries/attachment_gallery):
+    10: 
+    11:     <%= form_for(@user) do |f| %>
+    12: 
+    13:       <%= render(:partial => 'form', :locals => {:f => f}) %>
+    14: 
+    15:       <div class="form-buttons">
+    16:         <%= f.submit("Create User") %>
+  
+app/views/users/new.html.erb:13
+app/views/users/new.html.erb:11
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:47:58 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 11.5ms | Allocations: 4406)
+  Rendered users/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 4918)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 4997)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 5994)
+
+
+  
+ActionView::Template::Error (undefined method `error_messages_for' for #<ActionView::Base:0x0000000001a090>):
+    1: <%= error_messages_for(f.object) %>
+    2: 
+    3: <table summary="User form fields">
+    4:   <tr>
+  
+app/views/users/_form.html.erb:1
+app/views/users/new.html.erb:13
+app/views/users/new.html.erb:11
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:47:59 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 9.9ms | Allocations: 4145)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.4ms | Allocations: 4322)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 4400)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 4699)
+
+
+  
+ActionView::Template::Error (undefined method `error_messages_for' for #<ActionView::Base:0x0000000001a388>):
+    1: <%= error_messages_for(f.object) %>
+    2: 
+    3: <table summary="User form fields">
+    4:   <tr>
+  
+app/views/users/_form.html.erb:1
+app/views/users/new.html.erb:13
+app/views/users/new.html.erb:11
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:48:41 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 6.9ms | Allocations: 7217)
+  Rendered users/new.html.erb within layouts/application (Duration: 7.9ms | Allocations: 7728)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 7807)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 8802)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007fcc94d80500>::Department):
+    14:   <tr>
+    15:     <th>Departments</th>
+    16:   	<td>
+    17:   		<% collection = Department.all %>
+    18:   		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+    19:   	</td>
+    20:   </tr>
+  
+app/views/users/_form.html.erb:17
+app/views/users/new.html.erb:13
+app/views/users/new.html.erb:11
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:48:42 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.1ms | Allocations: 2349)
+  Rendered users/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 2526)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 2604)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2903)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007fcc94d80500>::Department):
+    14:   <tr>
+    15:     <th>Departments</th>
+    16:   	<td>
+    17:   		<% collection = Department.all %>
+    18:   		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+    19:   	</td>
+    20:   </tr>
+  
+app/views/users/_form.html.erb:17
+app/views/users/new.html.erb:13
+app/views/users/new.html.erb:11
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:51:54 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1272)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1352)
+Completed 500 Internal Server Error in 3ms (Allocations: 2350)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <html>
+  <head>
+    <title> Add New Users </title>
+  </head>
+  <body>
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+
+    <table summary="User form fields">
+      <tr>
+        <th>First Name</th>
+        <td><%= f.text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= f.text_field(:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= f.submit("Create User") %>
+      </div>
+
+    <% end %>
+  </body>
+</html>
+):
+1:    <html>
+2:      <head>
+3:        <title> Add New Users </title>
+4:      </head>
+5:      <body>
+6:        <%= link_to("<< Back to List", users_path) %>
+7:    
+8:        <div class="users new">
+9:        <h2>Create User</h2>
+10:    
+11:        <table summary="User form fields">
+12:          <tr>
+13:            <th>First Name</th>
+14:            <td><%= f.text_field(:first_name) %></td>
+15:          </tr>
+16:          <tr>
+17:            <th>Last Name</th>
+18:            <td><%= f.text_field(:last_name) %></td>
+19:          </tr>
+20:          <tr>
+21:            <th>Email</th>
+22:            <td><%= f.text_field(:email) %></td>
+23:          </tr>
+24:          <tr>
+25:            <th>Departments</th>
+26:          	<td>
+27:          		<% collection = Department.all %>
+28:          		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+29:          	</td>
+30:          </tr>
+31:        </table>
+32:    
+33:    
+34:          <div class="form-buttons">
+35:            <%= f.submit("Create User") %>
+36:          </div>
+37:    
+38:        <% end %>
+39:      </body>
+40:    </html>
+  
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:52:21 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 1262)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1342)
+Completed 500 Internal Server Error in 2ms (Allocations: 2337)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+  <head>
+    <title> Add New Users </title>
+  </head>
+  <body>
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+
+    <table summary="User form fields">
+      <tr>
+        <th>First Name</th>
+        <td><%= f.text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= f.text_field(:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= f.submit("Create User") %>
+      </div>
+
+    <% end %>
+  </body>
+
+):
+1:    
+2:      <head>
+3:        <title> Add New Users </title>
+4:      </head>
+5:      <body>
+6:        <%= link_to("<< Back to List", users_path) %>
+7:    
+8:        <div class="users new">
+9:        <h2>Create User</h2>
+10:    
+11:        <table summary="User form fields">
+12:          <tr>
+13:            <th>First Name</th>
+14:            <td><%= f.text_field(:first_name) %></td>
+15:          </tr>
+16:          <tr>
+17:            <th>Last Name</th>
+18:            <td><%= f.text_field(:last_name) %></td>
+19:          </tr>
+20:          <tr>
+21:            <th>Email</th>
+22:            <td><%= f.text_field(:email) %></td>
+23:          </tr>
+24:          <tr>
+25:            <th>Departments</th>
+26:          	<td>
+27:          		<% collection = Department.all %>
+28:          		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+29:          	</td>
+30:          </tr>
+31:        </table>
+32:    
+33:    
+34:          <div class="form-buttons">
+35:            <%= f.submit("Create User") %>
+36:          </div>
+37:    
+38:        <% end %>
+39:      </body>
+  
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:52:40 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1256)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1336)
+Completed 500 Internal Server Error in 3ms (Allocations: 2331)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+
+    <table summary="User form fields">
+      <tr>
+        <th>First Name</th>
+        <td><%= f.text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= f.text_field(:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= f.submit("Create User") %>
+      </div>
+
+    <% end %>
+
+
+):
+1:    
+2:        <%= link_to("<< Back to List", users_path) %>
+3:    
+4:        <div class="users new">
+5:        <h2>Create User</h2>
+6:    
+7:        <table summary="User form fields">
+8:          <tr>
+9:            <th>First Name</th>
+10:            <td><%= f.text_field(:first_name) %></td>
+11:          </tr>
+12:          <tr>
+13:            <th>Last Name</th>
+14:            <td><%= f.text_field(:last_name) %></td>
+15:          </tr>
+16:          <tr>
+17:            <th>Email</th>
+18:            <td><%= f.text_field(:email) %></td>
+19:          </tr>
+20:          <tr>
+21:            <th>Departments</th>
+22:          	<td>
+23:          		<% collection = Department.all %>
+24:          		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+25:          	</td>
+26:          </tr>
+27:        </table>
+28:    
+29:    
+30:          <div class="form-buttons">
+31:            <%= f.submit("Create User") %>
+32:          </div>
+33:    
+34:        <% end %>
+  
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:52:43 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1245)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1324)
+Completed 500 Internal Server Error in 1ms (Allocations: 1622)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+
+    <table summary="User form fields">
+      <tr>
+        <th>First Name</th>
+        <td><%= f.text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= f.text_field(:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= f.submit("Create User") %>
+      </div>
+
+    <% end %>
+
+
+):
+1:    
+2:        <%= link_to("<< Back to List", users_path) %>
+3:    
+4:        <div class="users new">
+5:        <h2>Create User</h2>
+6:    
+7:        <table summary="User form fields">
+8:          <tr>
+9:            <th>First Name</th>
+10:            <td><%= f.text_field(:first_name) %></td>
+11:          </tr>
+12:          <tr>
+13:            <th>Last Name</th>
+14:            <td><%= f.text_field(:last_name) %></td>
+15:          </tr>
+16:          <tr>
+17:            <th>Email</th>
+18:            <td><%= f.text_field(:email) %></td>
+19:          </tr>
+20:          <tr>
+21:            <th>Departments</th>
+22:          	<td>
+23:          		<% collection = Department.all %>
+24:          		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+25:          	</td>
+26:          </tr>
+27:        </table>
+28:    
+29:    
+30:          <div class="form-buttons">
+31:            <%= f.submit("Create User") %>
+32:          </div>
+33:    
+34:        <% end %>
+  
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:37: syntax error, unexpected `end', expecting end-of-input
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:53:44 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1262)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1342)
+Completed 500 Internal Server Error in 2ms (Allocations: 2336)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <html>
+  <head>
+    <title> Add New Users </title>
+  </head>
+  <body>
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+
+    <table>
+      <tr>
+        <th>First Name</th>
+        <td><%= f.text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= f.text_field(:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= f.text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= f.submit("Create User") %>
+      </div>
+
+    <% end %>
+  </body>
+</html>
+):
+1:    <html>
+2:      <head>
+3:        <title> Add New Users </title>
+4:      </head>
+5:      <body>
+6:        <%= link_to("<< Back to List", users_path) %>
+7:    
+8:        <div class="users new">
+9:        <h2>Create User</h2>
+10:    
+11:        <table>
+12:          <tr>
+13:            <th>First Name</th>
+14:            <td><%= f.text_field(:first_name) %></td>
+15:          </tr>
+16:          <tr>
+17:            <th>Last Name</th>
+18:            <td><%= f.text_field(:last_name) %></td>
+19:          </tr>
+20:          <tr>
+21:            <th>Email</th>
+22:            <td><%= f.text_field(:email) %></td>
+23:          </tr>
+24:          <tr>
+25:            <th>Departments</th>
+26:          	<td>
+27:          		<% collection = Department.all %>
+28:          		<%= f.collection_check_boxes(:department_ids, collection, :id, :name) %>
+29:          	</td>
+30:          </tr>
+31:        </table>
+32:    
+33:    
+34:          <div class="form-buttons">
+35:            <%= f.submit("Create User") %>
+36:          </div>
+37:    
+38:        <% end %>
+39:      </body>
+40:    </html>
+  
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:54:27 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1262)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 1342)
+Completed 500 Internal Server Error in 2ms (Allocations: 2337)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <html>
+  <head>
+    <title> Add New Users </title>
+  </head>
+  <body>
+    <%= link_to("<< Back to List", users_path) %>
+
+    <div class="users new">
+    <h2>Create User</h2>
+
+    <table>
+      <tr>
+        <th>First Name</th>
+        <td><%= text_field(:first_name) %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= text_field(:last_name) %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= text_field(:email) %></td>
+      </tr>
+      <tr>
+        <th>Departments</th>
+      	<td>
+      		<% collection = Department.all %>
+      		<%= collection_check_boxes(:department_ids, collection, :id, :name) %>
+      	</td>
+      </tr>
+    </table>
+
+
+      <div class="form-buttons">
+        <%= f.submit("Create User") %>
+      </div>
+
+    <% end %>
+  </body>
+</html>
+):
+1:    <html>
+2:      <head>
+3:        <title> Add New Users </title>
+4:      </head>
+5:      <body>
+6:        <%= link_to("<< Back to List", users_path) %>
+7:    
+8:        <div class="users new">
+9:        <h2>Create User</h2>
+10:    
+11:        <table>
+12:          <tr>
+13:            <th>First Name</th>
+14:            <td><%= text_field(:first_name) %></td>
+15:          </tr>
+16:          <tr>
+17:            <th>Last Name</th>
+18:            <td><%= text_field(:last_name) %></td>
+19:          </tr>
+20:          <tr>
+21:            <th>Email</th>
+22:            <td><%= text_field(:email) %></td>
+23:          </tr>
+24:          <tr>
+25:            <th>Departments</th>
+26:          	<td>
+27:          		<% collection = Department.all %>
+28:          		<%= collection_check_boxes(:department_ids, collection, :id, :name) %>
+29:          	</td>
+30:          </tr>
+31:        </table>
+32:    
+33:    
+34:          <div class="form-buttons">
+35:            <%= f.submit("Create User") %>
+36:          </div>
+37:    
+38:        <% end %>
+39:      </body>
+40:    </html>
+  
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+app/views/users/new.html.erb:42: syntax error, unexpected `end', expecting end-of-input
+Started PUT "/__web_console/repl_sessions/f9e23107a4b2ff8fb24c874118e8cea2" for 127.0.0.1 at 2022-06-21 22:54:35 +0530
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:55:33 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1309)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 1388)
+Completed 500 Internal Server Error in 3ms (Allocations: 2384)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 2..3)):
+    11:     <table>
+    12:       <tr>
+    13:         <th>First Name</th>
+    14:         <td><%= text_field(:first_name) %></td>
+    15:       </tr>
+    16:       <tr>
+    17:         <th>Last Name</th>
+  
+app/views/users/new.html.erb:14
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:55:34 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 994)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | Allocations: 1072)
+Completed 500 Internal Server Error in 1ms (Allocations: 1369)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 2..3)):
+    11:     <table>
+    12:       <tr>
+    13:         <th>First Name</th>
+    14:         <td><%= text_field(:first_name) %></td>
+    15:       </tr>
+    16:       <tr>
+    17:         <th>Last Name</th>
+  
+app/views/users/new.html.erb:14
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:57:39 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2323)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2402)
+Completed 500 Internal Server Error in 3ms (Allocations: 3395)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007fcc9500d548>::Department):
+    24:       <tr>
+    25:         <th>Departments</th>
+    26:       	<td>
+    27:       		<% collection = Department.all %>
+    28:       		<%= collection_check_boxes(:department_ids, collection, :id, :name) %>
+    29:       	</td>
+    30:       </tr>
+  
+app/views/users/new.html.erb:27
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 22:57:40 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 2015)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | Allocations: 2093)
+Completed 500 Internal Server Error in 1ms (Allocations: 2390)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007fcc9500d548>::Department):
+    24:       <tr>
+    25:         <th>Departments</th>
+    26:       	<td>
+    27:       		<% collection = Department.all %>
+    28:       		<%= collection_check_boxes(:department_ids, collection, :id, :name) %>
+    29:       	</td>
+    30:       </tr>
+  
+app/views/users/new.html.erb:27
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:03:27 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 6860)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 6939)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 2.2ms | Allocations: 21242)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 4, expected 5..7)):
+    25:         <th>Departments</th>
+    26:       	<td>
+    27:       		<% collection = Department.all %>
+    28:       		<%= collection_check_boxes(:department_ids, collection, :id, :name) %>
+    29:       	</td>
+    30:       </tr>
+    31:     </table>
+  
+app/views/users/new.html.erb:28
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:03:54 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.4ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 13.1ms | Allocations: 6398)
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 6477)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms | Allocations: 7473)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<ActionView::Base:0x00000000021b10>):
+    32: 
+    33: 
+    34:       <div class="form-buttons">
+    35:         <%= f.submit("Create User") %>
+    36:       </div>
+    37: 
+    38:   </body>
+  
+app/views/users/new.html.erb:35
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:04:06 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 5.6ms | Allocations: 5138)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 5217)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms | Allocations: 6213)
+
+
+  
+ActionView::Template::Error (undefined method `submit' for #<ActionView::Base:0x00000000021e08>
+Did you mean?  submit_tag):
+    32: 
+    33: 
+    34:       <div class="form-buttons">
+    35:         <%= submit("Create User") %>
+    36:       </div>
+    37: 
+    38:   </body>
+  
+app/views/users/new.html.erb:35
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:04:18 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1258)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 15249)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.2ms | Allocations: 16280)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:04:27 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 928)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 3420)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.6ms | Allocations: 3897)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:04:29 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 935)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3425)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.2ms | Allocations: 3761)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:07:32 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1866)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 4338)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.2ms | Allocations: 5368)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:07:35 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>[""]}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/create.html.erb within layouts/application
+  Rendered users/create.html.erb within layouts/application (Duration: 0.8ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2316)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 3101)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:07:39 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 883)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 3373)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 3781)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:07:40 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1461)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 3654)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 3990)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:07:42 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>[""]}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/create.html.erb within layouts/application
+  Rendered users/create.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2214)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2864)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:07:43 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>[""]}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/create.html.erb within layouts/application
+  Rendered users/create.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2214)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 2880)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:09:45 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 12.3ms | Allocations: 1252)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 4024)
+Completed 200 OK in 32ms (Views: 27.8ms | ActiveRecord: 0.2ms | Allocations: 5054)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDepartment Create (0.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "creative"], ["created_at", "2022-06-21 17:40:44.670573"], ["updated_at", "2022-06-21 17:40:44.670573"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:11:00 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 32.7ms | Allocations: 22071)
+  Rendered layout layouts/application.html.erb (Duration: 60.4ms | Allocations: 56857)
+Completed 200 OK in 80ms (Views: 59.4ms | ActiveRecord: 5.0ms | Allocations: 76453)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:11:03 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/create.html.erb within layouts/application
+  Rendered users/create.html.erb within layouts/application (Duration: 0.3ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2317)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 3107)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:11:10 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 966)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3466)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.7ms | Allocations: 3960)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:11:12 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 582)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 3076)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.4ms | Allocations: 3428)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:11:13 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 589)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3087)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 3443)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:11:13 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 582)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3078)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 3430)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:11:13 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 582)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3066)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 3418)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:13:40 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 10603)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 24406)
+Completed 200 OK in 28ms (Views: 17.9ms | ActiveRecord: 3.9ms | Allocations: 34613)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:13:43 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 3606)
+
+
+  
+NameError (undefined local variable or method `user_params' for #<UsersController:0x00000000010d10>
+Did you mean?  user_path):
+  
+app/controllers/users_controller.rb:14:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:13:58 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 11.2ms | Allocations: 10637)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 24418)
+Completed 200 OK in 26ms (Views: 17.1ms | ActiveRecord: 4.2ms | Allocations: 34626)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:14:01 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 848)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/users_controller.rb:14:in `create'
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:15:17 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 10619)
+  Rendered layout layouts/application.html.erb (Duration: 23.0ms | Allocations: 24409)
+Completed 200 OK in 32ms (Views: 21.6ms | ActiveRecord: 4.0ms | Allocations: 34609)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:15:20 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User"}
+[31mUnpermitted parameters: :first_name, :last_name, :department_ids. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fd748b5feb0>, params: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/create.html.erb within layouts/application
+  Rendered users/create.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 2214)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 3979)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:15:21 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User"}
+[31mUnpermitted parameters: :first_name, :last_name, :department_ids. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fd748bb6670>, params: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User", "controller"=>"users", "action"=>"create"} }[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/create.html.erb within layouts/application
+  Rendered users/create.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2214)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3593)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-06-21 23:16:45 +0530
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "email"=>"shubhamjain0197@gmail.com", "department_ids"=>["", "1"]}, "commit"=>"Create User"}
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["first_name", "Shubham"], ["last_name", "Jain"], ["email", "shubhamjain0197@gmail.com"], ["created_at", "2022-06-21 17:46:45.555511"], ["updated_at", "2022-06-21 17:46:45.555511"]]
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mUser::HABTM_Departments Create (0.2ms)[0m  [1m[32mINSERT INTO "departments_users" ("department_id", "user_id") VALUES ($1, $2)[0m  [["department_id", 1], ["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:18:in `create'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 31ms (ActiveRecord: 5.5ms | Allocations: 28014)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:16:45 +0530
+Processing by UsersController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 3916)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 3995)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms | Allocations: 4812)
+
+
+  
+ActionView::Template::Error (undefined method `full_name' for #<User id: 1, first_name: "Shubham", last_name: "Jain", email: "shubhamjain0197@gmail.com", created_at: "2022-06-21 17:46:45.555511000 +0000", updated_at: "2022-06-21 17:46:45.555511000 +0000">):
+    13:     </tr>
+    14:     <% @users.each do |user| %>
+    15:     <tr>
+    16:       <td><%= user.full_name %></td>
+    17:       <td><%= user.email %></td>
+    18:       <td class="actions">
+    19:         <%= link_to("Show", user_path(user)) %>
+  
+app/views/users/index.html.erb:16
+app/views/users/index.html.erb:14
+Started GET "/users/new" for 127.0.0.1 at 2022-06-21 23:17:40 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1705)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 15728)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.2ms | Allocations: 16761)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-21 23:17:42 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1029)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 3549)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 3960)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2022-06-21 23:17:45 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 2620)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2995)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2022-06-21 23:17:47 +0530
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (Duration: 0.6ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2622)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2997)
+
+
+Started GET "/users/1/delete" for 127.0.0.1 at 2022-06-21 23:17:49 +0530
+Processing by UsersController#delete as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/delete.html.erb within layouts/application
+  Rendered users/delete.html.erb within layouts/application (Duration: 0.4ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2618)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2993)
+
+

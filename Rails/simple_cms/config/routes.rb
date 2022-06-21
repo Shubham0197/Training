@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  root 'demo#index'
+  get 'users/index'
+  get 'users/show'
+  get 'users/new'
+  get 'users/create'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/delete'
+  get 'users/destroy'
+  root 'users#index'
   get 'demo/index'
   get 'demo/hello'
   # defaults routes
@@ -8,4 +16,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :users do
+    member do
+      get :delete
+    end
+  end
 end
