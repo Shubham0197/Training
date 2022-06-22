@@ -1,0 +1,74 @@
+Scaffolding 
+A scaffold is a set of automatically generated files which forms the basic structure of a Rails project.
+These files include:
+
+A controller
+A model
+Views for every standard controller action (index, edit, show, new)
+
+Scaffolding provides more than cheap demo thrills. Here are some benefits −
+
+You can quickly get code in front of your users for feedback.
+You are motivated by faster success.
+You can learn how Rails works by looking at the generated code.
+You can use scaffolding as a foundation to jump start your development.
+
+rails g scaffold books
+This example creates:
+
+A BooksController
+A Book model
+A new resources :books route added to your config/routes.rb file
+A set of testing-related files
+View files under app/views/books (five in total)
+
+
+This can aslo be undone by the follwing destroy command
+
+If you want to undo this scaffolding, right after creating it, you can use the following command.
+
+rails d scaffold books
+
+Where “d” means “destroy”.
+
+Also Before you can use your scaffolded code you have to run your migrations to update your database schema.
+we have to use the rails db:migrate command.
+
+Here while generating rthe scaffold the model only gets timestamp fields, which means that the only information that you can record about your books (or whatever model you’re working with) is the time at which they were created, or updated.
+
+We can add the diferent fields while creating the scaffold to add different fields to the table to add meaningufl data to.
+
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/rails_lms_project$ 
+rails g scaffold paper title:string author:string publication_year:integer
+      invoke  active_record
+      create    db/migrate/20220622110623_create_papers.rb
+      create    app/models/paper.rb
+      invoke    test_unit
+      create      test/models/paper_test.rb
+      create      test/fixtures/papers.yml
+      invoke  resource_route
+       route    resources :papers
+      invoke  scaffold_controller
+      create    app/controllers/papers_controller.rb
+      invoke    erb
+      create      app/views/papers
+      create      app/views/papers/index.html.erb
+      create      app/views/papers/edit.html.erb
+      create      app/views/papers/show.html.erb
+      create      app/views/papers/new.html.erb
+      create      app/views/papers/_form.html.erb
+      create      app/views/papers/_paper.html.erb
+      invoke    resource_route
+      invoke    test_unit
+      create      test/controllers/papers_controller_test.rb
+      create      test/system/papers_test.rb
+      invoke    helper
+      create      app/helpers/papers_helper.rb
+      invoke      test_unit
+      invoke    jbuilder
+      create      app/views/papers/index.json.jbuilder
+      create      app/views/papers/show.json.jbuilder
+      create      app/views/papers/_paper.json.jbuilder
+
+This will add the title author and publication fields to the table and the controlled and views while creating the scaffold .
