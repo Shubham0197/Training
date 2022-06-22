@@ -51,4 +51,54 @@ Rails uses snake_case for controller names , if you have a multiple word control
 
 The routes for your application or engine live in the file config/routes.rb
 
-Resource Routing: the Rails Default 
+Resource Routing: the Rails Default
+
+In Rails, a resourceful route provides a mapping between HTTP verbs and URLs to controller actions. 
+By convention, each action also maps to a specific CRUD operation in a database. 
+A single entry in the routing file, such as:
+resources :photos
+creates seven different routes in your application, all mapping to the Photos controller
+
+HTTP Verb	Path	Controller#Action	Used for
+GET	/photos	photos#index	display a list of all photos
+GET	/photos/new	photos#new	return an HTML form for creating a new photo
+POST	/photos	photos#create	create a new photo
+GET	/photos/:id	photos#show	display a specific photo
+GET	/photos/:id/edit	photos#edit	return an HTML form for editing a photo
+PATCH/PUT	/photos/:id	photos#update	update a specific photo
+DELETE	/photos/:id	photos#destroy	delete a specific photo
+
+So we can create default routing using single command here for the all the crud operations.
+
+To write the path of the links we have to use the server intrepret path in the following ways
+
+photos_path returns /photos
+new_photo_path returns /photos/new
+edit_photo_path(:id) returns /photos/:id/edit (for instance, edit_photo_path(10) returns /photos/10/edit)
+photo_path(:id) returns /photos/:id (for instance, photo_path(10) returns /photos/10)
+
+Can also define the multiple routes for crud operations for tyhe different controller
+we can write them in single command  seperatng them by commas
+resources :photos, :books, :videos
+
+
+Nested Resources
+It's common to have resources that are logically children of other resources
+Nested routes allow you to capture this relationship in your routing
+Eg
+resources :magazines do
+  resources :ads
+end
+the above will create the following routes
+ this declaration will also route ads to an AdsController
+
+HTTP Verb	Path	Controller#Action	Used for
+GET	/magazines/:magazine_id/ads	ads#index	display a list of all ads for a specific magazine
+GET	/magazines/:magazine_id/ads/new	ads#new	return an HTML form for creating a new ad belonging to a specific magazine
+POST	/magazines/:magazine_id/ads	ads#create	create a new ad belonging to a specific magazine
+GET	/magazines/:magazine_id/ads/:id	ads#show	display a specific ad belonging to a specific magazine
+GET	/magazines/:magazine_id/ads/:id/edit	ads#edit	return an HTML form for editing an ad belonging to a specific magazine
+PATCH/PUT	/magazines/:magazine_id/ads/:id	ads#update	update a specific ad belonging to a specific magazine
+DELETE	/magazines/:magazine_id/ads/:id	ads#destroy	delete a specific ad belonging to a specific magazine
+This will also create routing helpers such as magazine_ads_url and edit_magazine_ad_path. These helpers take an instance of Magazine as the first parameter (magazine_ads_url(@magazine)).
+

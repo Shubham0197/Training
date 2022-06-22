@@ -2988,3 +2988,78 @@ Processing by UsersController#delete as HTML
 Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2993)
 
 
+Started GET "/" for 127.0.0.1 at 2022-06-22 12:24:41 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 5525)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 39780)
+Completed 200 OK in 50ms (Views: 34.3ms | ActiveRecord: 3.8ms | Allocations: 55457)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-06-22 12:24:43 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/views/users/new.html.erb:28
+  Rendered users/new.html.erb within layouts/application (Duration: 28.2ms | Allocations: 18566)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 21072)
+Completed 200 OK in 31ms (Views: 26.6ms | ActiveRecord: 3.8ms | Allocations: 21501)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-22 12:27:50 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 711)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3222)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 3583)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2022-06-22 12:27:57 +0530
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2619)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 3001)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2022-06-22 12:28:00 +0530
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (Duration: 0.3ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 2625)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 3005)
+
+
+Started GET "/users/1/delete" for 127.0.0.1 at 2022-06-22 12:28:01 +0530
+Processing by UsersController#delete as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/delete.html.erb within layouts/application
+  Rendered users/delete.html.erb within layouts/application (Duration: 0.3ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2648)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 3023)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-06-22 13:13:56 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."last_name" ASC, "users"."first_name" ASC[0m
+  ↳ app/views/users/index.html.erb:14
+  Rendered users/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 775)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3277)
+Completed 200 OK in 11ms (Views: 3.6ms | ActiveRecord: 3.7ms | Allocations: 5794)
+
+
