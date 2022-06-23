@@ -13,4 +13,30 @@ class AircraftController < ApplicationController
       end
     end
   end
+
+  def new
+    @aircraft = Aircraft.new
+  end
+  
+  def aircraft_params
+    params.require(:aircraft).permit(:name, :cruising_range)
+  end
+
+  def create
+    @aircraft = Aircraft.new(aircraft_params)
+    puts @aircraft.save!
+    if @aircraft.save
+      flash[:notice] = 'Aircraft Added'
+      redirect_to(aircraft_indexs_path)
+    end
+  end
+
+  def update
+
+  end
+
+  def delete
+
+  end
+
 end

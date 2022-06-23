@@ -1,12 +1,14 @@
 <h1>Aircraft#show</h1>
 <%= link_to("back index", aircraft_index_path)%>
+<br>
 <b>Aircraft Name</b>
 <p><%= @aircraft.name%></p><br>
 <b>Aircraft Cruisiing Range</b>
 <%=@aircraft.cruising_range%><br>
-<h2>Employees Certifieds to Fly <%= @aircraft.name%>  aircraft</h2>
+<h5>Employees Certifieds to Fly <%= @aircraft.name%>  aircraft</h5>
+<br>
 <table >
-  <tr>
+  <tr style="align:center">
     <td>
       Name
     </td>
@@ -27,6 +29,6 @@
   </tr>
 <%end%>
 </table>
-
+<br>
 <a href="index">back</a>
 

@@ -1,0 +1,14 @@
+<h2>Add new Aircraft</h2>
+<form action="/aircraft" id="new_aircraft" method="post" >
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td> <%= text_field(:aircraft,:name) %> </td>
+    <tr>
+    <tr>
+    <td>Cruising_range:</td>
+    <td><%= text_field(:aircraft,:cruising_range) %></td>
+    </tr>
+  </table>
+  <%= submit_tag("Add Aircraft") %>
+</form>
