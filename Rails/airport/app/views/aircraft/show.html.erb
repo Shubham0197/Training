@@ -1,2 +1,32 @@
 <h1>Aircraft#show</h1>
-<p>Find me in app/views/aircraft/show.html.erb</p>
+<%= link_to("back index", aircraft_index_path)%>
+<b>Aircraft Name</b>
+<p><%= @aircraft.name%></p><br>
+<b>Aircraft Cruisiing Range</b>
+<%=@aircraft.cruising_range%><br>
+<h2>Employees Certifieds to Fly <%= @aircraft.name%>  aircraft</h2>
+<table >
+  <tr>
+    <td>
+      Name
+    </td>
+    <td>
+      Salary
+    </td>
+    <td colspan = "3">
+    Operations
+    </td>
+  </tr>
+<% @employees.each do |employee|%>
+  <tr>
+    <td><%= employee.name%></td>
+    <td><%= employee.salary%></td>
+    <td>Show</td>
+    <td>Update</td>
+    <td>Delete</td>
+  </tr>
+<%end%>
+</table>
+
+<a href="index">back</a>
+
