@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'aircraft/show'
   get 'aircraft/index'
   get 'aircraft/new'
+  get 'aircraft/delete/:id' , to: "aircraft#delete"
+  get 'aircraft/destroy'
  #  get 'aircraft/edit(:id)'
   resources :aircraft, :employees
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,7 @@
+<h2>Delete Aircraft</h2>
+<p>This will permanenetly delete the data </p>
+<%= form_for(@aircraft , :method => 'delete') do  |f|%>
+
+<%= 'You are going to delete aircraft with name :'+@aircraft.name%>
+<%= f.submit("Delete")%>
+<%end%>

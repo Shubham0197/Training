@@ -18,7 +18,7 @@
     <td><%= aircraft.cruising_range%></td>
     <td><%= link_to("Show",aircraft_path(aircraft))%></td>
     <td><%= link_to("Update", edit_aircraft_path(aircraft))%></td>
-    <td>Delete</td>
+    <td><%= link_to("Delete", "delete/"+aircraft.id.to_s)%></td>
   </tr>
 <%end%>
 </table>

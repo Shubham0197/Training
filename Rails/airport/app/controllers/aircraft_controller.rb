@@ -27,7 +27,7 @@ class AircraftController < ApplicationController
     puts @aircraft.save!
     if @aircraft.save
       flash[:notice] = 'Aircraft Added'
-      redirect_to(aircraft_indexs_path)
+      redirect_to(aircraft_index_path)
     end
   end
   
@@ -46,7 +46,15 @@ class AircraftController < ApplicationController
   end
 
   def delete
+    @aircraft = Aircraft.find(params[:id])
+  end
 
+  def destroy
+    @aircraft = Aircraft.find(params[:id])
+    if @aircraft.destroy
+      flash[:notice] = 'Aircraft destroyed'
+      redirect_to(aircraft_index_path)
+    end
   end
 
 end
