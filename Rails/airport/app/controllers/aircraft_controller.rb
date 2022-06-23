@@ -30,9 +30,19 @@ class AircraftController < ApplicationController
       redirect_to(aircraft_indexs_path)
     end
   end
+  
+  def edit
+    @aircraft = Aircraft.find(params[:id])
+  end
 
   def update
-
+    @aircraft = Aircraft.find(params[:id])
+    if @aircraft.update(aircraft_params)
+      flash[:notice] = 'Aircraft updated'
+      redirect_to(aircraft_path(@aircraft))
+    else
+      render('edit')
+    end
   end
 
   def delete

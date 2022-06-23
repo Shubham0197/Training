@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'aircraft/show'
   get 'aircraft/index'
   get 'aircraft/new'
+ #  get 'aircraft/edit(:id)'
   resources :aircraft
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
