@@ -1,8 +1,9 @@
 class AircraftController < ApplicationController
   def index
-    @aricrafts = Aircraft.all
+    @aircrafts = Aircraft.all
   end
 
   def show
+    @aircraft = Aircraft.find(params[:id])
   end
 end
