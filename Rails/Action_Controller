@@ -3,6 +3,7 @@ Controller is C in MVC.
 It is an interface between models and view
 After the router has determined which controller to use for a request, the controller is responsible for making sense of the request and producing the appropriate output
 
+Anything define in the private in controller is method and public one can be treated as actions
 # Controller Naming Convention
 While naming controller rails favours plural in last word of  controllers name ,  although it is not strictly required
 ClientsController is preferable to ClientController, SiteAdminsController is preferable to SiteAdminController or SitesAdminsController

@@ -17,4 +17,15 @@ The <% %> tags are used to execute Ruby code that does not return anything, such
 
 (<%= %>). regular output functions such as print and puts won't be rendered to the view with ERB templates so instead of them have to write = replace insteaad of print or puts
 
-2. Builder
+
+Action Helpers 
+Helpers are use to extract complex logic out of view so that we cn qrganize the code better.
+eg, link_to, form_for, img_
+or can also make new helper method in the application helper  in the helper folder
+
+can also write specific for the specific controller view like for aircraft_helper method written in this will only be available for the view of aircraft controller but if want to define helper method whichi is available for the all the views will have to define them in the application helper. 
+
+Can also write ht ehelper method in the controller
+either by wriing helper_method :method_name
+
+or include ApplicationHelper

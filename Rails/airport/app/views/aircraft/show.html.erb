@@ -7,13 +7,16 @@
 <%=@aircraft.cruising_range%><br>
 <h5>Employees Certifieds to Fly <%= @aircraft.name%>  aircraft</h5>
 <br>
-<table >
-  <tr style="align:center">
+<table  border="solid">
+  <tr style="border:solid;align:center">
     <td>
       Name
     </td>
     <td>
       Salary
+    </td>
+    <td>
+      Date of Birth
     </td>
     <td colspan = "3">
     Operations
@@ -23,9 +26,9 @@
   <tr>
     <td><%= employee.name%></td>
     <td><%= employee.salary%></td>
-    <td>Show</td>
-    <td>Update</td>
+    <td><%= formatted_date(employee.DOB)%></td>
     <td>Delete</td>
+
   </tr>
 <%end%>
 </table>

@@ -1,5 +1,6 @@
 class AircraftController < ApplicationController
   layout 'aircraft'
+  helper_method :formatted_date
   def index
     @aircrafts = Aircraft.all
   end
@@ -57,5 +58,10 @@ class AircraftController < ApplicationController
       redirect_to(aircraft_index_path)
     end
   end
+  private
+
+    def formatted_date
+      date.strftime('%A, %b %d %Y') if date.present?
+    end
 
 end
