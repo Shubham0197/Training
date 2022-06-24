@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'flights/index'
+  get 'flights/new'
+  get 'flights/create'
+  get 'flights/edit'
+  get 'flights/update'
+  get 'flights/destroy'
   get 'employees/index'
   get 'employees/new'
   get 'employees/create'
@@ -13,7 +19,7 @@ Rails.application.routes.draw do
   get 'aircraft/delete/:id' , to: "aircraft#delete"
   get 'aircraft/destroy'
  #  get 'aircraft/edit(:id)'
-  resources :aircraft, :employees
+  resources :aircraft, :employees, :flights
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
