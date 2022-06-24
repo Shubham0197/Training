@@ -1,4 +1,5 @@
 class Aircraft < ApplicationRecord
+  include Validatable
   #self.primary_key = 'name'
  # before_create :aborting
   has_many :certifieds, before_add: :check_ceritfieds

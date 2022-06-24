@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'aircraft/show'
   get 'aircraft/index'
   get 'aircraft/new'
-  get 'aircraft/delete/:id' , to: "aircraft#delete"
+  get 'aircraft/delete/:id', to: "aircraft#delete"
   get 'aircraft/destroy'
 
   namespace :admin do
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :employees
   end
   scope module: :admin do
-    resources :aircrafts
+   # resources :aircrafts
   end
 
  #  get 'aircraft/edit(:id)'

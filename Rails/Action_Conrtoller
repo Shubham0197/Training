@@ -21,3 +21,9 @@ two kinds of parameters possible in a web application.
 
 The first are parameters that are sent as part of the URL, called query string parameters
 The query string is everything after "?" in the URL.  
+
+Active Suppert Concerns
+
+Rails concerns is any module that extends ActiveSupport::Cooncern Modules.
+can use it to write them to write same type of validation in the concerns to apply them to multiple models and not to repeat ourselves.
+Can also write the scopes in this concern too.
