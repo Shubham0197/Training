@@ -1,4 +1,5 @@
 class FlightsController < ApplicationController
+
   def index
     @flights = Flight.all
   end
@@ -20,6 +21,7 @@ class FlightsController < ApplicationController
   end
 
   def update
+    response.headers.delete "X-Frame-Options"
   end
 
   def destroy
