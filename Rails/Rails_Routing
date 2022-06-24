@@ -26,6 +26,7 @@ Either that or return HTTP status 204 (NO CONTENT) with no response body.
 Rails Routing from the Outside In
 Routes
 The Rails router recognizes URLs and dispatches them to a controller's action, or to a Rack application.
+Rails router works from top to bottom matching the routes.
 It can also generate paths and URLs, avoiding the need to hardcode strings in your views.
 Types of Routes
 
@@ -101,4 +102,43 @@ GET	/magazines/:magazine_id/ads/:id/edit	ads#edit	return an HTML form for editin
 PATCH/PUT	/magazines/:magazine_id/ads/:id	ads#update	update a specific ad belonging to a specific magazine
 DELETE	/magazines/:magazine_id/ads/:id	ads#destroy	delete a specific ad belonging to a specific magazine
 This will also create routing helpers such as magazine_ads_url and edit_magazine_ad_path. These helpers take an instance of Magazine as the first parameter (magazine_ads_url(@magazine)).
+
+Member and Collection Routes
+Member Routes-
+Route whcih require the id of the resource to perform an action. show, edit, update, destroy
+Collection Routes-
+Routes which does not reqire the id of the resourece to serve the request. index new 
+
+Must use block syntax for multiple action
+
+resources :certifieds do
+  member do
+    get :certifieds_mapping
+  end
+  collection do
+    get :pilots
+  end
+end
+
+preferrable for one member action
+get :certifieds_mapping, on: :member
+or
+get :pilots, on: :collection
+
+If do not provide member or collection action by default it is member action
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ rails routes | grep certifieds
+            certifieds_mapping_certified GET    /certifieds/:id/certifieds_mapping(.:format)                                                      certifieds#certifieds_mapping
+                       pilots_certifieds GET    /certifieds/pilots(.:format)                                                                      certifieds#pilots
+                              certifieds GET    /certifieds(.:format)                                                                             certifieds#index
+                                         POST   /certifieds(.:format)                                                                             certifieds#create
+                           new_certified GET    /certifieds/new(.:format)                                                                         certifieds#new
+                          edit_certified GET    /certifieds/:id/edit(.:format)                                                                    certifieds#edit
+                               certified GET    /certifieds/:id(.:format)                                                                         certifieds#show
+                                         PATCH  /certifieds/:id(.:format)                                                                         certifieds#update
+                                         PUT    /certifieds/:id(.:format)                                                                         certifieds#update
+                                         DELETE /certifieds/:id(.:format)                                                                         certifieds#destroy
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ 
+
+
 

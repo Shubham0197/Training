@@ -18,6 +18,15 @@ Rails.application.routes.draw do
   get 'aircraft/new'
   get 'aircraft/delete/:id' , to: "aircraft#delete"
   get 'aircraft/destroy'
+  resources :certifieds do
+    member do
+      get :certifieds_mapping
+    end
+    collection do
+      get :pilots
+    end
+  end
+  
  #  get 'aircraft/edit(:id)'
   resources :aircraft, :employees, :flights
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
