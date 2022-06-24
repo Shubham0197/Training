@@ -1,4 +1,5 @@
 class AircraftController < ApplicationController
+  layout 'aircraft'
   def index
     @aircrafts = Aircraft.all
   end
