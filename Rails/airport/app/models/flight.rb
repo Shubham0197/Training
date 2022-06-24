@@ -5,7 +5,7 @@ class Flight < ApplicationRecord
   validates :price, length: { is: 5, wrong_length: "you gave wrong length" }
   validates :price, numericality: {strict: true}
   validates :price, numericality: {in: 10000..59999, other_than: 29999}
-  validates :from, uniqueness: {scope: :destination, case_sensitive: false}
+#  validates :from, uniqueness: {scope: :destination, case_sensitive: false}
 end
 
 # one flight can have many aircrfts on that routes

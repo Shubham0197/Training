@@ -12,6 +12,7 @@ class FlightsController < ApplicationController
     @flight = Flight.new(flight_params)
     puts @flight.save!
     if @flight.save
+      CrudNotificationMailer.create_notification(@flight)
       flash[:notice] = 'Aircraft Added'
       redirect_to(flights_index_path)
     end
