@@ -141,4 +141,51 @@ If do not provide member or collection action by default it is member action
 (base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ 
 
 
+Namespace Routing
+When  we want to organise a group of controller in a/under a namespace.
 
+admin namespace - make certain funtionality of the project to be available to the admin users only.
+create a folder with admin name in controller folder.
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ rails routes | grep admin
+      certifieds_mapping_admin_certified GET    /admin/certifieds/:id/certifieds_mapping(.:format)                                                admin/certifieds#certifieds_mapping
+                 pilots_admin_certifieds GET    /admin/certifieds/pilots(.:format)                                                                admin/certifieds#pilots
+                        admin_certifieds GET    /admin/certifieds(.:format)                                                                       admin/certifieds#index
+                                         POST   /admin/certifieds(.:format)                                                                       admin/certifieds#create
+                     new_admin_certified GET    /admin/certifieds/new(.:format)                                                                   admin/certifieds#new
+                    edit_admin_certified GET    /admin/certifieds/:id/edit(.:format)                                                              admin/certifieds#edit
+                         admin_certified GET    /admin/certifieds/:id(.:format)                                                                   admin/certifieds#show
+                                         PATCH  /admin/certifieds/:id(.:format)                                                                   admin/certifieds#update
+                                         PUT    /admin/certifieds/:id(.:format)                                                                   admin/certifieds#update
+                                         DELETE /admin/certifieds/:id(.:format)                                                                   admin/certifieds#destroy
+
+
+Scope 
+can aslo do the same thign using scope but will not create namespace using
+scope :admin do 
+end
+will do the same thing with scope with namespace there will remove the admin prefix from the url
+scope module: :admin do
+end
+case 1
+can 
+
+    employees GET    /admin/employees(.:format)                                                                        employees#index
+                                         POST   /admin/employees(.:format)                                                                        employees#create
+                            new_employee GET    /admin/employees/new(.:format)                                                                    employees#new
+                           edit_employee GET    /admin/employees/:id/edit(.:format)                                                               employees#edit
+                                employee GET    /admin/employees/:id(.:format)                                                                    employees#show
+                                         PATCH  /admin/employees/:id(.:format)                                                                    employees#update
+                                         PUT    /admin/employees/:id(.:format)                                                                    employees#update
+                                         DELETE /admin/employees/:id(.:format)                                                                    employees#destroy
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ 
+
+case 2
+        flight_flights_aircrafts GET    /flight/:flight_id/flights_aircrafts(.:format)                                                    flights_aircrafts#index
+                                         POST   /flight/:flight_id/flights_aircrafts(.:format)                                                    flights_aircrafts#create
+             new_flight_flights_aircraft GET    /flight/:flight_id/flights_aircrafts/new(.:format)                                                flights_aircrafts#new
+            edit_flight_flights_aircraft GET    /flight/:flight_id/flights_aircrafts/:id/edit(.:format)                                           flights_aircrafts#edit
+                 flight_flights_aircraft GET    /flight/:flight_id/flights_aircrafts/:id(.:format)                                                flights_aircrafts#show
+                                         PATCH  /flight/:flight_id/flights_aircrafts/:id(.:format)                                                flights_aircrafts#update
+                                         PUT    /flight/:flight_id/flights_aircrafts/:id(.:format)                                                flights_aircrafts#update
+                                         DELETE /flight/:flight_id/flights_aircrafts/:id(.:format)                                                flights_aircrafts#destroy
