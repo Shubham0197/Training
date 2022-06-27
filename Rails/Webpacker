@@ -14,3 +14,22 @@ Webpacker adds a webpacker:compile task to the assets:precompile rake task, so a
 The compile task will compile the packs and place them in public/packs
 
 Installing twitter bootstrap using yarn.
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ yarn add bootstrap@4.3.1 jquery popper.js
+yarn add v1.22.19
+info No lockfile found.
+[1/4] Resolving packages...
+warning popper.js@1.16.1: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 3 new dependencies.
+info Direct dependencies
+├─ bootstrap@4.3.1
+├─ jquery@3.6.0
+└─ popper.js@1.16.1
+info All dependencies
+├─ bootstrap@4.3.1
+├─ jquery@3.6.0
+└─ popper.js@1.16.1
+Done in 0.69s.
