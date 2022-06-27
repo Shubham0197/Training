@@ -1,0 +1,16 @@
+webpacker
+Raisl 6 and above uses webpacker by default
+sprocket was used before .
+They were used to manage and serve the assest to the application.
+Webpacker is a rails wrapper around the webpack that provides reaonabledefaults
+webpack is a system that allows to write front - end code in a way that is convinient for the developers and then package that code in a way that is convinient for browsers.
+with this can manage javascript , css and static assets like images.
+Sprockets is simpler to integrate and is compatible more to work with lagacy web application.
+but webpacker is uptodate with the most latest modern javascript and rails.
+To include Webpacker in a new project, add --webpack to the rails new command. 
+To add Webpacker to an existing project, add the webpacker gem to the project's Gemfile, run bundle install, and then run bin/rails webpacker:install.
+
+Webpacker adds a webpacker:compile task to the assets:precompile rake task, so any existing deploy pipeline that was using assets:precompile should work. 
+The compile task will compile the packs and place them in public/packs
+
+Installing twitter bootstrap using yarn.

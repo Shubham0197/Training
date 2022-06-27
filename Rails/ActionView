@@ -105,3 +105,4 @@ NoMethodError: undefined method `attached?' for #<ActionText::RichText id: 1, na
 >> e.content.to_s
 => "<div class=\"trix-content\">\n  <div>wfdsgdsfgdsgsgsdgrfdfdbfd</div>\n</div>\n"
 >>  
+

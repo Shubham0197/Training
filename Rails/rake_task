@@ -1,0 +1,40 @@
+Rake Task
+
+rails db:migrate
+rails db:create
+rails db:rollback
+
+can create rake task to send bulk mails 
+can also use them to use them as scheduler
+rake task called as rails task since rails 5.
+rake dk:migrate
+can run  rake db:migrate with
+bundle exec rake db:migrate
+can also create custom rake task
+
+2 ways to create rake task
+write rake task from scratch 
+or , Use rails generators to create a rake task.
+
+always start with namespace 
+can inlude as many rake task as needed.
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ rails custom:greet_the_user
+Hello to the Airport project
+
+Rake task from rails generator.
+rails g task active_record_counter employees_count aircraft_count
+
+rake -T | grep namespace
+Show the rake taks in that namespace and tells discription about it and tells us how to run them.
+
+rake -T | grep custom
+
+aining/Rails/airport$ rake -T | grep custom
+rake custom:greet_the_user                  # Create custom rake task to greeting message
+
+ rake -T | grep active_record_counter
+rake active_record_counter:aircraft_count   # Total count of the aircraft
+rake active_record_counter:employees_count  # Total couunt of the employees
+
+it shows them in the lexical order.
