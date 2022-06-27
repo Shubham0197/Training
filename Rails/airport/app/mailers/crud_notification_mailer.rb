@@ -11,7 +11,7 @@ class CrudNotificationMailer < ApplicationMailer
    
     @greeting = "Hi"
 
-    mail to: "jjshubhamjj@gamil.com", subject: "A new entry for #{object.class} has been created"
+    mail to: "jjshubhamjj@gamil.com", subject: "A new entry for #{object.class} has been created", cc: "asd@gmail.com", bcc: "someone@gmail.com"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
