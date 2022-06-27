@@ -5,7 +5,8 @@ class Employee < ApplicationRecord
   belongs_to :trainer, class_name: "Employee", optional: true
   before_destroy :delete_from_certified
   after_destroy_commit :check
-
+  has_one_attached :image
+  
   def delete_from_certified
     print "before destory"
     self.certifieds.clear

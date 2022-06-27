@@ -7,6 +7,13 @@ class EmployeesController < ApplicationController
   end
 
   def create
+    @employee = Employee.new(employee_params)
+    @employee.save!
+    if @employee.save!
+      CrudNotificationMailer.create_notification(@employee).deliver_later
+      flash[:notice] = 'Aircraft Added'
+      redirect_to(aircraft_index_path)
+    end
   end
 
   def show
@@ -20,4 +27,8 @@ class EmployeesController < ApplicationController
 
   def destroy
   end
+  private
+    def employee_params
+      params.require(:employee).permit(:name, :mobile_number, :DOB, :salary, :trainer_id, :image)
+    end
 end

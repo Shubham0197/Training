@@ -28,6 +28,7 @@
     <td><%= employee.salary%></td>
     <td><%= formatted_date(employee.DOB)%></td>
     <td>Delete</td>
+    <td><%= image_tag(employee.image,size: "160x100") if employee.image.attached?  %></td>
 
   </tr>
 <%end%>
