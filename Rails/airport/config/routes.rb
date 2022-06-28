@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   get 'aircraft/destroy'
 
   namespace :admin do
+    get 'delete/:id', to: "aircraft#delete"
+    resources :employees
+    resources :aircraft
+
     resources :certifieds do
       member do
         get :certifieds_mapping
@@ -31,6 +35,8 @@ Rails.application.routes.draw do
   end
   scope :admin do
     resources :employees
+    resources :aircraft
+
   end
   scope module: :admin do
    # resources :aircrafts

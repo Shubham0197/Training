@@ -1,0 +1,11 @@
+<h1>Employees#new</h1>
+<%= link_to("Employee List", employees_show_path) %>
+
+<div class="employee new">
+  <h2>Add Employee</h2>
+
+  <%= form_for(@employee) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <%= f.submit("Add Employee") %>
+  <% end %>
+</div>

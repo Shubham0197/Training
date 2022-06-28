@@ -1,0 +1,38 @@
+<h1>Aircraft#show</h1>
+<%= link_to("back index", aircraft_index_path)%>
+<br>
+<b>Aircraft Name</b>
+<p><%= @aircraft.name%></p><br>
+<b>Aircraft Cruisiing Range</b>
+<%=@aircraft.cruising_range%><br>
+<h5>Employees Certifieds to Fly <%= @aircraft.name%>  aircraft</h5>
+<br>
+<table  border="solid">
+  <tr style="border:solid;align:center">
+    <td>
+      Name
+    </td>
+    <td>
+      Salary
+    </td>
+    <td>
+      Date of Birth
+    </td>
+    <td colspan = "3">
+    Operations
+    </td>
+  </tr>
+<% @employees.each do |employee|%>
+  <tr>
+    <td><%= employee.name%></td>
+    <td><%= employee.salary%></td>
+    <td><%= formatted_date(employee.DOB)%></td>
+    <td>Delete</td>
+    <td><%= image_tag(employee.image,size: "160x100") if employee.image.attached?  %></td>
+
+  </tr>
+<%end%>
+</table>
+<br>
+<a href="index">back</a>
+

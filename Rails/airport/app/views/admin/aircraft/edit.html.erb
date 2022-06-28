@@ -1,0 +1,6 @@
+<h2>Update the Details of the aircraft</h2>
+<%= form_for(@aircraft) do |f| %>
+<%= f.text_field(:name) %>
+<%= f.text_field(:cruising_range) %>
+<%= f.submit("Update Details") %>
+<% end %>

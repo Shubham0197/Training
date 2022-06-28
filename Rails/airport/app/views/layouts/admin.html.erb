@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= favicon_link_tag 'a.jpeg' %>
-    <title>Aircraft</title>
+    <title>Airport</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
   </head>
 
-  <body style="background-color: aquamarine;">
+  <body>
     <div class="container">
       <div class="row">
     <%= yield %>
-    </div>
-    </div>
+      </div>
+  </div>
   </body>
 </html>
