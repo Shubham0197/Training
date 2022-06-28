@@ -2,7 +2,9 @@ class AircraftController < ApplicationController
   layout 'aircraft'
   helper_method :formatted_date
   def index
-    @aircrafts = Aircraft.all
+    @q = Aircraft.ransack(params[:q])
+    @aircrafts = @q.result(distinct: true).page(params[:page])
+    puts @aircrafts.count,params[:q],"\n"
   end
 
   def show
