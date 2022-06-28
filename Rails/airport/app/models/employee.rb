@@ -7,6 +7,7 @@ class Employee < ApplicationRecord
   after_destroy_commit :check
   has_one_attached :image
   has_rich_text :content
+  paginates_per 50
   
   def delete_from_certified
     print "before destory"

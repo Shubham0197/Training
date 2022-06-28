@@ -6,6 +6,7 @@ class Flight < ApplicationRecord
   validates :price, numericality: {strict: true}
   validates :price, numericality: {in: 10000..59999, other_than: 29999}
 #  validates :from, uniqueness: {scope: :destination, case_sensitive: false}
+  paginates_per 50
 end
 
 # one flight can have many aircrfts on that routes

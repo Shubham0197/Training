@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'aircraft/show'
   get 'aircraft/index'
   get 'aircraft/new'
-  get 'aircraft/delete/:id', to: "aircraft#delete"
+  get 'delete/:id', to: "aircraft#delete"
   get 'aircraft/destroy'
 
   namespace :admin do

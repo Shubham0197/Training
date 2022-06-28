@@ -1,7 +1,7 @@
 class Admin::AircraftController < ApplicationController
   helper_method :formatted_date
   def index
-    @aircrafts = Aircraft.all
+    @aircrafts = Aircraft.all.page(params[:page])
   end
 
   def show
