@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, controllers: {session: 'admin_users/sessions', passwords: 'admin_users/passwords', registrations: "admin_users/registrations" }
   get 'flights/index'
   get 'flights/new'
   get 'flights/create'
@@ -33,11 +34,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  scope :admin do
-    resources :employees
-    resources :aircraft
 
-  end
   scope module: :admin do
    # resources :aircrafts
   end
