@@ -477,3 +477,405 @@ Processing by HomepageController#index as HTML
 Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 3055)
 
 
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:30:14 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 123)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 3393)
+Completed 200 OK in 11ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 4388)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:30:15 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2768)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 3066)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:16 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.4ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2871)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3221)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:26 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.4ms | Allocations: 124)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3337)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 4329)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:27 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2772)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 3070)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:33 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.8ms | Allocations: 124)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3357)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 4349)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:34 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2770)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 3068)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:34 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2768)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 3065)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:34 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 2756)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 3053)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:30:54 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2762)
+Completed 200 OK in 2ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 3059)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:31:01 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 123)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3356)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 4349)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:31:15 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.4ms | Allocations: 371)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 146)
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | Allocations: 22563)
+Completed 200 OK in 25ms (Views: 21.9ms | ActiveRecord: 0.0ms | Allocations: 27756)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:31:28 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 126)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 3354)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 4352)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:31:45 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 126)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3358)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 4356)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:31:52 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 128)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3360)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 4358)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:32:33 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 132)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 141)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3366)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 4364)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:33:09 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 117)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 2868)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 3221)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:33:10 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2758)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 3055)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:33:11 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.0ms | Allocations: 13)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2778)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 3075)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:42:30 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 10.0ms | Allocations: 5170)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 8378)
+Completed 500 Internal Server Error in 15ms (Allocations: 9382)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user_path' for #<ActionView::Base:0x0000000000f280>
+Did you mean?  users_index_path):
+    13:           <a class="nav-link" href="homepage/about">About</a>
+    14:         </li>
+    15:         <li class="nav-item">
+    16:           <%= link_to 'Users', user_path, class: "navbar-brand"%>
+    17:         </li>
+    18:       </ul>
+    19:     </div>
+  
+app/views/shared/_navbar.html.erb:16
+app/views/layouts/application.html.erb:14
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:42:38 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 6.4ms | Allocations: 4414)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 7636)
+Completed 500 Internal Server Error in 12ms (Allocations: 8592)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `users_path' for #<ActionView::Base:0x0000000000f618>
+Did you mean?  users_index_path):
+    13:           <a class="nav-link" href="homepage/about">About</a>
+    14:         </li>
+    15:         <li class="nav-item">
+    16:           <%= link_to 'Users', users_path, class: "navbar-brand"%>
+    17:         </li>
+    18:       </ul>
+    19:     </div>
+  
+app/views/shared/_navbar.html.erb:16
+app/views/layouts/application.html.erb:14
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:42:39 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 5.6ms | Allocations: 4248)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 7015)
+Completed 500 Internal Server Error in 9ms (Allocations: 7276)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `users_path' for #<ActionView::Base:0x0000000000f8e8>
+Did you mean?  users_index_path):
+    13:           <a class="nav-link" href="homepage/about">About</a>
+    14:         </li>
+    15:         <li class="nav-item">
+    16:           <%= link_to 'Users', users_path, class: "navbar-brand"%>
+    17:         </li>
+    18:       </ul>
+    19:     </div>
+  
+app/views/shared/_navbar.html.erb:16
+app/views/layouts/application.html.erb:14
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:42:40 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 5.5ms | Allocations: 4248)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 7015)
+Completed 500 Internal Server Error in 8ms (Allocations: 7275)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `users_path' for #<ActionView::Base:0x0000000000fbb8>
+Did you mean?  users_index_path):
+    13:           <a class="nav-link" href="homepage/about">About</a>
+    14:         </li>
+    15:         <li class="nav-item">
+    16:           <%= link_to 'Users', users_path, class: "navbar-brand"%>
+    17:         </li>
+    18:       </ul>
+    19:     </div>
+  
+app/views/shared/_navbar.html.erb:16
+app/views/layouts/application.html.erb:14
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:42:54 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 274)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3498)
+Completed 200 OK in 5ms (Views: 4.5ms | Allocations: 4488)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:43:09 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 238)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 3444)
+Completed 200 OK in 6ms (Views: 5.4ms | Allocations: 4435)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-06-29 15:43:11 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 82)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 3003)
+Completed 200 OK in 4ms (Views: 3.2ms | Allocations: 3842)
+
+
+Started GET "/users/homepage/about" for 127.0.0.1 at 2022-06-29 15:43:12 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/homepage/about"):
+  
+Started GET "/users/homepage/about" for 127.0.0.1 at 2022-06-29 15:43:16 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/homepage/about"):
+  
+Started GET "/users/homepage/about" for 127.0.0.1 at 2022-06-29 15:43:41 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/homepage/about"):
+  
+Started GET "/users/homepage/about" for 127.0.0.1 at 2022-06-29 15:43:43 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/homepage/about"):
+  
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:44:02 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 238)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 3458)
+Completed 200 OK in 6ms (Views: 5.7ms | Allocations: 4449)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-06-29 15:44:03 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 119)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 81)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 3001)
+Completed 200 OK in 4ms (Views: 3.8ms | Allocations: 3814)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-06-29 15:44:12 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 238)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3452)
+Completed 200 OK in 5ms (Views: 4.7ms | Allocations: 4443)
+
+
+Started GET "/users/~homepage/about" for 127.0.0.1 at 2022-06-29 15:44:17 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/~homepage/about"):
+  
+Started GET "/users/index" for 127.0.0.1 at 2022-06-29 15:44:49 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 120)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 302)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3510)
+Completed 200 OK in 5ms (Views: 4.8ms | Allocations: 4501)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 15:44:51 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.6ms | Allocations: 130)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 122)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3041)
+Completed 200 OK in 5ms (Views: 4.5ms | Allocations: 3854)
+
+
+Started GET "/users/index" for 127.0.0.1 at 2022-06-29 15:44:54 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 103)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2858)
+Completed 200 OK in 4ms (Views: 3.1ms | Allocations: 3154)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 15:44:55 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 116)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 103)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 2959)
+Completed 200 OK in 4ms (Views: 3.4ms | Allocations: 3307)
+
+

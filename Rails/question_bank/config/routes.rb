@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/index'
   root 'homepage#index'
   get 'homepage/index'
   get 'homepage/about', to: 'homepage#about'
