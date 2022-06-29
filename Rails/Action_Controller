@@ -29,4 +29,5 @@ Rails concerns is any module that extends ActiveSupport::Cooncern Modules.
 can use it to write them to write same type of validation in the concerns to apply them to multiple models and not to repeat ourselves.
 Can also write the scopes in this concern too.
 
-c
+Flash Messages
+flash is a method
