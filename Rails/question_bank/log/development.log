@@ -1,0 +1,19 @@
+  [1m[35m (57.2ms)[0m  [1m[35mCREATE DATABASE "question_bank_development" ENCODING = 'unicode'[0m
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE DATABASE "question_bank_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2022-06-29 21:46:45 +0530
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 740)
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 6933)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-29 21:47:52 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 122)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 165.1ms | Allocations: 93350)
+Completed 200 OK in 167ms (Views: 166.1ms | ActiveRecord: 0.0ms | Allocations: 94425)
+
+
