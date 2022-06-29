@@ -110,3 +110,4 @@ helper
 <%= link_to name,path , class: 'nav-link' % >
 url helpers in the link_to helper to write the link for the route to process
 url helper can be seen from command  rails routes in the terminal
+

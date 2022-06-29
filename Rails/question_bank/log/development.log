@@ -1190,3 +1190,37 @@ Migrating to CreateUsers (20220629100055)
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 22:57:34 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.5ms | Allocations: 379)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 422)
+  Rendered shared/_flash.html.erb (Duration: 0.5ms | Allocations: 232)
+  Rendered layout layouts/application.html.erb (Duration: 23.7ms | Allocations: 23229)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.0ms | Allocations: 28432)
+
+
+Started GET "/homepage/about" for 127.0.0.1 at 2022-06-29 22:57:44 +0530
+Processing by HomepageController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/about.html.erb within layouts/application
+  Rendered homepage/about.html.erb within layouts/application (Duration: 0.4ms | Allocations: 131)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 366)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3939)
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 4938)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2022-06-29 22:57:45 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5647)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 139)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 8327)
+Completed 200 OK in 24ms (Views: 15.3ms | ActiveRecord: 2.9ms | Allocations: 14565)
+
+
