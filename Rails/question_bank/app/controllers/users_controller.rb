@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save
+      #can also use cookies[:user_id] but it will not be encrypte but seesion will be so no body can change it
+      session[:user_id] = @user.id
       redirect_to root_path, notice: "Successfully Create Account"
     else
       flash[:alert] = "Details Entered Incorrectly"
