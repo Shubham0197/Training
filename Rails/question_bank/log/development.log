@@ -4381,3 +4381,733 @@ puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
 puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
 puma (5.6.4) lib/puma/server.rb:441:in `process_client'
 puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:35:29 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2586)
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 617)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 6326)
+Completed 200 OK in 14ms (Views: 7.3ms | ActiveRecord: 2.4ms | Allocations: 11232)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:35:50 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 4932)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 5592)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:35:51 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4932)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 5598)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:35:51 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2297)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 4976)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 5637)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:01 +0530
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/question_bank/app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input
+app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input
+app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:32 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2297)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 285)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 5155)
+Completed 200 OK in 11ms (Views: 4.4ms | ActiveRecord: 2.2ms | Allocations: 9844)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:33 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 4932)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 5596)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:33 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 167)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 4936)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 5601)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:34 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2296)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 4975)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 5637)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:34 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4932)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 5596)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:34 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4930)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 5602)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:34 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4930)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 5602)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:35 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 4930)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 5594)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:35 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 4932)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 5602)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:35 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 4930)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 5592)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:35 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 4930)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 5592)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:35 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.3ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 4930)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 5594)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:36 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 4930)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 5596)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:36 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 4930)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 5600)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:47:36 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.8ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4930)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 5597)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:49:23 +0530
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/question_bank/app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input
+app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input
+app/controllers/password_resets_controller.rb:28: syntax error, unexpected `end', expecting end-of-input
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:50:11 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2297)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 285)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 5155)
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 1.5ms | Allocations: 7161)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:50:12 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4932)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 5598)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:50:12 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 167)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 4934)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 5587)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:50:13 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2293)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4930)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 5584)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:50:13 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 4932)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 5606)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:50:21 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 2295)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 165)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4932)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 5598)
+
+
+Started POST "/password/reset/edit" for ::1 at 2022-06-30 18:56:06 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/password/reset/edit"):
+  
+Started POST "/password/reset/edit" for ::1 at 2022-06-30 18:56:25 +0530
+Processing by PasswordResetsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "commit"=>"Reset Password"}
+Completed 400 Bad Request in 6ms (ActiveRecord: 2.2ms | Allocations: 4441)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/password_resets_controller.rb:35:in `password_params'
+app/controllers/password_resets_controller.rb:26:in `update'
+Started POST "/password/reset/edit" for ::1 at 2022-06-30 18:57:17 +0530
+Processing by PasswordResetsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "commit"=>"Reset Password"}
+Completed 400 Bad Request in 4ms (ActiveRecord: 1.8ms | Allocations: 1745)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/password_resets_controller.rb:35:in `password_params'
+app/controllers/password_resets_controller.rb:26:in `update'
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 18:59:43 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1797)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1876)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 6.1ms | Allocations: 4148)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:04:35 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1437)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1516)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.1ms | Allocations: 3506)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:05 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1460)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1538)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2170)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:06 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1460)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1538)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2170)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:07 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1460)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | Allocations: 1538)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2170)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:07 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1460)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1538)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2170)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:08 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1460)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | Allocations: 1538)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2170)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    2: 
+    3: <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
+    4: 
+    5: <% if form.object.errors.any? %>
+    6: <div class="alert alert-danger">
+    7:   <% form.object.errors.full_messages.each do |message| %>
+    8:     <div><%= message %></div>
+  
+app/views/password_resets/edit.html.erb:5
+app/views/password_resets/edit.html.erb:3
+Started GET "/sign_in" for 127.0.0.1 at 2022-06-30 19:05:14 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 2593)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 604)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 6330)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 7508)
+
+
+Started GET "/password/reset" for 127.0.0.1 at 2022-06-30 19:05:15 +0530
+Processing by PasswordResetsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/new.html.erb within layouts/application
+  Rendered password_resets/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1588)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 188)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 4313)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 5001)
+
+
+Started POST "/password/reset" for 127.0.0.1 at 2022-06-30 19:05:16 +0530
+Processing by PasswordResetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"shubhamjain0197@gmail.com", "commit"=>"Forgot Password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shubhamjain0197@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/password_resets_controller.rb:7:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: a1db4f5c-3a33-4238-baa5-78d4a29aabfb) to Async(default) with arguments: "PasswordMailer", "reset", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007f181cb3b9c0 @uri=#<URI::GID gid://question-bank/User/4>>}, :args=>[]}
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 9ms (ActiveRecord: 1.7ms | Allocations: 5919)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb] Performing ActionMailer::MailDeliveryJob (Job ID: a1db4f5c-3a33-4238-baa5-78d4a29aabfb) from Async(default) enqueued at 2022-06-30T13:35:16Z with arguments: "PasswordMailer", "reset", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007f181cb82438 @uri=#<URI::GID gid://question-bank/User/4>>}, :args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendering password_mailer/reset.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendered password_mailer/reset.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 213)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendered layout layouts/mailer.html.erb (Duration: 1.1ms | Allocations: 444)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendering password_mailer/reset.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendered password_mailer/reset.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 164)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb]   Rendered layout layouts/mailer.text.erb (Duration: 0.7ms | Allocations: 360)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb] PasswordMailer#reset: processed outbound mail in 6.1ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb] Delivered mail 62bda694d037a_103136284948e2@itsacheckmate.mail (1.7ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb] Date: Thu, 30 Jun 2022 19:05:16 +0530
+From: from@example.com
+To: shubhamjain0197@gmail.com
+Message-ID: <62bda694d037a_103136284948e2@itsacheckmate.mail>
+Subject: Reset
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62bda694cfd02_1031362849470";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62bda694cfd02_1031362849470
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<pre>
+
+Hi user, 
+Requested a reset reset of your password
+Click the below link to reset the password.
+The link will be valid for 15 minutes.
+http://localhost:3000/password/reset/edit?token=eyJfcmFpbHMiOnsibWVzc2FnZSI6Ik5BPT0iLCJleHAiOiIyMDIyLTA2LTMwVDEzOjUwOjE2Ljg0NloiLCJwdXIiOiJ1c2VyL3Bhc3N3b3JkX3Jlc2V0In19--a62c81198cec6fee72a953c39566c0b79d2249a2351a0b9a3f5fcf8c1a73eb82
+</pre>
+
+----==_mimepart_62bda694cfd02_1031362849470
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <pre>
+
+Hi user, 
+Requested a reset reset of your password
+Click the below link to reset the password.
+The link will be valid for 15 minutes.
+<a href="http://localhost:3000/password/reset/edit?token=eyJfcmFpbHMiOnsibWVzc2FnZSI6Ik5BPT0iLCJleHAiOiIyMDIyLTA2LTMwVDEzOjUwOjE2Ljg0NloiLCJwdXIiOiJ1c2VyL3Bhc3N3b3JkX3Jlc2V0In19--a62c81198cec6fee72a953c39566c0b79d2249a2351a0b9a3f5fcf8c1a73eb82">Reset Password</a>
+</pre>
+  </body>
+</html>
+
+----==_mimepart_62bda694cfd02_1031362849470--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a1db4f5c-3a33-4238-baa5-78d4a29aabfb] Performed ActionMailer::MailDeliveryJob (Job ID: a1db4f5c-3a33-4238-baa5-78d4a29aabfb) from Async(default) in 10.81ms
+Started GET "/" for 127.0.0.1 at 2022-06-30 19:05:16 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 282)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 180)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 3024)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 4218)
+
+
+Started GET "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:20 +0530
+Processing by PasswordResetsController#edit as HTML
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/password_resets_controller.rb:18:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.2ms | Allocations: 998)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 169)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3638)
+Completed 200 OK in 8ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 5323)
+
+
+Started PATCH "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:28 +0530
+  
+ActionController::RoutingError (No route matches [PATCH] "/password/reset/edit"):
+  
+Started PATCH "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:41 +0530
+Processing by PasswordResetsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Reset Password", "token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/password_resets_controller.rb:25:in `update'
+Redirected to 
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 1.7ms | Allocations: 6947)
+
+
+  
+NoMethodError (undefined method `edit_url' for #<PasswordResetsController:0x0000000003e300>):
+  
+app/controllers/password_resets_controller.rb:29:in `update'
+Started PATCH "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:05:58 +0530
+Processing by PasswordResetsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Reset Password", "token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/password_resets_controller.rb:25:in `update'
+  Rendering layout layouts/application.html.erb
+  Rendering password_resets/edit.html.erb within layouts/application
+  Rendered password_resets/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1709)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 291)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4575)
+Completed 200 OK in 177ms (Views: 7.0ms | ActiveRecord: 1.6ms | Allocations: 9926)
+
+
+Started PATCH "/password/reset/edit?token=[FILTERED]" for ::1 at 2022-06-30 19:06:02 +0530
+Processing by PasswordResetsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Reset Password", "token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/password_resets_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/password_resets_controller.rb:26:in `update'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-06-30 13:36:02.375199"], ["id", 4]]
+  ↳ app/controllers/password_resets_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/password_resets_controller.rb:26:in `update'
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 174ms (ActiveRecord: 7.2ms | Allocations: 3667)
+
+
+Started GET "/sign_in" for ::1 at 2022-06-30 19:06:02 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2320)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 176)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 5040)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 6095)
+
+
+Started POST "/sign_in" for ::1 at 2022-06-30 19:06:09 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"shubhamjain0197@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shubhamjain0197@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 164ms (ActiveRecord: 0.2ms | Allocations: 1333)
+
+
+Started GET "/" for ::1 at 2022-06-30 19:06:10 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 99)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 354)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 3014)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.1ms | Allocations: 4731)
+
+
+Started GET "/password" for ::1 at 2022-06-30 19:06:12 +0530
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1754)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 345)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 4638)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.1ms | Allocations: 6316)
+
+
+Started DELETE "/logout" for ::1 at 2022-06-30 19:06:14 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 996)
+
+
+Started GET "/" for ::1 at 2022-06-30 19:06:14 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 76)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 171)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 2744)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 3343)
+
+
