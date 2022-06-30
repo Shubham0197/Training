@@ -6,3 +6,4 @@
 <% end %>
 
 <% link_to "Logout", logout_path, method: :delete %>
+<%= button_to "Connect Twitter", "/auth/twitter", method: :post, :data => {turbo: "false"}, class: "btn btn-primary"%>
