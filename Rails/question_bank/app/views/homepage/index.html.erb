@@ -2,4 +2,7 @@
 <p>Find me in app/views/homepage/index.html.erb</p>
 <% if @user %>
   Logged in as <%= @user.email %>
+  <%= button_to "Logout", logout_path, method: :delete %>
 <% end %>
+
+<% link_to "Logout", logout_path, method: :delete %>
