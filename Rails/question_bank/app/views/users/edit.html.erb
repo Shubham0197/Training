@@ -1,0 +1,27 @@
+<h1>Update Password</h1>
+<%= console %>
+<%= form_with model: Current.user, url: edit_password_path do |form| %>
+  <% if form.object.errors.any? %>
+  <div class="alert alert-danger">
+    <% Current.user.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div class="mb-3">
+    <h6>Update pawssord for User <%= Current.user.email %></h6>
+  </div> 
+  <div class="mb-3">
+    <%= form.label :New_Password %>
+    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :New_Password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Update", class: "btn btn-primary" %>
+  </div>
+<% end %>
