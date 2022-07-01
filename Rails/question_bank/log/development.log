@@ -8504,3 +8504,316 @@ Processing by TwitterAccountsController#index as HTML
 Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 6500)
 
 
+Started DELETE "/twitter_accounts/5" for 127.0.0.1 at 2022-06-30 13:37:32 +0530
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for TwitterAccountsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+omniauth (2.1.0) lib/omniauth/strategy.rb:202:in `call!'
+omniauth (2.1.0) lib/omniauth/strategy.rb:169:in `call'
+omniauth (2.1.0) lib/omniauth/builder.rb:44:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:39:14 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 4917)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 388)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 7887)
+Completed 200 OK in 16ms (Views: 7.9ms | ActiveRecord: 3.2ms | Allocations: 14741)
+
+
+Started DELETE "/twitter_accounts/4" for 127.0.0.1 at 2022-06-30 13:39:17 +0530
+Processing by TwitterAccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 1440)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/twitter_accounts_controller.rb:8:in `destroy'
+Started DELETE "/twitter_accounts/4" for 127.0.0.1 at 2022-06-30 13:40:17 +0530
+Processing by TwitterAccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."id" = $2 LIMIT $3[0m  [["user_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/twitter_accounts_controller.rb:8:in `destroy'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.7ms | Allocations: 10417)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:40:24 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2271)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 388)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 5240)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 6486)
+
+
+Started DELETE "/twitter_accounts/4" for 127.0.0.1 at 2022-06-30 13:40:25 +0530
+Processing by TwitterAccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."id" = $2 LIMIT $3[0m  [["user_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/twitter_accounts_controller.rb:8:in `destroy'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms | Allocations: 2158)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+Started DELETE "/twitter_accounts/4" for 127.0.0.1 at 2022-06-30 13:40:32 +0530
+Processing by TwitterAccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."id" = $2 LIMIT $3[0m  [["user_id", 2], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/twitter_accounts_controller.rb:8:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+  [1m[36mTwitterAccount Destroy (0.1ms)[0m  [1m[31mDELETE FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+Redirected to http://127.0.0.1:3000/twitter_accounts
+Completed 302 Found in 13ms (ActiveRecord: 3.4ms | Allocations: 11230)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:40:32 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1975)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 388)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4949)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms | Allocations: 6196)
+
+
+Started DELETE "/twitter_accounts/5" for 127.0.0.1 at 2022-06-30 13:40:34 +0530
+Processing by TwitterAccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."id" = $2 LIMIT $3[0m  [["user_id", 2], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/twitter_accounts_controller.rb:8:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+  [1m[36mTwitterAccount Destroy (0.2ms)[0m  [1m[31mDELETE FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+Redirected to http://127.0.0.1:3000/twitter_accounts
+Completed 302 Found in 11ms (ActiveRecord: 7.2ms | Allocations: 2822)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:40:34 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.4ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 815)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 381)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 3681)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.6ms | Allocations: 4497)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:40:35 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=y37rKc0MLSAAv6udaPHwJuNCmx5i6Ahg" for 127.0.0.1 at 2022-06-30 13:40:36 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"y37rKc0MLSAAv6udaPHwJuNCmx5i6Ahg"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276cf1c3f0 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f2760a2a6a0 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" = $2 ORDER BY "twitter_accounts"."id" ASC LIMIT $3[0m  [["user_id", 2], ["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 2], ["name", "b605b684377f496"], ["username", "b605b684377f496"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-06-30 08:10:37.802010"], ["updated_at", "2022-06-30 08:10:37.802010"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 12ms (ActiveRecord: 7.2ms | Allocations: 5066)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:40:37 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 307)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 383)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 3234)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 4461)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:40:42 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1115)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 367)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3962)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 4779)
+
+
+Started DELETE "/twitter_accounts/6" for 127.0.0.1 at 2022-06-30 13:41:30 +0530
+Processing by TwitterAccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."id" = $2 LIMIT $3[0m  [["user_id", 2], ["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/twitter_accounts_controller.rb:8:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+  [1m[36mTwitterAccount Destroy (0.2ms)[0m  [1m[31mDELETE FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/twitter_accounts_controller.rb:9:in `destroy'
+Redirected to http://127.0.0.1:3000/twitter_accounts
+Completed 302 Found in 22ms (ActiveRecord: 10.2ms | Allocations: 11182)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:41:30 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1643)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 411)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 4640)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 5887)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:41:32 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=j16D6EL9f1m74YiSl9ITcJktZio59Sm2" for 127.0.0.1 at 2022-06-30 13:41:34 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"j16D6EL9f1m74YiSl9ITcJktZio59Sm2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276ce769f0 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276ce1dee0 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" = $2 ORDER BY "twitter_accounts"."id" ASC LIMIT $3[0m  [["user_id", 2], ["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 2], ["name", "b605b684377f496"], ["username", "b605b684377f496"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-06-30 08:11:35.130067"], ["updated_at", "2022-06-30 08:11:35.130067"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/twitter_accounts
+Completed 302 Found in 9ms (ActiveRecord: 1.2ms | Allocations: 5064)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:41:35 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1133)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 367)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 3985)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms | Allocations: 4801)
+
+
