@@ -6935,3 +6935,1572 @@ Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 4475)
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+Started GET "/" for 127.0.0.1 at 2022-06-30 12:57:18 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 881)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 1482)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 230)
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 24270)
+Completed 200 OK in 30ms (Views: 25.2ms | ActiveRecord: 0.0ms | Allocations: 29488)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 12:57:19 +0530
+Processing by TwitterAccountsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 903)
+
+
+  
+NoMethodError (undefined method `twitter_accounts' for nil:NilClass):
+  
+app/controllers/twitter_accounts_controller.rb:3:in `index'
+Started GET "/sign_in" for 127.0.0.1 at 2022-06-30 12:57:48 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 4470)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 219)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 7271)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 8128)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2022-06-30 12:57:51 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"shubhamjain0197@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shubhamjain0197@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 173ms (ActiveRecord: 2.6ms | Allocations: 9169)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 12:57:51 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 377)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 3152)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 4709)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 12:57:52 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 5563)
+
+
+  
+ArgumentError (Unknown key: :uniqueness. Valid keys are: :on, :if, :unless, :prepend. Perhaps you meant to call `validates` instead of `validate`?):
+  
+app/models/twitter_account.rb:4:in `<class:TwitterAccount>'
+app/models/twitter_account.rb:1:in `<main>'
+app/controllers/twitter_accounts_controller.rb:3:in `index'
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 12:58:17 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Completed 406 Not Acceptable in 9ms (ActiveRecord: 1.8ms | Allocations: 6840)
+
+
+  
+ActionController::MissingExactTemplate (TwitterAccountsController#index is missing a template for request formats: text/html):
+  
+actionpack (7.0.3) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+<internal:kernel>:90:in `tap'
+actionpack (7.0.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.3) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.3) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.3) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.3) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.3) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.3) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.3) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.3) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.3) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.3) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.3) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.3) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.3) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.3) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+omniauth (2.1.0) lib/omniauth/strategy.rb:202:in `call!'
+omniauth (2.1.0) lib/omniauth/strategy.rb:169:in `call'
+omniauth (2.1.0) lib/omniauth/builder.rb:44:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:01:07 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.3ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 13708)
+  Rendered layout layouts/application.html.erb (Duration: 13.0ms | Allocations: 13787)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 2.0ms | Allocations: 15292)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+     6: <% @twitter_accounts.each do |twitter_account| %>
+     7: <div class="d-flex align-items-center mb-4">
+     8:   <div class="me-4">
+     9:     <%= image_tag twitter_account.image, class: "rounded-circle" %>
+    10:     <%= link_to "@#{twitter_account.username}", "https://twitter.com/#{twitter_account.username}", target: :_blank %>
+    11:   </div>
+    12: 
+  
+app/views/twitter_accounts/index.html.erb:9
+app/views/twitter_accounts/index.html.erb:6
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:01:32 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.3ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1704)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 746)
+  Rendered shared/_flash.html.erb (Duration: 1.9ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 5581)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.5ms | Allocations: 7105)
+
+
+Started DELETE "/twitter_accounts/2" for 127.0.0.1 at 2022-06-30 13:01:37 +0530
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for TwitterAccountsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+omniauth (2.1.0) lib/omniauth/strategy.rb:202:in `call!'
+omniauth (2.1.0) lib/omniauth/strategy.rb:169:in `call'
+omniauth (2.1.0) lib/omniauth/builder.rb:44:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:01:42 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=arWD6FoukLwfFfNUE0zFEaKP2QTMjVOV" for 127.0.0.1 at 2022-06-30 13:02:27 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"arWD6FoukLwfFfNUE0zFEaKP2QTMjVOV"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS" token="1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f315cdef4d8 @token="1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ", @secret="SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS", @consumer=#<OAuth::Consumer:0x00007f315cdac5e8 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ", "oauth_token"=>"1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ", :oauth_token_secret=>"SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS", "oauth_token_secret"=>"SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS", :user_id=>"1021703637347721221", "user_id"=>"1021703637347721221", :screen_name=>"Shubhamjj1", "screen_name"=>"Shubhamjj1"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="1021703637347721221">
+  [1m[36mTwitterAccount Load (0.3ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" IS NULL ORDER BY "twitter_accounts"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL AND "twitter_accounts"."id" != $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 12ms (ActiveRecord: 1.5ms | Allocations: 5317)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:02:28 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 508)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 384)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3452)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 4780)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:02:30 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1393)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4241)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.4ms | Allocations: 5057)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:02:33 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=PRwy95rkVqOIHpeIEX6TVUoRf5nfIAdx" for 127.0.0.1 at 2022-06-30 13:02:35 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"PRwy95rkVqOIHpeIEX6TVUoRf5nfIAdx"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS" token="1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f315d011b80 @token="1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ", @secret="SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS", @consumer=#<OAuth::Consumer:0x00007f315cfd1d50 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ", "oauth_token"=>"1021703637347721221-AA3C5CCo7WwEodon7FCasjRLxpNXCQ", :oauth_token_secret=>"SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS", "oauth_token_secret"=>"SuZGccc3K1vx3KLft19Z8RRhs3ir27vYqaD4rLE6jYvGS", :user_id=>"1021703637347721221", "user_id"=>"1021703637347721221", :screen_name=>"Shubhamjj1", "screen_name"=>"Shubhamjj1"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="1021703637347721221">
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" IS NULL ORDER BY "twitter_accounts"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL AND "twitter_accounts"."id" != $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms | Allocations: 4466)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:02:36 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 3127)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 3912)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:02:38 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.3ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1394)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 4258)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 5073)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:02:40 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.5ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1393)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 4255)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.6ms | Allocations: 5069)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:05:02 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3122)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 3907)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:05:03 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1393)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 4241)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 5055)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:05:05 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=I5z0OYQ8rbufejhHgjKWbYTm6UDlWFx9" for 127.0.0.1 at 2022-06-30 13:05:06 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"I5z0OYQ8rbufejhHgjKWbYTm6UDlWFx9"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f31583c34e0 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f31582aeb40 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" IS NULL ORDER BY "twitter_accounts"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL AND "twitter_accounts"."id" != $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms | Allocations: 4462)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:05:07 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3127)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 3912)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:05:12 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1394)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 4242)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 5056)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:06:55 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 9549)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 769)
+  Rendered shared/_flash.html.erb (Duration: 0.9ms | Allocations: 230)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 32072)
+Completed 200 OK in 50ms (Views: 31.1ms | ActiveRecord: 3.7ms | Allocations: 52386)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:06:56 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=9yHGY1v2JDKVTY5KBqMYmTmvQZM7tMg5" for 127.0.0.1 at 2022-06-30 13:06:59 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"9yHGY1v2JDKVTY5KBqMYmTmvQZM7tMg5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276cd5edb0 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276cd17078 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" IS NULL ORDER BY "twitter_accounts"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL AND "twitter_accounts"."id" != $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms | Allocations: 5381)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:07:00 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 513)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 384)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 36)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 3443)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 4777)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:07:02 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.3ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1394)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 4243)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.5ms | Allocations: 5076)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:07:24 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.3ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 4910)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 389)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 20.5ms | Allocations: 7841)
+Completed 200 OK in 28ms (Views: 19.4ms | ActiveRecord: 3.5ms | Allocations: 14608)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:07:25 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=EXVB6iAsChEsDYW8hIzYGFY8v4FhE3PH" for 127.0.0.1 at 2022-06-30 13:07:27 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"EXVB6iAsChEsDYW8hIzYGFY8v4FhE3PH"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x000055ac6c0e9160 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x000055ac6c09c540 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.4ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" IS NULL ORDER BY "twitter_accounts"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL AND "twitter_accounts"."id" != $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 13ms (ActiveRecord: 1.4ms | Allocations: 4997)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:07:28 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 307)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 384)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 3235)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.1ms | Allocations: 4462)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:07:30 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1393)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 368)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4241)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 5056)
+
+
+Started DELETE "/twitter_accounts/2" for 127.0.0.1 at 2022-06-30 13:07:31 +0530
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for TwitterAccountsController):
+  
+actionpack (7.0.3) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+omniauth (2.1.0) lib/omniauth/strategy.rb:202:in `call!'
+omniauth (2.1.0) lib/omniauth/strategy.rb:169:in `call'
+omniauth (2.1.0) lib/omniauth/builder.rb:44:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.4ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  [1m[36mTwitterAccount Delete All (7.0ms)[0m  [1m[31mDELETE FROM "twitter_accounts"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:08:57 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 815)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 382)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3679)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 4492)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:09:10 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=cNMd7fgkAArvRUkln6mnOhDG5gPlvSJ4" for 127.0.0.1 at 2022-06-30 13:09:12 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"cNMd7fgkAArvRUkln6mnOhDG5gPlvSJ4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276d1e48f8 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276d20c1c8 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" IS NULL ORDER BY "twitter_accounts"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", nil], ["username", nil], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-06-30 07:39:13.080939"], ["updated_at", "2022-06-30 07:39:13.080939"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 18ms (ActiveRecord: 4.0ms | Allocations: 14095)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:09:13 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 307)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 389)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3282)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 4514)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:09:15 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1928)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 384)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 4851)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 6109)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:11:35 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 4627)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 389)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 7596)
+Completed 200 OK in 17ms (Views: 7.3ms | ActiveRecord: 3.1ms | Allocations: 14365)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:11:37 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=RKGi3FEYU5GTQHrsORpAqbhQKvgiwiEe" for 127.0.0.1 at 2022-06-30 13:11:38 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"RKGi3FEYU5GTQHrsORpAqbhQKvgiwiEe"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276cec0190 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276ce58ae0 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 1742)
+
+
+  
+NoMethodError (undefined method `user_id' for nil:NilClass):
+  
+app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:14:05 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 4627)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 389)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 7599)
+Completed 200 OK in 23ms (Views: 11.9ms | ActiveRecord: 3.4ms | Allocations: 14442)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:14:06 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=aiwGs2ao1QzIb5MTa0Oy0DSOLjINxUr3" for 127.0.0.1 at 2022-06-30 13:14:09 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"aiwGs2ao1QzIb5MTa0Oy0DSOLjINxUr3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x000055ac6c173090 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276c177ee8 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1706)
+
+
+  
+NoMethodError (undefined method `uid' for nil:NilClass):
+  
+app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+Started DELETE "/logout" for 127.0.0.1 at 2022-06-30 13:22:57 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 10ms (ActiveRecord: 2.4ms | Allocations: 7267)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:22:57 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 307)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 224)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 34)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 3116)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3863)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:22:58 +0530
+Processing by TwitterAccountsController#index as HTML
+Redirected to http://127.0.0.1:3000/sign_in
+Filter chain halted as :require_user_logged_in! rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 268)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2022-06-30 13:22:58 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 4513)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 217)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 7274)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 8104)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2022-06-30 13:23:04 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"shubhamjain0197@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shubhamjain0197@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 164ms (ActiveRecord: 0.1ms | Allocations: 1038)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:23:04 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 376)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 3134)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 3921)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2022-06-30 13:23:06 +0530
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 727)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:23:06 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 203)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 2962)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms | Allocations: 3266)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2022-06-30 13:23:08 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 2351)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 203)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 5034)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 5338)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2022-06-30 13:23:10 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"abc@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "abc@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 163ms (ActiveRecord: 0.2ms | Allocations: 732)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:23:10 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 367)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 3167)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 3954)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:23:12 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1814)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 406)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 4760)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 7779)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:23:13 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=1VtK60Y0wyTb7RaA1AAVqLUKtaStVSLb" for 127.0.0.1 at 2022-06-30 13:23:15 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"1VtK60Y0wyTb7RaA1AAVqLUKtaStVSLb"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276ca4a4a8 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f2760363510 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1704)
+
+
+  
+NoMethodError (undefined method `uid' for nil:NilClass):
+  
+app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:31 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:31 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:40 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:40 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:44 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:51 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:53 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:55 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:56 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:23:58 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:24:03 +0530
+Started PUT "/__web_console/repl_sessions/0d302c1cc8e0f362e95cb400c3b92388" for 127.0.0.1 at 2022-06-30 13:24:22 +0530
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:24:55 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=FCcLV6HV7mMUPPCJadudfma6Jbn0PHWy" for 127.0.0.1 at 2022-06-30 13:24:57 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"FCcLV6HV7mMUPPCJadudfma6Jbn0PHWy"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f2760a44050 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f2760a7d058 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" = $2 ORDER BY "twitter_accounts"."id" ASC LIMIT $3[0m  [["user_id", 2], ["username", "2901855998"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "2901855998"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 2], ["name", "2901855998"], ["username", "2901855998"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-06-30 07:54:59.041546"], ["updated_at", "2022-06-30 07:54:59.041546"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 20ms (ActiveRecord: 5.0ms | Allocations: 13326)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:24:59 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 307)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 388)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 3281)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.1ms | Allocations: 4513)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:25:01 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1932)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 383)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 4896)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 6202)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:25:27 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 292)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 209)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2981)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 3285)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:25:29 +0530
+Processing by TwitterAccountsController#index as HTML
+Redirected to http://127.0.0.1:3000/sign_in
+Filter chain halted as :require_user_logged_in! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 207)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2022-06-30 13:25:29 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 2356)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 217)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 5117)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 5863)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2022-06-30 13:25:31 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 2351)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 203)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 5034)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 5338)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2022-06-30 13:25:33 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"abc@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "abc@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 166ms (ActiveRecord: 0.3ms | Allocations: 1031)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:25:33 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 367)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 3125)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 3911)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:25:34 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1115)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 367)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3962)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 4779)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:27:06 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=yNLRKTmNpy4TPzF9NzgjlRgWrwvxR78U" for 127.0.0.1 at 2022-06-30 13:27:09 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"yNLRKTmNpy4TPzF9NzgjlRgWrwvxR78U"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276cf11950 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276ceb9728 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.6ms | Allocations: 7227)
+
+
+  
+NoMethodError (undefined method `uid' for nil:NilClass):
+  
+app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:27:15 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:27:15 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:27:19 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:27:21 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:27:58 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:28:04 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:28:05 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:28:51 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:28:57 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:29:10 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:29:21 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:29:27 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:29:27 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:29:32 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:29:35 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:32:29 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:32:29 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:32:43 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:32:46 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:32:50 +0530
+
+NoMethodError: undefined method `map' for nil:NilClass
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:37:in `local'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/context.rb:16:in `extract'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/session.rb:71:in `context'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:106:in `block in update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `block in json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:61:in `json_response'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:69:in `json_response_with_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:102:in `update_repl_session'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:22:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `catch'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/web-console-4.2.0/lib/web_console/middleware.rb:17:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:40:in `call_app'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `block in call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/rack/logger.rb:25:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/sprockets-rails-3.4.2/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/request_id.rb:26:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/method_override.rb:24:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/runtime.rb:22:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/executor.rb:14:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/static.rb:23:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/rack-2.2.3.1/lib/rack/sendfile.rb:110:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/railties-7.0.3/lib/rails/engine.rb:530:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/configuration.rb:252:in `call'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:77:in `block in handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/request.rb:76:in `handle_request'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/server.rb:441:in `process_client'
+	from /home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/puma-5.6.4/lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:32:53 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:16 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:17 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:22 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:27 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:54 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:55 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:33:56 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:02 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:05 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:08 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:10 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:11 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:14 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:21 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:29 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:33 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:37 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:41 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:34:57 +0530
+Started PUT "/__web_console/repl_sessions/27164930e5ee7a335212b7c0cd709c47" for 127.0.0.1 at 2022-06-30 13:35:03 +0530
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-06-30 13:35:42 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=ea7nkRKFDCyCRB6ZAXliEBWCnxWdvp0m" for 127.0.0.1 at 2022-06-30 13:35:43 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"ea7nkRKFDCyCRB6ZAXliEBWCnxWdvp0m"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x00007f276ce64908 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f276cdf3258 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" = $2 ORDER BY "twitter_accounts"."id" ASC LIMIT $3[0m  [["user_id", 2], ["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 2], ["name", "b605b684377f496"], ["username", "b605b684377f496"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-06-30 08:05:44.701694"], ["updated_at", "2022-06-30 08:05:44.701694"]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 20ms (ActiveRecord: 5.6ms | Allocations: 15967)
+
+
+Started GET "/" for 127.0.0.1 at 2022-06-30 13:35:44 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 307)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 388)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 3281)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms | Allocations: 4513)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 13:35:46 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2221)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 383)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 5185)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 6500)
+
+
