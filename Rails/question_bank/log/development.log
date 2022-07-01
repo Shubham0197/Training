@@ -8817,3 +8817,875 @@ Processing by TwitterAccountsController#index as HTML
 Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms | Allocations: 4801)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5762837228791273890)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTweets (20220630175555)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "tweets" ("id" bigserial primary key, "user_id" bigint NOT NULL, "twitter_account_id" bigint NOT NULL, "body" text, "publish_at" timestamp(6), "tweet_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_003928b7f5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_5e2f8da970"
+FOREIGN KEY ("twitter_account_id")
+  REFERENCES "twitter_accounts" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_tweets_on_user_id" ON "tweets" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_tweets_on_twitter_account_id" ON "tweets" ("twitter_account_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220630175555"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5762837228791273890)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 14:10:06 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 4513)
+  Rendered shared/_navbar.html.erb (Duration: 5.4ms | Allocations: 4647)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | Allocations: 11964)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.5ms | Allocations: 20641)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `tweets_path' for #<ActionView::Base:0x0000000004e2a0>):
+    10:           <a class="nav-link active" aria-current="page" href="/">Home</a>
+    11:         </li>
+    12:         <li class="nav-item">
+    13:           <%= link_to "Tweets", tweets_path, class: "nav-link" %>
+    14:         </li>
+    15:         <li class="nav-item">
+    16:           <%= link_to 'Twitter Accounts', twitter_accounts_path, class: "nav-link"%>
+  
+app/views/shared/_navbar.html.erb:13
+app/views/layouts/application.html.erb:14
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-06-30 14:10:42 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 4631)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 429)
+  Rendered shared/_flash.html.erb (Duration: 0.4ms | Allocations: 221)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 7887)
+Completed 200 OK in 20ms (Views: 8.9ms | ActiveRecord: 4.1ms | Allocations: 16464)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:10:44 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  Rendered tweets/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 108)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 459)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 30)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 3128)
+Completed 200 OK in 8ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 7061)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:11:12 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 23)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 3919)
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 818)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 7844)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 1.1ms | Allocations: 9360)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:11:14 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+Completed 406 Not Acceptable in 6ms (ActiveRecord: 1.1ms | Allocations: 4772)
+
+
+  
+ActionController::MissingExactTemplate (TweetsController#new is missing a template for request formats: text/html):
+  
+actionpack (7.0.3) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+<internal:kernel>:90:in `tap'
+actionpack (7.0.3) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.3) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.3) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.3) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.3) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.3) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.3) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.3) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.3) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.3) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.3) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.3) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.3) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.3) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.3) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+omniauth (2.1.0) lib/omniauth/strategy.rb:202:in `call!'
+omniauth (2.1.0) lib/omniauth/strategy.rb:169:in `call'
+omniauth (2.1.0) lib/omniauth/builder.rb:44:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:14:10 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 11)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2206)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 815)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 6169)
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.6ms | Allocations: 7684)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:14:12 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  Rendered tweets/_form.html.erb (Duration: 2.3ms | Allocations: 3518)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 3768)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 3846)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 4673)
+
+
+  
+ActionView::Template::Error (Missing partial shared/_form_errors with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/question_bank/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  shared/flash
+               shared/navbar
+               tweets/form
+               action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob):
+    1: <%= form_with model: tweet do |form| %>
+    2: <%= render "shared/form_errors", form: form %>
+    3: 
+    4: <div class="mb-3">
+    5:   <%= form.label :twitter_account_id %>
+  
+app/views/tweets/_form.html.erb:2
+app/views/tweets/_form.html.erb:1
+app/views/tweets/new.html.erb:3
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:14:25 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/_form.html.erb:5
+  Rendered tweets/_form.html.erb (Duration: 16.6ms | Allocations: 11388)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 16.9ms | Allocations: 11638)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 811)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 15575)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.3ms | Allocations: 17076)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at 2022-06-30 14:14:31 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/auth/twitter"):
+  
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:14:50 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/_form.html.erb:5
+  Rendered tweets/_form.html.erb (Duration: 3.7ms | Allocations: 5604)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 5854)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 812)
+  Rendered shared/_flash.html.erb (Duration: 0.2ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 9792)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.3ms | Allocations: 11294)
+
+
+Started GET "/auth/twitter" for 127.0.0.1 at 2022-06-30 14:14:51 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/auth/twitter"):
+  
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:15:24 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/_form.html.erb:5
+  Rendered tweets/_form.html.erb (Duration: 4.5ms | Allocations: 5736)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 5989)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 812)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 9927)
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 0.4ms | Allocations: 11430)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2022-06-30 14:15:26 +0530
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"twitter_account_id"=>"7"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 548)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.0.3) lib/action_controller/metal/request_forgery_protection.rb:251:in `handle_unverified_request'
+actionpack (7.0.3) lib/action_controller/metal/request_forgery_protection.rb:284:in `handle_unverified_request'
+actionpack (7.0.3) lib/action_controller/metal/request_forgery_protection.rb:273:in `verify_authenticity_token'
+activesupport (7.0.3) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.3) lib/active_support/callbacks.rb:199:in `block (2 levels) in halting'
+actionpack (7.0.3) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.3) lib/active_support/callbacks.rb:200:in `block in halting'
+activesupport (7.0.3) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.3) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.3) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.3) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+activesupport (7.0.3) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.3) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.3) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.3) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.3) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.3) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.3) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.3) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.3) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.3) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.3) lib/action_dispatch/routing/route_set.rb:852:in `call'
+omniauth (2.1.0) lib/omniauth/strategy.rb:202:in `call!'
+omniauth (2.1.0) lib/omniauth/strategy.rb:169:in `call'
+omniauth (2.1.0) lib/omniauth/builder.rb:44:in `call'
+rack (2.2.3.1) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3.1) lib/rack/etag.rb:27:in `call'
+rack (2.2.3.1) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3.1) lib/rack/head.rb:12:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.3) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3.1) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (7.0.3) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:15:37 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/_form.html.erb:5
+  Rendered tweets/_form.html.erb (Duration: 4.2ms | Allocations: 5337)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 5410)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 406)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 8334)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 9141)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:16:37 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/_form.html.erb:5
+  Rendered tweets/_form.html.erb (Duration: 4.1ms | Allocations: 5539)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 5789)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 816)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 9689)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.2ms | Allocations: 11190)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2022-06-30 14:17:46 +0530
+Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/new.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/_form.html.erb:5
+  Rendered tweets/_form.html.erb (Duration: 10.2ms | Allocations: 11927)
+  Rendered tweets/new.html.erb within layouts/application (Duration: 10.7ms | Allocations: 12177)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 821)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 215)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 16083)
+Completed 200 OK in 27ms (Views: 14.2ms | ActiveRecord: 4.4ms | Allocations: 26258)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2022-06-30 14:17:52 +0530
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"twitter_account_id"=>"7", "body"=>"safafsdfdfafaf", "publish_at(1i)"=>"2022", "publish_at(2i)"=>"6", "publish_at(3i)"=>"30", "publish_at(4i)"=>"08", "publish_at(5i)"=>"47"}, "button"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTweet Create (0.6ms)[0m  [1m[32mINSERT INTO "tweets" ("user_id", "twitter_account_id", "body", "publish_at", "tweet_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["twitter_account_id", 7], ["body", "safafsdfdfafaf"], ["publish_at", "2022-06-30 08:47:00"], ["tweet_id", nil], ["created_at", "2022-06-30 08:47:52.067833"], ["updated_at", "2022-06-30 08:47:52.067833"]]
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+Redirected to http://127.0.0.1:3000/tweets
+Completed 302 Found in 9ms (ActiveRecord: 2.4ms | Allocations: 6561)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:17:52 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered tweets/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 5945)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 6023)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms | Allocations: 6864)
+
+
+  
+ActionView::Template::Error (Missing partial tweets/_tweet with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/question_bank/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  tweets/form
+               layouts/action_text/contents/content
+               action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob
+               action_text/attachment_galleries/attachment_gallery):
+     9: <% if Current.user.twitter_accounts.none? %>
+    10:   <%= link_to "Connect your Twitter Account", "/auth/twitter", class: "btn btn-primary" %>
+    11: <% end %>
+    12: <%= render @tweets %>
+  
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:18:55 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered tweets/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 4694)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4772)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms | Allocations: 5553)
+
+
+  
+ActionView::Template::Error (Missing partial tweets/_tweet with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/question_bank/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  tweets/form
+               layouts/action_text/contents/content
+               action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob
+               action_text/attachment_galleries/attachment_gallery):
+     9: <% if Current.user.twitter_accounts.none? %>
+    10:   <%= link_to "Connect your Twitter Account", "/auth/twitter", class: "btn btn-primary" %>
+    11: <% end %>
+    12: <%= render @tweets %>
+  
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:19:38 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered tweets/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 5060)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 5139)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 6616)
+
+
+  
+ActionView::Template::Error (Missing partial tweets/_tweet with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/question_bank/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  tweets/tweets
+               tweets/form
+               layouts/action_text/contents/content
+               action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob):
+     9: <% if Current.user.twitter_accounts.none? %>
+    10:   <%= link_to "Connect your Twitter Account", "/auth/twitter", class: "btn btn-primary" %>
+    11: <% end %>
+    12: <%= render @tweets %>
+  
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:19:39 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered tweets/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 4746)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4824)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 5606)
+
+
+  
+ActionView::Template::Error (Missing partial tweets/_tweet with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/question_bank/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  tweets/tweets
+               tweets/form
+               layouts/action_text/contents/content
+               action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob):
+     9: <% if Current.user.twitter_accounts.none? %>
+    10:   <%= link_to "Connect your Twitter Account", "/auth/twitter", class: "btn btn-primary" %>
+    11: <% end %>
+    12: <%= render @tweets %>
+  
+app/views/tweets/index.html.erb:12
+Started POST "/tweets" for 127.0.0.1 at 2022-06-30 14:19:41 +0530
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"twitter_account_id"=>"7", "body"=>"safafsdfdfafaf", "publish_at(1i)"=>"2022", "publish_at(2i)"=>"6", "publish_at(3i)"=>"30", "publish_at(4i)"=>"08", "publish_at(5i)"=>"47"}, "button"=>""}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTweet Create (0.2ms)[0m  [1m[32mINSERT INTO "tweets" ("user_id", "twitter_account_id", "body", "publish_at", "tweet_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["twitter_account_id", 7], ["body", "safafsdfdfafaf"], ["publish_at", "2022-06-30 08:47:00"], ["tweet_id", nil], ["created_at", "2022-06-30 08:49:41.990298"], ["updated_at", "2022-06-30 08:49:41.990298"]]
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+Redirected to http://127.0.0.1:3000/tweets
+Completed 302 Found in 12ms (ActiveRecord: 7.0ms | Allocations: 3758)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:19:42 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered tweets/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 4760)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 4838)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 5620)
+
+
+  
+ActionView::Template::Error (Missing partial tweets/_tweet with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/question_bank/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  tweets/tweets
+               tweets/form
+               layouts/action_text/contents/content
+               action_text/contents/content
+               action_text/attachables/remote_image
+               active_storage/blobs/blob):
+     9: <% if Current.user.twitter_accounts.none? %>
+    10:   <%= link_to "Connect your Twitter Account", "/auth/twitter", class: "btn btn-primary" %>
+    11: <% end %>
+    12: <%= render @tweets %>
+  
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:20:44 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  Rendered tweets/_tweets.html.erb (Duration: 3.6ms | Allocations: 4732)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 6347)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 6426)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms | Allocations: 7903)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `tweet' for #<ActionView::Base:0x0000000005b8d8>
+Did you mean?  @tweets):
+    1: <div class="mb-3 card card-body">
+    2:   <%= tweet.body %>
+    3:   <div class="me-4">
+    4:     <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
+    5:     <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+  
+app/views/tweets/_tweets.html.erb:2
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:21:13 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  Rendered tweets/_tweets.html.erb (Duration: 0.9ms | Allocations: 1810)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 3426)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 3505)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 4983)
+
+
+  
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    1: <div class="mb-3 card card-body">
+    2:   <%= tweet.body %>
+    3:   <div class="me-4">
+    4:     <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
+    5:     <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+  
+app/views/tweets/_tweets.html.erb:2
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:21:15 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  Rendered tweets/_tweets.html.erb (Duration: 0.7ms | Allocations: 1547)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2865)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2943)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 3725)
+
+
+  
+ActionView::Template::Error (undefined method `body' for nil:NilClass):
+    1: <div class="mb-3 card card-body">
+    2:   <%= tweet.body %>
+    3:   <div class="me-4">
+    4:     <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
+    5:     <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+  
+app/views/tweets/_tweets.html.erb:2
+app/views/tweets/index.html.erb:12
+Started POST "/tweets" for 127.0.0.1 at 2022-06-30 14:21:50 +0530
+Processing by TweetsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "tweet"=>{"twitter_account_id"=>"7", "body"=>"safafsdfdfafaf", "publish_at(1i)"=>"2022", "publish_at(2i)"=>"6", "publish_at(3i)"=>"30", "publish_at(4i)"=>"08", "publish_at(5i)"=>"47"}, "button"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTweet Create (0.3ms)[0m  [1m[32mINSERT INTO "tweets" ("user_id", "twitter_account_id", "body", "publish_at", "tweet_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["twitter_account_id", 7], ["body", "safafsdfdfafaf"], ["publish_at", "2022-06-30 08:47:00"], ["tweet_id", nil], ["created_at", "2022-06-30 08:51:50.081663"], ["updated_at", "2022-06-30 08:51:50.081663"]]
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:14:in `create'
+Redirected to http://127.0.0.1:3000/tweets
+Completed 302 Found in 15ms (ActiveRecord: 7.4ms | Allocations: 3763)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:21:50 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.2ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  ↳ app/views/tweets/index.html.erb:12
+  [1m[36mCACHE Tweet Load (0.0ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  ↳ app/views/tweets/index.html.erb:12
+  Rendered tweets/_tweets.html.erb (Duration: 6.1ms | Allocations: 5178)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 6795)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 6874)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms | Allocations: 8352)
+
+
+  
+ActionView::Template::Error (undefined method `body' for #<ActiveRecord::Associations::CollectionProxy [#<Tweet id: 1, user_id: 2, twitter_account_id: 7, body: "safafsdfdfafaf", publish_at: "2022-06-30 08:47:00.000000000 +0000", tweet_id: nil, created_at: "2022-06-30 08:47:52.067833000 +0000", updated_at: "2022-06-30 08:47:52.067833000 +0000">, #<Tweet id: 2, user_id: 2, twitter_account_id: 7, body: "safafsdfdfafaf", publish_at: "2022-06-30 08:47:00.000000000 +0000", tweet_id: nil, created_at: "2022-06-30 08:49:41.990298000 +0000", updated_at: "2022-06-30 08:49:41.990298000 +0000">, #<Tweet id: 3, user_id: 2, twitter_account_id: 7, body: "safafsdfdfafaf", publish_at: "2022-06-30 08:47:00.000000000 +0000", tweet_id: nil, created_at: "2022-06-30 08:51:50.081663000 +0000", updated_at: "2022-06-30 08:51:50.081663000 +0000">]>):
+    1: <div class="mb-3 card card-body">
+    2:   <%= tweet.body %>
+    3:   <div class="me-4">
+    4:     <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
+    5:     <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+  
+app/views/tweets/_tweets.html.erb:2
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:22:49 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/tweets/_tweets.html.erb:4
+  Rendered tweets/_tweets.html.erb (Duration: 1.8ms | Allocations: 2125)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 4.7ms | Allocations: 4436)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 4515)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.6ms | Allocations: 5995)
+
+
+  
+ActionView::Template::Error (Nil location provided. Can't build URI.):
+    1: <div class="mb-3 card card-body">
+    2:   <%= tweet.body %>
+    3:   <div class="me-4">
+    4:     <%= image_tag tweet.twitter_account.image, class: "rounded-circle" %>
+    5:     <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+    6:     <% if tweet.published? %>
+    7:       <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
+  
+app/views/tweets/_tweets.html.erb:4
+app/views/tweets/index.html.erb:13
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:23:26 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/tweets/_tweets.html.erb:4
+  Rendered tweets/_tweets.html.erb (Duration: 5.9ms | Allocations: 4641)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 6951)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 7030)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms | Allocations: 8508)
+
+
+  
+ActionView::Template::Error (undefined method `published?' for #<Tweet id: 1, user_id: 2, twitter_account_id: 7, body: "safafsdfdfafaf", publish_at: "2022-06-30 08:47:00.000000000 +0000", tweet_id: nil, created_at: "2022-06-30 08:47:52.067833000 +0000", updated_at: "2022-06-30 08:47:52.067833000 +0000">
+Did you mean?  publish_at?
+               publish_at):
+    3:   <div class="me-4">
+    4:     <%= image_tag tweet.twitter_account.image, class: "rounded-circle" if  tweet.twitter_account.image %>
+    5:     <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+    6:     <% if tweet.published? %>
+    7:       <%= link_to "View Tweet", "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank %>
+    8:     <% else %>
+    9:       Scheduled for <%= l tweet.publish_at, format: :long %>
+  
+app/views/tweets/_tweets.html.erb:6
+app/views/tweets/index.html.erb:13
+app/views/tweets/index.html.erb:12
+Started GET "/tweets" for 127.0.0.1 at 2022-06-30 14:23:56 +0530
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering tweets/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:4
+  [1m[36mCACHE TwitterAccount Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tweets/index.html.erb:9
+  [1m[36mTweet Load (0.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tweets/index.html.erb:12
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/tweets/_tweets.html.erb:4
+  Rendered tweets/_tweets.html.erb (Duration: 2.2ms | Allocations: 1039)
+  [1m[36mCACHE TwitterAccount Load (0.0ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/tweets/_tweets.html.erb:4
+  Rendered tweets/_tweets.html.erb (Duration: 0.9ms | Allocations: 694)
+  [1m[36mCACHE TwitterAccount Load (0.0ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/tweets/_tweets.html.erb:4
+  Rendered tweets/_tweets.html.erb (Duration: 0.6ms | Allocations: 689)
+  Rendered tweets/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 4837)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 813)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 220)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 8799)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.7ms | Allocations: 10311)
+
+
