@@ -18,4 +18,10 @@
 </div>
 
 <%= form.button "Schedule", class: "btn btn-primary" %>
+
 <% end %>
+<%= form_with model: @tweet do |form| %>
+<% if form.object.persisted? %>
+<%= button_to "Delete", form.object, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>
+<%end%>
+<%end%>
