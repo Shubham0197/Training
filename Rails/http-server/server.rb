@@ -1,55 +1,11 @@
 require "socket"
 require "active_support/all"
+require_relative "request"
+require_relative "response"
 
 port = ENV.fetch("PORT", 2002).to_i
 server = TCPServer.new port
 puts "Listening on port #{port}..."
-
-class Request
-  attr_reader :method, :path, :headers, :body
-
-  def initialize(request)
-    lines = request.lines
-    index = lines.index("\r\n")
-
-    @method, @path, _ = lines.first.split
-    @path, @query = @path.split("?")
-    @headers = parse_headers(lines[1...index])
-    @body = lines[(index+1)..-1].join
-  end
-
-  def parse_headers(lines)
-    headers = {}
-
-    lines.each do |line|
-      name, value = line.split(": ")
-      headers[name.downcase] = value.chomp
-    end
-
-    headers
-  end
-
-  def content_length
-    headers["Content-Length"].to_i
-  end
-end
-
-class Response
-  def initialize(code:, body: "")
-    @code = code
-    @body = body
-  end
-
-  def send(client)
-    client.print "HTTP/1.1 #{@code}\r\n"
-    client.print "Content-Type: text/html\r\n"
-    client.print "Content-Length: #{@body.length}\r\n"
-    client.print "\r\n"
-    client.print "#{@body}.\r\n" if @body.present?
-
-    puts "->#{@code}"
-  end
-end
 
 def render(path)
   full_path = File.join(__dir__, "views", path)
