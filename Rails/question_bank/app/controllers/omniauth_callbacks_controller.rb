@@ -7,7 +7,7 @@ class OmniauthCallbacksController <ApplicationController
       name: auth.extra.access_token.params[:screen_name],
       username: auth.extra.access_token.params[:screen_name],
       image: auth.info.image,
-      token: auth.credentials.token,
+      token: auth.credentials.token,  
       secret: auth.credentials.secret
     )
 
