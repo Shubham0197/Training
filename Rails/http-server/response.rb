@@ -4,15 +4,15 @@ class Response
     @body = body
     @headers = headers
   end
-
+  
   def send(client)
     client.print "HTTP/1.1 #{@code}\r\n"
     @headers.each do |name, value|
-      client.print "#{name}: #{value}\r\n"
+    client.print "#{name}: #{value}\r\n"
     end 
     client.print "\r\n"
-    client.print "#{@body}.\r\n" if @body.present?
+    client.print @body if body.present?
 
-    puts "->#{@code}"
+    puts "-> #{@code}"
   end
 end
