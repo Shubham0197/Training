@@ -1,6 +1,6 @@
 class CustomrsController < ApplicationController
   before_action :set_customr, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /customrs or /customrs.json
   def index
     @customrs = Customr.all
