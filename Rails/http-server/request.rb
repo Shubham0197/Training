@@ -9,6 +9,8 @@ class Request
     @path, @query = @path.split("?")
     @headers = parse_headers(lines[1...index])
     @body = lines[(index+1)..-1].join
+
+    puts "<- #{@method} #{@path}"
   end
 
   def parse_headers(lines)
@@ -16,7 +18,7 @@ class Request
 
     lines.each do |line|
       name, value = line.split(": ")
-      headers[name.downcase] = value.chomp
+      headers[name] = value.chomp
     end
 
     headers
