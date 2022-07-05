@@ -11532,3 +11532,102 @@ Processing by TweetsController#index as HTML
 Completed 200 OK in 20ms (Views: 12.4ms | ActiveRecord: 2.9ms | Allocations: 9389)
 
 
+Started GET "/" for 127.0.0.1 at 2022-07-05 13:28:55 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 907)
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 1550)
+  Rendered shared/_flash.html.erb (Duration: 0.5ms | Allocations: 230)
+  Rendered layout layouts/application.html.erb (Duration: 27.3ms | Allocations: 23895)
+Completed 200 OK in 36ms (Views: 30.1ms | ActiveRecord: 0.0ms | Allocations: 29113)
+
+
+  [1m[36mTweet Load (0.5ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" ORDER BY "tweets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTwitterAccount Load (0.5ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2022-07-05 15:35:51 +0530
+Processing by HomepageController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 243)
+  Rendered shared/_flash.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 2998)
+Completed 200 OK in 4ms (Views: 3.9ms | Allocations: 3304)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-07-05 15:35:54 +0530
+Processing by TwitterAccountsController#index as HTML
+Redirected to http://127.0.0.1:3000/sign_in
+Filter chain halted as :require_user_logged_in! rendered or redirected
+Completed 302 Found in 1ms (Allocations: 330)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2022-07-05 15:35:54 +0530
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 4460)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 258)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 36)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 7263)
+Completed 200 OK in 9ms (Views: 8.4ms | Allocations: 8109)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2022-07-05 15:35:56 +0530
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"abc@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "abc@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 188ms (ActiveRecord: 5.3ms | Allocations: 12762)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-05 15:35:56 +0530
+Processing by HomepageController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering homepage/index.html.erb within layouts/application
+  Rendered homepage/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 274)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 414)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 33)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 3215)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 4774)
+
+
+Started POST "/auth/twitter" for 127.0.0.1 at 2022-07-05 15:35:57 +0530
+Started GET "/auth/twitter/callback?oauth_token=[FILTERED]&oauth_verifier=lj7P1x8MjaWVVVyt3HJLuq3ZRGoa06Pu" for 127.0.0.1 at 2022-07-05 15:35:59 +0530
+Processing by OmniauthCallbacksController#twitter as HTML
+  Parameters: {"oauth_token"=>"[FILTERED]", "oauth_verifier"=>"lj7P1x8MjaWVVVyt3HJLuq3ZRGoa06Pu"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP" token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00"> extra=#<OmniAuth::AuthHash access_token=#<OAuth::AccessToken:0x0000562e297107c0 @token="2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", @secret="B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", @consumer=#<OAuth::Consumer:0x00007f67504cfb80 @key="qV4lxrNycZM7iLO458GVEfqpw", @secret="LsChQtva2mzNtSdltXMSDBiGcISYGfVOBNdD6naWBmp64qF5xs", @options={:signature_method=>"HMAC-SHA1", :request_token_path=>"/oauth/request_token", :authenticate_path=>"/oauth/authenticate", :authorize_path=>"/oauth/authenticate", :access_token_path=>"/oauth/access_token", :proxy=>nil, :scheme=>:header, :http_method=>:post, :debug_output=>nil, :oauth_version=>"1.0", :site=>"https://api.twitter.com"}, @debug_output=nil, @http=#<Net::HTTP api.twitter.com:443 open=false>, @http_method=:post, @uri=#<URI::HTTPS https://api.twitter.com>>, @params={:oauth_token=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", "oauth_token"=>"2901855998-PpAv14FsWSu0Q76gJ5Uhptx87EcsTl3bEesyL00", :oauth_token_secret=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", "oauth_token_secret"=>"B8V9wyXZhtnKd8ReHADDdEpV9xpqPhBIUUkveyQUVukFP", :user_id=>"2901855998", "user_id"=>"2901855998", :screen_name=>"b605b684377f496", "screen_name"=>"b605b684377f496"}, @response=#<Net::HTTPForbidden 403 Forbidden readbody=true>> raw_info=#<OmniAuth::AuthHash errors=#<Hashie::Array [#<OmniAuth::AuthHash code=453 message="You currently have Essential access which includes access to Twitter API v2 endpoints only. If you need access to this endpoint, you’ll need to apply for Elevated access via the Developer Portal. You can learn more here: https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api#v2-access-leve">]>>> info=#<OmniAuth::AuthHash::InfoHash description=nil email=nil image=nil location=nil name=nil nickname=nil urls=#<OmniAuth::AuthHash Twitter="https://twitter.com/" Website=nil>> provider="twitter" uid="2901855998">
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1 AND "twitter_accounts"."username" = $2 ORDER BY "twitter_accounts"."id" ASC LIMIT $3[0m  [["user_id", 2], ["username", "b605b684377f496"], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:5:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 AND "twitter_accounts"."id" != $2 LIMIT $3[0m  [["username", "b605b684377f496"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/omniauth_callbacks_controller.rb:6:in `twitter'
+Redirected to http://127.0.0.1:3000/twitter_accounts
+Completed 302 Found in 24ms (ActiveRecord: 2.5ms | Allocations: 17491)
+
+
+Started GET "/twitter_accounts" for 127.0.0.1 at 2022-07-05 15:36:00 +0530
+Processing by TwitterAccountsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `set_current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering twitter_accounts/index.html.erb within layouts/application
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/twitter_accounts/index.html.erb:6
+  Rendered twitter_accounts/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2280)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 424)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 35)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 5249)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 6601)
+
+
