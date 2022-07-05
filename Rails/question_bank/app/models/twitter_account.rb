@@ -1,6 +1,6 @@
 class TwitterAccount < ApplicationRecord
   belongs_to :user
-  has_many :tweets
+  has_many :tweets, dependent: :destroy
   
   validates :username, uniqueness: true
 
@@ -12,5 +12,5 @@ class TwitterAccount < ApplicationRecord
       config.access_token_secret = secret
     end
   end
-  
+
 end
