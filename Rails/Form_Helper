@@ -1,0 +1,23 @@
+<%= form_with do |form| %>
+  Form contents
+<% end %>
+
+Passing url: my_specified_path to form_with tells the form where to make the request. 
+However, as explained below, you can also pass ActiveRecord objects to the form.
+For every form input, an ID attribute is generated from its name ("query" in above example). 
+These IDs can be very useful for CSS styling or manipulation of form controls with JavaScript.
+
+
+When the form is submitted, the name will be passed along with the form data, and will make its way to the params in the controller with the value entered by the user for that field. 
+
+<%= form.text_field :query %>  
+ sends->
+params[:query]
+
+1 Checkboxes
+Checkboxes are form controls that give the user a set of options they can enable or disable:
+
+<%= form.check_box :pet_dog %>
+<%= form.label :pet_dog, "I own a dog" %>
+<%= form.check_box :pet_cat %>
+<%= form.label :pet_cat, "I own a cat" %>

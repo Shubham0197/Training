@@ -35,3 +35,10 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= form_with do |form| %>
+<%= form.check_box :pet_dog %>
+<%= form.label :pet_dog, "I own a dog" %>
+<%= form.check_box :pet_cat %>
+<%= form.label :pet_cat, "I own a cat" %>
+<% end %>

@@ -11,7 +11,7 @@ class Response
     client.print "#{name}: #{value}\r\n"
     end 
     client.print "\r\n"
-    client.print @body if body.present?
+    client.print @body if @body.present?
 
     puts "-> #{@code}"
   end

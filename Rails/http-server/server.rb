@@ -2,6 +2,7 @@ require "socket"
 require "active_support/all"
 require_relative "request"
 require_relative "response"
+
 require 'rails'
 require 'action_controller/railtie'
 
@@ -11,7 +12,7 @@ class SingleFile < Rails::Application
   Rails.logger = Logger.new($stdout)
 end
 
-class PageController < ApplicationCobtroller::Base
+class PageController < ActionController::Base
   def index
     render inline: "<h1>Hello World!</h1> <p>I'm just a single file Rails application</p>"
   end
@@ -42,7 +43,7 @@ def template_exist?(path)
   File.exists?(path)
 end
 
-def route(request, client)
+def route(request)
   path = (request.path == "/") ? "index.html" : request.path
   full_path = File.join(__dir__, "views", path)
 
