@@ -11631,3 +11631,660 @@ Processing by TwitterAccountsController#index as HTML
 Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 6601)
 
 
+  [1m[36mTwitterAccount Load (3.5ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (2.4ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 2], ["name", "Test-0"], ["username", "Test-1@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:30:39.984056"], ["updated_at", "2022-07-06 14:30:39.984056"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-0@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-0"], ["username", "Test-0@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.350753"], ["updated_at", "2022-07-06 14:32:29.350753"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-1@abc.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-2@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-2"], ["username", "Test-2@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.356217"], ["updated_at", "2022-07-06 14:32:29.356217"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-3@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-3"], ["username", "Test-3@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.358591"], ["updated_at", "2022-07-06 14:32:29.358591"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-4@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-4"], ["username", "Test-4@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.361729"], ["updated_at", "2022-07-06 14:32:29.361729"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-5@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-5"], ["username", "Test-5@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.364161"], ["updated_at", "2022-07-06 14:32:29.364161"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-6@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-6"], ["username", "Test-6@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.366346"], ["updated_at", "2022-07-06 14:32:29.366346"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-7@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-7"], ["username", "Test-7@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.368198"], ["updated_at", "2022-07-06 14:32:29.368198"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-8@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-8"], ["username", "Test-8@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.369745"], ["updated_at", "2022-07-06 14:32:29.369745"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-9@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-9"], ["username", "Test-9@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.371156"], ["updated_at", "2022-07-06 14:32:29.371156"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-10@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-10"], ["username", "Test-10@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.373324"], ["updated_at", "2022-07-06 14:32:29.373324"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-11@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-11"], ["username", "Test-11@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.375679"], ["updated_at", "2022-07-06 14:32:29.375679"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-12@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-12"], ["username", "Test-12@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.378228"], ["updated_at", "2022-07-06 14:32:29.378228"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-13@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-13"], ["username", "Test-13@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.380305"], ["updated_at", "2022-07-06 14:32:29.380305"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-14@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-14"], ["username", "Test-14@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.381961"], ["updated_at", "2022-07-06 14:32:29.381961"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-15@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-15"], ["username", "Test-15@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.383347"], ["updated_at", "2022-07-06 14:32:29.383347"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-16@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-16"], ["username", "Test-16@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.384814"], ["updated_at", "2022-07-06 14:32:29.384814"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-17@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-17"], ["username", "Test-17@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.386304"], ["updated_at", "2022-07-06 14:32:29.386304"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-18@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-18"], ["username", "Test-18@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.387699"], ["updated_at", "2022-07-06 14:32:29.387699"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-19@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-19"], ["username", "Test-19@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.389655"], ["updated_at", "2022-07-06 14:32:29.389655"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-20@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-20"], ["username", "Test-20@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.391683"], ["updated_at", "2022-07-06 14:32:29.391683"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-21@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-21"], ["username", "Test-21@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.394395"], ["updated_at", "2022-07-06 14:32:29.394395"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-22@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-22"], ["username", "Test-22@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.396892"], ["updated_at", "2022-07-06 14:32:29.396892"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-23@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-23"], ["username", "Test-23@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.398881"], ["updated_at", "2022-07-06 14:32:29.398881"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-24@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-24"], ["username", "Test-24@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.400498"], ["updated_at", "2022-07-06 14:32:29.400498"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-25@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-25"], ["username", "Test-25@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.402703"], ["updated_at", "2022-07-06 14:32:29.402703"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-26@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.3ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-26"], ["username", "Test-26@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.405725"], ["updated_at", "2022-07-06 14:32:29.405725"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-27@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-27"], ["username", "Test-27@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.409107"], ["updated_at", "2022-07-06 14:32:29.409107"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-28@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-28"], ["username", "Test-28@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.412860"], ["updated_at", "2022-07-06 14:32:29.412860"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-29@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-29"], ["username", "Test-29@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.415336"], ["updated_at", "2022-07-06 14:32:29.415336"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-30@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-30"], ["username", "Test-30@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.417676"], ["updated_at", "2022-07-06 14:32:29.417676"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-31@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-31"], ["username", "Test-31@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.419818"], ["updated_at", "2022-07-06 14:32:29.419818"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-32@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-32"], ["username", "Test-32@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.422860"], ["updated_at", "2022-07-06 14:32:29.422860"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-33@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.4ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-33"], ["username", "Test-33@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.425312"], ["updated_at", "2022-07-06 14:32:29.425312"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-34@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-34"], ["username", "Test-34@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.428778"], ["updated_at", "2022-07-06 14:32:29.428778"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-35@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-35"], ["username", "Test-35@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.431169"], ["updated_at", "2022-07-06 14:32:29.431169"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-36@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-36"], ["username", "Test-36@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.433055"], ["updated_at", "2022-07-06 14:32:29.433055"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-37@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-37"], ["username", "Test-37@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.434850"], ["updated_at", "2022-07-06 14:32:29.434850"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-38@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-38"], ["username", "Test-38@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.437361"], ["updated_at", "2022-07-06 14:32:29.437361"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-39@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-39"], ["username", "Test-39@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.440463"], ["updated_at", "2022-07-06 14:32:29.440463"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-40@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-40"], ["username", "Test-40@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.443491"], ["updated_at", "2022-07-06 14:32:29.443491"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-41@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-41"], ["username", "Test-41@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.446384"], ["updated_at", "2022-07-06 14:32:29.446384"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-42@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-42"], ["username", "Test-42@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.448668"], ["updated_at", "2022-07-06 14:32:29.448668"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-43@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.1ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-43"], ["username", "Test-43@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.450665"], ["updated_at", "2022-07-06 14:32:29.450665"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-44@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-44"], ["username", "Test-44@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.452997"], ["updated_at", "2022-07-06 14:32:29.452997"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-45@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-45"], ["username", "Test-45@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.456396"], ["updated_at", "2022-07-06 14:32:29.456396"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-46@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-46"], ["username", "Test-46@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.459326"], ["updated_at", "2022-07-06 14:32:29.459326"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-47@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-47"], ["username", "Test-47@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.462182"], ["updated_at", "2022-07-06 14:32:29.462182"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-48@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-48"], ["username", "Test-48@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.464552"], ["updated_at", "2022-07-06 14:32:29.464552"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "Test-49@abc.com"], ["LIMIT", 1]]
+  [1m[36mTwitterAccount Create (0.2ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 4], ["name", "Test-49"], ["username", "Test-49@abc.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:32:29.467215"], ["updated_at", "2022-07-06 14:32:29.467215"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/%20api/v2/twitter_accounts" for 127.0.0.1 at 2022-07-06 20:07:15 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/%20api/v2/twitter_accounts"):
+  
+Started GET "/%20api/v1/twitter_accounts" for 127.0.0.1 at 2022-07-06 20:08:21 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/%20api/v1/twitter_accounts"):
+  
+Started GET "/api/v1/twitter_accounts" for 127.0.0.1 at 2022-07-06 20:08:45 +0530
+Processing by Api::V1::TwitterAccountsController#index as */*
+[active_model_serializers]   [1m[36mTwitterAccount Load (0.5ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts"[0m
+[active_model_serializers]   ↳ app/controllers/api/v1/twitter_accounts_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.02ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (12.43ms)
+Completed 200 OK in 20ms (Views: 12.1ms | ActiveRecord: 2.2ms | Allocations: 25221)
+
+
+Started GET "/api/v1/twitter_accounts/1" for 127.0.0.1 at 2022-07-06 20:09:04 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:27:in `show'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.9ms | Allocations: 11835)
+
+
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/question_bank/app/serializers/user_serializer.rb:3: syntax error, unexpected `end'):
+  
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/controllers/api/v1/twitter_accounts_controller.rb:28:in `show'
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:09:19 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:27:in `show'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 1248)
+
+
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/question_bank/app/serializers/user_serializer.rb:3: syntax error, unexpected `end'):
+  
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/controllers/api/v1/twitter_accounts_controller.rb:28:in `show'
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:11:08 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.6ms | Allocations: 6414)
+
+
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/question_bank/app/serializers/user_serializer.rb:3: syntax error, unexpected `end'):
+  
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/controllers/api/v1/twitter_accounts_controller.rb:11:in `show'
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:11:15 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+No template found for Api::V1::TwitterAccountsController#show, rendering head :no_content
+Completed 204 No Content in 7ms (ActiveRecord: 1.7ms | Allocations: 6057)
+
+
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:11:29 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 1.5ms | Allocations: 9428)
+
+
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:11:44 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.9ms | Allocations: 6330)
+
+
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/question_bank/app/serializers/user_serializer.rb:3: syntax error, unexpected `end'):
+  
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/controllers/api/v1/twitter_accounts_controller.rb:11:in `show'
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:12:20 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 34ms (Views: 14.5ms | ActiveRecord: 1.6ms | Allocations: 9529)
+
+
+Started GET "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:15:56 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 1.9ms | Allocations: 9487)
+
+
+Started GET "/api/v1/twitter_accounts/43" for 127.0.0.1 at 2022-07-06 20:15:59 +0530
+Processing by Api::V1::TwitterAccountsController#show as */*
+  Parameters: {"id"=>"43"}
+  [1m[36mTwitterAccount Load (0.1ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 781)
+
+
+Started POST "/api/v1/twitter_accounts?twitter_account[user_id]=2&twitter_account[name}=shubham&twitter_account[user_name]=sam@gmail.com" for 127.0.0.1 at 2022-07-06 20:20:44 +0530
+Processing by Api::V1::TwitterAccountsController#create as */*
+  Parameters: {"twitter_account"=>{"user_id"=>"2", "name}"=>"shubham", "user_name"=>"sam@gmail.com"}}
+[31mUnpermitted parameters: :name}, :user_name. Context: { controller: Api::V1::TwitterAccountsController, action: create, request: #<ActionDispatch::Request:0x00007f4448ef3f88>, params: {"twitter_account"=>{"user_id"=>"2", "name}"=>"shubham", "user_name"=>"sam@gmail.com"}, "controller"=>"api/v1/twitter_accounts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.24ms)
+Completed 200 OK in 23ms (Views: 6.1ms | ActiveRecord: 3.4ms | Allocations: 20688)
+
+
+Started POST "/api/v1/twitter_accounts?twitter_account[user_id]=2&twitter_account[name}=shubham&twitter_account[user_name]=sam123@gmail.com" for 127.0.0.1 at 2022-07-06 20:20:52 +0530
+Processing by Api::V1::TwitterAccountsController#create as */*
+  Parameters: {"twitter_account"=>{"user_id"=>"2", "name}"=>"shubham", "user_name"=>"sam123@gmail.com"}}
+[31mUnpermitted parameters: :name}, :user_name. Context: { controller: Api::V1::TwitterAccountsController, action: create, request: #<ActionDispatch::Request:0x00007f4449234940>, params: {"twitter_account"=>{"user_id"=>"2", "name}"=>"shubham", "user_name"=>"sam123@gmail.com"}, "controller"=>"api/v1/twitter_accounts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTwitterAccount Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.45ms)
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 3722)
+
+
+Started POST "/api/v1/twitter_accounts?twitter_account[user_id]=2&twitter_account[name]=shubham&twitter_account[user_name]=sam123@gmail.com" for 127.0.0.1 at 2022-07-06 20:21:34 +0530
+Processing by Api::V1::TwitterAccountsController#create as */*
+  Parameters: {"twitter_account"=>{"user_id"=>"2", "name"=>"shubham", "user_name"=>"sam123@gmail.com"}}
+[31mUnpermitted parameter: :user_name. Context: { controller: Api::V1::TwitterAccountsController, action: create, request: #<ActionDispatch::Request:0x00007f4438b520d8>, params: {"twitter_account"=>{"user_id"=>"2", "name"=>"shubham", "user_name"=>"sam123@gmail.com"}, "controller"=>"api/v1/twitter_accounts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTwitterAccount Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 3726)
+
+
+Started POST "/api/v1/twitter_accounts?twitter_account[user_id]=2&twitter_account[name]=shubham&twitter_account[username]=sam123@gmail.com" for 127.0.0.1 at 2022-07-06 20:21:59 +0530
+Processing by Api::V1::TwitterAccountsController#create as */*
+  Parameters: {"twitter_account"=>{"user_id"=>"2", "name"=>"shubham", "username"=>"sam123@gmail.com"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTwitterAccount Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "twitter_accounts" WHERE "twitter_accounts"."username" = $1 LIMIT $2[0m  [["username", "sam123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTwitterAccount Create (0.6ms)[0m  [1m[32mINSERT INTO "twitter_accounts" ("user_id", "name", "username", "image", "token", "secret", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 2], ["name", "shubham"], ["username", "sam123@gmail.com"], ["image", nil], ["token", "[FILTERED]"], ["secret", "[FILTERED]"], ["created_at", "2022-07-06 14:51:59.143532"], ["updated_at", "2022-07-06 14:51:59.143532"]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 7.7ms | Allocations: 8666)
+
+
+Started DELETE "/api/v1/twitter_accounts/44" for 127.0.0.1 at 2022-07-06 20:23:03 +0530
+Processing by Api::V1::TwitterAccountsController#destroy as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mTwitterAccount Load (0.2ms)[0m  [1m[34mSELECT "twitter_accounts".* FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:29:in `destroy'
+  [1m[36mTweet Load (1.1ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."twitter_account_id" = $1[0m  [["twitter_account_id", 44]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:29:in `destroy'
+  [1m[36mTwitterAccount Destroy (0.3ms)[0m  [1m[31mDELETE FROM "twitter_accounts" WHERE "twitter_accounts"."id" = $1[0m  [["id", 44]]
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/twitter_accounts_controller.rb:29:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 28ms (Views: 0.6ms | ActiveRecord: 2.8ms | Allocations: 13209)
+
+
