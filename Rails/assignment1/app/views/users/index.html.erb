@@ -11,9 +11,9 @@
   <tr>
     <td><%=  user.first_name + user.last_name %></td>
     <td><%=  user.email %></td>
-    <td><%=  link_to "show", users_path(user.id)  %></td>
-    <td><%= link_to "edit", edit_users_path(user.id)  %></td>
-    <td><%=  link_to "delete", users_path(user.id)  %></td>
+    <td><%=  link_to "show", user_path(user.id)  %></td>
+    <td><%= link_to "edit", edit_user_path(user.id)  %></td>
+    <td><%=  button_to "delete", user_path(user.id), method: :delete  %></td>
   </tr>
 <% end %>
 

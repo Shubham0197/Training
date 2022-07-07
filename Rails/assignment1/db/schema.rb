@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_072547) do
     t.string "gender"
     t.string "avatar"
     t.text "about"
+    t.string "email"
     t.string "password"
     t.string "state"
     t.datetime "created_at", null: false

@@ -1,0 +1,50 @@
+<h1>Edit User</h1>
+<%= link_to "Back to Index", root_path %>
+
+<%= form_with model: @user do |form| %>
+<% if @user.errors.any? %>
+<div class="alert alert-danger">
+  <% @user.errors.full_messages.each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+<% end %>
+<div class="mb-3">
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name, class: "form-control" %>
+</div> 
+<div class="mb-3">
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name, class: "form-control" %>
+</div> 
+<div class="mb-3">
+  <%= form.label :gender %>
+  <%= form.radio_button :gender, "Male" %>
+  <%= form.label :gender, "Male" %>
+  <%= form.radio_button :gender, "Female" %>
+  <%= form.label :gender, "Female"  %>
+</div>
+<div class="mb-3">
+  <%= form.label :state %>
+  <%= render "states", form: form %>
+</div>
+<div class="mb-3">
+  <%= form.label :avatar %>
+  <%= form.url_field :avatar, class: "form-control" %>
+</div> 
+<div class="mb-3">
+  <%= form.label :email %>
+  <%= form.email_field :email, class: "form-control" %>
+</div> 
+<div class="mb-3">
+  <%= form.label :Password %>
+  <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+</div>
+<div class="mb-3">
+  <%= form.label :about %>
+  <%= form.text_area :about, class: "form-control", placeholder: "Confirm Password" %>
+</div>
+<div class="mb-3">
+  <%= form.submit "Update User", class: "btn btn-primary" %>
+</div>
+<% end%>

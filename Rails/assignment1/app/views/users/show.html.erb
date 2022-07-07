@@ -1,0 +1,31 @@
+<h1>Showing User</h1>
+<%= link_to "Back to Index", root_path %>
+<br>
+<img src="<%= @user.avatar %>" alt="Photo of <%= @user.first_name %>" >
+<table>
+  <tr>
+    <td>First Name :</td>
+    <td><%=   @user.first_name  %></td>
+  </tr>
+  <tr>
+    <td>Last Name :</td>
+    <td><%=   @user.last_name  %></td>
+  </tr>
+  <tr>
+    <td>Gender :</td>
+    <td><%=   @user.gender  %></td>
+  </tr>
+  <tr>
+    <td>State :</td>
+    <td><%=   @user.state  %></td>    
+  </tr>
+  <tr>
+    <td>Email :</td>
+    <td><%=   @user.email  %></td>    
+  </tr>
+  <tr>
+    <td>About :</td>
+    <td><%=   @user.about  %></td>
+  </tr>
+
+</table>

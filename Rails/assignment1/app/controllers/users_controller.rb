@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.new user_params
+    @user = User.find(params[:id])
+    @user.update user_params
     if @user.save
       redirect_to root_path, notice: "Updated New User"
     else
@@ -42,4 +43,8 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "Deleted User"
   end
   
+  private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :gender, :state, :avatar, :email, :password, :about)
+  end
 end
