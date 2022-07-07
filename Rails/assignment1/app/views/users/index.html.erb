@@ -3,9 +3,19 @@
 
 <br>
 <h3>Search User using first_name</h3>
-<%= form_with url: root_path, method: :get do |form| %>
+<%= form_with url: users_path, method: :get do |form| %>
 <%= form.text_field :search %>
 <%= form.submit "Search" %>
+<% end %>
+
+<% if params[:search] %>
+<%= link_to "Previous Page", root_path(page: @page - 1, search: params[:search])  if @page!= 0 %>
+|
+<%= link_to "Next Page", root_path(page: @page + 1, search: params[:search])  if @page < (@users_count/10) %>
+<% else %>
+<%= link_to "Previous Page", root_path(page: @page - 1)  if @page!= 0 %>
+|
+<%= link_to "Next Page", root_path(page: @page + 1)  if @page < (@users_count/10) %>
 <% end %>
 
 <h2>List of users</h2>
