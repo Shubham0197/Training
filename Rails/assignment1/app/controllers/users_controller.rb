@@ -1,7 +1,11 @@
 class UsersController < ApplicationController 
   
   def index
-    @users = User.all.order(:id)
+    if params[:search]
+      @users = User.where('lower(first_name) LIKE ?', "%#{params[:search].downcase}%").order(:id)
+    else
+      @users = User.all.order(:id)
+    end
   end
 
   def show

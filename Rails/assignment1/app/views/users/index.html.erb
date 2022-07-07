@@ -1,6 +1,15 @@
 <h1>Index Page</h1>
 <%= link_to "Create New User", new_user_path %>
+
+<br>
+<h3>Search User using first_name</h3>
+<%= form_with url: root_path, method: :get do |form| %>
+<%= form.text_field :search %>
+<%= form.submit "Search" %>
+<% end %>
+
 <h2>List of users</h2>
+
 <table>
   <tr>
     <th>Name</th>
@@ -9,7 +18,7 @@
   </tr>
 <% @users.each do |user| %>
   <tr>
-    <td><%=  user.first_name + user.last_name %></td>
+    <td><%=  user.first_name + user.last_name if user.first_name && user.last_name %></td>
     <td><%=  user.email %></td>
     <td><%=  link_to "show", user_path(user.id)  %></td>
     <td><%= link_to "edit", edit_user_path(user.id)  %></td>
