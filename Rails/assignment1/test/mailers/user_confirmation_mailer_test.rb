@@ -1,8 +1,8 @@
 require "test_helper"
 
-class UserConfirmationMailerTest < ActionMailer::TestCase
+class UserConfirmation<br>Test < Action<br>::TestCase
   test "welcome" do
-    mail = UserConfirmationMailer.welcome
+    mail = UserConfirmation<br>.welcome
     assert_equal "Welcome", mail.subject
     assert_equal ["to@example.org"], mail.to
     assert_equal ["from@example.com"], mail.from

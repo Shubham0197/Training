@@ -5,9 +5,9 @@ class UserConfirmationMailer < ApplicationMailer
   #
   #   en.user_confirmation_mailer.welcome.subject
   #
-  def welcome
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def welcome(email, first_name)
+    @email = email
+    @first_name= first_name
+    mail to: @email
   end
 end

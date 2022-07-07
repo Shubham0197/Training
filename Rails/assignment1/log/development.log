@@ -1624,3 +1624,1160 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.2ms | Allocations: 4076)
 
 
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 15:53:26 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 1.2ms | Allocations: 1235)
+  Rendered users/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 4564)
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | Allocations: 7333)
+Completed 200 OK in 41ms (Views: 32.7ms | ActiveRecord: 2.2ms | Allocations: 13886)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 15:53:50 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"SSS", "last_name"=>"SSS", "gender"=>"Male", "state"=>"Arunachal Pradesh", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"sss@gmail.com", "password"=>"[FILTERED]", "about"=>"Hello"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "SSS"], ["last_name", "SSS"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "Hello"], ["email", "sss@gmail.com"], ["password", "[FILTERED]"], ["state", "Arunachal Pradesh"], ["created_at", "2022-07-07 10:23:50.737936"], ["updated_at", "2022-07-07 10:23:50.737936"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 4ec068a1-5edc-40b9-b3b8-bb6cd5b74801) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>[#<GlobalID:0x00007fca5c274380 @uri=#<URI::GID gid://assignment1/User/6>>]}
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 45ms (ActiveRecord: 0.9ms | Allocations: 33408)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801] Performing ActionMailer::MailDeliveryJob (Job ID: 4ec068a1-5edc-40b9-b3b8-bb6cd5b74801) from Async(default) enqueued at 2022-07-07T10:23:50Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>[#<GlobalID:0x00007fca68586f80 @uri=#<URI::GID gid://assignment1/User/6>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.3ms | Allocations: 147)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendered layout layouts/mailer.html.erb (Duration: 0.7ms | Allocations: 413)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 133)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801]   Rendered layout layouts/mailer.text.erb (Duration: 0.5ms | Allocations: 360)
+Started GET "/" for 127.0.0.1 at 2022-07-07 15:53:50 +0530
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801] UserConfirmationMailer#welcome: processed outbound mail in 5.8ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801] Delivered mail 62c6b436c1a2d_778e14dac7375a@itsacheckmate.mail (4.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801] Date: Thu, 07 Jul 2022 15:53:50 +0530
+From: from@example.com
+To: sss@gmail.com
+Message-ID: <62c6b436c1a2d_778e14dac7375a@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c6b436c1019_778e14dac736e1";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c6b436c1019_778e14dac736e1
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c6b436c1019_778e14dac736e1
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello SSS,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c6b436c1019_778e14dac736e1--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ec068a1-5edc-40b9-b3b8-bb6cd5b74801] Performed ActionMailer::MailDeliveryJob (Job ID: 4ec068a1-5edc-40b9-b3b8-bb6cd5b74801) from Async(default) in 13.83ms
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2004)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4396)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 4808)
+
+
+Started GET "/users/6/edit" for 127.0.0.1 at 2022-07-07 15:54:24 +0530
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 0.3ms | Allocations: 989)
+  Rendered users/edit.html.erb within layouts/application (Duration: 5.2ms | Allocations: 4311)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 6649)
+Completed 200 OK in 10ms (Views: 7.4ms | ActiveRecord: 0.2ms | Allocations: 8024)
+
+
+Started PATCH "/users/6" for 127.0.0.1 at 2022-07-07 15:54:32 +0530
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"SSS", "last_name"=>"KKK", "gender"=>"Male", "state"=>"Arunachal Pradesh", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"sss@gmail.com", "password"=>"[FILTERED]", "about"=>"Hello"}, "commit"=>"Update User", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `update'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "last_name" = $1, "password" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["last_name", "KKK"], ["password", "[FILTERED]"], ["updated_at", "2022-07-07 10:24:32.576079"], ["id", 6]]
+  ↳ app/controllers/users_controller.rb:32:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `update'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms | Allocations: 2826)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 15:54:32 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1730)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 4081)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 4408)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "gender" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["gender", "Female"], ["updated_at", "2022-07-07 10:29:04.923059"], ["id", 1]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:13:39 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 1.4ms | Allocations: 1235)
+  Rendered users/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 4543)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 7291)
+Completed 200 OK in 18ms (Views: 8.7ms | ActiveRecord: 2.8ms | Allocations: 13845)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:14:33 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 0.4ms | Allocations: 987)
+  Rendered users/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 3596)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 6040)
+Completed 200 OK in 11ms (Views: 5.3ms | ActiveRecord: 2.6ms | Allocations: 9934)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:14:59 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"ASD", "last_name"=>"DSA", "gender"=>"Female", "state"=>"Jharkhand", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"asd@gmail.com", "password"=>"[FILTERED]", "about"=>"Helo bye"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "ASD"], ["last_name", "DSA"], ["gender", "Female"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "Helo bye"], ["email", "asd@gmail.com"], ["password", "[FILTERED]"], ["state", "Jharkhand"], ["created_at", "2022-07-07 10:44:59.127619"], ["updated_at", "2022-07-07 10:44:59.127619"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.9ms | Allocations: 4513)
+
+
+  
+NameError (uninitialized constant UsersController::MailWorker):
+  
+app/controllers/users_controller.rb:18:in `create'
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:16:35 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"ASD", "last_name"=>"DSA", "gender"=>"Female", "state"=>"Jharkhand", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"asd@gmail.com", "password"=>"[FILTERED]", "about"=>"Helo bye"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "ASD"], ["last_name", "DSA"], ["gender", "Female"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "Helo bye"], ["email", "asd@gmail.com"], ["password", "[FILTERED]"], ["state", "Jharkhand"], ["created_at", "2022-07-07 10:46:35.497997"], ["updated_at", "2022-07-07 10:46:35.497997"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.4ms | Allocations: 7585)
+
+
+  
+NameError (uninitialized constant UsersController::MailWorker):
+  
+app/controllers/users_controller.rb:18:in `create'
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:20:27 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 9754)
+  Rendered layout layouts/application.html.erb (Duration: 32.9ms | Allocations: 31212)
+Completed 200 OK in 40ms (Views: 31.8ms | ActiveRecord: 3.6ms | Allocations: 37768)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:20:28 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 1.7ms | Allocations: 1473)
+  Rendered users/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 7540)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 9887)
+Completed 200 OK in 11ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 10298)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:20:39 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Happy", "last_name"=>"jain", "gender"=>"Male", "state"=>"Haryana", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"k@gmail.com", "password"=>"[FILTERED]", "about"=>"dsfss"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Happy"], ["last_name", "jain"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "dsfss"], ["email", "k@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 10:50:39.038675"], ["updated_at", "2022-07-07 10:50:39.038675"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms | Allocations: 4477)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:20:39 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2633)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 4985)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 5313)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 4ca5a493-acd6-4d97-95f3-721c55f61912) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>[nil]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ca5a493-acd6-4d97-95f3-721c55f61912] Performing ActionMailer::MailDeliveryJob (Job ID: 4ca5a493-acd6-4d97-95f3-721c55f61912) from Async(default) enqueued at 2022-07-07T10:50:49Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>[nil]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ca5a493-acd6-4d97-95f3-721c55f61912] UserConfirmationMailer#welcome: processed outbound mail in 22.9ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4ca5a493-acd6-4d97-95f3-721c55f61912] Error performing ActionMailer::MailDeliveryJob (Job ID: 4ca5a493-acd6-4d97-95f3-721c55f61912) from Async(default) in 23.89ms: NoMethodError (undefined method `email' for nil:NilClass):
+/home/itsacheckmate/Training/Rails/assignment1/app/mailers/user_confirmation_mailer.rb:11:in `welcome'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:215:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/rendering.rb:20:in `with_renderer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:233:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:151:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:25:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:24:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionview-7.0.3/lib/action_view/rendering.rb:39:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:646:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:645:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:58:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:46:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:25:in `tag_logger'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:24:in `block in execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:71:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:22:in `execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started DELETE "/users/9" for 127.0.0.1 at 2022-07-07 16:23:25 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"9"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 11ms (ActiveRecord: 3.0ms | Allocations: 7345)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:23:25 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2395)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 4800)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.3ms | Allocations: 5569)
+
+
+Started DELETE "/users/8" for 127.0.0.1 at 2022-07-07 16:23:25 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 11ms (ActiveRecord: 7.0ms | Allocations: 2294)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:23:25 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2018)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 4368)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 4695)
+
+
+Started DELETE "/users/7" for 127.0.0.1 at 2022-07-07 16:23:26 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 11ms (ActiveRecord: 7.2ms | Allocations: 2254)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:23:26 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1742)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 4092)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 4419)
+
+
+Started DELETE "/users/6" for 127.0.0.1 at 2022-07-07 16:23:27 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 11ms (ActiveRecord: 1.0ms | Allocations: 2279)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:23:27 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1421)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3814)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 4143)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:23:28 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 0.4ms | Allocations: 987)
+  Rendered users/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 3564)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 5911)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 6245)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:23:37 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Happy", "last_name"=>"jain", "gender"=>"Male", "state"=>"Haryana", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"k@gmail.com", "password"=>"[FILTERED]", "about"=>"hello"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Happy"], ["last_name", "jain"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "hello"], ["email", "k@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 10:53:37.906630"], ["updated_at", "2022-07-07 10:53:37.906630"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.9ms | Allocations: 2773)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:23:37 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1724)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 4074)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 4401)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 47f106f7-8665-4aa9-bf02-3a0e3f8ef0cb) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f3730019118>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f106f7-8665-4aa9-bf02-3a0e3f8ef0cb] Performing ActionMailer::MailDeliveryJob (Job ID: 47f106f7-8665-4aa9-bf02-3a0e3f8ef0cb) from Async(default) enqueued at 2022-07-07T10:53:50Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f3730019118>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f106f7-8665-4aa9-bf02-3a0e3f8ef0cb] UserConfirmationMailer#welcome: processed outbound mail in 0.9ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f106f7-8665-4aa9-bf02-3a0e3f8ef0cb] Error performing ActionMailer::MailDeliveryJob (Job ID: 47f106f7-8665-4aa9-bf02-3a0e3f8ef0cb) from Async(default) in 1.39ms: NoMethodError (undefined method `email' for "#<User:0x00007f3730019118>":String):
+/home/itsacheckmate/Training/Rails/assignment1/app/mailers/user_confirmation_mailer.rb:11:in `welcome'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:215:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/rendering.rb:20:in `with_renderer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:233:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:151:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:25:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:24:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionview-7.0.3/lib/action_view/rendering.rb:39:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:646:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:645:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:58:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:46:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:25:in `tag_logger'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:24:in `block in execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:71:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:22:in `execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started DELETE "/users/10" for 127.0.0.1 at 2022-07-07 16:24:02 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 12ms (ActiveRecord: 7.1ms | Allocations: 2260)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:24:02 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1443)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 3793)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 4121)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:24:03 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 0.5ms | Allocations: 984)
+  Rendered users/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 3492)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 5878)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 6195)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:24:11 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "gender"=>"Male", "state"=>"Haryana", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"k@gmail.com", "password"=>"[FILTERED]", "about"=>"ffffff"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Shubham"], ["last_name", "Jain"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "ffffff"], ["email", "k@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 10:54:11.649602"], ["updated_at", "2022-07-07 10:54:11.649602"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms | Allocations: 2413)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:24:11 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1722)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 4074)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 4401)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: dff42671-54f6-4a32-8beb-1033e76b0c13) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f373c974ad0>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dff42671-54f6-4a32-8beb-1033e76b0c13] Performing ActionMailer::MailDeliveryJob (Job ID: dff42671-54f6-4a32-8beb-1033e76b0c13) from Async(default) enqueued at 2022-07-07T10:54:25Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f373c974ad0>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dff42671-54f6-4a32-8beb-1033e76b0c13] UserConfirmationMailer#welcome: processed outbound mail in 22.4ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dff42671-54f6-4a32-8beb-1033e76b0c13] Error performing ActionMailer::MailDeliveryJob (Job ID: dff42671-54f6-4a32-8beb-1033e76b0c13) from Async(default) in 23.43ms: NoMethodError (undefined method `email' for "#<User:0x00007f373c974ad0>":String):
+/home/itsacheckmate/Training/Rails/assignment1/app/mailers/user_confirmation_mailer.rb:11:in `welcome'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:215:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/rendering.rb:20:in `with_renderer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:233:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:151:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:25:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:24:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionview-7.0.3/lib/action_view/rendering.rb:39:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:646:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:645:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:58:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:46:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:25:in `tag_logger'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:24:in `block in execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:71:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:22:in `execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:25:36 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "gender"=>"Male", "state"=>"Haryana", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"k@gmail.com", "password"=>"[FILTERED]", "about"=>"ffffff"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Shubham"], ["last_name", "Jain"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "ffffff"], ["email", "k@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 10:55:36.662266"], ["updated_at", "2022-07-07 10:55:36.662266"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 11ms (ActiveRecord: 3.1ms | Allocations: 5958)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:25:36 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2128)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4533)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 5345)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: ee39838d-7e8e-4b9c-a810-eb7707df2d32) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f373cc768a0>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ee39838d-7e8e-4b9c-a810-eb7707df2d32] Performing ActionMailer::MailDeliveryJob (Job ID: ee39838d-7e8e-4b9c-a810-eb7707df2d32) from Async(default) enqueued at 2022-07-07T10:55:40Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f373cc768a0>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ee39838d-7e8e-4b9c-a810-eb7707df2d32] UserConfirmationMailer#welcome: processed outbound mail in 0.8ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [ee39838d-7e8e-4b9c-a810-eb7707df2d32] Error performing ActionMailer::MailDeliveryJob (Job ID: ee39838d-7e8e-4b9c-a810-eb7707df2d32) from Async(default) in 1.3ms: NoMethodError (undefined method `email' for "#<User:0x00007f373cc768a0>":String):
+/home/itsacheckmate/Training/Rails/assignment1/app/mailers/user_confirmation_mailer.rb:11:in `welcome'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:215:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/rendering.rb:20:in `with_renderer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:233:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:151:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:25:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:24:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionview-7.0.3/lib/action_view/rendering.rb:39:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:646:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:645:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:58:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:46:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:25:in `tag_logger'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:24:in `block in execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:71:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:22:in `execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:25:50 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "gender"=>"Male", "state"=>"Haryana", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"k@gmail.com", "password"=>"[FILTERED]", "about"=>"ffffff"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Shubham"], ["last_name", "Jain"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "ffffff"], ["email", "k@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 10:55:50.559136"], ["updated_at", "2022-07-07 10:55:50.559136"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 6ms (ActiveRecord: 2.0ms | Allocations: 2426)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:25:50 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2320)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4670)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.2ms | Allocations: 4997)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: c96e8c14-9e2b-4d64-b3ee-1fb82ca93f6a) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f373cdd0ed0>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [c96e8c14-9e2b-4d64-b3ee-1fb82ca93f6a] Performing ActionMailer::MailDeliveryJob (Job ID: c96e8c14-9e2b-4d64-b3ee-1fb82ca93f6a) from Async(default) enqueued at 2022-07-07T10:55:57Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["#<User:0x00007f373cdd0ed0>"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [c96e8c14-9e2b-4d64-b3ee-1fb82ca93f6a] UserConfirmationMailer#welcome: processed outbound mail in 23.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [c96e8c14-9e2b-4d64-b3ee-1fb82ca93f6a] Error performing ActionMailer::MailDeliveryJob (Job ID: c96e8c14-9e2b-4d64-b3ee-1fb82ca93f6a) from Async(default) in 24.6ms: NoMethodError (undefined method `email' for "#<User:0x00007f373cdd0ed0>":String):
+/home/itsacheckmate/Training/Rails/assignment1/app/mailers/user_confirmation_mailer.rb:11:in `welcome'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:215:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/rendering.rb:20:in `with_renderer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/callbacks.rb:233:in `process_action'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionpack-7.0.3/lib/abstract_controller/base.rb:151:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:25:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/rescuable.rb:24:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionview-7.0.3/lib/action_view/rendering.rb:39:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:646:in `block in process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/base.rb:645:in `process'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:128:in `block in processed_mailer'
+<internal:kernel>:90:in `tap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:127:in `processed_mailer'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailer-7.0.3/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/i18n-1.10.0/lib/i18n.rb:328:in `with_locale'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:58:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:46:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/notifications.rb:206:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:25:in `tag_logger'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/logging.rb:18:in `perform_now'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:24:in `block in execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/reloader.rb:71:in `wrap'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activesupport-7.0.3/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/execution.rb:22:in `execute'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/activejob-7.0.3/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started DELETE "/users/13" for 127.0.0.1 at 2022-07-07 16:31:51 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"13"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 13]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 15ms (ActiveRecord: 2.9ms | Allocations: 14864)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:31:51 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2696)
+  Rendered layout layouts/application.html.erb (Duration: 32.7ms | Allocations: 24236)
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 0.4ms | Allocations: 27088)
+
+
+Started DELETE "/users/12" for 127.0.0.1 at 2022-07-07 16:31:52 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"12"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms | Allocations: 2273)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:31:52 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1726)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4077)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 4406)
+
+
+Started DELETE "/users/11" for 127.0.0.1 at 2022-07-07 16:31:52 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms | Allocations: 2271)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:31:52 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1421)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 3772)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 4100)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:31:54 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 1.3ms | Allocations: 1473)
+  Rendered users/new.html.erb within layouts/application (Duration: 10.4ms | Allocations: 11789)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 14136)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 14541)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:32:20 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "state"=>"Haryana", "avatar"=>"", "email"=>"k@gmail.com", "password"=>"[FILTERED]", "about"=>"hello"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Shubham"], ["last_name", "Jain"], ["gender", nil], ["avatar", ""], ["about", "hello"], ["email", "k@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 11:02:20.929524"], ["updated_at", "2022-07-07 11:02:20.929524"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms | Allocations: 4615)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:32:20 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1731)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4081)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 4408)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: e506d464-5b91-46bd-bdf9-7b0d49c9cc53) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["k@gmail.com", "Shubham"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53] Performing ActionMailer::MailDeliveryJob (Job ID: e506d464-5b91-46bd-bdf9-7b0d49c9cc53) from Async(default) enqueued at 2022-07-07T11:02:24Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["k@gmail.com", "Shubham"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 383)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendered layout layouts/mailer.html.erb (Duration: 1.0ms | Allocations: 621)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.1ms | Allocations: 117)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53]   Rendered layout layouts/mailer.text.erb (Duration: 0.3ms | Allocations: 297)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53] UserConfirmationMailer#welcome: processed outbound mail in 21.4ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53] Delivered mail 62c6bd40e2ab1_fa7141c84636b@itsacheckmate.mail (2.3ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53] Date: Thu, 07 Jul 2022 16:32:24 +0530
+From: from@example.com
+To: k@gmail.com
+Message-ID: <62c6bd40e2ab1_fa7141c84636b@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c6bd40e2448_fa7141c84629c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c6bd40e2448_fa7141c84629c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c6bd40e2448_fa7141c84629c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Shubham,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c6bd40e2448_fa7141c84629c--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [e506d464-5b91-46bd-bdf9-7b0d49c9cc53] Performed ActionMailer::MailDeliveryJob (Job ID: e506d464-5b91-46bd-bdf9-7b0d49c9cc53) from Async(default) in 24.82ms
+Started DELETE "/users/14" for 127.0.0.1 at 2022-07-07 16:32:57 +0530
+Processing by UsersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"14"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 14]]
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:43:in `destroy'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms | Allocations: 2269)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:32:57 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1441)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 3791)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms | Allocations: 4118)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 16:32:59 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 0.4ms | Allocations: 984)
+  Rendered users/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 3482)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 5829)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms | Allocations: 6154)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-07 16:33:09 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Shubham", "last_name"=>"Jain", "state"=>"Haryana", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"shubhamjain0197@gmail.com", "password"=>"[FILTERED]", "about"=>"hello"}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Shubham"], ["last_name", "Jain"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", "hello"], ["email", "shubhamjain0197@gmail.com"], ["password", "[FILTERED]"], ["state", "Haryana"], ["created_at", "2022-07-07 11:03:09.354818"], ["updated_at", "2022-07-07 11:03:09.354818"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms | Allocations: 2411)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-07 16:33:09 +0530
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1734)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 4084)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 4411)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 7d6e4366-9583-479e-9d30-1ebbe18d07c0) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["shubhamjain0197@gmail.com", "Shubham"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0] Performing ActionMailer::MailDeliveryJob (Job ID: 7d6e4366-9583-479e-9d30-1ebbe18d07c0) from Async(default) enqueued at 2022-07-07T11:03:12Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["shubhamjain0197@gmail.com", "Shubham"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 84)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0] UserConfirmationMailer#welcome: processed outbound mail in 4.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0] Delivered mail 62c6bd706fe80_fa7141c8465b5@itsacheckmate.mail (1.7ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0] Date: Thu, 07 Jul 2022 16:33:12 +0530
+From: from@example.com
+To: shubhamjain0197@gmail.com
+Message-ID: <62c6bd706fe80_fa7141c8465b5@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c6bd706f6d8_fa7141c846423";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c6bd706f6d8_fa7141c846423
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c6bd706f6d8_fa7141c846423
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Shubham,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c6bd706f6d8_fa7141c846423--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0] Performed ActionMailer::MailDeliveryJob (Job ID: 7d6e4366-9583-479e-9d30-1ebbe18d07c0) from Async(default) in 6.62ms

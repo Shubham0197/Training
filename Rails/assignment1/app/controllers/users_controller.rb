@@ -1,7 +1,7 @@
 class UsersController < ApplicationController 
   
   def index
-    @users = User.all
+    @users = User.all.order(:id)
   end
 
   def show
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      Sidekiq::Client.enqueue_to_in("default", Time.now + 2.seconds, MailWorker, @user.email, @user.first_name)
       redirect_to root_path, notice: "Created New User"
     else
       flash[:alert] = "Details Entered Incorrectly"
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update user_params
     if @user.save
-      redirect_to root_path, notice: "Updated New User"
+      redirect_to root_path, notice: "Updated User"
     else
       flash[:alert] = "Details Entered Incorrectly"
       render :edit

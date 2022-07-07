@@ -1,9 +1,9 @@
-# Preview all emails at http://localhost:3000/rails/mailers/user_confirmation_mailer
-class UserConfirmationMailerPreview < ActionMailer::Preview
+# Preview all emails at http://localhost:3000/rails/<br>s/user_confirmation_<br>
+class UserConfirmation<br>Preview < Action<br>::Preview
 
-  # Preview this email at http://localhost:3000/rails/mailers/user_confirmation_mailer/welcome
+  # Preview this email at http://localhost:3000/rails/<br>s/user_confirmation_<br>/welcome
   def welcome
-    UserConfirmationMailer.welcome
+    UserConfirmation<br>.welcome
   end
 
 end
