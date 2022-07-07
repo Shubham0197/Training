@@ -40,10 +40,18 @@
   <%= form.label :Password %>
   <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
 </div>
+<div lass="mb-3">
+<% User::HOBBYS.each do |hobby|%>
+  <%= form.check_box :hobbys, { multiple:true }, hobby, nil %>
+  <%= form.label hobby %>
+<% end %>
+</div>
 <div class="mb-3">
+
   <%= form.label :about %>
   <%= form.text_area :about, class: "form-control" %>
 </div>
+
 <div class="mb-3">
   <%= form.submit "Create User", class: "btn btn-primary" %>
 </div>
