@@ -2781,3 +2781,261 @@ Content-Transfer-Encoding: 7bit
 ----==_mimepart_62c6bd706f6d8_fa7141c846423--
 
 [ActiveJob] [ActionMailer::MailDeliveryJob] [7d6e4366-9583-479e-9d30-1ebbe18d07c0] Performed ActionMailer::MailDeliveryJob (Job ID: 7d6e4366-9583-479e-9d30-1ebbe18d07c0) from Async(default) in 6.62ms
+Started DELETE "/api/v1/users" for 127.0.0.1 at 2022-07-07 17:02:05 +0530
+  
+NoMethodError (undefined method `namespade' for #<ActionDispatch::Routing::Mapper:0x00007f0940be9da8 @set=#<ActionDispatch::Routing::RouteSet:0x0000560c3d52fab8>, @draw_paths=[#<Pathname:/home/itsacheckmate/Training/Rails/assignment1/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x00007f0940be9d58 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x0000560c3d6f75d0 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>
+Did you mean?  namespace):
+  
+config/routes.rb:6:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started DELETE "/api/v1/users" for 127.0.0.1 at 2022-07-07 17:02:32 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users" for 127.0.0.1 at 2022-07-07 17:03:29 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started GET "/api/v1/users" for 127.0.0.1 at 2022-07-07 17:03:53 +0530
+Processing by Api::V1::UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.43ms)
+Completed 200 OK in 17ms (Views: 7.4ms | ActiveRecord: 3.4ms | Allocations: 13966)
+
+
+Started GET "/api/v1/user/1" for 127.0.0.1 at 2022-07-07 17:04:02 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/user/1"):
+  
+Started GET "/api/v1/users" for 127.0.0.1 at 2022-07-07 17:04:10 +0530
+Processing by Api::V1::UsersController#index as */*
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC[0m
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.79ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 1528)
+
+
+Started GET "/api/v1/user/1" for 127.0.0.1 at 2022-07-07 17:04:15 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/user/1"):
+  
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2022-07-07 17:04:22 +0530
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 1388)
+
+
+Started POST "/api/v1/users?first_name=api" for 127.0.0.1 at 2022-07-07 17:04:47 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"first_name"=>"api"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 496)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:44:in `user_params'
+app/controllers/api/v1/users_controller.rb:15:in `create'
+Started POST "/api/v1/users?user[first_name]=api" for 127.0.0.1 at 2022-07-07 17:05:07 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"api"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "api"], ["last_name", nil], ["gender", nil], ["avatar", nil], ["about", nil], ["email", nil], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-07 11:35:07.584303"], ["updated_at", "2022-07-07 11:35:07.584303"]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 18ms (Views: 0.6ms | ActiveRecord: 7.1ms | Allocations: 5833)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 47f32e0b-1901-43cf-821b-3600a9ec1457) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>[nil, "api"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457] Performing ActionMailer::MailDeliveryJob (Job ID: 47f32e0b-1901-43cf-821b-3600a9ec1457) from Async(default) enqueued at 2022-07-07T11:35:11Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>[nil, "api"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 89)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457] UserConfirmationMailer#welcome: processed outbound mail in 2.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457] Delivered mail 62c6c4efa71a_fa7141c846761@itsacheckmate.mail (1.5ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457] Date: Thu, 07 Jul 2022 17:05:11 +0530
+From: from@example.com
+Message-ID: <62c6c4efa71a_fa7141c846761@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c6c4efa0f3_fa7141c8466eb";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c6c4efa0f3_fa7141c8466eb
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c6c4efa0f3_fa7141c8466eb
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello api,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c6c4efa0f3_fa7141c8466eb--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [47f32e0b-1901-43cf-821b-3600a9ec1457] Performed ActionMailer::MailDeliveryJob (Job ID: 47f32e0b-1901-43cf-821b-3600a9ec1457) from Async(default) in 4.79ms
+Started PATCH "/api/v1/users/1?user[first_name]=api" for 127.0.0.1 at 2022-07-07 17:05:33 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"first_name"=>"api"}, "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "first_name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["first_name", "api"], ["updated_at", "2022-07-07 11:35:33.706687"], ["id", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.1ms | Allocations: 2866)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["s@gmail.com", "api"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c] Performing ActionMailer::MailDeliveryJob (Job ID: b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c) from Async(default) enqueued at 2022-07-07T11:35:37Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["s@gmail.com", "api"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendered layout layouts/mailer.html.erb (Duration: 0.5ms | Allocations: 84)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.1ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c]   Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c] UserConfirmationMailer#welcome: processed outbound mail in 8.9ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c] Delivered mail 62c6c509d5add_fa7141c846964@itsacheckmate.mail (3.9ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c] Date: Thu, 07 Jul 2022 17:05:37 +0530
+From: from@example.com
+To: s@gmail.com
+Message-ID: <62c6c509d5add_fa7141c846964@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c6c509d443a_fa7141c846876";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c6c509d443a_fa7141c846876
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c6c509d443a_fa7141c846876
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello api,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c6c509d443a_fa7141c846876--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c] Performed ActionMailer::MailDeliveryJob (Job ID: b8a8a73a-c6d7-49c8-ad3a-73e4f9cae71c) from Async(default) in 14.01ms
+Started DELETE "/api/v1/users/1" for 127.0.0.1 at 2022-07-07 17:05:43 +0530
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 1.8ms | Allocations: 5022)
+
+
+  
+NameError (undefined local variable or method `user' for #<Api::V1::UsersController:0x00000000012b88>
+Did you mean?  @user):
+  
+app/controllers/api/v1/users_controller.rb:39:in `destroy'
+Started DELETE "/api/v1/users/1" for 127.0.0.1 at 2022-07-07 17:06:03 +0530
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:37:in `destroy'
+Completed 404 Not Found in 8ms (ActiveRecord: 3.7ms | Allocations: 2659)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/api/v1/users_controller.rb:37:in `destroy'
+Started DELETE "/api/v1/users/2" for 127.0.0.1 at 2022-07-07 17:06:15 +0530
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 1.8ms | Allocations: 7374)
+
+
