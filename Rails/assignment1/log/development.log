@@ -11141,3 +11141,647 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 0.1ms | Allocations: 6199)
 
 
+Started GET "/users/api" for 127.0.0.1 at 2022-07-08 14:10:27 +0530
+Processing by UsersController#api as HTML
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Michael"], ["last_name", "Lawson"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", nil], ["email", "michael.lawson@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:40:27.417711"], ["updated_at", "2022-07-08 08:40:27.417711"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Lindsay"], ["last_name", "Ferguson"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/8-image.jpg"], ["about", nil], ["email", "lindsay.ferguson@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:40:27.426852"], ["updated_at", "2022-07-08 08:40:27.426852"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+Redirected to http://127.0.0.1:3000/
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Tobias"], ["last_name", "Funke"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/9-image.jpg"], ["about", nil], ["email", "tobias.funke@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:40:27.430549"], ["updated_at", "2022-07-08 08:40:27.430549"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+Redirected to 
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 9.5ms | Allocations: 12352)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/users_controller.rb:79:in `block in api'
+app/controllers/users_controller.rb:65:in `each'
+app/controllers/users_controller.rb:65:in `api'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 57056573-a817-4e69-b6ca-240456610003) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["michael.lawson@reqres.in", "Michael"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["lindsay.ferguson@reqres.in", "Lindsay"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: d937b3c5-6bef-4969-9f79-1772a9751991) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["tobias.funke@reqres.in", "Tobias"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003] Performing ActionMailer::MailDeliveryJob (Job ID: 57056573-a817-4e69-b6ca-240456610003) from Async(default) enqueued at 2022-07-08T08:40:31Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["michael.lawson@reqres.in", "Michael"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 96)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 91)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003] UserConfirmationMailer#welcome: processed outbound mail in 2.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003] Delivered mail 62c7ed7ff29fb_cfed45b079722@itsacheckmate.mail (1.1ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003] Date: Fri, 08 Jul 2022 14:10:31 +0530
+From: from@example.com
+To: michael.lawson@reqres.in
+Message-ID: <62c7ed7ff29fb_cfed45b079722@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7ed7ff2637_cfed45b079644";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7ed7ff2637_cfed45b079644
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7ed7ff2637_cfed45b079644
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Michael,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7ed7ff2637_cfed45b079644--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [57056573-a817-4e69-b6ca-240456610003] Performed ActionMailer::MailDeliveryJob (Job ID: 57056573-a817-4e69-b6ca-240456610003) from Async(default) in 3.94ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f] Performing ActionMailer::MailDeliveryJob (Job ID: dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f) from Async(default) enqueued at 2022-07-08T08:40:31Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["lindsay.ferguson@reqres.in", "Lindsay"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 95)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 93)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f] UserConfirmationMailer#welcome: processed outbound mail in 1.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f] Delivered mail 62c7ed7ff38d9_cfed467879997@itsacheckmate.mail (1.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f] Date: Fri, 08 Jul 2022 14:10:31 +0530
+From: from@example.com
+To: lindsay.ferguson@reqres.in
+Message-ID: <62c7ed7ff38d9_cfed467879997@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7ed7ff3558_cfed4678798d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7ed7ff3558_cfed4678798d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7ed7ff3558_cfed4678798d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Lindsay,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7ed7ff3558_cfed4678798d--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f] Performed ActionMailer::MailDeliveryJob (Job ID: dc4395e4-d041-4aa6-8f7b-bc8305ad9b3f) from Async(default) in 2.88ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991] Performing ActionMailer::MailDeliveryJob (Job ID: d937b3c5-6bef-4969-9f79-1772a9751991) from Async(default) enqueued at 2022-07-08T08:40:31Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["tobias.funke@reqres.in", "Tobias"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 85)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991] UserConfirmationMailer#welcome: processed outbound mail in 1.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991] Delivered mail 62c7ed80297_cfed468c8019c@itsacheckmate.mail (1.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991] Date: Fri, 08 Jul 2022 14:10:32 +0530
+From: from@example.com
+To: tobias.funke@reqres.in
+Message-ID: <62c7ed80297_cfed468c8019c@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7ed7ff4100_cfed468c8006a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7ed7ff4100_cfed468c8006a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7ed7ff4100_cfed468c8006a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Tobias,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7ed7ff4100_cfed468c8006a--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [d937b3c5-6bef-4969-9f79-1772a9751991] Performed ActionMailer::MailDeliveryJob (Job ID: d937b3c5-6bef-4969-9f79-1772a9751991) from Async(default) in 2.78ms
+Started GET "/users/api" for 127.0.0.1 at 2022-07-08 14:11:28 +0530
+Processing by UsersController#api as HTML
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Michael"], ["last_name", "Lawson"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", nil], ["email", "michael.lawson@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:41:28.542177"], ["updated_at", "2022-07-08 08:41:28.542177"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Lindsay"], ["last_name", "Ferguson"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/8-image.jpg"], ["about", nil], ["email", "lindsay.ferguson@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:41:28.546825"], ["updated_at", "2022-07-08 08:41:28.546825"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Tobias"], ["last_name", "Funke"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/9-image.jpg"], ["about", nil], ["email", "tobias.funke@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:41:28.549107"], ["updated_at", "2022-07-08 08:41:28.549107"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Byron"], ["last_name", "Fields"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/10-image.jpg"], ["about", nil], ["email", "byron.fields@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:41:28.551012"], ["updated_at", "2022-07-08 08:41:28.551012"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "George"], ["last_name", "Edwards"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/11-image.jpg"], ["about", nil], ["email", "george.edwards@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:41:28.552859"], ["updated_at", "2022-07-08 08:41:28.552859"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "password", "state", "created_at", "updated_at", "hobbys") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "Rachel"], ["last_name", "Howell"], ["gender", nil], ["avatar", "https://reqres.in/img/faces/12-image.jpg"], ["about", nil], ["email", "rachel.howell@reqres.in"], ["password", "[FILTERED]"], ["state", nil], ["created_at", "2022-07-08 08:41:28.554591"], ["updated_at", "2022-07-08 08:41:28.554591"], ["hobbys", "{}"]]
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:71:in `block in api'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 180ms (ActiveRecord: 9.3ms | Allocations: 17536)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-08 14:11:28 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:29
+  Rendered users/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 4624)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 7062)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.4ms | Allocations: 8414)
+
+
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 1ad43d64-4528-4b72-942b-9cd02f7b8123) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["michael.lawson@reqres.in", "Michael"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: addbc87e-06e3-4c80-a325-b9509aa7f511) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["byron.fields@reqres.in", "Byron"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: bd9edac3-d87d-4f43-85c9-5535576b127b) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["george.edwards@reqres.in", "George"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 1c510c63-5c99-4094-bcfc-c3a1db5c29d6) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["rachel.howell@reqres.in", "Rachel"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: eccbf156-576c-428a-80b0-7c2c7619f4ab) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["tobias.funke@reqres.in", "Tobias"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: aa674475-b554-4ec3-b886-7c97f3722c73) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["lindsay.ferguson@reqres.in", "Lindsay"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123] Performing ActionMailer::MailDeliveryJob (Job ID: 1ad43d64-4528-4b72-942b-9cd02f7b8123) from Async(default) enqueued at 2022-07-08T08:41:34Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["michael.lawson@reqres.in", "Michael"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 92)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 87)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123] UserConfirmationMailer#welcome: processed outbound mail in 3.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123] Delivered mail 62c7edbe326c0_cfed468c8033@itsacheckmate.mail (4.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123] Date: Fri, 08 Jul 2022 14:11:34 +0530
+From: from@example.com
+To: michael.lawson@reqres.in
+Message-ID: <62c7edbe326c0_cfed468c8033@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7edbe320b6_cfed468c802b7";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7edbe320b6_cfed468c802b7
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7edbe320b6_cfed468c802b7
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Michael,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7edbe320b6_cfed468c802b7--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ad43d64-4528-4b72-942b-9cd02f7b8123] Performed ActionMailer::MailDeliveryJob (Job ID: 1ad43d64-4528-4b72-942b-9cd02f7b8123) from Async(default) in 8.19ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73] Performing ActionMailer::MailDeliveryJob (Job ID: aa674475-b554-4ec3-b886-7c97f3722c73) from Async(default) enqueued at 2022-07-08T08:41:34Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["lindsay.ferguson@reqres.in", "Lindsay"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 101)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73]   Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 95)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73] UserConfirmationMailer#welcome: processed outbound mail in 2.7ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73] Delivered mail 62c7edbe35083_cfed47048056c@itsacheckmate.mail (1.3ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73] Date: Fri, 08 Jul 2022 14:11:34 +0530
+From: from@example.com
+To: lindsay.ferguson@reqres.in
+Message-ID: <62c7edbe35083_cfed47048056c@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7edbe34bc9_cfed4704804f4";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7edbe34bc9_cfed4704804f4
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7edbe34bc9_cfed4704804f4
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Lindsay,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7edbe34bc9_cfed4704804f4--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aa674475-b554-4ec3-b886-7c97f3722c73] Performed ActionMailer::MailDeliveryJob (Job ID: aa674475-b554-4ec3-b886-7c97f3722c73) from Async(default) in 4.72ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511] Performing ActionMailer::MailDeliveryJob (Job ID: addbc87e-06e3-4c80-a325-b9509aa7f511) from Async(default) enqueued at 2022-07-08T08:41:34Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["byron.fields@reqres.in", "Byron"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab] Performing ActionMailer::MailDeliveryJob (Job ID: eccbf156-576c-428a-80b0-7c2c7619f4ab) from Async(default) enqueued at 2022-07-08T08:41:34Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["tobias.funke@reqres.in", "Tobias"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 242)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511]   Rendered layout layouts/mailer.text.erb (Duration: 0.5ms | Allocations: 121)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511] UserConfirmationMailer#welcome: processed outbound mail in 3.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendered layout layouts/mailer.html.erb (Duration: 0.9ms | Allocations: 325)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511] Delivered mail 62c7edbe36c51_cfed46f080729@itsacheckmate.mail (1.6ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511] Date: Fri, 08 Jul 2022 14:11:34 +0530
+From: from@example.com
+To: byron.fields@reqres.in
+Message-ID: <62c7edbe36c51_cfed46f080729@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7edbe366c5_cfed46f080618";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7edbe366c5_cfed46f080618
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7edbe366c5_cfed46f080618
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Byron,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7edbe366c5_cfed46f080618--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab]   Rendered layout layouts/mailer.text.erb (Duration: 0.5ms | Allocations: 417)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab] UserConfirmationMailer#welcome: processed outbound mail in 6.6ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [addbc87e-06e3-4c80-a325-b9509aa7f511] Performed ActionMailer::MailDeliveryJob (Job ID: addbc87e-06e3-4c80-a325-b9509aa7f511) from Async(default) in 5.89ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab] Delivered mail 62c7edbe37c9a_cfed4740809eb@itsacheckmate.mail (1.7ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab] Date: Fri, 08 Jul 2022 14:11:34 +0530
+From: from@example.com
+To: tobias.funke@reqres.in
+Message-ID: <62c7edbe37c9a_cfed4740809eb@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7edbe37509_cfed474080892";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7edbe37509_cfed474080892
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7edbe37509_cfed474080892
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Tobias,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7edbe37509_cfed474080892--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [eccbf156-576c-428a-80b0-7c2c7619f4ab] Performed ActionMailer::MailDeliveryJob (Job ID: eccbf156-576c-428a-80b0-7c2c7619f4ab) from Async(default) in 9.17ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b] Performing ActionMailer::MailDeliveryJob (Job ID: bd9edac3-d87d-4f43-85c9-5535576b127b) from Async(default) enqueued at 2022-07-08T08:41:34Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["george.edwards@reqres.in", "George"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 91)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 90)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b] UserConfirmationMailer#welcome: processed outbound mail in 1.9ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b] Delivered mail 62c7edbe39050_cfed471881187@itsacheckmate.mail (1.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b] Date: Fri, 08 Jul 2022 14:11:34 +0530
+From: from@example.com
+To: george.edwards@reqres.in
+Message-ID: <62c7edbe39050_cfed471881187@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7edbe38bd9_cfed47188105d";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7edbe38bd9_cfed47188105d
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7edbe38bd9_cfed47188105d
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello George,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7edbe38bd9_cfed47188105d--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [bd9edac3-d87d-4f43-85c9-5535576b127b] Performed ActionMailer::MailDeliveryJob (Job ID: bd9edac3-d87d-4f43-85c9-5535576b127b) from Async(default) in 3.39ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6] Performing ActionMailer::MailDeliveryJob (Job ID: 1c510c63-5c99-4094-bcfc-c3a1db5c29d6) from Async(default) enqueued at 2022-07-08T08:41:34Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["rachel.howell@reqres.in", "Rachel"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 85)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6] UserConfirmationMailer#welcome: processed outbound mail in 1.6ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6] Delivered mail 62c7edbe39c9f_cfed472c813b4@itsacheckmate.mail (1.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6] Date: Fri, 08 Jul 2022 14:11:34 +0530
+From: from@example.com
+To: rachel.howell@reqres.in
+Message-ID: <62c7edbe39c9f_cfed472c813b4@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62c7edbe398a9_cfed472c8121a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62c7edbe398a9_cfed472c8121a
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62c7edbe398a9_cfed472c8121a
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Rachel,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62c7edbe398a9_cfed472c8121a--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1c510c63-5c99-4094-bcfc-c3a1db5c29d6] Performed ActionMailer::MailDeliveryJob (Job ID: 1c510c63-5c99-4094-bcfc-c3a1db5c29d6) from Async(default) in 2.9ms

@@ -57,11 +57,11 @@ class UsersController < ApplicationController
   end
   
   def api
-    url = "https://reqres.in/api/users?page=1"
+    url = "https://reqres.in/api/users?page=2"
     response = RestClient.get(url)
     data_h = JSON.parse(response)
     print data_h.keys
-    
+    @counter = 0
     data_h['data'].each do |user|
       @email      = user['email']
       @first_name = user['first_name']
@@ -70,10 +70,14 @@ class UsersController < ApplicationController
       @user = User.new(email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
       if @user.save
         Sidekiq::Client.enqueue_to_in("default", Time.now + 2.seconds, MailWorker, @user.email, @user.first_name)
+        @counter +=1 
       else
         flash[:alert] = "Details Entered Incorrectly"
         render :new
       end
+    end
+    if @counter > 1
+      redirect_to root_path, notice: "Added New User from API"
     end
   end
 
