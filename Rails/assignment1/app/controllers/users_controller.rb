@@ -1,5 +1,10 @@
+require 'json'
+require 'rest_client'
+require 'open-uri'
+
 class UsersController < ApplicationController 
   RECORDS_PER_PAGE = 10
+
   def index
     @page = params.fetch(:page,0).to_i
     if params[:search]
@@ -51,6 +56,27 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "Deleted User"
   end
   
+  def api
+    url = "https://reqres.in/api/users?page=1"
+    response = RestClient.get(url)
+    data_h = JSON.parse(response)
+    print data_h.keys
+    
+    data_h['data'].each do |user|
+      @email      = user['email']
+      @first_name = user['first_name']
+      @last_name  = user['last_name']
+      @avatar     = user['avatar']
+      @user = User.new(email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
+      if @user.save
+        Sidekiq::Client.enqueue_to_in("default", Time.now + 2.seconds, MailWorker, @user.email, @user.first_name)
+      else
+        flash[:alert] = "Details Entered Incorrectly"
+        render :new
+      end
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :gender, :state, :avatar, :email, :password, :about, hobbys: [])
