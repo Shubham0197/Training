@@ -4,8 +4,13 @@
 <br>
 <h3>Search User using first_name</h3>
 <%= form_with url: users_path, method: :get do |form| %>
-<%= form.text_field :search %>
+<%= form.text_field :search, placeholder: "Search"  %>
 <%= form.submit "Search" %>
+<% end %>
+
+<%= form_with url: users_api_path, method: :get do |form| %>
+<%= form.text_field :page, placeholder: "Page no." %>
+<%= form.submit "Add via API" %>
 <% end %>
 
 <% if params[:search] %>

@@ -57,27 +57,34 @@ class UsersController < ApplicationController
   end
   
   def api
-    url = "https://reqres.in/api/users?page=2"
+    @page =  params[:page]
+    url = "https://reqres.in/api/users?page=#{@page}"
     response = RestClient.get(url)
     data_h = JSON.parse(response)
     print data_h.keys
     @counter = 0
+    @note = []
     data_h['data'].each do |user|
+      @id         = user['id']
       @email      = user['email']
       @first_name = user['first_name']
       @last_name  = user['last_name']
       @avatar     = user['avatar']
-      @user = User.new(email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
-      if @user.save
-        Sidekiq::Client.enqueue_to_in("default", Time.now + 2.seconds, MailWorker, @user.email, @user.first_name)
-        @counter +=1 
+      if User.where("id = ?", @id).count == 1
+        @user = User.find(@id)
+        @user.update(email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
       else
-        flash[:alert] = "Details Entered Incorrectly"
-        render :new
+        @user = User.new(id: @id, email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
+      end
+      if @user.save
+        @note << @user.first_name
+        @counter += 1
       end
     end
     if @counter > 1
-      redirect_to root_path, notice: "Added New User from API"
+      redirect_to root_path, notice: "#{@note.to_sentence} added as New User from API. Total Users added are #{@counter}"
+    else
+      redirect_to root_path, alert: "Error in the page no."
     end
   end
 
