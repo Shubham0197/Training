@@ -2,16 +2,31 @@ require 'json'
 require 'rest-client'
 require 'open-uri'
 
-url = "https://reqres.in/api/users?page=1"
-response = RestClient.get(url)
-data_h = JSON.parse(response)
-print data_h.keys
-
-data_h['data'].each do |user|
-  @email      = user['email']
-  @first_name = user['first_name']
-  @last_name  = user['last_name']
-  @avatar     = user['avatar']
-  User.create(email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
-
-end
+@id =  6
+#https://reqres.in/api/users/2
+url = "https://reqres.in/api/users"
+print url,"\n"
+response1 = RestClient.post url, {
+  "name": "morpheus",
+  "job": "leader"
+}
+data_h = JSON.parse(response1)
+@id         = user['id']
+url = "https://reqres.in/api/users/#{@id}"
+response2 = RestClient.get url
+print response.body
+#data_h = JSON.parse(response)
+#print data_h
+#response = RestClient.get(url)
+#data_h = JSON.parse(response)
+#print data_h.keys
+#@counter = 0
+#@note = []
+#data_h['data'].each do |user|
+#  @id         = user['id']
+#  @email      = user['email']
+#  @first_name = user['first_name']
+#  @last_name  = user['last_name']
+#  @avatar     = user['avatar']
+#  if User.where("id = ?", @id).count == 1
+#    @user = User.find(@id)

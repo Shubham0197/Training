@@ -88,6 +88,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete_api
+    @id =  params[:id]
+    #https://reqres.in/api/users/2
+    url = "https://reqres.in/api/users/#{@id}"
+    response = RestClient.delete(url)
+    data_h = JSON.parse(response)
+    print data_h
+  end
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :gender, :state, :avatar, :email, :password, :about, hobbys: [])
