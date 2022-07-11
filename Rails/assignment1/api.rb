@@ -11,10 +11,15 @@ response1 = RestClient.post url, {
   "job": "leader"
 }
 data_h = JSON.parse(response1)
-@id         = user['id']
+print response1.body
+print data_h.keys
 url = "https://reqres.in/api/users/#{@id}"
-response2 = RestClient.get url
-print response.body
+response2 = RestClient.patch url, {
+  "job": "some"
+}
+data_h = JSON.parse(response2)
+print data_h.keys
+print response2.body
 #data_h = JSON.parse(response)
 #print data_h
 #response = RestClient.get(url)
