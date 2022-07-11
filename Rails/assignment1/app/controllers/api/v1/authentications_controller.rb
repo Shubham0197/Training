@@ -5,11 +5,17 @@ class Api::V1::AuthenticationsController <ApplicationController
     @user = User.find_by(email: params[:email])
 
     if (!@user)
-      render json: { Error: "Invalid Email"}
+      render({ json: { Error: "Invalid Email"}, status: :unauthorized })
     elsif @user.authenticate(params[:password])
-      render json: {message: "Correct Password "}
+      secret_key = Rails.application.secrets.secret_key_base[0]
+      token = JWT.encode({
+        user_id: @user.id,
+        email: @user.email
+        }, secret_key )
+
+      render json: {token: token}
     else
-      render json: {message: "InCorrect Password "}
+      render ({json: {error: "Password Wrong"}, status: :unauthorized })
     end
 
 

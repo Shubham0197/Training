@@ -118,6 +118,7 @@ GEM
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.4.1)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -255,6 +256,7 @@ DEPENDENCIES
   debug
   jbuilder
   jsbundling-rails
+  jwt (~> 2.4)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3)
