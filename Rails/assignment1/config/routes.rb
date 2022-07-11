@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   
   get "users/api"
   resources :users
+  namespace :api do
+    namespace :v1 do
+      post "login", to: "authentications#login"
+    end
+  end
+
 
   namespace :api do
     namespace :v1 do

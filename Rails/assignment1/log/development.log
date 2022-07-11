@@ -14488,3 +14488,697 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.4ms | Allocations: 8329)
 
 
+Started POST "/apis/v1/users?user[email]=asd@gmail.com&user[password]=[FILTERED]&user[fisrt_name]=sam" for 127.0.0.1 at 2022-07-11 17:23:39 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/apis/v1/users"):
+  
+Started POST "/apis/v1/users?user[email]=asd@gmail.com&user[password]=[FILTERED]&user[fisrt_name]=sam" for 127.0.0.1 at 2022-07-11 17:23:53 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/apis/v1/users"):
+  
+Started POST "/api/v1/users?user[email]=asd@gmail.com&user[password]=[FILTERED]&user[fisrt_name]=sam" for 127.0.0.1 at 2022-07-11 17:24:01 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asd@gmail.com", "password"=>"[FILTERED]", "fisrt_name"=>"sam"}}
+[31mUnpermitted parameter: :fisrt_name. Context: { controller: Api::V1::UsersController, action: create, request: #<ActionDispatch::Request:0x00007f954876af90>, params: {"user"=>{"email"=>"asd@gmail.com", "password"=>"[FILTERED]", "fisrt_name"=>"sam"}, "controller"=>"api/v1/users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asd@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Completed 200 OK in 174ms (Views: 2.9ms | ActiveRecord: 2.7ms | Allocations: 13007)
+
+
+Started POST "/api/v1/users?user[email]=asdd@gmail.com&user[password]=[FILTERED]&user[fisrt_name]=sam" for 127.0.0.1 at 2022-07-11 17:24:10 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdd@gmail.com", "password"=>"[FILTERED]", "fisrt_name"=>"sam"}}
+[31mUnpermitted parameter: :fisrt_name. Context: { controller: Api::V1::UsersController, action: create, request: #<ActionDispatch::Request:0x00007f9554b91540>, params: {"user"=>{"email"=>"asdd@gmail.com", "password"=>"[FILTERED]", "fisrt_name"=>"sam"}, "controller"=>"api/v1/users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "state", "created_at", "updated_at", "hobbys", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", nil], ["last_name", nil], ["gender", nil], ["avatar", nil], ["about", nil], ["email", "asdd@gmail.com"], ["state", nil], ["created_at", "2022-07-11 11:54:11.124708"], ["updated_at", "2022-07-11 11:54:11.124708"], ["hobbys", "{}"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.82ms)
+Completed 200 OK in 177ms (Views: 2.2ms | ActiveRecord: 7.1ms | Allocations: 8492)
+
+
+Started PATCH "/api/v1/users?user[email]=asdd@gmail.com&user[password]=[FILTERED]&user[first_name]=sam&id=347" for 127.0.0.1 at 2022-07-11 17:24:46 +0530
+  
+ActionController::RoutingError (No route matches [PATCH] "/api/v1/users"):
+  
+Started PATCH "/api/v1/users?user[email]=asdd@gmail.com&user[password]=[FILTERED]&user[first_name]=sam&id=347" for 127.0.0.1 at 2022-07-11 17:25:18 +0530
+  
+ActionController::RoutingError (No route matches [PATCH] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?id=347" for 127.0.0.1 at 2022-07-11 17:25:36 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/user?id=347" for 127.0.0.1 at 2022-07-11 17:25:42 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/user"):
+  
+Started DELETE "/api/v1/users?id=347" for 127.0.0.1 at 2022-07-11 17:25:53 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?id=347" for 127.0.0.1 at 2022-07-11 17:27:27 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?id=347" for 127.0.0.1 at 2022-07-11 17:27:43 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?id=346" for 127.0.0.1 at 2022-07-11 17:28:27 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?id=1" for 127.0.0.1 at 2022-07-11 17:28:33 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?params[id]=1" for 127.0.0.1 at 2022-07-11 17:29:25 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users?=1" for 127.0.0.1 at 2022-07-11 17:29:32 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users"):
+  
+Started DELETE "/api/v1/users/347" for 127.0.0.1 at 2022-07-11 17:29:40 +0530
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>"347"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 347], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 347]]
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 23ms (Views: 1.7ms | ActiveRecord: 9.4ms | Allocations: 18910)
+
+
+Started PATCH "/api/v1/users/347?user[email]=asdd@gmail.com&user[password]=[FILTERED]&user[first_name]=sam" for 127.0.0.1 at 2022-07-11 17:29:51 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"email"=>"asdd@gmail.com", "password"=>"[FILTERED]", "first_name"=>"sam"}, "id"=>"347"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 347], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms | Allocations: 933)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=347):
+  
+app/controllers/api/v1/users_controller.rb:26:in `update'
+Started POST "/api/v1/users?user[email]=asdd@gmail.com&user[password]=[FILTERED]&user[first_name]=sam" for 127.0.0.1 at 2022-07-11 17:30:11 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdd@gmail.com", "password"=>"[FILTERED]", "first_name"=>"sam"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "state", "created_at", "updated_at", "hobbys", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "sam"], ["last_name", nil], ["gender", nil], ["avatar", nil], ["about", nil], ["email", "asdd@gmail.com"], ["state", nil], ["created_at", "2022-07-11 12:00:11.644935"], ["updated_at", "2022-07-11 12:00:11.644935"], ["hobbys", "{}"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.96ms)
+Completed 200 OK in 176ms (Views: 1.4ms | ActiveRecord: 7.2ms | Allocations: 7347)
+
+
+Started POST "/api/v1/users/348?user[email]=asdd@gmail.com&user[password]=[FILTERED]&user[first_name]=samuel" for 127.0.0.1 at 2022-07-11 17:30:28 +0530
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/users/348"):
+  
+Started GET "/api/v1/users/348" for 127.0.0.1 at 2022-07-11 17:31:26 +0530
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"348"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:10:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 786)
+
+
+Started PATCH "/api/v1/users/348" for 127.0.0.1 at 2022-07-11 17:31:32 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"id"=>"348"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.2ms | Allocations: 979)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/api/v1/users_controller.rb:44:in `user_params'
+app/controllers/api/v1/users_controller.rb:27:in `update'
+Started PATCH "/api/v1/users/348?user[first_name]=samuel" for 127.0.0.1 at 2022-07-11 17:31:43 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"first_name"=>"samuel"}, "id"=>"348"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.com"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "first_name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["first_name", "samuel"], ["updated_at", "2022-07-11 12:01:43.629836"], ["id", 348]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.com"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 5434)
+
+
+Started PATCH "/api/v1/users/348?user[password]=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:31:51 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"password"=>"[FILTERED]"}, "id"=>"348"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.com"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-11 12:01:51.365882"], ["password_digest", "[FILTERED]"], ["id", 348]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.com"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 174ms (Views: 0.4ms | ActiveRecord: 7.7ms | Allocations: 5341)
+
+
+Started PATCH "/api/v1/users/348?user[email]=asdd@gmail.coms" for 127.0.0.1 at 2022-07-11 17:31:58 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"email"=>"asdd@gmail.coms"}, "id"=>"348"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.coms"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["email", "asdd@gmail.coms"], ["updated_at", "2022-07-11 12:01:58.189285"], ["id", 348]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.coms"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 7.8ms | Allocations: 5315)
+
+
+Started PATCH "/api/v1/users/348?user[email]=asdd@gmail.coms&user[password]=[FILTERED]&user[first_name]=samuel" for 127.0.0.1 at 2022-07-11 17:32:03 +0530
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]", "first_name"=>"samuel"}, "id"=>"348"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.coms"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-11 12:02:04.079715"], ["password_digest", "[FILTERED]"], ["id", 348]]
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdd@gmail.coms"], ["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:28:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 170ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 5358)
+
+
+Started DELETE "/api/v1/users/348?user[email]=asdd@gmail.coms&user[password]=[FILTERED]&user[first_name]=samuel" for 127.0.0.1 at 2022-07-11 17:32:12 +0530
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]", "first_name"=>"samuel"}, "id"=>"348"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 348], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 348]]
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 7.0ms | Allocations: 2084)
+
+
+Started DELETE "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:51:21 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/login"):
+  
+Started DELETE "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:52:00 +0530
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/login"):
+  
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:52:05 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 8ms (Views: 0.8ms | ActiveRecord: 2.1ms | Allocations: 8890)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:11:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:53:43 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 5ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 6368)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:11:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:55:01 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 500 Internal Server Error in 5ms (Views: 0.9ms | ActiveRecord: 0.9ms | Allocations: 6122)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/authentications_controller.rb:10:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:55:26 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.13ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.8ms | Allocations: 6703)
+
+
+  
+NoMethodError (undefined method `read_attribute_for_serialization' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:10:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:55:57 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.7ms | Allocations: 2880)
+
+
+  
+NoMethodError (undefined method `nil' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:7:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:56:09 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 5ms (Views: 0.9ms | ActiveRecord: 0.8ms | Allocations: 6290)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:12:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:56:26 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 5ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 6290)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:59:24 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.8ms | Allocations: 2859)
+
+
+  
+NoMethodError (undefined method `errors' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:8:in `login'
+Started POST "/api/v1/login?email=asdd@gmail.coms&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 17:59:36 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"asdd@gmail.coms", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdd@gmail.coms"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 4ms (Views: 0.8ms | ActiveRecord: 0.7ms | Allocations: 6288)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started GET "/users/new" for 127.0.0.1 at 2022-07-11 18:00:08 +0530
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_states.html.erb (Duration: 2.1ms | Allocations: 1469)
+  Rendered users/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 9270)
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 30736)
+Completed 200 OK in 34ms (Views: 29.2ms | ActiveRecord: 1.8ms | Allocations: 34022)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-07-11 18:00:44 +0530
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"ha", "last_name"=>"py", "gender"=>"Male", "state"=>"Andhra Pradesh", "avatar"=>"https://reqres.in/img/faces/7-image.jpg", "email"=>"a@a.a", "password"=>"[FILTERED]", "hobbys"=>["cricket"], "about"=>""}, "commit"=>"Create User"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:29:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "gender", "avatar", "about", "email", "state", "created_at", "updated_at", "hobbys", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["first_name", "ha"], ["last_name", "py"], ["gender", "Male"], ["avatar", "https://reqres.in/img/faces/7-image.jpg"], ["about", ""], ["email", "a@a.a"], ["state", "Andhra Pradesh"], ["created_at", "2022-07-11 12:30:44.244172"], ["updated_at", "2022-07-11 12:30:44.244172"], ["hobbys", "{cricket}"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/users_controller.rb:29:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:29:in `create'
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 173ms (ActiveRecord: 2.3ms | Allocations: 7287)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-11 18:00:44 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:34
+  Rendered users/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 5814)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 8156)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.5ms | Allocations: 9105)
+
+
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:01:47 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 168ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 774)
+
+
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:01:53 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 163ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 766)
+
+
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:01:57 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 500 Internal Server Error in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1528)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:02:40 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 167ms (Views: 1.1ms | ActiveRecord: 1.5ms | Allocations: 7768)
+
+
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:03:01 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 169ms (Views: 1.0ms | ActiveRecord: 1.5ms | Allocations: 7748)
+
+
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:03:05 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1536)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:03:15 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:03:36 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 4ms (Views: 0.7ms | ActiveRecord: 0.7ms | Allocations: 6289)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:04:10 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 5ms (Views: 0.9ms | ActiveRecord: 0.8ms | Allocations: 6288)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:11:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:04:22 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 5ms (Views: 1.0ms | ActiveRecord: 0.8ms | Allocations: 6288)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:11:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:07:38 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 500 Internal Server Error in 7ms (Views: 1.7ms | ActiveRecord: 0.9ms | Allocations: 6288)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:07:45 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 500 Internal Server Error in 6ms (Views: 1.2ms | ActiveRecord: 1.0ms | Allocations: 6288)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:07:46 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 500 Internal Server Error in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:07:46 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:07:47 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 500 Internal Server Error in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:07:47 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 500 Internal Server Error in 3ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:11:44 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 500 Internal Server Error in 6ms (Views: 1.5ms | ActiveRecord: 0.8ms | Allocations: 6289)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:11:46 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 500 Internal Server Error in 3ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:11:46 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 500 Internal Server Error in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:11:49 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 500 Internal Server Error in 3ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1527)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/api/v1/authentications_controller.rb:14:in `login'
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:11:52 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 500 Internal Server Error in 167ms (Views: 0.7ms | ActiveRecord: 1.6ms | Allocations: 3407)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/authentications_controller.rb:17:in `login'
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:12:28 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 171ms (Views: 1.1ms | ActiveRecord: 2.7ms | Allocations: 7762)
+
+
+Started POST "/api/v1/login?email=a@a.aa&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 18:12:35 +0530
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.aa", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.aa"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 721)
+
+
