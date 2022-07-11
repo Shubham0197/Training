@@ -15345,3 +15345,152 @@ Migrating to CreateAssignments (20220711141242)
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(5799735210636100125)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/login?email=a@a.a&password=[FILTERED]" for 127.0.0.1 at 2022-07-11 19:55:41 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AuthenticationsController#login as */*
+  Parameters: {"email"=>"a@a.a", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a@a.a"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/authentications_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 166ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 7496)
+
+
+Started GET "/api/v1/assignment" for 127.0.0.1 at 2022-07-11 19:56:53 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/assignment"):
+  
+Started GET "/api/v1/assignments" for 127.0.0.1 at 2022-07-11 19:57:05 +0530
+Processing by Api::V1::AssignmentsController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.6ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.2ms | Allocations: 7123)
+
+
+  
+NoMethodError (undefined method `keys' for nil:NilClass):
+  
+app/controllers/api/v1/assignments_controller.rb:7:in `index'
+Started GET "/api/v1/assignments" for 127.0.0.1 at 2022-07-11 19:57:29 +0530
+Processing by Api::V1::AssignmentsController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.88ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.7ms | Allocations: 6153)
+
+
+  
+NoMethodError (undefined method `keys' for nil:NilClass):
+  
+app/controllers/api/v1/assignments_controller.rb:7:in `index'
+Started GET "/api/v1/assignments" for 127.0.0.1 at 2022-07-11 19:57:30 +0530
+Processing by Api::V1::AssignmentsController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.71ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1238)
+
+
+  
+NoMethodError (undefined method `keys' for nil:NilClass):
+  
+app/controllers/api/v1/assignments_controller.rb:7:in `index'
+Started POST "/api/v1/assignments?name=samuel" for 127.0.0.1 at 2022-07-11 19:58:02 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 440)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+app/controllers/api/v1/assignments_controller.rb:18:in `create'
+Started POST "/api/v1/assignments?name=samuel" for 127.0.0.1 at 2022-07-11 19:58:36 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 349], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/assignments_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/assignments_controller.rb:21:in `create'
+  [1m[36mAssignment Create (0.3ms)[0m  [1m[32mINSERT INTO "assignments" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "samuel"], ["user_id", 349], ["created_at", "2022-07-11 14:28:36.310543"], ["updated_at", "2022-07-11 14:28:36.310543"]]
+  ↳ app/controllers/api/v1/assignments_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/assignments_controller.rb:21:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 17ms (Views: 0.9ms | ActiveRecord: 3.4ms | Allocations: 18206)
+
+
+Started POST "/api/v1/assignments?name=samuel" for 127.0.0.1 at 2022-07-11 19:59:19 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1908)
+
+
+  
+ActionView::MissingTemplate (Missing template api/v1/assignments/create, application/create with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :vtt, :png, :jpeg, :gif, :bmp, :tiff, :svg, :mpeg, :mp3, :ogg, :m4a, :webm, :mp4, :otf, :ttf, :woff, :woff2, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip, :gzip, :turbo_stream], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/home/itsacheckmate/Training/Rails/assignment1/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actiontext-7.0.3/app/views"
+  * "/home/itsacheckmate/.rvm/gems/ruby-3.0.0/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  users/edit
+               rails/conductor/action_mailbox/inbound_emails/new
+               layouts/rails/conductor
+               rails/conductor/action_mailbox/inbound_emails/sources/new
+               user_confirmation_mailer/welcome
+               rails/conductor/action_mailbox/inbound_emails/index):
+  
+app/controllers/api/v1/assignments_controller.rb:14:in `create'
+Started POST "/api/v1/assignments?name=samuel" for 127.0.0.1 at 2022-07-11 20:01:19 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 1ms (Views: 0.9ms | ActiveRecord: 0.0ms | Allocations: 3516)
+
+
+Started POST "/api/v1/assignments?name=samuel2" for 127.0.0.1 at 2022-07-11 20:05:06 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 349], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/assignments_controller.rb:12:in `create'
+  [1m[36mAssignment Create (0.1ms)[0m  [1m[32mINSERT INTO "assignments" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "samuel2"], ["user_id", 349], ["created_at", "2022-07-11 14:35:06.599355"], ["updated_at", "2022-07-11 14:35:06.599355"]]
+  ↳ app/controllers/api/v1/assignments_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/assignments_controller.rb:12:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 13ms (Views: 1.0ms | ActiveRecord: 3.4ms | Allocations: 12965)
+
+
+Started POST "/api/v1/assignments?name=samuel2" for 127.0.0.1 at 2022-07-11 20:05:15 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel2"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.04ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 267)
+
+
+Started GET "/api/v1/assignments?name=samuel2" for 127.0.0.1 at 2022-07-11 20:05:20 +0530
+Processing by Api::V1::AssignmentsController#index as */*
+  Parameters: {"name"=>"samuel2"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.5ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1251)
+
+
+  
+NoMethodError (undefined method `keys' for nil:NilClass):
+  
+app/controllers/api/v1/assignments_controller.rb:7:in `index'
+Started GET "/api/v1/assignments?name=samuel2" for 127.0.0.1 at 2022-07-11 20:05:46 +0530
+Processing by Api::V1::AssignmentsController#index as */*
+  Parameters: {"name"=>"samuel2"}
+[active_model_serializers]   [1m[36mAssignment Load (0.1ms)[0m  [1m[34mSELECT "assignments".* FROM "assignments"[0m
+[active_model_serializers]   ↳ app/controllers/api/v1/assignments_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.69ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.7ms | Allocations: 7257)
+
+
+Started POST "/api/v1/assignments?name=samuel2" for 127.0.0.1 at 2022-07-11 20:05:56 +0530
+Processing by Api::V1::AssignmentsController#create as */*
+  Parameters: {"name"=>"samuel2"}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 264)
+
+
