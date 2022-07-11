@@ -10,7 +10,8 @@ class Api::V1::AuthenticationsController <ApplicationController
       secret_key = Rails.application.secrets.secret_key_base[0]
       token = JWT.encode({
         user_id: @user.id,
-        email: @user.email
+        email: @user.email,
+        exp: 24.hours.from_now.to_i
         }, secret_key )
 
       render json: {token: token}
