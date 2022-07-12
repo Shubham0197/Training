@@ -5,11 +5,13 @@ namespace :import do
   task users: :environment do
     counter = 0
     filename = File.join Rails.root, "users.csv"
-    CSV.foreach(filename) do |row|
-      email, password, first, last = row
-      user = User.create(email: email, first_name: first, last_name: last, password: password)
+    CSV.foreach(filename, headers: true) do |row|
+      p row
+      p row["Email"]
+      #  email, password, first, last = row
+      user = User.create(email: row["Email"], first_name: row["First_Name"], last_name: row["Last_Name"], password: row["Password"])
       counter += 1 if user.persisted?
-      puts "#{email} - #{user.errors.full_messages.join(",")}" if user.errors.any?
+      puts "#{row["Email"]} - #{user.errors.full_messages.join(",")}" if user.errors.any?
     end
 
     puts "Imported #{counter} users"
