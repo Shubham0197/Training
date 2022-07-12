@@ -14,6 +14,12 @@ class UsersController < ApplicationController
       @users_count = User.all.count
       @users = User.all.order(:id).offset(@page * RECORDS_PER_PAGE).limit(RECORDS_PER_PAGE)
     end
+   # @import = User::Import.new
+    @users_all = User.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users_all.to_csv}
+    end
   end
 
   def show
