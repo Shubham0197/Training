@@ -2,7 +2,14 @@ Rails.application.routes.draw do
   root "users#index"
   
   get "users/api"
-  resources :users
+
+  resources :users do
+    collection do
+      post :import
+    end
+  end
+
+
   namespace :api do
     namespace :v1 do
       post "login", to: "authentications#login"

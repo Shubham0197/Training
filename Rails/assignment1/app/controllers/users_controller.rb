@@ -100,6 +100,11 @@ class UsersController < ApplicationController
     print data_h
   end
 
+  def import
+    count = User.import params[:file]
+    redirect_to users_path, notice: "Imported #{count} users"
+  end
+
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :gender, :state, :avatar, :email, :password, :about, hobbys: [])

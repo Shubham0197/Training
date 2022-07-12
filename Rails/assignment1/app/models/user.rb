@@ -2,4 +2,19 @@ class User < ApplicationRecord
   has_secure_password
   HOBBYS = %i[cricket badminton cod reading movies comics]
   validates :email, uniqueness: true
+
+  def self.import(file)
+    counter = 0
+    filename = File.join Rails.root, "users.csv"
+    CSV.foreach(file.path, headers: true, header_converters: :symbol) do |row|
+      user = User.where(email: row[:email]).first_or_initialize
+      user.assign_attributes row.to_hash.slice(:last_name, :first_Name, :password)
+      if user.save
+        counter += 1
+      else
+        puts "#{row["Email"]} - #{user.errors.full_messages.join(",")}"
+      end
+    end
+    counter
+  end
 end

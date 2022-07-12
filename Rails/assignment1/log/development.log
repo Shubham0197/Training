@@ -17714,3 +17714,130 @@ Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 1.0ms | Allocations: 5999)
   ↳ lib/tasks/import.rake:12:in `block (3 levels) in <main>'
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
   ↳ lib/tasks/import.rake:12:in `block (3 levels) in <main>'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "as12df@ads.com"], ["LIMIT", 1]]
+  ↳ lib/tasks/import.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "as12df@ads.com"], ["id", 353], ["LIMIT", 1]]
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-12 12:06:19.961147"], ["password_digest", "[FILTERED]"], ["id", 353]]
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "asdf@aads.com"], ["LIMIT", 1]]
+  ↳ lib/tasks/import.rake:9:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdf@aads.com"], ["id", 352], ["LIMIT", 1]]
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-12 12:06:20.131248"], ["password_digest", "[FILTERED]"], ["id", 352]]
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ lib/tasks/import.rake:11:in `block (3 levels) in <main>'
+Started GET "/users?search=first&commit=Search" for 127.0.0.1 at 2022-07-12 17:44:03 +0530
+Processing by UsersController#index as HTML
+  Parameters: {"search"=>"first", "commit"=>"Search"}
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE (lower(first_name) LIKE '%first%')[0m
+  ↳ app/controllers/users_controller.rb:11:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower(first_name) LIKE '%first%') ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:34
+  Rendered users/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 6101)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 8817)
+Completed 200 OK in 22ms (Views: 12.5ms | ActiveRecord: 3.4ms | Allocations: 14404)
+
+
+Started POST "/users/import" for 127.0.0.1 at 2022-07-12 17:44:29 +0530
+Processing by UsersController#import as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007ff880d324a0 @tempfile=#<Tempfile:/tmp/RackMultipart20220712-13723-z3blch.csv>, @original_filename="users.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"users.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Upload"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 701)
+
+
+  
+TypeError (exception class/object expected):
+  
+app/controllers/users_controller.rb:104:in `raise'
+app/controllers/users_controller.rb:104:in `import'
+Started PUT "/__web_console/repl_sessions/87e1a5fe71efbb39405f61bf72129aa5" for 127.0.0.1 at 2022-07-12 17:44:54 +0530
+Started PUT "/__web_console/repl_sessions/87e1a5fe71efbb39405f61bf72129aa5" for 127.0.0.1 at 2022-07-12 17:45:00 +0530
+Started POST "/users/import" for 127.0.0.1 at 2022-07-12 17:48:40 +0530
+Processing by UsersController#import as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007ff880f6af60 @tempfile=#<Tempfile:/tmp/RackMultipart20220712-13723-wk2bj0.csv>, @original_filename="users.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"users.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Upload"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "as12df@ads.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:10:in `block in import'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "as12df@ads.com"], ["id", 353], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-12 12:18:40.505785"], ["password_digest", "[FILTERED]"], ["id", 353]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "asdf@aads.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:10:in `block in import'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdf@aads.com"], ["id", 352], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-12 12:18:40.685435"], ["password_digest", "[FILTERED]"], ["id", 352]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:12:in `block in import'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 383ms (ActiveRecord: 9.1ms | Allocations: 13632)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-07-12 17:48:40 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:34
+  Rendered users/index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 5483)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 7920)
+Completed 200 OK in 35ms (Views: 30.9ms | ActiveRecord: 0.3ms | Allocations: 9187)
+
+
+Started POST "/users/import" for 127.0.0.1 at 2022-07-12 18:18:14 +0530
+Processing by UsersController#import as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "file"=>#<ActionDispatch::Http::UploadedFile:0x000055cf7de0d470 @tempfile=#<Tempfile:/tmp/RackMultipart20220712-13723-no2x19.csv>, @original_filename="users.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"users.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Upload"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "as12df@ads.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:10:in `block in import'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "as12df@ads.com"], ["id", 353], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-12 12:48:14.539083"], ["password_digest", "[FILTERED]"], ["id", 353]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "asdf@aads.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:10:in `block in import'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "asdf@aads.com"], ["id", 352], ["LIMIT", 1]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "password_digest" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-07-12 12:48:14.709705"], ["password_digest", "[FILTERED]"], ["id", 352]]
+  ↳ app/models/user.rb:12:in `block in import'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:12:in `block in import'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 347ms (ActiveRecord: 3.3ms | Allocations: 6972)
+
+
+Started GET "/users" for 127.0.0.1 at 2022-07-12 18:18:14 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:14:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/users/index.html.erb:34
+  Rendered users/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 5406)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 7789)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.3ms | Allocations: 8605)
+
+
