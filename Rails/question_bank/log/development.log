@@ -12288,3 +12288,8 @@ Processing by Api::V1::TwitterAccountsController#destroy as */*
 Completed 200 OK in 28ms (Views: 0.6ms | ActiveRecord: 2.8ms | Allocations: 13209)
 
 
+Started GET "/users/new" for 127.0.0.1 at 2022-07-07 18:12:38 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users/new"):
+  

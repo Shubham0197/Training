@@ -41,4 +41,9 @@
 <%= form.label :pet_dog, "I own a dog" %>
 <%= form.check_box :pet_cat %>
 <%= form.label :pet_cat, "I own a cat" %>
+<br>
+<%= form.radio_button :age, "child" %>
+<%= form.label :age_child, "I am younger than 21" %>
+<%= form.radio_button :age, "adult" %>
+<%= form.label :age_adult, "I am over 21" %>
 <% end %>

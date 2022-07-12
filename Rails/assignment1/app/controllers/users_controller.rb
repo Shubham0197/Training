@@ -74,11 +74,14 @@ class UsersController < ApplicationController
         @user = User.find(@id)
         @user.update(email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
       else
+        
         @user = User.new(id: @id, email: @email, first_name: @first_name, last_name: @last_name, avatar: @avatar)
+        #binding.break
       end
       if @user.save
         @note << @user.first_name
         @counter += 1
+
       end
     end
     if @counter > 1
