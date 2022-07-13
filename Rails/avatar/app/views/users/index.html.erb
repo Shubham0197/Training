@@ -1,2 +1,36 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Index</h1>
+<%= link_to "Sign Up", users_signup_path %>
+<div >
+  <h1>Users List</h1>
+</div>
+<br>
+<div>
+  <% if !(@users.blank?) %>
+    <table>
+      <tr>
+        <th>Avatar</th>
+
+        <th>Name</th>
+
+        <th>Gender</th>
+ 
+        <th>Address</th>
+      </tr>
+     
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.avatar %></td>
+
+        <td><%= user.name %></td>
+
+        <td><%= user.gender %></td>
+
+        <td><%= user.address %></td>
+      </tr>
+      <% end %>
+    
+    </table>
+  <% else %>
+    <h3>No data in the Database</h3>
+  <% end %>
+</div>

@@ -1,2 +1,36 @@
-<h1>Users#signup</h1>
-<p>Find me in app/views/users/signup.html.erb</p>
+<h1>Sign Up</h1>
+
+<%= form_with model: @user, url: users_create_path do |form| %>
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <% @user.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div >
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div> 
+  <div >
+    <%= form.label :avatar %>
+    <%= form.text_field :avatar, class: "form-control" %>
+  </div>
+  <div >
+    <%= form.label :gender %>
+    <%= form.radio_button :gender, "Male" %>
+    <%= form.label :gender, "Male" %>
+    <%= form.radio_button :gender, "Female" %>
+    <%= form.label :gender, "Female"  %>
+  </div>
+  <div >
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+
+  <div>
+    <%= form.submit "Sign Up"%>
+  </div>
+<% end %>
