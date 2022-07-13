@@ -45,3 +45,19 @@ Migrating to CreateUsers (20220713101540)
   ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/bin/rake:23
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/bin/rake:23
+Started GET "/" for ::1 at 2022-07-13 16:25:01 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/railties-5.2.8.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/railties-5.2.8.1/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-07-13 16:28:42 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 190ms (Views: 189.8ms | ActiveRecord: 0.0ms)
+
+
