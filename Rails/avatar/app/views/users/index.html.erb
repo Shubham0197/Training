@@ -1,5 +1,7 @@
 <h1>Index</h1>
 <%= link_to "Sign Up", users_signup_path %>
+<br>
+<hr>
 <div >
   <h1>Users List</h1>
 </div>
@@ -15,6 +17,8 @@
         <th>Gender</th>
  
         <th>Address</th>
+
+        <th>Edit</th>
       </tr>
      
       <% @users.each do |user| %>
@@ -26,6 +30,9 @@
         <td><%= user.gender %></td>
 
         <td><%= user.address %></td>
+
+        <td><%= link_to "edit", edit_user_path(user.id)  %></td>
+
       </tr>
       <% end %>
     

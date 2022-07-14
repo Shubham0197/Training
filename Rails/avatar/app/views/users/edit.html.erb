@@ -1,0 +1,36 @@
+<h1>Sign Up</h1>
+
+<%= form_with model: @user, url: users_path do |form| %>
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <% @user.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <% end %>
+
+  <div >
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div> 
+  <div >
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+  <div >
+    <%= form.label :gender %>
+    <%= form.radio_button :gender, "Male" %>
+    <%= form.label :gender, "Male" %>
+    <%= form.radio_button :gender, "Female" %>
+    <%= form.label :gender, "Female"  %>
+  </div>
+  <div >
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+
+  <div>
+    <%= form.submit "Update Data"%>
+  </div>
+<% end %>
