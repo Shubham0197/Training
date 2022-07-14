@@ -19,6 +19,7 @@
         <th>Address</th>
 
         <th>Edit</th>
+        <th>Delete</th>
       </tr>
      
       <% @users.each do |user| %>
@@ -32,6 +33,7 @@
         <td><%= user.address %></td>
 
         <td><%= link_to "edit", edit_user_path(user.id)  %></td>
+        <td><%=  button_to "delete", user_path(user.id), method: :delete  %></td>
 
       </tr>
       <% end %>
