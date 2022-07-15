@@ -1042,3 +1042,101 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/users/signup" for ::1 at 2022-07-14 19:20:01 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (102.6ms)
+Completed 500 Internal Server Error in 105ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `users_create_path' for #<#<Class:0x00007fa2bcc62da0>:0x00007fa2bcc9b4c0>
+Did you mean?  users_path):
+    1: <h1>Sign Up</h1>
+    2: 
+    3: <%= form_with model: @user, url: users_create_path do |form| %>
+    4:   <% if @user.errors.any? %>
+    5:   <div class="alert alert-danger">
+    6:     <% @user.errors.full_messages.each do |message| %>
+  
+app/views/users/signup.html.erb:3:in `_app_views_users_signup_html_erb___1718275139202076031_15480'
+Started GET "/users/signup" for ::1 at 2022-07-14 19:20:17 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users"}, missing required keys: [:id]):
+    1: <h1>Sign Up</h1>
+    2: 
+    3: <%= form_with model: @user, url: user_path do |form| %>
+    4:   <% if @user.errors.any? %>
+    5:   <div class="alert alert-danger">
+    6:     <% @user.errors.full_messages.each do |message| %>
+  
+app/views/users/signup.html.erb:3:in `_app_views_users_signup_html_erb___1718275139202076031_16100'
+Started GET "/users/signup" for ::1 at 2022-07-14 19:21:22 +0530
+  
+NoMethodError (undefined method `port' for #<ActionDispatch::Routing::Mapper:0x00007fa2d63689b0>
+Did you mean?  post):
+  
+config/routes.rb:4:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/users/signup" for ::1 at 2022-07-14 19:21:31 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (73.6ms)
+Completed 200 OK in 94ms (Views: 82.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:35:18 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:35:29 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:36:02 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:36:03 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:36:03 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:36:03 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-14 19:37:20 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+

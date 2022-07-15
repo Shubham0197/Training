@@ -17914,3 +17914,623 @@ Sent data users-2022-07-12.csv (1.7ms)
 Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 2.7ms | Allocations: 17732)
 
 
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 4052f357-a112-47fb-8024-58eb3b346210) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", nil]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 3c16488e-9621-46ce-80a9-599a871323c5) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.coms", "samuel"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: f4141593-5443-45c1-a188-d448c6c1587a) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.coms", "samuel"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 49bda27e-0bdb-4b96-9775-1d55aeae3ff7) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "samuel"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: b5dd5859-8768-4bd3-9735-dcf61160cd23) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "samuel"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["shubhamjain0197@gmail.com", "Happy"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 252c6b9a-9080-4d3e-b75a-779350eb911e) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "sam"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 58d8a11c-96ab-4f02-bc0e-6af51200771a) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "samuel"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 7caf9d62-f5a4-48ea-be24-96347c15294c) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["shubhamjain0197@gmail.com", "Happy"]}
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: a8f9e718-ef01-4962-87ac-1c895d2905e1) to Async(default) with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["a@a.a", "ha"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5] Performing ActionMailer::MailDeliveryJob (Job ID: 3c16488e-9621-46ce-80a9-599a871323c5) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.coms", "samuel"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210] Performing ActionMailer::MailDeliveryJob (Job ID: 4052f357-a112-47fb-8024-58eb3b346210) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", nil]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a] Performing ActionMailer::MailDeliveryJob (Job ID: f4141593-5443-45c1-a188-d448c6c1587a) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.coms", "samuel"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c] Performing ActionMailer::MailDeliveryJob (Job ID: 7caf9d62-f5a4-48ea-be24-96347c15294c) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["shubhamjain0197@gmail.com", "Happy"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7] Performing ActionMailer::MailDeliveryJob (Job ID: 49bda27e-0bdb-4b96-9775-1d55aeae3ff7) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "samuel"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23] Performing ActionMailer::MailDeliveryJob (Job ID: b5dd5859-8768-4bd3-9735-dcf61160cd23) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "samuel"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e] Performing ActionMailer::MailDeliveryJob (Job ID: 252c6b9a-9080-4d3e-b75a-779350eb911e) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "sam"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0] Performing ActionMailer::MailDeliveryJob (Job ID: 0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["shubhamjain0197@gmail.com", "Happy"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 1.0ms | Allocations: 694)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 496)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 453)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 473)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 517)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 452)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 517)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendered layout layouts/mailer.html.erb (Duration: 1.5ms | Allocations: 861)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendered layout layouts/mailer.html.erb (Duration: 1.7ms | Allocations: 980)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.5ms | Allocations: 327)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendered layout layouts/mailer.html.erb (Duration: 2.0ms | Allocations: 1228)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendered layout layouts/mailer.html.erb (Duration: 2.2ms | Allocations: 1267)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.9ms | Allocations: 497)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendered layout layouts/mailer.html.erb (Duration: 2.0ms | Allocations: 1253)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendered layout layouts/mailer.html.erb (Duration: 1.9ms | Allocations: 1193)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendered layout layouts/mailer.html.erb (Duration: 1.6ms | Allocations: 967)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendered layout layouts/mailer.html.erb (Duration: 2.1ms | Allocations: 1287)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.4ms | Allocations: 234)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210]   Rendered layout layouts/mailer.text.erb (Duration: 3.4ms | Allocations: 1752)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23]   Rendered layout layouts/mailer.text.erb (Duration: 1.8ms | Allocations: 730)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a]   Rendered layout layouts/mailer.text.erb (Duration: 2.7ms | Allocations: 1324)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e]   Rendered layout layouts/mailer.text.erb (Duration: 3.1ms | Allocations: 1555)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e] UserConfirmationMailer#welcome: processed outbound mail in 38.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23] UserConfirmationMailer#welcome: processed outbound mail in 41.6ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a] UserConfirmationMailer#welcome: processed outbound mail in 57.3ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7]   Rendered layout layouts/mailer.text.erb (Duration: 2.6ms | Allocations: 1363)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7] UserConfirmationMailer#welcome: processed outbound mail in 48.1ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 123)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c]   Rendered layout layouts/mailer.text.erb (Duration: 11.1ms | Allocations: 25027)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c] UserConfirmationMailer#welcome: processed outbound mail in 60.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0]   Rendered layout layouts/mailer.text.erb (Duration: 1.1ms | Allocations: 495)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0] UserConfirmationMailer#welcome: processed outbound mail in 46.8ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210] UserConfirmationMailer#welcome: processed outbound mail in 58.6ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5]   Rendered layout layouts/mailer.text.erb (Duration: 1.5ms | Allocations: 906)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5] UserConfirmationMailer#welcome: processed outbound mail in 79.9ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23] Delivered mail 62d02161d9ca4_23ec5fe743d9@itsacheckmate.mail (21.1ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.com
+Message-ID: <62d02161d9ca4_23ec5fe743d9@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d7ec3_23ec5fe74-2c5";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d7ec3_23ec5fe74-2c5
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d7ec3_23ec5fe74-2c5
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello samuel,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d7ec3_23ec5fe74-2c5--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210] Delivered mail 62d02161da908_23ec5fdd493d@itsacheckmate.mail (12.5ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.com
+Message-ID: <62d02161da908_23ec5fdd493d@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d7370_23ec5fdd4-419";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d7370_23ec5fdd4-419
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d7370_23ec5fdd4-419
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello ,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d7370_23ec5fdd4-419--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c] Delivered mail 62d02161d9e0a_23ec5fe386f6@itsacheckmate.mail (16.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: shubhamjain0197@gmail.com
+Message-ID: <62d02161d9e0a_23ec5fe386f6@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d9429_23ec5fe38157";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d9429_23ec5fe38157
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d9429_23ec5fe38157
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Happy,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d9429_23ec5fe38157--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [7caf9d62-f5a4-48ea-be24-96347c15294c] Performed ActionMailer::MailDeliveryJob (Job ID: 7caf9d62-f5a4-48ea-be24-96347c15294c) from Async(default) in 78.73ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7] Delivered mail 62d02161d9d21_23ec5fe60487@itsacheckmate.mail (18.9ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.com
+Message-ID: <62d02161d9d21_23ec5fe60487@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d88fc_23ec5fe6002e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d88fc_23ec5fe6002e
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d88fc_23ec5fe6002e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello samuel,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d88fc_23ec5fe6002e--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5] Delivered mail 62d02161daff4_23ec5fe241166@itsacheckmate.mail (10.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.coms
+Message-ID: <62d02161daff4_23ec5fe241166@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161daaeb_23ec5fe2410b5";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161daaeb_23ec5fe2410b5
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161daaeb_23ec5fe2410b5
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello samuel,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161daaeb_23ec5fe2410b5--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0] Delivered mail 62d02161da6f6_23ec5fe888db@itsacheckmate.mail (13.0ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: shubhamjain0197@gmail.com
+Message-ID: <62d02161da6f6_23ec5fe888db@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d9f49_23ec5fe887d9";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d9f49_23ec5fe887d9
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d9f49_23ec5fe887d9
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello Happy,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d9f49_23ec5fe887d9--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0] Performed ActionMailer::MailDeliveryJob (Job ID: 0b54a0fc-7dfa-4cdd-9697-aecc7c3ce1d0) from Async(default) in 62.21ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e] Delivered mail 62d02161d99e3_23ec5fe9c229@itsacheckmate.mail (22.7ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [3c16488e-9621-46ce-80a9-599a871323c5] Performed ActionMailer::MailDeliveryJob (Job ID: 3c16488e-9621-46ce-80a9-599a871323c5) from Async(default) in 94.69ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [4052f357-a112-47fb-8024-58eb3b346210] Performed ActionMailer::MailDeliveryJob (Job ID: 4052f357-a112-47fb-8024-58eb3b346210) from Async(default) in 84.36ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [b5dd5859-8768-4bd3-9735-dcf61160cd23] Performed ActionMailer::MailDeliveryJob (Job ID: b5dd5859-8768-4bd3-9735-dcf61160cd23) from Async(default) in 64.58ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [49bda27e-0bdb-4b96-9775-1d55aeae3ff7] Performed ActionMailer::MailDeliveryJob (Job ID: 49bda27e-0bdb-4b96-9775-1d55aeae3ff7) from Async(default) in 69.09ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.com
+Message-ID: <62d02161d99e3_23ec5fe9c229@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d7920_23ec5fe9c-39b";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d7920_23ec5fe9c-39b
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d7920_23ec5fe9c-39b
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello sam,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d7920_23ec5fe9c-39b--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a] Delivered mail 62d02161d9da7_23ec5fe4c5f0@itsacheckmate.mail (20.9ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.coms
+Message-ID: <62d02161d9da7_23ec5fe4c5f0@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161d82d3_23ec5fe4c-16b";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161d82d3_23ec5fe4c-16b
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161d82d3_23ec5fe4c-16b
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello samuel,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161d82d3_23ec5fe4c-16b--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1] Performing ActionMailer::MailDeliveryJob (Job ID: a8f9e718-ef01-4962-87ac-1c895d2905e1) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["a@a.a", "ha"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [f4141593-5443-45c1-a188-d448c6c1587a] Performed ActionMailer::MailDeliveryJob (Job ID: f4141593-5443-45c1-a188-d448c6c1587a) from Async(default) in 82.78ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [252c6b9a-9080-4d3e-b75a-779350eb911e] Performed ActionMailer::MailDeliveryJob (Job ID: 252c6b9a-9080-4d3e-b75a-779350eb911e) from Async(default) in 64.56ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendered layout layouts/mailer.html.erb (Duration: 1.7ms | Allocations: 253)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1] UserConfirmationMailer#welcome: processed outbound mail in 3.9ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1] Delivered mail 62d02161df7e9_23ec5fe381331@itsacheckmate.mail (7.5ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: a@a.a
+Message-ID: <62d02161df7e9_23ec5fe381331@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161df2ad_23ec5fe38124c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161df2ad_23ec5fe38124c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161df2ad_23ec5fe38124c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello ha,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161df2ad_23ec5fe38124c--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [a8f9e718-ef01-4962-87ac-1c895d2905e1] Performed ActionMailer::MailDeliveryJob (Job ID: a8f9e718-ef01-4962-87ac-1c895d2905e1) from Async(default) in 12.32ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a] Performing ActionMailer::MailDeliveryJob (Job ID: 58d8a11c-96ab-4f02-bc0e-6af51200771a) from Async(default) enqueued at 2022-07-14T14:00:01Z with arguments: "UserConfirmationMailer", "welcome", "deliver_now", {:args=>["asdd@gmail.com", "samuel"]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendering user_confirmation_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendered user_confirmation_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 5)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 84)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendering user_confirmation_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendered user_confirmation_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 83)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a] UserConfirmationMailer#welcome: processed outbound mail in 27.2ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a] Delivered mail 62d02161eaba6_23ec5fe88155@itsacheckmate.mail (20.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a] Date: Thu, 14 Jul 2022 19:30:01 +0530
+From: from@example.com
+To: asdd@gmail.com
+Message-ID: <62d02161eaba6_23ec5fe88155@itsacheckmate.mail>
+Subject: Welcome
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_62d02161e5d07_23ec5fe881468";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_62d02161e5d07_23ec5fe881468
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+UserConfirmation#welcome
+
+, find me in app/views/user_confirmation_<br>/welcome.text.erb
+
+
+----==_mimepart_62d02161e5d07_23ec5fe881468
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>Welcome</h1>
+
+<pre>
+  Hello samuel,
+    You have been Registered on the platform
+</pre>
+
+  </body>
+</html>
+
+----==_mimepart_62d02161e5d07_23ec5fe881468--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [58d8a11c-96ab-4f02-bc0e-6af51200771a] Performed ActionMailer::MailDeliveryJob (Job ID: 58d8a11c-96ab-4f02-bc0e-6af51200771a) from Async(default) in 52.88ms
