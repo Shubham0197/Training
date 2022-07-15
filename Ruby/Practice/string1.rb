@@ -12,3 +12,11 @@ end
 print check_array([1, 3, 5]),"\n" 
 print check_array([3, 5, 6]),"\n" 
 print check_array([3, 9, 5]),"\n" 
+
+=begin 
+(base) itsacheckmate@itsacheckmate:~/Training/Ruby/Practice$ ruby string1.rb 
+[1, 3, 1]
+[3, 1, 6]
+[3, 9, 5]
+(base) itsacheckmate@itsacheckmate:~/Training/Ruby/Practice$ 
+=end
