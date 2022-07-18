@@ -173,3 +173,14 @@ but there are two limitations shared by all the methods above:
 
 The exact location of the modal window is determined by the browser. Usually, it’s in the center.
 The exact look of the window also depends on the browser. We can’t modify it.
+
+## Type Conversions
+operators and functions automatically convert the values given to them to the right type as needed by them 
+different types of cenversion are 
+String Conversion - Occurs when we output something. Can be performed with String(value). The conversion to string is usually obvious for primitive values.
+Numeric Conversion - Occurs in math operations. Can be performed with Number(value).
+Boolean Conversion -  Occurs in logical operations. Can be performed with Boolean(value).
+for boolean conversion
+Value	                        Becomes…
+0, null, undefined, NaN, "" 	false
+any other value	              true
