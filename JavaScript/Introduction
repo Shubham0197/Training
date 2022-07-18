@@ -91,3 +91,38 @@ The directive looks like a string: "use strict" or 'use strict'. When it is loca
 Modern JavaScript supports “classes” and “modules” – advanced language structures (we’ll surely get to them), that enable use strict automatically. So we don’t need to add the "use strict" directive, if we use them.
 
 So, for now "use strict"; is a welcome guest at the top of your scripts. Later, when your code is all in classes and modules, you may omit it.
+
+
+## Variables
+
+A variable is a “named storage” for data
+to create variable have to use let keyword before that have to use var keyword there  is subtle differences between let and var.
+
+let user = 'John'
+  , age = 25
+  , message = 'Hello';
+
+  can not initialize the same variable twice
+
+let user = 123;
+let user = 1222;
+will get error
+
+Variable naming
+There are two limitations on variable names in JavaScript:
+
+The name must contain only letters, digits, or the symbols $ and _.
+The first character must not be a digit.
+
+Constants
+To declare a constant (unchanging) variable, use const instead of let.
+As the name suggests they are constants. They cannot be reassigned. An attempt to do so would cause an error
+There is a widespread practice to use constants as aliases for difficult-to-remember values that are known prior to execution. 
+const PI = 3.14;
+
+Name things right
+Talking about variables, there’s one more extremely important thing.
+
+A variable name should have a clean, obvious meaning, describing the data that it stores.
+
+Variable naming is one of the most important and complex skills in programming. A quick glance at variable names can reveal which code was written by a beginner versus an experienced developer.
