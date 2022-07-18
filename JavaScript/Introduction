@@ -315,3 +315,24 @@ and if the first operand is falsy, AND returns it. The second operand is ignored
 The operator accepts a single argument and does the following
 Converts the operand to boolean type: true/false.
 Returns the inverse value.
+
+
+## Nullish coalescing operator '??'
+
+
+
+## Loops
+
+
+
+## Switch Case
+
+A switch statement can replace multiple if checks.
+The switch has one or more case blocks and an optional default.
+Breaks are inmoprtant If there is no break then the execution continues with the next case without any checks.
+Any expression can be a switch/case argument
+Several variants of case which share the same code can be grouped.
+Type matters -  The values must be of the same type to match
+
+## Functions
+
