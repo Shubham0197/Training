@@ -153,3 +153,23 @@ typeof true // "boolean"
 typeof "foo" // "string"
 
 typeof Symbol("id") // "symbol"
+
+
+## Interaction: alert, prompt, confirm
+
+=> alert-  It shows a message and waits for the user to press “OK”.
+
+=> prompt - The function prompt accepts two arguments
+eg.
+result = prompt(title, [default]);
+will accept 2 variables -
+title -The text to show the visitor.
+default - An optional second parameter, the initial value for the input field.
+
+
+=> confirm shows a modal window with a question and two buttons: OK and Cancel.
+
+but there are two limitations shared by all the methods above:
+
+The exact location of the modal window is determined by the browser. Usually, it’s in the center.
+The exact look of the window also depends on the browser. We can’t modify it.
