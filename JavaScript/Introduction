@@ -318,8 +318,23 @@ Returns the inverse value.
 
 
 ## Nullish coalescing operator '??'
+The result of a ?? b is:
 
+if a is defined, then a,
+if a isn’t defined, then b
 
+it treats null and undefined similarly
+
+result = a ?? b is similiar to result = (a !== null && a !== undefined) ? a : b;
+
+The important difference between ?? and ||:
+
+|| returns the first truthy value.
+?? returns the first defined value.
+
+The precedence of the ?? operator is the same as ||. They both equal 4
+
+Due to safety reasons, JavaScript forbids using ?? together with && and || operators, unless the precedence is explicitly specified with parentheses.
 
 ## Loops
 
