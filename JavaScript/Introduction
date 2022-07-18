@@ -126,3 +126,30 @@ Talking about variables, there’s one more extremely important thing.
 A variable name should have a clean, obvious meaning, describing the data that it stores.
 
 Variable naming is one of the most important and complex skills in programming. A quick glance at variable names can reveal which code was written by a beginner versus an experienced developer.
+
+Data types in javascript
+There are eight basic data types in JavaScript.
+number -  integer and floating point numbers
+BigInt  -- for more than number range like entire range of really big integers, e.g. for cryptography   
+          or microsecond-precision timestamps.
+string -  anything surrounded by quotes
+boolean - type has only two values: true and false
+null  -  value does not belong to any of the types described above
+undefined - is “value is not assigned”.
+symbol - for unique identifiers
+object -they  are used to store collections of data and more complex entities
+
+
+The typeof operator returns the type of the argument. It’s useful when we want to process values of different types differently or just want to do a quick check.
+
+typeof undefined // "undefined"
+
+typeof 0 // "number"
+
+typeof 10n // "bigint"
+
+typeof true // "boolean"
+
+typeof "foo" // "string"
+
+typeof Symbol("id") // "symbol"
