@@ -50,3 +50,12 @@ This limitation is, again, for the user’s safety. A page from http://anysite.c
 
 JavaScript can easily communicate over the net to the server where the current page came from. But its ability to receive data from other sites/domains is crippled. Though possible, it requires explicit agreement (expressed in HTTP headers) from the remote side. Once again, that’s a safety limitation.
 
+
+Specification
+The ECMA-262 specification contains the most in-depth, detailed and formalized information about JavaScript. It defines the language.
+
+Developer tools allow us to see errors, run commands, examine variables, and much more.
+They can be opened with F12 for most browsers on Windows. Chrome for Mac needs Cmd+Opt+J, Safari: Cmd+Opt+C (need to enable first).
+
+
+To run javascript code in the browser can write html code with javascript embedded in it.
