@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Before the script...</p>
+
+  <script>
+    let i = 1;
+    while (i) { 
+      alert( i );
+      i--;
+    }
+    let k = 0;
+     do {
+       alert( k );
+       k++;
+     } while (k < 1);
+     for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+        alert(i);
+     }   
+     // Using labe to break and continue
+     outer: for (let i = 0; i < 3; i++) {
+
+      for (let j = 0; j < 3; j++) {
+      
+        let input = prompt(`Value at coords (${i},${j})`, '');
+      
+        if (!input) 
+          break outer;
+        else
+          continue outer; 
+      
+      }
+      }
+      
+      alert('Done!'); 
+
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>
