@@ -290,3 +290,28 @@ let message = (age < 3) ? 'Hi, baby!' :
 Non-traditional use of ‘?’ - Sometimes the question mark ? is used as a replacement for if
 (company == 'Netscape') ?
    alert('Right!') : alert('Wrong.');
+
+## Logical operators
+
+There are four logical operators in JavaScript: || (OR), && (AND), ! (NOT), ?? (Nullish Coalescing)
+
+|| (OR) - If any of its arguments are true, it returns true, otherwise it returns false
+
+OR "||" finds the first truthy value
+
+&& (AND) Evaluates operands from left to right.
+For each operand, converts it to boolean. If the result is true, stops and returns the original value of that operand.
+
+AND “&&” finds the first falsy value
+ Given multiple AND’ed values:
+result = value1 && value2 && value3;
+The AND && operator does the following:
+Evaluates operands from left to right.
+For each operand, converts it to a boolean. If the result is false, stops and returns the original value of that operand.
+Incase of alert if the first operand is truthy,AND returns the second operand
+and if the first operand is falsy, AND returns it. The second operand is ignored
+
+! (NOT)
+The operator accepts a single argument and does the following
+Converts the operand to boolean type: true/false.
+Returns the inverse value.
