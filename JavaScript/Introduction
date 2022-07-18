@@ -263,3 +263,30 @@ A regular equality check == has a problem. It cannot differentiate 0 from false
 Null and undefined are very strange while using coomparision
 Treat any comparison with undefined/null except the strict equality === with exceptional care.
 Don’t use comparisons >= > < <= with a variable which may be null/undefined, unless you’re really sure of what you’re doing. If a variable can have these values, check for them separately.
+
+
+
+## Conditional branching: if, '?'
+
+The “if” statement - The if(...) statement evaluates a condition in parentheses and, if the result is true, executes a block of code.
+
+Boolean conversion- The if (…) statement evaluates the expression in its parentheses and converts the result to a boolean.So ->
+A number 0, an empty string "", null, undefined, and NaN all become false. Because of that they are called “falsy” values.
+Other values become true, so they are called “truthy”
+
+The “else” clause - The if statement may contain an optional “else” block. It executes when the condition is falsy.
+
+Several conditions: “else if” -  Can nest the if else condition . to test several variants of a condition. The else if clause lets us do that. by chaining in else using else if
+
+Conditional operator ‘?’- The operator is represented by a question mark ?. Sometimes it’s called “ternary”, because the operator has three operands
+let result = condition ? value1 : value2;
+
+Multiple ‘?’- A sequence of question mark operators ? can return a value that depends on more than one condition. its like switch case
+let message = (age < 3) ? 'Hi, baby!' :
+  (age < 18) ? 'Hello!' :
+  (age < 100) ? 'Greetings!' :
+  'What an unusual age!';
+
+Non-traditional use of ‘?’ - Sometimes the question mark ? is used as a replacement for if
+(company == 'Netscape') ?
+   alert('Right!') : alert('Wrong.');

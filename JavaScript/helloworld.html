@@ -7,10 +7,30 @@
 
   <script>
     "use strict";
-    let title, name = "Shubham";
+    let message,title, name = "Shubham";
     let no = 12, a = 1  ;
-    let b, c;
+    let b, c, age = 19;
     a = b = c = 2 + 2;
+
+    if (age < 3) {
+     message = 'Hi, baby!';
+    } else if (age < 18) {
+      message = 'Hello!';
+    } else if (age < 100) {
+      message = 'Greetings!';
+    } else {
+      message = 'What an unusual age!';
+    }
+  alert(message);
+  let year = prompt('In which year was the ECMAScript-2015 specification published?', '');
+
+  if (year < 2015) {
+    alert( 'Too early...' );
+  } else if (year > 2015) {
+    alert( 'Too late' );
+  } else {
+    alert( 'Exactly!' );
+  }
 //     alert(5 > 4                         )
 // alert("apple" > "pineapple")
 // alert("2" > "12"                  )
