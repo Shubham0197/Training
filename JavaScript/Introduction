@@ -240,3 +240,26 @@ RIGHT SHIFT ( >> )
 ZERO-FILL RIGHT SHIFT ( >>> )
 
 The comma operator ,  = it’s used to write shorter codes , it has very low precedence
+
+## Comparison
+Greater/less than: a > b, a < b.
+Greater/less than or equals: a >= b, a <= b.
+Equals: a == b, please note the double equality sign == means the equality test, while a single one a = b means an assignment.
+
+
+All comparison operators return a boolean value:
+
+true – means “yes”, “correct” or “the truth”.
+false – means “no”, “wrong” or “not the truth”.
+
+To see whether a string is greater than another, JavaScript uses the so-called “dictionary” or “lexicographical” order.
+alert( 'Glow' > 'Glee' ); // true
+
+When comparing values of different types, JavaScript converts the values to numbers.
+alert( '2' > 1 );
+
+A regular equality check == has a problem. It cannot differentiate 0 from false
+
+Null and undefined are very strange while using coomparision
+Treat any comparison with undefined/null except the strict equality === with exceptional care.
+Don’t use comparisons >= > < <= with a variable which may be null/undefined, unless you’re really sure of what you’re doing. If a variable can have these values, check for them separately.
