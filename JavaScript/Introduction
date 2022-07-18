@@ -184,3 +184,59 @@ for boolean conversion
 Value	                        Becomes…
 0, null, undefined, NaN, "" 	false
 any other value	              true
+
+
+## Basic operators, maths
+ things like addition +, multiplication *, subtraction -, and so on.
+
+ The following math operations are supported:
+
+Addition +,
+Subtraction -,
+Multiplication *,
+Division /,
+Remainder %,
+Exponentiation **.
+
+Operator precedence
+If an expression has more than one operator, the execution order is defined by their precedence, or, in other words, the default priority order of operators
+
+Precedence	Name	Sign
+…	…	…
+15	unary plus	+
+15	unary negation	- =>  unary negation - reverses the sign of a number:
+14	exponentiation	**
+13	multiplication	*
+13	division	/
+12	addition	+
+12	subtraction	-
+…	…	…
+2	assignment	=
+
+The unary plus doesn’t do anything to numbers. But if the operand is not a number, the unary plus converts it into a number.
+
+
+Assignment = returns a value
+and there is also Another interesting feature is the ability to chain assignments
+
+can also chain the assignments, 
+Modify-in-place(n = n + 5;) also  notation can be shortened using the operators += and *=
+Increment ++ increases a variable by 1
+Decrement -- decreases a variable by 1
+The operators ++ and -- can be placed either before or after a variable.
+When the operator goes after the variable, it is in “postfix form”: counter++.
+The “prefix form” is when the operator goes before the variable: ++counter
+
+
+Bitwise operators treat arguments as 32-bit integer numbers and work on the level of their binary representation.
+These operators are not JavaScript-specific. They are supported in most programming languages.
+The list of operators:
+AND ( & )
+OR ( | )
+XOR ( ^ )
+NOT ( ~ )
+LEFT SHIFT ( << )
+RIGHT SHIFT ( >> )
+ZERO-FILL RIGHT SHIFT ( >>> )
+
+The comma operator ,  = it’s used to write shorter codes , it has very low precedence
