@@ -441,3 +441,64 @@ let welcome = (age < 18) ?
 
 Multiline arrow functions
 With curly braces: (...args) => { body } – brackets allow us to write multiple statements inside the function, but we need an explicit return to return something.
+
+Debugging in the browser
+Debugging is the process of finding and fixing errors within a script.
+
+
+The “Sources” panel
+Turn on developer tools with F12
+Select the Sources panel.
+The Sources panel has 3 parts:
+The File Navigator pane lists HTML, JavaScript, CSS and other files, including images that are attached to the page. Chrome extensions may appear here too.
+The Code Editor pane shows the source code.
+The JavaScript Debugging pane is for debugging, we’ll explore it soon.
+
+Console- In sources panel If we press Esc, then a console opens below. We can type commands there and press Enter to execute.
+
+
+Breakpoints - A breakpoint is a point of code where the debugger will automatically pause the JavaScript execution.In the sources click on the line number to create breakpoints.
+
+The command “debugger”
+We can also pause the code by using the debugger command in it
+
+Pause and look around- while in the sources pane
+Please open the informational dropdowns to the right (labeled with arrows). They allow you to examine the current code state:
+Watch – shows current values for any expressions.
+You can click the plus + and input an expression. The debugger will show its value, automatically recalculating it in the process of execution.
+Call Stack – shows the nested calls chain.
+At the current moment the debugger is inside hello() call, called by a script in index.html (no function there, so it’s called “anonymous”).
+click on a stack item (e.g. “anonymous”), the debugger jumps to the corresponding code, and all its variables can be examined as well.
+Scope – current variables.
+Local shows local function variables. You can also see their values highlighted right over the source.
+Global has global variables (out of any functions). \
+
+
+Tracing the execution - After stoppin have to execute the command by “Resume”: continue the execution, hotkey F8.
+And If there are no additional breakpoints, then the execution just continues and the debugger loses control.
+“Step”: run the next command, hotkey F9.
+“Step over”: run the next command, but don’t go into a function, hotkey F10.
+“Step into”, hotkey F11. similar to “Step”, but behaves differently in case of asynchronous function calls
+“Step out”: continue the execution till the end of the current function, hotkey Shift+F11.
+
+
+Logging - To output something to console from our code, there’s console.log function.
+To see it, either open the Console panel of developer tools or press Esc while in another panel: that opens the console at the bottom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
