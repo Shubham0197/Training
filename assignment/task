@@ -11,7 +11,7 @@ When to use SQL vs ActiveRecord query
 
 
 
-Difference between rebase vs merge
+## Difference between rebase vs merge
 Both are the techniques of adding the commits of the branches to the main branches
 but the diffrences comes in the way keep the logs after the operation is completed
 
@@ -21,4 +21,11 @@ but in case of the the rebase logs are linear as commits are rebased and there n
 While merging the commits of the feature branch is add as a single commit in the main branch
 but in case of the rebase the no commmits added to the main btranch is equal to the commits in the feature branch.
 Merge is usually used in a shared environment but rebase is moslty used in the private/singular developer environment.
+
+
+## Stash Command
+git stash that stores all of the most recent changes in a workspace locally and restores the workspaces state to the commit state.
+With the git stash pop and git stash apply commands, we can get access to all files added to the stash.
+
+
 
