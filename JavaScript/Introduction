@@ -386,13 +386,27 @@ function name(parameter1, parameter2, ... parameterN) {
 }
 
 
-Local variables
-Outer variables
-Parameters
-Default values
-Returning a value
-Naming a function
-Functions == Comments
+
+Local variables - A variable declared inside a function is only visible inside that function.
+
+Outer variables - A function can access an outer variable as well which are not declared in the function
+
+Parameters - pass arbitrary data to functions using parameters
+
+Default values - If a function is called, but an argument is not provided, then the corresponding value becomes undefined. So while creating function we can give the parameters the value to default to is no value is passed while calling funtion.
+
+Returning a value - A function can return a value back into the calling code as the result.
+The directive return can be in any place of the function. When the execution reaches it, the function stops, and the value is returned to the calling code (assigned to result above).
+It is possible to use return without a value. That causes the function to exit immediately.
+
+Naming a function -Functions are actions. So their name is usually a verb. 
+It should be brief, as accurate as possible and describe what the function does, so that someone reading the code gets an indication of what the function does.
+
+Functions == Comments - Functions should be short and do exactly one thing.
+A separate function is not only easier to test and debug – its very existence is a great comment!
+
+
+
 
 
 
