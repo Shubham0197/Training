@@ -515,3 +515,33 @@ Polyfills
 If there is only introduction of  new functions, not syntax changes, there’s no need to transpile anything here. We just need to declare the missing function.
 A script that updates/adds new functions is called “polyfill”. It “fills in” the gap and adds missing implementations.
 
+
+## Objects
+Objects are used to store keyed collections of various data and more complex entities.
+An object can be created with figure brackets {…} with an optional list of properties. 
+A property is a “key: value” pair, where key is a string (also called a “property name”), and value can be anything.
+
+Square brackets - 
+For multiword properties, the dot access doesn’t work
+But “square bracket notation” that works with any string
+Square brackets also provide a way to obtain the property name as the result of any expression – as opposed to a literal string – like from a variable as follows.
+We can use square brackets in an object literal, when creating an object. That’s called computed properties.
+
+Property value shorthand-
+In real code, we often use existing variables as values for property names.
+
+Property names limitations
+a variable cannot have a name equal to one of the language-reserved words like “for”, “let”, “return” etc.
+But for an object property, there’s no such restriction
+special property named __proto__. We can’t set it to a non-object value
+
+
+Property existence test, “in” operator
+ it’s possible to access any property. There will be no error if the property doesn’t exist!
+ To test whether the property exists and there is a special operator "in" for that
+
+The "for..in" loop-
+To walk over all keys of an object, there exists a special form of the loop: for..in. This is a completely different thing from the for(;;)
+
+Ordered like an object
+“ordered in a special fashion”: integer properties are sorted, others appear in creation order. The details follow.
