@@ -425,8 +425,19 @@ Function Declaration is only visible inside the code block in which it resides
 So as to make that function be visible outside then the approach would be to use a Function Expression and assign function to the variable that is declared outside of block and has the proper visibility.
 
 
+## Arrow functions, the basics
+another very simple and concise syntax for creating functions, that’s often better than Function Expressions.It’s called “arrow functions”
+Syntax
+let func = (arg1, arg2, ..., argN) => expression;
+let sum = (a, b) => a + b;
 
+If there are no arguments, parentheses are empty, but they must be present:
+let sayHi = () => alert("Hello!");
 
+to dynamically create a function.eg. ->
+let welcome = (age < 18) ?
+  () => alert('Hello!') :
+  () => alert("Greetings!");
 
-
-
+Multiline arrow functions
+With curly braces: (...args) => { body } – brackets allow us to write multiple statements inside the function, but we need an explicit return to return something.

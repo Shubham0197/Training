@@ -32,6 +32,17 @@
       alert( "You canceled the execution." );
     }
     ask("Do you agree?", showOk, showCancel);
+    let welcome = (age < 18) ?
+      () => alert('Hello!') :
+      () => alert("Greetings!");
+
+    welcome();
+
+    let sum = (a, b) => { 
+     let result = a + b;
+     return result; 
+    };
+    alert( sum(1, 2) )
     
   </script>
 
