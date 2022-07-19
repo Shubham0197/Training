@@ -27,5 +27,56 @@ Merge is usually used in a shared environment but rebase is moslty used in the p
 git stash that stores all of the most recent changes in a workspace locally and restores the workspaces state to the commit state.
 With the git stash pop and git stash apply commands, we can get access to all files added to the stash.
 
+## Polymorphic Association
+With polymorphic associations, a model can belong to more than one other model, on a single association
+
+## Module include vs extend
+Include is used to importing module code. Ruby will throw an error when we try to access the methods of import module with the class directly because it gets imported as a subclass for the superclass. So, the only way is to access it through the instance of the class.
+Extend is also used to importing module code but extends import them as class methods. Ruby will throw an error when we try to access methods of import module with the instance of the class because the module gets import to the superclass just as the instance of the extended module. So, the only way is to access it through the class definition.
+
+## Using helper methods in controller and models
+one way is to add=> include ActionView::Helpers
+or can directly access the module  ActionController::Base.helpers.sanitize(params[:q])
+
+## How does indexing works in DB?
+Database Indexing allows us to cut down the number of rows/records that need to be examined when a select query with a where clause is executed.An index is a data structure that stores the values for a certain specific column of a table and helps us avoid a full table scan.
+CREATE INDEX name_index ON Employee (Employee_Name);
+
+## What different types of authentication have you used?
+Please study about oauth2 and JWT
+JWT- A JWT technically is a mechanism to verify the owner of some JSON data.
+It’s an encoded string, which is URL safe, that can contain an unlimited amount of data (unlike a cookie), and it’s cryptographically signed.
+When a server receives a JWT, it can guarantee the data it contains can be trusted because it’s signed by the source. No middleman can modify a JWT once it’s sent.
+It’s important to note that a JWT guarantees data ownership but not encryption; the JSON data you store into a JWT can be seen by anyone that intercepts the token, as it’s just serialized, not encrypted.
+Oauth - 
+OAuth is not an API or a service: it’s an open standard for authorization and anyone can implement it.
+OAuth 2.0 is the version 2 of the OAuth protocol. 
+It can be referred to as a authorization framework as well. 
+Version 2 simplifies the previous version of the protocol and facilitates interoperability between different applications. Even Google and popular social websites like Facebook and Twitter also uses OAuth2 protocol for authentications and authorizations.
+Using this we  can log into third party websites with  Google, Facebook, Twitter or Microsoft accounts without having the necessity to provide  passwords. This way we can avoid creating accounts and remembering passwords on each and every web application.
+OAuth is based on an access token concept.
+When you authenticate yourself using let’s say your Google account, to a third party web application. 
+Google authorization server issues an access token to that web application with the approval of the owner. Thus, the web application can use that access token to access your data hosted in the resource server. 
+OAuth2 uses HTTPS for communication 
+
+Basically, JWT is a token format.
+OAuth is an standardised authorization protocol that can use JWT as a token.
+OAuth uses server-side and client-side storage. If you want to do real logout you must go with OAuth2. Authentication with JWT token can not logout actually. Because you don’t have an Authentication Server that keeps track of tokens.
+If you want to provide an API to 3rd party clients, you must use OAuth2 oterwise not needed.
+OAuth2 is very flexible but JWT implementation is very easy and does not take long to implement.
+
+
+## Modules vs classes
+A class is more of a unit, and a module is essentially a loose collection of stuff like functions, variables, or even classes.
+In a public module, classes in the project have access to the functions and variables of the module. You dont have to specify the module name to address one. You can also have classes in a module.
+The variables and functions of a class are under tighter "ownership" by the class. Public variables and functions (methods) used by other classes are used with the classname: classname.method, unlike those in modules.
+There is only one instance of a module, but a one or more instances of a class can be used at once.
+
+
+##When to use SQL vs ActiveRecord query
+Active-record is an abstraction layer that facilitates creation, deletion and use of ORM objects whose data requires persistent storage to a database which makes it easier to work without sql knowledge.
+This abstraction comes at a cost and can lead to performance problems .
+But sql gives more control and can refactor and debug easily than ActiveRecord query.
+
 
 
