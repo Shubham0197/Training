@@ -545,3 +545,22 @@ To walk over all keys of an object, there exists a special form of the loop: for
 
 Ordered like an object
 “ordered in a special fashion”: integer properties are sorted, others appear in creation order. The details follow.
+
+
+##  Object references and copying
+One of the fundamental differences of objects versus primitives is that objects are stored and copied “by reference”, whereas primitive values: strings, numbers, booleans, etc – are always copied “as a whole value”.
+A variable assigned to an object stores not the object itself, but its “address in memory” – in other words “a reference” to it.
+When an object variable is copied, the reference is copied, but the object itself is not duplicated.
+
+Comparison by reference
+Two objects are equal only if they are the same object.
+And  two independent objects are not equal, even though they look alike (both are empty) and equal
+
+Cloning and merging, Object.assign
+We can create a new object and replicate the structure of the existing one, by iterating over its properties and copying them on the primitive level.To this we can also use the method Object.assign.
+
+Nested cloning
+There are also the chance of the of having object not only having primitives but can also have object.
+use a cloning loop that examines each value of object and, if it’s an object, then replicate its structure as well. That is called a “deep cloning”.
+==>We can use recursion to implement it. Or, to not reinvent the wheel, take an existing implementation, for instance _.cloneDeep(obj) from the JavaScript library lodash.
+
