@@ -486,13 +486,22 @@ Logging - To output something to console from our code, there’s console.log fu
 To see it, either open the Console panel of developer tools or press Esc while in another panel: that opens the console at the bottom
 
 
+## Coding style
 
 
 
 
+## Comments
 
+comments can be single-line: starting with // and multiline: /* ... */.
+Do not  use comments to explain “what is going on in the code”.donot make comment to  tell “how code works” and “what it does”.
+Recipe: factor out functions, Sometimes it’s beneficial to replace a code piece with a function
 
-
+Good Comments
+Describe the architecture
+Document function parameters and usage
+Can explain Why is the task solved this way?
+Also, If the code has anything subtle and counter-intuitive, it’s definitely worth commenting.
 
 
 
