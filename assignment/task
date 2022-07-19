@@ -1,0 +1,24 @@
+Difference between rebase vs merge
+Stash Command
+Polymorphic Association
+Module include vs extend
+Using helper methods in controller and models
+How does indexing works in DB?
+What different types of authentication have you used?
+Please study about oauth2 and JWT
+Modules vs classes
+When to use SQL vs ActiveRecord query
+
+
+
+Difference between rebase vs merge
+Both are the techniques of adding the commits of the branches to the main branches
+but the diffrences comes in the way keep the logs after the operation is completed
+
+merge merges branches fbut rebase integrate one branch into another
+so if merge is done the complete history of where each commit is from is preserved
+but in case of the the rebase logs are linear as commits are rebased and there no history that maintains from which branch is the commits is from.
+While merging the commits of the feature branch is add as a single commit in the main branch
+but in case of the rebase the no commmits added to the main btranch is equal to the commits in the feature branch.
+Merge is usually used in a shared environment but rebase is moslty used in the private/singular developer environment.
+

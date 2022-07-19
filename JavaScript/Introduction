@@ -378,3 +378,28 @@ Type matters -  The values must be of the same type to match
 
 ## Functions
 
+Function Declaration
+To create a function we can use a function declaration.
+Syntax
+function name(parameter1, parameter2, ... parameterN) {
+  ...body...
+}
+
+
+Local variables
+Outer variables
+Parameters
+Default values
+Returning a value
+Naming a function
+Functions == Comments
+
+
+
+
+
+
+
+
+
+
