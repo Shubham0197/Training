@@ -16,6 +16,23 @@
     alert(min(2, 5) == 2)
     alert(min(3, -1) == -1)
     alert(min(1, 1) == 1)
+
+    let fun = min
+    alert(fun(1, 1) == 1)
+    function ask(question, yes, no) {
+    if (confirm(question)) yes()
+      else no();
+    }
+    
+    function showOk() {
+      alert( "You agreed." );
+    }
+    
+    function showCancel() {
+      alert( "You canceled the execution." );
+    }
+    ask("Do you agree?", showOk, showCancel);
+    
   </script>
 
   <p>...After the script.</p>

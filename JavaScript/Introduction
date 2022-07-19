@@ -407,9 +407,22 @@ A separate function is not only easier to test and debug – its very existence 
 
 
 
+## Function expressions
+Function is a value
+Syntax for creating a function that is called a Function Expression
 
+Callback functions
+We can send the funtion as the parameters to another funtion and then that function can be called in that function
+Function declared in the calling statement of another function as they have no name, and so are called anonymous.
 
+Function Expression vs Function Declaration
+Function Declaration: a function, declared as a separate statement, in the main code flow
+Function Expression: a function, created inside an expression or inside another syntax construct. Here, the function is created on the right side of the “assignment expression” =
+A Function Expression is created when the execution reaches it and is usable only from that moment.
+but A Function Declaration can be called earlier than it is defined
 
+Function Declaration is only visible inside the code block in which it resides
+So as to make that function be visible outside then the approach would be to use a Function Expression and assign function to the variable that is declared outside of block and has the proper visibility.
 
 
 
