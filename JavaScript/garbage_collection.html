@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Before the script...</p>
+
+  <script>
+    function marry(man, woman) {
+      woman.husband = man;
+      man.wife = woman;
+    
+      return {
+        father: man,
+        mother: woman
+      }
+    }
+
+    let family = marry({
+      name: "John"
+    }, {
+      name: "Ann"
+    });
+    delete family.father;
+    delete family.mother.husband;
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>

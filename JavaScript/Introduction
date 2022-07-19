@@ -564,3 +564,66 @@ There are also the chance of the of having object not only having primitives but
 use a cloning loop that examines each value of object and, if it’s an object, then replicate its structure as well. That is called a “deep cloning”.
 ==>We can use recursion to implement it. Or, to not reinvent the wheel, take an existing implementation, for instance _.cloneDeep(obj) from the JavaScript library lodash.
 
+## Grabage Collection
+The main concept of memory management in JavaScript is reachability.
+
+Reachability
+reachable” values are those that are accessible or usable somehow. They are guaranteed to be stored in memory.
+1. There’s a base set of inherently reachable values, that cannot be deleted for obvious reasons.
+For instance:
+The currently executing function, its local variables and parameters.
+Other functions on the current chain of nested calls, their local variables and parameters.
+Global variables.
+(there are some other, internal ones as well)
+These values are called roots.
+2. Any other value is considered reachable if it’s reachable from a root by a reference or by a chain of references.
+For instance, if there’s an object in a global variable, and that object has a property referencing another object, that object is considered reachable. And those that it references are also reachable. Detailed examples to follow.
+There’s a background process in the JavaScript engine that is called garbage collector. It monitors all objects and removes those that have become unreachable.
+
+
+
+A simple example
+
+Two references
+If 2 variable refrence same object but if delete one  Then the object is still reachable via another global variable, so it must stay in memory. If we overwrite other variable too, then it can be removed.
+
+Interlinked objects
+Outgoing references do not matter. Only incoming ones can make an object reachable.
+
+Unreachable island
+It is possible that the whole island of interlinked objects becomes unreachable and is removed from the memory.
+Being referenced is not the same as being reachable (from a root): a pack of interlinked objects can become unreachable as a whole.
+
+Internal algorithms
+
+The basic garbage collection algorithm is called “mark-and-sweep”.
+The following “garbage collection” steps are regularly performed:
+The garbage collector takes roots and “marks” (remembers) them.
+Then it visits and “marks” all references from them.
+Then it visits marked objects and marks their references. All visited objects are remembered, so as not to visit the same object twice in the future.
+…And so on until every reachable (from the roots) references are visited.
+All objects except marked ones are removed.
+
+JavaScript engines apply many optimizations to make it run faster and not introduce any delays into the code execution.
+
+Some of the optimizations:
+
+Generational collection – objects are split into two sets: “new ones” and “old ones”. 
+In typical code, many objects have a short life span: they appear, do their job and die fast, so it makes sense to track new objects and clear the memory from them if that’s the case.
+ Those that survive for long enough, become “old” and are examined less often.
+
+Incremental collection – if there are many objects, and we try to walk and mark the whole object set at once, it may take some time and introduce visible delays in the execution. 
+So the engine splits the whole set of existing objects into multiple parts. And then clear these parts one after another. There are many small garbage collections instead of a total one. 
+That requires some extra bookkeeping between them to track changes, but we get many tiny delays instead of a big one.
+
+Idle-time collection – the garbage collector tries to run only while the CPU is idle, to reduce the possible effect on the execution.
+
+
+
+
+
+
+
+
+
+
