@@ -737,4 +737,113 @@ Also it won’t be accessed directly, because another script does not have our s
 So we can “covertly” hide something into objects that we need, but others should not see, using symbolic properties.
 -There are many system symbols used by JavaScript which are accessible as Symbol.*. We can use them to alter some built-in behaviors. 
 
+## Optional chaining '?.'
+The optional chaining ?. is a safe way to access nested object properties, even if an intermediate property doesn’t exist.
+
+The “non-existing property” problem-
+If we try to sccess a property of the object that is not there it will give error but what is preferable is that it is undefined.
+In Web development, we can get an object that corresponds to a web page element using a special method call, such as document.querySelector('.elem'), and it returns null when there’s no such element.
+
+> let user = {};
+undefined
+> let html = document.querySelector('.elem').innerHTML;
+Uncaught ReferenceError: document is not defined
+> 
+
+either we can use if statement or document.querySelector
+AND’ing the whole path to the property ensures that all components exist (if not, the evaluation stops), but also isn’t ideal.
+
+> console.log( user.address && user.address.street && user.address.street.name );
+undefined
+undefined
+
+property names are still duplicated in the code
+That’s why the optional chaining ?. was added to the language
+
+
+Optional chaining
+The optional chaining ?. stops the evaluation if the value before ?. is undefined or null and returns undefined.
+
+
+value?.prop:
+works as value.prop, if value exists,
+otherwise (when value is undefined/null) it returns undefined.
+
+> console.log( user?.address?.street );
+undefined
+undefined
+
+Note- Don’t overuse the optional chaining
+We should use ?. only where it’s ok that something doesn’t exist.
+For example, if according to our code logic user object must exist, but address is optional, then we should write user.address?.street, but not user?.address?.street.
+
+Also The variable before ?. must be declared.
+
+Short-circuiting
+ the ?. immediately stops (“short-circuits”) the evaluation if the left part doesn’t exist.
+ So, if there are any further function calls or operations to the right of ?., they won’t be made.
+
+
+ > let x = 0;
+undefined
+> user?.sayHi(x++);
+Uncaught TypeError: user?.sayHi is not a function
+
+
+Other variants: ?.(), ?.[]
+The optional chaining ?. is not an operator, but a special syntax construct, that also works with functions and square brackets.
+?.() is used to call a function that may not exist.
+
+> let userAdmin = {
+...   admin() {
+.....     console.log("I am admin");
+.....   }
+... };
+undefined
+> 
+> let userGuest = {};
+undefined
+> 
+> userAdmin.admin?.(); // I am admin
+I am admin
+undefined
+> 
+> userGuest.admin?.();
+undefined
+Here  ?.() checks the left part: if the admin function exists, then it runs (that’s so for userAdmin). Otherwise (for userGuest) the evaluation stops without errors.
+
+
+The ?.[] syntax also works, if we’d like to use brackets [] to access properties instead of dot .. Similar to previous cases, it allows to safely read a property from an object that may not exist.
+> let key = "firstName";
+undefined
+> 
+> let user1 = {
+...   firstName: "John"
+... };
+undefined
+> 
+> let user2 = null;
+undefined
+> 
+> console.log( user2?.[key] );
+undefined
+undefined
+> console.log( user1?.[key] );
+John
+undefined
+
+
+
+
+We can use ?. for safe reading and deleting, but not writing
+> delete user1?.firstname;
+true
+> delete user2?.firstname;
+true
+> delete user2.firstname;
+Uncaught TypeError: Cannot convert undefined or null to object
+> delete user2?.firstname;
+true
+
+The optional chaining ?. has no use on the left side of an assignment.
 
