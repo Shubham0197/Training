@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Before the script...</p>
+
+  <script>
+    let person = {
+      name: "John",
+      age: 30,
+    
+      sayHi() {
+        alert(this.name);
+      }
+    
+    };
+
+    person.sayHi();
+
+
+    let admin = { name: "Admin" };
+      
+    function sayHi() {
+      alert( this.name );
+    }
+
+    user.f = sayHi;
+    admin.f = sayHi;
+
+    user.f();
+    admin.f();
+    
+    admin['f']();
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>

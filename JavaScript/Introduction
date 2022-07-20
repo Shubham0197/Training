@@ -619,9 +619,24 @@ That requires some extra bookkeeping between them to track changes, but we get m
 Idle-time collection – the garbage collector tries to run only while the CPU is idle, to reduce the possible effect on the execution.
 
 
+## Object methods, "this"
+A function that is a property of an object is called its method
 
+Method examples- Method Shorthand
+There exists a shorter syntax for methods in an object literal
 
+“this” in methods- 
+It’s common that an object method needs to access the information stored in the object to do its job.
+To access the object, a method can use the this keyword.
+ it’s also possible to access the object without this, by referencing it via the outer variable.But such code is unreliable. If we decide to copy object to another variable, e.g. admin = user and overwrite user with something else, then it will access the wrong object.
 
+“this” is not bound
+ this can be used in any function, even if it’s not a method of an object.
+The value of this is evaluated during the run-time, depending on the context.
+Unlike other languages In JavaScript this is “free”, its value is evaluated at call-time and does not depend on where the method was declared, but rather on what object is “before the dot”.
+
+Arrow functions have no “this”
+Arrow functions are special: they don’t have their “own” this. If we reference this from such a function, it’s taken from the outer “normal” function.
 
 
 
