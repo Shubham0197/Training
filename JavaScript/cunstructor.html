@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Before the script...</p>
+
+  <script>
+    function User(name) {
+      this.name = name;
+      this.isAdmin = false;
+    }
+  
+    let user = new User("Jack");
+  
+    alert(user.name); // Jack
+    alert(user.isAdmin); // false
+
+
+      function User() {
+      alert(new.target);
+    }
+
+    User(); 
+    
+
+    new User(); 
+
+      function BigUser() {
+    
+    this.name = "John";
+    
+    return { name: "Godzilla" }; 
+    }
+    
+    alert( new BigUser().name ); 
+
+      function User(name) {
+      this.name = name;
+    
+      this.sayHi = function() {
+        alert( "My name is: " + this.name );
+      };
+    }
+    
+    let john = new User("John");
+    
+    john.sayHi();
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>
