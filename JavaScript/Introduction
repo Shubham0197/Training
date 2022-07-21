@@ -1166,7 +1166,217 @@ Returns n raised to the given power.
 > Math.pow(2, 10)
 1024
 
+## Strings
+In JavaScript, the textual data is stored as strings. There is no separate type for a single character.
 
+Strings can be enclosed within either single quotes, double quotes or backticks:
+> let single = 'single-quoted';
+undefined
+> let double = "double-quoted";
+undefined
+> let backticks = `backticks`;
+undefined
+> single+double+ backticks
+'single-quoteddouble-quotedbackticks'
+
+Single and double quotes are essentially the same. Backticks, however, allow us to embed any expression into the string, by wrapping it in ${…}
+> (`1 + 2 = ${Math.min(1, 2)}.`);
+'1 + 2 = 1.'
+
+Another advantage of using backticks is that they allow a string to span multiple lines but this cannot be done with single and double qoutes.
+
+> let guestList = `Guests:
+...  * John
+...  * Pete
+...  * Mary
+... `;
+undefined
+> guestList
+'Guests:\n * John\n * Pete\n * Mary\n'
+
+Special characters-
+It is still possible to create multiline strings with single and double quotes by using a so-called “newline character”, written as \n, which denotes a line break
+> let guestList1 = "Guests:\n * John\n * Pete\n * Mary";
+undefined
+> guestList1
+'Guests:\n * John\n * Pete\n * Mary'
+
+> "\u00A9"
+'©'
+> 'I\'m the Shubham' 
+"I'm the Shubham"
+> `The backslash: \\`
+'The backslash: \\'
+> console.log(`The backslash: \\`);
+The backslash: \
+undefined
+
+String length
+The length property has the string length
+> sum.length
+5
+
+Accessing characters
+To get a character at position pos, use square brackets [pos] or call the method str.charAt(pos)
+The only difference between them is that if no character is found, [] returns undefined, and charAt returns an empty string
+> let str = `Hello`;
+undefined
+> str[0] 
+'H'
+> str.charAt(0)
+'H'
+> str[1000] 
+undefined
+> str.charAt(1000)
+''
+
+Strings are immutable-
+Strings can’t be changed in JavaScript. It is impossible to change a character.
+> str[0] = 'h';
+'h'
+> str
+'Hello's
+
+The usual workaround is to create a whole new string and assign it to str instead of the old one.
+> str
+'Hello'
+> str = 'h' + str[1];
+'he'
+> str
+'he'
+
+Changing the case-
+> sum.toUpperCase()
+'HELLO'
+> sum.toLowerCase()
+'hello'
+
+
+Searching for a substring
+str.indexOf
+The first method is str.indexOf(substr, pos).
+It looks for the substr in str, starting from the given position pos, and returns the position where the match was found or -1 if nothing can be found.
+> str = 'Widget with id';
+'Widget with id'
+> str.indexOf('Widget') 
+0
+> str.indexOf("ids")
+-1
+> 
+The optional second parameter allows us to start searching from a given position.
+> str.indexOf('id', 2)
+12
+> str = 'Widget id with id';
+'Widget id with id'
+> str.indexOf('id', 2)
+7
+> str.indexOf('id', 8)
+15
+> 
+
+str.lastIndexOf(substr, position)
+There is also a similar method str.lastIndexOf(substr, position) that searches from the end of a string to its beginning.
+There is a slight inconvenience with indexOf in the if test. We can’t put it in the if like this
+It doesnot work
+
+The bitwise NOT trick
+It converts the number to a 32-bit integer (removes the decimal part if exists) and then reverses all bits in its binary representation
+~n is zero only if n == -1 
+> ~0
+-1
+> ~-2
+1
+> 
+ as modern JavaScript provides .includes method it is not much used.
+The more modern method str.includes(substr, pos) returns true/false depending on whether str contains substr within.
+It’s the right choice if we need to test for the match, but don’t need its position
+The optional second argument of str.includes is the position to start searching from:
+
+> "Widget".includes("id", 3)
+false
+> "Widget".includes("id")
+true
+
+ includes, startsWith, endsWith
+ The methods str.startsWith and str.endsWith do exactly what they say
+> "Widget".endsWith("get")
+true
+> "Widget".endsWith("Wid")
+false
+> "Widget".startsWith("Wid")
+true
+> 
+
+
+
+Getting a substring
+There are 3 methods in JavaScript to get a substring: substring, substr and slice.
+str.slice(start [, end])
+Returns the part of the string from start to (but not including) end.
+
+> str.slice(-4, -1)
+'h i'
+> str.slice(0, 5)
+'Widge'
+
+str.substring(start [, end])
+Returns the part of the string between start and end.
+This is almost the same as slice, but it allows start to be greater than end.
+Negative arguments are (unlike slice) not supported, they are treated as
+> str.substring(6, 2)
+'dget'
+> str.substring(0, 2)
+'Wi'
+
+str.substr(start [, length])
+Returns the part of the string from start, with the given length
+> str.substr(-4, 2)
+'h '
+> str.substr(2, 4)
+'dget'
+
+Comparing strings-
+strings are compared character-by-character in alphabetical order
+A lowercase letter is always greater than the uppercase:
+> 'a' > 'Z'
+true
+> 'z' > 'Z'
+true
+> 'A' > 'Z'
+false
+
+Letters with diacritical marks are “out of order”
+
+> 'Österreich' > 'Zealand'
+true
+> 
+
+str.codePointAt(pos)
+Returns the code for the character at position pos
+> "z".codePointAt(0)
+122
+> "za".codePointAt(1)
+97
+> 
+
+String.fromCodePoint(code)
+Creates a character by its numeric codes
+>  String.fromCodePoint(90)
+'Z'
+>  String.fromCodePoint(97)
+'a'
+> 
+The characters are compared by their numeric code. The greater code means that the character is greater. The code for a (97) is greater than the code for Z (90).
+
+All lowercase letters go after uppercase letters because their codes are greater.
+Some letters like Ö stand apart from the main alphabet. Here, its code is greater than anything from a to z.
+
+
+Internals, Unicode-
+Surrogate pairs
+
+str.trim() – removes (“trims”) spaces from the beginning and end of the string.
+str.repeat(n) – repeats the string n times.
 
 
 
