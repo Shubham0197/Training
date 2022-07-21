@@ -1,0 +1,15 @@
+AJAX stands for asynchronous Javascript and XML
+AJAx is not a programming language. Rather its a set of existing Technologies.
+Ajax helps in fetching data asynchronously without interfering woth existing pages.
+not page reload /refresh
+Modern website uses JSON instead of xml for data transfer
+
+Advantages
+Not page reload/ Refresh
+Better user experience
+Saves network bandwidth
+Very attractive.
+
+Ajax uses XMLHttpRequest object xhr object to achieve this
+Json is used instead xml for data transfer, .txt, .html any fomat to get data.
+data can be transferred in any format and protocol (Not always HTTPs necessary)
