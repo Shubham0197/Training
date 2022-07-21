@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'employees/destroy'
   root 'aircraft#index'
   get 'aircraft/show'
+  get 'aircraft/practice'
   get 'aircraft/index'
   get 'aircraft/new'
   get 'delete/:id', to: "aircraft#delete"

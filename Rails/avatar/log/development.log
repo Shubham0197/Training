@@ -1140,3 +1140,14 @@ Processing by UsersController#signup as HTML
 Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2022-07-21 19:08:31 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:10
+  Rendered users/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 112ms (Views: 101.6ms | ActiveRecord: 3.5ms)
+
+

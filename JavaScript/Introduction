@@ -963,5 +963,210 @@ undefined
 
 Formally, these methods work via temporary objects, but JavaScript engines are well tuned to optimize that internally, so they are not expensive to call.
 
+## Numbers methods
+there are two types of numbers:
+
+Regular numbers in JavaScript are stored in 64-bit format IEEE-754, also known as “double precision floating point numbers”. Most common type of numner used.
+
+BigInt numbers represent integers of arbitrary length. They are sometimes needed because a regular integer number can’t safely exceed (253-1) or be less than -(253-1).
+
+More ways to write a number-
+We also can use underscore _ as the separator.
+To amke big no. more readeable .
+The JavaScript engine simply ignores _ between digits
+try to avoid writing long sequences of zeroes .
+we can shorten a number by appending the letter "e" to it and specifying the zeroes count
+
+> let x = 10000;
+undefined
+> let y = 10_000;
+undefined
+> console.log(x == y)
+true
+> let z = 1e4;
+undefined
+> 
+> console.log(x == z)
+true
+>  z = 1e-4;
+0.0001
+> 
+
+
+For different numeral systems:
+Can write numbers directly in hex (0x), octal (0o) and binary (0b) systems.
+
+> z = 0xFF;
+255
+> z = 0b11111111;
+255
+> z = 0o377;
+255
+There are only 3 numeral systems with such support.
+
+toString(base)- 
+
+The method num.toString(base) returns a string representation of num in the numeral system with the given base.
+> z.toString(2);
+'11111111'
+> z.toString(16);
+'ff'
+> z.toString(8);
+'377'
+Common use cases for this are:
+base=16 is used for hex colors, character encodings etc, digits can be 0..9 or A..F.
+base=2 is mostly for debugging bitwise operations, digits can be 0 or 1.
+
+Rounding-
+
+To roud to nearest integer.
+Math.floor
+Rounds down: 3.1 becomes 3, and -1.1 becomes -2.
+
+Math.ceil
+Rounds up: 3.1 becomes 4, and -1.1 becomes -1.
+
+Math.round
+Rounds to the nearest integer: 3.1 becomes 3, 3.6 becomes 4, the middle case: 3.5 rounds up to 4 too.
+
+Math.trunc (not supported by Internet Explorer)
+Removes anything after the decimal point without rounding: 3.1 becomes 3, -1.1 becomes -1.
+> Math.floor(3.1);
+3
+> Math.floor(-3.1);
+-4
+> Math.ceil(-3.1);
+-3
+> Math.ceil(3.1);
+4
+> Math.round(3.1);
+3
+> Math.round(-3.1);
+-3
+> Math.trunc(-3.1);
+-3
+> Math.trunc(3.1);
+3
+> 
+
+
+TO round to nearest decimal points - 
+Multiply-and-divide.
+For example, to round the number to the 2nd digit after the decimal, we can multiply the number by 100, call the rounding function and then divide it back.
+> let num = 1.23456789;
+undefined
+> console.log( Math.round(num * 100) / 100 ); 
+1.23
+undefined
+
+The method toFixed(n) rounds the number to n digits after the point and returns a string representation of the result.
+> console.log( num.toFixed(1) ); 
+1.2
+undef
+> console.log( num.toFixed(5) ); 
+1.23457
+undefined
+> 
+the result of toFixed is a string. If the decimal part is shorter than required, zeroes are appended to the end
+> console.log( z.toFixed(5) ); 
+255.00000
+undefined
+And we can convert it to a number using the unary plus or a Number()
+> console.log( +z.toFixed(5) ); 
+255
+undefined
+
+> console.log(Number(z.toFixed(5)) ); 
+255
+
+Imprecise calculations -
+Internally, a number is represented in 64-bit format IEEE-754, so there are exactly 64 bits to store a number: 52 of them are used to store the digits, 11 of them store the position of the decimal point, and 1 bit is for the sign.
+
+If a number is really huge, it may overflow the 64-bit storage and become a special numeric value Infinity
+> console.log( 1e500 );
+Infinity
+
+There’s just no way to store exactly 0.1 or exactly 0.2 using the binary system, just like there is no way to store one-third as a decimal fraction.
+
+The numeric format IEEE-754 solves this by rounding to the nearest possible number. These rounding rules normally don’t allow us to see that “tiny precision loss”, but it exists
+> console.log( 0.1.toFixed(20) );
+0.10000000000000000555
+undefined
+> console.log( 0.1 + 0.2 == 0.3 );
+false
+undefined
+
+we can elminite this error by using  toFixed method but have change string to number after it.
+> console.log( +sum.toFixed(2) );
+0.4
+undefined
+> 
+
+Infinity (and -Infinity) is a special numeric value that is greater (less) than anything.
+
+NaN represents an error.
+
+
+isNaN(value) converts its argument to a number and then tests it for being NaN
+> console.log( isNaN(NaN) );
+true
+undefined
+> console.log( isNaN(sum) );
+false
+
+
+ we can not just use the comparison === NaN. The value NaN is unique in that it does not equal anything
+
+
+isFinite(value) converts its argument to a number and returns true if it’s a regular number, not NaN/Infinity/-Infinity
+
+> console.log( isFinite(Infinity) );
+false
+undefined
+> console.log( isFinite(sum) );
+true
+
+isFinite can also be used to check if the string is valid number or not
+> sum = "Hello"
+'Hello'
+> console.log( isFinite(sum) );
+false
+undefined
+
+parseInt and parseFloat - 
+Numeric conversion using a plus + or Number() is strict. If a value is not exactly a number, it fails.
+
+To get no. out of '13$' or '13.4cm' have to use above funtions.
+> console.log(parseInt('13.4$'));
+13
+undefined
+> console.log(parseFloat('13.4$'));
+13.4
+undefined
+> 
+
+Other math functions-
+Math.random()
+Returns a random number from 0 to 1 (not including 1).
+> Math.random(20);
+0.6982506610603878
+> Math.random();
+0.10144248663710376
+
+
+Math.max(a, b, c...) and Math.min(a, b, c...)
+Returns the greatest and smallest from the arbitrary number of arguments.
+> Math.max(3, 5, -10, 0, 1)
+5
+> Math.min(1, 2)
+1
+
+Math.pow(n, power)
+Returns n raised to the given power.
+> Math.pow(2, 10)
+1024
+
+
+
 
 

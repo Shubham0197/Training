@@ -7,6 +7,10 @@ class AircraftController < ApplicationController
     puts @aircrafts.count,params[:q],"\n"
   end
 
+  def practice
+    @aircrafts = Aircraft.all
+  end
+
   def show
     @aircraft = Aircraft.find(params[:id])
     @certifides = @aircraft.certifieds

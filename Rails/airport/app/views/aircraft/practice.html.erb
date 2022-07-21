@@ -1,0 +1,6 @@
+<%= form_with model: @aircrafts, url: root_path do |form| %>
+  <%= form.label :question, "Is it raining?" %>
+  <br>
+  <%= form.label :answer %>
+  <%= form.select :state,["yes","no"] %>
+<% end %>
