@@ -833,8 +833,6 @@ John
 undefined
 
 
-
-
 We can use ?. for safe reading and deleting, but not writing
 > delete user1?.firstname;
 true
@@ -846,4 +844,106 @@ Uncaught TypeError: Cannot convert undefined or null to object
 true
 
 The optional chaining ?. has no use on the left side of an assignment.
+
+
+## Object to primitive conversion
+JavaScript doesn’t allow you to customize how operators work on objects.
+In case of such operations, objects are auto-converted to primitives, and then the operation is carried out over these primitives and results in a primitive value.
+
+Conversion rules
+There’s no conversion to boolean. All objects are true in a boolean context, as simple as that. There exist only numeric and string conversions.
+The numeric conversion happens when we subtract objects or apply mathematical functions.
+As for the string conversion – it usually happens when we output an object with alert(obj) and in similar contexts.
+
+Hints-
+There are three variants of type conversion, that happen in various situations. They’re called “hints”, as described in the specification.
+
+String:-
+For an object-to-string conversion, when we’re doing an operation on an object that expects a string
+
+"default"
+Occurs in rare cases when the operator is “not sure” what type to expect.
+If an object is compared using == with a string, number or a symbol, it’s also unclear which conversion should be done, so the "default" hint is used.
+
+To do the conversion, JavaScript tries to find and call three object methods:
+
+Call obj[Symbol.toPrimitive](hint) – the method with the symbolic key Symbol.toPrimitive (system symbol), if such method exists,
+Otherwise if hint is "string"
+try calling obj.toString() or obj.valueOf(), whatever exists.
+Otherwise if hint is "number" or "default"
+try calling obj.valueOf() or obj.toString(), whatever exists.
+
+
+Symbol.toPrimitive-
+There’s a built-in symbol named Symbol.toPrimitive that should be used to name the conversion method
+If the method Symbol.toPrimitive exists, it’s used for all hints, and no more methods are needed
+
+A conversion can return any primitive type:
+The important thing to know about all primitive-conversion methods is that they do not necessarily return the “hinted” primitive.
+There is no control whether toString returns exactly a string, or whether Symbol.toPrimitive method returns a number for the hint "number".
+The only mandatory thing: these methods must return a primitive, not an object.
+> let user = {
+...   name: "John",
+...   money: 1000,
+... 
+...   [Symbol.toPrimitive](hint) {
+...     console.log(`hint: ${hint}`);
+...     return hint == "string" ? `{name: "${this.name}"}` : this.money;
+...   }
+... };
+undefined
+> 
+> 
+> console.log(user); 
+{
+  name: 'John',
+  money: 1000,
+  [Symbol(Symbol.toPrimitive)]: [Function: [Symbol.toPrimitive]]
+}
+undefined
+> console.log(+user); 
+hint: number
+1000
+undefined
+> console.log(user + 500); 
+hint: default
+1500
+undefined
+> 
+
+toString/valueOf-
+If there’s no Symbol.toPrimitive then JavaScript tries to find methods toString and valueOf:
+
+For the "string" hint: call toString method, and if it doesn’t exist, then valueOf (so toString has the priority for string conversions).
+For other hints: valueOf, and if it doesn’t exist, then toString (so valueOf has the priority for maths).
+
+These methods must return a primitive value. If toString or valueOf returns an object, then it’s ignored.
+By default, a plain object has following toString and valueOf methods:
+The toString method returns a string "[object Object]".
+The valueOf method returns the object itself.
+
+> let user = {name: "John"};
+undefined
+> 
+> console.log(user); 
+{ name: 'John' }
+undefined
+> console.log(user.valueOf() === user); 
+true
+undefined
+
+
+
+
+
+A conversion can return any primitive type - 
+The important thing to know about all primitive-conversion methods is that they do not necessarily return the “hinted” primitive.
+
+There is no control whether toString returns exactly a string, or whether Symbol.toPrimitive method returns a number for the hint "number".
+
+The only mandatory thing: these methods must return a primitive, not an object.
+
+
+
+
 
