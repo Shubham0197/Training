@@ -1746,3 +1746,34 @@ The call elem.cloneNode(true) creates a “deep” clone of the element – with
 A word about “document.write”
  It is very ancient method of adding something to a web-page: document.write
 The call to document.write only works while the page is loading.
+
+## Styles and Classes
+
+How to modify styles in javascript
+
+getComputedStyle is a method of the window object 
+The style property operates only on the value of the "style" attribute, without any CSS cascade.
+The syntax is:
+getComputedStyle(element, [pseudo])
+There are two concepts in CSS:
+
+A computed style value is the value after all CSS rules and CSS inheritance is applied, as the result of the CSS cascade. It can look like height:1em or font-size:125%.
+A resolved style value is the one finally applied to the element. Values like 1em or 125% are relative. The browser takes the computed value and makes all units fixed and absolute, for instance: height:20px or font-size:16px. For geometry properties resolved values may have a floating point, like width:50.5px.
+A long time ago getComputedStyle was created to get computed values, but it turned out that resolved values are much more convenient, and the standard changed.
+
+getComputedStyle requires the full property name
+
+So nowadays getComputedStyle actually returns the resolved value of the property, usually in px for geometry.
+
+
+classList property has many different methods ot mddify the HTML class attribute values such as add(), remove(), and toggle() on off the the class name.
+Changing the HTML class attribute value is the most common way to appy styles on a web page.
+ 
+ Methods of classList:
+
+elem.classList.add/remove("class") – adds/removes the class.
+elem.classList.toggle("class") – adds the class if it doesn’t exist, otherwise removes it.
+elem.classList.contains("class") – checks for the given class, returns true/false.
+
+
+
