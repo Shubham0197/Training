@@ -1,3 +1,10 @@
+<script>
+  
+  var confirmation = confirm("This is a confirm box");
+  var user = prompt("What is your name");
+  window.alert(user + " answer is " + confirmation);
+  document.body.style.background = "green";
+</script>
 <h1>Aircraft#index</h1>
 <%= search_form_for @q, url: :aircraft_index do |form| %>
   <%= form.label :name%>
