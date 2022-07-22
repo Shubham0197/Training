@@ -1684,3 +1684,21 @@ HTML is parsed by the browser in which creates the DOM tree whcih is made up of 
 The “hidden” property
 The “hidden” attribute and the DOM property specifies whether the element is visible or not.
 
+
+## Attributes and properties
+
+HTMl has attributes values, href,
+
+How to make own property for html elements 
+All attributes starting with “data-” are reserved for programmers’ use. They are available in the dataset property.
+So, if an attribute is non-standard, there won’t be a DOM-property for it. Is there a way to access such attributes?
+
+Sure. All attributes are accessible by using the following methods:
+
+elem.hasAttribute(name) – checks for existence.
+elem.getAttribute(name) – gets the value.
+elem.setAttribute(name, value) – sets the value.
+elem.removeAttribute(name) – removes the attribute.
+console.log() any object in the document presents the DOM tree the presentation of the parent/ child object within that object.
+
+console.dir() any object in the document presents the objects prperties and methods
