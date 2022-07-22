@@ -1,6 +1,6 @@
-
+<a href = "google.com" id = "jsinfo">googel </a>
 <h1>Index</h1>
-<%= link_to "Sign Up", users_signup_path %>
+<%= link_to "Sign Up", users_signup_path, id: 'elem' %>
 <br>
 <hr>
 <div >
@@ -60,4 +60,12 @@
           alert("The archive reference: " + elem.href );
         }
       }
-    </script>
+      let jsinfo = document.getElementById("jsinfo");
+      jsinfo.href = "google.com";
+      jsinfo.className = "web" ;
+      jsinfo.innerHTML = "jsinfo.com" ; 
+      jsinfo.textContent = "Something" ;
+
+      setInterval(() => elem.hidden = !elem.hidden, 1000);
+
+     </script>

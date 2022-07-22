@@ -1640,3 +1640,47 @@ tr.rowIndex – the number of the <tr> in the table as a whole (including all ta
 <td> and <th>:
 
 td.cellIndex – the number of the cell inside the enclosing <tr>.
+
+
+ 
+##  Node properties: type, tag and contents
+The “nodeType” property
+The nodeType property provides one more, “old-fashioned” way to get the “type” of a DOM node.
+
+It has a numeric value:
+
+elem.nodeType == 1 for element nodes,
+elem.nodeType == 3 for text nodes,
+elem.nodeType == 9 for the document object,
+
+We can only read nodeType, not change it.
+Is there any difference between tagName and nodeName?
+
+Sure, the difference is reflected in their names, but is indeed a bit subtle.
+
+The tagName property exists only for Element nodes.
+The nodeName is defined for any Node:
+for elements it means the same as tagName.
+for other node types (text, comment, etc.) it has a string with the node type.
+
+
+outerHTML: full HTML of the element
+The outerHTML property contains the full HTML of the element. That’s like innerHTML plus the element itself.
+Beware: unlike innerHTML, writing to outerHTML does not change the element. Instead, it replaces it in the DOM.
+
+
+give variable name the same as the id name
+style.backgroundColor comes from the css property and have to use the camelCase
+style.color affects the test color
+calss has deep meainig in programming name so javascript use calssName property for the element
+
+innerHTML(prperty javascript has defines whats inside that object) vs tesxtContent  
+Does the same thing but in innerHTML can write the HTML code in it to be excuted by the browser.
+
+textContetn is preffered property to give
+
+HTML is parsed by the browser in which creates the DOM tree whcih is made up of the m=nodes each of whcih has different prperties adn methods availabel to it.
+
+The “hidden” property
+The “hidden” attribute and the DOM property specifies whether the element is visible or not.
+
