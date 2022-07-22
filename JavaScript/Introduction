@@ -1691,6 +1691,11 @@ HTMl has attributes values, href,
 
 How to make own property for html elements 
 All attributes starting with “data-” are reserved for programmers’ use. They are available in the dataset property.
+
+getAttribute('About') – the first letter is uppercase here, and in HTML it’s all lowercase. But that doesn’t matter: attribute names are case-insensitive.
+We can assign anything to an attribute, but it becomes a string. So here we have "123" as the value.
+All attributes including ones that we set are visible in outerHTML.
+The attributes collection is iterable and has all the attributes of the element (standard and non-standard) as objects with name and value properties.
 So, if an attribute is non-standard, there won’t be a DOM-property for it. Is there a way to access such attributes?
 
 Sure. All attributes are accessible by using the following methods:
@@ -1702,3 +1707,42 @@ elem.removeAttribute(name) – removes the attribute.
 console.log() any object in the document presents the DOM tree the presentation of the parent/ child object within that object.
 
 console.dir() any object in the document presents the objects prperties and methods
+
+
+## modifying the document
+
+Add a new list item or add new element wich dowes not exist
+
+createElement() is used
+
+Here are more insertion methods, they specify different places where to insert:
+
+node.append(...nodes or strings) – append nodes or strings at the end of node,
+node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+node.before(...nodes or strings) –- insert nodes or strings before node,
+node.after(...nodes or strings) –- insert nodes or strings after node,
+node.replaceWith(...nodes or strings) –- replaces node with the given nodes or strings.
+
+insertAdjacentHTML/Text/Element
+For that we can use another, pretty versatile method: elem.insertAdjacentHTML(where, html).
+
+The first parameter is a code word, specifying where to insert relative to elem. Must be one of the following:
+
+"beforebegin" – insert html immediately before elem,
+"afterbegin" – insert html into elem, at the beginning,
+"beforeend" – insert html into elem, at the end,
+"afterend" – insert html immediately after elem.
+The second parameter is an HTML string, that is inserted “as HTML”.
+
+
+Node removal
+To remove a node, there’s a method node.remove().
+
+
+Cloning nodes: cloneNode
+Sometimes when we have a big element, that may be faster and simpler.
+The call elem.cloneNode(true) creates a “deep” clone of the element – with all attributes and subelements. If we call elem.cloneNode(false), then the clone is made without child elements.
+
+A word about “document.write”
+ It is very ancient method of adding something to a web-page: document.write
+The call to document.write only works while the page is loading.
