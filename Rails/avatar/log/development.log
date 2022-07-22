@@ -1515,3 +1515,124 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for ::1 at 2022-07-22 14:34:30 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 14:34:55 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 14:34:56 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 14:34:56 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2022-07-23 20:53:30 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 109ms (Views: 99.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-23 20:53:35 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (86.1ms)
+Completed 200 OK in 110ms (Views: 103.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/create" for ::1 at 2022-07-22 15:19:12 +0530
+Processing by UsersController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HnLNpxnyiQNPd9dhgmu1390Z0LRHRsTQ2lOG7rDZC4HOjyZaSG3jybWI6GdKaewFstpYMbI2T+X5n4DsH1C+aw==", "user"=>{"name"=>"Sam", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f6e2dc2d0b0 @tempfile=#<Tempfile:/tmp/RackMultipart20220722-36901-hsh3l3.png>, @original_filename="photo.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"photo.png\"\r\nContent-Type: image/png\r\n">, "gender"=>"Male", "address"=>"asvdd"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "gender", "avatar", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Sam"], ["gender", "Male"], ["avatar", "photo.png"], ["address", "asvdd"], ["created_at", "2022-07-22 09:49:12.490941"], ["updated_at", "2022-07-22 09:49:12.490941"]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 200 OK in 26ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 15:19:12 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 15:19:32 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 15:21:04 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 15:21:06 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 15:27:28 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2022-07-22 15:27:37 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.2ms)
+
+

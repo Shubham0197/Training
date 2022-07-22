@@ -24,7 +24,7 @@
       </tr>
      
       <% @users.each do |user| %>
-      <tr>
+      <tr class = "rows1">
         <td><%= image_tag(user.avatar_url(:thumb).to_s) %></td>
 
         <td><%= user.name %></td>
@@ -34,7 +34,7 @@
         <td><%= user.address %></td>
 
         <td><%= link_to "edit", edit_user_path(user.id)  %></td>
-        <td><%=  button_to "delete", user_path(user.id), method: :delete  %></td>
+        <td class = "button-1"><%=  button_to "delete", user_path(user.id), method: :delete  %></td>
 
       </tr>
       <% end %>
@@ -43,10 +43,21 @@
     <script> 
       console.log(document.body.childNodes);
       console.log(document.body.childElementCount);
-
+      console.log(document.lastChild.nextSibling);
+      let button = document.querySelector(".button-1");
+      alert(button.closest('.rows1'));
+      let button_del = document.getElementsByClassName("button-1");
+      let allh1 = document.getElementsByTagName("h1");
+      let allbutton = document.querySelectorAll(".button");
+      document.getElementsByName(name);
       let table = document.getElementById('table1');
       console.log(table.id  );
       for(let i = 0; i < table.rows.length; i++){
         table.rows[i].cells[i].style.backgroundColor = 'red';
+      }
+      for (let elem of document.body.children) {
+        if (elem.matches('a[href$="users"]')) {
+          alert("The archive reference: " + elem.href );
+        }
       }
     </script>
