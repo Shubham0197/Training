@@ -1,8 +1,4 @@
-<script>
-  alert("This is an alert");  
-   console.log(document.body.childNodes);
-   console.log(document.body.childElementCount);
-</script>
+
 <h1>Index</h1>
 <%= link_to "Sign Up", users_signup_path %>
 <br>
@@ -11,9 +7,9 @@
   <h1>Users List</h1>
 </div>
 <br>
-<div>
-  <% if !(@users.blank?) %>
-    <table>
+
+
+    <table id="table1">
       <tr>
         <th>Avatar</th>
 
@@ -44,7 +40,13 @@
       <% end %>
     
     </table>
-  <% else %>
-    <h3>No data in the Database</h3>
-  <% end %>
-</div>
+    <script> 
+      console.log(document.body.childNodes);
+      console.log(document.body.childElementCount);
+
+      let table = document.getElementById('table1');
+      console.log(table.id  );
+      for(let i = 0; i < table.rows.length; i++){
+        table.rows[i].cells[i].style.backgroundColor = 'red';
+      }
+    </script>
