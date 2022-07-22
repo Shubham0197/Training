@@ -1585,3 +1585,28 @@ HEAD
 #text:
 BODY
 #text:
+
+## Walking The DOM
+
+DOM : the API that described and identifies the HTML content to javascript
+NodeList(17)
+0: text
+1: script
+2: text
+3: h1
+4: text
+5: a
+6: text
+7: br
+8: text
+9: hr
+10: text
+11: div
+12: text
+13: br
+14: text
+15: div
+16: text
+length: 17
+
+Element only navigation
