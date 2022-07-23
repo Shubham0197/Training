@@ -1913,3 +1913,58 @@ To prevent a default action – use either event.preventDefault() or return fals
 The passive: true option of addEventListener tells the browser that the action is not going to be prevented. That’s useful for some mobile events, like touchstart and touchmove, to tell the browser that it should not wait for all handlers to finish before scrolling.
 
 If the default action was prevented, the value of event.defaultPrevented becomes true, otherwise it’s false.
+
+
+
+## Forms properties and Methods
+
+How to talk to form
+
+document.form.id
+
+
+select and option
+A <select> element has 3 important properties:
+
+select.options – the collection of <option> subelements,
+select.value – the value of the currently selected <option>,
+select.selectedIndex – the number of the currently selected <option>.
+They provide three different ways of setting a value for a <select>:
+
+Find the corresponding <option> element (e.g. among select.options) and set its option.selected to true.
+If we know a new value: set select.value to the new value.
+If we know the new option number: set select.selectedIndex to that number.
+
+new Option
+In the specification there’s a nice short syntax to create an <option> element:
+
+option = new Option(text, value, defaultSelected, selected);
+This syntax is optional. We can use document.createElement('option') and set attributes manually. Still, it may be shorter, so here are the parameters:
+
+text – the text inside the option,
+value – the option value,
+defaultSelected – if true, then selected HTML-attribute is created,
+selected – if true, then the option is selected.
+The difference between defaultSelected and selected is that defaultSelected sets the HTML-attribute (that we can get using option.getAttribute('selected'), while selected sets whether the option is selected or not.
+
+In practice, one should usually set both values to true or false. (Or, simply omit them; both default to false.)
+
+For instance, here’s a new “unselected” option:
+
+let option = new Option("Text", "value");
+// creates <option value="value">Text</option>
+The same option, but selected:
+
+let option = new Option("Text", "value", true, true);
+Option elements have properties:
+
+option.selected
+Is the option selected.
+option.index
+The number of the option among the others in its <select>.
+option.text
+Text content of the option (seen by the visitor).
+
+
+
+

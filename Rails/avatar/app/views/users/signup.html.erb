@@ -1,6 +1,6 @@
 <h1>Sign Up</h1>
 
-<%= form_with model: @user, url: users_create_path do |form| %>
+<%= form_with model: @user,id: 'form1', url: users_create_path do |form| %>
   <% if @user.errors.any? %>
   <div class="alert alert-danger">
     <% @user.errors.full_messages.each do |message| %>
@@ -38,3 +38,17 @@
     <p onclick="alert('p')">P</p>
   </div>
 </form>
+
+<script>
+  //how to get form from the document
+  console.log(document.forms.form1);
+  console.log(document.forms[0]);
+  console.log(document.getElementById("form1"));
+  //How to interact with the specific element inside the froms
+  console.log(document.forms[0].elements.user_name);
+  console.log(document.forms[0].elements.user_name.value);
+  //
+  console.log(document.getElementsByName('user[gender]'));
+  document.getElementsByName('user[gender]')[0].checked = true ;
+  console.log(document.forms[0].elements.user_name);
+</script>
