@@ -1796,7 +1796,6 @@ All properties are read-only except scrollLeft/scrollTop that make the browser s
 ## INtroduction to browser events
 HTML event attributes starts with on.
 
-
 Mouse events:
 
 click – when the mouse clicks on an element (touchscreen devices generate it on a tap).
@@ -1817,4 +1816,28 @@ DOMContentLoaded – when the HTML is loaded and processed, DOM is fully built.
 CSS events:
 
 transitionend – when a CSS-animation finishes.
+
+
+## Bubbling and Capturing
+this refers to the order in which events are handeled when multiple events are triiggered.
+When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+
+event.target
+A handler on a parent element can always get the details about where it actually happened.
+The most deeply nested element that caused the event is called a target element, accessible as event.target.
+Note the differences from this (=event.currentTarget):
+event.target – is the “target” element that initiated the event, it doesn’t change through the bubbling process.
+this – is the “current” element, the one that has a currently running handler on it.
+
+Stopping bubbling
+A bubbling event goes from the target element straight up. Normally it goes upwards till <html>, and then to document object, and some events even reach window, calling all handlers on the path.
+But any handler may decide that the event has been fully processed and stop the bubbling.
+The method for it is event.stopPropagation().
+
+
+There’s another phase of event processing called “capturing”. It is rarely used in real code, but sometimes can be useful.
+The standard DOM Events describes 3 phases of event propagation:
+Capturing phase – the event goes down to the element.
+Target phase – the event reached the target element.
+Bubbling phase – the event bubbles up from the element.
 
