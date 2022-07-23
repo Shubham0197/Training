@@ -37,7 +37,18 @@
   <div onclick="alert('div')">DIV
     <p onclick="alert('p')">P</p>
   </div>
-</form>
+</form><ul>
+  <li tabindex="1">One</li>
+  <li tabindex="0">Zero</li>
+  <li tabindex="2">Two</li>
+  <li tabindex="-1">Minus one</li>
+</ul>
+
+
+
+<style> .focused { outline: 1px solid red; } </style>
+
+
 
 <script>
   //how to get form from the document
@@ -51,4 +62,8 @@
   console.log(document.getElementsByName('user[gender]'));
   document.getElementsByName('user[gender]')[0].checked = true ;
   console.log(document.forms[0].elements.user_name);
+
+  form.addEventListener("focusin", () => form1.classList.add('focused'));
+  form.addEventListener("focusout", () => form1.classList.remove('focused'));
+
 </script>
