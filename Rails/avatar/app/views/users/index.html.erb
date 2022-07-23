@@ -43,65 +43,95 @@
     
     </table>
     <ul id="ul"></ul>
-    <script> 
-      table1.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
-      console.log(document.body.childNodes);
-      console.log(document.body.childElementCount);
-      console.log(document.lastChild.nextSibling);
-      let button = document.querySelector(".button-1");
-      alert(button.closest('.rows1'));
-      let button_del = document.getElementsByClassName("button-1");
-      let allh1 = document.getElementsByTagName("h1");
-      let allbutton = document.querySelectorAll(".button");
-      document.getElementsByName(name);
-      let table = document.getElementById('table1');
-      console.log(table.id  );
-      for(let i = 0; i < table.rows.length; i++){
-        table.rows[i].cells[i].style.backgroundColor = 'red';
-      }
-      for (let elem of document.body.children) {
-        if (elem.matches('a[href$="users"]')) {
-          alert("The archive reference: " + elem.href );
-        }
-      }
-      let jsinfo = document.getElementById("jsinfo");
-      jsinfo.href = "google.com";
-      jsinfo.className = "web" ;
-      jsinfo.innerHTML = "jsinfo.com" ; 
-      jsinfo.textContent = "Something" ;
 
-      setInterval(() => elem.hidden = !elem.hidden, 1000);
-// step 1
-      let newWeb = document.createElement("h2");
-// step2      create new text node
-      let newText = document.createTextNode("Adding via javascript");
-// step 2 append the item or can use text.Content prperty
-      newWeb.append(newText);
-// step 3 add any more attribute
-      newWeb.className = 'web' ; 
+    <button data-toggle-id="subscribe-mail">
+      Show the subscription form
+    </button>
+    
+    <form id="subscribe-mail" hidden>
+      Your mail: <input type="email">
+    </form>
 
-// step 4 append to the appropriate location
-      let loc = document.getElementById('jsinfo');
-            loc.append(newWeb);
-      function getListContent() {
-        let fragment = new DocumentFragment();
-      
-        for(let i=1; i<=3; i++) {
-          let li = document.createElement('li');
-          li.append(i);
-          fragment.append(li);
-        }
-      
-        return fragment;
-      }
-      
-      ul.append(getListContent());
-      function testClick(){
-        console.log("test button");
-        alert("you pressed test button");
-      }
-      //document.getElementById('test').onclick = testClick() ;
-      // can add many funtion by using addEventListenenrs
-      document.getElementById('test').addEventListener("click", testClick);
+<script> 
+  table1.insertAdjacentHTML('beforebegin', '<p>Hello</p>');
+  console.log(document.body.childNodes);
+  console.log(document.body.childElementCount);
+  console.log(document.lastChild.nextSibling);
+  let button = document.querySelector(".button-1");
+  alert(button.closest('.rows1'));
+  let button_del = document.getElementsByClassName("button-1");
+  let allh1 = document.getElementsByTagName("h1");
+  let allbutton = document.querySelectorAll(".button");
+  document.getElementsByName(name);
+  let table = document.getElementById('table1');
+  console.log(table.id  );
+  for(let i = 0; i < table.rows.length; i++){
+    table.rows[i].cells[i].style.backgroundColor = 'red';
+  }
+  for (let elem of document.body.children) {
+    if (elem.matches('a[href$="users"]')) {
+      alert("The archive reference: " + elem.href );
+    }
+  }
+  let jsinfo = document.getElementById("jsinfo");
+  jsinfo.href = "google.com";
+  jsinfo.className = "web" ;
+  jsinfo.innerHTML = "jsinfo.com" ; 
+  jsinfo.textContent = "Something" ;
+  setInterval(() => elem.hidden = !elem.hidden, 1000);
+  // step 1
+  let newWeb = document.createElement("h2");
+  // step2      create new text node
+  let newText = document.createTextNode("Adding via javascript");
+  // step 2 append the item or can use text.Content prperty
+  newWeb.append(newText);
+  // step 3 add any more attribute
+  newWeb.className = 'web' ; 
+  // step 4 append to the appropriate location
+  let loc = document.getElementById('jsinfo');
+        loc.append(newWeb);
+  function getListContent() {
+    let fragment = new DocumentFragment();
+  
+    for(let i=1; i<=3; i++) {
+      let li = document.createElement('li');
+      li.append(i);
+      fragment.append(li);
+    }
+  
+    return fragment;
+  }
+  
+  ul.append(getListContent());
+  function testClick(){
+    console.log("test button");
+    alert("you pressed test button");
+  }
 
-     </script>
+  //document.getElementById('test').onclick = testClick() ;
+  // can add many funtion by using addEventListenenrs
+  document.getElementById('test').addEventListener("click", testClick);
+
+  let selectedTd;
+  table1.onclick = function(event) {
+    let td = event.target.closest('td'); // (1)
+    if (!td) return; // (2)
+    if (!table.contains(td)) return; // (3)
+    highlight(td); // (4)
+  }
+
+  function highlight(td) {
+    if (selectedTd) { // remove the existing highlight if any
+      selectedTd.style.backgroundColor = 'white';
+    }
+    selectedTd = td;
+    selectedTd.style.backgroundColor = 'yellow'; // highlight the new td
+  }
+
+  document.addEventListener('click', function(event) {
+    let id = event.target.dataset.toggleId;
+    if (!id) return;
+    let elem = document.getElementById(id);
+    elem.hidden = !elem.hidden;
+  });
+</script>
