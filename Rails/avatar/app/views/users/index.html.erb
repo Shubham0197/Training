@@ -8,7 +8,9 @@
 </div>
 <br>
 
+<!-- <button id = "test" onclick = "console.log('in the cosole using onclick event')"> Test</button> -->
 
+<button id = "test"> Test</button>
     <table id="table1">
       <tr>
         <th>Avatar</th>
@@ -94,4 +96,12 @@
       }
       
       ul.append(getListContent());
+      function testClick(){
+        console.log("test button");
+        alert("you pressed test button");
+      }
+      //document.getElementById('test').onclick = testClick() ;
+      // can add many funtion by using addEventListenenrs
+      document.getElementById('test').addEventListener("click", testClick);
+
      </script>

@@ -1776,4 +1776,45 @@ elem.classList.toggle("class") – adds the class if it doesn’t exist, otherwi
 elem.classList.contains("class") – checks for the given class, returns true/false.
 
 
+## Element size and scrolling
+
+Don’t take width/height from CSS
+
+Elements have the following geometry properties:
+
+offsetParent – is the nearest positioned ancestor or td, th, table, body.
+offsetLeft/offsetTop – coordinates relative to the upper-left edge of offsetParent.
+offsetWidth/offsetHeight – “outer” width/height of an element including borders.
+clientLeft/clientTop – the distances from the upper-left outer corner to the upper-left inner (content + padding) corner. For left-to-right OS they are always the widths of left/top borders. For right-to-left OS the vertical scrollbar is on the left so clientLeft includes its width too.
+clientWidth/clientHeight – the width/height of the content including paddings, but without the scrollbar.
+scrollWidth/scrollHeight – the width/height of the content, just like clientWidth/clientHeight, but also include scrolled-out, invisible part of the element.
+scrollLeft/scrollTop – width/height of the scrolled out upper part of the element, starting from its upper-left corner.
+All properties are read-only except scrollLeft/scrollTop that make the browser scroll the element if changed.
+
+
+
+## INtroduction to browser events
+HTML event attributes starts with on.
+
+
+Mouse events:
+
+click – when the mouse clicks on an element (touchscreen devices generate it on a tap).
+contextmenu – when the mouse right-clicks on an element.
+mouseover / mouseout – when the mouse cursor comes over / leaves an element.
+mousedown / mouseup – when the mouse button is pressed / released over an element.
+mousemove – when the mouse is moved.
+Keyboard events:
+
+keydown and keyup – when a keyboard key is pressed and released.
+Form element events:
+
+submit – when the visitor submits a <form>.
+focus – when the visitor focuses on an element, e.g. on an <input>.
+Document events:
+
+DOMContentLoaded – when the HTML is loaded and processed, DOM is fully built.
+CSS events:
+
+transitionend – when a CSS-animation finishes.
 
