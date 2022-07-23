@@ -1,0 +1,30 @@
+<tr>
+  <th>Avatar</th>
+  <% previous_sort_by = params[:sort_by] ? params[:sort_by] : 'id'  %>
+  <% sort_type = params[:sort_type] ? params[:sort_type] : 'asc' %>
+
+  <th><%= link_to "Name", sorting_users_path(:sort_by => 'name', :previous_sort_by => previous_sort_by, :sort_type => sort_type ) , remote: true %></th>
+
+  <th><%= link_to "Gender", sorting_users_path(:sort_by => 'gender', :previous_sort_by => previous_sort_by, :sort_type => sort_type) , remote: true %></th>
+
+  <th><%= link_to "Address", sorting_users_path(:sort_by => 'address', :previous_sort_by => previous_sort_by, :sort_type => sort_type) , remote: true %></th>
+
+  <th>Edit</th>
+  <th>Delete</th>
+</tr>
+
+<% @users.each do |user| %>
+<tr class = "rows1">
+  <td><%= image_tag(user.avatar_url(:thumb).to_s) %></td>
+
+  <td><%= user.name %></td>
+
+  <td><%= user.gender %></td>
+
+  <td><%= user.address %></td>
+
+  <td><%= link_to "edit", edit_user_path(user.id)  %></td>
+  <td class = "button-1"><%=  button_to "delete", user_path(user.id), method: :delete  %></td>
+
+</tr>
+<% end %>
