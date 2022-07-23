@@ -38,6 +38,23 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "Deleted User"
   end
 
+  def sorting
+    previous_sort_by = params[:previous_sort_by]
+    sort_by = params[:sort_by]
+    sort_type = params[:sort_type]
+
+    if previous_sort_by == sort_by
+      if sort_type == 'asc'
+        sort_type = 'desc'
+        params[:sort_type] = 'desc'
+      else
+        sort_type = 'asc'
+        params[:sort_type] = 'asc'
+      end
+    end
+    @users = User.all.order(sort_by+" "+sort_type)
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :avatar, :address, :gender)

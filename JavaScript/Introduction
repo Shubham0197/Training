@@ -1968,4 +1968,26 @@ Text content of the option (seen by the visitor).
 
 ## Focusing: Focus  and Blur
 
+An element receives the focus when the user either clicks on it or uses the Tab key on the keyboard. There’s also an autofocus HTML attribute that puts the focus onto an element by default when a page loads and other means of getting the focus.
+Focusing on an element generally means: “prepare to accept the data here”, so that’s the moment when we can run the code to initialize the required functionality.
+The moment of losing the focus (“blur”) can be even more important. That’s when a user clicks somewhere else or presses Tab to go to the next form field, or there are other means as well.
+Losing the focus generally means: “the data has been entered”, so we can run the code to check it or even to save it to the server and so on.
+
+Methods focus/blur
+Methods elem.focus() and elem.blur() set/unset the focus on the element.
+Any element becomes focusable if it has tabindex. The value of the attribute is the order number of the element when Tab (or something like that) is used to switch between them.
+That is: if we have two elements, the first has tabindex="1", and the second has tabindex="2", then pressing Tab while in the first element – moves the focus into the second one.
+
+There are two special values:
+tabindex="0" puts an element among those without tabindex. That is, when we switch elements, elements with tabindex=0 go after elements with tabindex ≥ 1.
+Usually it’s used to make an element focusable, but keep the default switching order. To make an element a part of the form on par with <input>.
+tabindex="-1" allows only programmatic focusing on an element. The Tab key ignores such elements, but method elem.focus() works.
+
+
+Delegation: focusin/focusout
+Events focus and blur do not bubble.
+
+
+
+
 

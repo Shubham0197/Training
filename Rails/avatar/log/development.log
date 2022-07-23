@@ -1636,6 +1636,7 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.2ms)
 
 
+<<<<<<< Updated upstream
 Started GET "/" for ::1 at 2022-07-22 16:25:19 +0530
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
@@ -1682,10 +1683,47 @@ Completed 200 OK in 128ms (Views: 123.8ms | ActiveRecord: 2.7ms)
 
 
 Started GET "/" for ::1 at 2022-07-22 18:42:20 +0530
+=======
+Started GET "/" for ::1 at 2022-07-24 18:04:18 +0530
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 125ms (Views: 115.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-24 18:52:58 +0530
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (52.9ms)
+Completed 200 OK in 181ms (Views: 169.8ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users/create" for ::1 at 2022-07-24 18:53:10 +0530
+Processing by UsersController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jlrEKDuHGKyGu3wzZ3JLQx9Wn2D1Qi2H5IOQPA+ilsRNSJkrqi/uoez8hF3n701oYllwRGj3incIq4l3ehXSCA==", "user"=>{"name"=>"ram", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f6bfd795070 @tempfile=#<Tempfile:/tmp/RackMultipart20220724-17115-fjc813.png>, @original_filename="photo.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"photo.png\"\r\nContent-Type: image/png\r\n">, "gender"=>"Male", "address"=>"c3123"}, "commit"=>"Sign Up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "gender", "avatar", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "ram"], ["gender", "Male"], ["avatar", "photo.png"], ["address", "c3123"], ["created_at", "2022-07-24 13:23:10.758091"], ["updated_at", "2022-07-24 13:23:10.758091"]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 200 OK in 37ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 18:53:10 +0530
+>>>>>>> Stashed changes
 Processing by UsersController#index as HTML
   Rendering users/index.html.erb within layouts/application
   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
   ↳ app/views/users/index.html.erb:26
+<<<<<<< Updated upstream
   Rendered users/index.html.erb within layouts/application (2.8ms)
 Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.5ms)
 
@@ -1762,10 +1800,47 @@ puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
 Started GET "/" for ::1 at 2022-07-22 18:43:43 +0530
+=======
+  Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 25ms (Views: 14.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/signup" for ::1 at 2022-07-24 18:53:15 +0530
+Processing by UsersController#signup as HTML
+  Rendering users/signup.html.erb within layouts/application
+  Rendered users/signup.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/create" for ::1 at 2022-07-24 18:53:31 +0530
+Processing by UsersController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Og1PBCEBDQ1G6v/Xstg/bfjxJXFyoxePKJK3g+kyV3Xq8KT5cJ5nx7wVwNF62ma3lzKt9IfTnLoLXrGBRrvinw==", "user"=>{"name"=>"gEETA", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f6bfd77f108 @tempfile=#<Tempfile:/tmp/RackMultipart20220724-17115-cpdfpi.png>, @original_filename="photo.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"photo.png\"\r\nContent-Type: image/png\r\n">, "gender"=>"Female", "address"=>"c12"}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "gender", "avatar", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "gEETA"], ["gender", "Female"], ["avatar", "photo.png"], ["address", "c12"], ["created_at", "2022-07-24 13:23:31.287188"], ["updated_at", "2022-07-24 13:23:31.287188"]]
+  ↳ app/controllers/users_controller.rb:12
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12
+Redirected to http://localhost:3000/
+Completed 200 OK in 15ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 18:53:31 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/index.html.erb:26
+  Rendered users/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 18:53:34 +0530
+>>>>>>> Stashed changes
 Processing by UsersController#index as HTML
   Rendering users/index.html.erb within layouts/application
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
   ↳ app/views/users/index.html.erb:26
+<<<<<<< Updated upstream
   Rendered users/index.html.erb within layouts/application (2.1ms)
 Completed 200 OK in 11ms (Views: 10.6ms | ActiveRecord: 0.3ms)
 
@@ -1846,6 +1921,149 @@ Started GET "/uploads/user/avatar/7/thumb_photo.png" for ::1 at 2022-07-22 18:47
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+  Rendered users/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 19:01:29 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  Rendered users/index.html.erb within layouts/application (109.9ms)
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `indextable' for #<#<Class:0x00007f6bfcc7e128>:0x00007f6c002f50f8>):
+    10: 
+    11: 
+    12:     <table id="table1">
+    13:       <%= render indextable %>
+    14:     </table>
+    15:     <script> 
+    16:       console.log(document.body.childNodes);
+  
+app/views/users/index.html.erb:13:in `_app_views_users_index_html_erb__1672242292514431561_15980'
+Started GET "/" for ::1 at 2022-07-24 19:01:39 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+  Rendered users/index.html.erb within layouts/application (126.4ms)
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `indextable' for #<#<Class:0x00007f6bfcc7e128>:0x00007f6c0811f6b8>):
+    10: 
+    11: 
+    12:     <table id="table1">
+    13:       <%= render (indextable) %>
+    14:     </table>
+    15:     <script> 
+    16:       console.log(document.body.childNodes);
+  
+app/views/users/index.html.erb:13:in `_app_views_users_index_html_erb__1672242292514431561_16700'
+Started GET "/" for ::1 at 2022-07-24 19:04:18 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  Rendered users/_indextable.html.erb (53.7ms)
+  Rendered users/index.html.erb within layouts/application (54.4ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `sorting_path' for #<#<Class:0x00007f6bfcc7e128>:0x00007f6c0c0abc00>):
+    1: <tr>
+    2:   <th>Avatar</th>
+    3: 
+    4:   <th><%= link_to "Name", sorting_path('name') , remote: true %></th>
+    5: 
+    6:   <th><%= link_to "Gender", sorting_path('gender') , remote: true %></th>
+    7: 
+  
+app/views/users/_indextable.html.erb:4:in `_app_views_users__indextable_html_erb__1678116434434176134_17240'
+app/views/users/index.html.erb:13:in `_app_views_users_index_html_erb__1672242292514431561_17220'
+Started GET "/" for ::1 at 2022-07-24 19:05:57 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (8.9ms)
+  Rendered users/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 20ms (Views: 14.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:06:01 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -1872,11 +2090,45 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/uploads/user/avatar/8/thumb_photo.png" for ::1 at 2022-07-22 18:47:56 +0530
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.gender" for ::1 at 2022-07-24 19:06:02 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -1903,6 +2155,7 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/" for ::1 at 2022-07-23 14:49:02 +0530
   [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
@@ -1920,6 +2173,39 @@ Started GET "/uploads/user/avatar/8/thumb_photo.png" for ::1 at 2022-07-23 14:49
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.address" for ::1 at 2022-07-24 19:06:03 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -1946,10 +2232,44 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:23 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -1976,6 +2296,7 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/" for ::1 at 2022-07-23 14:54:13 +0530
 Processing by UsersController#index as HTML
   Rendering users/index.html.erb within layouts/application
@@ -1991,6 +2312,39 @@ Started GET "/uploads/user/avatar/8/thumb_photo.png" for ::1 at 2022-07-23 14:54
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:29 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2017,10 +2371,44 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:29 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2047,6 +2435,7 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/users/8/edit" for ::1 at 2022-07-23 14:54:31 +0530
 Processing by UsersController#edit as HTML
   Parameters: {"id"=>"8"}
@@ -2065,6 +2454,39 @@ ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/t
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:30 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2091,8 +2513,42 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:30 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2119,11 +2575,45 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/uploads/user/avatar/7/thumb_photo.png" for ::1 at 2022-07-23 14:54:32 +0530
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:31 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2150,11 +2640,45 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/uploads/user/avatar/8/thumb_photo.png" for ::1 at 2022-07-23 14:54:32 +0530
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:31 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2181,6 +2705,7 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/" for ::1 at 2022-07-23 15:07:14 +0530
 Processing by UsersController#index as HTML
   Rendering users/index.html.erb within layouts/application
@@ -2196,6 +2721,39 @@ Started GET "/uploads/user/avatar/8/thumb_photo.png" for ::1 at 2022-07-23 15:07
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:31 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2222,10 +2780,44 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:31 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2252,6 +2844,7 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/uploads/user/avatar/7/thumb_photo.png" for ::1 at 2022-07-23 15:07:21 +0530
 Started GET "/uploads/user/avatar/8/thumb_photo.png" for ::1 at 2022-07-23 15:07:21 +0530
   
@@ -2260,6 +2853,39 @@ ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/7/t
   
 ActionController::RoutingError (No route matches [GET] "/uploads/user/avatar/8/thumb_photo.png"):
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting/sort_by.name" for ::1 at 2022-07-24 19:10:34 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2286,8 +2912,54 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/" for ::1 at 2022-07-24 19:12:48 +0530
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/itsacheckmate/.rvm/gems/ruby-2.7.0/gems/activerecord-5.2.8.1/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (9.2ms)
+  Rendered users/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 129ms (Views: 119.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/users/sorting/sort_by?sort_by=name" for ::1 at 2022-07-24 19:12:51 +0530
+  
+ActionController::RoutingError (uninitialized constant Users):
+  
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.8.1) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.8.1) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2314,11 +2986,52 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/gallery.css" for ::1 at 2022-07-23 15:07:21 +0530
   
 ActionController::RoutingError (No route matches [GET] "/gallery.css"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/" for ::1 at 2022-07-24 19:13:20 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (6.3ms)
+  Rendered users/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 16ms (Views: 11.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:13:23 +0530
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for UsersController):
+  
+actionpack (5.2.8.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.8.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2345,11 +3058,96 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/gallery.css" for ::1 at 2022-07-23 15:07:48 +0530
   
 ActionController::RoutingError (No route matches [GET] "/gallery.css"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/" for ::1 at 2022-07-24 19:14:09 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  Rendered users/_indextable.html.erb (60.4ms)
+  Rendered users/index.html.erb within layouts/application (61.3ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `sorting_path' for #<#<Class:0x00007f9098131a98>:0x00007f9098130170>):
+    1: <tr>
+    2:   <th>Avatar</th>
+    3: 
+    4:   <th><%= link_to "Name", sorting_path(:sort_by => 'name') , remote: true %></th>
+    5: 
+    6:   <th><%= link_to "Gender", sorting_path(:sort_by => 'gender') , remote: true %></th>
+    7: 
+  
+app/views/users/_indextable.html.erb:4:in `_app_views_users__indextable_html_erb___2913820169380343808_21020'
+app/views/users/index.html.erb:13:in `_app_views_users_index_html_erb__4344092153778748928_21000'
+Started GET "/" for ::1 at 2022-07-24 19:14:22 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (6.5ms)
+  Rendered users/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 16ms (Views: 11.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 19:14:55 +0530
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:6:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for ::1 at 2022-07-24 19:15:28 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (6.2ms)
+  Rendered users/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 17ms (Views: 12.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:15:30 +0530
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for UsersController):
+  
+actionpack (5.2.8.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.8.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2376,11 +3174,42 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/gallery.css" for ::1 at 2022-07-23 15:08:01 +0530
   
 ActionController::RoutingError (No route matches [GET] "/gallery.css"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/users/sorting?sort_by=gender" for ::1 at 2022-07-24 19:15:45 +0530
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for UsersController):
+  
+actionpack (5.2.8.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.8.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2407,11 +3236,52 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/gallery.css" for ::1 at 2022-07-23 15:10:06 +0530
   
 ActionController::RoutingError (No route matches [GET] "/gallery.css"):
   
 actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+=======
+Started GET "/" for ::1 at 2022-07-24 19:17:20 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (5.7ms)
+  Rendered users/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 15ms (Views: 11.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:17:24 +0530
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for UsersController):
+  
+actionpack (5.2.8.1) lib/abstract_controller/base.rb:129:in `process'
+actionview (5.2.8.1) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.8.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.8.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.8.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.8.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.8.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.8.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+>>>>>>> Stashed changes
 web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
 web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
 web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
@@ -2438,6 +3308,7 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+<<<<<<< Updated upstream
 Started GET "/" for ::1 at 2022-07-23 16:21:10 +0530
 Processing by UsersController#index as HTML
   Rendering users/index.html.erb within layouts/application
@@ -2997,3 +3868,895 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+=======
+Started GET "/" for ::1 at 2022-07-24 19:18:06 +0530
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/avatar/config/routes.rb:6: syntax error, unexpected `do', expecting `end'
+    :collection do
+                ^~
+/home/itsacheckmate/Training/Rails/avatar/config/routes.rb:9: syntax error, unexpected `end', expecting end-of-input
+  end
+  ^~~
+):
+  
+config/routes.rb:6: syntax error, unexpected `do', expecting `end'
+config/routes.rb:9: syntax error, unexpected `end', expecting end-of-input
+Started GET "/" for ::1 at 2022-07-24 19:18:11 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  Rendered users/_indextable.html.erb (57.8ms)
+  Rendered users/index.html.erb within layouts/application (58.9ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 2.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `users_sorting_path' for #<#<Class:0x00007f909846a520>:0x00007f9098468bd0>
+Did you mean?  users_sorting_users_path):
+    1: <tr>
+    2:   <th>Avatar</th>
+    3: 
+    4:   <th><%= link_to "Name", users_sorting_path(:sort_by => 'name') , remote: true %></th>
+    5: 
+    6:   <th><%= link_to "Gender", users_sorting_path(:sort_by => 'gender') , remote: true %></th>
+    7: 
+  
+app/views/users/_indextable.html.erb:4:in `_app_views_users__indextable_html_erb___2913820169380343808_33760'
+app/views/users/index.html.erb:13:in `_app_views_users_index_html_erb__4344092153778748928_33740'
+Started GET "/" for ::1 at 2022-07-24 19:18:13 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY id LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/users/index.html.erb:13
+  Rendered users/_indextable.html.erb (63.3ms)
+  Rendered users/index.html.erb within layouts/application (64.2ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `users_sorting_path' for #<#<Class:0x00007f909846a520>:0x000055d5d8dec728>
+Did you mean?  users_sorting_users_path):
+    1: <tr>
+    2:   <th>Avatar</th>
+    3: 
+    4:   <th><%= link_to "Name", users_sorting_path(:sort_by => 'name') , remote: true %></th>
+    5: 
+    6:   <th><%= link_to "Gender", users_sorting_path(:sort_by => 'gender') , remote: true %></th>
+    7: 
+  
+app/views/users/_indextable.html.erb:4:in `_app_views_users__indextable_html_erb___2913820169380343808_34340'
+app/views/users/index.html.erb:13:in `_app_views_users_index_html_erb__4344092153778748928_34320'
+Started GET "/" for ::1 at 2022-07-24 19:19:17 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (5.9ms)
+  Rendered users/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 15ms (Views: 10.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:19:19 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  Rendered users/sorting.js.erb (0.2ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:21:54 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): <ActionController::Parameters {"sort_by"=>"name", "controller"=>"users", "action"=>"sorting"} permitted: false>. Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from sorting at /home/itsacheckmate/Training/Rails/avatar/app/controllers/users_controller.rb:43)
+  Rendering users/sorting.js.erb
+  Rendered users/_indextable.html.erb (3.1ms)
+  Rendered users/sorting.js.erb (5.3ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Cannot visit ActionController::Parameters):
+    11:   <th>Delete</th>
+    12: </tr>
+    13: 
+    14: <% @users.each do |user| %>
+    15: <tr class = "rows1">
+    16:   <td><%= image_tag(user.avatar_url(:thumb).to_s) %></td>
+    17: 
+  
+app/views/users/_indextable.html.erb:14:in `_app_views_users__indextable_html_erb___2913820169380343808_40300'
+app/views/users/sorting.js.erb:2:in `_app_views_users_sorting_js_erb___740079378899657552_40280'
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:21:56 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+DEPRECATION WARNING: Dangerous query method (method whose arguments are used as raw SQL) called with non-attribute argument(s): <ActionController::Parameters {"sort_by"=>"name", "controller"=>"users", "action"=>"sorting"} permitted: false>. Non-attribute arguments will be disallowed in Rails 6.0. This method should not be called with user-provided values, such as request parameters or model attributes. Known-safe values can be passed by wrapping them in Arel.sql(). (called from sorting at /home/itsacheckmate/Training/Rails/avatar/app/controllers/users_controller.rb:43)
+  Rendering users/sorting.js.erb
+  Rendered users/_indextable.html.erb (2.2ms)
+  Rendered users/sorting.js.erb (4.0ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Cannot visit ActionController::Parameters):
+    11:   <th>Delete</th>
+    12: </tr>
+    13: 
+    14: <% @users.each do |user| %>
+    15: <tr class = "rows1">
+    16:   <td><%= image_tag(user.avatar_url(:thumb).to_s) %></td>
+    17: 
+  
+app/views/users/_indextable.html.erb:14:in `_app_views_users__indextable_html_erb___2913820169380343808_40640'
+app/views/users/sorting.js.erb:2:in `_app_views_users_sorting_js_erb___740079378899657552_40620'
+Started GET "/" for ::1 at 2022-07-24 19:23:47 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (6.3ms)
+  Rendered users/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 22ms (Views: 16.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:23:50 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.4ms)
+  Rendered users/sorting.js.erb (4.3ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:24:04 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (4.8ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 19:24:43 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.7ms)
+  Rendered users/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:24:46 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.5ms)
+  Rendered users/sorting.js.erb (4.7ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:25:12 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  Rendered users/sorting.js.erb (0.3ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:25:14 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  Rendered users/sorting.js.erb (0.3ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 19:30:03 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.1ms)
+  Rendered users/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:30:07 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.8ms)
+  Rendered users/sorting.js.erb (4.6ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:31:48 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.1ms)
+  Rendered users/sorting.js.erb (3.6ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 19:32:45 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.8ms)
+  Rendered users/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 11ms (Views: 10.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:32:47 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.5ms)
+  Rendered users/sorting.js.erb (4.7ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?sort_by=name" for ::1 at 2022-07-24 19:36:31 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"name"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.5ms)
+  Rendered users/sorting.js.erb (5.0ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?sort_by=gender" for ::1 at 2022-07-24 19:36:38 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"gender"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.3ms)
+  Rendered users/sorting.js.erb (4.2ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?sort_by=address" for ::1 at 2022-07-24 19:36:41 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"address"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address[0m
+  ↳ app/views/users/_indextable.html.erb:14
+  Rendered users/_indextable.html.erb (2.9ms)
+  Rendered users/sorting.js.erb (4.4ms)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?sort_by=gender" for ::1 at 2022-07-24 19:46:29 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"sort_by"=>"gender"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (9.8ms)
+  Rendered users/sorting.js.erb (11.3ms)
+Completed 200 OK in 17ms (Views: 9.0ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender" for ::1 at 2022-07-24 19:46:39 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender, asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.8ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (PG::SyntaxError: ERROR:  syntax error at or near "asc"
+LINE 1: SELECT "users".* FROM "users" ORDER BY gender, asc
+                                                       ^
+: SELECT "users".* FROM "users" ORDER BY gender, asc):
+    13:   <th>Delete</th>
+    14: </tr>
+    15: 
+    16: <% @users.each do |user| %>
+    17: <tr class = "rows1">
+    18:   <td><%= image_tag(user.avatar_url(:thumb).to_s) %></td>
+    19: 
+  
+app/views/users/_indextable.html.erb:16:in `_app_views_users__indextable_html_erb___2913820169380343808_47620'
+app/views/users/sorting.js.erb:1:in `_app_views_users_sorting_js_erb___740079378899657552_47600'
+Started GET "/" for ::1 at 2022-07-24 19:48:41 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.1ms)
+  Rendered users/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=id&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:48:44 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"id", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name, asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.9ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (PG::SyntaxError: ERROR:  syntax error at or near "asc"
+LINE 1: SELECT "users".* FROM "users" ORDER BY name, asc
+                                                     ^
+: SELECT "users".* FROM "users" ORDER BY name, asc):
+    13:   <th>Delete</th>
+    14: </tr>
+    15: 
+    16: <% @users.each do |user| %>
+    17: <tr class = "rows1">
+    18:   <td><%= image_tag(user.avatar_url(:thumb).to_s) %></td>
+    19: 
+  
+app/views/users/_indextable.html.erb:16:in `_app_views_users__indextable_html_erb___2913820169380343808_47920'
+app/views/users/sorting.js.erb:1:in `_app_views_users_sorting_js_erb___740079378899657552_47900'
+Started GET "/users/sorting?previous_sort_by=id&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:12 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"id", "sort_by"=>"name", "sort_type"=>"asc"}
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `sort_by' for #<UsersController:0x00007f90995404f8>):
+  
+app/controllers/users_controller.rb:53:in `sorting'
+Started GET "/users/sorting?previous_sort_by=id&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:42 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"id", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (6.7ms)
+  Rendered users/sorting.js.erb (8.9ms)
+Completed 200 OK in 16ms (Views: 9.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:44 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.1ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:45 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (4.3ms)
+  Rendered users/sorting.js.erb (6.5ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:46 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (4.3ms)
+  Rendered users/sorting.js.erb (6.7ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:47 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.7ms)
+  Rendered users/sorting.js.erb (6.3ms)
+Completed 200 OK in 11ms (Views: 8.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:47 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (4.2ms)
+  Rendered users/sorting.js.erb (6.7ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:49:48 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (4.3ms)
+  Rendered users/sorting.js.erb (6.0ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:50:50 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.8ms)
+  Rendered users/sorting.js.erb (5.8ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:15 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.7ms)
+  Rendered users/sorting.js.erb (5.6ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:27 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.9ms)
+  Rendered users/sorting.js.erb (4.5ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:28 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (4.0ms)
+  Rendered users/sorting.js.erb (6.1ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:28 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.6ms)
+  Rendered users/sorting.js.erb (5.1ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:29 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.4ms)
+  Rendered users/sorting.js.erb (5.5ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:29 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (5.5ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:30 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.3ms)
+  Rendered users/sorting.js.erb (3.8ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:30 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:31 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.4ms)
+  Rendered users/sorting.js.erb (5.4ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:51:31 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.8ms)
+  Rendered users/sorting.js.erb (7.8ms)
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-07-24 19:51:56 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.3ms)
+  Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=id&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:52:00 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"id", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (17.6ms)
+  Rendered users/sorting.js.erb (19.8ms)
+Completed 200 OK in 23ms (Views: 21.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:53:00 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.4ms)
+  Rendered users/sorting.js.erb (4.0ms)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:57:51 +0530
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/avatar/app/controllers/users_controller.rb:49: syntax error, unexpected '='
+        params[:sort_type] = = 'desc'
+                             ^
+):
+  
+app/controllers/users_controller.rb:49: syntax error, unexpected '='
+Started GET "/users/sorting?previous_sort_by=name&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:57:52 +0530
+  
+SyntaxError (/home/itsacheckmate/Training/Rails/avatar/app/controllers/users_controller.rb:49: syntax error, unexpected '='
+        params[:sort_type] = = 'desc'
+                             ^
+):
+  
+app/controllers/users_controller.rb:49: syntax error, unexpected '='
+Started GET "/" for ::1 at 2022-07-24 19:58:23 +0530
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY id[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (6.5ms)
+  Rendered users/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 18ms (Views: 14.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/sorting?previous_sort_by=id&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:58:28 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"id", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.7ms)
+  Rendered users/sorting.js.erb (4.3ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:58:28 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.7ms)
+  Rendered users/sorting.js.erb (4.7ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=desc" for ::1 at 2022-07-24 19:58:29 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.6ms)
+  Rendered users/sorting.js.erb (4.0ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:58:30 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (5.1ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=desc" for ::1 at 2022-07-24 19:58:30 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.0ms)
+  Rendered users/sorting.js.erb (4.8ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:58:31 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (6.1ms)
+  Rendered users/sorting.js.erb (7.9ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=desc" for ::1 at 2022-07-24 19:58:31 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.8ms)
+  Rendered users/sorting.js.erb (5.6ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=name&sort_type=asc" for ::1 at 2022-07-24 19:58:31 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"name", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY name desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.4ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=name&sort_by=gender&sort_type=desc" for ::1 at 2022-07-24 19:58:32 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"name", "sort_by"=>"gender", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=desc" for ::1 at 2022-07-24 19:58:33 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (4.6ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:58:34 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.2ms)
+  Rendered users/sorting.js.erb (5.3ms)
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=desc" for ::1 at 2022-07-24 19:58:34 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.7ms)
+  Rendered users/sorting.js.erb (4.3ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=gender&sort_type=asc" for ::1 at 2022-07-24 19:58:35 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"gender", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY gender desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.5ms)
+  Rendered users/sorting.js.erb (4.5ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=gender&sort_by=address&sort_type=desc" for ::1 at 2022-07-24 19:58:36 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"gender", "sort_by"=>"address", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.9ms)
+  Rendered users/sorting.js.erb (5.8ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=desc" for ::1 at 2022-07-24 19:58:37 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.5ms)
+  Rendered users/sorting.js.erb (4.2ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:58:37 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.9ms)
+  Rendered users/sorting.js.erb (5.4ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=desc" for ::1 at 2022-07-24 19:58:37 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.7ms)
+  Rendered users/sorting.js.erb (4.3ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:58:38 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.7ms)
+  Rendered users/sorting.js.erb (4.4ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=desc" for ::1 at 2022-07-24 19:58:38 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.4ms)
+  Rendered users/sorting.js.erb (5.3ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:58:39 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.8ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=desc" for ::1 at 2022-07-24 19:58:39 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.6ms)
+  Rendered users/sorting.js.erb (4.2ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:58:39 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.6ms)
+  Rendered users/sorting.js.erb (4.2ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=desc" for ::1 at 2022-07-24 19:58:40 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"desc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address asc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (3.3ms)
+  Rendered users/sorting.js.erb (4.9ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sorting?previous_sort_by=address&sort_by=address&sort_type=asc" for ::1 at 2022-07-24 19:58:40 +0530
+Processing by UsersController#sorting as JS
+  Parameters: {"previous_sort_by"=>"address", "sort_by"=>"address", "sort_type"=>"asc"}
+  Rendering users/sorting.js.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY address desc[0m
+  ↳ app/views/users/_indextable.html.erb:16
+  Rendered users/_indextable.html.erb (2.6ms)
+  Rendered users/sorting.js.erb (4.5ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+>>>>>>> Stashed changes
