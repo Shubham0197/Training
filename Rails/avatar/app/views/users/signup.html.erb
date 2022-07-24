@@ -12,6 +12,7 @@
   <div >
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
+    <p id = "nameMessage"></p>
   </div> 
   <div >
     <%= form.label :avatar %>
@@ -65,5 +66,12 @@
 
   form.addEventListener("focusin", () => form1.classList.add('focused'));
   form.addEventListener("focusout", () => form1.classList.remove('focused'));
+  function checkEntries(){
+    if (!user_name.value){
+      let nameMessage = document.getElementById("nameMessage");
+      nameMessage.testContent = "Please ENter the name";
+    }
+  }
 
+  submitData.addEventListener("click", checkEntries )
 </script>
