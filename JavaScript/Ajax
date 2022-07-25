@@ -13,3 +13,9 @@ Very attractive.
 Ajax uses XMLHttpRequest object xhr object to achieve this
 Json is used instead xml for data transfer, .txt, .html any fomat to get data.
 data can be transferred in any format and protocol (Not always HTTPs necessary)
+
+Synchronous and Asynchronous in JavaScript
+
+Synchronous JavaScript: As the name suggests synchronous means to be in a sequence, i.e. every statement of the code gets executed one by one. So, basically a statement has to wait for the earlier statement to get executed.
+
+Asynchronous JavaScript: Asynchronous code allows the program to be executed immediately where the synchronous code will block further execution of the remaining code until it finishes the current one. This may not look like a big problem but when you see it in a bigger picture you realize that it may lead to delaying the User Interface.

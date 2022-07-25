@@ -77,6 +77,27 @@ input.onblur = function() {
       this.classList.remove("error");
     }
   };
+    // synchronous in javascript
+    document.write("Hi"); 
+    document.write("<br>");
+  
+    document.write("Mayukh") ;
+    document.write("<br>");
+      
+    document.write("How are you");
+
+    // asynchronous in javascript
+    document.write("Hi");
+    document.write("<br>");
+  
+    setTimeout(() => {
+        document.write("Let us see what happens");
+    }, 2000);
+  
+    document.write("<br>");
+    document.write("End");
+    document.write("<br>");
+
 </script>
 
 </body>
