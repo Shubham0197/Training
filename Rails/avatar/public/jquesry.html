@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <p>This p in the body</p>This is body
+  <p>This p in the body2</p>
+</body>
+<script src="jquery-3.6.0.js" ></script>
+<script>
+  $(document).ready(function(){
+    console.log($);
+  console.log("We are using jquery");
+  // $('selector').action();
+  $('p').click();
+  $('p').click(function(){
+    console.log("you clicked on p");
+    //$('p').hide();
+    $(this).hide();
+  });
+  //$('#id')
+  //$('.class')
+  })
+ 
+
+</script>
+</html>
