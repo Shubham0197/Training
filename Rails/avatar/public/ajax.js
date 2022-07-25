@@ -10,7 +10,11 @@ function buttonClickHandler(){
   const xhr = new XMLHttpRequest();
 
   // open the object
-  xhr.open('GET', 'data.txt', true);
+  //xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1', true);
+  //using this for the post request
+  xhr.open('GET', 'hhttps://dummy.restapiexample.com/api/v1/create', true);
+  xhr.getResponseHeader('Content-type', 'application/json');
+
 
   // what to do on progress
   xhr.onprogress = function() {
@@ -30,8 +34,10 @@ function buttonClickHandler(){
       console.error("Some Error Occured");
     }
   }
+  params = `{"name":"test1","salary":"1123","age":"213"}`;
 
+  xhr.send(params);
 
-  xhr.send();
+  console.log("We are ddone");
 
 }
