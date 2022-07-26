@@ -1,9 +1,9 @@
 <script>
   
-  var confirmation = confirm("This is a confirm box");
-  var user = prompt("What is your name");
-  window.alert(user + " answer is " + confirmation);
-  document.body.style.background = "green";
+  // var confirmation = confirm("This is a confirm box");
+  // var user = prompt("What is your name");
+  // window.alert(user + " answer is " + confirmation);
+  // document.body.style.background = "green";
 </script>
 <h1>Aircraft#index</h1>
 <%= search_form_for @q, url: :aircraft_index do |form| %>
@@ -44,9 +44,9 @@
 <%= link_to "Flight Schedule",flights_path%>
 
 <%= console %>
-<h2>Using Debug</h2>
+<!-- <h2>Using Debug</h2>
 <%= debug(@aircrafts)%>
 <h2>Using simple_format</h2>
 <%= simple_format @aircrafts.to_yaml %>
 <h2>Using Inspect</h2>
-<%= @aircrafts.inspect %>
+<%= @aircrafts.inspect %> -->

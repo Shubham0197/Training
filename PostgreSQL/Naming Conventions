@@ -3,6 +3,9 @@ Shoud not use entity name in giving attribute name
 Foreign Key attribute should be like (table name where it is prmarykey)_id
 give space after '=' to keep code clean
 
+Start PostgreSQL
+sudo -u postgres psql library
+
 
 Taking Database Backup
 postgres@itsacheckmate:/home/itsacheckmate/Training/PostgreSQL$ pg_dump library > library.sql

@@ -14,6 +14,8 @@
 
 <!-- <button id = "test" onclick = "console.log('in the cosole using onclick event')"> Test</button> -->
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <button id = "test"> Test</button>
   <div oncopy="alert('Copying forbidden!');return false">
     <table id="table1" >
@@ -150,3 +152,31 @@
     elem.hidden = !elem.hidden;
   });
 </script>
+=======
+=======
+>>>>>>> Stashed changes
+    <table id="table1">
+      <%= render 'indextable' %>
+    </table>
+    <script> 
+      console.log(document.body.childNodes);
+      console.log(document.body.childElementCount);
+      console.log(document.lastChild.nextSibling);
+      let button = document.querySelector(".button-1");
+      alert(button.closest('.rows1'));
+      let button_del = document.getElementsByClassName("button-1");
+      let allh1 = document.getElementsByTagName("h1");
+      let allbutton = document.querySelectorAll(".button");
+      document.getElementsByName(name);
+      let table = document.getElementById('table1');
+      console.log(table.id  );
+      for(let i = 0; i < table.rows.length; i++){
+        table.rows[i].cells[i].style.backgroundColor = 'red';
+      }
+      for (let elem of document.body.children) {
+        if (elem.matches('a[href$="users"]')) {
+          alert("The archive reference: " + elem.href );
+        }
+      }
+    </script>
+>>>>>>> Stashed changes

@@ -1641,6 +1641,8 @@ tr.rowIndex – the number of the <tr> in the table as a whole (including all ta
 
 td.cellIndex – the number of the cell inside the enclosing <tr>.
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
  
 ##  Node properties: type, tag and contents
@@ -2061,3 +2063,32 @@ If we want to disable selection to protect our page content from copy-pasting, t
 
 
 
+=======
+=======
+>>>>>>> Stashed changes
+## Searching GetElement*, quesrySelector*
+
+# = connector selector for id
+. = sleector for class in html
+
+5 most important method in the HTTP
+getElementById("pro")
+
+querySelector(".prog")
+using css selector to identify the element 
+fist item in prog class 
+argumnet path of the slector have to give . (class) or # (id)
+
+Identify a single element on the page
+
+id must be usinques but class can be used multiple times
+elem.getElementsByTagName(tag) looks for elements with the given tag and returns the collection of them. The tag parameter can also be a star "*" for “any tags”.
+elem.getElementsByClassName(className) returns elements that have the given CSS class.
+document.getElementsByName(name) returns elements with the given name attribute, document-wide. Very rarely used.
+
+<<<<<<< Updated upstream
+ 
+>>>>>>> Stashed changes
+=======
+ 
+>>>>>>> Stashed changes
