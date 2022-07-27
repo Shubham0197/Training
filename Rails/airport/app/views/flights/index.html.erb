@@ -16,8 +16,8 @@
     <td><%= flight.from %></td>
     <td><%= flight.destination %></td>
     <td><%= flight.distance %></td> 
-    <td><%= flight.departs %></td> 
-    <td><%= flight.arrives %></td>  
+    <td><%= flight.departs.strftime('%a,%d,%b,%y %I:%M %p') if flight.departs %></td> 
+    <td><%= flight.arrives.strftime('%a,%d,%b,%y %I:%M %p') if flight.arrives %></td>  
     <td><%= flight.price %></td>  
   </tr>
   <% end %>
@@ -25,4 +25,4 @@
 </center>
 
 <iframe src="flights/new" name="iframe_a" width="100%" height="300" style="border:bold;" ></iframe>
-<p><a href="500.html" target="iframe_a">W3Schools.com</a></p>
+<%= console %>
