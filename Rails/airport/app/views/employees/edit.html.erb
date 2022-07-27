@@ -1,2 +1,8 @@
 <h1>Employees#edit</h1>
-<p>Find me in app/views/employees/edit.html.erb</p>
+<div class="employee new">
+  <h2>Add Employee</h2>
+
+  <%= form_for(@employee) do |f| %>
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    <%= f.submit("Update Employee Details ") %>
+  <% end %>

@@ -13,7 +13,7 @@ class EmployeesController < ApplicationController
     if @employee.save!
       CrudNotificationMailer.create_notification(@employee).deliver_later
       flash[:notice] = 'Aircraft Added'
-      redirect_to(aircraft_index_path)
+      redirect_to(employees_index_path)
     end
   end
 
@@ -21,9 +21,17 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    @employee = Employee.find(params[:id])
   end
 
   def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      flash[:notice] = 'Employee updated'
+      redirect_to(employees_index_path)
+    else
+      render('edit')
+    end
   end
 
   def destroy
