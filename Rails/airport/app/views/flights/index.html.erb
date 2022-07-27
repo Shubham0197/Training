@@ -1,9 +1,9 @@
 <center>
 <h1>Flights Schedule</h1>
 <%= image_tag("a.jpeg") %>
-<table>
+<table class="table table-striped">
   <tr>
-    <th colspan="2">From</th> 
+    <th>From</th> 
     <th>Destination</th>
     <th>Distance</th> 
     <th>Departs</th> 
@@ -12,7 +12,6 @@
   </tr>
   <% @flights.each do |flight| %>
   <tr>
-    <td><a href="<%= 'aircraft/'+flight.id.to_s %>" target="iframe_a" >Edit</a></td>
     <td><%= flight.from %></td>
     <td><%= flight.destination %></td>
     <td><%= flight.distance %></td> 
@@ -20,7 +19,7 @@
     <td><%= flight.arrives.strftime('%a\'%d,%b,%y %I:%M %p') if flight.arrives %></td>  
     <td><%= flight.price %></td>  
     <td><%= link_to("Update", edit_flight_path(flight))%></td>
-    <td><%=  button_to "delete", flight_path(flight.id), method: :delete  %></td>
+    <td><%=  button_to "Delete", flight_path(flight.id), method: :delete  %></td>
   </tr>
   <% end %>
 </table>
