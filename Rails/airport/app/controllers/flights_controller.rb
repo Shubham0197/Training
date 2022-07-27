@@ -10,11 +10,13 @@ class FlightsController < ApplicationController
 
   def create
     @flight = Flight.new(flight_params)
-    puts @flight.save!
     if @flight.save
       CrudNotificationMailer.create_notification(@flight)
       flash[:notice] = 'Aircraft Added'
-      redirect_to(flights_index_path)
+      redirect_to(flights_path)
+    else
+      flash[:alert] = @flight.errors.full_messages
+      redirect_to(new_flight_path)
     end
   end
 
