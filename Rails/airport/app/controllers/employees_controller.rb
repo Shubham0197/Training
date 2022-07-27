@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   def index
+    @employees = Employee.all
   end
 
   def new
@@ -26,6 +27,11 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
+    @employee = Employee.find(params[:id])
+    if @employee.destroy
+      flash[:notice] = 'Employee Details Destroyed'
+      redirect_to(employees_index_path)
+    end
   end
   private
     def employee_params

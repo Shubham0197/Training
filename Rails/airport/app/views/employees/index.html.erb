@@ -1,2 +1,20 @@
-<h1>Employees#index</h1>
-
+<h1>Employees List</h1>
+<h3>Total No of Pilots: <%= @employees.first.count_of_pilots %></h3>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th> 
+    <th>Salary</th>
+    <th>Mobile Number</th> 
+    <th>Age</th> 
+  </tr>
+  <% @employees.each do |employee| %>
+  <tr>
+    <td><%= employee.name %></td>
+    <td><%= employee.salary %></td>
+    <td><%= employee.mobile_number %></td> 
+    <td><%= Time.zone.now.year-employee.DOB.year %></td> 
+    <td><%= link_to("Update", edit_employee_path(employee))%></td>
+    <td><%=  button_to "Delete", employee_path(employee.id), method: :delete  %></td>
+  </tr>
+  <% end %>
+</table>
