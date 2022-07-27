@@ -1,2 +1,34 @@
-<h1>Flights#edit</h1>
-<p>Find me in app/views/flights/edit.html.erb</p>
+<h1>Update Flight Schedule</h1>
+<p>Find me in app/views/flights/new.html.erb</p>
+<%= form_for(@flight) do |f| %>
+<table>
+  <tr>
+    <th>From</th> 
+    <td><%= f.text_field(:from) %></td>
+  </tr>
+  <tr>
+    <th>Destination</th>
+    <td><%= f.text_field(:destination) %></td>
+  </tr>
+  <tr>
+    <th>Distance</th>
+    <td><%= f.number_field(:distance) %></td> 
+  </tr>
+  <tr>
+    <th>Departs</th> 
+    <td><%= f.datetime_field(:departs) %></td>
+  </tr>
+  <tr>
+    <th>Arrives</th>  
+    <td><%= f.datetime_field(:arrives) %></td>
+  </tr>
+  <tr>
+    <th>Price</th>  
+    <td><%= f.number_field(:price) %></td>
+  </tr>
+  <tr >
+    <td colspan = 2><%= f.submit("Update Flight Schedule") %></td>
+  </tr>
+
+</table>
+<% end %>

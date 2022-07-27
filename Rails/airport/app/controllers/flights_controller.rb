@@ -19,10 +19,17 @@ class FlightsController < ApplicationController
   end
 
   def edit
+    @flight = Flight.find(params[:id])
   end
 
   def update
-    response.headers.delete "X-Frame-Options"
+    @flight = Flight.find(params[:id])
+    if @flight.update(flight_params)
+      flash[:notice] = 'Flight Schedule updated'
+      redirect_to(flights_path(@flight))
+    else
+      render('edit')
+    end
   end
 
   def destroy

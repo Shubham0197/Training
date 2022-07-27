@@ -19,6 +19,7 @@
     <td><%= flight.departs.strftime('%a,%d,%b,%y %I:%M %p') if flight.departs %></td> 
     <td><%= flight.arrives.strftime('%a,%d,%b,%y %I:%M %p') if flight.arrives %></td>  
     <td><%= flight.price %></td>  
+    <td><%= link_to("Update", edit_flight_path(flight))%></td>
     <td><%=  button_to "delete", flight_path(flight.id), method: :delete  %></td>
   </tr>
   <% end %>
