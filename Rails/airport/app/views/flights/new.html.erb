@@ -1,26 +1,32 @@
 <h1>Add Flights</h1>
-<p>Find me in app/views/flights/new.html.erb</p>
 <%= form_for(@flight) do |f| %>
 <table>
   <tr>
     <th>From</th> 
-    <th>Destination</th>
-    <th>Distance</th> 
-    <th>Departs</th> 
-    <th>Arrives</th>  
-    <th>Price</th>  
-  </tr>
-
-  <tr>
     <td><%= f.text_field(:from) %></td>
+  </tr>
+  <tr>
+    <th>Destination</th>
     <td><%= f.text_field(:destination) %></td>
-    <td><%= f.number_field(:distance) %></td>
+  </tr>
+  <tr>
+    <th>Distance</th>
+    <td><%= f.number_field(:distance) %></td> 
+  </tr>
+  <tr>
+    <th>Departs</th> 
     <td><%= f.datetime_field(:departs) %></td>
+  </tr>
+  <tr>
+    <th>Arrives</th>  
     <td><%= f.datetime_field(:arrives) %></td>
+  </tr>
+  <tr>
+    <th>Price</th>  
     <td><%= f.number_field(:price) %></td>
   </tr>
-  <tr>
-    <td><%= f.submit("Add Flight") %></td>
+  <tr >
+    <td colspan = 2><%= f.submit("Add New Flight Schedule") %></td>
   </tr>
 
 </table>
