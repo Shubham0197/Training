@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root 'aircraft#index'
   devise_for :admin_users, controllers: {session: 'admin_users/sessions', passwords: 'admin_users/passwords', registrations: "admin_users/registrations" }
   get 'flights/index'
   get 'flights/new'
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   get 'employees/edit'
   get 'employees/update'
   get 'employees/destroy'
-  root 'aircraft#index'
+
   get 'aircraft/show'
   get 'aircraft/practice'
   get 'aircraft/index'

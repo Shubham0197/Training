@@ -6,6 +6,7 @@
     "bootstrap-icons": "^1.8.3",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
+    "rails_admin": "3.0.0",
     "sass": "^1.53.0"
   },
   "devDependencies": {

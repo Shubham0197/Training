@@ -8,14 +8,3 @@
 // layout file, like app/views/layouts/application.html.erb
 
 console.log('Hello World from Webpacker')
-
-
-import "css/application";
-import $ from 'jquery';
-global.$ = jQuery;
-
-import "bootstrap";
-
-import "@fortawesome/fontawesome-free/css/all"
-
-
