@@ -1,5 +1,6 @@
 class AircraftController < ApplicationController
   before_action :authenticate_employee!
+  before_action :require_admin_access!, except: [:index]
   layout 'aircraft'
   helper_method :formatted_date
   def index
