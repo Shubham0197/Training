@@ -2,12 +2,22 @@
 <%= form_for(@flight) do |f| %>
 <table>
   <tr>
-    <th>From</th> 
-    <td><%= f.text_field(:from) %></td>
+    <th>From</th>
+    <td> 
+      <div class="mb-3" id="from">
+    <% cities = City.pluck(:name) %>
+    <% cities.append("SELECT") %>
+    <%= f.select :from, cities , :selected => "SELECT" %>
+  </div>
+    </td>
   </tr>
   <tr>
     <th>Destination</th>
-    <td><%= f.text_field(:destination) %></td>
+    <td>
+      <div class="mb-3" id="dest" style="display:none;">
+      <%= f.select :destination, ["Select"] %>
+      </div>
+    </td>
   </tr>
   <tr>
     <th>Distance</th>
@@ -31,3 +41,29 @@
 
 </table>
 <% end %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  let schedule_from = document.getElementById('flight_from');
+  let dest = document.getElementById('dest');
+  let len = schedule_from.length;
+  $('#flight_from').change(function(){
+    dest.style.display = "block";
+    schedule_destination = document.getElementById('flight_destination');
+    schedule_destination.innerHTML = "";
+    let i = 0;
+    let city_from = schedule_from.options[schedule_from.selectedIndex].text;
+    while(i < len ){
+      let city = schedule_from.options.item(i).text;
+      console.log(city,i);
+      console.log( city_from != city)
+      if (city_from != city ) {
+        let option = document.createElement("option");
+        option.value = option.text = city ;
+        schedule_destination.appendChild(option);
+      }
+      i++;
+    }
+    schedule_destination.value = "SELECT";
+  });
+
+</script>
