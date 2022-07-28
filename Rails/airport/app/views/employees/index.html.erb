@@ -6,6 +6,7 @@
     <th>Salary</th>
     <th>Mobile Number</th> 
     <th>Age</th> 
+    <th>Email</th> 
   </tr>
   <% @employees.each do |employee| %>
   <tr>
@@ -13,6 +14,7 @@
     <td><%= employee.salary %></td>
     <td><%= employee.mobile_number %></td> 
     <td><%= Time.zone.now.year-employee.DOB.year %></td> 
+    <td><%= employee.email %></td> 
     <td><%= link_to("Update", edit_employee_path(employee))%></td>
     <td><%=  button_to "Delete", employee_path(employee.id), method: :delete  %></td>
   </tr>

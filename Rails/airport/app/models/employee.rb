@@ -1,4 +1,8 @@
 class Employee < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   include Validatable
   has_many :certifieds
   has_many :trainee, class_name: "Employee" , foreign_key: "trainer_id"
