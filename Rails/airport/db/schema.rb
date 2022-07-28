@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_27_185042) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_072827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,11 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_185042) do
     t.integer "certifieds_count", default: 0
   end
 
-  create_table "authors_books", id: false, force: :cascade do |t|
-    t.bigint "author_id", null: false
-    t.bigint "book_id"
-  end
-
   create_table "certifieds", force: :cascade do |t|
     t.integer "employee_id"
     t.integer "aircraft_id"
@@ -131,15 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_185042) do
     t.datetime "updated_at", null: false
     t.index ["aircraft_id"], name: "index_flights_aircrafts_on_aircraft_id"
     t.index ["flight_id"], name: "index_flights_aircrafts_on_flight_id"
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "sku"
-    t.index ["name"], name: "index_products_on_name"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
