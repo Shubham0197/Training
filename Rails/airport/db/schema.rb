@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_28_125217) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_164523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_125217) do
     t.datetime "updated_at", null: false
     t.datetime "aircraft_updated_at", precision: nil
     t.integer "certifieds_count", default: 0
+    t.string "place", default: "Delhi"
+    t.datetime "availability"
   end
 
   create_table "certifieds", force: :cascade do |t|
@@ -119,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_125217) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "place", default: "Delhi"
+    t.datetime "availability"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["name"], name: "index_employees_on_name"
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
@@ -143,6 +147,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_28_125217) do
     t.datetime "updated_at", null: false
     t.index ["aircraft_id"], name: "index_flights_aircrafts_on_aircraft_id"
     t.index ["flight_id"], name: "index_flights_aircrafts_on_flight_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "flight_id"
+    t.bigint "aircraft_id"
+    t.bigint "employee_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aircraft_id"], name: "index_schedules_on_aircraft_id"
+    t.index ["employee_id"], name: "index_schedules_on_employee_id"
+    t.index ["flight_id"], name: "index_schedules_on_flight_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

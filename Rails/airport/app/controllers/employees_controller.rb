@@ -42,6 +42,7 @@ class EmployeesController < ApplicationController
       redirect_to(employees_index_path)
     end
   end
+
   private
     def employee_params
       params.require(:employee).permit(:name, :email, :mobile_number, :DOB, :salary, :trainer_id, :image, :content)
