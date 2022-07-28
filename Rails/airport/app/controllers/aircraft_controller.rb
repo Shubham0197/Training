@@ -1,4 +1,5 @@
 class AircraftController < ApplicationController
+  before_action :authenticate_employee!
   layout 'aircraft'
   helper_method :formatted_date
   def index
