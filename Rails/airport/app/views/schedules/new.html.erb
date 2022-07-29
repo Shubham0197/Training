@@ -20,20 +20,22 @@
       <tr><td>data here</td></tr>
     </table>
   </div>
-  <div class="mb-3" style="display:none;">
-    <%= f.label :aircraft, "Available Aircraft for this flights" %>
+  <div class="mb-3" id="airship" style="display:none;">
+    <h5><%= f.label :aircraft, "Available Aircraft for this flights =>" %></h5>
+    <%= f.select :aircraft, ["Select"] %>
   </div>
-  <div class="mb-3" style="display:none;">
-    <%= f.label :pilot, "Available pilot to fly this aircraft" %>
+  <div class="mb-3" id="pilots" style="display:none;">
+    <h5><%= f.label :pilot, "Available pilot to fly this aircraft" %></h5>
+    <%= f.select :pilot, ["Select"] %>
   </div>
-  <div class="mb-3" style="display:none;">
+  <div class="mb-3" id="submitbtn" style="display:none;">
     <%= f.submit "Schedule this Flight " %>
   </div>
 
   <% end %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
+  <script>
       let schedule_from = document.getElementById('schedule_from');
       let dest = document.getElementById('dest');
       let len = schedule_from.length;
@@ -57,24 +59,63 @@
         }
         schedule_destination.value = "SELECT";
       });
+
+
       let count = 0;
       schedule_destination = document.getElementById('schedule_destination');
       flightSchedule = document.getElementById('flightSchedule');
+
+  
 
       $('#schedule_destination').change(function(){
         flightSchedule.style.display = "block";
         let city_from = schedule_from.options[schedule_from.selectedIndex].text;
         let city_destination = schedule_destination.options[schedule_from.selectedIndex].text;
-        data = '<tr ><td>Departs At: </td><td>Arrives At: </td><td>Distance: </td></tr>';
+        let data = '<tr ><td>Departs At: </td><td>Arrives At: </td><td>Distance: </td></tr>';
         
         <% Flight.all.each do |flight| %>
+
         if (city_from == '<%= flight.from %>' && city_destination == '<%= flight.destination %>') {
-          data += '<tr class = "tablerow" id = <%= flight.id %> ><td><%= flight.departs.strftime('%a\'%d,%b,%y %I:%M %p') if flight.departs %></td><td><%= flight.arrives.strftime('%a\'%d,%b,%y %I:%M %p') if flight.arrives %></td><td><%= flight.distance %></td></tr>';
+          data += "<tr class='clickable-row' id = <%= flight.id %> ><td><%= flight.departs.strftime('%a\'%d,%b,%y %I:%M %p') if flight.departs %></td><td><%= flight.arrives.strftime('%a\'%d,%b,%y %I:%M %p') if flight.arrives %></td><td><%= flight.distance %></td></tr>";
         }
         <% end %>
         $('#flight-schedule-table').html(data);
+        $('#flight-schedule-table tr').click(function(){
+          //alert( "Handler for .dblclick() called." );
+          //document.getElementById('airship').style.display = "block";
+          $(this).addClass('active').siblings().removeClass('active');
+          $('#airship').toggle();
+          schedule_aircraft = document.getElementById('schedule_aircraft');
+
+          schedule_aircraft.innerHTML = "";
+          <%Aircraft.all.each do |aircraft|%>
+             option = document.createElement("option");
+             option.value = '<%= aircraft.id %>';
+             option.text = '<%= aircraft.name %>';
+             schedule_aircraft.appendChild(option);
+          <% end %>
+          option.value = option.text = 'SELECT';
+          schedule_aircraft.appendChild(option);
+          schedule_aircraft.value = "SELECT";
+      });
         
       });
 
-      $('.tablerow').click(function(){console.log("inside");$('.tablerow').css('background-color','yellow');})
+      $('#schedule_aircraft').change(function(){
+        console.log("Aircraft seleected");
+        $('#pilots').show();
+        $('#submitbtn').show();
+        schedule_pilot = document.getElementById('schedule_pilot');
+
+        schedule_pilot.innerHTML = "";
+          <%Employee.where(id: Certified.pluck("employee_id").uniq()).each do |employee|%>
+             option = document.createElement("option");
+             option.value = '<%= employee.id %>';
+             option.text = '<%= employee.name %>';
+             schedule_pilot.appendChild(option);
+          <% end %>
+          option.value = option.text = 'SELECT';
+          schedule_pilot.appendChild(option);
+          schedule_pilot.value = "SELECT";
+      });
     </script>

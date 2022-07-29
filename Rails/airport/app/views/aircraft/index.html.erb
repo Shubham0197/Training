@@ -31,7 +31,7 @@
     <td><%= aircraft.cruising_range%></td>
     <td><%= link_to("Show",aircraft_path(aircraft))%></td>
     <td><%= link_to("Update", edit_aircraft_path(aircraft))%></td>
-    <td><%= link_to("Delete", "delete/"+aircraft.id.to_s)%></td>
+    <td><%=  button_to "Delete", aircraft_path(aircraft.id), method: :delete  %></td>
   </tr>
 <%end%>
 </table>
