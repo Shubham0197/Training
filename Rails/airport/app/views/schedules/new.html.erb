@@ -14,8 +14,11 @@
     <%= f.label :destination %>
     <%= f.select :destination, ["Select"] %>
   </div>
-  <div class="mb-3" style="display:none;">
-    <%= f.label :schedule, "Available Flight Schedule for this route" %>
+  <div class="mb-3" id="flightSchedule" style="display:none;">
+    <h5><%= f.label :schedule, "Available Flight Schedule for this route =>" %></h5>
+    <table id ="flight-schedule-table" class="table table-striped">
+      <tr><td>data here</td></tr>
+    </table>
   </div>
   <div class="mb-3" style="display:none;">
     <%= f.label :aircraft, "Available Aircraft for this flights" %>
@@ -29,6 +32,7 @@
 
   <% end %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       let schedule_from = document.getElementById('schedule_from');
       let dest = document.getElementById('dest');
@@ -38,13 +42,12 @@
       $('#schedule_from').change(function(){
         dest.style.display = "block";
         schedule_destination = document.getElementById('schedule_destination');
+
         schedule_destination.innerHTML = "";
         let i = 0;
         let city_from = schedule_from.options[schedule_from.selectedIndex].text;
         while(i < len ){
           let city = schedule_from.options.item(i).text;
-          console.log(city,i);
-          console.log( city_from != city)
           if (city_from != city ) {
             let option = document.createElement("option");
             option.value = option.text = city ;
@@ -54,5 +57,24 @@
         }
         schedule_destination.value = "SELECT";
       });
+      let count = 0;
+      schedule_destination = document.getElementById('schedule_destination');
+      flightSchedule = document.getElementById('flightSchedule');
 
+      $('#schedule_destination').change(function(){
+        flightSchedule.style.display = "block";
+        let city_from = schedule_from.options[schedule_from.selectedIndex].text;
+        let city_destination = schedule_destination.options[schedule_from.selectedIndex].text;
+        data = '<tr ><td>Departs At: </td><td>Arrives At: </td><td>Distance: </td></tr>';
+        
+        <% Flight.all.each do |flight| %>
+        if (city_from == '<%= flight.from %>' && city_destination == '<%= flight.destination %>') {
+          data += '<tr class = "tablerow" id = <%= flight.id %> ><td><%= flight.departs.strftime('%a\'%d,%b,%y %I:%M %p') if flight.departs %></td><td><%= flight.arrives.strftime('%a\'%d,%b,%y %I:%M %p') if flight.arrives %></td><td><%= flight.distance %></td></tr>';
+        }
+        <% end %>
+        $('#flight-schedule-table').html(data);
+        
+      });
+
+      $('.tablerow').click(function(){console.log("inside");$('.tablerow').css('background-color','yellow');})
     </script>

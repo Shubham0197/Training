@@ -38,7 +38,7 @@ class FlightsController < ApplicationController
     @flight = Flight.find(params[:id])
     if @flight.destroy
       flash[:notice] = 'Flight Schedule destroyed'
-      redirect_to(flight_index_path)
+      redirect_to(flights_path)
     end
   end
   private
