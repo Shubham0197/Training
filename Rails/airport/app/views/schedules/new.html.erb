@@ -83,8 +83,8 @@
         $('#flight-schedule-table tr').click(function(){
           //alert( "Handler for .dblclick() called." );
           //document.getElementById('airship').style.display = "block";
-          $(this).addClass('active').siblings().removeClass('active');
-          $('#airship').toggle();
+          $(this).css('background-color','yellow').siblings().css('background-color','white');
+          $('#airship').show();
           schedule_aircraft = document.getElementById('schedule_aircraft');
 
           schedule_aircraft.innerHTML = "";
