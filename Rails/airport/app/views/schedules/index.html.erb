@@ -1,0 +1,21 @@
+<h1>Scheduled Aircraft List</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Flight From</th> 
+    <th>Flight Destination</th> 
+    <th>Aircraft</th>
+    <th>Pilot</th> 
+    <th>Status</th>
+  </tr>
+  <% @schedules.each do |schedule| %>
+  <tr>
+    <td><%= schedule.flight.from %></td>
+    <td><%= schedule.flight.destination %></td>
+    <td><%= schedule.aircraft.name %></td>
+    <td><%= schedule.employee.name %></td> 
+    <td><%= schedule.status %></td> 
+    <td><%= link_to("Update", edit_schedule_path(schedule))%></td>
+    <td><%=  button_to "Delete", schedule_path(schedule.id), method: :delete  %></td>
+  </tr>
+  <% end %>
+</table>
