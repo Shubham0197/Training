@@ -1,19 +1,14 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_employee!
   before_action :require_admin_access!, except: [:index]
-  def require_admin_access!
-    redirect_to root_path, notice: "You must be Admin to do that." unless current_employee.account_type == "ADMIN"
-  end
-
-  def require_pilot_access!
-    redirect_to root_path, notice: "You must be Pilot  to do that." unless current_employee.account_type == "PILOT"
-  end
 
   def index
     if current_employee.account_type == "PILOT"
       @schedules = Schedule.all.where(employee_id: current_employee.id)
-    else
+    elsif current_employee.account_type == "ADMIN"
       @schedules = Schedule.all
+    else
+      redirect_to root_path, notice: "You must be Either admin or Pilot  to do that."
     end
 
   end
