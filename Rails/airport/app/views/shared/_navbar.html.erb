@@ -20,9 +20,12 @@
           <%= link_to 'Employees' , employees_index_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Schedule' , new_schedule_path, class: "nav-link" %>
+          <%= link_to 'Create Schedule' , new_schedule_path, class: "nav-link" %>
         </li>
-
+        <li class="nav-item">
+          <%= link_to 'Schedule Index' , schedules_path, class: "nav-link" %>
+        </li>
+        
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if employee_signed_in? %>
