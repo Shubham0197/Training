@@ -3,6 +3,7 @@ class Aircraft < ApplicationRecord
   #self.primary_key = 'name'
  # before_create :aborting
   has_many :certifieds, before_add: :check_ceritfieds
+  has_many :schedules
   # validates :name, confirmation: true, unless: ->{ name.blank? }
   #validates :name_confirmation, presence: true, if: Proc.new {|aircraft| !aircraft.name.blank? }
   #validates :cruising_range, presence: true, unless: :cruising_range?
