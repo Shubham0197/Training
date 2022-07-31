@@ -7,6 +7,7 @@ class Employee < ApplicationRecord
          
   include Validatable
   has_many :certifieds
+  has_many :schedules
   has_many :trainee, class_name: "Employee" , foreign_key: "trainer_id"
   belongs_to :trainer, class_name: "Employee", optional: true
   before_destroy :delete_from_certified
