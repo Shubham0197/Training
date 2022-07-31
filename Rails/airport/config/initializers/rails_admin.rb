@@ -39,4 +39,11 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  config.authorize_with do |controller|
+    if current_employee.nil?
+      redirect_to main_app.root_path, flash: {alert: 'Please Login to Continue..'}
+    elsif current_employee.account_type != "ADMIN"
+      redirect_to main_app.root_path, flash: {alert: 'You are not Admin bro!'}
+    end
+  end
 end
