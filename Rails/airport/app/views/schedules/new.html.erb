@@ -92,11 +92,11 @@
       $('#schedule_destination').change(function(){
         flightSchedule.style.display = "block";
         let city_from = schedule_from.options[schedule_from.selectedIndex].text;
-        let city_destination = schedule_destination.options[schedule_from.selectedIndex].text;
+        let city_destination = schedule_destination.options[schedule_destination.selectedIndex].text;
         let data = '<tr ><td>Departs At: </td><td>Arrives At: </td><td>Distance: </td></tr>';
         
         <% Flight.where("departs >= ? " , DateTime.now).each do |flight| %>
-
+        console.log(city_from,city_destination,"<%= flight.from %>, <%= flight.destination %>, <%= flight %>");
         if (city_from == '<%= flight.from %>' && city_destination == '<%= flight.destination %>') {
           data += "<tr class='clickable-row' id = <%= flight.id %> ><td><%= flight.departs.strftime('%a\'%d,%b,%y %I:%M %p') if flight.departs %></td><td><%= flight.arrives.strftime('%a\'%d,%b,%y %I:%M %p') if flight.arrives %></td><td><%= flight.distance %></td></tr>";
         }
