@@ -14,7 +14,6 @@
     <td><%= schedule.aircraft.name %></td>
     <td><%= schedule.employee.name %></td> 
     <td><%= schedule.status %></td> 
-    <td><%= link_to("Update", edit_schedule_path(schedule))%></td>
     <td><%=  button_to "Delete", schedule_path(schedule.id), method: :delete  %></td>
   </tr>
   <% end %>
