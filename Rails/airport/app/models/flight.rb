@@ -8,6 +8,15 @@ class Flight < ApplicationRecord
   validates :price, numericality: {strict: true}
 #  validates :from, uniqueness: {scope: :destination, case_sensitive: false}
   paginates_per 50
+  before_update :ensure_cancelled_not_updated
+
+  private
+    def ensure_cancelled_not_updated
+      if self.Cancelled?
+        throw :abort
+      end
+    end
+
 end
 
 # one flight can have many aircrfts on that routes
