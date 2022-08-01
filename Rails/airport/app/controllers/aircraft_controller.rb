@@ -1,6 +1,7 @@
 class AircraftController < ApplicationController
   before_action :authenticate_employee!
   before_action :require_admin_access!, except: [:index]
+  skip_before_action :verify_authenticity_token
   layout 'aircraft'
   helper_method :formatted_date
   def index
@@ -36,7 +37,7 @@ class AircraftController < ApplicationController
     @aircraft = Aircraft.new(aircraft_params)
     puts @aircraft.save!
     if @aircraft.save
-      CrudNotificationMailer.create_notification(@aircraft).deliver_later
+      CrudNotificationMailer.create_notification(@aircraft).deliver_now
       flash[:notice] = 'Aircraft Added'
       redirect_to(aircraft_index_path)
     end
