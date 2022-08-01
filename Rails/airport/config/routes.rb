@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :cities
   devise_for :employees
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -55,4 +56,5 @@ Rails.application.routes.draw do
     resources :flights_aircrafts
   end
   resources :schedules
+  resources :certifieds
 end
