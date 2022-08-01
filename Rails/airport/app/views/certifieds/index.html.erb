@@ -1,0 +1,16 @@
+<h1>Certifieds index</h1>
+<table>
+  <tr>
+    <td>Aircraft Name</td>
+    <td>Pilot Name</td>
+  </tr>
+  <% @certifieds.each do |certified| %>
+  <tr>
+    <td><%= certified.aircraft.name %></td>
+    <td><%= certified.pilots.name  %></td>
+    <td><%= link_to("Update", edit_certified_path(certified))%></td>
+    <td><%=  button_to "Delete", certified_path(certified.id), method: :delete  %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Certify Pilot for Aircraft", certifieds_new_path %>
