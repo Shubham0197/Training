@@ -1,5 +1,6 @@
 class FlightsController < ApplicationController
   skip_before_action :authenticate_employee!, only: [:index]
+  before_action :require_admin_access!, except: [:index]
   def index
     @flights = Flight.all
   end
