@@ -29,11 +29,13 @@ class SchedulesController < ApplicationController
        @pilot.place == @flight.from &&
        DateTime.now+4.hour >= @flight.departs &&
        @flight.status == 'NotScheduled' ) 
-        @flight.update(status: 1)
-        @pilot.update(place: @flight.destination, availability: @flight.arrives )
-        @aircraft.update(place: @flight.destination, availability: @flight.arrives )
-        @schedule.update(flight_id: @flight.id, aircraft_id: @aircraft.id, employee_id: @pilot.id, status: 'Scheduled')
-        redirect_to(schedules_path)
+         @schedule.update(flight_id: @flight.id, aircraft_id: @aircraft.id, employee_id: @pilot.id, status: 'Scheduled')
+         if @schedule.save 
+           @flight.update(status: 1)
+           @pilot.update(place: @flight.destination, availability: @flight.arrives )
+           @aircraft.update(place: @flight.destination, availability: @flight.arrives )
+           redirect_to(schedules_path)
+         end
     else
       flash[:alert] = ['Schedule for aircraft not created'] 
 
@@ -42,7 +44,7 @@ class SchedulesController < ApplicationController
       end
 
       if @pilot.availability+1.hour > @flight.departs || @pilot.place != @flight.from
-        flash[:alert] += ['Pilot now available for this flight']
+        flash[:alert] += ['Pilot not available for this flight']
       end
 
       if DateTime.now+4.hour < @flight.departs
@@ -55,6 +57,10 @@ class SchedulesController < ApplicationController
 
       if @flight.status == 'Completed'
         flash[:alert] += ['This flight is already Completed']
+      end
+
+      if @flight.status == 'Cancelled'
+        flash[:alert] += ['This flight is already Cancelled']
       end
 
       flash[:alert] += @schedule.errors.full_messages
