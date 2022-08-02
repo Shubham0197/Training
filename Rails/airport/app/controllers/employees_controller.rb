@@ -16,6 +16,10 @@ class EmployeesController < ApplicationController
       CrudNotificationMailer.create_notification(@employee).deliver_later
       flash[:notice] = 'New Employee Added'
       redirect_to(employees_index_path)
+    else
+      flash[:alert] = @employee.errors.full_messages
+      redirect_to(new_employee_path)
+    end
     end
   end
 
@@ -29,6 +33,7 @@ class EmployeesController < ApplicationController
       flash[:notice] = 'Employee updated'
       redirect_to(employees_index_path)
     else
+      flash[:alert] = @employee.errors.full_messages
       render('edit')
     end
   end
