@@ -16,22 +16,15 @@ class AircraftController < ApplicationController
 
   def show
     @aircraft = Aircraft.find(params[:id])
-    @certifides = @aircraft.certifieds
-    @employees = []
-    @certifides.each do |certified|
-      if certified.employee_id
-        @employees << Employee.find(certified.employee_id) 
-      end
-    end
+    certifides = @aircraft.certifieds.includes(:pilots)
+    @employees = certifides.map(&:pilots)
   end
 
   def new
     @aircraft = Aircraft.new
   end
   
-  def aircraft_params
-    params.require(:aircraft).permit(:name, :cruising_range)
-  end
+
 
   def create
     @aircraft = Aircraft.new(aircraft_params)
@@ -72,6 +65,10 @@ class AircraftController < ApplicationController
 
     def formatted_date(date)
       date.strftime('%A, %b %d %Y') if date.present?
+    end
+    
+    def aircraft_params
+      params.require(:aircraft).permit(:name, :cruising_range)
     end
 
 end
