@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_31_121922) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_02_134332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_121922) do
     t.datetime "aircraft_updated_at", precision: nil
     t.integer "certifieds_count", default: 0
     t.string "place", default: "Delhi"
-    t.datetime "availability"
+    t.datetime "availability", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
   end
 
   create_table "certifieds", force: :cascade do |t|
@@ -128,7 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_121922) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "place", default: "Delhi"
-    t.datetime "availability"
+    t.datetime "availability", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["name"], name: "index_employees_on_name"
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
