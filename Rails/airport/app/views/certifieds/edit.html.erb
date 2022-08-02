@@ -1,0 +1,8 @@
+<h1>Certifieds#edit</h1>
+
+<%= form_with model: @certified do |form| %>
+  <%= render "form_certifieds" , form: form%>
+  <div class="mb-3">
+    <%= form.submit "Update Certifieds", class: "btn btn-primary" %>
+  </div>
+<% end %>
