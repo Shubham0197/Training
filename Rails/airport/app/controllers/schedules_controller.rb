@@ -4,13 +4,12 @@ class SchedulesController < ApplicationController
 
   def index
     if current_employee.account_type == "PILOT"
-      @schedules = Schedule.all.where(employee_id: current_employee.id)
+      @schedules = Schedule.includes(:employee, :flight, :aircraft).where(employee_id: current_employee.id)
     elsif current_employee.account_type == "ADMIN"
-      @schedules = Schedule.all
+      @schedules = Schedule.includes(:employee, :flight, :aircraft)
     else
       redirect_to root_path, notice: "You must be Either admin or Pilot  to do that."
     end
-
   end
 
   def new

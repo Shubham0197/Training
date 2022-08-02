@@ -1,6 +1,6 @@
 class CertifiedsController < ApplicationController
   def index
-    @certifieds = Certified.all
+    @certifieds = Certified.includes(:pilots, :aircraft)
   end
 
   def new
@@ -17,8 +17,8 @@ class CertifiedsController < ApplicationController
   end
 
   def destroy
-    @flight = Flight.find(params[:id])
-    if @flight.destroy
+    certified = Certified.find(params[:id])
+    if certified.destroy
       flash[:notice] = 'Certifieds destroyed'
       redirect_to(certifieds_path)
     end
