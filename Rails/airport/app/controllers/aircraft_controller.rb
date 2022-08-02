@@ -33,6 +33,9 @@ class AircraftController < ApplicationController
       CrudNotificationMailer.create_notification(@aircraft).deliver_now
       flash[:notice] = 'Aircraft Added'
       redirect_to(aircraft_index_path)
+    else
+      flash[:alert] = @aircraft.errors.full_messages
+      redirect_to(new_aircraft_path)
     end
   end
   
@@ -46,6 +49,7 @@ class AircraftController < ApplicationController
       flash[:notice] = 'Aircraft updated'
       redirect_to(aircraft_path(@aircraft))
     else
+      flash[:alert] = @aircraft.errors.full_messages
       render('edit')
     end
   end
