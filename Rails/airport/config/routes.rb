@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'flights#index'
   get 'aircraft/index'
-  devise_for :admin_users, controllers: {session: 'admin_users/sessions', passwords: 'admin_users/passwords', registrations: "admin_users/registrations" }
   get 'flights/index'
   get 'flights/new'
   get 'flights/create'
@@ -27,31 +26,7 @@ Rails.application.routes.draw do
   get 'delete/:id', to: "aircraft#delete"
   get 'aircraft/destroy'
 
-  namespace :admin do
-    get 'delete/:id', to: "aircraft#delete"
-    resources :employees
-    resources :aircraft
-
-    resources :certifieds do
-      member do
-        get :certifieds_mapping
-      end
-      collection do
-        get :pilots
-      end
-    end
-  end
-
-  scope module: :admin do
-   # resources :aircrafts
-  end
-
- #  get 'aircraft/edit(:id)'
   resources :aircraft, :employees, :flights
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
   resources :flight do
     resources :flights_aircrafts
   end
