@@ -1,0 +1,16 @@
+<h1>Users#new</h1>
+<%= form_with model: @user do |form| %>
+<%= form.label :name %>
+<%= form.text_field :name %>
+<%= form.label :date_of_birth %>
+<%= form.datetime_field :date_of_birth %>
+<%= form.label :address %>
+<%= form.text_field :address %>
+<%= form.label :mobile_number %>
+<%= form. number_field :mobile_number %>
+<%= form.label :email %>
+<%= form.text_field :email %>
+<%= form.label :salary %>
+<%= form.number_field :salary %>
+<%= form.submit "Submit the user details " %>
+<% end %>
