@@ -1,0 +1,22 @@
+<h1>Users#index</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Mobile Number</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Salary</th>
+  </tr>
+  <% @users.each do |user|%>
+  <tr>
+    <th><%= user.name %></th>
+    <th><%= age(user) %></th>
+    <th><%= user.mobile_number  if user.mobile_number %></th>
+    <th><%= user.address if user.address %></th>
+    <th><%= user.email if  user.email %></th>
+    <th><%= user.salary if user.salary %></th>
+  </tr>
+  <% end%>
+</table>
