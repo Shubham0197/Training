@@ -17,6 +17,8 @@
     <th><%= user.address if user.address %></th>
     <th><%= user.email if  user.email %></th>
     <th><%= user.salary if user.salary %></th>
+    <td><%= link_to "edit", user_path(user.id) %></td>
+    <td><%= button_to :delete , user_path(user.id) , method: :delete %></td>
   </tr>
   <% end%>
 </table>
