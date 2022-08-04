@@ -1469,3 +1469,36 @@ end
 .upto / .downto
 10.upto(15) { |x| print x, " " } # 10 11 12 13 14 15
 "a".upto("c") { |x| print x, " " } # a b c
+
+
+Methods
+String Methods
+
+irb(main):015:0> "Hello".length
+=> 5
+irb(main):016:0> "Hello".reverse 
+=> "olleH"
+irb(main):017:0> "Hello".upcase
+=> "HELLO"
+irb(main):018:0> "Hello".downcase 
+=> "hello"
+irb(main):019:0> "hello".capitalize
+=> "Hello"
+irb(main):020:0> "Hello".include? "i"
+=> false
+irb(main):021:0> "Hello".gsub!(/e/, "o")
+=> "Hollo"
+irb(main):022:0> "Hello".gsub!(/e/, "l")
+=> "Hlllo"
+irb(main):023:0> "Hello".gsub!(/l/, "o")
+=> "Heooo"
+irb(main):010:0> "Hello".sub!(/l/, "o")
+=> "Heolo"
+irb(main):011:0> "1".to_i
+=> 1
+irb(main):012:0> "test".to_sym
+=> :test
+irb(main):013:0> "test".intern
+=> :test
+irb(main):014:0> :test.to_s
+=> "test"
