@@ -1365,4 +1365,107 @@ When you create an instance of a class,
  end
 
 
+Practice 
 
+Conditions
+If
+if 1 < 2
+puts “one smaller than two”
+elsif 1 > 2 # *careful not to mistake with else if. In ruby you write elsif*
+puts “elsif”
+else
+puts “false”
+end
+# or
+puts "be printed" if true
+puts 3 > 4 ? "if true" : "else" # else will be putted
+
+Unless
+unless false # unless checks if the statement is false (opposite to if).
+puts “I'm here”
+else
+puts “not here”
+end
+
+# or
+puts "not printed" unless true
+
+Case
+case my_var
+  when "some value"
+    ###
+  when "some other value"
+    ###
+  else
+    ###
+end
+# or
+case my_var
+  when "some value" then ###
+  when "some other value" then ###
+  else ###
+end
+&&: and
+||: or
+!: not
+(x && (y || w)) && z: use parenthesis to combine arguments
+problem = false
+print "Good to go!" unless problem –– prints out because problem != true
+Printing & Putting
+print "bla"
+puts "test" # puts the text in a separate line
+
+
+
+Loops
+While loop
+i = 1
+while i < 11
+  puts i
+  i = i + 1
+end
+
+Until loop
+i = 0
+until i == 6
+  puts i
+  i += 1
+end
+
+For loop
+for i in 1...10 # ... tells ruby to exclude the last number (here 10 if we .. only then it includes the last num)
+  puts i
+end
+
+Loop iterator
+
+i = 0
+loop do
+  i += 1
+  print "I'm currently number #{i}” # a way to have ruby code in a string
+  break if i > 5
+end
+
+Next
+for i in 1..5
+  next if i % 2 == 0 # If the remainder of i / 2 is zero, we go to the next iteration of the loop.
+  print i
+end
+
+.each
+things.each do |item| # for each things in things do something while storing that things in the variable item
+  print “#{item}"
+end
+on hashes like so:
+
+hashes.each do |x,y|
+  print "#{x}: #{y}"
+end
+
+.times
+10.times do
+  print “this text will appear 10 times”
+end
+.upto / .downto
+10.upto(15) { |x| print x, " " } # 10 11 12 13 14 15
+"a".upto("c") { |x| print x, " " } # a b c
