@@ -2,15 +2,51 @@
 <%= form_with model: @user do |form| %>
 <%= form.label :name %>
 <%= form.text_field :name %>
+<br>
 <%= form.label :date_of_birth %>
 <%= form.datetime_field :date_of_birth %>
+<br>
+
 <%= form.label :address %>
-<%= form.text_field :address %>
+<%= form.text_area :address %>
+<br>
+
 <%= form.label :mobile_number %>
 <%= form. number_field :mobile_number %>
+<br>
+
 <%= form.label :email %>
-<%= form.text_field :email %>
+<%= form.email_field :email %>
+<br>
+
 <%= form.label :salary %>
 <%= form.number_field :salary %>
+<br>
+ 
+<%= form.label :gender %>
+<%= form.radio_button :gender, :male%>
+<%= form.label :gender_male, "Male" %>
+<%= form.radio_button :gender, :female%>
+<%= form.label :gender_female, "Female" %>
+
+<br>
+<%= form.select :names , User.distinct.pluck(:name,:gender) %>
+<%= form.label :Fellings %>
+<%= form.check_box "feelings", "happy" %>
+<%= form.label :happy %>
+<%= form.check_box :feelings, "sad" %>
+<%= form.label :sad %>
+<%= form.check_box :feelings, "angry" %>
+<%= form.label :angry %>
+
+<br>
 <%= form.submit "Submit the user details " %>
 <% end %>
+
+<%= button_to :click, users_path, method: :get %>
+
+<%= select_tag(:name, options_for_select(User.distinct.pluck( :name, :id))) %>
+
+<%= check_box_tag :name %>
+
+
