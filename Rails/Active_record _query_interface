@@ -2929,3 +2929,410 @@ These scopes are created automatically and can be used to find all objects with 
 3.0.0 :011 > cat.stock?
  => true 
  
+
+
+
+
+
+
+
+
+
+
+
+ Practice
+
+ 3.0.0 :006 > Aircraft.joins(:certifieds)
+  Aircraft Load (2.5ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "certifieds" ON "certifieds"."aircraft_id" = "aircrafts"."id"                                                                                     
+ =>                                                                                                     
+[#<Aircraft:0x00007fa4684cb558                                                                          
+  id: 5,                                                                                                
+  name: "Airbus10",                                                                                     
+  cruising_range: 12,                                                                                   
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,                                           
+  updated_at: Fri, 29 Jul 2022 13:01:53.657511000 IST +05:30,                                           
+  aircraft_updated_at: nil,                                                                             
+  certifieds_count: 2,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cb418
+  id: 2,
+  name: "Airbus",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 18:55:01.251819000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 18:55:01.251355000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cb288
+  id: 3,
+  name: "Airbus20",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:00:44.155286000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cb170
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cb008
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x00007fa4684caea0
+  id: 7,
+  name: "Airbus30",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:01:36.008484000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cad88
+  id: 5,
+  name: "Airbus10",
+  cruising_range: 12,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:01:53.657511000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cac98
+  id: 2,
+  name: "Airbus",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 18:55:01.251819000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 18:55:01.251355000 IST +05:30>,
+ #<Aircraft:0x00007fa4684cabd0
+  id: 1,
+  name: "Airbus60",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Mon, 01 Aug 2022 14:20:44.250729000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 1,
+  place: "PUNE",
+  availability: Mon, 01 Aug 2022 17:19:00.000000000 IST +05:30>,
+ #<Aircraft:0x00007fa4684ca950
+  id: 6,
+  name: "Airbus320",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 19:14:48.998358000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Sun, 31 Jul 2022 22:12:00.000000000 IST +05:30>,
+ #<Aircraft:0x00007fa4684ca860
+  id: 3,
+  name: "Airbus20",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:00:44.155286000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x00007fa4684ca770
+  id: 7,
+  name: "Airbus30",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:01:36.008484000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x00007fa4684ca658
+  id: 29,
+  name: "Boeing777",
+  cruising_range: 242434,
+  created_at: Mon, 01 Aug 2022 18:12:55.864800000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:27:24.378772000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 0,
+  place: "Delhi",
+  availability: Tue, 02 Aug 2022 19:27:24.374755000 IST +05:30>,
+ #<Aircraft:0x00007fa4684ca590
+  id: 36,
+  name: "Boeing730",
+  cruising_range: 242434,
+  created_at: Tue, 02 Aug 2022 19:48:36.934103000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:48:36.934103000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 0,
+  place: "Delhi",
+  availability: Tue, 02 Aug 2022 19:48:36.934372000 IST +05:30>,
+3.0.0 :014 > Aircraft.joins(certifieds: :pilots)
+  Aircraft Load (0.4ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "certifieds" ON "certifieds"."aircraft_id" = "aircrafts"."id" INNER JOIN "employees" ON "employees"."id" = "certifieds"."employee_id"                         
+ =>                                                                                                                 
+[#<Aircraft:0x000055c79ce50128                                                                                      
+  id: 5,                                                                                                            
+  name: "Airbus10",                                                                                                 
+  cruising_range: 12,                                                                                               
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,                                                       
+  updated_at: Fri, 29 Jul 2022 13:01:53.657511000 IST +05:30,                                                       
+  aircraft_updated_at: nil,                                                                                         
+  certifieds_count: 2,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4bc68
+  id: 2,
+  name: "Airbus",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 18:55:01.251819000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 18:55:01.251355000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4b650
+  id: 3,
+  name: "Airbus20",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:00:44.155286000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4b218
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4b150
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4af70
+  id: 7,
+  name: "Airbus30",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:01:36.008484000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4ad90
+  id: 5,
+  name: "Airbus10",
+  cruising_range: 12,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:01:53.657511000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4abd8
+  id: 2,
+  name: "Airbus",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 18:55:01.251819000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 18:55:01.251355000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4a9f8
+  id: 1,
+  name: "Airbus60",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Mon, 01 Aug 2022 14:20:44.250729000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 1,
+  place: "PUNE",
+  availability: Mon, 01 Aug 2022 17:19:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4a868
+  id: 6,
+  name: "Airbus320",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 19:14:48.998358000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Sun, 31 Jul 2022 22:12:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4a610
+  id: 3,
+  name: "Airbus20",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:00:44.155286000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4a4d0
+  id: 7,
+  name: "Airbus30",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Fri, 29 Jul 2022 13:01:36.008484000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 3,
+  place: "DELHI",
+  availability: Sun, 31 Jul 2022 05:53:16.260032000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4a390
+  id: 29,
+  name: "Boeing777",
+  cruising_range: 242434,
+  created_at: Mon, 01 Aug 2022 18:12:55.864800000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:27:24.378772000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 0,
+  place: "Delhi",
+  availability: Tue, 02 Aug 2022 19:27:24.374755000 IST +05:30>,
+ #<Aircraft:0x000055c79ce4a2a0
+  id: 36,
+  name: "Boeing730",
+  cruising_range: 242434,
+  created_at: Tue, 02 Aug 2022 19:48:36.934103000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:48:36.934103000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 0,
+  place: "Delhi",
+  availability: Tue, 02 Aug 2022 19:48:36.934372000 IST +05:30>,
+3.0.0 :017 > Aircraft.joins( :schedule)
+(Object doesn't support #inspect)
+ =>                                                                                                                 
+3.0.0 :018 > Aircraft.joins( :schedules)
+  Aircraft Load (1.4ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "schedules" ON "schedules"."aircraft_id" = "aircrafts"."id"                                                                                                   
+ =>                                                                                                                 
+[#<Aircraft:0x000055c79f08a900                                                                                      
+  id: 6,                                                                                                            
+  name: "Airbus320",                                                                                                
+  cruising_range: 1234566,                                                                                          
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Sun, 31 Jul 2022 19:14:48.998358000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Sun, 31 Jul 2022 22:12:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79f08a838
+  id: 1,
+  name: "Airbus60",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Mon, 01 Aug 2022 14:20:44.250729000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 1,
+  place: "PUNE",
+  availability: Mon, 01 Aug 2022 17:19:00.000000000 IST +05:30>,
+3.0.0 :019 > Aircraft.joins( :schedules, certifieds: :pilots)
+  Aircraft Load (1.7ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "schedules" ON "schedules"."aircraft_id" = "aircrafts"."id" INNER JOIN "certifieds" ON "certifieds"."aircraft_id" = "aircrafts"."id" INNER JOIN "employees" ON "employees"."id" = "certifieds"."employee_id"                                                                      
+ =>                                                                                                                 
+[#<Aircraft:0x000055c79fa6b780                                                                                      
+  id: 4,                                                                                                            
+  name: "Airbus620",                                                                                                
+  cruising_range: 1234566,                                                                                          
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,                                                       
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,                                                       
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79fa6b6b8
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c79fa6b5f0
+  id: 1,
+  name: "Airbus60",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Mon, 01 Aug 2022 14:20:44.250729000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 1,
+  place: "PUNE",
+  availability: Mon, 01 Aug 2022 17:19:00.000000000 IST +05:30>,
+3.0.0 :020 > Aircraft.joins( :schedules, certifieds: :pilots).where("aircraft.name like ?","%Air%" )
+  Aircraft Load (0.5ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "schedules" ON "schedules"."aircraft_id" = "aircrafts"."id" INNER JOIN "certifieds" ON "certifieds"."aircraft_id" = "aircrafts"."id" INNER JOIN "employees" ON "employees"."id" = "certifieds"."employee_id" WHERE (aircraft.name like '%Air%')                                   
+(Object doesn't support #inspect)                                                                                   
+ =>                                                                                                                 
+3.0.0 :021 > Aircraft.joins( :schedules, certifieds: :pilots).where("aircrafts.name like ?","%Air%" )
+  Aircraft Load (0.8ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "schedules" ON "schedules"."aircraft_id" = "aircrafts"."id" INNER JOIN "certifieds" ON "certifieds"."aircraft_id" = "aircrafts"."id" INNER JOIN "employees" ON "employees"."id" = "certifieds"."employee_id" WHERE (aircrafts.name like '%Air%')                                  
+ =>                                                                                                                 
+[#<Aircraft:0x000055c7a0097d20
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c7a0097be0
+  id: 4,
+  name: "Airbus620",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Tue, 02 Aug 2022 19:57:39.750648000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 2,
+  place: "MUMBAI",
+  availability: Tue, 02 Aug 2022 21:37:00.000000000 IST +05:30>,
+ #<Aircraft:0x000055c7a0097a50
+  id: 1,
+  name: "Airbus60",
+  cruising_range: 1234566,
+  created_at: Mon, 23 May 2022 19:45:56.466482000 IST +05:30,
+  updated_at: Mon, 01 Aug 2022 14:20:44.250729000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 1,
+  place: "PUNE",
+  availability: Mon, 01 Aug 2022 17:19:00.000000000 IST +05:30>,
+3.0.0 :022 > Aircraft.joins( :schedules, certifieds: [pilots:{:trainee }]).where("aircrafts.name like ?","%Air%" )
+ => []                                                                                                              
+3.0.0 :024 > Aircraft.joins( :schedules, certifieds: [pilots: :trainer ]).where("aircrafts.name like ?","%Air%" )
+  Aircraft Load (1.7ms)  SELECT "aircrafts".* FROM "aircrafts" INNER JOIN "schedules" ON "schedules"."aircraft_id" = "aircrafts"."id" INNER JOIN "certifieds" ON "certifieds"."aircraft_id" = "aircrafts"."id" INNER JOIN "employees" ON "employees"."id" = "certifieds"."employee_id" INNER JOIN "employees" "trainers_employees" ON "trainers_employees"."id" = "employees"."trainer_id" WHERE (aircrafts.name like '%Air%')                        
+ => []        
+
+ 3.0.0 :035 > Aircraft.order(cruising_range: :desc).limit(1).offset(2).pluck(:cruising_range)
+  Aircraft Pluck (0.4ms)  SELECT "aircrafts"."cruising_range" FROM "aircrafts" ORDER BY "aircrafts"."cruising_range" DESC LIMIT $1 OFFSET $2  [["LIMIT", 1], ["OFFSET", 2]]                                                             
+ => [1234566]                                                                                                       
+3.0.0 :036 > Aircraft.order(cruising_range: :asc).limit(1).offset(2).pluck(:cruising_range)
+  Aircraft Pluck (0.6ms)  SELECT "aircrafts"."cruising_range" FROM "aircrafts" ORDER BY "aircrafts"."cruising_range" ASC LIMIT $1 OFFSET $2  [["LIMIT", 1], ["OFFSET", 2]]                                                              
+ => [242434] 
