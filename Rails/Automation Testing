@@ -200,3 +200,107 @@ end
 
 Finished in 0.00135 seconds (files took 0.04651 seconds to load)
 1 example, 0 failures
+
+
+
+
+## 
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ bin/rspec --init
+  create   .rspec
+  create   spec/spec_helper.rb
+
+Rspec results comes in yellow it means it is pending which is it does not have its block
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ bin/rspec
+*
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) Bouncer rejects xx from entring the venue
+     # Not yet implemented
+     # ./spec/bouncer_spec.rb:2
+
+
+Finished in 0.00217 seconds (files took 0.04559 seconds to load)
+1 example, 0 failures, 1 pending
+
+After creating block
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ bin/rspec
+F
+
+Failures:
+
+  1) Bouncer rejects xx from entring the venue
+     Failure/Error: b = Bouncer.new
+     
+     NameError:
+       uninitialized constant Bouncer
+     # ./spec/bouncer_spec.rb:3:in `block (2 levels) in <top (required)>'
+
+Finished in 0.00176 seconds (files took 0.04639 seconds to load)
+1 example, 1 failure
+
+Failed examples:
+
+rspec ./spec/bouncer_spec.rb:2 # Bouncer rejects xx from entring the venue 
+
+
+
+Setting up Rspec
+Step 1 — Delete Any Existing Test Folders
+If  generated a new rails app using rails new <app> without using any additional flags, remove the app/test directory
+
+base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ bundle
+Your Gemfile lists the gem capybara (>= 0) more than once.
+You should probably keep only one of them.
+Remove any duplicate entries and specify the gem only once.
+While it's not a problem now, it could cause errors if you change the version of one of them later.
+Fetching gem metadata from https://rubygems.org/..........
+Resolving dependencies...
+Installing database_cleaner-core 2.0.1
+Installing rspec-support 3.9.4 (was 3.11.0)
+Installing factory_girl 4.9.0
+Fetching rspec-core 3.9.3 (was 3.11.0)
+Fetching rspec-expectations 3.9.4 (was 3.11.0)
+Fetching rspec-mocks 3.9.1 (was 3.11.1)
+Installing byebug 11.1.3 with native extensions
+Fetching database_cleaner-active_record 2.0.1
+Fetching factory_girl_rails 4.9.0
+Installing database_cleaner-active_record 2.0.1
+Fetching database_cleaner 2.0.1
+Installing rspec-mocks 3.9.1 (was 3.11.1)
+Installing rspec-expectations 3.9.4 (was 3.11.0)
+Installing factory_girl_rails 4.9.0
+Installing rspec-core 3.9.3 (was 3.11.0)
+Fetching rspec-rails 3.9.1
+Installing rspec-rails 3.9.1
+Installing database_cleaner 2.0.1
+Bundle complete! 29 Gemfile dependencies, 110 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+
+Step 2 — Add Gems
+ add the following gems to the :development, :test group in my Gemfile and run bundle.
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
+Briefly running through these gems one-by-one:
+
+byebug allows for step-through debugging by placing byebug anywhere in the app.
+rspec-rails is the testing framework.
+factory_girl_rails replaces Rails fixtures for generating data to use in the tests.
+capybara provides helper methods that make integration testing easier.
+database_cleaner allows us to manage our testing database with precision: we decide when to wipe data (e.g. after, before tests).
+
+Step 3 — Run Rspec Generator
+Currently, the app directory doesn’t include a app/test/ directory (remember we deleted it in step 1). This is where the Rspec generator, which will generate app/spec/, comes in:
+
+rails generate rspec:install
+This adds the following files in a app/spec directory:
+
+spec/spec_helper.rb
+spec/rails_helper.rb
+and app/.rspec in the project’s root directory.
