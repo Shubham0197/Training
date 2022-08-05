@@ -4,7 +4,11 @@ Automation test cases in rails
 4. Factory girl
 
 Unit Test - test of individual component in an isolation.
-Funtional Test
+Granularity of test?
+Specification
+FeedBack
+Regression
+Granularity
 
 ## TDD -Test Driven Development
 
@@ -39,7 +43,9 @@ The teams that implement TDD, take more time for development however, they tend 
 
 TDD also helps in achieving high test coverage of about 90-100%. The most challenging thing for developers following TDD is to write their test cases before writing the code.
 
+Some of the tools which support TDD are: JUnit, TestNG, NUnit, etc.
 
+TDD is iterative development process. IT instructs developer to write code only if automated test has failed.
 
 ## BDD - Behavior Driven Development
 The test made up of three distinct sections: Context, Event, Outcomes
@@ -69,4 +75,13 @@ The process involved in BDD methodology also consists of 6 steps and is very sim
 5) Refactor or organize code: Refactor or organize your code to make it more readable and re-usable.
 
 6) Repeat the steps 1-5 for new behavior: Repeat the steps to implement more behaviors in your application.
+Some of the tools which support BDD are SpecFlow, Cucumber, MSpec, etc.
+
+## TDD Vs BDD
+
+TDD focuses on how the functionality is implemented. But BDD focuses on the behavior of an application for the end user.
+In TDD Test cases are written in a programming language.But for BDD	Scenarios are more readable when compared to TDD as they are written in simple English format.
+TDD reduces the likelihood of having bugs in your tests. For BDD bugs in tests are difficult to track when compared to TDD.
+TDD might be a better approach for projects which involve API and third-party tools.
+And BDD might be a better approach for projects which are driven by user actions. For eg: e-commerce website, application system, etc.
 
