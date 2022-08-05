@@ -351,3 +351,55 @@ Since our specs are passing, we’ve reached the green step of the red-green-ref
 This refactoring step is quite simple.
 We’ll add a subject to our specs, which will be the main object under test in this spec file. 
 After that, we will appropriately set the object attributes in the examples
+
+So here subject is the testing subject—meaning that it will be the object upon which our examples will set expectations.
+Continuous Integration (CI) is a software development practice in which the code is continually tested on an automated CI Pipeline. Teams using CI enjoy the benefits of having the code continually tested, they can merge changes more often, usually many times a day. A good CI setup raises the bar of software quality considerably.
+
+Fixtures are data that you can feed into your unit testing. 
+They are automatically created whenever rails generates the corresponding tests for your controllers and models. 
+They are only used for your tests and cannot actually be accessed when running the application.
+
+Factory Girl
+Fixtures are data that you can feed into your unit testing. 
+They are automatically created whenever rails generates the corresponding tests for your controllers and models. 
+They are only used for your tests and cannot actually be accessed when running the application.
+This gem provides a clean syntax for creating new model instances and lets you manage the attributes from a single fixture file. 
+FactoryGirl enables you to:
+- Create new model instances from a fixture file
+- Interact with the test database to create test data
+- Automatically generate fixtures when you run Rails generators
+- Allow for automatic database relationship connections, e.g. you can have a fixture for a Post that has a belongs_to relationship to an Author and call them in specs the same way you call them in the application
+- Store the created values in variables
+- Create multiple fixtures for each model
+
+Build works as the new  and does not insert record but create works same as create and insert the record.
+
+Loading development environment (Rails 7.0.3.1)
+3.0.0 :001 > FactoryGirl.build(:aircraft)
+ => 
+#<Aircraft:0x000056023ac18490                                                                              
+ id: nil,                                                                                                  
+ name: "Airmax",                                                                                           
+ cruising_range: 1300,                                                                                     
+ created_at: nil,                                                                                          
+ updated_at: nil,                                                                                          
+ aircraft_updated_at: nil,                                                                                 
+ certifieds_count: 0,                                                                                      
+ place: "Delhi",                                                                                           
+ availability: nil> 
+
+ 3.0.0 :002 > FactoryGirl.create(:aircraft)
+  TRANSACTION (0.2ms)  BEGIN
+  Aircraft Create (7.1ms)  INSERT INTO "aircrafts" ("name", "cruising_range", "created_at", "updated_at", "aircraft_updated_at", "certifieds_count", "place") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Airmax"], ["cruising_range", 1300], ["created_at", "2022-08-05 22:17:31.742447"], ["updated_at", "2022-08-05 22:17:31.742447"], ["aircraft_updated_at", nil], ["certifieds_count", 0], ["place", "Delhi"]]
+  TRANSACTION (0.7ms)  COMMIT                                                 
+ =>                                                                           
+#<Aircraft:0x000056023a8494e0                                                 
+ id: 37,                                                                      
+ name: "Airmax",                                                              
+ cruising_range: 1300,                                                        
+ created_at: Fri, 05 Aug 2022 22:17:31.742447000 IST +05:30,                  
+ updated_at: Fri, 05 Aug 2022 22:17:31.742447000 IST +05:30,                  
+ aircraft_updated_at: nil,                                                    
+ certifieds_count: 0,                                                         
+ place: "Delhi",
+ availability: nil> 
