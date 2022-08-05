@@ -81,3 +81,5 @@ gem "letter_opener", "~> 1.8"
 
 gem "rails_admin", "~> 3.0"
 
+gem 'rspec', '~>3.0'
+
