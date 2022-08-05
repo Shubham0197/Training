@@ -1,0 +1,72 @@
+Automation test cases in rails
+1. BDD vs TDD
+3. Rspecs
+4. Factory girl
+
+Unit Test - test of individual component in an isolation.
+Funtional Test
+
+## TDD -Test Driven Development
+
+Unit Test - 
+- Writing Unit Tests for existing code can be difficult... or impossible
+- A Unit Test is a test of a component in isolation
+- In order to test is isolation, any external dependencies must be "mocked"
+- An example of something that is frequently "mocked" is a database connection
+- Units Tests tend to be very fast to run.
+
+Test Driven Development:
+- It's an iterative process: write a small test... write just enough code to get the test to pass. Rinse and repeat.
+- The tests and the code that the tests "cover" are born and grow together. They are intertwined.
+- Test are written before the code
+
+Process Of TDD
+TDD methodology follows a very simple 6 step process:
+
+1) Write a test case: Based on the requirements, write an automated test case.
+
+2) Run all the test cases: Run these automated test cases on the currently developed code.
+
+3) Develop the code for that test cases: If the test case fails, then, write the code to make that test-case work as expected.
+
+4) Run test cases again: Run the test cases again and check if all the test cases developed so far are implemented.
+
+5) Refactor your code: This is an optional step. However, it’s important to refactor your code to make it more readable and reusable.
+
+6) Repeat the steps 1- 5 for new test cases: Repeat the cycle for the other test cases until all the test cases are implemented.
+
+The teams that implement TDD, take more time for development however, they tend to find very few defects. TDD results in improved quality of code and the code that is more reusable and flexible.
+
+TDD also helps in achieving high test coverage of about 90-100%. The most challenging thing for developers following TDD is to write their test cases before writing the code.
+
+
+
+## BDD - Behavior Driven Development
+The test made up of three distinct sections: Context, Event, Outcomes
+- Context is the "starting state"
+- Event is the thing that the user does
+- Outcomes are the expected results of what the user does
+- The test describes in a very direct way the set of the behaviours that the customer can expect from the system.
+
+Context - Starting State
+Event - What User Does
+Outcomes - The Expected Results
+
+BDD stands for Behavior Driven Development. BDD is an extension to TDD where instead of writing the test cases, we start by writing a behavior.
+
+
+Process Of BDD
+The process involved in BDD methodology also consists of 6 steps and is very similar to that of TDD.
+
+1) Write the behavior of the application: The behavior of an application is written in simple English like language by the product owner or the business analysts or QAs.
+
+2) Write the automated scripts: This simple English like language is then converted into programming tests.
+
+3) Implement the functional code: The functional code underlying the behavior is then implemented.
+
+4) Check if the behavior is successful: Run the behavior and see if it is successful. If successful, move to the next behavior otherwise fix the errors in the functional code to achieve the application behavior.
+
+5) Refactor or organize code: Refactor or organize your code to make it more readable and re-usable.
+
+6) Repeat the steps 1-5 for new behavior: Repeat the steps to implement more behaviors in your application.
+
