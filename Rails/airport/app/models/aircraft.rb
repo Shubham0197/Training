@@ -1,22 +1,23 @@
 class Aircraft < ApplicationRecord
   include Validatable
-  #self.primary_key = 'name'
- # before_create :aborting
+  validates :name, presence: true
   has_many :certifieds, before_add: :check_ceritfieds
   has_many :schedules
-  # validates :name, confirmation: true, unless: ->{ name.blank? }
-  #validates :name_confirmation, presence: true, if: Proc.new {|aircraft| !aircraft.name.blank? }
-  #validates :cruising_range, presence: true, unless: :cruising_range?
   paginates_per 10
-  #def cruising_range?
-   # name.blank?
-  #end
+
   def aborting
     throw :abort
   end
   def check_ceritfieds(certified)
     print "Before add association Callbacks"
     self.cruising_range += 100
+  end
+
+  def cruise?
+    if self.cruising_range >= 1200
+      return true
+    end
+    false
   end
 
 end
