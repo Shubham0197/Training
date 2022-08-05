@@ -345,3 +345,9 @@ Finished in 0.01639 seconds (files took 1.48 seconds to load)
 (base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ rspec spec/models/aircraft_spec.rb 
 Finished in 0.01838 seconds (files took 1.56 seconds to load)
 2 examples, 0 failures
+
+
+Since our specs are passing, we’ve reached the green step of the red-green-refactor flow. It’s time to refactor our examples. 
+This refactoring step is quite simple.
+We’ll add a subject to our specs, which will be the main object under test in this spec file. 
+After that, we will appropriately set the object attributes in the examples
