@@ -557,3 +557,61 @@ You can override the initial value. Any value that responds to the #next method 
 factory :user do
   sequence(:email, 1000) { |n| "person#{n}@example.com" }
 end
+
+
+Using of inline sequence in the Aircraft factory
+using build 
+
+3.0.0 :020 > FactoryGirl.build(:aircraft)
+ => 
+ id: nil,
+ name: "Airmax-20",
+ cruising_range: 1300,
+ created_at: nil,
+ updated_at: nil,
+ aircraft_updated_at: nil,
+ certifieds_count: 0,
+ place: "Delhi",
+ availability: nil> 
+3.0.0 :021 > FactoryGirl.build(:aircraft)
+ => 
+ id: nil,
+ name: "Airmax-21",
+ cruising_range: 1300,
+ created_at: nil,
+ updated_at: nil,
+ aircraft_updated_at: nil,
+ certifieds_count: 0,
+ place: "Delhi",
+ availability: nil> 
+3.0.0 :022 > FactoryGirl.build(:aircraft)
+ => 
+ id: nil,
+ name: "Airmax-22",
+ cruising_range: 1300,
+ created_at: nil,
+ updated_at: nil,
+ aircraft_updated_at: nil,
+ certifieds_count: 0,
+ place: "Delhi",
+ availability: nil> 
+
+
+- using  create
+3.0.0 :024 > FactoryGirl.create(:aircraft)
+  TRANSACTION (0.4ms)  BEGIN
+  
+  Aircraft Create (1.3ms)  INSERT INTO "aircrafts" ("name", "cruising_range", "created_at", "updated_at", "aircraft_updated_at", "certifieds_count", "place") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Airmax-24"], ["cruising_range", 1300], ["created_at", "2022-08-08 13:51:14.657482"], ["updated_at", "2022-08-08 13:51:14.657482"], ["aircraft_updated_at", nil], ["certifieds_count", 0], ["place", "Delhi"]]
+  TRANSACTION (0.5ms)  COMMIT                                                 
+ =>  
+
+ #<Aircraft:0x000055ce45d3fa40
+  id: 38,
+  name: "Airmax-24",
+  cruising_range: 1300,
+  created_at: Mon, 08 Aug 2022 13:51:14.657482000 IST +05:30,
+  updated_at: Mon, 08 Aug 2022 13:51:14.657482000 IST +05:30,
+  aircraft_updated_at: nil,
+  certifieds_count: 0,
+  place: "Delhi",
+  availability: Mon, 08 Aug 2022 13:51:14.659052000 IST +05:30>] 

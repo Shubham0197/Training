@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :aircraft do
-    name "Airmax"
+    sequence(:name){|n| "Airmax-#{n}"}
     cruising_range 1300
   end
 end
