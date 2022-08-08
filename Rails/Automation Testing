@@ -196,6 +196,20 @@ Even though database updates in each example will be rolled back, the
 object won't know about those rollbacks so the object and its backing
 data can easily get out of sync.
 
+## Model specs
+Model specs are marked by :type => :model or if you have set
+config.infer_spec_type_from_file_location! by placing them in spec/models.
+
+A model spec is a thin wrapper for an ActiveSupport::TestCase, and includes all
+of the behavior and assertions that it provides, in addition to RSpec's own
+behavior and expectations.
+
+base) itsacheckmate@itsacheckmate:~/Training/Rails/airport$ rails g rspec:model employee
+DEPRECATION WARNING: The factory_girl gem is deprecated. Please upgrade to factory_bot. See https://github.com/thoughtbot/factory_bot/blob/v4.9.0/UPGRADE_FROM_FACTORY_GIRL.md for further instructions. (called from block (2 levels) in require at /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/site_ruby/3.0.0/bundler/runtime.rb:60)
+[Warning] Failed to detect RailsAdmin npm package, did you run 'yarn install'?
+      create  spec/models/employee_spec.rb
+      invoke  factory_girl
+      create    spec/factories/employees.rb
 
 
 ## Test Your Ruby Code With RSpec
