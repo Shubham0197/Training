@@ -152,6 +152,52 @@ Job specs: type: :job
 System specs: type: :system
 
 
+- Transactions
+spec/rails_helper.rb have the following line
+"config.use_transactional_fixtures = true" 
+
+For in Rails it means is "run every test method within a transaction." 
+But in the context of rspec-rails, it means "run every example within a transaction."
+It is different because of the idea in rspec is to start each example with a clean database, create whatever data is necessary for that example, and then remove that data by simply rolling back the transaction at the end of the example.
+It can be turend of and instead of this can use gem like database_cleaner.
+
+We use before block inside of the rpspec describe block to define the object on which the testing is to be done there are 2 option for before block 
+:example
+:context
+
+Data created in before(:example) are rolled back
+Any data you create in a before(:example) hook will be rolled back at the end of the example. 
+This is a good thing because it means that each example is isolated from state that would otherwise be left around by the examples that already ran.
+So for every it block it swill create different object and will rollback it,so each example has a different object, and the underlying data is rolled back so the data backing the @widget in each example is new.
+
+But for Data created in before(:context) are not rolled back
+before(:context) hooks are invoked before the transaction is opened. You can use this to speed things up by creating data once before any example in a group is run.
+
+But This also creates complication 
+1. We have to make sure to  clean up any data in an after(:context) hook
+before(:context) do
+  @widget = Widget.create!
+end
+
+after(:context) do
+  @widget.destroy
+end
+It is not done it will leave data lying around that will eventually interfere with other examples.
+
+2. Reload the object in a before(:example) hook.
+before(:context) do
+  @widget = Widget.create!
+end
+
+before(:example) do
+  @widget.reload
+end
+Even though database updates in each example will be rolled back, the
+object won't know about those rollbacks so the object and its backing
+data can easily get out of sync.
+
+
+
 ## Test Your Ruby Code With RSpec
 Rspec is ruby testing framework which is very famous
 rspec.info
