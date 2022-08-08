@@ -266,7 +266,7 @@ Finished in 0.00104 seconds (files took 1.57 seconds to load)
 
 
 
-      
+
 ## Test Your Ruby Code With RSpec
 Rspec is ruby testing framework which is very famous
 rspec.info
@@ -761,3 +761,41 @@ So, what to choose?
  certifieds_count: 0,
  place: "Delhi",
  availability: nil> 
+
+## Dynamic Attributes
+Most factory attributes can be added using static values that are evaluated when the factory is defined, but some attributes (such as associations and other attributes that must be dynamically generated) will need values assigned each time an instance is generated. These "dynamic" attributes can be added by passing a block instead of a parameter:
+
+factory :user do
+  # ...
+  activation_code { User.generate_activation_code }
+  date_of_birth   { 21.years.ago }
+end
+Because of the block syntax in Ruby, defining attributes as Hashes (for serialized/JSON columns, for example) requires two sets of curly brackets:
+
+factory :program do
+  configuration { { auto_resolve: false, auto_define: true } }
+end
+
+## Aliases
+factory_girl allows you to define aliases to existing factories to make them easier to re-use. This could come in handy when, for example, your Post object has an author attribute that actually refers to an instance of a User class. While normally factory_girl can infer the factory name from the association name, in this case it will look for a author factory in vain. So, alias your user factory so it can be used under alias names.
+
+factory :user, aliases: [:author, :commenter] do
+  first_name    "John"
+  last_name     "Doe"
+  date_of_birth { 18.years.ago }
+end
+
+factory :post do
+  author
+  # instead of
+  # association :author, factory: :user
+  title "How to read a book effectively"
+  body  "There are five steps involved."
+end
+
+factory :comment do
+  commenter
+  # instead of
+  # association :commenter, factory: :user
+  body "Great article!"
+end
