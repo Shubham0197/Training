@@ -89,6 +89,69 @@ And BDD might be a better approach for projects which are driven by user actions
 
 
 ## Automated Testing in Ruby on Rails
+ - About Rspec
+RSpec is a Behaviour-Driven Development tool for Ruby programmers. 
+BDD is an approach to software development that combines Test-Driven Development, Domain Driven Design, and Acceptance Test-Driven Planning.
+RSpec helps you do the TDD part of that equation,focusing on the documentation and design aspects of TDD.
+
+- Generators 
+RSpec spec are normally generated alongside other application components.
+For instance, rails generate model will also generate an RSpec spec file
+for the model.
+
+Note that the generators are there to help you get started, but they are no substitute for writing your own examples, and they are only guaranteed to work out of the box for with Rails' defaults.
+
+RSpec generators can also be run independently. For instance,
+
+rails generate rspec:model widget
+The same generator pattern is available for all specs:
+
+scaffold
+model
+controller
+helper
+view
+mailer
+integration
+feature
+job
+channel
+generator
+mailbox
+request
+system
+
+-Directory Structure
+Specs are usually placed in a canonical directory structure that describes
+their purpose:
+Model specs reside in the spec/models directory
+Controller specs reside in the spec/controllers directory
+Request specs reside in the spec/requests directory. The directory can also be named integration or api.
+Feature specs reside in the spec/features directory
+View specs reside in the spec/views directory
+Helper specs reside in the spec/helpers directory
+Mailer specs reside in the spec/mailers directory
+Routing specs reside in the spec/routing directory
+Job specs reside in the spec/jobs directory
+
+System specs reside in the spec/system directory
+In order to include the correct rspec-rails support functions, the specs need to have the appropriate corresponding metadata :type value:
+Eg for in the line 
+"RSpec.describe ThingsController, type: :controller"
+
+
+Model specs: type: :model
+Controller specs: type: :controller
+Request specs: type: :request
+Feature specs: type: :feature
+View specs: type: :view
+Helper specs: type: :helper
+Mailer specs: type: :mailer
+Routing specs: type: :routing
+Job specs: type: :job
+System specs: type: :system
+
+
 ## Test Your Ruby Code With RSpec
 Rspec is ruby testing framework which is very famous
 rspec.info
@@ -403,3 +466,4 @@ Loading development environment (Rails 7.0.3.1)
  certifieds_count: 0,                                                         
  place: "Delhi",
  availability: nil> 
+
