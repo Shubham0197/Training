@@ -799,3 +799,20 @@ factory :comment do
   # association :commenter, factory: :user
   body "Great article!"
 end
+
+
+## Routing specs
+Routing specs are marked by :type => :routing or if you have set
+config.infer_spec_type_from_file_location! by placing them in spec/routing.
+
+Simple apps with nothing but standard RESTful routes won't get much value from
+routing specs, but they can provide significant value when used to specify
+customized routes, like vanity links, slugs, etc.
+
+## Mailer specs
+By default Mailer specs reside in the spec/mailers folder. Adding the metadata
+:type => :mailer to any context makes its examples be treated as mailer specs.
+
+A mailer spec is a thin wrapper for an ActionMailer::TestCase, and includes all
+of the behavior and assertions that it provides, in addition to RSpec's own
+behavior and expectations
