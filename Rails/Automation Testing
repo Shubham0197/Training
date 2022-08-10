@@ -816,3 +816,109 @@ By default Mailer specs reside in the spec/mailers folder. Adding the metadata
 A mailer spec is a thin wrapper for an ActionMailer::TestCase, and includes all
 of the behavior and assertions that it provides, in addition to RSpec's own
 behavior and expectations
+
+RSpec-Rails MAtchers
+Models
+obj.should be_valid
+obj.should have(n).errors_on(:field)
+obj.errors.on(:field).should == "is required"
+General
+response.should be_valid
+response.should_not be_valid
+
+response.should be_success
+response.should be_redirect
+
+response.should redirect_to("path/to/action")
+response.should redirect_to("http://test.host/path/to/action")
+response.should redirect_to(:action => 'list')
+
+response.should render_template('list')
+response.should render_template('same_controller/list')
+response.should render_template('other_controller/list')
+
+# partials
+response.should render_template('_a_partial')
+response.should render_template('same_controller/_a_partial')
+response.should render_template('other_controller/_a_partial')
+Routing
+"path".should route_to(expected) # assumes GET
+{ :get => "path" }.should route_to(expected)
+{ :put => "path" }.should route_to(expected)
+
+{ "path" }.should_not be_routable # assumes GET
+{ :get => "path" }.should_not be_routable
+{ :put => "path" }.should_not be_routable
+Content
+response.should have_tag("div", "some text")
+person_address_tag.should have_tag("input#person_address") # in a helper
+
+response.should have_tag("div#form") do
+  with_tag("input#person_name[name=?]", "person[name]")
+end
+
+response.should have_tag("div#1") do
+  without_tag("span", "some text that shouldn't be there")
+end
+
+response.should include_text("This text will be in the actual string")
+Mail
+response.should send_email(*args, &block)
+rspec-expectations.md
+
+
+
+## RSpec Expectations
+Built-in matchers
+Equivalence
+actual.should eq(expected)  # passes if actual == expected
+actual.should == expected   # passes if actual == expected
+actual.should eql(expected) # passes if actual.eql?(expected)
+Identity
+actual.should be(expected)    # passes if actual.equal?(expected)
+actual.should equal(expected) # passes if actual.equal?(expected)
+Comparisons
+actual.should be >  expected
+actual.should be >= expected
+actual.should be <= expected
+actual.should be <  expected
+actual.should be_within(delta).of(expected)
+Regular expressions
+actual.should =~ /expression/
+actual.should match(/expression/)
+Types/classes
+actual.should be_an_instance_of(expected)
+actual.should be_a_kind_of(expected)
+Truthiness
+actual.should be_true  # passes if actual is truthy (not nil or false)
+actual.should be_false # passes if actual is falsy (nil or false)
+actual.should be_nil   # passes if actual is nil
+Expecting errors
+expect { ... }.to raise_error
+expect { ... }.to raise_error(ErrorClass)
+expect { ... }.to raise_error("message")
+expect { ... }.to raise_error(ErrorClass, "message")
+Expecting throws
+expect { ... }.to throw_symbol
+expect { ... }.to throw_symbol(:symbol)
+expect { ... }.to throw_symbol(:symbol, 'value')
+Predicate matchers
+actual.should be_xxx         # passes if actual.xxx?
+actual.should have_xxx(:arg) # passes if actual.has_xxx?(:arg)
+Ranges (Ruby >= 1.9 only)
+(1..10).should cover(3)
+Collection membership
+actual.should include(expected)
+actual.should start_with(expected)
+actual.should end_with(expected)
+Examples
+[1,2,3].should include(1)
+[1,2,3].should include(1, 2)
+[1,2,3].should start_with(1)
+[1,2,3].should start_with(1,2)
+[1,2,3].should end_with(3)
+[1,2,3].should end_with(2,3)
+{:a => 'b'}.should include(:a => 'b')
+"this string".should include("is str")
+"this string".should start_with("this")
+"this string".should end_with("ring")
