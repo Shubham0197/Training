@@ -930,3 +930,45 @@ Writing your matcher
 You can just add your custom matcher to the spec_helper.rb file of your project (or to something else and import it there).
 We have a section to define the boolean expression that defines if your expected (the object that goes into the expect method) matches your actual (the one that is passed into your matcher).
 Then, on the failure_message section we define what is the output we should display to our users if our assertion fails (in other words: if our boolean expression defined previously returns false).
+
+## RSpec Let vs Before
+
+In RSpec, there are two different ways to write DRY tests, by using before or let. Their purpose is to create variables that are common across tests
+
+- let
+let creates lazily-evaluated local variables. This means that let() is not evaluated until the method that it formed is run for the first time. It DRYs up the spec and makes it more readable.
+let should not be used for local variables, which have to be saved to the database, as they will not be saved to the database unless they have already been referenced. In this case, you should use let! or before blocks.
+Also, never have a let block inside of a before the block, this is what let! is made for!
+  let(:count) { $count += 1 }
+
+- let!
+Unlike let, you can use let! to force the method's invocation before each example.
+It means that even if you didn't invoke the helper method inside the example it will be invoked before your example runs.As with let blocks, if multiple let! blocks are defined with the same name, the most recent one will be executed. 
+The core difference is that  let! blocks will be executed multiple times if used like this, whereas the let block will only execute the last time.
+ let!(:count) do
+    invocation_order << :let!
+    $count += 1
+  end
+
+- before (: each)
+The before (: each) block will run before each example, even if the example does not use any of the instance variables defined in the block. This can noticeably slow down the setup of the instance variables.
+In nearly every situation, it is better to use let over before blocks. Depending on your personal preference you could use before blocks when:
+There is a reasonable amount of variables.
+There are variables that don't need to be referenced directly but are required.
+There are many commands to be executed because its syntax is clearer when many commands are involved.
+Creating mocks/stubs.
+  before(:each) do
+    @user = User.new
+  end
+
+- before (: all)
+This block is executed only once, before all of the examples in a group. There are certain situations this can cut down on execution and effort.
+Using runs (: all) in RSpec will cause you lots of trouble unless you know what you are doing! It runs outside of transactions, so the data created here will bleed into other specs.
+
+Difference
+Let blocks bring more to the table than before blocks. It all depends on what and how you need to make the RSpec tests.
+Besides being slower, one of the major problems with before blocks is that spelling errors can lead to bugs and false positives, allowing certain types of tests to pass when they shouldn't
+  before(:all) do
+    @user = User.new
+  end
+
