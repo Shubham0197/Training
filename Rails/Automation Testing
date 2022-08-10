@@ -922,3 +922,11 @@ Examples
 "this string".should include("is str")
 "this string".should start_with("this")
 "this string".should end_with("ring")
+
+
+## Rspec: Writing Custom Matchers
+A custom matcher allows us to create custom assertions for our specs (that are not included by default in rspec).
+Writing your matcher
+You can just add your custom matcher to the spec_helper.rb file of your project (or to something else and import it there).
+We have a section to define the boolean expression that defines if your expected (the object that goes into the expect method) matches your actual (the one that is passed into your matcher).
+Then, on the failure_message section we define what is the output we should display to our users if our assertion fails (in other words: if our boolean expression defined previously returns false).
