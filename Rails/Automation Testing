@@ -972,3 +972,31 @@ Besides being slower, one of the major problems with before blocks is that spell
     @user = User.new
   end
 
+
+## Rspec Test Double
+
+A test double is a simplified version of an object that allows us to define “fake” methods and their return values.
+RSpec Doubles, also known as RSpec Mocks. A Double is an object which can “stand in” for another object
+ “test double” as an umbrella term for the following four terms:
+
+Mocks: Expectations about method calls, verifying them, and faking returning a value
+Stubs: Fake responses to method calls
+Fake: Objects with a working implementation that is useful for tests
+Spies: Verifying that a stubbed method has been called before
+
+Stubs
+By definition:
+A method stub is an implementation that returns a pre-determined value.
+This means that we can say RSpec to preventively define the return value of an object method without actually call it.
+
+Mock
+A mock is a stub with a built-in expectation to be satisfied during the test.
+
+Spies
+Spies are objects that by default can accept all methods without throwing any exception and keep an history of the methods called on them.
+
+Here’s some simple rules to keep in mind when we need to choose the right test double in our specs:
+
+Choose to stub (using allow) when you want to stub something into the setup phase, which usually is a prerequisite of what you want to test;
+Choose to mock or spy (using expect) when the stubbed method is also a method you want to test;
+Choose to use a verifying double when you need to be sure that the method you are stubbing remains consistent with its real implementation.
