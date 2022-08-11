@@ -1023,3 +1023,19 @@ The reason feature specs are time-consuming to write is that, unlike a model spe
 In order to test a feature it’s often necessary to have certain non-trivial conditions set up—if  want to test.
 This necessity makes the feature spec slower to write and slower to run than a model spec where you could test e.g. a method on a `Stylist` class all by itself.
 
+
+## What exactly are integration tests?
+An integration test is any test that tests two or more parts of an application together.
+And integration testing can be done in the feature spec as they can be used test multiple funtionality as a time
+
+## Integration tests, acceptance tests and end-to-end tests
+
+- end-to-end test is a test that tests all layers of an application stack under conditions that are very similar to production.
+So in a Rails application, a test would have to exercise the HTML/CSS/JavaScript, the controllers, the models, and the database in order to qualify as an end-to-end test. 
+To contrast end-to-end tests with integration tests, all end-to-end tests are integration tests but not all integration tests are end-to-end tests.
+difference between the terms “end-to-end test” and “feature spec” are that feature spec is an RSpec-specific term while end-to-end test is a technology-agnostic industry term.
+
+- The purpose of an acceptance tests is quite a bit different from end-to-end tests or integration tests. 
+The purpose of an acceptance test is to answer the question, “Does the implementation of this feature match the requirements of the feature?”
+acceptance testing is a test conducted to determine if the requirements of a specification or contract are met.
+
