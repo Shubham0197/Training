@@ -81,3 +81,13 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "twitter", "~> 7.0"
 
 gem "sidekiq", "~> 6.5"
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 4.1.0'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'webdrivers'
+  gem "capybara"
+  gem "selenium-webdriver"
+end
