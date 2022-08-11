@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello_world/index'
   root "users#index"
   
   get "users/api"
