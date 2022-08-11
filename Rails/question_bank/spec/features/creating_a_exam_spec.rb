@@ -24,4 +24,14 @@ RSpec.feature "CreatingAExams", type: :feature do
     visit exams_path
     expect(page).to have_content('Mathematics')
   end
+
+  scenario 'Deleting a exam' do
+    math = Exam.create!(name: 'Math')
+    visit exam_path(id: math.id)
+    expect(page).to have_content('Math')
+    
+    click_on 'Destroy'
+    expect(page).to have_content('Exam was successfully destroyed.')
+    expect(page).not_to have_content('Math')
+  end
 end
