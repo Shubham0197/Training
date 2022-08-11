@@ -1000,3 +1000,26 @@ Here’s some simple rules to keep in mind when we need to choose the right test
 Choose to stub (using allow) when you want to stub something into the setup phase, which usually is a prerequisite of what you want to test;
 Choose to mock or spy (using expect) when the stubbed method is also a method you want to test;
 Choose to use a verifying double when you need to be sure that the method you are stubbing remains consistent with its real implementation.
+
+## Feature specs vs model specs
+Speaking loosely, model specs test ActiveRecord models by themselves and feature specs test the whole “stack” including model code, controller code, and any HTML/CSS/JavaScript together. 
+Neither type of spec is better or worse (and it’s not an “either/or” situation anyway), the two types of specs just have different strengths and weaknesses in different scenarios.
+## The strengths and weaknesses of model specs
+An advantage of model specs is that they’re “inexpensive”. 
+Compared to feature specs, model specs are relatively fast to run and relatively fast to write. 
+It tends to be slower to actually load the pages of an application and switch among them than to just test model code by itself with no browser involved. 
+That’s an advantage of model specs. 
+A disadvantage of model specs is that they don’t tell you anything about whether your whole application actually works from the user’s perspective. 
+Rails model works perfectly by itself but doesn’t have have any working HTML/CSS/JavaScript plugged into that model to make the whole application work.
+In such a case the model specs could pass even though there’s no working feature built on top of the model code.
+
+## The strengths and weaknesses of feature specs
+Feature specs have basically the opposite pros and cons. 
+Unlike model specs, feature specs do tell you whether all the parts of your application are working together. 
+There’s a cost to this, though, in that feature specs are relatively “expensive”. 
+Feature specs are relatively time-consuming to run because you’re running more stuff than in a model spec. (It’s slower to have to bring up a web browser than to not have to.) 
+Feature specs are also relatively time-consuming to write. 
+The reason feature specs are time-consuming to write is that, unlike a model spec where you can exercise e.g. just one method at a time, a feature spec has to exercise a whole feature at a time. 
+In order to test a feature it’s often necessary to have certain non-trivial conditions set up—if  want to test.
+This necessity makes the feature spec slower to write and slower to run than a model spec where you could test e.g. a method on a `Stylist` class all by itself.
+
