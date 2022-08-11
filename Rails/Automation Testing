@@ -1039,3 +1039,46 @@ difference between the terms “end-to-end test” and “feature spec” are th
 The purpose of an acceptance test is to answer the question, “Does the implementation of this feature match the requirements of the feature?”
 acceptance testing is a test conducted to determine if the requirements of a specification or contract are met.
 
+Simple Testing of the system using Capybara
+(base) itsacheckmate@itsacheckmate:~/Desktop/demo/ecommerce$ rspec spec/system/hello_worlds_spec.rb 
+HelloWorlds
+  index page
+DEBUGGER: Attaching after process 16991 fork to child process 17060
+    shows the right content
+
+Finished in 4.59 seconds (files took 0.70368 seconds to load)
+1 example, 0 failures
+
+
+
+## Using Feature Spec to test whether there is error in Exam/new when there is no name given when  create exam is clicked and there is error 
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/question_bank$ rspec spec/features/creating_a_exam_spec.rb 
+CreatingAExams
+  valid inputs
+  invalid inputs (FAILED - 1)
+
+Failures:
+
+  1) CreatingAExams invalid inputs
+     Failure/Error: expect(page).to have_content("Name can't be blank")
+       expected to find text "Name can't be blank" in "Navbar\nHome Tweets Twitter Accounts About Users\nSign Up Sign In\nExam was successfully created.\nExam was successfully created.\nName:\nEdit this exam | Back to exams\nDestroy this exam"
+     # ./spec/features/creating_a_exam_spec.rb:16:in `block (2 levels) in <top (required)>'
+
+Finished in 0.12962 seconds (files took 0.71137 seconds to load)
+2 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/features/creating_a_exam_spec.rb:12 # CreatingAExams invalid inputs
+
+
+- The above stage is red stage as it is failed now have to work towards green stage for the spec to pass and the solution for thsi is to add validation to check the presence to name in the model 
+
+(base) itsacheckmate@itsacheckmate:~/Training/Rails/question_bank$ rspec spec/features/creating_a_exam_spec.rb 
+And now it passes and it is on green stage and spec passes
+CreatingAExams
+  valid inputs
+  invalid inputs
+
+Finished in 0.11214 seconds (files took 0.71091 seconds to load)
+2 examples, 0 failures
