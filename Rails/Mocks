@@ -1,0 +1,9 @@
+MOcking within in rspec spec
+To replcae a realthing eith a simulation of that thing
+Close enought to that thing to give a clear example , elulate the real thing
+
+To Unit test in isolation of the tightle coupled system
+IT simulates the features of other functinality to test the unit in isolation .
+
+Test Doubles - Testable is just an object. Doubles to stand in for othe real life entity.
+Double is like stunt man.
